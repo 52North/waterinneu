@@ -5,3 +5,8 @@ sites/*/settings*.php
 sites/*/private
 sites/*/files/*
 !sites/default/files/config
+
+# Ignore eclipse stuff
+.settings
+.buildpath
+.project
