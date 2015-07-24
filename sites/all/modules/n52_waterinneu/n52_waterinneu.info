@@ -1,0 +1,3 @@
+core = "7.x"
+description = "Simple form to learn how drupal development works."
+name = "52N - WaterInnEU - Form Example"

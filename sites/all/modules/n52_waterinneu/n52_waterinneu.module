@@ -1,0 +1,217 @@
+<?php
+//
+// Form creation
+//
+function n52_waterinneu_form($form, &$form_state) {
+	
+	$form ['type'] = array (
+			'#type' => 'radios',
+			'#title' => t( 'Type of Content' ),
+			'#options' => array(
+					'dataset' => t('Dataset'),
+					'webservice' => t('Webservice'),
+					'package' => t('Software Package'),
+					'project' => t('Project'),
+			),
+			'#description' => t ( 'Select the type of content you would like to add.' ),
+			'#required' => TRUE,
+	);	
+	//
+	// DATASET form
+	//
+	$form['dataset'] = array (
+			'#type' => 'fieldset',
+			'#title' => t('Dataset Information'),
+			'#states' => array (
+					'visible' => array (
+							':input[name="type"]' => array ('value' => 'dataset'),
+					),
+			),
+			'#description' => t('This is the Dataset field set description.'),
+	);
+	
+	$form['dataset']['charset_encoding'] = array (
+			'#type' => 'select',
+			'#title' => t('Charset Encoding'),
+			// read options from file or system method
+			'#options' => array (
+				'UTF-8' => t('UTF-8'),
+				'ISO-8859-1' => t('ISO-8859-1')
+			),
+			'#default_value' => 'UTF-8',
+			'#description' => t('Select the charest encoding of the dataset.'),
+			'#states' => array (
+					'visible' => array (
+							':input[name="type"]' => array ('value' => 'dataset')
+					),
+			),
+	);
+	
+	$form['dataset']['url'] = array (
+			'#type' => 'textfield',
+			'#title' => t('Location of the dataset (URL)'),
+			'#size' => 125,
+			// http://stackoverflow.com/a/417184
+			'#maxlength' => 2000,
+			'#states' => array (
+					'visible' => array (
+							':input[name="type"]' => array ('value' => 'dataset' )
+					),
+			),
+			'#description' => t('Provide a URL which can be used to access the dataset.'),
+	);
+	
+	$form['dataset']['author_email'] = array (
+			'#type' => 'textfield',
+			'#title' => t('E-Mail of the author or any other point of contact'),
+			'#size' => 125,
+			//http://stackoverflow.com/a/574698
+			'#maxlength' => 254,
+			'#states' => array (
+					'visible' => array (
+							':input[name="type"]' => array ('value' => 'dataset'),
+					),
+			),
+			'#description' => t('Provide an email that can be used to discuss any issue regards this dataset.'),
+	);
+	//
+	// WEBSERVICE from
+	// 
+	$form['webservice'] = array (
+			'#type' => 'fieldset',
+			'#title' => t('Webservice Information'),
+			'#states' => array (
+					'visible' => array (
+							':input[name="type"]' => array ('value' => 'webservice'),
+					),
+			),
+	);
+	
+	$form['webservice']['url'] = array (
+			'#type' => 'textfield',
+			'#title' => t('Webservice location (URL)'),
+			'#size' => 125,
+			// http://stackoverflow.com/a/417184
+			'#maxlength' => 2000,
+			'#states' => array (
+					'visible' => array (
+							':input[name="type"]' => array ('value' => 'webservice' )
+					),
+			),
+			'#description' => t('Provide a URL which can be used to access the webservice.'),
+	);
+	
+	$form['webservice']['auth_required'] = array (
+			'#type' => 'checkbox',
+			'#title' => t('Authorization required?'),
+			'#states' => array (
+					'visible' => array (
+							':input[name="type"]' => array ('value' => 'webservice' )
+					),
+			),
+			'#description' => t('Is any additional authorization information required to access the service.'),
+	);
+	
+	//
+	// ADDITIONAL INFORMATION form
+	//
+	$form['more_info'] = array(
+			'#type' => 'fieldset',
+			'#title' => t('Additional Information'),
+			'#collapsible' => TRUE,
+			'#collapsed' => TRUE,
+			'#states' => array (
+					'expanded' => array (
+						':input[name="type"]' => array ('checked' => TRUE),
+					),
+			),
+					
+	);
+	
+	$form['more_info']['license'] = array (
+			'#type' => 'select',
+			'#title' => t('License'),
+			// read options from file or system method
+			'#options' => array (
+					'free' => t('For Free'),
+					'public_domain' => t('Public domain'),
+					'fees' => t('Payment required')
+			),
+			'#default_value' => 'free',
+			'#description' => t('Select the license to access the content.'),
+	);
+	
+	$form ['submit_button'] = array (
+			'#type' => 'submit',
+			'#value' => t('Click Here!'), 
+	);
+	
+	return $form;
+}
+//
+// Form handling
+//
+function n52_waterinneu_form_validate($form, &$form_state) {
+	$type = $form_state ['values'] ['type'];
+	if ($type === 'dataset') {
+		$mail = $form_state['values']['author_email'];
+		if (!valid_email_address($mail)) {
+			// http://www.rfc-editor.org/errata_search.php?rfc=3696
+			form_set_error('author_email',
+					t(
+							'Please enter a valid email address. 
+							The according <a href="@mail-spec">Specification</a>
+							and <a href="@mail-spec-updates">some updates</a> are available online.',
+							array (
+									'@mail-spec' => 'https://tools.ietf.org/html/rfc3696',
+									'@mail-spec-updates' => 'http://www.rfc-editor.org/errata_search.php?rfc=3696',
+							)
+					)
+			);
+		}
+	}
+	if ($type === 'dataset' || $type === 'webservice') {
+		$url = $form_state['values']['author_email'];
+		if (!valid_url($url,TRUE)) {
+			form_set_error('$url',
+					t(
+							'Please enter a valid URL.
+							The according <a href="@url-spec">Specification</a>
+							and <a href="@url-spec-updates">some updates</a> are available online.',
+							array (
+									'@url-spec'=> 'https://tools.ietf.org/html/rfc1738',
+									'@url-spec-updates' => 'https://www.rfc-editor.org/errata_search.php?rfc=1738',
+							)
+					)		
+			);
+		}
+	}
+	// validation function called by drupal
+}
+function n52_waterinneu_form_submit($form, &$form_state) {
+	// submission function called by drupal
+	drupal_set_message("Form is submitted to nowhere, thanks for your time!");
+}
+//
+// Form WebUI
+//
+function n52_waterinneu_menu() {
+	$items = array ();
+	
+	// this creates a URL that will call this form at "examples/form-example"
+	$items ['examples/n52-waterinneu-form'] = array (
+			// page title
+			'title' => 'Add new dataset',
+			'description' => 'A form to add a new dataset.',
+			// this is the function that will be called when the page is accessed. for a form, use drupal_get_form
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array (
+					// put the name of the form here
+					'n52_waterinneu_form' 
+			),
+			'access callback' => TRUE 
+	);
+	return 
+
+	$items;
+}
