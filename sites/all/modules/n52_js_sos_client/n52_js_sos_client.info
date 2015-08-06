@@ -1,0 +1,3 @@
+core = "7.x"
+description = "Module to provide the 52°North JS SOS Client via menu link"
+name = "52N - JS SOS Client"

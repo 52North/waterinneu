@@ -1,0 +1,51 @@
+<?php
+/**
+ * Implements hook_menu()
+ * 
+ * Link in default menu (e.g. Navigation)
+ */
+function n52_js_sos_client_menu() {
+	$menu ['n52/jsClient'] = array (
+			// page title
+			'title' => 'View Client',
+			'page callback' => 'n52_js_sos_client_callback',
+			'access arguments' => array (
+					'access content',
+			),
+	);
+	return $menu;
+}
+
+/**
+ * The callback to integrate the js based application
+ */
+function n52_js_sos_client_callback() {
+	$base_path = '/' . drupal_get_path('module', 'n52_js_sos_client') . '/';
+	
+	$page_contents =
+			'<script type="text/javascript">' .
+				'function n52CalcHeight() {' .
+					// find the height of the internal page
+					'var globalHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;' .
+					'globalHeight = globalHeight - 375;' .
+					// find height of content div (375 needs to be calculated in production environment)
+					'var contentHeight = document.getElementById("page").offsetHeight;' .
+					//change the height of the iframe
+					'var iframe = document.getElementById("jsc-iframe");' .
+					'iframe.style.height = globalHeight + "px";' .
+				'}' .
+				'window.onresize = function() {' .
+					'n52CalcHeight();' .
+				'}' .
+			'</script>' .
+			'<iframe ' . 
+				'id="jsc-iframe" ' . 
+				'onLoad="n52CalcHeight()" ' . 
+				'src="' . $base_path . 'index.html" ' . 
+				'style="width: 100%; border: none"></iframe>' .
+			'<div id="height"></div>';
+	
+	$page_array = array ('#markup' => $page_contents);
+	
+	return $page_array;
+}

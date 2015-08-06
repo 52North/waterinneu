@@ -1,0 +1,13 @@
+General Infos:
+==============
+project = 52North Client Implementation (restful-timeseries-client)
+version = 1.0.0
+builddate = 2015-08-06 13:06:39+0200
+
+GIT Infos:
+=================
+repository = ${git.repository}
+path = develop
+revision = 6b39471b6e82a000a4b460adf7e9413c2c3f3822
+lastCommitMessage = Merge pull request #139 from 52North/master
+lastCommitDate = 2015-06-16 08:34:04+0200
