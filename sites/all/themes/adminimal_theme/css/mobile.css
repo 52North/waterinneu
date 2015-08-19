@@ -100,7 +100,7 @@ body.adminimal-theme div.admin .right, body.adminimal-theme div.admin .left {
 .exposed-filters .form-select {
   clear: both;
   margin-bottom: 10px;
-  width: 100%;
+  width: auto;
 }
 
 .views-exposed-form label {
@@ -261,4 +261,12 @@ html.js .adminimal-theme #module-filter-show-wrapper .form-item {
 
 .adminimal-theme #module-filter-tabs.top-fixed{
   position: relative;
+}
+
+.adminimal-theme #dashboard div#dashboard_sidebar {
+  width: 100%;
+}
+
+.container-inline.form-actions.form-wrapper {
+  clear: both;
 }

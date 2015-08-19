@@ -189,11 +189,6 @@ pre {
   white-space: pre-wrap;
 }
 
-strong {
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-weight: bold !important;
-}
-
 /**
  * Skip link.
  */
@@ -408,6 +403,7 @@ ul.secondary li a {
   display: inline-block;
   color: #777;
   border-bottom: 1px solid #EBEBEB;
+  transition: all, 0.3s;
 }
 
 ul.secondary li a,ul.secondary li a:hover,ul.secondary li.active a,ul.secondary li.active a.active {
@@ -683,7 +679,7 @@ fieldset {
 
 fieldset legend {
   background: white;
-  padding: 0 3px;
+  padding: 0 6px;
   margin: 0;
   margin-left: -3px;
   font-family: "Open Sans", "Segoe UI", "Helvetica", sans-serif;
@@ -713,12 +709,22 @@ fieldset legend {
   padding-bottom: 0;
 }
 
-.form-item label, .exposed-filters .form-item label {
+.form-item label {
   font-family: "Open Sans", "Segoe UI", "Helvetica", sans-serif;
   font-size: 20px;
   font-weight: 300;
   margin: 0;
-  margin: 0 0 10px;
+  margin: 0px 0px 4px;
+  line-height: 1.4;
+  width: initial;
+}
+
+.exposed-filters .form-item label {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  margin: 0px 0px 4px;
   line-height: 1.4;
   width: initial;
 }
@@ -786,7 +792,9 @@ ul.tips li {
 }
 
 body div.form-type-radio div.description,body div.form-type-checkbox div.description {
-  margin-left: 1.5em;/* LTR */
+  margin-left: 25px;/* LTR */
+  color: #949494;
+  margin-top: 0;
 }
 
 a.button:link,a.button:visited,a.button:hover,a.button:active {
@@ -814,10 +822,12 @@ input.form-autocomplete,input.form-text,input.form-file,textarea.form-textarea,s
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   input.form-autocomplete,input.form-text,input.form-file,textarea.form-textarea,select.form-select {
     -webkit-appearance: none;
-    -webkit-padding-start: 5px;
+    -webkit-padding-start: 8px;
     -webkit-padding-end: 16px;
     -webkit-padding-before: 5px;
     -webkit-padding-after: 5px;
+    border-radius: 0;
+    min-height: 16px;
   }
   input.form-autocomplete, select.form-select {
     background: url('images/select-arrow.svg') no-repeat right 50% #fff;
@@ -927,7 +937,7 @@ html.js .toggle-enable.disabled div {
 }
 
 html.js .toggle-enable div {
-  border-radius: 0 !important;  
+  border-radius: 0 !important;
   background: #fff;
 }
 
@@ -965,9 +975,10 @@ html.js input.throbbing {
 }
 
 ul.action-links {
-  margin: 0 0 20px;
+  margin: 20px 0 10px;
   list-style-type: none;
-  overflow: hidden;
+  display: inline-block;
+  list-style-type: none;
 }
 
 ul.action-links li {
@@ -1163,7 +1174,7 @@ div.breadcrumb a:hover {
 
 .overlay #page {
   margin: 0;
-  padding: 0 20px;
+  padding: 20px 20px;
 }
 
 .overlay #branding div.breadcrumb {
@@ -1275,8 +1286,8 @@ div.add-or-remove-shortcuts {
 
 #dashboard div.block h2 {
   margin: 0;
-  font-size: 1em;
-  padding: 3px 10px;
+  font-size: 23px;
+  padding: 10px 0;
 }
 
 #dashboard div.block div.content {
@@ -1295,6 +1306,12 @@ div.add-or-remove-shortcuts {
 #field-display-overview input.field-formatter-settings-edit {
   margin: 0;
   padding: 1px 8px;
+  background-color: transparent;
+}
+
+#field-display-overview input.field-formatter-settings-edit:focus,
+#field-display-overview input.field-formatter-settings-edit:active {
+  box-shadow: none;
 }
 
 #field-display-overview tr.field-formatter-settings-changed {
@@ -1306,7 +1323,7 @@ div.add-or-remove-shortcuts {
 }
 
 #field-display-overview tr.field-formatter-settings-editing {
-  background: #D5E9F2;
+  background: #EDF4FF;
 }
 
 #field-display-overview.field-formatter-settings-edit-form .form-item {
@@ -1546,6 +1563,7 @@ body.adminimal-theme .views-ui-display-tab-bucket h3 {
   margin: 10px;
   padding: 6px 6px 10px;
   border-left: 5px solid #DDD;
+  transition: all, 0.3s;
 }
 body.adminimal-theme .views-ui-display-tab-bucket:hover h3 {
   border-color: #0074BD;
@@ -1553,225 +1571,6 @@ body.adminimal-theme .views-ui-display-tab-bucket:hover h3 {
 
 div.fieldset-description {
   padding-bottom: 0.5em;
-}
-
-/* Buttons */
-
-/* Gray Button */
-input.form-submit,
-a.button,
-div.exposed-filters input#edit-submit {
-  cursor: pointer;
-  background: #e3e3e3;
-  border: none;
-  border-radius: 0;
-  padding: 6px 10px;
-  margin-bottom: 1em;
-  margin-right: 1em;/* LTR */
-  color: #555;
-  text-align: center;
-  font-weight: normal;
-  font-size: 1.077em;
-  font-family: "Lucida Grande",Verdana,sans-serif;
-}
-
-input.form-submit:hover,
-a.button:hover,
-div.exposed-filters input#edit-submit:hover {
-  background: #0074BD;
-  color: #fff;
-}
-
-input.form-submit:active,
-a.button:active,
-div.exposed-filters input#edit-submit:active {
-  box-shadow: 0 2px 2px rgba(0,0,0,0.3) inset;
-}
-
-/* Green Button */
-input[type="submit"][id^="edit-submit"],
-input#edit-actions-submit,
-input[id^="save-continue"],
-input[type="submit"][id^="edit-save"],
-input#edit-save,
-input#edit-submit,
-input#edit-actions-save,
-#media-browser-page a.button-yes {
-  cursor: pointer;
-  border-radius: 0;
-  border: none;
-  padding: 6px 10px;
-  margin-bottom: 1em;
-  margin-right: 1em;/* LTR */
-  color: #fff;
-  text-align: center;
-  font-weight: normal;
-  font-size: 1.077em;
-  font-family: "Lucida Grande",Verdana,sans-serif;
-  background: #4d8f46;
-}
-
-input[type="submit"][id^="edit-submit"]:hover,
-input#edit-actions-submit:hover,
-input[id^="save-continue"]:hover,
-input[type="submit"][id^="edit-save"]:hover,
-input#edit-save:hover,
-input#edit-submit:hover,
-input#edit-actions-save:hover,
-#media-browser-page a.button-yes:hover {
-  background: #0a6700;
-  border-radius: 0;
-  border: none;
-  color: #fff;
-}
-
-input#edit-submit:active,
-input#edit-actions-submit:active,
-input[id^="save-continue"]:active,
-input[type="submit"][id^="edit-save"]:active,
-input#edit-save:active,
-input#edit-submit:active,
-input#edit-actions-save:active {
-  box-shadow: 0 2px 2px rgba(0,0,0,0.75) inset;
-  background: #333;
-  border-radius: 0;
-  border: none;
-  color: #fff;
-}
-
-/* Red Button */
-input#edit-delete,
-input#remove-button,
-input#edit-remove,
-input#edit-clear,
-a.button.remove,
-input[id*="remove-button"],
-.page-admin-modules-uninstall input#edit-submit {
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 0;
-  border: none;
-  margin-bottom: 1em;
-  margin-right: 1em;/* LTR */
-  color: #fff;
-  text-align: center;
-  font-weight: normal;
-  font-size: 1.077em;
-  font-family: "Lucida Grande",Verdana,sans-serif;
-  background: #b73939;
-}
-
-input#edit-delete:hover,
-input#remove-button:hover,
-input#edit-remove:hover,
-input#edit-clear:hover,
-a.button.remove:hover,
-input[id*="remove-button"]:hover,
-body.page-admin-modules-uninstall input#edit-submit:hover {
-  background: #990000;
-  border-radius: 0;
-  border: none;
-  color: #fff;
-}
-
-input#edit-delete:active,
-input#remove-button:active,
-input#edit-remove:active,
-input#edit-clear:active,
-input[id*="remove-button"]:active,
-body.page-admin-modules-uninstall input#edit-submit:active {
-  box-shadow: 0 2px 2px rgba(0,0,0,0.75) inset;
-  background: #333;
-  border-radius: 0;
-  border: none;
-  color: #fff;
-}
-
-/* Blue Button */
-input#edit-preview,
-input#edit-next,
-input#preview-submit,
-input[type="submit"][id^="edit-return"] {
-  cursor: pointer;
-  border-radius: 0;
-  border: none;
-  padding: 6px 10px;
-  margin-bottom: 1em;
-  margin-right: 1em;/* LTR */
-  color: #fff;
-  text-align: center;
-  font-weight: normal;
-  font-size: 1.077em;
-  font-family: "Lucida Grande",Verdana,sans-serif;
-  background: #0074BD;
-}
-
-input#edit-preview:hover,
-input#edit-next:hover,
-input#preview-submit:hover,
-input[type="submit"][id^="edit-return"]:hover {
-  background: #004c99;
-  border-radius: 0;
-  border: none;
-  color: #fff;
-}
-
-input#edit-preview:active,
-input#edit-next:active,
-input#preview-submit:active,
-input[type="submit"][id^="edit-return"]:active {
-  box-shadow: 0 2px 2px rgba(0,0,0,0.75) inset;
-  background: #333;
-  border-radius: 0;
-  border: none;
-  color: #fff;
-}
-
-/* Orange Button */
-#edit-cancel,
-#edit-actions-cancel,
-input#edit-buttons-revert,
-#media-browser-page a.button-no {
-  cursor: pointer;
-  border-radius: 0;
-  border: none;
-  padding: 6px 10px;
-  margin-bottom: 1em;
-  margin-right: 1em;/* LTR */
-  color: #fff;
-  text-align: center;
-  font-weight: normal;
-  font-size: 1.077em;
-  font-family: "Lucida Grande",Verdana,sans-serif;
-  background: #f69231;
-}
-
-a#edit-cancel,a#edit-actions-cancel {
-  padding: 6px 10px;
-  text-decoration: none;
-  border-radius: 0;
-  border: none;
-}
-
-#edit-cancel:hover,
-#edit-actions-cancel:hover,
-input#edit-buttons-revert:hover,
-#media-browser-page a.button-no:hover {
-  background: #ef6114;
-  text-decoration: none;
-  border-radius: 0;
-  border: none;
-  color: #fff;
-}
-
-#edit-cancel:active,
-#edit-actions-cancel:active,
-input#edit-buttons-revert:active {
-  box-shadow: 0 2px 2px rgba(0,0,0,0.75) inset;
-  background: #333;
-  border-radius: 0;
-  border: none;
-  color: #fff;
 }
 
 /* Configuration menu blocks */
@@ -1894,9 +1693,9 @@ body.adminimal-theme .token-tree th {
 }
 
 .views-exposed-form label {
-  font-family: "Open Sans", "Segoe UI", "Helvetica", sans-serif;
-  font-size: 23px;
-  font-weight: 300;
+  font-family: Sans-serif;
+  font-size: 16px;
+  font-weight: 600;
   line-height: inherit;
   margin-bottom: 0;
   padding: 0.25em 0;
@@ -1983,21 +1782,13 @@ body.adminimal-theme .token-tree th {
   color: white;
 }
 
-/* Omega Fieldset fix */
-body.page-admin-appearance fieldset {
-  border: solid 1px #ddd !important;
-  border-top: 3px solid #0074BD !important;
-  padding: 12px !important;
-  margin: 18px 0 !important;
-}
-
 body.page-admin-appearance fieldset legend {
   background: white !important;
-  padding: 0 3px !important;
+  padding: 0 6px !important;
   margin: 0 !important;
   margin-left: -3px !important;
   font-family: "Open Sans", "Segoe UI", "Helvetica", sans-serif !important;
-  font-size: 24px !important;
+  font-size: 22px !important;
   font-weight: 300 !important;
 }
 
@@ -2021,6 +1812,11 @@ body.page-admin-appearance fieldset fieldset {
   top: 5px;
 }
 
+.views-ui-dialog #views-ajax-title {
+  font-weight: normal;
+  text-align: center;
+}
+
 .views-ui-dialog .scroll {
   padding: 10px 20px;
 }
@@ -2036,6 +1832,10 @@ body.page-admin-appearance fieldset fieldset {
 
 .views-ui-dialog {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  padding-bottom: 10px;
+}
+.views-ui-dialog #views-ajax-popup {
+  padding-bottom: 10px;
 }
 
 .views-filterable-options .form-type-checkbox input.form-checkbox{
@@ -2556,8 +2356,8 @@ body.adminimal-theme ul.rules-operations a, .rules-elements-add ul.action-links 
 }
 
 body.adminimal-theme .rules-autocomplete-button {
-  height: 27px;
-  top: -2px;
+  height: 28px;
+  top: -1px;
 }
 
 body.adminimal-theme ul.rules-autocomplete .rules-dsac-group {
@@ -2667,7 +2467,7 @@ body.adminimal-theme .views-display-top ul#views-display-menu-tabs li a.active {
   color: #0073BC;
 }
 
-body.adminimal-theme .views-display-top ul#views-display-menu-tabs li a:hover, 
+body.adminimal-theme .views-display-top ul#views-display-menu-tabs li a:hover,
 body.adminimal-theme .views-display-top ul#views-display-menu-tabs li a:focus {
 	color: #FFF;
 	background-color: #0074BD;
@@ -2716,6 +2516,10 @@ body.adminimal-theme .chosen-container-active .chosen-choices {
   border-color: #0074BD;
 }
 
+body.adminimal-theme .chosen-container.chosen-container-active.chosen-with-drop .chosen-drop {
+  border-top: 1px solid #0074BD;
+}
+
 body.adminimal-theme .chosen-container-single .chosen-single div b {
   background-position: 0px 4px;
 }
@@ -2734,6 +2538,7 @@ body.adminimal-theme .chosen-container-active .chosen-choices {
 }
 body.adminimal-theme .chosen-container-multi .chosen-choices {
   background: #fff;
+  border-color: #DDD;
 }
 body.adminimal-theme .chosen-container-multi .chosen-choices li.search-choice {
   background: #e3e3e3;
@@ -2798,6 +2603,10 @@ body.adminimal-theme .custom_css_not_found .css_path {
   margin-bottom: 20px;
 }
 
+scroll.form-wrapper {
+  margin-bottom: 0px;
+}
+
 #autosave-status {
   height: auto;
   left: 0;
@@ -2824,4 +2633,324 @@ body.adminimal-theme .custom_css_not_found .css_path {
 /* Fix SemanticViews module see #2340681 */
 body.page-admin-structure-views-view #views-ui-edit-display-form #edit-options #edit-style-options-row fieldset#edit-style-options-row--2 {
   float: left;
+}
+
+body.adminimal-theme #module-filter-update-status-form {
+  float: none;
+  text-align: center;
+}
+
+body.adminimal-theme #module-filter-update-status-form #edit-module-filter-show {
+  padding: 10px;
+}
+
+/* Fix Views preview display issue #2486489 by @geoffreyr */
+body.page-admin-structure-views-view #content-wrapper {
+  table-layout: fixed;
+}
+
+/* Fix Module Filter form float... see #2444477 */
+body.adminimal-theme #module-filter-update-status-form {
+  float: none;
+  padding-bottom: 1em;
+  clear: both;
+}
+
+body.adminimal-theme #module-filter-update-status-form #edit-module-filter-show {
+  margin-top: 5px;
+}
+
+body.adminimal-theme #module-filter-update-status-form .module-filter-inputs-wrapper {
+  display: block;
+  text-align: center;
+}
+
+body.adminimal-theme.page-admin-reports-updates .update.checked  {
+  text-align: center;
+  margin-top: -10px;
+  color: #9B9B9B;
+}
+
+.adminimal-theme .update tr.error,
+.adminimal-theme .update tr.error.even:hover,
+.adminimal-theme .update tr.error.odd:hover {
+  background: #FFFFFF !important;
+  color: #000;
+  border: 1px solid #B73939;
+  border-left-width: 5px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.adminimal-theme .update tr.error .update table.version-security .version-title {
+  color: #B73939;
+}
+
+.adminimal-theme .table.update tr.error td,
+.adminimal-theme table.update tr.error th {
+  color: #B73939;
+}
+
+.adminimal-theme .update tr.error .version-recommended,
+.adminimal-theme .update .version-recommended {
+  background: #EDEDED;
+}
+
+.adminimal-theme .update table.version-security .version-title {
+  color: #B73939;
+}
+
+.adminimal-theme table.update {
+  margin-top: 0;
+}
+
+.adminimal-theme table.update tr.error td,
+.adminimal-theme table.update tr.error th {
+  color: #B73939;
+}
+
+.adminimal-theme .update .security-error {
+  color: #B73939;
+  font-size: 18px;
+}
+
+.adminimal-theme .update tr td {
+  border: none;
+}
+
+.adminimal-theme.page-admin-reports-updates .content h3 {
+  font-size: 25px;
+  margin: 40px 0 0 0;
+  background: #0074BD;
+  padding: 18px;
+  color: #fff;
+}
+
+.adminimal-theme.page-admin-reports-updates .update tr.warning {
+  background: #FFF;
+  border: 1px solid #FF7C43;
+  border-left-width: 5px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.adminimal-theme.page-admin-reports-updates .update tr.ok {
+  background: #FFF;
+  opacity: .75;
+}
+
+.adminimal-theme .update tr.warning .version-recommended {
+  background: #EDEDED;
+}
+
+html body.adminimal-theme.page-admin-reports-updates .overflow-fix {
+  overflow: initial !important;
+}
+
+.adminimal-theme .focal-point-indicator.form-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.adminimal-theme .focal-point-indicator:after {
+  font-size: 38px;
+}
+
+
+/* Improve Commerce Kickstart styling. */
+.adminimal-theme #commerce-kickstart-inline-help-button {
+  margin-bottom: 20px;
+}
+
+.adminimal-theme #commerce-kickstart-inline-help-button #header {
+  margin-top: 10px;
+}
+
+.adminimal-theme .commerce-backoffice-view .vbo-views-form #edit-select {
+  margin-top: 20px;
+}
+
+.adminimal-theme .commerce-backoffice-view .vbo-views-form #edit-select select {
+  height: 17px;
+}
+
+.adminimal-theme .commerce-backoffice-view .vbo-views-form .container-inline.form-wrapper#edit-select input.form-submit {
+  margin-left: -10px;
+}
+
+.adminimal-theme .commerce-backoffice-view div.views-megarow-content {
+  border-bottom: 10px solid #D5E9F2;
+  border-radius: 0;
+  border-top: none;
+  border-color: #D5E9F2;
+}
+
+.adminimal-theme div.views-megarow-content .megarow-header a.close {
+  margin-top: -34px;
+}
+
+.adminimal-theme .commerce-backoffice-view .vbo-views-form select {
+  height: 17px;
+  margin: 0px 10px 0px 0;
+}
+
+.adminimal-theme .commerce-backoffice-view .vbo-views-form .form-submit {
+  margin-top: -1px;
+}
+
+.adminimal-theme #commerce-backoffice-order-status-form {
+  margin-top: 12px;
+}
+
+.adminimal-theme #edit-field-product-und-entities-7-form-product-attributes {
+  margin-bottom: 20px;
+}
+
+.adminimal-theme fieldset.ief-entity-fieldset {
+  margin: 20px 0;
+}
+
+.adminimal-theme div.image-preview {
+  float: none;
+}
+
+.adminimal-theme .image-widget .image-widget-data .file-size {
+  padding-right: 1em;
+}
+
+.adminimal-theme .field-widget-commerce-line-item-manager input {
+  margin-top: 3px;
+}
+
+.adminimal-theme .add-payment .form-submit {
+  margin: 0;
+}
+
+.adminimal-theme table tr.rules-elements-add {
+  background: #fff;
+}
+
+.adminimal-theme table tr.rules-elements-add:hover {
+  background: #fff;
+}
+
+.adminimal-theme .rules-elements-table .tabledrag-toggle-weight-wrapper {
+  position: absolute;
+  right: 48px;
+}
+
+.adminimal-theme .rules-elements-table caption,
+.adminimal-theme .rules-overview-table caption {
+  font-size: 23px;
+  font-weight: 100;
+  padding: 10px 0;
+  text-align: left;
+}
+
+body.adminimal-theme .rules-elements-add ul.action-links a,
+body.adminimal-theme ul.rules-operations a,
+body.adminimal-theme .rules-elements-add ul.action-links a {
+  font-family: sans-serif;
+  font-size: 14px;
+  border: none;
+  padding: 0;
+  font-weight: bold;
+}
+
+body.adminimal-theme .rules-elements-add ul.action-links a:hover,
+body.adminimal-theme ul.rules-operations a:hover,
+body.adminimal-theme .rules-elements-add ul.action-links a:hover {
+    text-decoration: underline;
+    background: transparent;
+    color: #0074BD;
+}
+
+body.adminimal-theme ul.rules-operations .delete a,
+body.adminimal-theme ul.rules-operations .delete a:hover,
+body.adminimal-theme ul.rules-operations .delete_event a,
+body.adminimal-theme ul.rules-operations .delete_event a:hover {
+  color: #E25D5D;
+}
+
+.adminimal-theme form input.rules-switch-button {
+  font-size: 12px;
+  padding: 5px;
+}
+
+.adminimal-theme .field-widget-inline-entity-form .ief-entity-table tr.ief-row-entity-form {
+  background: #F1F6FF;
+  border: 3px solid #0074BD;
+}
+
+.adminimal-theme .ief-row-form .ief-form-row {
+  border-bottom: 10px solid #FFD477;
+  padding: 10px 10px;
+}
+
+.adminimal-theme .field-widget-inline-entity-form tr.ief-row-form .ief-form-row {
+  background: transparent url("../images/arrow-down.svg") no-repeat 4px 8px;
+}
+
+.adminimal-theme .field-widget-inline-entity-form fieldset {
+  border-top: solid 3px #ddd;
+}
+
+.adminimal-theme .views-ui-dialog {
+  z-index: 1000;
+}
+
+.adminimal-theme #overlay-content {
+  padding: 0;
+}
+
+.adminimal-theme #dashboard .ui-sortable .block h2 {
+  padding: 4px;
+  background-color: #E0E0D8;
+  text-indent: 20px;
+  font-size: 15px;
+  background-position-y: -13px;
+  background-position-x: 5px;
+}
+
+.adminimal-theme #dashboard.customize-inactive .dashboard-region .ui-sortable .block:hover h2 {
+  background-position: 5px -33px;
+}
+
+.adminimal-theme #toolbar {
+  box-shadow: none;
+}
+
+.adminimal-theme #toolbar div.toolbar-menu {
+  background: #2D2D2D;
+}
+
+.adminimal-theme #toolbar div.toolbar-menu ul li.active-trail a {
+  background: #0074BD;
+  text-shadow: none;
+}
+
+.adminimal-theme div#toolbar div.toolbar-shortcuts ul li a.active {
+  background: #505050;
+}
+
+.adminimal-theme .form-item.form-type-textfield.form-item-view-args label{
+  line-height: 46px;
+}
+
+.adminimal-theme #dashboard #disabled-blocks h2 {
+  background-color: transparent;
+  background-position-y: -33px;
+  background-position-x: 0px;
+  line-height: 16px;
+  padding: 2px 8px 0px 18px;
+}
+
+.adminimal-theme #dashboard.customize-inactive #disabled-blocks h2:hover,
+.adminimal-theme #dashboard.customize-inactive #disabled-blocks .block:hover {
+  background-position-y: -33px !important;
+  background-position-x: 0px !important;
+}
+
+.adminimal-theme #dashboard #disabled-blocks .block {
+  margin-right: 8px;
 }

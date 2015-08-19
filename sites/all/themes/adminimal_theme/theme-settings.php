@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * @file
  * Theme setting callbacks for the Adminimal theme.
@@ -49,10 +48,47 @@ function adminimal_form_system_theme_settings_alter(&$form, &$form_state) {
     '#weight' => -10,
   );
 
+  $form['skin'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Adminimal skin'),
+    '#weight' => -11,
+  );
+
+  // Create the select list.
+  $form['skin']['adminimal_theme_skin'] = array(
+    '#type' => 'select',
+    '#title' => t('Skin selection'),
+    '#default_value' => theme_get_setting('adminimal_theme_skin'),
+    '#options' => array(
+      'default' => t('Adminimal Default'),
+      //'dark' => t('Dark'),
+      //'flat' => t('Flat'),
+      'material' => t('Material (BETA version)'),
+      //'alternative' => t('Alternative'),
+    ),
+    '#description' => t('Select desired skin style. Note that this feature is in beta stage and there might be some issues.'),
+    '#required' => FALSE,
+  );
+
+  $form['adminimal_custom']['style_checkboxes'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Style checkboxes and radio buttons in Webkit browsers.'),
+    '#description' => t('Enabling this option will style checkbox and radio buttons for Webkit browsers like Google Chrome, Safari, Opera and their mobile versions.
+     Enabling this option will <strong>not</strong> have any negative impact on older browsers that dont support pure CSS styling of checkboxes like Internet Explorer or Firefox.'),
+    '#default_value' => theme_get_setting('style_checkboxes'),
+  );
+
   $form['adminimal_custom']['display_icons_config'] = array(
     '#type' => 'checkbox',
     '#title' => t('Display icons in Configuration page'),
     '#default_value' => theme_get_setting('display_icons_config'),
+  );
+
+  $form['adminimal_custom']['avoid_custom_font'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Avoid using "Open Sans" font'),
+    '#description' => t('(useful for languages that are not well supported by the "Open sans" font. Like Japanese for example)'),
+    '#default_value' => theme_get_setting('avoid_custom_font'),
   );
 
   $form['adminimal_custom']['use_custom_media_queries'] = array(
