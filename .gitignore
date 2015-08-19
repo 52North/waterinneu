@@ -1,12 +1,10 @@
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings*.php
 
-# Ignore paths that contain user-generated content.
-sites/*/private
-sites/*/files/*
-!sites/default/files/config
-
 # Ignore eclipse stuff
 .settings
 .buildpath
 .project
+
+# Ignore apache sepcific files
+**/.htaccess
