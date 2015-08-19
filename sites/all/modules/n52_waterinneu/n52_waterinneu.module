@@ -107,7 +107,7 @@ function n52_waterinneu_form_validate($form, &$form_state) {
  */
 function n52_waterinneu_form_submit($form, &$form_state) {
 	// submission function called by drupal
-	drupal_set_message("Form is submitted to nowhere, thanks for your time!");
+	drupal_set_message("Form is submitted to nowhere, thanks for your time! Just for demo purposes.");
 }
 
 /**
