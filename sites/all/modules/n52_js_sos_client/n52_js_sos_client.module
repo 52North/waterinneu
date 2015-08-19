@@ -7,7 +7,7 @@
 function n52_js_sos_client_menu() {
 	$menu ['n52/jsClient'] = array (
 			// page title
-			'title' => 'View Client - Reloaded',
+			'title' => 'View Client',
 			'page callback' => 'n52_js_sos_client_callback',
 			'access arguments' => array (
 					'access content',
