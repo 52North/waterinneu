@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Install file for wsfields
+ *
+ * @author Mathew Winstone <mwinstone@coldfrontlabs.ca>
+ */
+
+/**
+ * Implements hook_install().
+ */
+function wsfields_install() {
+  variable_set('wsfields_min_expire', 300);
+}
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function wsfields_uninstall() {
+  variable_del('wsfields_debug');
+  variable_del('wsfields_min_expire');
+}

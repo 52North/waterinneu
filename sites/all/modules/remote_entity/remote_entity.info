@@ -1,0 +1,25 @@
+name = Remote Entity API
+description = Provides an API for entities to be queried and kept in sync with data on a remote site.
+core = 7.x
+dependencies[] = entity
+dependencies[] = clients
+files[] = remote_entity.info.inc
+files[] = includes/remote_entity.entity.inc
+files[] = includes/remote_entity.controller.inc
+files[] = includes/remote_entity.property.inc
+files[] = includes/remote_entity.query.inc
+files[] = includes/remote_entity.clients.inc
+files[] = includes/remote_entity.ui.inc
+files[] = includes/remote_entity.operation_handlers.inc
+
+files[] = includes/views/remote_entity_handler_field_remote_property.inc
+files[] = includes/views/remote_entity_handler_field_bypass_remote_retrieve.inc
+
+files[] = tests/remote_entity.test
+
+; Information added by Drupal.org packaging script on 2014-08-26
+version = "7.x-1.0-beta6"
+core = "7.x"
+project = "remote_entity"
+datestamp = "1409056733"
+

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the wsdata_example_wikipedia feature.
+ */
+
+include_once 'wsdata_example_wikipedia.features.inc';

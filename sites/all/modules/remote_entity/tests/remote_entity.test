@@ -1,0 +1,342 @@
+<?php
+
+/**
+ * @file
+ * Contains tests for the Remote entity module.
+ */
+
+/**
+ * Test case for Remote Entity CRUD.
+ *
+ * This uses the dummy connection class and generic entity in the test module.
+ * This means that rather than testing the connection, we are testing the
+ * machinery that is between Remote Entity's public API and the connection.
+ */
+class RemoteEntityTestCase extends DrupalWebTestCase {
+
+  /**
+   * Implements getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('Remote Entity'),
+      'description' => t('Test basic operations with remote entities.'),
+      'group' => t('Remote Entity'),
+    );
+  }
+
+  /**
+   * Implements setUp().
+   */
+  function setUp() {
+    // Call the parent with an array of modules to enable for the test.
+    parent::setUp(array('clients', 'remote_entity'));
+
+    // We need our classes etc to register before we enable modules that provide
+    // connection types, connections, or resources.
+    module_enable(array('remote_entity_test'));
+    $this->resetAll();
+  }
+
+  /**
+   * Test remote entity load.
+   */
+  function testRemoteEntityLoad() {
+    // Create an entity on the dummy remote.
+    $remote_id = $this->randomName();
+    $dummy_remote_data = array(
+      'name' => $this->randomName(),
+    );
+    $this->createRemoteEntity('test_remote_entity', $remote_id, $dummy_remote_data);
+
+    // Load the remote entity from our dummy connection.
+    $entity = remote_entity_load_by_remote_id('test_remote_entity', $remote_id);
+
+    // Check we get back something that now looks like a Drupal entity.
+    $this->assertEqual($remote_id, $entity->remote_id, "The retrieved remote entity has the correct remote ID.");
+    $this->assertEqual($dummy_remote_data['name'], $entity->entity_data->name, "The retrieved remote entity has the correct name in its entity data.");
+    $this->assertNotNull($entity->eid, "The retrieved remote entity has a local entity ID.");
+    $this->assertEqual($entity->entity_data->load_count, 1, "The retrieved remote entity load count has been incremented.");
+    // TODO: mapped properties.
+
+    // Check the entity was saved to the database.
+    $eid = $entity->eid;
+    entity_get_controller('test_remote_entity')->resetCache();
+    $entity = entity_load_single('test_remote_entity', $eid);
+    $this->assertNotNull($entity, "The retrieved remote entity was saved to the local database.");
+
+    // Check that when we just loaded the entity, it didn't refresh from remote
+    // as it was not expired.
+    $this->assertEqual($entity->entity_data->load_count, 1, "The retrieved remote entity load count is unchanged, therefore it was not loaded from remote.");
+
+    // Force the expiry.
+    $num_updated = db_update('test_remote_entity')
+      ->fields(array(
+        // Anything less than now means that the entity is expired.
+        'expires' => REQUEST_TIME - 1,
+      ))
+      ->execute();
+
+    // Check loading the entity when expired refreshes it from the remote
+    // source.
+    entity_get_controller('test_remote_entity')->resetCache();
+    $entity = entity_load_single('test_remote_entity', $eid);
+    $this->assertEqual($entity->entity_data->load_count, 2, "The retrieved remote entity load count has been incremented.");
+  }
+
+  /**
+   * Test remote entity save.
+   */
+  function testRemoteEntitySave() {
+    // TODO: is there a helper for this?
+    $entity = entity_create('test_remote_entity', array(
+      'entity_data' => (object) array(
+        'remote_name' => $this->randomName(),
+      ),
+    ));
+    entity_save('test_remote_entity', $entity);
+
+    $this->assertNotNull($entity->eid, "The new entity was saved locally.");
+
+    // Save the entity remotely.
+    remote_entity_save('test_remote_entity', $entity);
+
+    $this->assertEqual($entity->remote_id, 'DummyRemoteID', "The entity was saved remotely and received a remote ID.");
+
+    $this->assertTrue($entity->unpacked, 'The entity was processed by the unpack callback');
+
+    // Save the entity remotely, with a simulated failure by the connection.
+    variable_set('remote_entity_test_throw_exception', TRUE);
+
+    try {
+      remote_entity_save('test_remote_entity', $entity);
+      $this->fail(t('Expected exception has not been thrown when remote saving the entity.'));
+    }
+    catch (Exception $e) {
+      $this->pass(t('Expected exception has been thrown when remote saving the entity.'));
+    }
+
+    $this->assertEqual($entity->needs_remote_save, REMOTE_ENTITY_REMOTE_SAVE_FAILED, "The entity was flagged as having failed remote save.");
+  }
+
+  /**
+   * Test remote entity bulk load.
+   */
+  function testRemoteEntityLoadMultiple() {
+    // Create dummy entities on the dummy remote.
+    $remote_entity_ids = array(
+      'banana',
+      'kiwi',
+      'grapefruit',
+    );
+    foreach ($remote_entity_ids as $remote_id) {
+      $dummy_remote_data = array(
+        'name' => $remote_id,
+        'load_count' => 1,
+      );
+
+      $this->createRemoteEntity('test_remote_entity', $remote_id, $dummy_remote_data);
+    }
+
+    // Load each remote entity from our dummy connection.
+    $entities = array();
+    $ids_mapping = array();
+    foreach ($remote_entity_ids as $remote_id) {
+      $entity = remote_entity_load_by_remote_id('test_remote_entity', $remote_id);
+
+      // Check we get back something that now looks like a Drupal entity.
+      $this->assertEqual($remote_id, $entity->remote_id, "The retrieved remote entity has the correct remote ID.");
+      $this->assertNotNull($entity->eid, "The retrieved remote entity has a local entity ID.");
+      // TODO: mapped properties.
+
+      $entities[$entity->eid] = $entity;
+
+      // Keep a mapping of local to remote IDs so we can check the
+      // correspondance is preserved throughout.
+      $ids_mapping[$entity->eid] = $remote_id;
+    }
+
+    // Check the entity was saved to the database.
+    entity_get_controller('test_remote_entity')->resetCache();
+    $eids = array_keys($entities);
+    $entities = entity_load('test_remote_entity', $eids);
+    $this->assertNotNull($entities, "The retrieved remote entities were saved to the local database.");
+    $this->assertEqual(count($entities), count($remote_entity_ids), "The correct number of remote entities was saved.");
+
+    // Check that when we just loaded the entities, they didn't refresh from
+    // remote, as they were not expired.
+    foreach ($entities as $entity) {
+      $this->assertEqual($entity->entity_data->load_count, 1, "The retrieved remote entity load count is unchanged, therefore it was not loaded from remote.");
+    }
+
+    // Force the expiry on the entities.
+    $num_updated = db_update('test_remote_entity')
+      ->fields(array(
+        // Anything less than now means that the entity is expired.
+        'expires' => REQUEST_TIME - 1,
+      ))
+      ->execute();
+
+    // Load the entities again. This time a remote load should occur.
+    entity_get_controller('test_remote_entity')->resetCache();
+    $entities = entity_load('test_remote_entity', $eids);
+
+    foreach ($entities as $entity) {
+      $this->assertEqual($entity->entity_data->load_count, 2, "The retrieved remote entity load count has been incremented.");
+
+      $this->assertEqual($entity->entity_data->method, 'remote_entity_load', "The retrieved remote entity was loaded using the remote_entity_load() connection method.");
+
+      // Check each entity still has the right remote ID.
+      $this->assertEqual($ids_mapping[$entity->eid], $entity->remote_id, "The entity has the correct remote ID after it was loaded again.");
+    }
+
+    // Now hack the connection type, so that we use the class with the
+    // bulk load method.
+    $num_updated = db_update('clients_connection')
+      ->fields(array(
+        'type' => 'test_remote_entity_load_multiple',
+      ))
+      ->condition('name', 'test_connection')
+      ->execute();
+
+    cache_clear_all('clients_connection_type_info', 'cache');
+    entity_get_controller('clients_resource')->resetCache();
+    entity_get_controller('clients_connection')->resetCache();
+
+    // Force the expiry on the entities.
+    $num_updated = db_update('test_remote_entity')
+      ->fields(array(
+        // Anything less than now means that the entity is expired.
+        'expires' => REQUEST_TIME - 1,
+      ))
+      ->execute();
+
+    // Load the entities again. A remote load should occur.
+    entity_get_controller('test_remote_entity')->resetCache();
+    $entities = entity_load('test_remote_entity', $eids);
+
+    foreach ($entities as $entity) {
+      $this->assertEqual($entity->entity_data->load_count, 3, "The retrieved remote entity load count has been incremented.");
+
+      $this->assertEqual($entity->entity_data->method, 'remote_entity_load_multiple', "The retrieved remote entity was loaded using the remote_entity_load() connection method.");
+
+      // Check each entity still has the right remote ID.
+      $this->assertEqual($ids_mapping[$entity->eid], $entity->remote_id, "The entity has the correct remote ID after it was loaded again.");
+    }
+
+    // Now check another load does not cause a remote load, because they are
+    // not expired.
+    entity_get_controller('test_remote_entity')->resetCache();
+    $entities = entity_load('test_remote_entity', $eids);
+
+    foreach ($entities as $entity) {
+      $this->assertEqual($entity->entity_data->load_count, 3, "The retrieved remote entity load count has not been incremented.");
+    }
+  }
+
+  /**
+   * Test remote entity bulk save.
+   */
+  function testRemoteEntitySaveMultiple() {
+    // Create some entities to save remotely.
+    // TODO: is there a helper for this?
+    $entity = entity_create('test_remote_entity', array(
+      'entity_data' => (object) array(
+        'remote_name' => $this->randomName(),
+      ),
+      // Not needed, but allows us to check this gets removed.
+      'needs_remote_save' => TRUE,
+    ));
+    entity_save('test_remote_entity', $entity);
+    $entities[$entity->eid] = $entity;
+    $entities_insert[$entity->eid] = $entity;
+
+    $entity = entity_create('test_remote_entity', array(
+      'entity_data' => (object) array(
+        'remote_name' => $this->randomName(),
+      ),
+      'needs_remote_save' => TRUE,
+    ));
+    entity_save('test_remote_entity', $entity);
+    $entities[$entity->eid] = $entity;
+    $entities_insert[$entity->eid] = $entity;
+
+    // We fake this one to look like it's already been saved remotely.
+    $entity = entity_create('test_remote_entity', array(
+      'entity_data' => (object) array(
+        'remote_name' => $this->randomName(),
+        // This needs to be a different pattern from what the dummy connection
+        // will set, so we know it's not been changed.
+        'remote_id' => 'DummyRemoteUpdateID',
+      ),
+      'needs_remote_save' => TRUE,
+      'remote_id' => 'DummyRemoteUpdateID',
+    ));
+    entity_save('test_remote_entity', $entity);
+    $entities[$entity->eid] = $entity;
+    $entities_update[$entity->eid] = $entity;
+
+    // Execute the remote save.
+    remote_entity_save_multiple('test_remote_entity', $entities);
+
+    // Clear the cache and reload the entities, to check that the data resulting
+    // from the remote save gets saved locally.
+    entity_get_controller('test_remote_entity')->resetCache();
+
+    // Check the inserted entities.
+    foreach ($entities_insert as $eid => $entity) {
+      $entity = entity_load_single('test_remote_entity', $eid);
+
+      $this->assertEqual($entity->remote_id, "DummyRemoteID-$eid", "The entity was saved remotely and received a remote ID.");
+      $this->assertFalse($entity->needs_remote_save, "The entity was marked as no longer needing a remote save.");
+    }
+
+    // Check the updated entities.
+    foreach ($entities_update as $eid => $entity) {
+      $entity = entity_load_single('test_remote_entity', $eid);
+
+      $this->assertEqual($entity->remote_id, "DummyRemoteUpdateID", "The entity was saved remotely and retained its remote ID.");
+      $this->assertFalse($entity->needs_remote_save, "The entity was marked as no longer needing a remote save.");
+    }
+
+    // Save the entities remotely, with a simulated failure by the connection.
+    variable_set('remote_entity_test_throw_exception', TRUE);
+
+    try {
+      remote_entity_save_multiple('test_remote_entity', $entities);
+      $this->fail(t('Expected exception has not been thrown when remote saving the entity.'));
+    }
+    catch (Exception $e) {
+      $this->pass(t('Expected exception has been thrown when remote saving the entity.'));
+    }
+
+    foreach ($entities as $entity) {
+      $this->assertEqual($entity->needs_remote_save, REMOTE_ENTITY_REMOTE_SAVE_FAILED, "The entity was flagged as having failed remote save.");
+    }
+  }
+
+  /**
+   * Helper to create dummy remote data.
+   *
+   * @param $remote_entity_type
+   *  The entity type.
+   * @param $remote_entity_id
+   *  The remote entity ID.
+   * @param $entity_data
+   *  An array for the remote entity data.
+   */
+  function createRemoteEntity($remote_entity_type, $remote_entity_id, $entity_data) {
+    // Add the remote ID into the entity data, so that it is an exact record
+    // of what we simulate as having stored remotely.
+    $entity_data['remote_id'] = $remote_entity_id;
+    $entity_data['load_count'] = 0;
+
+    $record = array(
+      'remote_id' => $remote_entity_id,
+      'remote_entity_type' => $remote_entity_type,
+      'entity_data' => (object) $entity_data,
+    );
+    drupal_write_record('test_remote_entity_remote_data', $record);
+  }
+
+}

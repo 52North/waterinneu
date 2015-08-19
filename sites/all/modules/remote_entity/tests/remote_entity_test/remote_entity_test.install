@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file remote_entity_test.install
+ * Contains install hooks.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function remote_entity_test_schema() {
+  // Load the install file so we can use the schema helper.
+  module_load_install('remote_entity');
+
+  // Table for local entities.
+  $schema['test_remote_entity'] = remote_entity_schema_table('test_remote_entity');
+
+  // Table for remote entity data. This simulates being on a remote server for
+  // the connection class clients_connection_test_remote_entity.
+  $schema['test_remote_entity_remote_data'] = array(
+    'description' => 'Simulated remote entity data.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Incremental primary key. Not used by tests.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'remote_id' => array(
+        'description' => 'The remote ID used by requests.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+      ),
+      'remote_entity_type' => array(
+        'description' => 'The remote entity type.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'entity_data' => array(
+        'description' => 'Serialized remote entity data.',
+        'type' => 'text',
+        'serialize' => TRUE,
+        'size' => 'big',
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+}

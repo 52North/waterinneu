@@ -1,0 +1,151 @@
+<?php
+
+/**
+ * @file
+ * Installation tasks for wsconfig
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function wsconfig_schema() {
+  $schema = array();
+
+  $schema['wsconfig'] = array(
+    'description' => 'The base table for wsconfig entities.',
+    'fields' => array(
+      'wsconfig_id' => array(
+        'description' => 'Primary Key: Identifier for a wsconfig.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => 'The {wsconfig_type}.type of this wsconfig.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'language' => array(
+        'description' => 'The language of the wsconfig.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'name' => array(
+        'description' => 'The machine name of a wsconfig.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'title' => array(
+        'description' => 'Human-readable name of the web service config.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the wsconfig was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'changed' => array(
+        'description' => 'The Unix timestamp when the wsconfig was most recently saved.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'data' => array(
+        'type' => 'blob',
+        'not null' => FALSE,
+        'size' => 'big',
+        'serialize' => TRUE,
+        'description' => 'A serialized array of additional data.',
+      ),
+    ) + entity_exportable_schema_fields(),
+    'primary key' => array('wsconfig_id'),
+    'unique keys' => array(
+      'name' => array('name'),
+    ),
+    'indexes' => array(
+      'type' => array('type'),
+    ),
+  );
+
+  $schema['wsconfig_type'] = array(
+    'description' => 'Stores information about defined wsconfig types.',
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique wsconfig type identifier.',
+      ),
+      'type' => array(
+        'description' => 'The machine-readable name of this wsconfig type.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'label' => array(
+        'description' => 'The human-readable name of this wsconfig type.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'The weight of this wsconfig type in relation to others.',
+      ),
+      'data' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'size' => 'big',
+        'serialize' => TRUE,
+        'description' => 'A serialized array of additional data related to this wsconfig type.',
+      ),
+    ) + entity_exportable_schema_fields(),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'type' => array('type'),
+    ),
+  );
+  return $schema;
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Add a machine name to each wsconfig
+ */
+function wsconfig_update_7001(&$sandbox) {
+  $field = array(
+    'description' => 'Human-readable name of the web service config.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  );
+  $keys = array(
+    'unique keys' => array(
+      'name' => array('name'),
+    ),
+  );
+
+  // Rename existing "name" column to "title"
+  db_change_field('wsconfig', 'name', 'title', $field);
+  
+  // Adjust the column definition for the new 'name' column
+  $field['description'] = 'The machine name of a wsconfig.';
+  
+  // Add new "name" column to store machine name
+  db_add_field('wsconfig', 'name', $field, $keys);
+}

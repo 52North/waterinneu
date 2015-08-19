@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file wsfields_views.module
+ */
+
+/**
+ * Implements hook_views_api().
+ */
+function wsfields_views_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'wsfields_views'),
+  );
+}

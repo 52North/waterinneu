@@ -1,0 +1,15 @@
+name = Web Service Data Search API intergration
+description = Integrates wsdata with Search API
+core = 7.x
+package = Web Service Data
+
+dependencies[] = search_api
+dependencies[] = wsconfig
+dependencies[] = wsfields_storage
+
+; Information added by Drupal.org packaging script on 2015-07-23
+version = "7.x-1.0"
+core = "7.x"
+project = "wsdata"
+datestamp = "1437675851"
+

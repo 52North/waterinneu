@@ -1,0 +1,205 @@
+<?php
+
+/**
+ * @file
+ * Describe the file
+ *
+ * @author Mathew Winstone <mwinstone@coldfrontlabs.ca>
+ */
+
+
+class WsfieldsStorageTestCase extends DrupalWebTestCase {
+  protected $admin;
+  protected $user;
+
+  public static function getInfo() {
+    return array(
+      'name' => t('Web Service Fields Storage'),
+      'description' => t('Test storing data using wsfield_storage'),
+      'group' => t('Web Service Data'),
+    );
+  }
+
+  function setUp() {
+    parent::setUp('wsfields_storage', 'ws_services', 'rest_server', 'restclient', 'devel_generate'); // Note the restclient module is not the one found on Drupal.org. It is the restclient mentioned in the wsdata README file
+    
+    $this->admin = $this->drupalCreateUser(array('administer wsconfig types', 'administer wsconfig', 'administer site configuration', 'administer services', 'administer nodes', 'administer users', 'access devel information'));
+    $this->drupalLogin($this->admin); 
+    
+    // Enable test server configuration
+    services_endpoint_save(_wsfields_storage_test_endpoint_config());
+    
+    // Create and save a wsconfig_type
+    wsconfig_type_save(wsconfig_type_create(_wsfields_storage_test_wsconfig_types($this->getAbsoluteUrl('/'))));
+    
+    // Create and save a wsconfig instance
+    wsconfig_save(wsconfig_create(_wsfields_storage_test_wsconfig()));
+    
+    // Create node content using devel_generate
+    $settings = array(
+      'node_types[article]' => 'article',
+      'node_types[page]' => FALSE,
+      'time_range' => 1,
+      'title_length' => 4,
+    );
+    
+    $this->drupalPost('admin/config/development/generate/content', $settings, t('Generate'));
+    
+    // Create field using wsfields_storage
+    foreach (_wsfields_storage_test_field_definitions() as $field) {
+      field_create_field($field);
+    }
+    
+    // Create field instances
+    foreach (_wsfields_storage_test_field_instances() as $field_instance) {
+      field_create_instance($field_instance);
+    }
+    
+    // Create users with instances of wsfields using devel_generate
+    $settings = array();
+    
+    // Generate users
+    $this->drupalPost('admin/config/development/generate/user', $settings, t('Generate'));
+  }
+  
+  // Test the 'Read' operations
+  function testReadData() {
+    // Login as admin
+    $this->drupalLogin($this->admin);
+        
+    // Get the list of users
+    $query = new EntityFieldQuery();
+    $users = $query->entityCondition('entity_type', 'user')
+      ->entityCondition('bundle', 'user')
+      ->execute();
+    
+    $this->drupalGet('admin/structure/wsconfig_types/manage/test_wsconfig_type');
+    $this->drupalGet('admin/content/wsconfig/wsconfig/1/edit');
+    
+    // Loop through all users and check that their title appears in
+    // each corresponding user properly
+    foreach ($users['user'] as $uid => $account) {
+      if ($uid > 1) {
+        $node = node_load($uid);
+        $user = user_load($uid);
+        $this->drupalGet('/user/' . $user->uid . '/edit');
+        $this->drupalGet('/user/' . $user->uid );
+        if (empty($user->field_nodetitle)) {
+          $this->verbose('User object contains empty "Node Title" field');
+        }
+        if ($node) {
+          // This loads nodes from the parent site, not the simpletest instance. Need to rethink how to do this
+          //$this->assertTrue($node->title == $user->field_nodetitle[LANGUAGE_NONE][0]['value'], t('Node title found in user account: @title', array('@title' => $node->title)));
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Defines a test server to work with
+ */
+function _wsfields_storage_test_endpoint_config() {
+  $endpoint = new stdClass();
+  $endpoint->disabled = FALSE; /* Edit this to true to make a default endpoint disabled initially */
+  $endpoint->api_version = 3;
+  $endpoint->name = 'testservice';
+  $endpoint->server = 'rest_server';
+  $endpoint->path = 'testservice';
+  $endpoint->authentication = array();
+  $endpoint->server_settings = array();
+  $endpoint->resources = array(
+    'node' => array(
+      'operations' => array(
+        'retrieve' => array(
+          'enabled' => 1,
+        ),
+        'create' => array(
+          'enabled' => 1,
+        ),
+        'update' => array(
+          'enabled' => 1,
+        ),
+        'delete' => array(
+          'enabled' => 1,
+        ),
+      ),
+    ),
+  );
+  $endpoint->debug = 0;
+  
+  return $endpoint;
+}
+
+/**
+ * Test wsconfig type definition
+ *
+ * @param string $url
+ *  Base url to this test
+ */
+function _wsfields_storage_test_wsconfig_types($url) {
+  return array(
+    'type' => 'test_wsconfig_type',
+    'label' => 'Test WSConfig Type',
+    'data' => array(
+      'endpoint' => $url . '/testservice',
+      'connector' => 'restclient_wsconnector',
+    ),
+  );
+}
+/**
+ * Test wsconfig definition
+ */
+function _wsfields_storage_test_wsconfig() {
+  return array(
+    'name' => 'testconfig',
+    'title' => 'Test WSConfig',
+    'type' => 'test_wsconfig_type',
+    'data' => array(
+      'read_data_method' => 'node/%nid',
+    ),
+  );
+}
+
+/**
+ * Test field definitions
+ */
+function _wsfields_storage_test_field_definitions() {
+  return array(
+    'field_nodetitle' => array(
+      'field_name' => 'field_nodetitle',
+      'label' => t('Node Title'),
+      'type' => 'text',
+      'locked' => FALSE,
+      'translatable' => FALSE,
+      'entity_types' => array(
+        'user',
+      ),
+      'storage' => array(
+        'type' => 'wsfields_storage',
+        'settings' => array(
+          'wsconfig_name' => 'testconfig',
+          'propertymap' => array(
+            'read' => array(
+              '%nid' => 'uid', // The nid in the URL is replaced by the 'uid' entity property
+            ),
+          ),
+          'processor' => 'WsDataNode',
+          'remotekey' => 'title',
+        ),
+      ),
+    ),
+  );
+}
+
+function _wsfields_storage_test_field_instances() {
+  return array(
+    'field_nodetitle' => array(
+      'field_name' => 'field_nodetitle',
+      'label' => t('Node Title'),
+      'entity_type' => 'user',
+      'bundle' => 'user',
+      'settings' => array(),
+    ),
+  );
+}

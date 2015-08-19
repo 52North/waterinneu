@@ -1,0 +1,32 @@
+<?php
+/**
+ * @file
+ * Storage controller definitions
+ *
+ * @author Mathew Winstone <mwinstone@coldfrontlabs.ca>
+ * @author David Pascoe-Deslauriers <dpascoed@coldfrontlabs.ca>
+ */
+
+
+function wsfield_storage_enable() {
+  // If configure correctly, replace the default cache class for
+  // fields with the wsfield storage versions
+  if (class_exists('WsfieldStorageDrupalDatabaseCache')) {
+    $class = variable_get('cache_class_cache_field');
+    if (!isset($class)) {
+      $class = variable_get('cache_default_class', 'DrupalDatabaseCache');
+    }
+
+    if ($class != 'WsfieldStorageDrupalDatabaseCache' and $class != 'WsfieldStorageMemCacheDrupal') {
+      if ($class == 'MemCacheDrupal') {
+        variable_set('cache_class_cache_field', 'WsfieldStorageMemCacheDrupal');
+      } else {
+        variable_set('cache_class_cache_field', 'WsfieldStorageDrupalDatabaseCache');
+      }
+    }
+  }
+}
+
+function wsfield_storage_disable() {
+  variable_del('cache_class_cache_field');
+}

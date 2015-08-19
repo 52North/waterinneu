@@ -1,0 +1,14 @@
+name = Web Service Fields - Date Field
+description = Support the 'date' suite of data formats with web service fields
+core = 7.x
+package = Web Service Data
+
+dependencies[] = date
+dependencies[] = wsfields
+
+; Information added by Drupal.org packaging script on 2015-07-23
+version = "7.x-1.0"
+core = "7.x"
+project = "wsdata"
+datestamp = "1437675851"
+

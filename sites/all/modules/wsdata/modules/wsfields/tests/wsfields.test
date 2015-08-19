@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Describe the file
+ */
+
+class WsfieldsTestCase extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => t('Wsfields tests'),
+      'description' => t('One or more complete sentences explaining the test.'),
+      'group' => t('Web Service Data'),
+    );
+  }
+
+  function setUp() {
+    parent::setUp('wsfields');
+  }
+
+  
+}
+

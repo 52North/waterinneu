@@ -1,0 +1,19 @@
+name = Web Service Beans
+description = Displays data from a webservice into a bean
+core = 7.x
+package = Web Service Data
+
+dependencies[] = bean
+dependencies[] = wsconfig
+
+files[] = plugins/beans/wsbeans_wsbean.inc
+
+files[] = wsbeans_default_json_form.processor.inc
+files[] = wsbeans_default_html_form.processor.inc
+
+; Information added by Drupal.org packaging script on 2015-07-23
+version = "7.x-1.0"
+core = "7.x"
+project = "wsdata"
+datestamp = "1437675851"
+

@@ -1,0 +1,100 @@
+<?php
+/**
+ * @file remote_entity.install
+ * Contains install hooks.
+ */
+
+/**
+ * Provides a standard table schema for remote entities.
+ *
+ * Remote entity modules may use this in their hook_schema().
+ */
+function remote_entity_schema_table($entity_type) {
+  $remote_entity_table_schema = array(
+    'description' => "The base table for $entity_type.",
+    'fields' => array(
+      'eid' => array(
+        // We give entities a local entity ID in case the remote ID is
+        // non-numeric, which would make it incompatible with FieldAPI.
+        'description' => 'The local entity id.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'remote_id' => array(
+        'description' => 'The remote entity ID. Not necessarily numeric',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'type' => array(
+        'description' => 'The type of this entity.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'entity_data' => array(
+        'description' => 'Serialized remote object data.',
+        'type' => 'text',
+        'serialize' => TRUE,
+        'size' => 'big',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the entity was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'changed' => array(
+        'description' => 'The Unix timestamp when the entity was last updated.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      // @see RemoteEntityAPIDefaultController::remote_save()
+      'remote_saved' => array(
+        'description' => 'The Unix timestamp when the entity was last saved remotely.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      // @todo: for 2.x, rename this to 'remote_save_status'.
+      'needs_remote_save' => array(
+        'description' => "Indicates this entity's status for remote saving. "
+          . "0: no save needed, 1: needs remote save, REMOTE_ENTITY_REMOTE_SAVE_FAILED: last remote save attempt failed.",
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      // @see RemoteEntityAPIDefaultController::load()
+      'expires' => array(
+        'description' => 'The Unix timestamp when the entity expires. A value of 0 means this does not expire.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'deleted' => array(
+        'description' => 'Boolean indicating that this remote entity is marked for deletion.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'entity_changed'  => array('changed'),
+      'entity_created'  => array('created'),
+      'entity_expires'  => array('expires'),
+      'entity_deleted' => array('deleted'),
+      'entity_needs_remote_save' => array('needs_remote_save'),
+    ),
+    'unique keys' => array(
+      'remote_id' => array('remote_id'),
+    ),
+    'foreign keys' => array(
+    ),
+    'primary key' => array('eid'),
+  );
+  return $remote_entity_table_schema;
+}

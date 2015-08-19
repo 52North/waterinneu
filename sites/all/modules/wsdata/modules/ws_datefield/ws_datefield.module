@@ -1,0 +1,149 @@
+<?php
+
+/**
+ * @file
+ * Main module for ws_datefields
+ */
+
+define('WS_DATEFIELD_DATE_VALUE_FORMAT', 'Y-m-d H:i:s');
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ *
+ * @param array $data
+ *  An array of date information
+ *  Ex: array(
+ *        LANGUAGE_NONE => array(
+ *          0 => array(  value => DateTime/DateObject instance, value2 => DateTime/DateObject instance, rrule => iCal Repeat Rule),
+ *          1 => array(  value => DateTime/DateObject instance, value2 => DateTime/DateObject instance, rrule => iCal Repeat Rule),
+ *        )
+ *      );
+ *
+ * Prepares data for the 'datetime' field type
+ */
+function ws_datefield_wsfields_datetime2_data_alter($data, $field) {
+  // @todo check the field settings to know if the repeat rules or end dates are enabled on this field
+  // @todo determine if the offset needs to be in the field value or not
+  $repeat = TRUE;
+  $end_date = TRUE;
+  $field_data = array();
+
+  if (!empty($field['translatable'])) {
+    $languages = language_list();
+  }
+  else {
+    $languages = array(LANGUAGE_NONE => LANGUAGE_NONE);
+  }
+
+  foreach($languages as $lang => $language) {
+    foreach ($data[$lang] as $key => $lang_data) {
+      // Populate the field data
+      _ws_datefield_populate_datetime_field_data($field_data, $value, $repeat, $end_date, $language);
+    }
+  }
+
+  $data = $field_data;
+  return $data;
+}
+
+/**
+ * Build the field array
+ */
+function _ws_datefield_populate_datetime_field_data(&$field_data, &$value, $repeat = FALSE, $end_date = FALSE, $language = LANGUAGE_NONE) {
+  $value['value']->setTimezone(new DateTimeZone('UTC'));
+  if (isset($value['value2'])) {
+    $value['value2']->setTimezone(new DateTimeZone('UTC'));
+  }
+
+  $field_data[$language][] = array(
+    'value' => $value['value']->format(WS_DATEFIELD_DATE_VALUE_FORMAT),
+    'timezone' => $value['value']->getTimezone()->getName(),
+    'offset' => $value['value']->getOffset(),
+  );
+
+  // Check for the repeat rule
+  if ($repeat and isset($value['rrule'])) {
+    // Since we're always adding to the end of the array, we can just use count -1
+    $field_data[$language][count($field_data[$language]) -1]['rrule'] = $value['rrule'];
+  }
+
+  // Check for an end date
+  if ($end_date and isset($value['value2'])) {
+    // Since we're always adding to the end of the array, we can just use count -1
+    $field_data[$language][count($field_data[$language]) -1]['value2'] = $value['value2']->format(WS_DATEFIELD_DATE_VALUE_FORMAT);
+  }
+}
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ *
+ * Prepares data for the 'date' field type
+ */
+function ws_datefield_wsfields_datetime_data_alter( $data, $field) {
+// Build the field array as required
+  if (!is_array($data)) {
+    $field_data = _ws_datefield_map_datetime($data,$field);
+
+  }
+  else {
+    if (isset($field['storage']['settings']['translation']) and $field['storage']['settings']['translation']) {
+      foreach($data as $language => $values) {
+        foreach($values as $value) {
+          $field_data = _ws_datefield_map_datetime($value,$field);
+        }
+      }
+    }
+    else {
+      foreach($data as $value) {
+        $field_data = _ws_datefield_map_datetime($value,$field);
+      }
+    }
+  }
+
+  // Save the new field data
+  return $field_data;
+}
+
+/**
+ * Map the data values to their address field containers
+ *
+ * Maps values to the following array keys:
+ * schedule
+ *
+ * @params array $data
+ * @params array $field
+ */
+function _ws_datefield_map_datetime(&$data, $field) {
+
+  $field_data = array();
+
+  if ( isset ( $data['schedule']['vevents'] ) ) {
+
+    $dates = $data['schedule']['vevents'];
+
+    foreach ($dates as $k => $v) {
+      $value = array( 'value' => new DateTime( $v['start_datetime'] ),
+                      'value2' => new DateTime( $v['end_datetime'] ) );
+      if (isset($v['repeat']) && isset($v['exceptions'])) {
+        $value['rrule'] = $v['repeat'] . sizeof($v['exceptions']) > 0 ? 'exceptions=' . implode( ',' , $v['exceptions'] ) : '';
+      }
+
+      _ws_datefield_populate_datetime_field_data($field_data,$value,true,true);
+    }
+  }
+  return $field_data;
+}
+
+
+/**
+ * Implements hook_wsconfig_processor_info().
+ */
+function ws_datefield_wsconfig_processor_info() {
+  return array(
+    'ws_datefield_processor' => array(
+      'fields' => array(
+        'datetime' => 'Date',
+      ),
+    ),
+  );
+}

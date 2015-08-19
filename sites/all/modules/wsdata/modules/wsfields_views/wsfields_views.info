@@ -1,0 +1,19 @@
+name = Web Service Data Fields Views Handlers
+description = Views Handles for fields powered by Web Service Data
+core = 7.x
+package = Web Service Data
+
+dependencies[] = field
+dependencies[] = wsfields
+dependencies[] = wsfields_storage
+dependencies[] = views
+
+files[] = handlers/wsfields_views_handler_field.inc
+files[] = handlers/wsfields_views_handler_sort.inc
+
+; Information added by Drupal.org packaging script on 2015-07-23
+version = "7.x-1.0"
+core = "7.x"
+project = "wsdata"
+datestamp = "1437675851"
+

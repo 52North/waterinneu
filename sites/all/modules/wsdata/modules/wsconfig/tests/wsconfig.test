@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Tests for Web Service Configuration
+ */
+
+class WsconfigTestCase extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => t('Web Service Configuration tests'),
+      'description' => t('Test the web service configuration storage.'),
+      'group' => t('Web Service Data'),
+    );
+  }
+
+  function setUp() {
+    parent::setUp('wsconfig');
+  }
+}

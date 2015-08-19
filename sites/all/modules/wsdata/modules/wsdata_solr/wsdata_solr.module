@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Modules file for the WsData Processors for communicating with Apache Solr
+ */
+
+
+/**
+ * Implememnts hook_wsconfig_processor_info().
+ */
+function wsdata_solr_wsconfig_processor_info() {
+  return array(
+    'wsdata_solr_facet_processor' => array(
+      'data' => t('Extract Facets for a JSON Solr Query'),
+    ),
+    'wsdata_solr_result_processor' => array(
+      'data' => t('Extract Results for a JSON Solr Query'),
+    ),
+  );
+}

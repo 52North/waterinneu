@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * Implements hook_wsconfig_processor_info().
+ */
+function ws_services_wsconfig_processor_info() {
+  return array(
+    'WsDataFile' => array(
+      'fields' => array(
+        'list_boolean' => 'WS Services File Processor',
+        'number_decimal' => 'WS Services File Processor',
+        'number_float' => 'WS Services File Processor',
+        'number_integer' => 'WS Services File Processor',
+        'list_float' => 'WS Services File Processor',
+        'list_integer' => 'WS Services File Processor',
+        'list_text' => 'WS Services File Processor',
+        'text_long' => 'WS Services File Processor',
+        'text_with_summary' => 'WS Services File Processor',
+        'text' => 'WS Services File Processor',
+      ),
+    ),
+    'WsDataNode' => array(
+      'fields' => array(
+        'list_boolean' => 'WS Services Node Processor',
+        'number_decimal' => 'WS Services Node Processor',
+        'number_float' => 'WS Services Node Processor',
+        'number_integer' => 'WS Services Node Processor',
+        'list_float' => 'WS Services Node Processor',
+        'list_integer' => 'WS Services Node Processor',
+        'list_text' => 'WS Services Node Processor',
+        'text_long' => 'WS Services Node Processor',
+        'text_with_summary' => 'WS Services Node Processor',
+        'text' => 'WS Services Node Processor',
+      ),
+    ),
+    'WsDataUser' => array(
+      'fields' => array(
+        'list_boolean' => 'WS Services User Processor',
+        'number_decimal' => 'WS Services User Processor',
+        'number_float' => 'WS Services User Processor',
+        'number_integer' => 'WS Services User Processor',
+        'list_float' => 'WS Services User Processor',
+        'list_integer' => 'WS Services User Processor',
+        'list_text' => 'WS Services User Processor',
+        'text_long' => 'WS Services User Processor',
+        'text_with_summary' => 'WS Services User Processor',
+        'text' => 'WS Services User Processor',
+      ),
+    ),
+
+  );
+}

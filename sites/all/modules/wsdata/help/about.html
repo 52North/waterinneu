@@ -1,0 +1,20 @@
+<p>Web Service Data is a collection of modules allowing you to interact with web services using entities and fields in Drupal.</p>
+
+<p>Web services are defined as Drupal entities and can be created and managed in the UI, can be loaded as entites, and can make the web service call without an external function.</p>
+
+<p>The architecture is setup as follows:
+
+<ul>
+  <li>Web Service Configuration Type</li>
+  <ul>
+    <li>Uses a Web Service Connector</li>
+    <li>Stores an endpoint</li>
+  </ul>
+
+  <li>Web Service Configuration</li>
+  <ul>
+    <li>Is one of the web service configuration types (and inherits the Connector and Endpoint)</li>
+    <li>Stores the web service methods calls for a particular service</li>
+  </ul>
+</ul>
+</p>

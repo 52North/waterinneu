@@ -1,0 +1,10 @@
+; Example make file to download the default web service connector RESTClient from Github
+
+core = 7.x
+api = 2
+
+projects[restclient][type] = module
+projects[restclient][subdir] = "custom"
+projects[restclient][download][type] = git
+projects[restclient][download][url] = https://github.com/coldfrontlabs/restclient.git
+projects[restclient][download][branch] = "7.x-1.x"

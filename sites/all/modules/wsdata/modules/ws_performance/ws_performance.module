@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * Implements hook_permission().
+ */
+function ws_performance_permission() {
+  return array(
+    'administer ws performance' => array(
+      'title' => t('Administer WS Performance settings'),
+      'description' => t('Allow users to access and change settings on the WS Performance configuration page'),
+    ),
+    'view anonymized ws performance reports' => array(
+      'title' => t('View Anonymized WS Performance Reports'),
+      'description' => t('View generic performance informance about wsconfig calls.'),
+    ),
+    'view specific ws performance reports' => array(
+      'title' => t('View Specific WS Performance Reports'),
+      'description' => t('Warning: This permission allow a user to see the specific data sent by WS calls and may reveal personal information, give this to trusted roles only.'),
+    )
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function ws_performance_menu() {
+  $items = array();
+
+  // WS Performance config page.
+  $items['admin/config/services/ws_performance'] = array(
+    'description' => 'Configure WS Performance',
+    'title' => 'WS Performance Configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ws_performance_config_form'),
+    'access arguments' => array('administer ws performance'),
+    'file' => 'ws_performance.admin.inc',
+  );
+
+  // WS Performance Reports page.
+  $items['admin/reports/ws_performance'] = array(
+    'description' => 'WS Performance',
+    'title' => 'WS Performance',
+    'page callback' => 'ws_performance_overview',
+    'access arguments' => array('view anonymized ws performance reports'),
+    'file' => 'ws_performance.admin.inc',
+  );
+
+  // Performance page for a wsconfig.
+  $items['admin/reports/ws_performance/%wsconfig'] = array(
+    'title' => 'WSConfig Performance Report',
+    'page callback' => 'ws_performance_report',
+    'page arguments' => array(3),
+    'access arguments' => array('view anonymized ws performance reports'),
+    'file' => 'ws_performance.admin.inc',
+  );
+
+  // Performance page for particular wsconfig call.
+  $items['admin/reports/ws_performance/%wsconfig/%'] = array(
+    'title' => 'WS Call Performance',
+    'page callback' => 'ws_performance_specific_report',
+    'page arguments' => array(3, 4),
+    'access arguments' => array('view specific ws performance reports'),
+    'file' => 'ws_performance.admin.inc',
+  );
+
+  return $items;
+}
+
+function ws_performance_record_performance($wsconfig, $type, $method, $wait, $data, &$result) {
+  $record = array(
+    'wsconfig_name' => $wsconfig->name,
+    'wsconfig_type' => $type,
+    'wsconfig_method' => NULL,
+    'run' => time(),
+    'wait' => $wait,
+    'size' => strlen($result),
+    'data' => NULL,
+    'result' => NULL,
+  );
+
+  if (variable_get('ws_performance_store_method', FALSE)) {
+    $record['wsconfig_method'] = $method;
+  }
+
+  if (variable_get('ws_performance_store_data', FALSE)) {
+    $record['data'] = serialize($data);
+  }
+
+  if (variable_get('ws_performance_store_result', FALSE)) {
+    $record['result'] = $result;
+  }
+
+  drupal_write_record('ws_performance', $record);
+}

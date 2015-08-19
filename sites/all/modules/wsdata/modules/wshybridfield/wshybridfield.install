@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * Implements hook_field_schema()
+ */
+function wshybridfield_field_schema($field) {
+  return array(
+    'columns' => array(
+      'name' => array(
+        'description' => t('Title'),
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'wsconfig_method' => array(
+        'description' => t('The method of the wsconfig to call.'),
+        'type' => 'varchar',
+        'length' => 512,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'replacements' => array(
+        'description' => t('JSON encode replacements'),
+        'type' => 'text',
+        'size' => 'big',
+      ),
+      'arguments' => array(
+        'description' => t('JSON encode arguments'),
+        'type' => 'text',
+        'size' => 'big',
+      ),
+      'options' => array(
+        'description' => t('JSON encode options'),
+        'type' => 'text',
+        'size' => 'big',
+      ),
+    ),
+  );
+}

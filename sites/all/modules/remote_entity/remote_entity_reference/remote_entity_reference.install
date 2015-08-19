@@ -1,0 +1,20 @@
+<?php
+/**
+ * @file remote_entity_reference.install
+ * Contains schema and install hooks.
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function remote_entity_reference_field_schema($field) {
+  return array(
+    'columns' => array(
+      'value' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+    ),
+  );
+}

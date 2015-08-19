@@ -1,0 +1,517 @@
+<?php
+
+/**
+ * @file
+ * Defines core functionality for web service powered fields
+ */
+
+define('WSFIELDS_DEBUG', variable_get('wsfields_debug', FALSE));
+
+/**
+ * Implements hook_permission().
+ */
+function wsfields_permission() {
+  return array(
+    'administer wsfields' =>  array(
+      'title' => t('Administer Web Service Fields'),
+      'description' => t('Perform administration tasks for Web Service Fields.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_wsfields_data_alter().
+ */
+function wsfields_wsfields_data_alter($data, $field) {
+  // Ensure the data is keyed by language if translatable
+  if (!empty($field['translatable'])) {
+    $languages = language_list();
+  }
+  else {
+    $languages = array(LANGUAGE_NONE => LANGUAGE_NONE);
+
+    $data = array(
+      LANGUAGE_NONE => $data,
+    );
+  }
+
+  foreach($languages as $lang => $language) {
+    if (!is_array($data[$lang])) {
+      $data[$lang] = array($data[$lang]);
+    }
+  }
+
+  return $data;
+}
+
+/**
+ * Implements hook_field_access().
+ */
+function wsfields_field_access($op, $field, $entity_type, $entity, $account) {
+  if ($field['storage']['module'] == 'wsfields_storage') {
+    $wsconfig = wsconfig_load_by_name($field['storage']['settings']['wsconfig_name']);
+    if (!$wsconfig) {
+      return FALSE;
+    }
+    $supported_ops = $wsconfig->getOperations();
+    switch ($op) {
+      case 'view':
+        if (!in_array('read', $supported_ops)) {
+          return FALSE;
+        }
+      break;
+      case 'edit':
+        if (!in_array('update', $supported_ops) or !in_array('create', $supported_ops)) {
+          return FALSE;
+        }
+      break;
+      default:
+        // Do nothing for now.
+    }
+  }
+
+  return TRUE;
+}
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ */
+function wsfields_wsfields_text_data_alter($data, $field) {
+
+  // Use the generalized data formater
+  _wsfields_general_data_alter($data, $field);
+  _wsfields_set_text_format($data, $field);
+  return $data;
+}
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ */
+function wsfields_wsfields_text_with_summary_data_alter($data, $field) {
+
+  // Use the generalized data formater
+  _wsfields_general_data_alter($data, $field);
+  _wsfields_set_text_format($data, $field);
+  return $data;
+}
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ */
+function wsfields_wsfields_text_long_data_alter($data, $field) {
+
+  // Use the generalized data formater
+  _wsfields_general_data_alter($data, $field);
+  _wsfields_set_text_format($data, $field);
+  return $data;
+}
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ */
+function wsfields_wsfields_number_decimal_data_alter($data, $field) {
+
+  // Use the generalized data formater
+  _wsfields_general_data_alter($data, $field);
+
+  return $data;
+}
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ */
+function wsfields_wsfields_number_float_data_alter($data, $field) {
+
+  // Use the generalized data formater
+  _wsfields_general_data_alter($data, $field);
+
+  return $data;
+}
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ */
+function wsfields_wsfields_number_integer_data_alter($data, $field) {
+
+  // Use the generalized data formater
+  _wsfields_general_data_alter($data, $field);
+
+  return $data;
+}
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ */
+function wsfields_wsfields_list_boolean_data_alter($data, $field) {
+
+  // Use the generalized data formater
+  _wsfields_general_data_alter($data, $field);
+
+  return $data;
+}
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ */
+function wsfields_wsfields_list_float_data_alter($data, $field) {
+
+  // Use the generalized data formater
+  _wsfields_general_data_alter($data, $field);
+
+  return $data;
+}
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ */
+function wsfields_wsfields_list_integer_data_alter($data, $field) {
+
+  // Use the generalized data formater
+  _wsfields_general_data_alter($data, $field);
+
+  return $data;
+}
+
+/**
+ * Implements hook_wsfields_FIELD_TYPE_data_alter().
+ */
+function wsfields_wsfields_list_text_data_alter($data, $field) {
+
+  // Use the generalized data formater
+  _wsfields_general_data_alter($data, $field);
+
+  return $data;
+}
+
+/**
+ * General data alter function for fields
+ *
+ * Fields which have a basic field format can use this to properly
+ * build out their field instance arrays
+ *
+ * @param array $data [reference]
+ *  Data array
+ * @param array $field [reference]
+ *  Field instance
+ * @param array $field [optionstal]
+ *  Field settings
+ */
+function _wsfields_general_data_alter(&$data, &$field) {
+  $field_data = array();
+
+  if (!empty($field['translatable'])) {
+    $languages = language_list();
+  }
+  else {
+    $languages = array(LANGUAGE_NONE => LANGUAGE_NONE);
+  }
+
+  foreach($languages as $lang => $language) {
+    foreach ($data[$lang] as $key => $lang_data) {
+      $field_data[$lang][$key] = array('value' => $lang_data);
+    }
+
+  }
+
+  $data = $field_data;
+}
+
+/**
+ * Perform read service call
+ *
+ * @param string $entity_type
+ *  Machine name of a given entity type
+ * @param array $field
+ *  Field definition to load data into
+ * @param object $entity
+ *  Entity object
+ * @return array|boolean
+ *  Returns the formatted field data, FALSE otherwise.
+ */
+function wsfields_data_load($entity_type, $field, $entity) {
+  if (WSFIELDS_DEBUG) debug("WSFields loading " . $entity->type . "->" . $field['field_name'] . " of type " . $field['type']);
+
+  if (!isset($field['storage']['settings']['wsconfig_name'])) {
+    if (WSFIELDS_DEBUG) debug("wsconfig_name not set, wsfield cannot continue.");
+    return FALSE;
+  }
+
+  // Load required settings from the field instance
+  $wsconfig_name = $field['storage']['settings']['wsconfig_name'];
+  $remotename = $field['storage']['settings']['remotekey'];
+  $passaccepts = isset($field['storage']['settings']['passaccepts']) ? $field['storage']['settings']['passaccepts'] : TRUE;
+  $processor = $field['storage']['settings']['processor'];
+  if (!empty($field['storage']['settings']['propertymap']['read'])) {
+    $propertymap = $field['storage']['settings']['propertymap']['read'];
+  }
+
+  list($id, $vid, $bundle) = entity_extract_ids($entity_type, $entity);
+  $cid = 'wsfield:' . $entity_type . ':' . $id . ':' . $field['field_name'];
+  $expirecid = 'wsfield_expire:' . $entity_type . ':' . $id;
+
+  $cachefield = cache_get($cid, 'cache_field');
+  if ($cachefield) {
+    return $cachefield->data;
+  }
+
+  // Load the web service configuration
+  $wsconfig = wsconfig_load_by_name($wsconfig_name);
+
+  if (!is_object($wsconfig)) {
+    if (WSFIELDS_DEBUG) debug("Couldn't find wsconfig: " . $wsconfig_name);
+    return FALSE;
+  }
+  else {
+
+    // Replace the tokens in the "read" pattern with entity property values
+    $ws_keys = array();
+    if ( isset($entity->ws_keys) and !empty($entity->ws_keys)) {
+      $ws_keys = unserialize($entity->ws_keys);
+    }
+
+    $replacements = array();
+
+    if (!empty($propertymap)) {
+      foreach ($propertymap as $pattern => $entity_property) {
+        // If we don't have a value for a key, exit since we will not be able to resolve the data
+        $value = FALSE;
+        if (isset($ws_keys[$entity_property])) {
+          $value = $ws_keys[$entity_property];
+        } elseif (isset($entity->$entity_property)) {
+          $value = $entity->$entity_property;
+        } else {
+          if (WSFIELDS_DEBUG) debug("Couldn't find pattern: " . $pattern);
+          return FALSE;
+        }
+
+        // Replace the placeholders in the URL pattern with values from property key map
+        $replacements[$pattern] = $value;
+      }
+    }
+
+    if (!class_exists($processor)) {
+      watchdog('wsfields', 'Web service fields cannot create class @processor. Class not found.', array('@processor' => $processor), WATCHDOG_ERROR);
+      drupal_set_message(t("Unable to build data processor. See logs for more details."), 'error', FALSE);
+      return FALSE;
+    }
+
+    // Create a new processor
+    $processor = new $processor(array(), $entity);
+
+    // Check the subclass of the processor
+    if (!is_subclass_of($processor, 'WsData')) {
+      drupal_set_message(t("Unable to build data processor. See logs for more details"), 'error', FALSE);
+      watchdog('wsfields', " Unable to create web service processor. Class @class isn't a sub class of WsData", array('@class' => $processor), WATCHDOG_ERROR);
+      return FALSE;
+    }
+
+    // Attempt the connection
+    if ($wsconfig->connector) {
+      $options = array();
+
+      if ($passaccepts) {
+        // Load the list of accepted data formats
+        $type = $processor->accepts();
+
+        // Select the first option
+        // @todo come up with a way for the objects to decide which accept type it should use
+        $options['accept-type'] = array_pop($type);
+      }
+
+      // Check the language settings
+      if ($field['translatable']) {
+        $languages = language_list();
+
+        foreach ($languages as $language) {
+          $options['language'] = $language->language;
+          $data[$language->language] = $wsconfig->call('read', $replacements, array(), $options);
+          $processor->addData($data[$language->language], $language->language);
+        }
+      }
+      else {
+        // Read the data
+        $data = $wsconfig->call('read', $replacements, array(), $options);
+        $processor->addData($data);
+      }
+
+      // Load the requested data
+      $data = $processor->getData($remotename);
+
+      // Build the field format
+      if (!is_null($data) && FALSE !== $data) {
+        // First step, format the data into language => array
+        $data = module_invoke_all('wsfields_data_alter', $data, $field);
+
+        // Next, let specific modules alter the data as required
+        $data = module_invoke_all('wsfields_' . $field['type'] . '_data_alter', $data, $field);
+
+        // Finally, run the field data through the empty value filters
+        foreach ($data as $lang => $values) {
+          $data[$lang] = _field_filter_items($field, $values);
+          if (empty($data[$lang])) {
+            unset($data[$lang]);
+          }
+        }
+
+
+        // Display debug information if required
+        if (WSFIELDS_DEBUG) {
+          if (!drupal_is_cli()) {
+            dpm($data);
+          }
+        }
+
+        // Update the expires information as needed
+        if ($wsconfig->connector->expires()) {
+          // If we have expires information, compare it to the store info
+          $entitycacheexpire = cache_get($expirecid);
+          if ($entitycacheexpire) {
+            // If it's sooner than the last valid expires, update the information.
+            if ($wsconfig->connector->expires() < $entitycacheexpire->data) {
+              module_invoke_all('wsfields_entity_expires', $entity_type, $id, $wsconfig->connector->expires());
+            }
+          // If it's not set, update the information
+          } else {
+            module_invoke_all('wsfields_entity_expires', $entity_type, $id, $wsconfig->connector->expires());
+          }
+          // Cache this field, in case other fields attached to this entity have shorter expires times
+          cache_set($cid, $data, 'cache_field', $wsconfig->connector->expires());
+
+        // If no expires info is available, cache for the minimum amount of time.
+        } else {
+          module_invoke_all('wsfields_entity_expires', $entity_type, $id, time() + variable_get('wsfields_min_expire', 300));
+        }
+        return $data;
+      }
+    }
+  }
+}
+
+/**
+ * Perform write service call
+ *
+ * @param string $entity_type
+ *  Machine name of a given entity type
+ * @param array $field
+ *  Field definition to load data into
+ * @param object $entity
+ *  Entity object
+ * @return array|boolean
+ *  Returns the formatted field data, FALSE otherwise.
+ */
+function wsfields_data_write($entity_type, $entity, $op, $fields, $items) {
+  if (WSFIELDS_DEBUG) debug("WSFields loading " . $entity->type . "->" . $field['field_name'] . " of type " . $field['type']);
+
+  if (!isset($field['storage']['settings']['wsconfig_name'])) {
+    if (WSFIELDS_DEBUG) debug("wsconfig_name not set, wsfield cannot continue.");
+    return FALSE;
+  }
+
+  // Load required settings from the field instance
+  $wsconfig_name = $field['storage']['settings']['wsconfig_name'];
+  $remotename = $field['storage']['settings']['remotekey'];
+  $passaccepts = isset($field['storage']['settings']['passaccepts']) ? $field['storage']['settings']['passaccepts'] : TRUE;
+  $processor = $field['storage']['settings']['processor'];
+  $propertymap = $field['storage']['settings']['propertymap']['read'];
+
+  list($id, $vid, $bundle) = entity_extract_ids($entity_type, $entity);
+  $cid = 'wsfield:' . $entity_type . ':' . $id . ':' . $field['field_name'];
+  $expirecid = 'wsfield_expire:' . $entity_type . ':' . $id;
+
+  $cachefield = cache_get($cid, 'cache_field');
+  if ($cachefield) {
+    return $cachefield->data;
+  }
+
+  // Load the web service configuration
+  $wsconfig = wsconfig_load_by_name($wsconfig_name);
+
+  if (!is_object($wsconfig)) {
+    if (WSFIELDS_DEBUG) debug("Couldn't find wsconfig: " . $wsconfig_name);
+    return FALSE;
+  } else {
+
+    // Replace the tokens in the "read" pattern with entity property values
+    $ws_keys = array();
+    if ( isset($entity->ws_keys) and !empty($entity->ws_keys)) {
+      $ws_keys = unserialize($entity->ws_keys);
+    }
+
+    $replacements = array();
+
+    foreach ($propertymap as $pattern => $entity_property) {
+      // If we don't have a value for a key, exit since we will not be able to resolve the data
+      $value = FALSE;
+      if (isset($ws_keys[$entity_property])) {
+        $value = $ws_keys[$entity_property];
+      } elseif (isset($entity->$entity_property)) {
+        $value = $entity->$entity_property;
+      } else {
+        if (WSFIELDS_DEBUG) debug("Couldn't find pattern: " . $pattern);
+        return FALSE;
+      }
+
+      // Replace the placeholders in the URL pattern with values from property key map
+      $replacements[$pattern] = $value;
+    }
+
+    if (!class_exists($processor)) {
+      watchdog('wsfields', 'Web service fields cannot create class @processor. Class not found.', array('@processor' => $processor), WATCHDOG_ERROR);
+      drupal_set_message(t("Unable to build data processor. See logs for more details."), 'error', FALSE);
+      return FALSE;
+    }
+
+    // Create a new processor
+    $processor = new $processor(array(), $entity);
+
+    // Check the subclass of the processor
+    if (!is_subclass_of($processor, 'WsData')) {
+      drupal_set_message(t("Unable to build data processor. See logs for more details"), 'error', FALSE);
+      watchdog('wsfields', " Unable to create web service processor. Class @class isn't a sub class of WsData", array('@class' => $processor), WATCHDOG_ERROR);
+      return FALSE;
+    }
+
+    // Attempt the connection
+    if ($wsconfig->connector) {
+      $options = array();
+
+      if ($passaccepts) {
+        // Load the list of accepted data formats
+        $type = $processor->accepts();
+
+        // Select the first option
+        // @todo come up with a way for the objects to decide which accept type it should use
+        $options['accept-type'] = array_pop($type);
+      }
+
+      // Write the data
+      $data = $wsconfig->call($op, $replacements, $items, $options);
+    }
+  }
+}
+
+/**
+ * Implements hook_wsfields_entity_expires().
+ */
+function wsfields_wsfields_entity_expires($entity_type, $entity_id, $expire) {
+  cache_set('wsfield_expire:' . $entity_type . ':' . $entity_id, $expire);
+}
+
+/**
+ * Find the best text format possible
+ */
+function _wsfields_set_text_format(&$data, &$field) {
+  $formats = array_keys(filter_formats());
+  if (sizeof($formats) > 0) {
+    if (in_array('full_html', $formats)) {
+      $format = 'full_html';
+    } else {
+      $format = $formats[0];
+    }
+    foreach($data as $lang => $values) {
+      foreach ($values as $id => $field) {
+        $data[$lang][$id]['format'] = $format;
+      }
+    }
+  }
+}

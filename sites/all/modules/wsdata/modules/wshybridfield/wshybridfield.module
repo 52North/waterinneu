@@ -1,0 +1,226 @@
+<?php
+
+/**
+ * Implements hook_field_info().
+ */
+function wshybridfield_field_info() {
+  return array(
+    'wshybridfield' => array(
+      'label' => t('WS Hybrid Field'),
+      'description' => t('Field that displays data from a called WSConfig'),
+      'settings' => array(),
+      'instance_settings' => array(),
+      'default_widget' => 'hybrid_field_widget',
+      'default_formatter' => 'hybrid_field_formatter',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_instance_settings_form().
+ */
+function wshybridfield_field_instance_settings_form($field, $instance) {
+
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function wshybridfield_field_widget_info() {
+  return array(
+    'wshybridfield' => array(
+      'label' =>  t('WS Hybrid Field'),
+      'field types' => array('wshybridfield'),
+      'settings' => array(),
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+        'default value' => FIELD_BEHAVIOR_DEFAULT,
+      ),
+   	),
+  );
+}
+
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function wshybridfield_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $element['name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#default_value' => isset($items[$delta]['name']) ? $items[$delta]['name'] : '',
+  );
+
+  $operations = array();
+  foreach (wsconfig_get_list_by_name() as $machinename => $name) {
+    $wsconfig = wsconfig_load_by_name($machinename);
+
+    foreach ($wsconfig->getOperations() as $opname) {
+      $operations["$machinename:$opname"] = $name . " - ". $wsconfig->getMethodName($opname);
+    }
+  }
+
+  $element['wsconfig_method'] = array(
+    '#type' => 'select',
+    '#title' => t('Web Service Config and Method'),
+    '#description' => t('The web service and method to use'),
+    '#options' => $operations,
+    '#default_value' => isset($items[$delta]['wsconfig_method']) ? $items[$delta]['wsconfig_method'] : '',
+  );
+
+  $element['replacements'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Replacements'),
+    '#description' => t('JSON encoded replacements to pass to the wsconfig'),
+    '#default_value' => isset($items[$delta]['replacements']) ? $items[$delta]['replacements'] : '',
+  );
+
+  $element['arguments'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Arguments'),
+    '#description' => t('JSON encoded arguments to pass to the wsconfig'),
+    '#default_value' => isset($items[$delta]['arguments']) ? $items[$delta]['arguments'] : '',
+  );
+
+  $element['options'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Options'),
+    '#description' => t('JSON encoded options'),
+    '#default_value' => isset($items[$delta]['options']) ? $items[$delta]['options'] : '',
+  );
+
+  return $element;
+}
+
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function wshybridfield_field_formatter_info() {
+  return array(
+    'hybrid_field_formatter' => array(
+      'label' => t('WS Hybrid Field'),
+      'field types' => array('wshybridfield'),
+      'settings' => array(
+      	'wsprocessor' => null,
+      ),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function wshybridfield_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = '';
+
+  if (isset($settings['wsprocessor'])) {
+    $summary .= t('Displayed with wsprocessor: %wsprocessor', array('%wsprocessor' => $settings['wsprocessor']));
+  } else {
+  	$summary .= t('No wsprocessor configured.');
+  }
+
+  return $summary;
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function wshybridfield_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $element['wsprocessor'] = array(
+    '#type' => 'select',
+    '#title' => t('Web Service Processor'),
+    '#description' => t('The web service processor to parse the data'),
+    '#options' => wsconfig_get_form_processors(),
+    '#default_value' => isset($settings['wsprocessor']) ? $settings['wsprocessor'] : '',
+    '#required' => TRUE,
+  );
+
+  return $element;
+}
+
+
+/**
+ * Implements hook_field_formatter_prepare_view().
+ */
+function wshybridfield_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+  $element = array();
+  foreach ($items as $entity_id => $field_items) {
+    foreach ($field_items as $delta => $settings) {
+      $wsconfig_method = explode(':', $settings['wsconfig_method']);
+      $wsconfig = wsconfig_load_by_name($wsconfig_method[0]);
+      $method = $wsconfig_method[1];
+
+      if (!is_object($wsconfig)) {
+        $items[$entity_id][$delta]['wsdata_error'] = t('Unable to load WSConfig @wsconfig', array('@wsconfig' => $wsconfig_method[0]));
+        continue;
+      }
+
+      $replacements = json_decode($settings['replacements'], TRUE);
+      $replacements = isset($replacements) ? $replacements : array();
+
+      $arguments = json_decode($settings['arguments'], TRUE);
+      $arguments = isset($arguments) ? $arguments : array();
+
+      $options = json_decode($settings['options'], TRUE);
+      $options = isset($options) ? $options : array();
+
+      $data = $wsconfig->call(
+        $method,
+        $replacements,
+        $arguments,
+        $options
+      );
+
+      $items[$entity_id][$delta]['wsdata'] = $data;
+    }
+  }
+}
+
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function wshybridfield_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  foreach ($items as $delta => $settings) {
+    if (isset($settings['wsdata_error'])) {
+      $element[$delta]['#markup'] = $settings['wsdata_error'];
+      continue;
+    }
+
+    if (!isset($display['settings']['wsprocessor'])) {
+      $element[$delta]['#markup'] = t('No wsprocessor configured for this display');
+      continue;    	
+    }
+
+    $processor = $display['settings']['wsprocessor'];
+    if (!class_exists($processor) or !is_subclass_of($processor, 'WsData')) {
+      $element[$delta]['#markup'] = t('Unable to load wsprocessor @wsprocessor', array('@wsprocessor' => $display['settings']['wsprocessor']));
+      continue;
+    }
+
+    $processor = new $processor($settings['wsdata'], $settings);
+    $form = array();
+     
+    $element[$delta] = $processor->getData();
+  }
+
+  return $element;
+}
+
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function wshybridfield_field_is_empty($item, $field) {
+  return empty($item['name']);
+}

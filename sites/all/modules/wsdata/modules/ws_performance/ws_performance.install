@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * @file
+ * Installation tasks for ws_performance
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function ws_performance_schema() {
+  $schema = array();
+
+  $schema['ws_performance'] = array(
+    'description' => 'The table for storing wsconfig performance information.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary Key: Identifier for an entry.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'wsconfig_name' => array(
+        'description' => 'The machine name of a wsconfig.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'wsconfig_type' => array(
+        'description' => 'The call that was made.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'wsconfig_method' => array(
+        'description' => 'The method that was actually called.',
+        'type' => 'text',
+        'size' => 'normal',
+        'not null' => FALSE,
+      ),
+      'run' => array(
+        'description' => 'The Unix timestamp when the wsconfig was run.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'wait' => array(
+        'description' => 'Milliseconds that the call took to run.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'size' => array(
+        'description' => 'Number of bytes returned by the call.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'data' => array(
+        'type' => 'blob',
+        'not null' => FALSE,
+        'size' => 'big',
+        'serialize' => FALSE,
+        'description' => 'A serialized array of additional data.',
+      ),
+      'result' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'size' => 'big',
+        'description' => 'Result.',
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
+

@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function ws_search_api_schema() {
+ $schema['ws_search_api_item'] = array(
+    'description' => 'Stores the items which should be indexed for each index, and their status.',
+    'fields' => array(
+      'entity_id' => array(
+        'description' => "The item's entity id (e.g. {node}.nid for nodes).",
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'entity_type' => array(
+        'description' => 'The {search_api_index}.id this item belongs to.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'indexed' => array(
+        'description' => 'A timestamp to indicate when the item last indexes.',
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'expire' => array(
+        'description' => 'A timestamp to indicate when the item expires.',
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'indexed' => array('indexed'),
+      'expire' => array('expire'),
+    ),
+    'primary key' => array('entity_id', 'entity_type'),
+  );
+
+  return $schema;
+}

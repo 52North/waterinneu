@@ -1,0 +1,10 @@
+<p>Defines a field storage controller which uses the CRUD operations defined in a wsconfig to interact with remote data using Drupal Fields.</p>
+
+<p>Caveat.
+Since the field module caches loaded field data, you should use the provided cache backend for fields.
+You can do this by adding the following to your settings.php file, updated to reflect the location of wsfields_storage:
+
+<pre>
+$conf['cache_backends'][] = 'sites/all/modules/wsdata/modules/wsfields_storage/wsfields_storage.cache.inc';
+</pre>
+</p>

@@ -1,0 +1,47 @@
+<?php
+/**
+ * @file
+ * wsbeans module file
+ */
+
+/**
+ * Implements hook_bean_types_api_info().
+ */
+function wsbeans_bean_types_api_info() {
+  return array('api' => 4);
+}
+
+/**
+ * Implements hook_bean_types().
+ */
+function wsbeans_bean_types() {
+  $plugins = array();
+  $plugin_path = drupal_get_path('module', 'wsbeans') . '/plugins/bean';
+  
+  $plugins['wsbean'] = array(
+    'label' => t('Web Service Bean'),
+    'description' => t('Bean that displays web service data'),
+    'handler' => array(
+      'class' => 'WsBean',
+      'parent' => 'bean',
+    ),
+    'path' => $plugin_path,
+    'file' => 'wsbeans_wsbean.inc',
+  );
+
+  return $plugins;
+}
+
+/**
+ * Implements hook_wsconfig_processor_info().
+ */
+function wsbeans_wsconfig_processor_info() {
+  return array(
+    'wsbeans_default_json_form' => array(
+       'form' => 'Renders JSON into a form',
+    ),
+    'wsbeans_default_html_form' => array(
+       'form' => 'Renders HTML into a form',
+    ),
+  );
+}

@@ -1,0 +1,8 @@
+Web Service Hybrid Fields
+=========================
+
+WS Hybrid fields lets you have a field that stores a refenrence to a wsconfig and a some arguments.
+
+This module is for those times when you need to display random, one-off remote content with your content.
+
+It lacks much of the power of wsfields and wsfields_storage, but requires much less consitency from your web services.
