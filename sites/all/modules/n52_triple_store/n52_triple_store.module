@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * Implements hook_menu()
+ *
+ * Link in default menu (e.g. Navigation)
+ */
+function n52_triple_store_menu() {
+	$menu ['n52/triple-store'] = array (
+			// page title
+			'title' => 'Triple Store Content',
+			'page callback' => 'n52_triple_store_callback',
+			'access arguments' => array (
+					'access content',
+			),
+	);
+	return $menu;
+}
+
+/**
+ * The callback to load all nodes from the sesame service
+ */
+function n52_triple_store_callback() {
+	// get raw data from sesame
+	return array ();
+}
+
+/**
+ * Implement hook_help()
+ */
+function n52_triple_store_help($path, $arg) {
+	
+	if ($path === 'admin/help#n52_triple_store') {
+		$output = '<h3>' . t('About') . '</h3>';
+		$output .= '<p>' . t('The n52_triple_store module allows to request nodes from external sources.') . '</p>';
+		return $output;
+	}
+	
+}

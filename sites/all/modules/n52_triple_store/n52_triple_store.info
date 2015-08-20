@@ -1,0 +1,3 @@
+core = "7.x"
+description = "Triple Store Connection test."
+name = "52N - WaterInnEU - Triple Store Connection test"
