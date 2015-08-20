@@ -11,7 +11,7 @@ function n52_waterinneu_form($form, &$form_state) {
 	$form ['type'] = array (
 			'#type' => 'radios',
 			'#title' => t( 'Type of Content' ),
-			'#options' => array(
+			'#options' => array (
 					'dataset' => t('Dataset'),
 					'webservice' => t('Webservice'),
 					'package' => t('Software Package'),
@@ -26,7 +26,7 @@ function n52_waterinneu_form($form, &$form_state) {
 	//
 	// ADDITIONAL INFORMATION form
 	//
-	$form['more_info'] = array(
+	$form['more_info'] = array (
 			'#type' => 'fieldset',
 			'#title' => t('Additional Information'),
 			'#collapsible' => TRUE,
