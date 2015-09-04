@@ -6,7 +6,6 @@ builddate = 2015-08-06 13:06:39+0200
 
 GIT Infos:
 =================
-repository = ${git.repository}
 path = develop
 revision = 6b39471b6e82a000a4b460adf7e9413c2c3f3822
 lastCommitMessage = Merge pull request #139 from 52North/master
