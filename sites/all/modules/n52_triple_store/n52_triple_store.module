@@ -1,4 +1,91 @@
 <?php
+/*
+ * Copyright (C) 2015
+ * 
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ * 
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ * 
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ * 
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ * 
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+/**
+ * @file
+ * Defines a webservice interface for a graph instance
+ */
+ 
+// List of possible libraries to use with the RESTClient
+// Default is 'curl', but you can also use 'drupal' as an option to use
+// drupal_http_request instead (some features are unavailable when 'drupal'
+// is set)
+// @todo clarify the sentence in brackets
+define('N52_TRIPLE_STORE_LIBRARY_CURL', 'curl');
+define('N52_TRIPLE_STORE_LIBRARY_DRUPAL', 'drupal');
+define('N52_TRIPLE_STORE_FILES_SYSTEM', 'file');
+
+// Store the desired library to use with the RESTClient functions
+define('N52_TRIPLE_STORE_ACTIVE_LIBRARY', variable_get('N52_TRIPLE_STORE_active_library', N52_TRIPLE_STORE_LIBRARY_DRUPAL));
+
+/**
+ * Implements hook_permission().
+ */
+function n52_triple_store_permission() {
+	return array(
+			'administer 52n triple store' =>  array(
+					'title' => t('Administer 52N Triple Store'),
+					'description' => t('Perform administration tasks for 52N Triple Store.'),
+			),
+	);
+}
+
+/**
+ * Implements hook_wsconfig_connector_info().
+ */
+function n52_triple_store_wsconfig_connector_info() {
+	return array(
+			'n52_triple_store' => array(
+					'name' => '52N Triple Store Connector',
+					'class' => 'N52TripleStoreWsConnector',
+			),
+	);
+}
+
+/**
+ * Implements hook_wsconfig_processor_info().
+ */
+function n52_triple_store_wsconfgi_processor_info() {
+	return array (
+		'N52TripleStoreWsProcessor' => array (
+			'list_boolean' => 'N52 Triple Store WS Processor',
+			'number_decimal' => 'N52 Triple Store WS Processor',
+			'number_float' => 'N52 Triple Store WS Processor',
+			'number_integer' => 'N52 Triple Store WS Processor',
+			'list_float' => 'N52 Triple Store WS Processor',
+			'list_integer' => 'N52 Triple Store WS Processor',
+			'list_text' => 'N52 Triple Store WS Processor',
+			'text_long' => 'N52 Triple Store WS Processor',
+			'text_with_summary' => 'N52 Triple Store WS Processor',
+			'text' => 'N52 Triple Store WS Processor',
+		),	
+	);
+}
 
 /**
  * Implements hook_menu()
@@ -6,23 +93,17 @@
  * Link in default menu (e.g. Navigation)
  */
 function n52_triple_store_menu() {
-	$menu ['n52/triple-store'] = array (
-			// page title
+	
+	// Adminstrative links
+	$menu ['admin/config/services/n52triplestore'] = array (
+			'description' => 'Configure the triple store connection',
 			'title' => 'Triple Store Content',
-			'page callback' => 'n52_triple_store_callback',
-			'access arguments' => array (
-					'access content',
-			),
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array ('n52_triple_store_admin_settings'),
+			'access arguments' => array ('administer 52n triple store'),
+			'file' => 'n52_triple_store.admin.inc',
 	);
 	return $menu;
-}
-
-/**
- * The callback to load all nodes from the sesame service
- */
-function n52_triple_store_callback() {
-	// get raw data from sesame
-	return array ();
 }
 
 /**
