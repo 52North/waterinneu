@@ -284,7 +284,7 @@ function hook_form_builder_load($form_type, $form_id) {
     $form = node_form(array(), $node);
 
     // Allow other modules to extend the form.
-    $form_state = [];
+    $form_state = array();
     drupal_alter('form', $form, $form_state, $form_id);
 
     // Loop through the form and add #form_builder properties to each element

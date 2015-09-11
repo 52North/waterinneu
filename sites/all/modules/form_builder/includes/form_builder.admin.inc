@@ -64,6 +64,8 @@ function _form_builder_add_element($form_type, $form_id, $element_type, $element
   $fields = $loader->getElementTypeInfo($form_type, $form_id);
   $form_obj = $loader->fromCache($form_type, $form_id, $sid);
   $element = NULL;
+  // Keep track of the number of elements added this requests.
+  $i = &drupal_static(__FUNCTION__, 1);
 
   // If the field is being cloned, copy the original from the current form
   // structure.
@@ -91,7 +93,7 @@ function _form_builder_add_element($form_type, $form_id, $element_type, $element
 
   if ($element) {
     // @todo make this part of the element object's initialization.
-    $element_id = isset($_REQUEST['element_id']) ? $_REQUEST['element_id'] : 'new_' . time();
+    $element_id = isset($_REQUEST['element_id']) ? $_REQUEST['element_id'] : 'new_' . REQUEST_TIME . $i++;
 
     // Set the element ID to a hard-coded value if a unique field type.
     if (isset($fields[$element_type]['unique']) && $fields[$element_type]['unique']) {
@@ -104,7 +106,7 @@ function _form_builder_add_element($form_type, $form_id, $element_type, $element
     $f = $form_obj->getFormArray();
     $element['#weight'] = count(element_children($f));
 
-    $element_id = $form_obj->setElementArray($element, FORM_BUILDER_ROOT, TRUE)->getId();
+    $element_id = $form_obj->setElementArray($element, FORM_BUILDER_ROOT, TRUE);
     $form_obj->save();
 
     if (isset($_REQUEST['js']) || $return) {
@@ -117,10 +119,10 @@ function _form_builder_add_element($form_type, $form_id, $element_type, $element
         'html' => form_builder_field_render($form_type, $form_id, $element_id),
         'positionForm' => drupal_render($form),
       );
+
       if ($return) {
         return $data;
       }
-
       form_builder_json_output($data);
       exit();
     }
@@ -740,8 +742,7 @@ function form_builder_field_render($form_type, $form_id, $element_id, $wrapper =
   $form = form_builder('form_builder_preview', $form, $form_state);
 
   // Get only the element wanted and render it.
-  $e = $form_obj->getElement($element_id);
-  $element = drupal_array_get_nested_value($form, $e->formParents());
+  $element = form_builder_get_element($form, $element_id);
 
   if ($wrapper) {
     $element['#theme_wrappers'][] = 'form_builder_element_wrapper';

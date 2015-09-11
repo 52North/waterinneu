@@ -31,7 +31,7 @@ before_script:
   - cd form_builder_test/drupal
   - root=`pwd`
   - drush dl webform-7.x-3.x ctools options_element
-  - drush --yes pm-enable form_builder_webform
+  - drush --yes pm-enable form_builder_webform form_builder_examples
 
 script:
   - cd $form_builder

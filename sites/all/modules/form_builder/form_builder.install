@@ -17,7 +17,7 @@ function form_builder_requirements($phase) {
   $requirements = array();
   $t = get_t();
   if ($phase == 'runtime') {
-    $form_builder_types = module_invoke_all('form_builder_types');
+    $form_builder_types = module_invoke_all('form_builder_form_types');
     if (empty($form_builder_types)) {
       $requirements['form_builder_types']['title'] = $t('Form builder');
       $requirements['form_builder_types']['severity'] = REQUIREMENT_ERROR;
