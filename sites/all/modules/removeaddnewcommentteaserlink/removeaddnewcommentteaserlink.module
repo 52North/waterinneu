@@ -1,0 +1,33 @@
+<?php
+
+/**
+* @file
+* Removes the "Add new comment" and "Log in to post comments" links
+* from teasers.
+*
+*/
+
+
+/**
+ * Implements hook_help().
+ */
+function removeaddnewcommentteaserlink_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#removeaddnewcommentteaserlink':
+      $output = '<p>' . t('The &#8220;Remove comment links from teasers&#8221; module is a simple module that removes the &#8220;Add new comment&#8221; and &#8220;Log in to post comments&#8221; links from teasers.') . '</p>';
+      $output .= '<p>' . t('The module has no menu or modifiable settings.  There is no configuration.  When enabled, the module will prevent the links from appearing.  To get the links back, disble the module and clear caches.') . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function removeaddnewcommentteaserlink_node_view_alter(&$build) {
+  if ($build['#view_mode'] == 'teaser') {
+    // remove "add comment" link from node teaser mode display
+    unset($build['links']['comment']['#links']['comment-add']);
+    // and if logged out this will cause another list item to appear, so let's get rid of that
+    unset($build['links']['comment']['#links']['comment_forbidden']);
+  }
+}

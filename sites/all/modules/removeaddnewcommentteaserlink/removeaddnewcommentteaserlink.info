@@ -1,0 +1,11 @@
+name = Remove comment links from teasers
+description = * Removes the "Add new comment" and "Log in to post comments" links from teasers.
+core = 7.x
+
+
+; Information added by Drupal.org packaging script on 2014-05-31
+version = "7.x-1.1"
+core = "7.x"
+project = "removeaddnewcommentteaserlink"
+datestamp = "1401541728"
+
