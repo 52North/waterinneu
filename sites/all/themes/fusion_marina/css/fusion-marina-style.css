@@ -115,7 +115,8 @@ hr {
 /* @group Layout elements & regions */
 
 html {
-  background: #f4f7e7;
+/* 52n adjustment */
+/*  background: #f4f7e7; */
   color: #666;
 }
 
@@ -260,11 +261,13 @@ html {
 -------------------------------------------------------------- */
 
 .main-wrapper {
-  background-color: #e4edc2; /* old browsers */
-  background-image: linear-gradient(top, #e4edc2 0%, #f5f7e7 55px); /* w3c */
-  background-image: -o-linear-gradient(top, #e4edc2 0%, #f5f7e7 55px); /* opera */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e4edc2), to(#f5f7e7), color-stop(0%, #e4edc2),  color-stop(10%, #f5f7e7));  /* webkit */
-  background-image: -moz-linear-gradient(top, #e4edc2 0%, #f5f7e7 55px); /* firefox */
+/* n52 adjustment */
+/*  background-color: #e4edc2; *//* old browsers */
+/* n52 adjustment */
+/*  background-image: linear-gradient(top, #e4edc2 0%, #f5f7e7 55px); /* w3c */
+/*  background-image: -o-linear-gradient(top, #e4edc2 0%, #f5f7e7 55px); /* opera */
+/*  background-image: -webkit-gradient(linear, left top, left bottom, from(#e4edc2), to(#f5f7e7), color-stop(0%, #e4edc2),  color-stop(10%, #f5f7e7));  /* webkit */
+/*  background-image: -moz-linear-gradient(top, #e4edc2 0%, #f5f7e7 55px); /* firefox */
   border-top: 2px solid #fff;
   padding-top: 40px;
 }
