@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Functions to for when the modules is installed or uninstalled.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function term_search_uninstall() {
+  variable_del('term_search_indexed_vocabularies');
+  db_delete('search_dataset')
+    ->condition('type', 'term')
+    ->execute();
+  db_delete('search_index')
+    ->condition('type', 'term')
+    ->execute();
+}

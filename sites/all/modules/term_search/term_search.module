@@ -1,0 +1,230 @@
+<?php
+/**
+ * @file
+ * Functions to index and search taxonomy terms.
+ */
+
+/**
+ * Implements hook_sentity_info_alter().
+ */
+function term_search_entity_info_alter(&$entity_info) {
+  $entity_info['taxonomy_term']['view modes']['search_index'] = array(
+    'label' => 'Search Index',
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_search_info().
+ */
+function term_search_search_info() {
+  return array(
+    'title' => 'Terms',
+    'path' => 'term',
+  );
+}
+
+/**
+ * Implements hook_search_access().
+ */
+function term_search_search_access() {
+  return user_access('access content');
+}
+
+/**
+ * Implements hook_search_admin().
+ */
+function term_search_search_admin() {
+  // Generate options array from available vocabularies.
+  $options = $default = array();
+  $vocabularies = taxonomy_get_vocabularies();
+  foreach ($vocabularies as $vid => $vocabulary) {
+    $options[$vid] = check_plain($vocabulary->name);
+  }
+
+  // If the user has never saved which vocabularies to index, get the default.
+  $default = variable_get('term_search_indexed_vocabularies', _term_search_default_vids());
+
+  $form['term_search_fieldset'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Indexed Vocabularies'),
+    '#description' => '<em>' . t('Choose which vocabularies should be indexed for search.') . '</em>',
+  );
+  $form['term_search_fieldset']['term_search_indexed_vocabularies'] = array(
+    '#type' => 'checkboxes',
+    '#options' => $options,
+    '#default_value' => $default,
+  );
+
+  return $form;
+}
+/**
+ * Implements hook_update_index().
+ */
+function term_search_update_index() {
+  $limit = (int) variable_get('search_cron_limit', 100);
+  $vocabularies = variable_get('term_search_indexed_vocabularies', _term_search_default_vids());
+
+  // Pull out selected vids and store separately for the query.
+  $vids = array_values(array_filter($vocabularies));
+
+  if (!empty($vids)) {
+    // Get terms waiting to be indexed.
+    $query = db_select('taxonomy_term_data', 't');
+    $query->leftJoin('search_dataset', 'd', 'd.sid=t.tid AND d.type=\'term\'');
+    $result = $query
+      ->fields('t', array('tid'))
+      ->condition('t.vid', $vids, 'IN')
+      ->condition(db_or()->condition('d.sid', NULL)->condition('d.reindex', 0, '<>'))
+      ->orderBy('d.reindex', 'ASC')
+      ->orderBy('t.tid', 'ASC')
+      ->range(0, $limit)
+      ->execute()
+      ->fetchAllAssoc('tid');
+
+    // Index each term.
+    foreach ($result as $record) {
+      if ($term = taxonomy_term_load($record->tid)) {
+        // Render the term.
+        $content = taxonomy_term_view($term, 'search_index');
+        $term->rendered = drupal_render($content);
+        $text = '<h1>' . $term->name . '</h1>' . $term->rendered;
+
+        // Allow additional modules to include data.
+        $extra = module_invoke_all('term_update_index', $term);
+        foreach ($extra as $t) {
+          $text .= $t;
+        }
+
+        // Update index.
+        search_index($term->tid, 'term', $text);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_search_execute().
+ */
+function term_search_search_execute($keys = NULL, $conditions = NULL) {
+  // Link principle tables.
+  $query = db_select('search_index', 'i', array('target' => 'slave'))
+    ->extend('SearchQuery')
+    ->extend('PagerDefault');
+  $query->join('taxonomy_term_data', 'te', 'te.tid = i.sid');
+  $query->searchExpression($keys, 'term');
+
+  // Link to attatched nodes.
+  if ($query->setOption('term', 'ti.tid')) {
+    $query->join('taxonomy_index', 'ti', 'n.nid = ti.nid');
+  }
+
+  // Limit to selected vocabularies.
+  $vocabularies = variable_get('term_search_indexed_vocabularies', _term_search_default_vids());
+  $query->condition('te.vid', array_values(array_filter($vocabularies)), 'IN');
+
+  // Only continue if the first pass.
+  if (!$query->executeFirstPass()) {
+    return array();
+  }
+
+  // Load results.
+  $find = $query
+    ->limit(10)
+    ->execute();
+  $results = array();
+  foreach ($find as $item) {
+    // Build the term body.
+    $term = taxonomy_term_load($item->sid);
+    $content = taxonomy_term_view($term, 'search_result');
+    $term->body = drupal_render($content);
+
+    // Allow other modules to provide additional information.
+    $extra = module_invoke_all('term_search_result', $term);
+
+    $uri = entity_uri('taxonomy_term', $term);
+    $results[] = array(
+      'link' => url($uri['path'], array_merge($uri['options'], array('absolute' => TRUE))),
+      'type' => $term->vocabulary_machine_name,
+      'title' => $term->name,
+      'tid' => $term->tid,
+      'term' => $term,
+      'snippet' => search_excerpt($keys, $term->body),
+      'extra' => $extra,
+    );
+  }
+  return $results;
+}
+
+
+/**
+ * Implements hook_search_status().
+ */
+function term_search_search_status() {
+  $remaining = $total = 0;
+
+  // Get the indexed vocabularies.
+  $vocabularies = variable_get('term_search_indexed_vocabularies', _term_search_default_vids());
+  $vids = array_values(array_filter($vocabularies));
+
+  if (!empty($vids)) {
+    // Get the number of terms in all of the selected vocabularies.
+    $total = db_select('taxonomy_term_data', 't')
+      ->fields('t', array('tid'))
+      ->condition('t.vid', $vids, 'IN')
+      ->countQuery()
+      ->execute()
+      ->fetchField();
+    $query = db_select('taxonomy_term_data', 't');
+    $query->leftJoin('search_dataset', 'd', 'd.sid=t.tid AND d.type=\'term\'');
+
+    // Get the number of terms left to be indexed.
+    $remaining = $query
+      ->fields('t', array('tid'))
+      ->condition('t.vid', $vocabularies, 'IN')
+      ->condition(db_or()->condition('d.sid', NULL)->condition('d.reindex', '0', '<>'))
+      ->countQuery()
+      ->execute()
+      ->fetchField();
+  }
+  return array('remaining' => $remaining, 'total' => $total);
+}
+
+
+/**
+ * Implements hook_taxonomy_term_update().
+ *
+ * Sets the term to be reindexed when the term is updated.
+ */
+function term_search_taxonomy_term_update($term) {
+  db_update('search_dataset')
+    ->condition('sid', $term->tid)
+    ->condition('type', 'term')
+    ->fields(array('reindex' => REQUEST_TIME))
+    ->execute();
+}
+
+/**
+ * Implements hook_search_reset().
+ *
+ * Sets all terms to be reindexed.
+ */
+function term_search_search_reset() {
+  db_update('search_dataset')
+    ->condition('type', 'term')
+    ->fields(array('reindex' => REQUEST_TIME))
+    ->execute();
+}
+
+/**
+ * Gets the default formatted list of vocabularies.  All are selected by
+ * default.
+ */
+function _term_search_default_vids() {
+  $default = array();
+  $vocabularies = taxonomy_get_vocabularies();
+  foreach ($vocabularies as $vid => $vocabulary) {
+    $default[$vid] = $vid;
+  }
+  return $default;
+}

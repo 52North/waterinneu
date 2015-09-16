@@ -1,0 +1,141 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Combined search for the Search module.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function search_combine_permission() {
+  return array(
+    'access search combine' =>  array(
+      'title' => t('Use combined search'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_search_info().
+ */
+function search_combine_search_info() {
+  return array(
+    'title' => 'Search',
+    'path' => 'all',
+    'conditions_callback' => 'search_combine_conditions_callback',
+  );
+}
+
+/**
+ * Conditions callback function for combined search.
+ */
+function search_combine_conditions_callback($keys) {
+  $conditions = array();
+  foreach (_search_combine_get_modules('search_info') as $module) {
+    $info = module_invoke($module, 'search_info');
+    if (isset($info['conditions_callback'])) {
+      $conditions = array_merge($conditions, call_user_func_array($info['conditions_callback'], $keys));
+    }
+  }
+  return $conditions;
+}
+
+/**
+ * Implements hook_search_access().
+ */
+function search_combine_search_access() {
+  if (!user_access('access search combine')) {
+    return FALSE;
+  }
+  foreach (_search_combine_get_modules('search_access') as $module) {
+    if (!module_invoke($module, 'search_access')) {
+      return FALSE;
+    }
+  }
+  return TRUE;
+}
+
+/**
+ * Implements hook_search_reset().
+ */
+function search_combine_search_reset() {
+  _search_combine_invoke_all('search_reset');
+}
+
+/**
+ * Implements hook_search_status().
+ */
+function search_combine_search_status() {
+  $remaining = 0;
+  $total = 0;
+  foreach (_search_combine_get_modules('search_status') as $module) {
+    $result = module_invoke($module, 'search_status');
+    $remaining += $result['remaining'];
+    $total += $result['total'];
+  }
+  return array('remaining' => $remaining, 'total' => $total);
+}
+
+/**
+ * Implements hook_search_admin().
+ */
+function search_combine_search_admin() {
+  $form['search_combine'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Search combine'),
+    'search_combine_modules' => array(
+      '#type' => 'checkboxes',
+      '#options' => _search_get_module_names(),
+      '#default_value' => variable_get('search_combine_modules', array('node', 'user')),
+      '#description' => t('Choose which modules are active in combined search.'),
+    ),
+  );
+  unset($form['search_combine']['search_combine_modules']['#options']['search_combine']);
+  
+  // Per module settings
+  $form += _search_combine_invoke_all('search_admin');
+  
+  return $form;
+}
+
+/**
+ * Implements hook_search_execute().
+ */
+function search_combine_search_execute($keys = NULL, $conditions = NULL) {
+  return _search_combine_invoke_all('search_execute', $keys, $conditions);
+}
+
+/**
+ * Invoke a hook on all active search modules.
+ */
+function _search_combine_invoke_all($hook) {
+  $results = array();
+  $args = func_get_args();
+  $hook = $args[0];
+  unset($args[0]);
+  foreach (_search_combine_get_modules($hook) as $module) {
+    if (module_hook($module, $hook)) {
+      $results_merge = call_user_func_array($module . '_' . $hook, $args);
+      if (is_array($results_merge)) {
+        $results = array_merge($results, $results_merge);
+      }
+    }
+  }
+  return $results;
+}
+
+/**
+ * Get all active search modules implementing a hook.
+ */
+function _search_combine_get_modules($hook) {
+  $modules = array();
+  foreach (variable_get('search_combine_modules', array('node', 'user')) as $module) {
+    if (module_hook($module, $hook) && $module != 'search_combine') {
+      $modules[] = $module;
+    }
+  }
+  return $modules;
+}
