@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the custom search module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function custom_search_i18n_install() {
+  db_update('system')
+    ->fields(array('weight' => 110))
+    ->condition('name', 'custom_search_i18n')
+    ->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function custom_search_i18n_uninstall() {
+	db_delete('variable')
+    ->condition('name', 'custom_search_i18n_%', 'LIKE')
+    ->execute();
+}

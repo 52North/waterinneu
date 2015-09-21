@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the custom search module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function custom_search_taxonomy_install() {
+  db_update('system')
+    ->fields(array('weight' => 101))
+    ->condition('name', 'custom_search_taxonomy')
+    ->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function custom_search_taxonomy_uninstall() {
+  db_delete('variable')
+    ->condition('name', 'custom_search_voc%', 'LIKE')
+    ->execute();
+  db_delete('variable')
+    ->condition('name', 'custom_search_taxonomy%', 'LIKE')
+    ->execute();
+  db_delete('variable')
+    ->condition('name', 'custom_search_blocks_%_voc%', 'LIKE')
+    ->execute();
+  db_delete('variable')
+    ->condition('name', 'custom_search_blocks_%_taxonomy%', 'LIKE')
+    ->execute();
+}
