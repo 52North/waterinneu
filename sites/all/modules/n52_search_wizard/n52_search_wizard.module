@@ -1,0 +1,161 @@
+<?php
+/*
+ * Copyright (C) 2015
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ *
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ *
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ *
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+ 
+//
+// Form creation
+//
+function n52_search_wizard_form($form, &$form_state) {
+	
+	$form ['expert'] = array (
+		'#type' => 'radios',
+		'#title' => t( 'Are you an expert?' ),
+		'#options' => array (
+			'expert_yes' => t('Yes, I am an expert.'),
+			'expert_no' => t('No, I am not an expert.'),
+		),
+	);
+	
+	$form['expert_domain'] = array (
+		'#type' => 'radios',
+		'#title' => t('Please select your domain:'),
+		'#options' => array (
+			'expert_domain_web' => t('I am a web developer.'),
+			'expert_domain_hydrology' => t('I am a hydrologist.'),
+		),
+		'#states' => array (
+				'visible' => array (
+						':input[name="expert"]' => array ('value' => 'expert_yes')
+				),
+		),
+	);
+	
+	$form['non_expert_demands'] = array (
+			'#type' => 'radios',
+			'#title' => t('What are you looking for?'),
+			'#options' => array (
+					'non_expert_demands_tools' => t('Tools'),
+					'non_expert_demands_projects' => t('Projects'),
+					'non_expert_demands_organisations' => t('Organisations'),
+			),
+			'#states' => array (
+					'visible' => array (
+							':input[name="expert"]' => array ('value' => 'expert_no')
+					),
+			),
+	);
+	
+	$form['submit_non_expert'] = array (
+			'#type' => 'submit',
+			'#value' => t('Search'),
+			'#states' => array (
+				'visible' => array (
+						array (
+								array (':input[name="non_expert_demands"]' => array ('value' => 'non_expert_demands_tools')),
+								'or',
+								array (':input[name="non_expert_demands"]' => array ('value' => 'non_expert_demands_projects')),
+								'or',
+								array (':input[name="non_expert_demands"]' => array ('value' => 'non_expert_demands_organisations')),
+						),
+						':input[name="expert"]' => array ('value' => 'expert_no'),
+				),
+			),
+			'#submit' => array ('n52_search_wizard_non_expert_search'),
+			'#name' => 'submit_non_expert',
+	);
+	
+	$form ['submit_hydrologist'] = array (
+			'#type' => 'submit',
+			'#value' => t('Search'), 
+			'#states' => array (
+					'visible' => array (
+							':input[name="expert_domain"]' => array ('value' => 'expert_domain_hydrology'),
+							':input[name="expert"]' => array ('value' => 'expert_yes'),
+					),
+			),
+			'#submit' => array ('n52_search_wizard_hydrologist_search'),
+			'#name' => 'submit_hydrologist',
+	);
+	
+	$form ['submit_web_expert'] = array (
+			'#type' => 'submit',
+			'#value' => t('Search'), 
+			'#states' => array (
+					'visible' => array (
+							':input[name="expert_domain"]' => array ('value' => 'expert_domain_web'),
+							':input[name="expert"]' => array ('value' => 'expert_yes'),
+					),
+			),
+			'#submit' => array ('n52_search_wizard_web_expert_search'),
+			'#name' => 'submit_web_expert',
+	);
+
+	return $form;
+}
+
+function n52_search_wizard_non_expert_search($form, &$form_state) {
+	# if something fails, we redirect to the user guide
+	$target = "/user-guide"; 
+	$demand = $form_state['values']['non_expert_demands'];
+	if ($demand) {
+		if ($demand === 'non_expert_demands_tools') {
+			$target = "/tools";
+		}
+		elseif ($demand === 'non_expert_demands_projects') {
+			$target = "/projects";
+		}
+		elseif ($demand === 'non_expert_demands_organisations') {
+			$target = "/organisations";
+		}
+	}
+	drupal_goto($target);
+}
+
+function n52_search_wizard_web_expert_search() {
+	drupal_goto("search/term/webdesign");
+}
+
+function n52_search_wizard_hydrologist_search() {
+	drupal_goto("tags/hydrology");
+}
+
+/**
+ * Implements hook_menu()
+ * 
+ * Form WebUI
+ */
+function n52_search_wizard_menu() {
+	$items ['search/wizard'] = array (
+			'title' => 'Search Wizard',
+			'description' => 'Search Wizard Description.',
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array ('n52_search_wizard_form'),
+			'access arguments' => array ('access content')
+	);
+	return $items;
+}

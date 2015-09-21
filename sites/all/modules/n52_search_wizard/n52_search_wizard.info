@@ -1,0 +1,3 @@
+core = "7.x"
+description = "Single page wizard resulting in predefined searches."
+name = "52N - Search Wizard"
