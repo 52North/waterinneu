@@ -1,1 +1,0 @@
-Defines fields which are controlled by web services. Create/Update/Delete of data is all done through web service calls.
