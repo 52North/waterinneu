@@ -1,0 +1,106 @@
+<p>Freelinking implements a filter for the easier creation of HTML
+links to other pages in the site or external sites with a wiki style
+format such as <code>[[indicator:identifier]]</code>.</p>
+
+<p>For example: <code>[[nodetitle:Page One]]</code> becomes:</p>
+
+<pre>
+&lt;a href="/node/1" title="Click to view a local node." class="freelink freelink-nodetitle freelink-internal"&gt;Page One&lt;/a&gt;
+</pre>
+
+<p>Note that there must be no space after the colon after the indicator.</p>
+
+<p>A number of ready-to-use filters are included in the
+<strong>Freelinking</strong> framework (e.g. Nodetitle. Nid, User,
+Google search, Drupal search, Drupal projects, Wikipedia, etc.).</p>
+
+<p>There is a framework that allow developers to add new plugins. Read
+PLUGIN.txt for more instructions regarding how to add new plugin.</p>
+<p>There is a framework that allow developers to add new plugins. Read
+the help file
+“<a href="creating-plugins">Creating plugins for Freelinking ver. 3</a>”
+for instructions regarding how to add new plugin.</p>
+
+
+<h2>Requirements</h2>
+
+<ul>
+<li><a href="https://www.drupal.org/project/advanced_help_hint">Advanced help hint</a>:<br/>
+Required to link help text to online help and advanced help.</li>
+</ul>
+
+<h2>Recommended modules</h2>
+
+<ul>
+<li><a href="https://www.drupal.org/project/advanced_help">Advanced help</a>:<br/>
+When this module is enabled, you will have access to extended online help.</li>
+</ul>
+
+
+<h2>Installation</h2>
+
+<ol>
+<li>Install as you would normally install a contributed drupal module. See: <a href="https://www.drupal.org/documentation/install/modules-themes/modules-7">Installing modules</a> for further information.</li>
+<li>Go to <em>Administration » Configuration » Text Formats</em> and activate the <em>Freelinking</em> filter for the text formats you want to facilitate freelinking for (e.g. Filtered HTML and Full HTML).</li>
+<li>If you plan to use freelinking for External links, deactivate the <em>Convert URLs into links</em> filter for the same text formats.</li>
+<li>Configure the module at <em>Administration » Configuration » Content authoring » Freelinking settings</em>.  See next section for details.</li>
+<li>Clean the cache.</li>
+</ol>
+
+<h2>Configuration</h2>
+
+<p>To configure the module, navigate to <em>Administration » Configuration »
+Content authoring » Freelinking settings</em>.</p>
+
+<p>The first setting is a pull-down menu to let you set the default
+indicator to use when no indicator is specified.  “Nodetitle” mimics
+previous versions of <strong>Freelinking</strong>.</p>
+
+<p>The global options and options to increase performance are global, and
+apply to all plugins. Please see the description of each checkbox to
+determine what each does.</p>
+
+<p>The rest of the configuration pages are for plugin-specific options.</p>
+
+<p>If you change the configiration, remember to press <em>Save
+configuration</em> to make the changes effective.</p>
+
+
+<p>If you change the configiration, remember to press <em>Save configuration</em> to make the changes effective.</p>
+
+
+<h2>Related modules</h2>
+
+<ul>
+<li>The freelinking package includes the <strong>Freelinking
+prepopulate</strong> submodule that provides a plugin to create new
+nodes. Nodetitle may use this a fallback to provide links to create
+content that does not exist. This submodule
+requires <strong>Prepopulate</strong>.</li>
+</ul>
+
+
+<h2>Troubleshooting</h2>
+
+<p>If you do not see freelinking working at all, first make sure that
+it is enabled for the text format you're using for testing.  To check
+if there is a conflict with other filters, try first to disable all
+other filters and only leave Freelinking activated.  Clean the cache
+and then test editing a node with a freelink and save it. If it works,
+try adding other input filters until you get to the right order in
+which they have to be in order to work correctly.</p>
+
+
+<h2>Maintainers</h2>
+
+<ul>
+<li><a href="https://www.drupal.org/user/812)">eafarris</a> (original creator)</li>
+<li><a href="https://www.drupal.org/u/grayside)">grayside</a></li>
+<li><a href="https://www.drupal.org/u/juampy)">juampy</a></li>
+<li><a href="https://www.drupal.org/u/gisle)">gisle</a> (current maintainer)</li>
+</ul>
+
+<p>Any help with development (patches, reviews, comments) are welcome.</p>
+
+
+

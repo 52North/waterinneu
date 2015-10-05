@@ -1,0 +1,16 @@
+name = Freelinking Prepopulate
+description = Provides plugins for Freelinking to prepopulate node create.
+package = Input filters
+core = 7.x
+dependencies[] = freelinking
+dependencies[] = prepopulate
+files[] = freelinking_prepopulate.install
+files[] = freelinking_prepopulate.module
+files[] = freelinking_prepopulate.utilities.inc
+
+; Information added by Drupal.org packaging script on 2015-04-13
+version = "7.x-3.8"
+core = "7.x"
+project = "freelinking"
+datestamp = "1428944099"
+

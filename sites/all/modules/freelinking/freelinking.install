@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the freelinking module.
+ */
+
+/**
+ * Implements hook_update_N().
+ *
+ * Input formats using Freelinking filters should not be cached.
+ */
+function freelinking_update_7000() {
+  $formats = db_select('filter', 'f')
+    ->fields('f', array('format'))
+    ->condition('module', 'freelinking')
+    ->condition('status', 1);
+  db_update('filter_format')
+    ->expression('cache', 0)
+    ->condition('format', $formats, 'IN')
+    ->execute();
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Check that plugin freelinking_path.inc has been deleted.
+ */
+function freelinking_update_7001() {
+  // Nothing here.
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Check that the module Advanced help hint has been enabled.
+ */
+function freelinking_update_7002() {
+  $enabled = module_enable(array('advanced_help_hint'));
+  if (!$enabled) {
+    module_disable(array('freelinking'), FALSE);
+    throw new DrupalUpdateException('Advanced help hint required.');
+  }
+}

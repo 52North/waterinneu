@@ -1,0 +1,17 @@
+<?php
+/**
+ * freelinking_prepopulate.install
+ *
+ * @file
+ * Provides plugins for node create for ver. 3 of Freelinking.
+ */
+
+/**
+ * Implements hook_disable().
+ */
+function freelinking_prepopulate_disable() {
+  $failover = variable_get('freelinking_nodetitle_failover', 'error');
+  if ('create' == $failover) {
+    variable_set('freelinking_nodetitle_failover', 'error');
+  }
+}

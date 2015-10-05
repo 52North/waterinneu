@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * @file
+ * TBA
+ */
+
+/**
+ * Helper function to generete a hint about available help.
+ *
+ * @param string $project
+ *   Name of project.
+ * @param string $doclink
+ *   URL to online documentation.  Example:https://www.drupal.org/node/2024005
+ * @param bool   $repo
+ *   Flag: Set TRUE if projects have texts in Advanced help framework.
+ *
+ * @return string
+ *   String with hint.
+ */
+function advanced_help_hint_docs($project, $doclink = NULL, $repo = FALSE) {
+  $output = '';
+  if ($doclink) {
+    $output .=
+      t('Please see the !url.',
+        array(
+          '!url' => l(t('online documentation'),
+          $doclink,
+          array('attributes' => array(
+            'title' => t('Link to documentation of the project online.'),
+          ))
+	))
+      );
+  }
+  if (module_exists('advanced_help')) {
+    $topics = advanced_help_get_topics();
+    if (!empty($output)) {
+      $output = $output . ' ';
+    }
+    if (!isset($topics[$project])) {
+      $output .=
+        t("Expected to find some help for project &#8220;!project&#8220; in the project's help-directory, but could not locate any.",
+          array(
+            '!project' => $project,
+          )
+        );
+      // Nothing more to do.
+      return $output;
+    }
+
+    $file = key($topics[$project]);
+    $ext = pathinfo($file, PATHINFO_EXTENSION);
+    if (empty($ext))  {
+      $output .=
+        t("Additional help is available in provided by !help.",
+           array(
+            '!help' =>  l('advanced help framework',
+              '/admin/help/ah/' . $project,
+              array('attributes' => array('title' => t('Link to advanced help.')))),
+         ));
+    }
+    else {
+    $output .=
+      t("Additional help is available in the project's “!readme” file.",
+        array(
+          '!readme' =>  l($file, '/help/' . $project .'/' . $file,
+           array('attributes' => array('title' => t('Link to included documentation.')))),
+        )
+      );
+    }
+
+  } elseif ($repo)  {
+    if (!empty($output)) {
+      $output = $output . ' ';
+    }
+    // Since advanced_help is not enabled we can't check to make sure help is available.
+    $output .=
+      t('If you install the !advhelp module, additional help may be available.',
+        array(
+          '!advhelp' => l(t('Advanced help'), 'https://www.drupal.org/project/advanced_help', array('attributes' => array('title' => t('Link to project.'))))
+        )
+      );
+  }
+  return $output;
+}

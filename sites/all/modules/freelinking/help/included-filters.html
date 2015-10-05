@@ -1,0 +1,159 @@
+<p>A number of ready-to-use filters are included in the
+<strong>Freelinking</strong> framework (e.g. Nodetitle. Nid, User,
+Google search, Drupal search, Drupal projects, Wikipedia, etc.).
+This help file describes all the included filters.</p>
+
+<p>The <strong>Freelinking</strong> link format is:</p>
+
+<pre>
+[[indicator:target|title|tooltip|arg1|arg2|…]]
+</pre>
+
+<p>Everything <em>except</em> the target is optional. If you do not
+specity a indicator the default one configured at Freelinking Settings
+page (<em>Administration » Configuration » Content authoring »
+Freelinking settings</em>) will be used.</p>
+
+<p>The indicator is used to select the what filter to use.</p>
+
+<p>There are three built-in filters (Nowiki, Showtext, Redact) These
+will not generate links.  In addition to these, the project includes a
+small set of plugin filters.  These are in the
+subdirectory <code>plugins</code> of the project.
+
+<p>Below is an overview of all the filters that is included in the project:</p>
+
+<h4>Nowiki (built-in)</h4>
+
+<p>Will strip the nowiki-indicator and show the rest, including the
+double brackets, verbatim.</p>
+
+<p>Example:<br/>
+<code>[[nowiki:this is not a freelink]]</code><br/>
+becomes:<br/>
+<code>[[this is not a freelink]]</code></p>
+
+<h4>Showtext (built-in)</h4>
+
+<p>similar to Nowiki, but will also strip double brackets before
+showing the text.</p>
+
+<p>Example:<br/>
+<code>[[showtext:this is not a freelink]]</code><br/>
+becomes:<br/>
+<code>this is not a freelink</code></p>
+
+<h4>Redact (built-in)</h4>
+
+<p>The Redact filter works like Showtext for logged in users, but will
+redact the content of marked up content before showing it to the
+anonymous user.</p>
+
+<p>Example:<br/>
+<code>[[redact:sensitive stuff]]</code><br/>
+becomes:<br/>
+<code>sensitive stuff</code><br/>
+for logged in users, and<br/>
+<code>******</code><br/>
+for anonymous users.</p>
+
+
+<h4>Nodetitle (<code>freelinking_nodetitle.inc</code>)</h4>
+
+<p>Example:<br/>
+<code>[[nodetitle:First page]]</code><br/>
+becomes:<br/>
+<code>&lt;a class="freelink freelink-nodetitle freelink-internal" title="Click to view a local node." href="/node/1">test&lt;/a&gt;</code></p>
+
+<p>Note: If you have two nodes with the same title, there is no way to
+control what node is linked to.  If you change the title of the page
+linked to, the freelink will no longer work.</p>
+
+<h4>Node nid (<code>freelinking_nid.inc</code>)</h4>
+
+<p>Example:<br/>
+<code>[[nid:2]]</code><br/>
+becomes:<br/>
+<code>&lt;a class="freelink freelink-nid freelink-internal" title="Click to view a local node." href="/node/2">First page&lt;/a&gt;</code></p>
+
+<h4>User profile - <code>freelinking_user.inc</code></h4>
+
+<p>Example:<br/>
+<code>[[user:1]]</code><br/>
+becomes:<br/>
+<code>&lt;a class="freelink freelink-user freelink-internal" title="Click to view a user profile." href="/user/1">admin&lt;/a&gt;</code></p>
+
+<p>Example:<br/>
+<code>[[user:admin]]</code><br/>
+becomes:<br/
+<code>&lt;a class="freelink freelink-user freelink-internal" title="Click to view a user profile." href="/user/1">admin&lt;/a&gt;</code></p>
+
+<h4>Path - <code>freelinking_path.inc</code></h4>
+
+<p>Example:<br/>
+<code>[[path:/breaking-news]]</code><br/>
+becomes:<br/>
+<code>&lt;a class="freelink freelink-path freelink-internal" title="Click to view a local node." href="/breaking-news">Breaking news&lt;/a&gt;</code></p>
+
+<h4>File - <code>freelinking_file.inc</code></h4>
+
+<p>Example:<br/>
+<code>[[file:logo.png]]</code><br/>
+becomes:<br/>
+<code>&lt;a class="freelink freelink-file freelink-internal" title="Click to view a local file." href="http://<siteroot>/sites/default/files/logo.png">logo.png&lt;/a&gt;</code></p>
+
+<h4>Search - <code>freelinking_search.inc</code></h4>
+
+<p>Example:<br/>
+<code>[[search:test]]</code><br/>
+becomes:<br/>
+<code>&lt;a class="freelink freelink-search freelink-internal" title="Search this site for contents like “test”." href="/search/node/test">test&lt;/a&gt;</code></p>
+
+<h4>External links - <code>freelinking_external.inc</code></h4>
+
+<p>Example:<br/>
+<code>[[https://groups.drupal.org/frontpage]]</code><br/>
+becomes:<br/>
+<code>&lt;a class="freelink freelink-external" title="Click to visit an external secure URL." href="https://groups.drupal.org/frontpage">https://groups.drupal.org/frontpage&lt;/a&gt;</code></p>
+
+<p>You may configure <strong>Freelinking</strong> to poll the URL for
+title and availability, but this may lead to slow page loads.</p>
+
+<p>Example:<br/>
+<code>[[google:drupal]]</code><br/>
+becomes:<br/>
+<code>&lt;a class="freelink freelink-google freelink-external" title="Search Google for contents like “drupal”." href="http://www.google.com/search?q=drupal&hl=en">Google Search "drupal"&lt;/a&gt;</code></p>
+
+<h4>Drupal.org (<code>freelinking_dev.inc</code>)</h4>
+
+<p>Use the short name of the project as the target.  You may configure
+<strong>Freelinking</strong> to poll the URL for title and
+availability, but this may lead to slow page loads.</p>
+
+<p>Example:<br/>
+<code>[[drupalproject:freelinking]]</code><br>
+becomes:<br/>
+<code>&lt;a class="freelink freelink-drupalproject freelink-external" title="Click to view project Drupal.org." href="http://drupal.org/project/freelinking">Drupal.org: “freelinking”&lt;/a&gt;</code></p>
+
+<p>Use the Drupal.org nid as the the target.  You may configure
+<strong>Freelinking</strong> to poll the URL for title and
+availability, but this may lead to slow page loads.</p>
+
+<p>Example:<br/>
+<code>[[drupalorg:1]]</code><br/>
+becomes:<br/>
+<code>&lt;a class="freelink freelink-drupalorgnid freelink-external" title="Click to view node on Drupal.org." href="http://drupal.org/node/1"&gt;Drupal.org: “#1”&lt;/a&gt;</code></p>
+
+
+<h4>Wikipedia, etc. (<code>freelinking_wiki.inc</code>)</h4>
+
+<p>The indicators supported by this plugin
+are: <code>wikibooks</code>, <code>wikipedia</code>,
+<code>wikinews</code>, <code>wikiquote</code>, <code>wikisource</code>
+and <code>wiktionary</code>.</p>
+
+
+<p>Example:<br/>
+<code>[[wikipedia:Main Page]]</code><br/>
+becomes:<br/>
+<code>&lt;a class="freelink freelink-wikipedia freelink-external" title="Click to visit a wikipedia page." href="http://en.wikipedia.org/wiki/Main_Page"&gt;Main_Page&lt;/a&gt;</code></p>

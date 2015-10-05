@@ -1,0 +1,344 @@
+<p>Freelinking ver. 3 uses a plugin system to enhance the freelinking
+syntax and enable different kinds of links. Plugins can be simple URL
+constructors, or can use more sophisticated methods and have complete
+control over the link and target text. The output of plugins can also
+be customized through various hooks and theme functions for better
+integration with other modules and site design.</p>
+
+<p>Having a small set of generally useful “easy-linking” plugins
+bundled with the project is only the first step Freelinking takes to
+help authors create links.  Freelinking also has a framework that help
+developers quickly create new “easy-linking” plugins for custom
+websites.</p>
+
+<p>Plugins can be created in two different ways. The recommended
+method is to create a new module, as a submodule of freelinking.
+However, you may also create a plugin as an include file.</p>
+
+
+<h2>Submodule</h2>
+
+<p>By packaging your plugin as a module, you may distribute it as a
+project through Drupal.org, make use of other modules with proper
+tracking of requirements, and make use of any Drupal hook functions
+without worrying about collisions with Freelinking's own
+behavior.</p>
+
+<p>If you publish your submodule on Drupal.org, post a message in the
+<a href="https://www.drupal.org/project/issues/freelinking">Freelinking issue queue</a>,
+calling attention to your project so it can be linked to from
+<strong>Freelinking</strong>'s project page.
+
+<p>A submodule can create a plugin for <strong>Freelinking</strong> by
+implementing
+<code>hook_freelinking()</code> to return the definition of
+your plugin as an element of an array, like so:</p>
+
+<pre>
+function mymodule_freelinking() {
+  $freelinking['myplugin'] =&gt; array(
+    'indicator' =&gt; '/myplugin/',
+    'translate' =&gt; array(' ' =&gt; '_'),
+    'replacement' =&gt; 'http://example.com/node/%1',
+  );
+  return $freelinking;
+}
+</pre>
+
+
+<h2>Include file</h2>
+
+<p>To create a simple freelinking plugin, just drop a “.inc” file in
+the plugins/ directory under Freelinking. By convention, these should
+be named “freelinking_<em>plugin</em>.inc”, where “plugin” is the name
+of the plugin.</p>
+
+<p>Each file should at least define one indicator, where the long
+version of the indicator is identical to the name of the plugin.
+However, it is possible to define multiple plugin indicators per file
+to denote slightly changed semantics.  See for example
+<code>freelinking_wiki.inc</code> for an example of this.</p>
+
+<p>The only difference in structure between an include file and a
+submodule is the lack of a <code>hook_freelinking()</code> function
+wrapper around the freelinking array that defines your plugin. In an
+include file, the example above would simple be:</p>
+
+<pre>
+$freelinking['myplugin'] =&gt; array(
+  'indicator' =&gt; '/myplugin/',
+  'translate' =&gt; array(' ' =&gt; '_'),
+  'replacement' =&gt; 'http://example.com/node/%1',
+);
+</pre>
+    
+<p>This functionality primarily exists for the ease of packaging
+default plugins with the <strong>Freelinking</strong> module, and to
+allow developers to add custom plugins to their site without going to
+the trouble of wrapping it in a module.</p>
+
+<p>However, if you create a format you think others may want to use,
+please create a new issue (“Contributed plugin …”) and upload the
+plugin code to the
+<a href="https://www.drupal.org/project/issues/freelinking">Freelinking issue queue</a>.
+If it passes community review, it will be included as a plugin with
+the next release of <strong>Freelinking</strong>.</p>
+
+<h2>The <code>$freelinking</code> array</h2>
+
+<p>The plugin's element in the <code>$freelinking</code> array is
+named after the plugin. In the example above of a plugin called
+“myplugin”, the element your plugin would add to the array would be
+<code>$freelinking['myplugin']</code>. Your element defines an
+array, with the following elements:</p>
+
+<ul>
+<li><code>indicator</code> [REQUIRED]  <br/>
+  The indicator is a string that defines a regular expression that
+  will be used to differentiate this freelink from other freelink
+  types. For our example, a good indicator value might be
+  <code>'/myplugin/'</code>. This means that freelinks for this plugin will look
+  like <code>[[myplugin:something]]</code>.  Freelinking uses the colon (“:”) as
+  the separator between the indicator and the link text. It should not
+  be part of the indicator string.</li>
+
+<li><code>translate</code> [OPTIONAL]<br/>
+  This is an array of characters that can be used to translate
+  characters in the link text to other characters that will be used in
+  the URL. The primary use case for this is to translate spaces into
+  underscores or dashes as different systems require. In the example
+  of our “wiki” plugin, the wiki family of websites uses underscores
+  instead of spaces, so we'll use a value for <code>'translate'</code> of
+  <code>array(' ' =&gt; '_')</code>. For reference, this array will be run through
+  the PHP function
+  [strtr()](http://http://us.php.net/manual/en/function.strtr.php).</li>
+
+<li><code>replacement</code> [REQUIRED (unless <code>callback</code> exists)]<br/>
+  For simple URL replacement freelinks, the <code>replacement</code>
+  is a string for the URL, where the special string <code>%1</code>
+  gets replaced by the link text in the freelink. For our example, if
+  we're going to https://www.drupal.org/node/something, we'd use the
+  replacement string “https://www.drupal.org/node/%1” and our freelink
+  text would be put in place of the %1. If you are using a URL
+  replacement style of freelink, the <code>replacement</code> string
+  is <em>required</em>.</li>
+
+<li><code>callback</code> [REQUIRED (unless <code>replacement</code> exists)] <br/>
+  More complex plugins can use a callback element in their array to
+  define a php function that will be used to come up with the
+  link. This function will be passed the entire match array of the
+  freelink as $target, with the target portion of the freelink in
+  <code>$target[1]</code>. This function is expected to return an html fragment
+  (most likely a link, but it wouldn't have to be a link). If your
+  plugin is not using <code>replacement,</code> then the <code>callback</code> element is
+  <em>required</em>.</li>
+
+<li><code>settings</code> [OPTIONAL]<br/>
+  The specified callback function for Freelinking settings. The
+  settings function should return an array of Form API elements under
+  the index of the plugin name.</li>
+
+<li><code>html</code> [OPTIONAL]<br/>
+  If set explicitly to FALSE, the plugin will not accept HTML as link
+  text.</li>
+
+<li><code>tip</code> [OPTIONAL]<br/>
+  A short (1-2 sentence) text to be shown to the user when hovering
+  over a link. It should be run through <code>t()</code> for
+  localization as demonstrated below. This is used as the default text
+  for filter tooltips (HTML <code>title</code> attribute).</li>
+
+<li><code>weight</code> [OPTIONAL]<br/>
+  Specify the weight to determine sort order. Otherwise counts as “0”.</li>
+
+<li><code>enabled</code> [OPTIONAL]<br/>
+  If set to FALSE, the indicator for the plugin will be ignored. As
+  such, syntax in the text will not activate the plugin. (Though
+  failover will still be able to.)</li>
+
+<li><code>failover</code> [OPTIONAL]<br/>
+  If this is set to an array, a select form will be built so the site
+  administrator can determine a preferred failover action. This does
+  nothing unless the developer follows up with
+  <code>variable_get('freelinking_pluginname_failover', '…')</code> in
+  the callback code. If you set it to a single value, that value will
+  be displayed in a disabled textfield in the configuration of the
+  plugin.</li>
+
+</ul>
+
+<p>So, a simple freelinking plugin only needs to include this
+array. Here's an entire plugin one might see in a very simple .inc
+file to link to a wiki page and some specific site:</p>
+
+<pre>
+$freelinking['myplugin'] =&gt; array(
+  'indicator' =&gt; '/my(plugin)/',
+  'translate' =&gt; array(' ' =&gt; '-'),
+  'replacement' =&gt; 'http://example.org/wiki/%1',
+  'tip' =&gt; t('Click to visit a wiki page at example.org.'),
+);
+</pre>
+
+<p>The plugins in <code>freelinking_wiki.inc</code> are examples of
+this type of plugin.</p>
+
+
+<h2>More complex plugins</h2>
+
+<p>The <code>callback</code> element of
+your <code>$freelinking['<em>plugin</em>']</code> array can define a
+PHP function that will be used to create the link. This function will
+get the target value for the link, and is expected to return a link.
+<strong>Freelinking</strong> will make the substition based on the return value of this
+function.</p>
+
+<p>By default, the target value passed to the callback function looks
+like this:</p>
+
+<pre>
+array(
+  'target' =&gt; <em>target</em>,
+  'dest' =&gt; <em>target</em>,
+);
+</pre>
+
+<p>However, if the text uses the vertical bar (“|”) to separate the
+elements, it more elements is added to the array. This is the expanded
+usage:</p>
+
+<pre>
+array(
+  'target' =&gt; <em>target match</em>,
+  'dest' =&gt; <em>destination</em>,
+  'text' =&gt; <em>anchor link text</em>,
+  'tooltip' =&gt; <em>tool tip (title attribute)</em>,
+  'other' =&gt; array(<em>miscellaneous arguments</em>),
+);
+</pre>
+
+<p>The syntax is:</p>
+
+<pre>
+[[indicator:target|title|tooltip|arg1|arg2|…]]
+</pre>
+
+<p>Most of the plugins that ship with freelinking use the callback.
+You may want to look at them to learn from example.</p>
+
+<h3>Failover</h3>
+
+<p>Your plugin callback may specify a “failover” or fallback action in
+the event they choke. For example: If the specified node title cannot
+be found in the database, a link to create a node with that title can
+be put in place as a failover fallback action.</p>
+
+<p>Plugins specify failover by returning;</p>
+
+<pre>
+array(
+  'plugin' =&gt; '<em>failover plugin</em>'
+);
+</pre>
+
+<p>When lookup fails or access is denied. the failover plugin is
+triggered to take over trying to process the target. You can pass a
+modified target in this way by just adding <code>'target' =&gt;
+$target</code> to the return array. You may also specify:</p>
+
+<pre>
+array(
+  'error' =&gt; 'error message'
+);
+</pre>
+
+<p>to provide an error message.</p>
+
+<p>You can use
+<code>variable_get('freelinking_pluginname_failover', '…')</code>
+to get the preferred failover for your plugin. This is based on the
+failover element in the plugin definition or on creating a form
+element by that name in your settings.</p>
+
+
+<h3>Settings</h3>
+
+<p>If your plugin will require some settings, they can be defined in a
+“freelinking_<em>plugin</em>_settings” function in your include file,
+or explicitly using the <code>settings</code> element of the plugin's
+freelinking array (necessary for modules). This function should return
+a Drupal FormAPI array of the various settings your plugin will
+need. The module will add these form controls to the project'
+settings page. Your plugin can use these settings in
+the <code>$freelinking</code> array, or the callback function, as
+necessary.</p>
+
+<p>A simple example of how to use settings is part of the wiki plugins
+(<code>freelinking_wiki.inc</code>). It uses one setting to control
+the language code that the URL to Wikipedia should use. The setting is
+used in the
+<code>$freelinking['wikipedia']['replacement']</code> element, using the language
+code as part of the URL.</p>
+
+<p>The <code>freelinking_nodetitle.inc</code> plugin also uses the
+settings array. This plugin has settings to control what happens when
+a link cannot be found, and is able to restrict the lookup of content
+to certain content types.  This is an example of using settings within
+the callback function.</p>
+
+
+<h2>The freelinking API</h2>
+
+<p>The Freelinking API allows you to customize freelinking plugins you
+create specfically for your site.</p>
+
+<p>For API functions and examples of their use, see <code>freelinking.api.php</code>.
+They are also suumarized below:</p>
+
+
+<h3>hook_freelink_alter()</h3>
+
+
+<p>By implementing this function, you can adjust the elements of the
+link array before it is rendered into an HTML link. For example:</p>
+
+<pre>
+function mymodule_freelink_alter(&$link, $target, $plugin_name, $plugin) {
+  static $count;
+  $link[2]['attributes']['name'] = 'freelink-' . $count++;
+}
+</pre>
+
+<p>This function will alter every link created by freelinking to
+insert the number of links found in the filtered text as an
+anchor. You might also make a more targeted alteration:</p>
+
+<pre>
+function mymodule_freelink_alter(&$link, $target, $plugin_name, $plugin) {
+  if ($plugin_name == 'google') {
+    $link[2]['attributes']['title'] .= ' Isn't Google nifty?';
+  }
+}
+</pre>
+
+<p>For documentation on the structure of the <code>$link</code> array
+here, read up on the
+<a href="https://api.drupal.org/api/drupal/includes!common.inc/function/l/7">API entry for the <code>l()</code> function</a>.</p>
+
+
+<h3>Theme functions</h3>
+
+<pre>
+theme('freelink', $plugin, $link);
+</pre>
+
+<p>This is the function that renders the <code>$link</code> array we
+“altered” above into HTML. You can override this, like any theme
+function.</p>
+
+<pre>
+theme('freelink_error', $plugin, $message);
+</pre>
+
+<p>This function renders an error message provided by a plugin for
+display in the page.</p>

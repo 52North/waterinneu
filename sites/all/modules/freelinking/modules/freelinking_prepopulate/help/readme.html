@@ -1,0 +1,68 @@
+<p>This sub-module creates a prepopulated link to a create node. It is
+used primarily as a failover for the <em>Nodetitle</em> plugin
+for <strong>Freelinking</strong>.  When this module is enabled, the
+failure option “Add a link to create content” is added to the failover
+pull down menu for <em>Nodetitle</em>.</p>
+
+<p>The following items will be inherited from the the parent node and
+used to prepopulate the new node:</p>
+
+<ul>
+<li>Title (inherited from the <em>target</em> of the freelink markup).</li>
+<li>Book outline (requires the <strong>Book</strong> module to be enabled).</li>
+<li>Taxonomy term  (requires the <strong>Taxonomy</strong> module to be enabled). [N.I.]</li>
+<li>OG context  (requires the <strong>OG Context</strong> module to be enabled). [N.I.]</li>
+</ul>
+
+<p><strong>Note:</strong> <em>Taxonomy term</em> and <em>OG context</em> does not work and is currently disabled.</p>
+
+<p>For example, the following freelink: <code>[[nodetitle:Does not exist]]</code>,  produces:</p>
+
+<pre>
+&lt;a class="freelink freelink-createnode notfound freelink-internal" title="node/add/article" href="/node/add/article?edit%5Btitle%5D=Does%20not%20exist&parent=836"&gt;Does not exist&lt;/a&gt;
+</pre>
+
+<p>Here, the <code>parent=836</code> identifies the book the new node shall be part of.</p>
+
+
+<h2>Requirements</h2>
+
+<p>Requires <a href="https://www.drupal.org/project/prepopulate">Prepopulate</a>.</p>
+
+
+<h2>Recommended modules</h2>
+
+<ul>
+<li>Book:<br/>
+When the core <strong>Book</strong> module is enabled, create node links will be prepopulated as being part of the same book as the parent node.</li>
+</ul>
+
+
+<h2>Installation</h2>
+
+<ol>
+<li>Install as you would normally install a contributed drupal module. See: “<a href="https://www.drupal.org/documentation/install/modules-themes/modules-7">Installing modules</a>” for further information.</li>
+<li>Configure the module at <em>Administration » Configuration » Content authoring » Freelinking settings</em>.  There should be a panel headed “<em>Freelinking_prepopulate Plugin Settings</em>”, and a new option (“Add a link to create content”) added to the failover menu for <em>Nodetitle</em>.</li>
+</ol>
+
+
+<h2>API and utilities</h2>
+
+<p>For API functions and examples of their use, see <code>freelinking_prepopulate.api.php</code>.</p>
+
+<p>The Freelinking Prepopulate Utilities
+(<code>freelinking_prepopulate.utilities.inc</code>) are intended to
+help with the centralized definition of form fields that may be of
+interest for Prepopulate-based plugins, and automating the process of
+extracting information for such fields.</p>
+
+
+<h2>Maintainers</h2>
+
+<ul>
+<li><a href="https://www.drupal.org/u/grayside)">grayside</a></li>
+<li><a href="https://www.drupal.org/u/juampy)">juampy</a></li>
+<li><a href="https://www.drupal.org/u/gisle)">gisle</a> (current maintainer)</li>
+</ul>
+
+<p>Any help with development (patches, reviews, comments) are welcome.</p>
