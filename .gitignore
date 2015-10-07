@@ -1,10 +1,8 @@
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings*.php
 
-# Ignore eclipse stuff
-.settings
-.buildpath
-.project
-
 # Ignore apache sepcific files
 **/.htaccess
+
+# ignore drupal specific stuff
+config-backup/test*
