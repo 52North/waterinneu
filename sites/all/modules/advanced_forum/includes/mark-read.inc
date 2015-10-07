@@ -12,15 +12,15 @@ function advanced_forum_get_mark_read_link($tid = 0, &$links = array()) {
   if (advanced_forum_markasread_access() && !in_array($tid, variable_get('forum_containers', array()))) {
     if ($tid) {
       $links['mark-read']['title'] = t('Mark all topics read');
-      $links['mark-read']['href'] = "forum/markasread/$tid";
+      $links['mark-read']['href'] = "marketplace/markasread/$tid";
 
-      return l(t('Mark all topics read') . '<span class="image-replace"></span>', "forum/markasread/$tid", array('html' => TRUE));
+      return l(t('Mark all topics read') . '<span class="image-replace"></span>', "marketplace/markasread/$tid", array('html' => TRUE));
     }
     else {
-      $links['mark-read']['title'] = t('Mark all forums read');
-      $links['mark-read']['href'] = "forum/markasread";
+      $links['mark-read']['title'] = t('Mark all topics read');
+      $links['mark-read']['href'] = "marketplace/markasread";
 
-      return l(t('Mark all forums read') . '<span class="image-replace"></span>', "forum/markasread", array('html' => TRUE));
+      return l(t('Mark all forums read') . '<span class="image-replace"></span>', "marketplace/markasread", array('html' => TRUE));
     }
   }
 }

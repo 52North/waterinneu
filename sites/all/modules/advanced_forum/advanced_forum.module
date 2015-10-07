@@ -392,6 +392,7 @@ function advanced_forum_links_alter(&$object, $view_mode, $object_type = 'node')
 
   // List the keys we are interested in.
   $affected_keys = array(
+  	'comment-approve',
     'post-edit',
     'comment-edit',
     'post-delete',
@@ -1194,19 +1195,19 @@ function advanced_forum_forum_tools($tid = 0) {
 
   ctools_include('jump-menu');
   if ($tid > 0) {
-    $select[url("marketplace/active", array('query' => array('forum[]' => $tid)))] = t("View active posts in this forum");
-    $select[url("marketplace/unanswered", array('query' => array('forum[]' => $tid)))] = t("View unanswered posts in this forum");
+    $select[url("marketplace/active", array('query' => array('forum[]' => $tid)))] = t("View active posts in this marketplace");
+    $select[url("marketplace/unanswered", array('query' => array('forum[]' => $tid)))] = t("View unanswered posts in this marketplace");
 
     if ($user->uid) {
-      $select[url("marketplace/new", array('query' => array('forum[]' => $tid)))] = t("View new posts in this forum");
+      $select[url("marketplace/new", array('query' => array('forum[]' => $tid)))] = t("View new posts in this marketplace");
     }
   }
   else {
-    $select[url("marketplace/active")] = t("View active forum posts");
-    $select[url("marketplace/unanswered")] = t("View unanswered forum posts");
+    $select[url("marketplace/active")] = t("View active marketplace posts");
+    $select[url("marketplace/unanswered")] = t("View unanswered marketplace posts");
 
     if ($user->uid) {
-      $select[url("marketplace/new")] = t("View new forum posts");
+      $select[url("marketplace/new")] = t("View new marketplace posts");
     }
   }
 
@@ -1223,7 +1224,7 @@ function advanced_forum_forum_tools($tid = 0) {
     $select[url($mark_as_read['mark-read']['href'])] = $mark_as_read['mark-read']['title'];
   }
 
-  $options['choose'] = t("- Forum Tools -");
+  $options['choose'] = t("- Marketplace Tools -");
 
   // Create and return the jump menu.
   $form = drupal_get_form('ctools_jump_menu', $select, $options);
@@ -1318,7 +1319,7 @@ function advanced_forum_forum_jump($tid = 0) {
   if ($tid > 0) {
     $forum_tree = taxonomy_get_tree($vid);
     foreach ($forum_tree as $forum) {
-      $select[url("marketplace/" . $forum->tid)] = str_repeat("-", $forum->depth) . $forum->name;
+      $select[url("forum/" . $forum->tid)] = str_repeat("-", $forum->depth) . $forum->name;
     }
   }
 

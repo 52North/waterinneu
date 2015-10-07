@@ -227,6 +227,12 @@ a.author-pane-link:active {
   background: url(images/post_edit.png) no-repeat;
 }
 
+/* Approve */
+.comment-approve .af.button-small span,
+.post-approve .af-button-small span {
+  background: url(images/ap_user_online.png) no-repeat;
+}
+
 /* Delete */
 .comment-delete .af-button-small span,
 .post-delete .af-button-small span {

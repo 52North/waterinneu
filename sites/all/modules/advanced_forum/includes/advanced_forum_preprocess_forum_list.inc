@@ -256,7 +256,7 @@ function advanced_forum_stripe($reset = FALSE) {
  */
 function advanced_forum_process_container($container) {
   // Create the link to the container.
-  $container->link = url("marketplace/$container->tid");
+  $container->link = url("forum/$container->tid");
 
   // Sanitise the name and description so they can be safely printed.
   $container->name = check_plain($container->name);
@@ -301,7 +301,7 @@ function advanced_forum_process_forum($forum) {
   $forum->is_container = FALSE;
 
   // Create the link to the forum.
-  $forum->link = url("marketplace/$forum->tid");
+  $forum->link = url("forum/$forum->tid");
 
   // Sanitise the name and description so they can be safely printed.
   // We don't do this for subforum names because that is sent through l()
@@ -345,7 +345,7 @@ function advanced_forum_process_forum($forum) {
     $forum->new_topics = _forum_topics_unread($forum->tid, $user->uid);
     if ($forum->new_topics) {
       $forum->new_topics_text = format_plural($forum->new_topics, '1 new', '@count new');
-      $forum->new_topics_link = url("marketplace/$forum->tid", array('fragment' => 'new'));
+      $forum->new_topics_link = url("forum/$forum->tid", array('fragment' => 'new'));
     }
 
     // New posts are optional because the query is slow.
@@ -355,7 +355,7 @@ function advanced_forum_process_forum($forum) {
       if ($forum->new_posts) {
         $forum->new_posts_text = format_plural($forum->new_posts, '1 new', '@count new');
         $forum->new_posts_path = "forum/$forum->tid";
-        $forum->new_posts_link = url("marketplace/$forum->tid", array('fragment' => 'new'));
+        $forum->new_posts_link = url("forum/$forum->tid", array('fragment' => 'new'));
       }
     }
   }
