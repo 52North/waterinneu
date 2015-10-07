@@ -78,7 +78,8 @@ function wysiwyg_ckeditor_version($editor) {
     // version:'CKEditor 3.0 SVN',revision:'3665'
     // version:'3.0 RC',revision:'3753'
     // version:'3.0.1',revision:'4391'
-    if (preg_match('@version:\'(?:CKEditor )?([\d\.]+)(?:.+revision:\'([\d]+))?@', $line, $version)) {
+    // version:"4.5.4",revision:"d4677a3"
+    if (preg_match('@version:[\'"](?:CKEditor )?([\d\.]+)(?:.+revision:[\'"]([[:xdigit:]]+))?@', $line, $version)) {
       fclose($library);
       // Version numbers need to have three parts since 3.0.1.
       $version[1] = preg_replace('/^(\d+)\.(\d+)$/', '${1}.${2}.0', $version[1]);

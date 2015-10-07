@@ -73,11 +73,10 @@ ol ol {
 }
 
 ul li {
-  background: url(/skins/acquia_marina_default/images/green-bullet.png) no-repeat 0 2px;
   list-style: none;
-  list-style-image: none;
+  list-style-image: url(/sites/all/themes/fusion_marina/skins/fusion_marina_default/images/green-bullet.png);
   margin-bottom: 5px;
-  padding: 0 0 0 15px;
+  margin-left: 5px;
 }
 
 blockquote p {
@@ -87,13 +86,13 @@ blockquote p {
 }
 
 blockquote {
-  background: url(/skins/acquia_marina_default/images/close-quote.png) no-repeat 100% 100%; /* LTR */
+  background: url(/sites/all/themes/fusion_marina/skins/fusion_marina_default/images/close-quote.png) no-repeat 100% 100%; /* LTR */
   color: #5a6a78;
   margin: 10px 0;
 }
 
 blockquote p:first-child {
-  background: url(/skins/acquia_marina_default/images/open-quote.png) no-repeat 0 100%;  /* LTR */
+  background: url(/sites/all/themes/fusion_marina/skins/fusion_marina_default/images/open-quote.png) no-repeat 0 100%;  /* LTR */
   padding: 0 0 0 20px;/* LTR */
 }
 
