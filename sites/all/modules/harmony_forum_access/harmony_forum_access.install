@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * harmony_forum_access.install
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function harmony_forum_access_uninstall() {
+  variable_del('harmony_forum_access_enabled_terms');
+}

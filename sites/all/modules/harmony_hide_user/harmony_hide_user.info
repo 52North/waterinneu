@@ -1,0 +1,16 @@
+name = Harmony - Hide user
+description = Provide the ability for users to hide other specific users content.
+core = 7.x
+package = Harmony
+
+dependencies[] = harmony_core
+dependencies[] = flag
+
+stylesheets[all][] = harmony-hide-user.css
+
+; Information added by Drupal.org packaging script on 2015-02-07
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "harmony_hide_user"
+datestamp = "1423318081"
+

@@ -1,0 +1,13 @@
+name = Placeholder
+description = Add support for the HTML5 placeholder attribute, with backward browser compatibility.
+core = 7.x
+package = Other
+
+dependencies[] = libraries (>=7.x-2.2)
+
+; Information added by Drupal.org packaging script on 2014-09-27
+version = "7.x-1.1"
+core = "7.x"
+project = "placeholder"
+datestamp = "1411850355"
+

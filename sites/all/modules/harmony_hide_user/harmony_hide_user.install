@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function harmony_hide_user_uninstall() {
+  variable_del('harmony_hide_user_flag_name');
+}
