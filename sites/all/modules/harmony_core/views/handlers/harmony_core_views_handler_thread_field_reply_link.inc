@@ -29,7 +29,7 @@ class harmony_core_views_handler_thread_field_reply_link extends harmony_core_vi
     // Output the link if the user has access, otherwise provide a link
     // via the login page.
     if (harmony_core_thread_access_callback('create', $thread)) {
-      $this->options['alter']['path'] = 'post/add';
+      $this->options['alter']['path'] = 'marketplace/reply';
       $this->options['alter']['query'] = array('field_harmony_thread' => $thread->thread_id);
       $this->options['alter']['link_class'] = 'reply-link';
       $return_link = TRUE;
@@ -41,7 +41,7 @@ class harmony_core_views_handler_thread_field_reply_link extends harmony_core_vi
       if (!$user->uid) {
         $this->options['alter']['path'] = 'user';
         $this->options['alter']['query'] = array(
-          'destination' => url('post/add', array(
+          'destination' => url('marketplace/reply', array(
             'query' => array(
               'field_harmony_thread' => $thread->thread_id,
             ),

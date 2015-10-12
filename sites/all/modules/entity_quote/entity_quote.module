@@ -415,7 +415,7 @@ function entity_quote_entity_view($entity, $type, $view_mode, $langcode) {
           if ($thread_properties['can_post_in']) {
             $links['entity_quote'] = array(
               'title' => t('Quote'),
-              'href' => "post/add",
+              'href' => "marketplace/reply",
               'attributes' => array('title' => t('Quote this post in your reply.')),
               'query' => array(
                 'field_harmony_thread' => $thread_id,

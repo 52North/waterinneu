@@ -383,7 +383,7 @@ function harmony_core_post_build_content($post, $view_mode = 'full', $langcode =
   if (!empty($thread_properties) && $thread_properties['can_post_in'] && (user_access('create harmony_posts') || $show_reply_to_anon)) {
     $links['reply'] = array(
       'title' => t('Reply'),
-      'href' => 'post/add',
+      'href' => 'marketplace/reply',
       'attributes' => array(
         'id' => "post-$post->post_id-reply",
         'title' => t('Reply directly to this post'),

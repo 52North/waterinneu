@@ -808,7 +808,7 @@ function harmony_core_menu() {
     'file path' => $includes_dir,
   );
 
-  $items['post/add'] = array(
+  $items['marketplace/reply'] = array(
     'title' => 'Create post',
     'page callback' => 'harmony_core_post_add',
     'access arguments' => array('create harmony_posts'),
@@ -817,7 +817,7 @@ function harmony_core_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['post/%harmony_post'] = array(
+  $items['marketplace/reply/%harmony_post'] = array(
     'title callback' => 'entity_label',
     'title arguments' => array('harmony_post', 1),
     'page callback' => 'harmony_core_post_view_page',
@@ -828,13 +828,13 @@ function harmony_core_menu() {
     'file path' => $includes_dir,
   );
 
-  $items['post/%harmony_post/view'] = array(
+  $items['marketplace/reply/%harmony_post/view'] = array(
     'title' => 'View',
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => -10,
   );
 
-  $items['post/%harmony_post/edit'] = array(
+  $items['marketplace/reply/%harmony_post/edit'] = array(
     'title' => 'Edit',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('harmony_core_post_form', 1),
@@ -847,7 +847,7 @@ function harmony_core_menu() {
     'file path' => $includes_dir,
   );
 
-  $items['post/%harmony_post/delete'] = array(
+  $items['marketplace/reply/%harmony_post/delete'] = array(
     'title' => 'Delete',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('harmony_post_delete_confirm', 1),
@@ -860,7 +860,7 @@ function harmony_core_menu() {
     'file path' => $includes_dir,
   );
 
-  $items['post/%harmony_post/revisions'] = array(
+  $items['marketplace/reply/%harmony_post/revisions'] = array(
     'title' => 'Revisions',
     'page callback' => 'harmony_core_post_revisions_view',
     'page arguments' => array(1),
@@ -884,7 +884,7 @@ function harmony_core_menu() {
     'file path' => $includes_dir,
   );
 
-  $items['post/%harmony_post/revisions/%/revert'] = array(
+  $items['marketplace/reply/%harmony_post/revisions/%/revert'] = array(
     'title' => 'Revert to earlier revision',
     'load arguments' => array(3),
     'page callback' => 'drupal_get_form',
@@ -895,7 +895,7 @@ function harmony_core_menu() {
     'file path' => $includes_dir,
   );
 
-  $items['post/%harmony_post/revisions/%/delete'] = array(
+  $items['marketplace/reply/%harmony_post/revisions/%/delete'] = array(
     'title' => 'Delete earlier revision',
     'load arguments' => array(3),
     'page callback' => 'drupal_get_form',
@@ -917,7 +917,7 @@ function harmony_core_menu() {
     'file path' => $includes_dir,
   );
 
-  $items['post/%harmony_post/permalink'] = array(
+  $items['marketplace/reply/%harmony_post/permalink'] = array(
     'title_callback' => 'entity_label',
     'title arguments' => array('harmony_post', 1),
     'page callback' => 'harmony_core_post_permalink_callback',
