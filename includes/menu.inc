@@ -775,15 +775,17 @@ function _menu_translate(&$router_item, $map, $to_arg = FALSE) {
     $tab_parent_map = explode('/', $router_item['tab_parent']);
   }
   for ($i = 0; $i < $router_item['number_parts']; $i++) {
-    if ($link_map[$i] == '%') {
-      $link_map[$i] = $path_map[$i];
-    }
-    if (isset($tab_root_map[$i]) && $tab_root_map[$i] == '%') {
-      $tab_root_map[$i] = $path_map[$i];
-    }
-    if (isset($tab_parent_map[$i]) && $tab_parent_map[$i] == '%') {
-      $tab_parent_map[$i] = $path_map[$i];
-    }
+  	if (isset($path_map[$i])) {
+      if ($link_map[$i] == '%') {
+        $link_map[$i] = $path_map[$i];
+      }
+      if (isset($tab_root_map[$i]) && $tab_root_map[$i] == '%') {
+        $tab_root_map[$i] = $path_map[$i];
+      }
+      if (isset($tab_parent_map[$i]) && $tab_parent_map[$i] == '%') {
+        $tab_parent_map[$i] = $path_map[$i];
+      }
+  	}
   }
   $router_item['href'] = implode('/', $link_map);
   $router_item['tab_root_href'] = implode('/', $tab_root_map);
