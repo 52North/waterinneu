@@ -17,6 +17,7 @@ function search_api_views_views_data() {
       $key = 'search_api_index_' . $index->machine_name;
       $table = &$data[$key];
       $type_info = search_api_get_item_type_info($index->item_type);
+      $table['table']['entity type'] = NULL;
       $table['table']['group'] = t('Indexed @entity_type', array('@entity_type' => $type_info['name']));
       $table['table']['base'] = array(
         'field' => 'search_api_id',
