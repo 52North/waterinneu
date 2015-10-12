@@ -411,7 +411,7 @@ function harmony_core_post_build_content($post, $view_mode = 'full', $langcode =
   if ((user_access('reply as new harmony_thread') || $show_reply_as_to_anon) && !variable_get('harmony_core_disable_new_content', FALSE)) {
     $links['reply_as_new_thread'] = array(
       'title' => t('Reply as a new thread'),
-      'href' => 'thread/add',
+      'href' => 'marketplace/add',
       'attributes' => array(
         'id' => "post-$post->post_id-reply-as-new",
         'title' => t('Create a new thread as a reply to this post'),

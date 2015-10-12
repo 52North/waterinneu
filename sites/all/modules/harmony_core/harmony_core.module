@@ -735,7 +735,7 @@ function harmony_core_menu() {
   );
 
   // Standard CRUD menu items.
-  $items['thread/add'] = array(
+  $items['marketplace/add'] = array(
     'title' => 'Create thread',
     'page callback' => 'harmony_core_thread_add',
     'page arguments' => array(2),
@@ -1013,7 +1013,7 @@ function harmony_core_menu() {
 
 function harmony_core_thread_add_redirect($type) {
   $type = $type === 'harmony_thread' ? '' : '/' . str_replace('_', '-', $type);
-  drupal_goto("thread/add{$type}");
+  drupal_goto("marketplace/add{$type}");
 }
 
 /**
