@@ -111,7 +111,7 @@ function harmony_forum_access_menu_alter(&$items) {
   chain_menu_access_chain($items, 'taxonomy/term/%taxonomy_term', 'harmony_forum_access_term_access', array(2));
 
   // Thread add.
-  chain_menu_access_chain($items, 'marketplace/add', 'harmony_forum_access_term_access_create');
+  chain_menu_access_chain($items, 'thread/add', 'harmony_forum_access_term_access_create');
 }
 
 /**

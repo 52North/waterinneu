@@ -40,7 +40,7 @@ class harmony_core_views_handler_post_field_link extends views_handler_field_ent
   function render_link($post, $values) {
     if (harmony_core_post_access_callback('view', $post)) {
       $this->options['alter']['make_link'] = TRUE;
-      $this->options['alter']['path'] = $post->status == HARMONY_PUBLISHED ? "marketplace/reply/$post->post_id/permalink" : "marketplace/reply/$post->post_id";
+      $this->options['alter']['path'] = $post->status == HARMONY_PUBLISHED ? "post/$post->post_id/permalink" : "post/$post->post_id";
       $text = !empty($this->options['text']) ? $this->tokenize_value(check_plain($this->options['text'])) : t('view');
 
       return $text;

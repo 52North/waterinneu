@@ -55,7 +55,7 @@ class harmony_core_views_handler_post_field extends views_handler_field {
     if (!empty($this->options['link_to_post']) && !empty($this->additional_fields['post_id'])) {
       if ($data !== NULL && $data !== '') {
         $this->options['alter']['make_link'] = TRUE;
-        $this->options['alter']['path'] = "marketplace/reply/" . $this->get_value($values, 'post_id');
+        $this->options['alter']['path'] = "post/" . $this->get_value($values, 'post_id');
         if (isset($this->aliases['language'])) {
           $languages = language_list();
           $language = $this->get_value($values, 'language');

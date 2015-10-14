@@ -343,7 +343,7 @@ function harmony_core_post_build_content($post, $view_mode = 'full', $langcode =
   if (user_access('administer harmony forum content') || !empty($thread_properties) && !$thread_properties['is_locked'] && harmony_core_post_access_callback('update', $post)) {
     $links['edit'] = array(
       'title' => t('Edit'),
-      'href' => "marketplace/reply/$post->post_id/edit",
+      'href' => "post/$post->post_id/edit",
       'attributes' => array(
         'id' => "post-$post->post_id-edit",
         'title' => t('Edit this post'),
@@ -383,7 +383,7 @@ function harmony_core_post_build_content($post, $view_mode = 'full', $langcode =
   if (!empty($thread_properties) && $thread_properties['can_post_in'] && (user_access('create harmony_posts') || $show_reply_to_anon)) {
     $links['reply'] = array(
       'title' => t('Reply'),
-      'href' => 'marketplace/reply',
+      'href' => 'post/add',
       'attributes' => array(
         'id' => "post-$post->post_id-reply",
         'title' => t('Reply directly to this post'),
@@ -411,7 +411,7 @@ function harmony_core_post_build_content($post, $view_mode = 'full', $langcode =
   if ((user_access('reply as new harmony_thread') || $show_reply_as_to_anon) && !variable_get('harmony_core_disable_new_content', FALSE)) {
     $links['reply_as_new_thread'] = array(
       'title' => t('Reply as a new thread'),
-      'href' => 'marketplace/add',
+      'href' => 'thread/add',
       'attributes' => array(
         'id' => "post-$post->post_id-reply-as-new",
         'title' => t('Create a new thread as a reply to this post'),
@@ -468,7 +468,7 @@ function harmony_post_delete_submit($form, &$form_state) {
     unset($_GET['destination']);
   }
   $post = $form['post']['#value'];
-  $form_state['redirect'] = array('marketplace/reply/' . $post->post_id . '/delete', array('query' => $destination));
+  $form_state['redirect'] = array('post/' . $post->post_id . '/delete', array('query' => $destination));
 }
 
 function harmony_post_delete_confirm($form, &$form_state, $post) {
@@ -497,7 +497,7 @@ function harmony_post_delete_confirm($form, &$form_state, $post) {
   else {
     $form = confirm_form($form,
       t('Are you sure you want to delete %title?', array('%title' => $post->title)),
-      'marketplace/reply/' . $post->post_id,
+      'post/' . $post->post_id,
       t('This action cannot be undone.'),
       t('Delete'),
       t('Cancel')
@@ -652,7 +652,7 @@ function harmony_core_ajax_post_replies($post, $view_mode = 'full', $langcode = 
  */
 function harmony_core_post_revision_revert_confirm($form, $form_state, $post_revision) {
   $form['#post_revision'] = $post_revision;
-  return confirm_form($form, t('Are you sure you want to revert to the revision from %revision-date?', array('%revision-date' => format_date($post_revision->timestamp, variable_get('harmony_core_date_type', 'medium'), variable_get('harmony_core_date_format', '')))), 'marketplace/reply/' . $post_revision->post_id . '/revisions', '', t('Revert'), t('Cancel'));
+  return confirm_form($form, t('Are you sure you want to revert to the revision from %revision-date?', array('%revision-date' => format_date($post_revision->timestamp, variable_get('harmony_core_date_type', 'medium'), variable_get('harmony_core_date_format', '')))), 'post/' . $post_revision->post_id . '/revisions', '', t('Revert'), t('Cancel'));
 }
 
 /**
@@ -667,7 +667,7 @@ function harmony_core_post_revision_revert_confirm_submit($form, &$form_state) {
 
   watchdog('harmony', 'Post: reverted %title revision %revision.', array('%title' => $post_revision->title, '%revision' => $post_revision->vid));
   drupal_set_message(t('Post %title has been reverted back to the revision from %revision-date.', array('%title' => $post_revision->title, '%revision-date' => format_date($post_revision->timestamp, variable_get('harmony_core_date_type', 'medium'), variable_get('harmony_core_date_format', '')))));
-  $form_state['redirect'] = 'marketplace/reply/' . $post_revision->post_id . '/revisions';
+  $form_state['redirect'] = 'post/' . $post_revision->post_id . '/revisions';
 }
 
 /**
@@ -687,7 +687,7 @@ function harmony_core_post_revision_revert_confirm_submit($form, &$form_state) {
  */
 function harmony_core_post_revision_delete_confirm($form, $form_state, $post_revision) {
   $form['#post_revision'] = $post_revision;
-  return confirm_form($form, t('Are you sure you want to delete the revision from %revision-date?', array('%revision-date' => format_date($post_revision->timestamp, variable_get('harmony_core_date_type', 'medium'), variable_get('harmony_core_date_format', '')))), 'marketplace/reply/' . $post_revision->post_id . '/revisions', t('This action cannot be undone.'), t('Delete'), t('Cancel'));
+  return confirm_form($form, t('Are you sure you want to delete the revision from %revision-date?', array('%revision-date' => format_date($post_revision->timestamp, variable_get('harmony_core_date_type', 'medium'), variable_get('harmony_core_date_format', '')))), 'post/' . $post_revision->post_id . '/revisions', t('This action cannot be undone.'), t('Delete'), t('Cancel'));
 }
 
 /**
@@ -700,7 +700,7 @@ function harmony_core_post_revision_delete_confirm_submit($form, &$form_state) {
   if ($result) {
     watchdog('harmony', 'Deleted %title revision %revision.', array('%title' => $post_revision->title, '%revision' => $post_revision->vid));
     drupal_set_message(t('Revision from %revision-date %title has been deleted.', array('%revision-date' => format_date($post_revision->timestamp, variable_get('harmony_core_date_type', 'medium'), variable_get('harmony_core_date_format', '')), '%title' => $post_revision->title)));
-    $form_state['redirect'] = 'marketplace/reply/' . $post_revision->post_id;
+    $form_state['redirect'] = 'post/' . $post_revision->post_id;
     if (db_query('SELECT COUNT(vid) FROM {post_revision} WHERE post_id = :post_id', array(':post_id' => $post_revision->post_id))->fetchField() > 1) {
       $form_state['redirect'] .= '/revisions';
     }

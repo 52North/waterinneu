@@ -483,15 +483,15 @@ function theme_harmony_moderation_post_reports($variables) {
   $links = array(
     'view' => array(
       'title' => t('View the post'),
-      'href' => 'marketplace/reply/' . $post->post_id,
+      'href' => 'post/' . $post->post_id,
     ),
     'edit' => array(
       'title' => t('Edit the post'),
-      'href' => 'marketplace/reply/' . $post->post_id . '/edit',
+      'href' => 'post/' . $post->post_id . '/edit',
     ),
     'delete' => array(
       'title' => t('Delete the post'),
-      'href' => 'marketplace/reply/' . $post->post_id . '/delete',
+      'href' => 'post/' . $post->post_id . '/delete',
     ),
     'whitelist' => array(
       'title' => flag_create_link('harmony_post_report_whitelist', $post->post_id),

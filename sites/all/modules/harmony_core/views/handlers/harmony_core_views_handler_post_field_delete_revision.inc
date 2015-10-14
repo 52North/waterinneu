@@ -14,7 +14,7 @@ class harmony_core_views_handler_post_field_delete_revision extends harmony_core
   function render_link($entity, $values) {
     if (harmony_core_post_revision_access_callback('delete', $entity)) {
       $this->options['alter']['make_link'] = TRUE;
-      $this->options['alter']['path'] = "marketplace/reply/$entity->post_id/revisions/$entity->vid/delete";
+      $this->options['alter']['path'] = "post/$entity->post_id/revisions/$entity->vid/delete";
       $this->options['alter']['query'] = drupal_get_destination();
 
       $text = !empty($this->options['text']) ? check_plain($this->options['text']) : t('Delete');

@@ -111,7 +111,7 @@ function template_preprocess_harmony_post(&$variables) {
     $variables['thread_post_url'] = harmony_core_post_thread_url($thread_id, $post->post_id);
     $variables['belongs_to_thread'] = TRUE;
   }
-  $variables['url'] = url("marketplace/reply/$post->post_id");
+  $variables['url'] = url("post/$post->post_id");
   $variables['permalink_url'] = $variables['url'];
   $variables['link_created'] = $variables['thread_post_url'] && $post->status == HARMONY_PUBLISHED && $post->hidden != HARMONY_HIDDEN;
   $variables['created'] = format_date($post->created, variable_get('harmony_core_date_type', 'medium'), variable_get('harmony_core_date_format', ''));
@@ -157,7 +157,7 @@ function template_preprocess_harmony_post(&$variables) {
     $revision_count = db_query('SELECT COUNT(vid) FROM {harmony_post_revision} WHERE post_id = :post_id', array(':post_id' => $post->post_id))->fetchField();
     if ($revision_count > 1) {
       // Reduce the count by one as we don't count the original revision.
-      $variables['revisions'] = l(format_plural($revision_count - 1, '1 edit', '@count edits'), "marketplace/reply/$post->post_id/revisions");
+      $variables['revisions'] = l(format_plural($revision_count - 1, '1 edit', '@count edits'), "post/$post->post_id/revisions");
     }
   }
 
@@ -524,7 +524,7 @@ function theme_harmony_listing_header($variables) {
   $text = $variables['link_text'];
   $attrs = !empty($variables['link_attrs']) && is_array($variables['link_attrs']) ? $variables['link_attrs'] : array();
 
-  return '<div class="harmony-listing-header clearfix">' . l($text, 'marketplace/add', $attrs) . '</div>';
+  return '<div class="harmony-listing-header clearfix">' . l($text, 'thread/add', $attrs) . '</div>';
 }
 
 /**
