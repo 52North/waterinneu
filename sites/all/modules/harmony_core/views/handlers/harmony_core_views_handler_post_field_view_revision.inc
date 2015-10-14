@@ -65,7 +65,7 @@ class harmony_core_views_handler_post_field_view_revision extends views_handler_
   function render_link($entity, $values) {
     if (fieldable_panels_panes_access('view', $entity)) {
       $this->options['alter']['make_link'] = TRUE;
-      $this->options['alter']['path'] = "post/$entity->post_id/revisions/$entity->vid";
+      $this->options['alter']['path'] = "marketplace/reply/$entity->post_id/revisions/$entity->vid";
       $text = !empty($this->options['text']) ? check_plain($this->options['text']) : t('view');
       return $text;
     }

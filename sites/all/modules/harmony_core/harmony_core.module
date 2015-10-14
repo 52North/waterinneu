@@ -765,7 +765,7 @@ function harmony_core_menu() {
     }
   }
 
-  $items['thread/%harmony_thread'] = array(
+  $items['marketplace/%harmony_thread'] = array(
     'title callback' => 'entity_label',
     'title arguments' => array('harmony_thread', 1),
     'page callback' => 'harmony_core_thread_view_page',
@@ -782,7 +782,7 @@ function harmony_core_menu() {
     'weight' => -10,
   );
 
-  $items['thread/%harmony_thread/edit'] = array(
+  $items['marketplace/%harmony_thread/edit'] = array(
     'title' => 'Edit',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('harmony_core_thread_form', 1),
@@ -795,7 +795,7 @@ function harmony_core_menu() {
     'file path' => $includes_dir,
   );
 
-  $items['thread/%harmony_thread/delete'] = array(
+  $items['marketplace/%harmony_thread/delete'] = array(
     'title' => 'Delete',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('harmony_thread_delete_confirm', 1),
@@ -961,7 +961,7 @@ function harmony_core_menu() {
       ),
       'harmony_post' => array(
         'label' => 'Post',
-        'path' => 'post/%harmony_post',
+        'path' => 'marketplace/reply/%harmony_post',
         'arg' => 1,
       ),
     );
@@ -1661,7 +1661,7 @@ function harmony_thread_type_load($type) {
  */
 function harmony_core_post_uri($entity) {
   return array(
-    'path' => 'post/' . $entity->post_id,
+    'path' => 'marketplace/reply/' . $entity->post_id,
   );
 }
 
@@ -3579,7 +3579,7 @@ function harmony_core_post_form($form, &$form_state, $post) {
     }
     else {
       $cancel_options = array(
-        'path' => 'post/' . $post->post_id,
+        'path' => 'marketplace/reply/' . $post->post_id,
       );
     }
   }
@@ -3659,7 +3659,7 @@ function harmony_core_post_form_submit($form, &$form_state) {
     );
   }
   else {
-    $form_state['redirect'] = "post/$post->post_id";
+    $form_state['redirect'] = "marketplace/reply/$post->post_id";
   }
 
   // Hooks ahoy.
@@ -4850,7 +4850,7 @@ function harmony_core_post_permalink_callback($post) {
   global $user;
   $wrapper = entity_metadata_wrapper('harmony_post', $post);
 
-  $path = 'post/' . $post->post_id;
+  $path = 'marketplace/reply/' . $post->post_id;
   $options = array();
 
   // In the case that the post is unpublished check to see if the user has
@@ -4887,7 +4887,7 @@ function harmony_core_post_property_get_permalink($data, array $options, $name, 
     $path = harmony_core_post_thread_url($thread_id, $data->post_id);
   }
   else {
-    $path = url('post/' . $data->post_id);
+    $path = url('marketplace/reply/' . $data->post_id);
   }
 
   return $path;
