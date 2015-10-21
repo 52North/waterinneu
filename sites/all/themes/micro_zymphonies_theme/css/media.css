@@ -1,0 +1,162 @@
+@media screen and (max-width: 1152px) {
+
+}
+
+@media screen and (max-width: 960px) {
+  
+  body aside,
+  body #content,
+  #top-area .column,
+  #footer-area .column{
+    float: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    clear: both;
+  }
+
+  #footer,
+  #page-wrap,
+  #footer_wrapper{
+    padding: 0 15px;
+  }
+
+  .top_left, 
+  .top_right,
+  .two-col-img .region{
+    float: none;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  #logo,
+  #site-title{
+    display: inline-block;
+    text-align: center;
+    float: none;
+    vertical-align: top;
+  }
+
+  .top_right { margin-bottom: 0; }
+
+  .field-name-field-images .field-item{
+    width: 50%;
+  }
+
+  .footer_credit{ padding: 10px; }
+
+  .slideshow-wrap{
+    padding: 0;
+  }
+
+}
+
+@media screen and (max-width: 640px) {
+
+  #main-menu ul {
+    display: none;
+  }
+
+  #main-menu li ul {
+    position: static;
+    border: 0;
+  }
+
+  #main-menu li ul ul {
+    margin: 0 !important;
+    border: 0;
+  }
+
+  #main-menu ul,
+  #main-menu li {
+    float: none;
+    width: 100%;
+  }
+
+  #main-menu {
+    border: 0;
+    float: none;
+  }
+
+  #main-menu a {
+    width: 100%;
+    padding: 12px;
+    color: #fff;
+    background: #5197E5;
+    border-radius: 0;
+    margin: 0;
+    text-align: center;
+    border-bottom: 1px solid #6ABBDF;
+  }
+
+  #main-menu li:hover >a{
+    color: #fff;
+  }
+
+  #main-menu li a.active{
+    background: #5197E5;
+  }
+
+  #main-menu li li a {
+    text-align: center;
+    font-size: 14px;
+    background: #6AA9EF;
+    border-top: 1px solid #3F88DA;
+    color: #fff;
+    padding: 12px;
+    border-bottom: 0;
+  }
+
+  #main-menu li:hover > ul,
+  #main-menu li li:hover > ul,
+  #main-menu li li li:hover > ul {
+    display: none;
+  }
+
+  #main-menu li.expanded >a{
+    background-image: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .drop-down-toggle {
+    display: block;
+  }
+
+  #main-menu .nav-toggle {
+    display: block;
+    font-size: 15px;
+    font-weight: normal;
+    background: #18222B;
+    color: white;
+    margin: 0;
+    letter-spacing: 1px;
+    text-align: center;
+    background: url(../images/mobile-menu.png) right 14px #18222B no-repeat;
+    padding: 15px;
+  }
+
+  #main-menu ul.menu li {
+    margin: 0;
+    width: 100%;
+  }
+
+  .theme-default .nivo-caption{
+    display: none !important;
+  }
+
+}
+
+@media screen and (max-width: 440px) {
+
+  .field-name-field-images .field-item{
+    width: 100%;
+  }
+
+  .footer_credit p{
+    width: 100%;
+    text-align: center;
+  }
+
+}

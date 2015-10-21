@@ -1,0 +1,54 @@
+name = Micro Zymphonies Theme
+description = Micro Zymphonies Theme<br/>Developed by <a href="http://www.zymphonies.com">Zymphonies</a> & Designed by <a href="http://www.freebiezz.com">FreeBiezz</a>.<br/>Contact us for Drupal Design & Development <a href="mailto:info@zymphonies.com">info@zymphonies.com</a> 
+core = 7.x
+
+engine = phptemplate
+stylesheets[all][] = css/font-awesome.css
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/media.css
+scripts[] = js/custom.js
+
+regions[slideshow]       = Slideshow
+regions[front_welcome]   = Front welcome
+regions[top_first]       = First top
+regions[top_second]      = Second top
+regions[top_third]       = Third top
+regions[two_col1_block1] = Two col-1 block one
+regions[two_col1_block2] = Two col-1 block two
+regions[two_col2_block1] = Two col-2 block one
+regions[two_col2_block2] = Two col-2 block two
+regions[sidebar_first]   = First Sidebar
+regions[sidebar_second]  = Second Sidebar
+regions[content]         = Content
+regions[bottom_widget_1] = Bottom widget 1
+regions[bottom_widget_2] = Bottom widget 2
+regions[bottom_widget_3] = Bottom widget 3
+regions[footer_first]    = First Bottom
+regions[footer_second]   = Second Bottom
+regions[footer_third]    = Third Bottom
+regions[footer_forth]    = Forth Bottom
+
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = comment_user_verification
+features[] = favicon
+features[] = main_menu
+features[] = secondary_menu
+
+settings[breadcrumbs]  = 1
+settings[social_links]  = 1
+settings[twitter_url] = "https://twitter.com/zymphonies"
+settings[facebook_url] = "https://www.facebook.com/zymphonies"
+settings[gplus_profile_url] = "https://plus.google.com/u/1/+ZymphoniesTechnologies/"
+settings[linkedin_profile_url] = "http://www.linkedin.com/company/zymphonies"
+settings[pinterest_profile_url] = "http://www.pinterest.com/zymphonies"
+settings[youtube_profile_url] = "http://www.youtube.com"
+; Information added by Drupal.org packaging script on 2015-03-23
+version = "7.x-1.0"
+core = "7.x"
+project = "micro_zymphonies_theme"
+datestamp = "1427133182"
+
