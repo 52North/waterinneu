@@ -1,6 +1,7 @@
 
 .search-form {
   margin-bottom: 1em;
+  float: right;
 }
 .search-form input {
   margin-top: 0;
