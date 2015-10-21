@@ -241,7 +241,7 @@ function fusion_core_preprocess_region(&$vars) {
   if (in_array($vars['region'], $sidebar_regions)) {
     $vars['classes_array'][] = 'sidebar';
   }
-
+  
 }
 
 /**

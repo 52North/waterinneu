@@ -1,3 +1,11 @@
+/* Top-Level Elements in one line
+-------------------------------------------------------------- */
+.n52_oneline {
+	display: flex;
+	align-items: center;
+}
+
+
 
 /* Margin, Padding, Border Resets
 -------------------------------------------------------------- */
