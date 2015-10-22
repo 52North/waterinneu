@@ -41,9 +41,6 @@
  * @see template_process()
  */
 ?>
-<?php if (strcmp($block->region, 'header_top') === 0 && strpos($classes, 'first')): ?>
-<div style="display:flex; align-items: flex-start;">
-<?php endif;?>
 <div id="block-<?php print $block->module . '-' . $block->delta; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <div class="inner clearfix gutter">
   	<div class="inner-wrapper">
@@ -61,6 +58,3 @@
 	  </div><!-- /inner-wrapper -->
   </div><!-- /block-inner -->
 </div><!-- /block -->
-<?php if (strcmp($block->region, 'header_top') === 0 && strpos($classes,'last')): ?>
-</div>
-<?php endif;?>

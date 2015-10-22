@@ -275,6 +275,11 @@ function fusion_core_preprocess_block(&$vars) {
   // Special treatment for node_top and node_bottom regions.
   // They are rendered inside of the $content region, so they need to be adjusted to fit the grid properly.
   $assign_grid_units = ($vars['block']->region == 'node_top' || $vars['block']->region == 'node_bottom') ? FALSE : TRUE;
+  
+  // add class to header top menu block
+  if ($vars['block']->region =='header_top' && $vars['block']->module == 'menu') {
+  	$vars['content'] = "<div id=\"navcontainer\">" .$vars['content'] . "</div>"; 
+  }
 }
 
 
