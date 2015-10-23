@@ -1,0 +1,13 @@
+name = "Migrate WaterInnEU"
+description = "Migrate WaterInnEU Invetory data."
+package = "Migration"
+core = 7.x
+dependencies[] = taxonomy
+dependencies[] = image
+dependencies[] = comment
+dependencies[] = migrate
+dependencies[] = list
+dependencies[] = number
+dependencies[] = node_reference
+
+files[] = organisation.inc
