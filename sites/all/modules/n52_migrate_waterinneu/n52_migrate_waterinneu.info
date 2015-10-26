@@ -1,13 +1,12 @@
 name = "Migrate WaterInnEU"
-description = "Migrate WaterInnEU Invetory data."
+description = "Migrate WaterInnEU Inventory data."
 package = "Migration"
 core = 7.x
 dependencies[] = taxonomy
-dependencies[] = image
-dependencies[] = comment
 dependencies[] = migrate
-dependencies[] = list
-dependencies[] = number
-dependencies[] = node_reference
 
-files[] = organisation.inc
+
+files[] = n52_migrate_waterinneu.migrate.inc
+files[] = includes/country.inc
+files[] = includes/keyword.inc
+files[] = includes/organisation.inc
