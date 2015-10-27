@@ -30,6 +30,10 @@ class OrganisationMigration extends N52Migration {
 
 	public function __construct($arguments) {
 		parent::__construct($arguments);
+		
+		$domains = variable_get('link_extra_domains');
+		$merged_domains = array_unique(array_merge($domains,array('media','wales')));
+		variable_set('link_extra_domains', $merged_domains);
 			
 		$this->description =
 		t('Migrate organisations from WaterInnEU Inventory');
@@ -40,12 +44,13 @@ class OrganisationMigration extends N52Migration {
 		$columns = array (
 				// "Source": ('Fieldname', 'Description')
 				0 => array ('Code', t('Numeric identifier of the Organisation in the Inventory')),
-				1 => array ('Class', t('Classification')),
-				2 => array ('Name', t('Organisation Name/Title')),
-				3 => array ('Country', t('The name of the home country in English')),
-				4 => array ('Country_code', t('2char Country Code ')),
-				5 => array ('Homepage', t('Website URL')),
-				6 => array ('Keywords', t('String with comma separated keywords')),
+				1 => array ('Class_code', t('Classification as code')),
+				2 => array ('Class', t('Classification')),
+				3 => array ('Name', t('Organisation Name/Title')),
+				4 => array ('Country', t('The name of the home country in English')),
+				5 => array ('Country_code', t('2char Country Code ')),
+				6 => array ('Homepage', t('Website URL')),
+				7 => array ('Keywords', t('String with comma separated keywords')),
 		);
 		$options = array ('header_rows' => 1);
 		$path = DRUPAL_ROOT . '/' .
@@ -82,8 +87,15 @@ class OrganisationMigration extends N52Migration {
 			->issueGroup(t('Done'));
 			
 		$this->addFieldMapping('field_class', 'Class')
+			->separator(",")
 			->description(t('Organisation classification'))
 			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_class:create_term')
+		->defaultValue(TRUE)
+		->issueGroup(t('Done'));
+		$this->addFieldMapping('field_class:ignore_case')
+		->defaultValue(TRUE)
+		->issueGroup(t('Done'));
 			
 		$this->addFieldMapping('title', 'Name')
 			->description(t('Incoming "Name" is mapped to drupal "title"'))
@@ -92,22 +104,27 @@ class OrganisationMigration extends N52Migration {
 		$this->addFieldMapping('field_country_term', 'Country')
 			->description(t('English name of the home country of the organisation.'))
 			->issueGroup(t('Done'));
-
 		$this->addFieldMapping('field_country_term:create_term')
-			->defaultValue(true);
-		
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
 		$this->addFieldMapping('field_country_term:ignore_case')
-			->defaultValue(true);
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
 
 		$this->addFieldMapping('field_tags', 'Keywords')
 			->separator(",")
 			->description(t('Keywords like tags for the organisation.'))
 			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_tags:create_term')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_tags:ignore_case')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
 		
 		$this->addFieldMapping('field_website', 'Homepage')
 			->description(t('Homepage-URL of the organisation'))
-			->issueGroup(t('Implementor Issues'));
-		
+			->issueGroup(t('Done'));
 		$this->addFieldMapping('field_website:title', NULL)
 			->defaultValue(t('Website'))
 			->issueGroup(t('Done'));
@@ -116,7 +133,7 @@ class OrganisationMigration extends N52Migration {
 			->description(t('Inventory internal ID used for linking projects with organisations.'))
 			->issueGroup(t('Done'));
 		
-		$this->addUnmigratedSources(array ('Country_code'));
+		$this->addUnmigratedSources(array ('Country_code', 'Class_code'));
 		
 		$this->addUnmigratedDestinations(array (
 			'uid',
@@ -131,15 +148,13 @@ class OrganisationMigration extends N52Migration {
 			'translate',
 			'revision_uid',
 			'is_new',
+			'field_class:source_type',
+			'field_country_term:source_type',
 			'field_tags:source_type',
-			'field_tags:create_term',
-			'field_tags:ignore_case',
-			'field_type',
 			'field_website:attributes',
 			'field_website:language',
 			'field_portals',
 			'field_projects',
-			'field_country_term:source_type',
 			'path',
 			'pathauto',
 			'comment'
