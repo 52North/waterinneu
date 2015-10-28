@@ -49,6 +49,11 @@ function n52_migrate_waterinneu_migrate_api() {
  				'group_name' => 'waterinneu',
  				'soft_dependencies' => array ('Countries', 'Keywords'), 
  			),
+ 			'Projects' => array (
+ 				'class_name' => 'ProjectMigration',
+ 				'group_name' => 'waterinneu',
+ 				'soft_dependencies' => array ('Organisations'),
+ 			),
  		),
  	);
  	return $api;

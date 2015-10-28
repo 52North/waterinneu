@@ -91,11 +91,11 @@ class OrganisationMigration extends N52Migration {
 			->description(t('Organisation classification'))
 			->issueGroup(t('Done'));
 		$this->addFieldMapping('field_class:create_term')
-		->defaultValue(TRUE)
-		->issueGroup(t('Done'));
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
 		$this->addFieldMapping('field_class:ignore_case')
-		->defaultValue(TRUE)
-		->issueGroup(t('Done'));
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
 			
 		$this->addFieldMapping('title', 'Name')
 			->description(t('Incoming "Name" is mapped to drupal "title"'))
@@ -136,28 +136,28 @@ class OrganisationMigration extends N52Migration {
 		$this->addUnmigratedSources(array ('Country_code', 'Class_code'));
 		
 		$this->addUnmigratedDestinations(array (
-			'uid',
-			'created',
-			'changed',
-			'status',
-			'promote',
-			'sticky',
-			'revision',
-			'log',
-			'tnid',
-			'translate',
-			'revision_uid',
-			'is_new',
-			'field_class:source_type',
-			'field_country_term:source_type',
-			'field_tags:source_type',
-			'field_website:attributes',
-			'field_website:language',
-			'field_portals',
-			'field_projects',
-			'path',
-			'pathauto',
-			'comment'
+            'changed',
+            'comment',
+            'created',
+            'field_class:source_type',
+            'field_country_term:source_type',
+            'field_portals',
+            'field_projects',
+            'field_tags:source_type',
+            'field_website:attributes',
+            'field_website:language',
+            'is_new',
+            'log',
+            'path',
+            'pathauto',
+            'promote',
+            'revision',
+            'revision_uid',
+            'status',
+            'sticky',
+            'tnid',
+            'translate',
+            'uid',
 		));
 	}
 }

@@ -5,8 +5,8 @@ core = 7.x
 dependencies[] = taxonomy
 dependencies[] = migrate
 
-
 files[] = n52_migrate_waterinneu.migrate.inc
 files[] = includes/country.inc
 files[] = includes/keyword.inc
 files[] = includes/organisation.inc
+files[] = includes/project.inc

@@ -34,9 +34,21 @@ class ProjectMigration extends N52Migration {
 // 		$domains = variable_get('link_extra_domains');
 // 		$merged_domains = array_unique(array_merge($domains,array('media','wales')));
 // 		variable_set('link_extra_domains', $merged_domains);
+
+// 		$vocabularies = taxonomy_get_vocabularies();
+		// 1 = tags
+		// 9 = location
+		$tags = taxonomy_get_tree(9);
+		
+		foreach ($tags as &$tag) {
+			if (strpos($tag->name,",")) {
+				// tag name contains "," => remove it
+				taxonomy_term_delete($tag->tid);
+			}
+		}
 			
 		$this->description =
-		t('Migrate projects from WaterInnEU Inventory');
+			t('Migrate projects from WaterInnEU Inventory');
 			
 		//
 		// SOURCE
@@ -71,12 +83,17 @@ class ProjectMigration extends N52Migration {
 				25 => array ('Approach', t('')),
 				26 => array ('Comments', t('')),
 				27 => array ('Companies', t('')),
-				28 => array ('Company names', t(''))
+				28 => array ('Company names', t('')),
 		);
-		$options = array ('header_rows' => 1);
+		$options = array (
+			'header_rows' => 1,
+			'escape' => '\\',
+			'enclosure' => '|',
+			'delimter' => ',',
+		);
 		$path = DRUPAL_ROOT . '/' .
-				drupal_get_path('module', 'n52_migrate_waterinneu')	.
-				'/csv_files/projects.csv';
+			drupal_get_path('module', 'n52_migrate_waterinneu')	.
+			'/csv_files/projects.csv';
 			
 		$this->source = new MigrateSourceCSV($path, $columns, $options);
 			
@@ -89,11 +106,11 @@ class ProjectMigration extends N52Migration {
 		// MAPPING
 		//
 		$source_key = array (
-				'Code' => array (
+				'Name' => array (
 						'type' => 'varchar',
 						'not null' => TRUE,
-						'legnth' => TRUE,
-						'description' => t('Name as identifier of the Project in the Inventory'),
+						'length' => 255,
+						'description' => t('Name as identifier of the Project in the Inventory.'),
 				)
 					
 		);
@@ -102,12 +119,214 @@ class ProjectMigration extends N52Migration {
 
 		$this->map = new MigrateSQLMap($machine_name, $source_key, $destination_key);
 		
+		$this->addFieldMapping('title','Name')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_website', 'URL')
+			->description(t('Homepage-URL of the project'))
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_website:title', NULL)
+			->defaultValue(t('Website'))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_partners_countries_of_orig','Partners_from_country_names')
+			->separator(",")
+			->description(t(''))
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_partners_countries_of_orig:create_term')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_partners_countries_of_orig:ignore_case')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_location','Location')
+			->separator(",")
+			->description(t(''))
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_location:create_term')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_location:ignore_case')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_bounding_box','bbox')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_administrative_aggregation','Administrative Aggregation Level')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_administrative_aggregation:create_term')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_administrative_aggregation:ignore_case')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_hydrolocagical_aggregation','Hydrological Aggregation Level')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_hydrolocagical_aggregation:create_term')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_hydrolocagical_aggregation:ignore_case')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_administrative_data_collec','Administrative Data Collection')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_administrative_data_collec:create_term')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_administrative_data_collec:ignore_case')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_hydrological_data_collecti','Hydrological Data Collection')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_hydrological_data_collecti:create_term')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_hydrological_data_collecti:ignore_case')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_end_date','End date')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_report_available_','Report')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_raw_data','Raw data')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_metadata_level','Metadata level')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_hardware','Hardware')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_software','Softw./appl.')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_model','Model')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_policy_brief','Pol./Guide')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_guideline','Pol./Guide')
+		->description(t(''))
+		->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_observation_data','Meas. data')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_model_data','Model data')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_administrative_data','Admin. data')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_tags','Keywords')
+			->separator(",")
+			->description(t(''))
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_tags:create_term')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		$this->addFieldMapping('field_tags:ignore_case')
+			->defaultValue(TRUE)
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_approach','Approach')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_comments','Comments')
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
+		$this->addFieldMapping('field_organisations','Company names')
+			->separator(",")
+			->description(t(''))
+			->issueGroup(t('Done'));
+		
 		$this->addUnmigratedSources(array ('Partners from', 'Aggr. level', 'Data coll.', 'Project', 'Companies'));
 		
 		$this->addUnmigratedDestinations(array (
-			'path',
-			'pathauto',
-			'comment'
+            'changed',
+            'comment',
+            'created',
+            'field_administrative_aggregation:source_type',
+            'field_administrative_data_collec:source_type',
+            'field_bounding_box:bottom',
+            'field_bounding_box:geo_type',
+            'field_bounding_box:geohash',
+            'field_bounding_box:lat',
+            'field_bounding_box:left',
+            'field_bounding_box:lon',
+            'field_bounding_box:right',
+            'field_bounding_box:top',
+            'field_end_date:rrule',
+            'field_end_date:timezone',
+            'field_end_date:to',
+            'field_hydrolocagical_aggregation:source_type',
+            'field_hydrological_data_collecti:source_type',
+            'field_location:source_type',
+            'field_logo',
+            'field_logo:alt',
+            'field_logo:destination_dir',
+            'field_logo:destination_file',
+            'field_logo:file_class',
+            'field_logo:file_replace',
+            'field_logo:preserve_files',
+            'field_logo:source_dir',
+            'field_logo:title',
+            'field_logo:urlencode',
+            'field_partners_countries_of_orig:source_type',
+            'field_partners_from',
+            'field_published_tools',
+            'field_report',
+            'field_report:attributes',
+            'field_report:language',
+            'field_report:title',
+            'field_standards_accounted_for',
+            'field_standards_accounted_for:create_term',
+            'field_standards_accounted_for:ignore_case',
+            'field_standards_accounted_for:source_type',
+            'field_tags:source_type',
+            'field_website:attributes',
+            'field_website:language',
+            'is_new',
+            'language',
+            'log',
+            'path',
+            'pathauto',
+            'promote',
+            'revision',
+            'revision_uid',
+            'status',
+            'sticky',
+            'tnid',
+            'translate',
+            'uid',
 		));
 	}
 }
