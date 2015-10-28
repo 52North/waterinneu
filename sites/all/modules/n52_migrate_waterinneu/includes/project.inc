@@ -27,6 +27,32 @@
  * Public License for more details.
  */
 class ProjectMigration extends N52Migration {
+	
+	public function handleSourceMigration($source_migrations, $source_keys, $default = NULL, $migration = NULL) {
+		// should return any aaray of destination ids
+		if (in_array(null, $source_keys)) {
+			return array ();
+		}
+		$query = new EntityFieldQuery();
+		$result = $query->entityCondition('entity_type', 'node')
+		->entityCondition('bundle', 'organisation')
+		->execute();
+		$nodes = node_load_multiple(array_keys($result['node']));
+		// get all nodes of type organisation and filter by name
+		// return node id
+		$result = array ();
+		foreach ($nodes as &$node) {
+			foreach ($source_keys as &$company_title) {
+				$title = $node->title;
+				$company_title;
+				if (strpos($title, $company_title) > -1) {
+					$result[] = $node->nid;
+				}
+			}
+		}
+		$i = 42;
+		return $result;
+	}
 
 	public function __construct($arguments) {
 		parent::__construct($arguments);
@@ -38,14 +64,14 @@ class ProjectMigration extends N52Migration {
 // 		$vocabularies = taxonomy_get_vocabularies();
 		// 1 = tags
 		// 9 = location
-		$tags = taxonomy_get_tree(9);
+// 		$tags = taxonomy_get_tree(9);
 		
-		foreach ($tags as &$tag) {
-			if (strpos($tag->name,",")) {
-				// tag name contains "," => remove it
-				taxonomy_term_delete($tag->tid);
-			}
-		}
+// 		foreach ($tags as &$tag) {
+// 			if (strpos($tag->name,",")) {
+// 				// tag name contains "," => remove it
+// 				taxonomy_term_delete($tag->tid);
+// 			}
+// 		}
 			
 		$this->description =
 			t('Migrate projects from WaterInnEU Inventory');
@@ -265,6 +291,7 @@ class ProjectMigration extends N52Migration {
 		
 		$this->addFieldMapping('field_organisations','Company names')
 			->separator(",")
+			->sourceMigration('Organisations')
 			->description(t(''))
 			->issueGroup(t('Done'));
 		

@@ -27,7 +27,7 @@
  * Public License for more details.
  */
 class OrganisationMigration extends N52Migration {
-
+	
 	public function __construct($arguments) {
 		parent::__construct($arguments);
 		
