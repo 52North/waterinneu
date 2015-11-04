@@ -1,3 +1,43 @@
+/* Frontpage elements
+-------------------------------------------------------------- */
+/* Frontpage line #1
+-------------------------------------------------------------- */
+#frontpage-line-one {
+	display: flex;
+}
+
+#frontpage-about {
+	padding: 20px;
+	width: 50%;
+	float: left;
+}
+
+#frontpage-tool-of-the-month {
+	width: 50%;
+	padding: 20px;
+	background: #fdffef;
+	border: 1px solid #d6dd89;
+}
+
+/* Frontpage line #2
+-------------------------------------------------------------- */
+
+#frontpage-buttons {
+	background: #00f;
+}
+
+#frontpage-news {
+	background: #ff0;
+}
+
+#frontpage-latest-content {
+	background: #0ff;
+}
+
+#frontpage-services {
+	background: #f0f;
+}
+
 /* Top-Level Elements in one line
 -------------------------------------------------------------- */
 #headertopcontainer {
