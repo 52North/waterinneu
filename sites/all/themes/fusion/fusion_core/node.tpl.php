@@ -79,9 +79,12 @@
   <?php print $user_picture; ?>
 
   <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
+  <?php if (!$page && !$is_front): ?>
     <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
   <?php endif; ?>
+  <?php if (!$page && $is_front) :?>
+  	<h3<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h3>
+  <?php endif;?>
   <?php print render($title_suffix); ?>
 
   <?php if ($display_submitted || !empty($content['links']['terms'])): ?>

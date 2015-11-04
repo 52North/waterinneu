@@ -106,6 +106,7 @@
  	 * 
  	 */
 	$tool_of_the_month_block = module_invoke('views', 'block_view', 'tool_of_the_month-block');
+	unset($tool_of_the_month_block['subject']);
 ?>
 <div id="page" class="page">
 	<div id="page-inner" class="page-inner">
