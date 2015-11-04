@@ -91,9 +91,9 @@
  * - $page['postscript_bottom']: Items for the postscript bottom region.
  * - $page['footer']: Items for the footer region.
  */
- /*
-  * The about node
-  */
+ 	/*
+ 	 * The about node
+  	 */
 	$node = node_load(8772);
  // TODO get right node by language code
 // 	$tnid = $node->tnid;
@@ -107,6 +107,10 @@
  	 */
 	$tool_of_the_month_block = module_invoke('views', 'block_view', 'tool_of_the_month-block');
 	unset($tool_of_the_month_block['subject']);
+	/*
+	 * Buttons menu
+	 */
+	$buttons_menu = menu_navigation_links('menu-front-page-buttons');
 ?>
 <div id="page" class="page">
 	<div id="page-inner" class="page-inner">
@@ -148,22 +152,16 @@
                   <?php if ($site_slogan): ?>
                   <span id="slogan"><?php print $site_slogan; ?></span>
                   <?php endif; ?>
-                </div>
-							<!-- /site-name-wrapper -->
+                </div><!-- /site-name-wrapper -->
                 <?php endif; ?>
-              </div>
-						<!-- /header-site-info-inner -->
-					</div>
-					<!-- /header-site-info -->
+              </div><!-- /header-site-info-inner -->
+					</div><!-- /header-site-info -->
             <?php endif; ?>
 
             <?php print render($page['header']); ?>
-          </div>
-				<!-- /header-group-inner -->
-			</div>
-			<!-- /header-group -->
-		</div>
-		<!-- /header-group-wrapper -->
+          </div><!-- /header-group-inner -->
+			</div><!-- /header-group -->
+		</div><!-- /header-group-wrapper -->
       <?php print render($page['main_menu']); ?>
       <div class="preface-top-outer"><?php print render($page['preface_top']); ?></div>
 
@@ -196,60 +194,37 @@
 													<div id="frontpage-line-one">
 														<div id="frontpage-about">
                             		<?php print render($about_node); ?>
-                            	</div>
-														<!-- /frontpage-about -->
+                            	</div><!-- /frontpage-about -->
 														<div id="frontpage-tool-of-the-month">
                              		<?php print render($tool_of_the_month_block); ?>
-                            	</div>
-														<!-- /frontpage-tool-of-the-month -->
+                            	</div><!-- /frontpage-tool-of-the-month -->
 													</div>
 													<div id="frontpage-buttons">
-														In diesem DIV werden z.Zt. zwei Buttons angezeigt:
-														<ul>
-															<li>New here?</li>
-															<li>Ask a question?</li>
-														</ul>
-													</div>
-													<!-- /frontpage-buttons -->
-													<div id="frontpage-news">Hier kommt ein Block mit den
-														letzten 5 News im Bereich WaterInnEU u.a. rein</div>
-													<!-- /frontpage-news -->
-													<div id="frontpage-latest-content">Hier kommt ein Block mit
-														den neuesten Inhalten im Portal rein: Tools, Projects,
-														Harmony-Posts/-Threads, more</div>
-													<!-- /frontpage-latest-content -->
-													<div id="frontpage-services">Hier kommt eine Auflistung der
-														Services im Portal rein.</div>
-													<!-- /frontpage-services -->
-												</div>
-												<!-- /content-region-inner -->
-											</div>
-											<!-- /content-region -->
-
-										</div>
-										<!-- /content-group-inner -->
-									</div>
-									<!-- /content-group -->
-								</div>
-								<!-- /main-content-inner -->
-							</div>
-							<!-- /main-content -->
-
+														<?php print theme('links__menu_front_page_buttons', array('links' => $buttons_menu)); ?>
+													</div><!-- /frontpage-buttons -->
+													<div id="frontpage-news">
+														Hier kommt ein Block mit den letzten 5 News im Bereich WaterInnEU u.a. rein
+													</div><!-- /frontpage-news -->
+													<div id="frontpage-latest-content">
+														Hier kommt ein Block mit den neuesten Inhalten im Portal rein: Tools, Projects,
+														Harmony-Posts/-Threads, more
+													</div><!-- /frontpage-latest-content -->
+													<div id="frontpage-services">
+														Hier kommt eine Auflistung der Services im Portal rein.
+													</div><!-- /frontpage-services -->
+												</div><!-- /content-region-inner -->
+											</div><!-- /content-region -->
+										</div><!-- /content-group-inner -->
+									</div><!-- /content-group -->
+								</div><!-- /main-content-inner -->
+							</div><!-- /main-content -->
                 <?php print render($page['postscript_top']); ?>
-              </div>
-						<!-- /main-group-inner -->
-					</div>
-					<!-- /main-group -->
-				</div>
-				<!-- /main-inner -->
-			</div>
-			<!-- /main -->
-		</div>
-		<!-- /main-wrapper -->
-
+              </div><!-- /main-group-inner -->
+					</div><!-- /main-group -->
+				</div><!-- /main-inner -->
+			</div><!-- /main -->
+		</div><!-- /main-wrapper -->
       <?php print render($page['postscript_bottom']); ?>
       <?php print render($page['footer']); ?>
-    </div>
-	<!-- /page-inner -->
-</div>
-<!-- /page -->
+    </div><!-- /page-inner -->
+</div><!-- /page -->

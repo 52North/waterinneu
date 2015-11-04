@@ -23,8 +23,47 @@
 -------------------------------------------------------------- */
 
 #frontpage-buttons {
-	background: #00f;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	margin: 10px;
+	padding: 2em 5em;
+	font-size: 200%;
 }
+
+#frontpage-buttons ul {
+	list-style-type: none;
+	text-align: center;
+}
+
+#frontpage-buttons ul li {
+	display: inline;
+	margin: 10px;
+}
+
+#frontpage-buttons ul li a {
+	text-decoration: none;
+	padding: 2em 5em;
+	color: #154b70;
+	background-color: #e1e1e1;
+	border: none; 
+	border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    font-weight: bold;
+}
+
+#frontpage-buttons ul li a:hover {
+	color: #fff;
+	background-color: #B5EE48;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#95CF1A), color-stop(0.4, #95CF1A), to(#B5EE48));
+	font-weight: bold;
+}
+
+#frontpage-buttons 
+
+/* Frontpage line #3
+-------------------------------------------------------------- */
 
 #frontpage-news {
 	background: #ff0;
@@ -33,6 +72,9 @@
 #frontpage-latest-content {
 	background: #0ff;
 }
+
+/* Frontpage line #4
+-------------------------------------------------------------- */
 
 #frontpage-services {
 	background: #f0f;

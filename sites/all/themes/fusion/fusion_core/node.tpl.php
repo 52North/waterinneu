@@ -79,12 +79,13 @@
   <?php print $user_picture; ?>
 
   <?php print render($title_prefix); ?>
-  <?php if (!$page && !$is_front): ?>
-    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+  <?php if (!$page): ?>
+	  <?php if (isset($elements['#view_mode']) && $elements['#view_mode'] == 'tool_of_the_month'): ?>
+	    <h3<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h3>
+	  <?php else: ?>
+	  	<h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+	  <?php endif;?>
   <?php endif; ?>
-  <?php if (!$page && $is_front) :?>
-  	<h3<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h3>
-  <?php endif;?>
   <?php print render($title_suffix); ?>
 
   <?php if ($display_submitted || !empty($content['links']['terms'])): ?>
@@ -116,11 +117,12 @@
     ?>
   </div>
 
-  <?php print render($content['links']); ?>
+  <?php
+  	print render($content['links']);
+  	print render($content['comments']);
+  ?>
 
-  <?php print render($content['comments']); ?>
-
-  <?php if (!$teaser): ?>
+  <?php if (!$teaser && !$is_front): ?>
     <div id="node-bottom" class="node-bottom region nested">
       <?php print render($node_bottom); ?>
     </div>

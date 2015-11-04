@@ -24,7 +24,7 @@ function removeaddnewcommentteaserlink_help($path, $arg) {
  * Implements hook_node_view_alter().
  */
 function removeaddnewcommentteaserlink_node_view_alter(&$build) {
-  if ($build['#view_mode'] == 'teaser') {
+  if ($build['#view_mode'] == 'teaser' || $build['#view_mode'] == 'tool_of_the_month') {
     // remove "add comment" link from node teaser mode display
     unset($build['links']['comment']['#links']['comment-add']);
     // and if logged out this will cause another list item to appear, so let's get rid of that
