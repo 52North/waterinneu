@@ -5,6 +5,7 @@ core = 7.x
 engine = phptemplate
 
 stylesheets[all][] = css/fusion-marina-style.css
+stylesheets[all][] = css/waterinneu-style.css
 stylesheets[all][] = skins/fusion_marina_default/fusion-marina-default.css
 
 ; --------------------------------------------------------------------------------
