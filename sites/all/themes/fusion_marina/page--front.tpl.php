@@ -91,124 +91,122 @@
  * - $page['postscript_bottom']: Items for the postscript bottom region.
  * - $page['footer']: Items for the footer region.
  */
- 	/*
- 	 * The about node
-  	 */
+	/*
+	 * The about node
+	 */
 	$node = node_load(8772);
- // TODO get right node by language code
-// 	$tnid = $node->tnid;
-// 	$node = translation_node_get_translations($tnid);
+	// TODO get right node by language code
+	// 	$tnid = $node->tnid;
+	// 	$node = translation_node_get_translations($tnid);
 	$about_node = node_view($node,'teaser');
 	/*
- 	 * The tool of the month block
- 	 * 
- 	 * SELECT *  FROM `drupal`.`block` WHERE `delta`LIKE '%tool_of_the_month%'
- 	 * 
- 	 */
+	 * The tool of the month block
+	 * 
+	 * SELECT *  FROM `drupal`.`block` WHERE `delta`LIKE '%tool_of_the_month%'
+	 * 
+	 */
 	$tool_of_the_month_block = module_invoke('views', 'block_view', 'tool_of_the_month-block');
 	unset($tool_of_the_month_block['subject']);
 	/*
 	 * Buttons menu
 	 */
 	$buttons_menu = menu_navigation_links('menu-front-page-buttons');
+	/*
+	 * Latest content block
+	 * 
+	 * SELECT *  FROM `drupal`.`block` WHERE `delta`LIKE '%frontpage_latest_content%'
+	 */
+	$latest_content_block = module_invoke('views', 'block_view', 'frontpage_latest_content-block');
+	unset($latest_content_block['subject']);
+	/*
+	 * Latest questions block
+	 *
+	 * SELECT *  FROM `drupal`.`block` WHERE `delta`LIKE '%frontpage_latest_questions%'
+	 */
+	$latest_questions_block = module_invoke('views', 'block_view', 'frontpage_latest_questions-block');
+	unset($latest_questions_block['subject']);
 ?>
 <div id="page" class="page">
 	<div id="page-inner" class="page-inner">
-      <?php print render($page['header_top']); ?>
-      <!-- header-group region: width = grid_width -->
-		<div id="header-group-wrapper"
-			class="header-group-wrapper full-width clearfix">
-			<div id="header-group"
-				class="header-group region <?php print $grid_width; ?>">
-				<div id="header-group-inner"
-					class="header-group-inner inner clearfix">
-
-            <?php if ($logo || $site_name || $site_slogan): ?>
-            <div id="header-site-info" class="header-site-info clearfix">
-						<div id="header-site-info-inner"
-							class="header-site-info-inner gutter">
-                <?php if ($logo): ?>
-                <div id="logo">
-								<a href="<?php print check_url($front_page); ?>"
-									title="<?php print t('Home'); ?>"><img
-									src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+		<?php print render($page['header_top']); ?>
+		<!-- header-group region: width = grid_width -->
+		<div id="header-group-wrapper" class="header-group-wrapper full-width clearfix">
+			<div id="header-group"class="header-group region <?php print $grid_width; ?>">
+				<div id="header-group-inner" class="header-group-inner inner clearfix">
+				<?php if ($logo || $site_name || $site_slogan): ?>
+					<div id="header-site-info" class="header-site-info clearfix">
+						<div id="header-site-info-inner" class="header-site-info-inner gutter">
+						<?php if ($logo): ?>
+							<div id="logo">
+								<a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
 							</div>
-                <?php endif; ?>
-                <?php if ($site_name || $site_slogan): ?>
-                <div id="site-name-wrapper" class="clearfix">
-                  <?php if ($site_name): ?>
-                    <?php if ($title): ?>
-                    <div id="site-name">
-									<a href="<?php print check_url($front_page); ?>"
-										title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-								</div>
-                    <?php else: /* Use h1 when the content title is empty */ ?>
-                    <h1 id="site-name">
-									<a href="<?php print check_url($front_page); ?>"
-										title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-								</h1>
-                    <?php endif; ?>
-                  <?php endif; ?>
-                  <?php if ($site_slogan): ?>
-                  <span id="slogan"><?php print $site_slogan; ?></span>
-                  <?php endif; ?>
-                </div><!-- /site-name-wrapper -->
-                <?php endif; ?>
-              </div><!-- /header-site-info-inner -->
+						<?php endif; ?>
+						<?php if ($site_name || $site_slogan): ?>
+							<div id="site-name-wrapper" class="clearfix">
+							<?php if ($site_name): ?>
+								<?php if ($title): ?>
+									<div id="site-name">
+										<a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
+									</div>
+								<?php else: /* Use h1 when the content title is empty */ ?>
+									<h1 id="site-name"><a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a></h1>
+								<?php endif; ?>
+							<?php endif; ?>
+							<?php if ($site_slogan): ?>
+								<span id="slogan"><?php print $site_slogan; ?></span>
+							<?php endif; ?>
+							</div><!-- /site-name-wrapper -->
+						<?php endif; ?>
+						</div><!-- /header-site-info-inner -->
 					</div><!-- /header-site-info -->
-            <?php endif; ?>
-
-            <?php print render($page['header']); ?>
-          </div><!-- /header-group-inner -->
+				<?php endif; ?>
+				<?php print render($page['header']); ?>
+				</div><!-- /header-group-inner -->
 			</div><!-- /header-group -->
 		</div><!-- /header-group-wrapper -->
-      <?php print render($page['main_menu']); ?>
-      <div class="preface-top-outer"><?php print render($page['preface_top']); ?></div>
-
+		<?php print render($page['main_menu']); ?>
+		<div class="preface-top-outer"><?php print render($page['preface_top']); ?></div>
 		<!-- main region: width = grid_width -->
-		<!-- content is placed here -->
 		<div id="main-wrapper" class="main-wrapper full-width clearfix">
 			<div id="main" class="main region <?php print $grid_width; ?>">
 				<div id="main-inner" class="main-inner inner clearfix">
 					<!-- main group: width = grid_width - sidebar_first_width -->
-					<div id="main-group"
-						class="main-group region nested <?php print $main_group_width; ?>">
+					<div id="main-group" class="main-group region nested <?php print $main_group_width; ?>">
 						<div id="main-group-inner" class="main-group-inner inner">
-                <?php print render($page['preface_bottom']); ?>
-
-                <div id="main-content"
-								class="main-content region nested">
+							<?php print render($page['preface_bottom']); ?>
+							<div id="main-content" class="main-content region nested">
 								<div id="main-content-inner" class="main-content-inner inner">
 									<!-- content group: width = grid_width - sidebar_first_width - sidebar_second_width -->
-									<div id="content-group"
-										class="content-group region nested <?php print $content_group_width; ?>">
-										<div id="content-group-inner"
-											class="content-group-inner inner">
-                        <?php print theme('grid_block', array('content' => $messages, 'id' => 'content-messages')); ?>
-
-                        <div id="content-region"
-												class="content-region region nested">
-												<div id="content-region-inner"
-													class="content-region-inner inner">
+									<div id="content-group" class="content-group region nested <?php print $content_group_width; ?>">
+										<div id="content-group-inner" class="content-group-inner inner">
+											<?php print theme('grid_block', array('content' => $messages, 'id' => 'content-messages')); ?>
+											<div id="content-region" class="content-region region nested">
+												<div id="content-region-inner" class="content-region-inner inner">
 													<a id="main-content-area"></a>
-													<div id="frontpage-line-one">
+													<div id="frontpage-line-one" class="frontpage-line">
 														<div id="frontpage-about">
-                            		<?php print render($about_node); ?>
-                            	</div><!-- /frontpage-about -->
+															<?php print render($about_node); ?>
+														</div><!-- /frontpage-about -->
 														<div id="frontpage-tool-of-the-month">
-                             		<?php print render($tool_of_the_month_block); ?>
-                            	</div><!-- /frontpage-tool-of-the-month -->
-													</div>
+															<?php print render($tool_of_the_month_block); ?>
+														</div><!-- /frontpage-tool-of-the-month -->
+													</div><!-- /frontpage-line-one -->
 													<div id="frontpage-buttons">
 														<?php print theme('links__menu_front_page_buttons', array('links' => $buttons_menu)); ?>
 													</div><!-- /frontpage-buttons -->
-													<div id="frontpage-news">
-														Hier kommt ein Block mit den letzten 5 News im Bereich WaterInnEU u.a. rein
-													</div><!-- /frontpage-news -->
-													<div id="frontpage-latest-content">
-														Hier kommt ein Block mit den neuesten Inhalten im Portal rein: Tools, Projects,
-														Harmony-Posts/-Threads, more
-													</div><!-- /frontpage-latest-content -->
+													<div id="frontpage-line-three" class="frontpage-line">
+														<div id="frontpage-news">
+															Hier kommt ein Block mit den letzten 5 News im Bereich WaterInnEU u.a. rein
+														</div><!-- /frontpage-news -->
+														<div id="frontpage-line-three-column-two">
+															<div id="frontpage-latest-content">
+																<?php print render($latest_content_block); ?>
+															</div><!-- /frontpage-latest-content -->
+															<div id="frontpage-latest-questions">
+																<?php print render($latest_questions_block); ?>
+															</div><!-- /frontpage-latest-questions -->
+														</div><!-- /frontpage-line-three-column-two -->
+													</div><!-- /frontpage-line-three -->
 													<div id="frontpage-services">
 														Hier kommt eine Auflistung der Services im Portal rein.
 													</div><!-- /frontpage-services -->
@@ -218,13 +216,13 @@
 									</div><!-- /content-group -->
 								</div><!-- /main-content-inner -->
 							</div><!-- /main-content -->
-                <?php print render($page['postscript_top']); ?>
-              </div><!-- /main-group-inner -->
+							<?php print render($page['postscript_top']); ?>
+						</div><!-- /main-group-inner -->
 					</div><!-- /main-group -->
 				</div><!-- /main-inner -->
 			</div><!-- /main -->
 		</div><!-- /main-wrapper -->
-      <?php print render($page['postscript_bottom']); ?>
-      <?php print render($page['footer']); ?>
-    </div><!-- /page-inner -->
+		<?php print render($page['postscript_bottom']); ?>
+		<?php print render($page['footer']); ?>
+	</div><!-- /page-inner -->
 </div><!-- /page -->

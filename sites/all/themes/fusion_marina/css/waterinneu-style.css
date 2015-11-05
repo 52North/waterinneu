@@ -2,7 +2,7 @@
 -------------------------------------------------------------- */
 /* Frontpage line #1
 -------------------------------------------------------------- */
-#frontpage-line-one {
+.frontpage-line {
 	display: flex;
 }
 
@@ -73,13 +73,12 @@
 
 /* Frontpage line #3
 -------------------------------------------------------------- */
-
 #frontpage-news {
 	background: #ff0;
 }
 
-#frontpage-latest-content {
-	background: #0ff;
+#frontpage-latest-content div > div > ul > li.views-row{
+    margin: initial;
 }
 
 /* Frontpage line #4
