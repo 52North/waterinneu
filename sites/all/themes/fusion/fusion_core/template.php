@@ -278,7 +278,7 @@ function fusion_core_preprocess_block(&$vars) {
   
   // add class and div to header top menu block
   if ($vars['block']->region =='header_top' && ($vars['block']->module == 'menu' || $vars['block']->module == 'system')){
-  	$vars['content'] = "<div id=\"navcontainer\">" .$vars['content'] . "</div>"; 
+  	$vars['content'] = "<div class=\"navcontainer\">" .$vars['content'] . "</div>"; 
   }
 }
 
