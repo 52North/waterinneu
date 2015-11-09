@@ -29,7 +29,7 @@
 name = "52N - WaterInnEU - Triple Store Connector"
 description = "Triple Store Connector based on wsdata for using triple store as data backend"
 core = "7.x"
-package = Web Services
+package = "52N - WaterInnEU"
 
 dependencies[] = wsdata
 dependencies[] = chr

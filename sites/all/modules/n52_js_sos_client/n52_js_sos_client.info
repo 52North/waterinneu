@@ -26,6 +26,7 @@
 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 ;  Public License for more details.
 ;
-core = "7.x"
-description = "Module to provide the 52°North JS SOS Client via menu link"
 name = "52N - JS SOS Client"
+description = "Module to provide the 52°North JS SOS Client via menu link"
+package = "52N - WaterInnEU"
+core = "7.x"
