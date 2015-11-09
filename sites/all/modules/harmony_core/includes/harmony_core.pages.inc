@@ -359,7 +359,7 @@ function harmony_core_post_build_content($post, $view_mode = 'full', $langcode =
         'destination' => url("thread/$thread_id"),
       );
 
-      if (!empty($_GET['page']) && is_numeric($_GET['page'])) {
+      if (!empty($_GET['page']) && ctype_digit((string) $_GET['page'])) {
         $edit_query['destination'] = url("thread/$thread_id", array('query' => array('page' => $_GET['page'])));
       }
       // If we're editing the thread instead, it's possible that the path alias

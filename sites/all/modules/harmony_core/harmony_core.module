@@ -103,6 +103,7 @@ function harmony_core_entity_info() {
     'module' => 'harmony_core',
     'access callback' => 'harmony_core_thread_access_callback',
     'metatags' => TRUE,
+    'modified property name' => 'updated',
   );
 
   // Add bundle info but bypass entity_load() as we cannot use it here.
@@ -113,7 +114,7 @@ function harmony_core_entity_info() {
 
   foreach ($types as $type => $info) {
     $entities['harmony_thread']['bundles'][$type] = array(
-      'label' => $info->label,
+      'label' => check_plain($info->label),
       'admin' => array(
         'path' => 'admin/harmony/structure/thread/%harmony_thread_type',
         'real path' => 'admin/harmony/structure/thread/' . $type,
@@ -185,6 +186,7 @@ function harmony_core_entity_info() {
       'controller' => 'HarmonyPostInlineEntityFormController',
     ),
     'metatags' => TRUE,
+    'modified property name' => 'updated',
   );
 
   return $entities;
@@ -567,7 +569,6 @@ function harmony_core_permission() {
     'edit own harmony_threads' => array(
       'title' => t('Edit own threads'),
       'description' => t('Allows users to edit their own threads.'),
-      'restrict access' => TRUE,
     ),
     'delete any harmony_thread' => array(
       'title' => t('Delete any thread'),
@@ -2346,7 +2347,7 @@ function harmony_core_post_reassign_action_form($settings) {
 
 function harmony_core_post_reassign_action_validate($form, &$form_state) {
   $lang = !empty($form['#entity']->language) ? $form['#entity']->language : LANGUAGE_NONE;
-  $view_arg = !empty($form_state['build_info']['args'][0]->args[0]) && is_numeric($form_state['build_info']['args'][0]->args[0]) ? $form_state['build_info']['args'][0]->args[0] : 0;
+  $view_arg = !empty($form_state['build_info']['args'][0]->args[0]) && ctype_digit((string) $form_state['build_info']['args'][0]->args[0]) ? $form_state['build_info']['args'][0]->args[0] : 0;
 
   // Check we're not moving posts to the same thread as they're in now.
   if ($form_state['values']['field_harmony_thread'][$lang][0]['target_id'] === $view_arg) {
@@ -2787,7 +2788,7 @@ function harmony_core_block_view($delta = '') {
   switch ($delta) {
     case 'reply_form':
       // Check that we're on a thread page.
-      if (arg(0) === 'thread' && is_numeric(arg(1)) && !arg(2) && user_access('create harmony_posts')) {
+      if (arg(0) === 'thread' && ctype_digit((string) arg(1)) && !arg(2) && user_access('create harmony_posts')) {
         $thread = harmony_thread_load(arg(1));
 
         if ($thread) {
@@ -2812,7 +2813,7 @@ function harmony_core_block_view($delta = '') {
  * Add body classes!
  */
 function harmony_core_preprocess_html(&$variables) {
-  if (arg(0) === 'thread' && is_numeric(arg(1)) && !arg(2)) {
+  if (arg(0) === 'thread' && ctype_digit((string) arg(1)) && !arg(2)) {
     $thread = harmony_thread_load(arg(1));
     $variables['classes_array'][] = 'harmony-thread';
     $variables['classes_array'][] = 'harmony-thread-' . drupal_html_class($thread->type);
@@ -2823,7 +2824,7 @@ function harmony_core_preprocess_html(&$variables) {
  * Implements template_preprocess_page().
  */
 function harmony_core_preprocess_page(&$variables) {
-  if (arg(0) === 'thread' && is_numeric(arg(1)) && !arg(2)) {
+  if (arg(0) === 'thread' && ctype_digit((string) arg(1)) && !arg(2)) {
     $thread = harmony_thread_load(arg(1));
     if (variable_get('harmony_core_bundle__' . $thread->type . '__thread_meta_in_title', 1)) {
       $thread_properties = harmony_core_thread_get_properties($thread->thread_id, $thread);
@@ -2957,7 +2958,7 @@ function harmony_core_thread_form($form, &$form_state, $thread = NULL) {
   // Allow category to be preopulated, also check access if
   // harmony_access_forum is in place.
   $category_field = variable_get('harmony_core_category_field', 'field_harmony_category');
-  if (!empty($form[$category_field]) && !empty($_GET[$category_field]) && is_numeric($_GET[$category_field])) {
+  if (!empty($form[$category_field]) && !empty($_GET[$category_field]) && ctype_digit((string) $_GET[$category_field])) {
     // Load up the term to check it exists and that it's in the correct vocab.
     $vocab = variable_get('harmony_core_category_vocabulary', 'harmony_category');
     $term = taxonomy_term_load($_GET[$category_field]);
@@ -3014,7 +3015,7 @@ function harmony_core_thread_form($form, &$form_state, $thread = NULL) {
   $form['field_harmony_post_count']['#access'] = FALSE;
 
   // Hide the continued from field if not populated.
-  if (!empty($_GET['field_harmony_thread_cont_from']) && is_numeric($_GET['field_harmony_thread_cont_from'])) {
+  if (!empty($_GET['field_harmony_thread_cont_from']) && ctype_digit((string) $_GET['field_harmony_thread_cont_from'])) {
   }
 
   // Add the buttons.
@@ -3348,6 +3349,7 @@ function harmony_core_harmony_thread_type_delete($harmony_thread_type) {
  * Post add/edit form callback.
  */
 function harmony_core_post_form($form, &$form_state, $post) {
+  global $user;
   $form = array();
 
   $form['post'] = array(
@@ -3415,7 +3417,7 @@ function harmony_core_post_form($form, &$form_state, $post) {
       $thread_default_value_id = substr($thread_default_value_id, 0, strpos($thread_default_value_id, ')'));
 
       // Check just to be safe.
-      if (is_numeric($thread_default_value_id)) {
+      if (ctype_digit((string) $thread_default_value_id)) {
         $thread_id = $thread_default_value_id;
       }
     }
@@ -3444,12 +3446,16 @@ function harmony_core_post_form($form, &$form_state, $post) {
     }
   }
   else {
-    $bail_out = TRUE;
-    $bail_out_reason = 'No thread id was specified.';
+    // When AJAX stuff is happening we don't want to stop things.
+    if (!isset($_REQUEST['ajax_page_state'])) {
+      $bail_out = TRUE;
+      $bail_out_reason = 'No thread id was specified.';
+    }
   }
 
   // Bail out!
   if ($bail_out) {
+    watchdog('harmony_core', 'The user @name attempted to edit a post but something went wrong... @reason', array('@name' => $user->name, '@reason' => $bail_out_reason), WATCHDOG_NOTICE);
     return array(
       'text' => array(
         '#markup' => t("<p>The thread you're trying to post in is either locked, appears in an unpublished thread or is missing. If this is in error please contact the site administrator."),
@@ -3461,13 +3467,13 @@ function harmony_core_post_form($form, &$form_state, $post) {
   $form['title'] = array(
     '#type' => 'value',
     '#title' => t('Post title'),
-    '#default_value' => $thread->title,
+    '#default_value' => !empty($thread->title) ? $thread->title : NULL,
   );
 
   // Quoting integration with entity_quote.
   // @todo rewrite so that we can take in quoting or reply as new thread, may
   // take place in inline_entity_form integration.
-  if ($post->is_new && !empty($_GET['quote']) && is_numeric($_GET['quote'])) {
+  if ($post->is_new && !empty($_GET['quote']) && ctype_digit((string) $_GET['quote'])) {
     $post_to_quote_id = $_GET['quote'];
     $post_to_quote = entity_load_single('harmony_post', $post_to_quote_id);
 
@@ -3564,7 +3570,7 @@ function harmony_core_post_form($form, &$form_state, $post) {
   // Add cancel link.
   if (arg(0) === 'post' && arg(1) === 'add') {
     // Bounce the user back to the thread.
-    if (isset($_GET['field_harmony_thread']) && is_numeric($_GET['field_harmony_thread'])) {
+    if (isset($_GET['field_harmony_thread']) && ctype_digit((string) $_GET['field_harmony_thread'])) {
       $cancel_options = drupal_parse_url('thread/' . $_GET['field_harmony_thread']);
     }
     // Can't figure out where to go, go home!
@@ -3828,7 +3834,7 @@ function harmony_core_flag_unflag($flag, $entity_id, $account, $flagging) {
  *
  */
 function harmony_core_update_meta_count($fields, $entity_type, $entity_id, $op = 'increment', $value = 1) {
-  if (empty($fields) || !is_numeric($value)) {
+  if (empty($fields) || !ctype_digit((string) $value)) {
     return;
   }
 
@@ -4355,7 +4361,7 @@ function harmony_core_page_alter(&$page) {
     global $_harmony;
 
     // Only track thread pages, also check for a global do not track flag.
-    if (!(arg(0) == 'thread' && is_numeric(arg(1)) && !arg(2)) || isset($_harmony['thread_do_not_track'])) {
+    if (!(arg(0) == 'thread' && ctype_digit((string) arg(1)) && !arg(2)) || isset($_harmony['thread_do_not_track'])) {
       return;
     }
 
@@ -4379,7 +4385,7 @@ function harmony_core_page_alter(&$page) {
 }
 
 function harmony_core_thread_track_view($thread_id) {
-  if (!empty($thread_id) && is_numeric($thread_id) && $thread_id > 0) {
+  if (!empty($thread_id) && ctype_digit((string) $thread_id) && $thread_id > 0) {
     // Increment via db query.
     $transaction = db_transaction();
 
@@ -4407,7 +4413,7 @@ function harmony_core_thread_log_view($thread_id) {
   $valid_referer = !empty($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], $base_root) === 0;
 
   // Check the id is numeric.
-  if ($valid_referer && !empty($thread_id) && is_numeric($thread_id) && $thread_id > 0) {
+  if ($valid_referer && !empty($thread_id) && ctype_digit((string) $thread_id) && $thread_id > 0) {
     // Load the thread.
     $thread = harmony_thread_load($thread_id);
   }
@@ -4782,7 +4788,7 @@ function harmony_core_post_in_thread_position($thread_id, $post_id, $callback = 
  * Function to return a URL to a post on the correct page of a thread.
  */
 function harmony_core_post_thread_url($thread_id, $post_id, $return_array = FALSE) {
-  if (is_numeric($thread_id) && !is_numeric($post_id)) {
+  if (ctype_digit((string) $thread_id) && !ctype_digit((string) $post_id)) {
     return !$return_array ? url("thread/{$thread_id}") : array('path' => "thread/{$thread_id}", 'query' => array(), 'fragment' => array());
   }
 

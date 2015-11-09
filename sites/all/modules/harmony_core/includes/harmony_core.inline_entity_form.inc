@@ -92,7 +92,7 @@ class HarmonyPostInlineEntityFormController extends EntityInlineEntityFormContro
     $form['field_harmony_text'][$text_lang][0]['#attributes']['placeholder'] = t('Type here...');
 
     // Thread continued from stuff.
-    if ($post->is_new && !empty($_GET['field_harmony_thread_cont_from']) && is_numeric($_GET['field_harmony_thread_cont_from']) && user_access('reply as new harmony_thread')) {
+    if ($post->is_new && !empty($_GET['field_harmony_thread_cont_from']) && ctype_digit((string) $_GET['field_harmony_thread_cont_from']) && user_access('reply as new harmony_thread')) {
       $post_to_quote_id = $_GET['field_harmony_thread_cont_from'];
       $post_to_quote = entity_load_single('harmony_post', $post_to_quote_id);
 

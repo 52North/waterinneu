@@ -19,15 +19,19 @@ matrix:
   allow_failures:
 #    - php: hhvm
 
+addons:
+  apt:
+    packages:
+    - php5-cgi
+    - php5-mysql
+    - php5-cli
+    - php5-curl
+    - php5-gd
+
 mysql:
   database: drupal
   username: root
   encoding: utf8
-
-before_install:
-  - sudo apt-get update > /dev/null
-  # Install php packages required for running a web server from drush on php 5.3.
-  - sudo apt-get install -y --force-yes php5-cgi php5-mysql php5-cli php5-curl php5-gd > /dev/null
 
 install:
   # Set the timezone.
@@ -43,8 +47,6 @@ install:
 
   # Build Behat dependencies.
   - cd ./tests/behat
-  # Set the correct drupal_root.
-  - sudo sed -i 's|DRUPALROOT|/home/travis/build/drupal/drupal|g' behat.yml
   # Composer install.
   - composer install --no-interaction --prefer-source
   - cd ../../
