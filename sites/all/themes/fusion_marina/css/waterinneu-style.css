@@ -74,11 +74,17 @@
 /* Frontpage line #3
 -------------------------------------------------------------- */
 #frontpage-news {
-	background: #ff0;
+    width: 50%;
+    padding: 20px;
 }
 
-#frontpage-latest-content div > div > ul > li.views-row{
-    margin: initial;
+#frontpage-line-three-column-two {
+    width: 50%;
+    padding: 20px;
+}
+
+#frontpage-line-three div > div > ul > li.views-row{
+    margin-left: 20px;
 }
 
 

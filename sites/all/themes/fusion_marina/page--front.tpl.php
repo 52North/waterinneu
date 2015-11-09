@@ -125,6 +125,13 @@
 	 */
 	$latest_questions_block = module_invoke('views', 'block_view', 'frontpage_latest_questions-block');
 	unset($latest_questions_block['subject']);
+	/*
+	 * Latest news block
+	 *
+	 * SELECT *  FROM `drupal`.`block` WHERE `delta`LIKE '%latest_news%'
+	 */
+	$latest_news_block = module_invoke('views', 'block_view', 'latest_news-block');
+	unset($latest_news_block['subject']);
 ?>
 <div id="page" class="page">
 	<div id="page-inner" class="page-inner">
@@ -196,7 +203,7 @@
 													</div><!-- /frontpage-buttons -->
 													<div id="frontpage-line-three" class="frontpage-line">
 														<div id="frontpage-news">
-															Hier kommt ein Block mit den letzten 5 News im Bereich WaterInnEU u.a. rein
+															<?php print render($latest_news_block); ?>
 														</div><!-- /frontpage-news -->
 														<div id="frontpage-line-three-column-two">
 															<div id="frontpage-latest-content">
