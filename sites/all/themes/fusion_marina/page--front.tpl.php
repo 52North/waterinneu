@@ -132,6 +132,12 @@
 	 */
 	$latest_news_block = module_invoke('views', 'block_view', 'latest_news-block');
 	unset($latest_news_block['subject']);
+	/*
+	 * Services block
+	 *
+	 * SELECT *  FROM `drupal`.`block` WHERE `title`LIKE '%services%'
+	 */
+	$services_block = module_invoke('block', 'block_view', '1');
 ?>
 <div id="page" class="page">
 	<div id="page-inner" class="page-inner">
@@ -214,8 +220,8 @@
 															</div><!-- /frontpage-latest-questions -->
 														</div><!-- /frontpage-line-three-column-two -->
 													</div><!-- /frontpage-line-three -->
-													<div id="frontpage-services">
-														Hier kommt eine Auflistung der Services im Portal rein.
+													<div id="frontpage-services" class="frontpage-line">
+														<?php print $services_block['content']; ?>
 													</div><!-- /frontpage-services -->
 												</div><!-- /content-region-inner -->
 											</div><!-- /content-region -->

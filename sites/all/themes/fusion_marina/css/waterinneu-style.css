@@ -90,10 +90,33 @@
 
 /* Frontpage line #4
 -------------------------------------------------------------- */
-
-#frontpage-services {
-	background: #f0f;
+#fontpage-services {
 }
+
+.frontpage-service {
+	text-align: center;
+}
+
+.frontpage-service-first {
+	border-right: 1px solid #d6dd89;
+	padding-right: 5px;
+	margin-left: auto;
+}
+
+.frontpage-service-last {
+    border-left: 1px solid #d6dd89;
+    padding-left: 5px;
+    margin-right: auto;
+}
+
+.frontpage-service-inner {
+    border-right: 1px solid #d6dd89;
+    padding-right: 5px;
+    border-left: 1px solid #d6dd89;
+    padding-left: 5px;
+    margin: auto;
+}
+
 
 /* Top-Level Elements in one line
 -------------------------------------------------------------- */
