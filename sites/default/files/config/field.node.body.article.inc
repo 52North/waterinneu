@@ -11,8 +11,21 @@ $data = array(
     'entity_types' => array(
       0 => 'node',
     ),
-    'translatable' => '0',
+    'foreign keys' => array(
+      'format' => array(
+        'table' => 'filter_format',
+        'columns' => array(
+          'format' => 'format',
+        ),
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
     'settings' => array(),
+    'translatable' => '1',
     'storage' => array(
       'type' => 'field_sql_storage',
       'settings' => array(),
@@ -35,19 +48,6 @@ $data = array(
             ),
           ),
         ),
-      ),
-    ),
-    'foreign keys' => array(
-      'format' => array(
-        'table' => 'filter_format',
-        'columns' => array(
-          'format' => 'format',
-        ),
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
       ),
     ),
     'field_name' => 'body',
@@ -102,11 +102,11 @@ $data = array(
       'teaser' => array(
         'label' => 'hidden',
         'type' => 'text_summary_or_trimmed',
+        'weight' => '1',
         'settings' => array(
           'trim_length' => 600,
         ),
         'module' => 'text',
-        'weight' => 0,
       ),
     ),
     'required' => FALSE,

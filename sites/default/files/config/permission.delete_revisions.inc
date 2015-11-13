@@ -8,9 +8,7 @@ $api = '2.0.0';
 
 $data = array(
   'permission' => 'delete revisions',
-  'roles' => array(
-    0 => 'administrator',
-  ),
+  'roles' => array(),
 );
 
 $dependencies = array();

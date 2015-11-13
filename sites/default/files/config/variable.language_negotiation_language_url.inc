@@ -6,28 +6,34 @@
 
 $api = '2.0.0';
 
-$data = array(
-  'name' => 'language_negotiation_language_url',
-  'content' => array(
-    'locale-url' => array(
-      'callbacks' => array(
-        'language' => 'locale_language_from_url',
-        'switcher' => 'locale_language_switcher_url',
-        'url_rewrite' => 'locale_language_url_rewrite_url',
-      ),
-      'file' => 'includes/locale.inc',
+$data = $strongarm = new stdClass();
+$strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+$strongarm->api_version = 1;
+$strongarm->name = 'language_negotiation_language_url';
+$strongarm->value = array(
+  'locale-url' => array(
+    'callbacks' => array(
+      'language' => 'locale_language_from_url',
+      'switcher' => 'locale_language_switcher_url',
+      'url_rewrite' => 'locale_language_url_rewrite_url',
     ),
-    'locale-url-fallback' => array(
-      'callbacks' => array(
-        'language' => 'locale_language_url_fallback',
-      ),
-      'file' => 'includes/locale.inc',
+    'file' => 'includes/locale.inc',
+  ),
+  'locale-url-fallback' => array(
+    'callbacks' => array(
+      'language' => 'locale_language_url_fallback',
     ),
+    'file' => 'includes/locale.inc',
   ),
 );
+
 
 $dependencies = array();
 
 $optional = array();
 
-$modules = array();
+$modules = array(
+  0 => 'strongarm',
+  1 => 'ctools',
+  2 => 'system',
+);

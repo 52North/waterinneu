@@ -9,7 +9,8 @@ $api = '2.0.0';
 $data = array(
   'permission' => 'revert revisions',
   'roles' => array(
-    0 => 'administrator',
+    0 => 'moderator',
+    1 => 'administrator',
   ),
 );
 

@@ -1,0 +1,7 @@
+name = Tools
+description = Everything regarding tools
+core = 7.x
+package = Features
+version = 7.x-1.0-beta1
+project = tools
+features[features_api][] = api:2

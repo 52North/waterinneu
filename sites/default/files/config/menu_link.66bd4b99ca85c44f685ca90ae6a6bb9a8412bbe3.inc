@@ -7,22 +7,18 @@
 $api = '2.0.0';
 
 $data = array(
-  'link_path' => 'admin/config/services/wsclient',
-  'link_title' => 'Web service descriptions',
-  'menu_name' => 'management',
-  'weight' => '0',
-  'expanded' => '0',
-  'options' => array(
-    'attributes' => array(
-      'title' => 'Manage Web Service Descriptions for Web service client.',
-    ),
-  ),
-  'router_path' => 'admin/config/services/wsclient',
-  'parent_identifier' => 'e4bf90832226d3be755b8c7e87c6b242beaeedb8',
+  'link_path' => NULL,
+  'link_title' => NULL,
+  'menu_name' => NULL,
+  'weight' => NULL,
+  'expanded' => NULL,
+  'options' => NULL,
+  'router_path' => NULL,
+  'parent_identifier' => NULL,
 );
 
 $dependencies = array(
-  'menu_link.e4bf90832226d3be755b8c7e87c6b242beaeedb8' => 'menu_link.e4bf90832226d3be755b8c7e87c6b242beaeedb8',
+  'menu.' => 'menu.',
 );
 
 $optional = array();

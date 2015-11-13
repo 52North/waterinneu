@@ -9,11 +9,25 @@ $api = '2.0.0';
 $data = (object) array(
   'format' => 'plain_text',
   'name' => 'Plain text',
-  'cache' => '1',
+  'cache' => '0',
   'status' => '1',
-  'weight' => '10',
+  'weight' => '-10',
   'filters' => array(
+    'atjs' => array(
+      'weight' => '0',
+      'status' => '1',
+      'settings' => array(
+        'atjs_listeners' => array(
+          'harmony_users' => 'harmony_users',
+        ),
+      ),
+    ),
     'filter_html_escape' => array(
+      'weight' => '0',
+      'status' => '1',
+      'settings' => array(),
+    ),
+    'freelinking' => array(
       'weight' => '0',
       'status' => '1',
       'settings' => array(),
@@ -22,7 +36,7 @@ $data = (object) array(
       'weight' => '1',
       'status' => '1',
       'settings' => array(
-        'filter_url_length' => 72,
+        'filter_url_length' => '72',
       ),
     ),
     'filter_autop' => array(
@@ -35,8 +49,12 @@ $data = (object) array(
 
 $dependencies = array();
 
-$optional = array();
+$optional = array(
+  'wysiwyg.plain_text' => 'wysiwyg.plain_text',
+);
 
 $modules = array(
-  0 => 'filter',
+  0 => 'atjs',
+  1 => 'filter',
+  2 => 'freelinking',
 );

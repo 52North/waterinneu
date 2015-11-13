@@ -1,15 +1,12 @@
 <?php
 /**
  * @file
- * variable.cron_last.inc
+ * menu..inc
  */
 
 $api = '2.0.0';
 
-$data = array(
-  'name' => 'cron_last',
-  'content' => 1437648492,
-);
+$data = FALSE;
 
 $dependencies = array();
 

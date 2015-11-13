@@ -9,16 +9,30 @@ $api = '2.0.0';
 $data = (object) array(
   'format' => 'filtered_html',
   'name' => 'Filtered HTML',
-  'cache' => '1',
+  'cache' => '0',
   'status' => '1',
-  'weight' => '0',
+  'weight' => '-9',
   'filters' => array(
+    'atjs' => array(
+      'weight' => '0',
+      'status' => '1',
+      'settings' => array(
+        'atjs_listeners' => array(
+          'harmony_users' => 'harmony_users',
+        ),
+      ),
+    ),
     'filter_url' => array(
       'weight' => '0',
       'status' => '1',
       'settings' => array(
-        'filter_url_length' => 72,
+        'filter_url_length' => '72',
       ),
+    ),
+    'freelinking' => array(
+      'weight' => '0',
+      'status' => '1',
+      'settings' => array(),
     ),
     'filter_html' => array(
       'weight' => '1',
@@ -46,8 +60,11 @@ $dependencies = array();
 
 $optional = array(
   'permission.use_text_format_filtered_html' => 'permission.use_text_format_filtered_html',
+  'wysiwyg.filtered_html' => 'wysiwyg.filtered_html',
 );
 
 $modules = array(
-  0 => 'filter',
+  0 => 'atjs',
+  1 => 'filter',
+  2 => 'freelinking',
 );

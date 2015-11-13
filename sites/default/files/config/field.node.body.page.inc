@@ -11,8 +11,21 @@ $data = array(
     'entity_types' => array(
       0 => 'node',
     ),
-    'translatable' => '0',
+    'foreign keys' => array(
+      'format' => array(
+        'table' => 'filter_format',
+        'columns' => array(
+          'format' => 'format',
+        ),
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
     'settings' => array(),
+    'translatable' => '1',
     'storage' => array(
       'type' => 'field_sql_storage',
       'settings' => array(),
@@ -35,19 +48,6 @@ $data = array(
             ),
           ),
         ),
-      ),
-    ),
-    'foreign keys' => array(
-      'format' => array(
-        'table' => 'filter_format',
-        'columns' => array(
-          'format' => 'format',
-        ),
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
       ),
     ),
     'field_name' => 'body',
@@ -95,18 +95,28 @@ $data = array(
       'default' => array(
         'label' => 'hidden',
         'type' => 'text_default',
+        'weight' => '0',
         'settings' => array(),
         'module' => 'text',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'type' => 'text_summary_or_trimmed',
+        'type' => 'smart_trim_format',
+        'weight' => '0',
         'settings' => array(
-          'trim_length' => 600,
+          'trim_link' => '0',
+          'trim_length' => '600',
+          'trim_type' => 'words',
+          'trim_suffix' => '...',
+          'more_link' => '0',
+          'more_text' => 'Read more',
+          'summary_handler' => 'trim',
+          'trim_options' => array(
+            'text' => 0,
+          ),
+          'trim_preserve_tags' => '',
         ),
-        'module' => 'text',
-        'weight' => 0,
+        'module' => 'smart_trim',
       ),
     ),
     'required' => FALSE,

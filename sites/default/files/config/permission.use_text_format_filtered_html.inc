@@ -11,7 +11,11 @@ $data = array(
   'roles' => array(
     0 => 'anonymous user',
     1 => 'authenticated user',
-    2 => 'administrator',
+    2 => 'author',
+    3 => 'marketplace_author',
+    4 => 'moderator',
+    5 => 'marketplace_moderator',
+    6 => 'administrator',
   ),
 );
 

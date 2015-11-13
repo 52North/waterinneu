@@ -7,18 +7,18 @@
 $api = '2.0.0';
 
 $data = array(
-  'link_path' => '<front>',
-  'link_title' => 'Home',
-  'menu_name' => 'main-menu',
-  'weight' => '0',
-  'expanded' => '0',
-  'options' => array(),
-  'router_path' => '',
+  'link_path' => NULL,
+  'link_title' => NULL,
+  'menu_name' => NULL,
+  'weight' => NULL,
+  'expanded' => NULL,
+  'options' => NULL,
+  'router_path' => NULL,
   'parent_identifier' => NULL,
 );
 
 $dependencies = array(
-  'menu.main_menu' => 'menu.main_menu',
+  'menu.' => 'menu.',
 );
 
 $optional = array();

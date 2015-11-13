@@ -15,6 +15,7 @@ $data = array(
           'parent' => 0,
         ),
       ),
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
     ),
     'entity_types' => array(),
     'translatable' => '0',
@@ -87,11 +88,10 @@ $data = array(
         'module' => 'taxonomy',
       ),
       'teaser' => array(
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 10,
         'label' => 'above',
+        'type' => 'hidden',
+        'weight' => '3',
         'settings' => array(),
-        'module' => 'taxonomy',
       ),
     ),
     'settings' => array(

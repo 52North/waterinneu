@@ -131,11 +131,11 @@ $data = array(
       'teaser' => array(
         'label' => 'hidden',
         'type' => 'image',
+        'weight' => '0',
         'settings' => array(
           'image_style' => 'medium',
           'image_link' => 'content',
         ),
-        'weight' => -1,
         'module' => 'image',
       ),
     ),

@@ -9,7 +9,8 @@ $api = '2.0.0';
 $data = array(
   'permission' => 'edit any page content',
   'roles' => array(
-    0 => 'administrator',
+    0 => 'moderator',
+    1 => 'administrator',
   ),
 );
 

@@ -7,10 +7,8 @@
 $api = '2.0.0';
 
 $data = array(
-  'permission' => 'access overlay',
-  'roles' => array(
-    0 => 'administrator',
-  ),
+  'permission' => NULL,
+  'roles' => array(),
 );
 
 $dependencies = array();
@@ -18,5 +16,5 @@ $dependencies = array();
 $optional = array();
 
 $modules = array(
-  0 => 'overlay',
+  0 => '',
 );

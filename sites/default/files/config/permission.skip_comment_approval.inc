@@ -9,8 +9,7 @@ $api = '2.0.0';
 $data = array(
   'permission' => 'skip comment approval',
   'roles' => array(
-    0 => 'authenticated user',
-    1 => 'administrator',
+    0 => 'administrator',
   ),
 );
 

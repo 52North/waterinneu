@@ -16,10 +16,7 @@ $data = (object) array(
   'help' => '',
 );
 
-$dependencies = array(
-  'variable.node_options_page' => 'variable.node_options_page',
-  'variable.node_submitted_page' => 'variable.node_submitted_page',
-);
+$dependencies = array();
 
 $optional = array(
   'field.node.body.page' => 'field.node.body.page',
