@@ -1,0 +1,7 @@
+name = "52N - Autocomplete "
+description = "This module provides autocompletion features"
+package = "52N - WaterInnEU"
+core = "7.x"
+dependencies[] = views
+dependencies[] = search_autocomplete
+dependencies[] = jquery_update

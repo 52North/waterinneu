@@ -1,0 +1,96 @@
+/*
+ * SEARCH AUTOCOMPLETE
+ *
+ * Sponsored by:
+ * www.axiomcafe.fr
+ */
+
+/**
+ * THEME BASIC BROWN
+ */
+
+/* AUTOCOMPLETE */
+input[data-sa-theme="basic-brown"].ui-autocomplete {
+  position: absolute;
+  cursor: default;
+}
+* html input[data-sa-theme="basic-brown"].ui-autocomplete {
+  width: 1px; /* without this, the menu expands to 100% in IE6 */
+}
+
+input[data-sa-theme="basic-brown"].ui-widget-content {
+  background: none;
+  border-radius: 0px;
+  color: #2c2c2c;
+  border: 1px solid #c8c8c8;
+  box-shadow: 2px 2px 2px -1px rgba(128,128,128,0.6);
+  position: absolute;
+  background-color: #ffffff;
+  font-family: Arial,Tahoma,"Bitstream Vera Sans",sans-serif;
+  font-size: 1em;
+}
+
+/* AUTOCOMPLETE MENU */
+ul[data-sa-theme="basic-brown"] div {
+  display: block;
+}
+ul[data-sa-theme="basic-brown"].ui-menu {
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+  display: block;
+  float: left;
+  min-width: 350px;
+}
+ul[data-sa-theme="basic-brown"].ui-menu .ui-menu {
+  margin-top: -3px;
+}
+ul[data-sa-theme="basic-brown"].ui-menu .ui-menu-item {
+  margin: 0;
+  padding: 0;
+  float: left;
+  clear: left;
+  width: 100%;
+  line-height: 14px;
+  font-size: 12px;
+}
+ul[data-sa-theme="basic-brown"].ui-menu .ui-menu-item a {
+  text-decoration: none;
+  display: block;
+  padding: 0;
+}
+ul[data-sa-theme="basic-brown"].ui-menu .ui-menu-item a {
+  font-weight: normal;
+  margin: -1px;
+}
+
+/* Interaction States */
+ul[data-sa-theme="basic-brown"] .ui-state-hover {
+  background: none;
+  border: none;
+  border-radius: 0px;
+  background-color: #a0522d;
+  color: #ffffff;
+}
+ul[data-sa-theme="basic-brown"] .ui-autocomplete-fields {
+  padding: 5px 6px;
+  overflow: hidden;
+}
+ul[data-sa-theme="basic-brown"] .ui-menu-item-first {
+  border-top: 1px solid #8b4513;
+}
+ul[data-sa-theme="basic-brown"] .ui-autocomplete-field-title {
+  text-align: left;
+  font-size: 1.3em;
+}
+ul[data-sa-theme="basic-brown"] .ui-autocomplete-field-term {
+  font-weight: bold;
+}
+ul[data-sa-theme="basic-brown"] .ui-autocomplete-field-group {
+  background-position: right top;
+  background-repeat: no-repeat;
+  color: #8b4513;
+  float: right;
+  position: relative;
+  right: 5px;
+}

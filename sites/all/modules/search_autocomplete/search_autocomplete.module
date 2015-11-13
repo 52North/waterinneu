@@ -1,0 +1,186 @@
+<?php
+
+/**
+ * @file
+ * Search Autocomplete
+ * Enables autocomplete functionality on search fields.
+ *
+ * Sponsored by:
+ * www.axiomcafe.fr
+ */
+
+include_once('search_autocomplete.admin.inc');
+include_once('search_autocomplete.view_autocomplete.inc');
+include_once('search_autocomplete.features.inc');
+
+/**
+ * Implements hook_init().
+ *
+ * Add autocomplete.js on every page.
+ */
+function search_autocomplete_page_build() {
+
+  // Checkout if user have authorization to access the autocompleted form.
+  if (user_access('administer Search Autocomplete') && variable_get('sa_admin_helper', TRUE)) {
+    drupal_add_js(drupal_get_path('module', 'search_autocomplete') . '/js/search_autocomplete.admin.js');
+    drupal_add_css(drupal_get_path('module', 'search_autocomplete') . '/css/search_autocomplete.admin.css');
+  }
+
+  // Checkout if user have authorization to access the autocompleted form.
+  if (user_access('use Search Autocomplete')) {
+    // Checkout if the db exists (it should).
+    if (db_table_exists('search_autocomplete_forms')) {
+      // Get every form to autocomplete.
+      $result = db_select('search_autocomplete_forms', 'f')
+                  ->fields('f')
+                  ->condition('enabled', 1, '=')
+                  ->execute()
+                  ->fetchAllAssoc('fid');
+      // Build the setting array to transfer to JS.
+      foreach ($result as $match) {
+        $form_id = 'form' . $match->fid;
+        $input_data  = explode("\n", $match->data_static);
+        $data_static = array();
+        for ($i=0; $i < count($input_data); $i++) {
+          $cut = strripos($input_data[$i], '=>');
+          $object = array();
+          if ($cut > 0) {
+            $object['label']  = trim(substr($input_data[$i], 0, $cut));
+            $object['value']  = trim(substr($input_data[$i], 0, $cut));
+            $object['link']   = trim(substr($input_data[$i], $cut+2, strlen($input_data[$i])));
+          }
+          else {
+            $object['label']  = trim($input_data[$i]);
+            $object['value']  = trim($input_data[$i]);
+          }
+          $data_static[] = $object;
+        }
+
+        $theme_id       = preg_replace("/\\.[^.\\s]{3,4}$/", "", $match->theme);
+        $data_source    = $match->data_source;
+        $data_callback  = $match->data_callback;
+
+        if ($match->data_source != 'static') {
+          if (url_is_external($match->data_callback)) {
+            $data_source = 'external';
+          }
+          else {
+            $data_source = 'internal';
+            $data_callback = urldecode(url($match->data_callback, array('absolute' => TRUE)));
+          }
+        }
+
+        // Translate no_results label
+        $no_results = json_decode($match->no_results);
+        $no_results->label = t($no_results->label);
+
+        // Translate all_results label
+        $all_results = json_decode($match->all_results);
+        $all_results->label = t($all_results->label);
+
+        drupal_add_js(array('search_autocomplete' => array(
+          $form_id          => array(
+            'selector'      => $match->selector,
+            'minChars'      => $match->min_char,
+            'max_sug'       => $match->max_sug,
+            'type'          => $data_source,
+            'datas'         => $match->data_source == 'static' ? $data_static : $data_callback,
+            'fid'           => $match->fid,
+            // Get the css filename with '-' instead of ' ', lower case and no '.css'.
+            'theme'         => str_replace(' ', '-', strtolower($theme_id)),
+            'auto_submit'   => $match->auto_submit,
+            'auto_redirect' => $match->auto_redirect,
+          )
+        )), 'setting');
+        drupal_add_css(drupal_get_path('module', 'search_autocomplete') . '/css/themes/' . $match->theme);
+      }
+      // If there is some results: need to include the css and js....
+      if ($result) {
+        drupal_add_library('system', 'ui');
+        drupal_add_library('system', 'ui.widget');
+        drupal_add_library('system', 'ui.position');
+        drupal_add_library('system', 'ui.autocomplete');
+        drupal_add_js(drupal_get_path('module', 'search_autocomplete') . '/js/jquery.autocomplete.js');
+      }
+    }
+  }
+
+  if (isset($_GET['sort_order'])) {
+    $_GET['sort_order'] = drupal_strtoupper($_GET['sort_order']);
+  }
+
+}
+
+/**
+ * Implements image_default_styles().
+ *
+ * Add an image style for Search Autocomplete module.
+ */
+function search_autocomplete_image_default_styles() {
+
+  $styles = array();
+  $styles['autocompletion_style'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 50,
+          'height' => 50,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
+ * HELP FUNCTION: replace placeholders in the input string.
+ *
+ * @param string $input
+ *   the string to be replaced
+ * @param array $args
+ *   the array of placeholders and values
+ */
+function search_autocomplete_replaceArguments(&$input, &$args) {
+  $modified = FALSE;
+  foreach ($args as $key => $data) {
+    $input = preg_replace('#' . $key . '#', $data, $input);
+    $modified = TRUE;
+  }
+  return $modified;
+}
+
+/**
+ * Helper function: get from database if suggestions should be translited.
+ */
+function search_autocomplete_get_translite() {
+
+  // Get data in database and fetch it.
+  $result = db_select('search_autocomplete_forms', 'f')
+    ->fields('f', array('translite'))
+    ->range(0, 1)
+    ->execute()
+    ->fetchField();
+
+  return $result;
+}
+
+/**
+ * Implements hook_features_api().
+ *
+ * Here we define the components that we want to make exportable.  For this
+ * particular module, we want to make the configurations exportable.
+ */
+function search_autocomplete_features_api() {
+
+  return array(
+      'search_autocomplete_config' => array(
+          'name' => 'Search Autocomplete features ',
+          'file' => 'search_autocomplete.features.inc',
+          'default_hook' => 'search_autocomplete_config_features_default_settings',
+          'feature_source' => TRUE,
+      ),
+  );
+}
