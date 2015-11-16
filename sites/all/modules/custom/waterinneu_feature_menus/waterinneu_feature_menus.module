@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature - Menus feature.
+ */
+
+include_once 'waterinneu_feature_menus.features.inc';
