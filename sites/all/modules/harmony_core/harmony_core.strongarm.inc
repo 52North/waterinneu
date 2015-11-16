@@ -105,14 +105,14 @@ function harmony_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_harmony_core_pattern';
-  $strongarm->value = 'thread/[harmony_thread:thread-id]/[harmony_thread:title]';
+  $strongarm->value = 'marketplace/thread/[harmony_thread:thread-id]/[harmony_thread:title]';
   $export['pathauto_harmony_core_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_harmony_category_pattern';
-  $strongarm->value = 'category/[term:parents:join-path]/[term:name]';
+  $strongarm->value = 'marketplace/[term:parents:join-path]/[term:name]';
   $export['pathauto_taxonomy_term_harmony_category_pattern'] = $strongarm;
 
   return $export;
