@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature - Harmony feature.
+ */
+
+include_once 'waterinneu_feature_harmony.features.inc';
