@@ -15,3 +15,12 @@ function waterinneu_feature_harmony_ctools_plugin_api($module = NULL, $api = NUL
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_default_harmony_thread_type().
+ */
+function waterinneu_feature_harmony_default_harmony_thread_type() {
+  $items = array();
+  $items['harmony_thread'] = entity_import('harmony_thread_type', '{ "type" : "harmony_thread", "label" : "Thread", "rdf_mapping" : [] }');
+  return $items;
+}
