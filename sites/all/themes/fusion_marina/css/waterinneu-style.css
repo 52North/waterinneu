@@ -28,8 +28,8 @@
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
     margin: 10px;
-    padding: 2em 5em;
-    font-size: 200%;
+    padding: 2em;
+    font-size: 125%;
 }
 
 #frontpage-buttons ul {

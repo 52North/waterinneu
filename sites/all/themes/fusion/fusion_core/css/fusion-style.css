@@ -344,14 +344,6 @@ div.full-width {
   margin-left: 0; /* LTR */
 }
 
-/* Menus
-/-------------------------------------------------------------- */
-ul.menu li,
-ul.links li {
-  margin: 0;
-  padding: 0;
-}
-
 /* Main Menu
 /-------------------------------------------------------------- */
 /* This corrects an issue with excess space above (yes, above) the menu.

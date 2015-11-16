@@ -634,13 +634,6 @@ ul.sf-vertical li .nolink {
   margin: 0;
 }
 
-ul.menu li {
-  background-image: none;
-  list-style-image: none;
-  list-style: none;
-  text-indent: 0;
-}
-
 ul.sf-vertical li,
 ul.sf-horizontal li {
   border: none;
