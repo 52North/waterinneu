@@ -10,57 +10,53 @@
 function waterinneu_feature_harmony_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: management_harmony:admin/harmony.
-  $menu_links['management_harmony:admin/harmony'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/harmony',
-    'router_path' => 'admin/harmony',
-    'link_title' => 'Harmony',
+  // Exported menu link: main-menu_marketplace:marketplace.
+  $menu_links['main-menu_marketplace:marketplace'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'marketplace',
+    'router_path' => 'marketplace',
+    'link_title' => 'Marketplace',
     'options' => array(
       'attributes' => array(
-        'title' => 'Harmony dashboard.',
+        'title' => '',
       ),
-      'identifier' => 'management_harmony:admin/harmony',
+      'alter' => TRUE,
+      'identifier' => 'main-menu_marketplace:marketplace',
     ),
-    'module' => 'system',
+    'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
-    'has_children' => 1,
+    'has_children' => 0,
     'expanded' => 0,
-    'weight' => -10,
-    'customized' => 0,
+    'weight' => -48,
+    'customized' => 1,
     'language' => 'und',
-    'menu_links_customized' => 0,
-    'parent_identifier' => 'management_administration:admin',
+    'menu_links_customized' => 1,
   );
-  // Exported menu link: management_rebuild-supporting-harmony-entity-data:admin/harmony/config/general/rebuild.
-  $menu_links['management_rebuild-supporting-harmony-entity-data:admin/harmony/config/general/rebuild'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/harmony/config/general/rebuild',
-    'router_path' => 'admin/harmony/config/general/rebuild',
-    'link_title' => 'Rebuild supporting Harmony entity data',
+  // Exported menu link: navigation_recent-posts:tracker.
+  $menu_links['navigation_recent-posts:tracker'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'tracker',
+    'router_path' => 'tracker',
+    'link_title' => 'Recent posts',
     'options' => array(
-      'attributes' => array(
-        'title' => 'Rebuild the supporting data used by Harmony entities.',
-      ),
-      'identifier' => 'management_rebuild-supporting-harmony-entity-data:admin/harmony/config/general/rebuild',
+      'identifier' => 'navigation_recent-posts:tracker',
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
-    'has_children' => 1,
+    'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
+    'weight' => -41,
+    'customized' => 1,
     'language' => 'und',
-    'menu_links_customized' => 0,
-    'parent_identifier' => 'management_general-settings:admin/harmony/config/general',
+    'menu_links_customized' => 1,
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Harmony');
-  t('Rebuild supporting Harmony entity data');
+  t('Marketplace');
+  t('Recent posts');
 
   return $menu_links;
 }
