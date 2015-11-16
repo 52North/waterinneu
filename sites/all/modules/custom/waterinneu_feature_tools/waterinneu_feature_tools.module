@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Tools feature.
+ */
+
+include_once 'waterinneu_feature_tools.features.inc';
