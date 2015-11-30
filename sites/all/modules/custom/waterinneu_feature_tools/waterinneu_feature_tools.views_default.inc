@@ -78,18 +78,6 @@ function waterinneu_feature_tools_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['block_description'] = 'Tool of the Month';
-  $translatables['tool_of_the_month'] = array(
-    t('Master'),
-    t('Tool of the Month'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('<h2>Tool of the Month</h2>'),
-    t('Block'),
-  );
   $export['tool_of_the_month'] = $view;
 
   $view = new view();
@@ -206,28 +194,6 @@ function waterinneu_feature_tools_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'tools';
-  $translatables['tools'] = array(
-    t('Master'),
-    t('Tools'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('No matches found.'),
-    t('Filter by Language'),
-    t('Language'),
-    t('Filter by License'),
-    t('Page'),
-  );
   $export['tools'] = $view;
 
   return $export;

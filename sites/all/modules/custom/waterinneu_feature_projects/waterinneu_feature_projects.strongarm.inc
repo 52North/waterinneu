@@ -93,23 +93,23 @@ function waterinneu_feature_projects_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '1',
+          'weight' => 1,
         ),
         'path' => array(
-          'weight' => '23',
+          'weight' => 23,
         ),
         'language' => array(
-          'weight' => '0',
+          'weight' => 0,
         ),
       ),
       'display' => array(
         'language' => array(
           'default' => array(
-            'weight' => '12',
+            'weight' => 12,
             'visible' => FALSE,
           ),
           'teaser' => array(
-            'weight' => '9',
+            'weight' => 9,
             'visible' => FALSE,
           ),
         ),
@@ -122,7 +122,7 @@ function waterinneu_feature_projects_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_project';
-  $strongarm->value = '1';
+  $strongarm->value = '4';
   $export['language_content_type_project'] = $strongarm;
 
   $strongarm = new stdClass();

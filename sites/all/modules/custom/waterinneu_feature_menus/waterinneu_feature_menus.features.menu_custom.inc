@@ -40,7 +40,7 @@ function waterinneu_feature_menus_menu_default_menu_custom() {
     'title' => 'Top-Level-Links (registered)',
     'description' => '',
     'language' => 'und',
-    'i18n_mode' => 0,
+    'i18n_mode' => 5,
   );
   // Exported menu: menu-top-links.
   $menus['menu-top-links'] = array(
@@ -48,7 +48,7 @@ function waterinneu_feature_menus_menu_default_menu_custom() {
     'title' => 'Top-Level-Links (anon)',
     'description' => 'Holds all links that are in the top div.',
     'language' => 'und',
-    'i18n_mode' => 0,
+    'i18n_mode' => 5,
   );
   // Exported menu: navigation.
   $menus['navigation'] = array(
@@ -64,7 +64,7 @@ function waterinneu_feature_menus_menu_default_menu_custom() {
     'title' => 'User menu',
     'description' => 'The <em>User</em> menu contains links related to the user\'s account, as well as the \'Log out\' link.',
     'language' => 'und',
-    'i18n_mode' => 0,
+    'i18n_mode' => 5,
   );
   // Translatables
   // Included for use with string extractors like potx.

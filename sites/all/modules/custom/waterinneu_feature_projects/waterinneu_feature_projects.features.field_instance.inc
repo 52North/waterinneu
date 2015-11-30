@@ -48,6 +48,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Administrative Aggregation Level',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -97,6 +98,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Administrative Data available?',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -148,6 +150,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Administrative Data Collection Level',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -201,6 +204,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Approach',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -266,6 +270,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Study Area',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -316,6 +321,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Comments',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -367,6 +373,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -423,6 +430,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Guideline available?',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -471,6 +479,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Hardware available?',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -522,6 +531,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Hydrological Aggregation Level',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -574,6 +584,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Hydrological Data Collection Level',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -626,6 +637,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Location',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -674,6 +686,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -725,6 +738,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Metadata Level',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max' => 5,
       'min' => 1,
       'prefix' => '',
@@ -775,6 +789,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Model available?',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -823,6 +838,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Model Data available?',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -871,6 +887,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Observation Data available?',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -939,6 +956,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Participating Organisations',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1041,6 +1059,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Partners\' Countries of Origin ',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1093,6 +1112,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Partners From',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1139,6 +1159,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Policy Brief available?',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1207,6 +1228,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Published tools',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1253,6 +1275,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Raw Data used?',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1305,6 +1328,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1363,6 +1387,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Report available?',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1411,6 +1436,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Software available?',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1475,6 +1501,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Standards accounted for',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1540,6 +1567,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
     'label' => 'Keywords',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1593,6 +1621,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'optional',
       'title_label_use_field_label' => 0,
@@ -1608,6 +1637,49 @@ function waterinneu_feature_projects_field_default_field_instances() {
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-project-title_field'.
+  $field_instances['node-project-title_field'] = array(
+    'bundle' => 'project',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'title_field',
+    'label' => 'Title',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => FALSE,
+        'page' => FALSE,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
     ),
   );
 
@@ -1661,6 +1733,7 @@ function waterinneu_feature_projects_field_default_field_instances() {
   t('Summary of a particular policy issue, the options for dealing with this, and recommendations regarding these options');
   t('The data originating from measurements or models that is still unprocessed and contains all outliers and unfilled gaps. Data is reported ‘raw’ by the original author.');
   t('The date when the project finished.');
+  t('Title');
   t('Website');
 
   return $field_instances;

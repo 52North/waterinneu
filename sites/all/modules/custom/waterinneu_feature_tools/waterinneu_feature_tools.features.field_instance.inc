@@ -42,6 +42,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'label' => 'Application Scale',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -101,6 +102,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'optional',
       'title_label_use_field_label' => 0,
@@ -177,6 +179,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'label' => 'Category',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -223,6 +226,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'label' => 'Climate Change Relevance',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -269,6 +273,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'label' => 'Potential to combine with other tools',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -339,6 +344,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -387,6 +393,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'label' => 'License',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -445,6 +452,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 1,
       'default_image' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => 'logos',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '1 MB',
@@ -524,6 +532,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'optional',
       'title_label_use_field_label' => 0,
@@ -586,6 +595,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'label' => 'Purpose',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -670,6 +680,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'label' => 'Supported Standards',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -716,6 +727,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'label' => 'Supported Legacy Systems',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -765,6 +777,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'label' => 'Tool of the Month',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -810,6 +823,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'label' => 'Type of Input Data',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -869,6 +883,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'optional',
       'title_label_use_field_label' => 0,

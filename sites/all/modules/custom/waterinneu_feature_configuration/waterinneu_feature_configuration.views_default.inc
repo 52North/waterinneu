@@ -87,20 +87,6 @@ function waterinneu_feature_configuration_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'all-autocomplete';
-  $translatables['all_autocomplete'] = array(
-    t('Master'),
-    t('Everything of the portal for autocompletion'),
-    t('plus'),
-    t('Search'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('[[title:[title]]]'),
-    t('title'),
-    t('Page'),
-    t('more'),
-  );
   $export['all_autocomplete'] = $view;
 
   $view = new view();
@@ -179,28 +165,6 @@ function waterinneu_feature_configuration_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
-  $translatables['my_content'] = array(
-    t('Master'),
-    t('My Content'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('Title'),
-    t('Updated date'),
-    t('All'),
-    t('Published'),
-    t('Block'),
-  );
   $export['my_content'] = $view;
 
   return $export;

@@ -1,0 +1,9 @@
+
+#translation-table-filter .translation-table-filter {
+  margin-right: 30px;
+  float: right;
+}
+
+#translation-table-filter #translation-table-languages-selected-filter {
+  margin-right: 0;
+}

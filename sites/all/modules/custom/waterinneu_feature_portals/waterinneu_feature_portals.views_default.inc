@@ -93,27 +93,6 @@ function waterinneu_feature_portals_views_default_views() {
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $translatables['portals'] = array(
-    t('Master'),
-    t('Portals'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('No matches found.'),
-    t('Title'),
-    t('Filter by Language'),
-    t('Page'),
-  );
   $export['portals'] = $view;
 
   return $export;

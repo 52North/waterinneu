@@ -312,15 +312,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'contact',
   );
 
-  // Exported permission: 'administer content translations'.
-  $permissions['administer content translations'] = array(
-    'name' => 'administer content translations',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'i18n_node',
-  );
-
   // Exported permission: 'administer content types'.
   $permissions['administer content types'] = array(
     'name' => 'administer content types',

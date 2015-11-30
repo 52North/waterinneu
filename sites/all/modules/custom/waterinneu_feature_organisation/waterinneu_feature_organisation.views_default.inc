@@ -112,28 +112,6 @@ function waterinneu_feature_organisation_views_default_views() {
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Organisations';
   $handler->display->display_options['menu']['name'] = 'main-menu';
-  $translatables['organisations'] = array(
-    t('Master'),
-    t('Organisations'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('|« '),
-    t('‹ '),
-    t(' ›'),
-    t(' »|'),
-    t('No matches found.'),
-    t('Title'),
-    t('Country'),
-    t('Filter by Language'),
-    t('Page'),
-  );
   $export['organisations'] = $view;
 
   return $export;

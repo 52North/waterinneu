@@ -150,30 +150,6 @@ function waterinneu_feature_projects_views_default_views() {
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Projects';
   $handler->display->display_options['menu']['name'] = 'main-menu';
-  $translatables['projects'] = array(
-    t('Master'),
-    t('Projects'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('No matches found.'),
-    t('Title'),
-    t('Partners\' Countries of Origin'),
-    t('Filter by Standards'),
-    t('Filter Partners\' Countries of Origin'),
-    t('Filter by Language'),
-    t('Page'),
-  );
   $export['projects'] = $view;
 
   return $export;

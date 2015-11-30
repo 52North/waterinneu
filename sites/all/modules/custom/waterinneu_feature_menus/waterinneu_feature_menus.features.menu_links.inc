@@ -27,7 +27,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 50,
+    'weight' => -40,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -45,6 +45,15 @@ function waterinneu_feature_menus_menu_default_menu_links() {
       'node_type' => 'page',
       'alter' => TRUE,
       'identifier' => 'main-menu_other:node/42',
+      'ignore_access_roles' => array(
+        1 => 0,
+        2 => 0,
+        8 => 0,
+        10 => 0,
+        9 => 0,
+        11 => 0,
+        3 => 0,
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -53,7 +62,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -47,
     'customized' => 1,
-    'language' => 'und',
+    'language' => 'en',
     'menu_links_customized' => 1,
   );
   // Exported menu link: main-menu_portals:portals.
@@ -74,7 +83,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -43,
+    'weight' => -41,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -109,10 +118,21 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'User Guide',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'title' => '',
+      ),
       'node_type' => 'page',
       'alter' => TRUE,
       'identifier' => 'main-menu_user-guide:node/33',
+      'ignore_access_roles' => array(
+        1 => 0,
+        2 => 0,
+        8 => 0,
+        10 => 0,
+        9 => 0,
+        11 => 0,
+        3 => 0,
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -135,15 +155,25 @@ function waterinneu_feature_menus_menu_default_menu_links() {
         'title' => 'Click here to get to your account\'s settings.',
       ),
       'identifier' => 'menu-top-level-links-registered-_account:user',
+      'ignore_access_roles' => array(
+        1 => 0,
+        2 => 0,
+        8 => 0,
+        10 => 0,
+        9 => 0,
+        11 => 0,
+        3 => 0,
+      ),
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
-    'language' => 'und',
+    'language' => 'en',
     'menu_links_customized' => 1,
   );
   // Exported menu link: menu-top-level-links-registered-_logout:user/logout.
@@ -157,15 +187,25 @@ function waterinneu_feature_menus_menu_default_menu_links() {
         'title' => 'Click here to log out from the system and end your session.',
       ),
       'identifier' => 'menu-top-level-links-registered-_logout:user/logout',
+      'ignore_access_roles' => array(
+        1 => 0,
+        2 => 0,
+        8 => 0,
+        10 => 0,
+        9 => 0,
+        11 => 0,
+        3 => 0,
+      ),
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
     'customized' => 1,
-    'language' => 'und',
+    'language' => 'en',
     'menu_links_customized' => 1,
   );
   // Exported menu link: menu-top-links_login:user.
@@ -179,15 +219,25 @@ function waterinneu_feature_menus_menu_default_menu_links() {
         'title' => 'Click here to log in to the system.',
       ),
       'identifier' => 'menu-top-links_login:user',
+      'ignore_access_roles' => array(
+        1 => 0,
+        2 => 0,
+        8 => 0,
+        10 => 0,
+        9 => 0,
+        11 => 0,
+        3 => 0,
+      ),
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
-    'language' => 'und',
+    'language' => 'en',
     'menu_links_customized' => 1,
   );
   // Exported menu link: menu-top-links_register:user/register.
@@ -201,15 +251,25 @@ function waterinneu_feature_menus_menu_default_menu_links() {
         'title' => 'Click here to register for requesting a new account.',
       ),
       'identifier' => 'menu-top-links_register:user/register',
+      'ignore_access_roles' => array(
+        1 => 0,
+        2 => 0,
+        8 => 0,
+        10 => 0,
+        9 => 0,
+        11 => 0,
+        3 => 0,
+      ),
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
     'customized' => 1,
-    'language' => 'und',
+    'language' => 'en',
     'menu_links_customized' => 1,
   );
   // Exported menu link: navigation_add-content:node/add.
@@ -587,25 +647,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'navigation_chaos-tools-ajax-demo:ctools_ajax_sample',
   );
-  // Exported menu link: navigation_tags:tagclouds.
-  $menu_links['navigation_tags:tagclouds'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'tagclouds',
-    'router_path' => 'tagclouds',
-    'link_title' => 'Tags',
-    'options' => array(
-      'identifier' => 'navigation_tags:tagclouds',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-  );
   // Exported menu link: navigation_view-client-reloaded:n52/jsClient.
   $menu_links['navigation_view-client-reloaded:n52/jsClient'] = array(
     'menu_name' => 'navigation',
@@ -659,6 +700,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'user-menu_add-content:node/add',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -669,45 +711,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
-  );
-  // Exported menu link: user-menu_log-out:user/logout.
-  $menu_links['user-menu_log-out:user/logout'] = array(
-    'menu_name' => 'user-menu',
-    'link_path' => 'user/logout',
-    'router_path' => 'user/logout',
-    'link_title' => 'Log out',
-    'options' => array(
-      'identifier' => 'user-menu_log-out:user/logout',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 10,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-  );
-  // Exported menu link: user-menu_user-account:user.
-  $menu_links['user-menu_user-account:user'] = array(
-    'menu_name' => 'user-menu',
-    'link_path' => 'user',
-    'router_path' => 'user',
-    'link_title' => 'User account',
-    'options' => array(
-      'alter' => TRUE,
-      'identifier' => 'user-menu_user-account:user',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -10,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
   );
 
   // Translatables
@@ -724,7 +727,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   t('Content summary');
   t('Feed aggregator');
   t('Glossary');
-  t('Log out');
   t('Login');
   t('Logout');
   t('Marketplace');
@@ -738,9 +740,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   t('Search Wizard');
   t('Sources');
   t('Successful Jumping');
-  t('Tags');
   t('User Guide');
-  t('User account');
   t('View Client Reloaded');
   t('Webform');
 

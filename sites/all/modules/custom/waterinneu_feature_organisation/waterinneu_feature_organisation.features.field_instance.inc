@@ -101,6 +101,7 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     'label' => 'Class',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -140,6 +141,7 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     'label' => 'code',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max' => 99999,
       'min' => 1,
       'prefix' => '',
@@ -210,6 +212,7 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     'label' => 'Country',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -251,6 +254,7 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -311,6 +315,7 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     'label' => 'Projects',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -377,6 +382,7 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     'label' => 'Keywords',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -435,6 +441,7 @@ function waterinneu_feature_organisation_field_default_field_instances() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -458,6 +465,49 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-organisation-title_field'.
+  $field_instances['node-organisation-title_field'] = array(
+    'bundle' => 'organisation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'title_field',
+    'label' => 'Title',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => FALSE,
+        'page' => FALSE,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Class');
@@ -468,6 +518,7 @@ function waterinneu_feature_organisation_field_default_field_instances() {
   t('Logo');
   t('Projects');
   t('The projects the organisation participated in.');
+  t('Title');
   t('Website');
   t('code');
   t('internal code for referencing');
