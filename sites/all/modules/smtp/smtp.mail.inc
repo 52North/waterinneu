@@ -72,6 +72,11 @@ class SmtpMailSystem implements MailSystemInterface {
 
     //Hack to fix reply-to issue.
     $properfrom = variable_get('site_mail', '');
+    // Hack to use smtp_from as from
+    $tmp = variable_get('smtp_from','');
+    if (isset($tmp) && valid_email_address($tmp)) {
+    	$properfrom = $tmp;
+    }
     if (!empty($properfrom)) {
       $headers['From'] = $properfrom;
     }
@@ -84,6 +89,7 @@ class SmtpMailSystem implements MailSystemInterface {
       }
       $headers['Reply-To'] = $reply;
     }
+    $from = $properfrom;
 
     // Blank value will let the e-mail address appear.
 
