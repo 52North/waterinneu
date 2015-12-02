@@ -28,7 +28,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 7,
       ),
       'tool_of_the_month' => array(
         'label' => 'inline',
@@ -75,7 +75,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 14,
       ),
       'tool_of_the_month' => array(
         'label' => 'inline',
@@ -212,7 +212,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 11,
       ),
       'tool_of_the_month' => array(
         'label' => 'inline',
@@ -259,7 +259,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 10,
       ),
       'tool_of_the_month' => array(
         'label' => 'inline',
@@ -505,7 +505,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 15,
       ),
       'tool_of_the_month' => array(
         'label' => 'inline',
@@ -581,7 +581,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 12,
       ),
       'tool_of_the_month' => array(
         'label' => 'inline',
@@ -713,7 +713,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 9,
       ),
       'tool_of_the_month' => array(
         'label' => 'inline',
@@ -763,7 +763,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
@@ -809,7 +809,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 8,
       ),
       'tool_of_the_month' => array(
         'label' => 'inline',
@@ -856,7 +856,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 13,
       ),
       'tool_of_the_month' => array(
         'label' => 'hidden',
@@ -902,6 +902,55 @@ function waterinneu_feature_tools_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tool-title_field'.
+  $field_instances['node-tool-title_field'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'title_field',
+    'label' => 'Title',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => FALSE,
+        'page' => FALSE,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Application Scale');
@@ -930,6 +979,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
   t('Supported formats and requirements for input data.');
   t('Textual description of the tool.');
   t('The setting controls the content of the tool of the month box on the front page, hence, only one tools should have set this to true.');
+  t('Title');
   t('Tool of the Month');
   t('Type of Input Data');
   t('Website');

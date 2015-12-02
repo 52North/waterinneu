@@ -27,7 +27,85 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -40,
+    'weight' => -37,
+    'customized' => 1,
+    'language' => 'en',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: main-menu_anderes:node/42.
+  $menu_links['main-menu_anderes:node/42'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/42',
+    'router_path' => 'node/%',
+    'link_title' => 'Anderes',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'main-menu_anderes:node/42',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -42,
+    'customized' => 1,
+    'language' => 'de',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: main-menu_benutzer-hilfe:node/33.
+  $menu_links['main-menu_benutzer-hilfe:node/33'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/33',
+    'router_path' => 'node/%',
+    'link_title' => 'Benutzer-Hilfe',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'ignore_access_roles' => array(
+        1 => 0,
+        2 => 0,
+        8 => 0,
+        10 => 0,
+        9 => 0,
+        11 => 0,
+        3 => 0,
+      ),
+      'identifier' => 'main-menu_benutzer-hilfe:node/33',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -41,
+    'customized' => 1,
+    'language' => 'de',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: main-menu_home:<front>.
+  $menu_links['main-menu_home:<front>'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'Home',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'main-menu_home:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -60,7 +138,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => -45,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -83,7 +161,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -41,
+    'weight' => -38,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -106,9 +184,32 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -47,
     'customized' => 1,
     'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: main-menu_start:<front>.
+  $menu_links['main-menu_start:<front>'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'Start',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'main-menu_start:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+    'language' => 'de',
     'menu_links_customized' => 1,
   );
   // Exported menu link: main-menu_user-guide:node/33.
@@ -139,9 +240,32 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -43,
     'customized' => 1,
     'language' => 'en',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-top-level-links-registered-_abmelden:user/logout.
+  $menu_links['menu-top-level-links-registered-_abmelden:user/logout'] = array(
+    'menu_name' => 'menu-top-level-links-registered-',
+    'link_path' => 'user/logout',
+    'router_path' => 'user/logout',
+    'link_title' => 'Abmelden',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Hier klicken zur Abmeldung vom System.',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-top-level-links-registered-_abmelden:user/logout',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'de',
     'menu_links_customized' => 1,
   );
   // Exported menu link: menu-top-level-links-registered-_account:user.
@@ -176,6 +300,38 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'language' => 'en',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: menu-top-level-links-registered-_benutzer:user.
+  $menu_links['menu-top-level-links-registered-_benutzer:user'] = array(
+    'menu_name' => 'menu-top-level-links-registered-',
+    'link_path' => 'user',
+    'router_path' => 'user',
+    'link_title' => 'Benutzer',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Hier klicken zur Anpassung der Benutzer-Einstellungen.',
+      ),
+      'alter' => TRUE,
+      'ignore_access_roles' => array(
+        1 => 0,
+        2 => 0,
+        8 => 0,
+        10 => 0,
+        9 => 0,
+        11 => 0,
+        3 => 0,
+      ),
+      'identifier' => 'menu-top-level-links-registered-_benutzer:user',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+    'language' => 'de',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: menu-top-level-links-registered-_logout:user/logout.
   $menu_links['menu-top-level-links-registered-_logout:user/logout'] = array(
     'menu_name' => 'menu-top-level-links-registered-',
@@ -206,6 +362,38 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
     'language' => 'en',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-top-links_anmelden:user.
+  $menu_links['menu-top-links_anmelden:user'] = array(
+    'menu_name' => 'menu-top-links',
+    'link_path' => 'user',
+    'router_path' => 'user',
+    'link_title' => 'Anmelden',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Hier klicken zur Anmeldung am System.',
+      ),
+      'alter' => TRUE,
+      'ignore_access_roles' => array(
+        1 => 0,
+        2 => 0,
+        8 => 0,
+        10 => 0,
+        9 => 0,
+        11 => 0,
+        3 => 0,
+      ),
+      'identifier' => 'menu-top-links_anmelden:user',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+    'language' => 'de',
     'menu_links_customized' => 1,
   );
   // Exported menu link: menu-top-links_login:user.
@@ -270,6 +458,38 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
     'language' => 'en',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-top-links_registrieren:user/register.
+  $menu_links['menu-top-links_registrieren:user/register'] = array(
+    'menu_name' => 'menu-top-links',
+    'link_path' => 'user/register',
+    'router_path' => 'user/register',
+    'link_title' => 'Registrieren',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Hier klicken zur Registrierung für einen neuen Benutzer.',
+      ),
+      'alter' => TRUE,
+      'ignore_access_roles' => array(
+        1 => 0,
+        2 => 0,
+        8 => 0,
+        10 => 0,
+        9 => 0,
+        11 => 0,
+        3 => 0,
+      ),
+      'identifier' => 'menu-top-links_registrieren:user/register',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'de',
     'menu_links_customized' => 1,
   );
   // Exported menu link: navigation_add-content:node/add.
@@ -457,28 +677,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: navigation_marketplace:marketplace.
-  $menu_links['navigation_marketplace:marketplace'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'marketplace',
-    'router_path' => 'marketplace',
-    'link_title' => 'Marketplace',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'navigation_marketplace:marketplace',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
   // Exported menu link: navigation_migrate-example---dates:node/add/date-migrate-example.
   $menu_links['navigation_migrate-example---dates:node/add/date-migrate-example'] = array(
     'menu_name' => 'navigation',
@@ -647,6 +845,44 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'navigation_chaos-tools-ajax-demo:ctools_ajax_sample',
   );
+  // Exported menu link: navigation_tags:tagclouds.
+  $menu_links['navigation_tags:tagclouds'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'tagclouds',
+    'router_path' => 'tagclouds',
+    'link_title' => 'Tags',
+    'options' => array(
+      'identifier' => 'navigation_tags:tagclouds',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'language' => 'und',
+    'menu_links_customized' => 0,
+  );
+  // Exported menu link: navigation_translate-strings:locale.
+  $menu_links['navigation_translate-strings:locale'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'locale',
+    'router_path' => 'locale',
+    'link_title' => 'Translate strings',
+    'options' => array(
+      'identifier' => 'navigation_translate-strings:locale',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'language' => 'und',
+    'menu_links_customized' => 0,
+  );
   // Exported menu link: navigation_view-client-reloaded:n52/jsClient.
   $menu_links['navigation_view-client-reloaded:n52/jsClient'] = array(
     'menu_name' => 'navigation',
@@ -712,35 +948,85 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: user-menu_log-out:user/logout.
+  $menu_links['user-menu_log-out:user/logout'] = array(
+    'menu_name' => 'user-menu',
+    'link_path' => 'user/logout',
+    'router_path' => 'user/logout',
+    'link_title' => 'Log out',
+    'options' => array(
+      'identifier' => 'user-menu_log-out:user/logout',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 10,
+    'customized' => 0,
+    'language' => 'und',
+    'menu_links_customized' => 0,
+  );
+  // Exported menu link: user-menu_user-account:user.
+  $menu_links['user-menu_user-account:user'] = array(
+    'menu_name' => 'user-menu',
+    'link_path' => 'user',
+    'router_path' => 'user',
+    'link_title' => 'User account',
+    'options' => array(
+      'alter' => TRUE,
+      'identifier' => 'user-menu_user-account:user',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -10,
+    'customized' => 0,
+    'language' => 'und',
+    'menu_links_customized' => 0,
+  );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Abmelden');
   t('About');
   t('Account');
   t('Add Content');
   t('Add content');
+  t('Anderes');
+  t('Anmelden');
   t('Article');
   t('Basic page');
+  t('Benutzer');
+  t('Benutzer-Hilfe');
   t('Chaos Tools AJAX Demo');
   t('Compose tips');
   t('Contact');
   t('Content summary');
   t('Feed aggregator');
   t('Glossary');
+  t('Home');
+  t('Log out');
   t('Login');
   t('Logout');
-  t('Marketplace');
   t('Migrate example - dates');
   t('Other');
   t('Portal');
   t('Portals');
   t('Register');
+  t('Registrieren');
   t('Scheduled publications');
   t('Search');
   t('Search Wizard');
   t('Sources');
+  t('Start');
   t('Successful Jumping');
+  t('Tags');
+  t('Translate strings');
   t('User Guide');
+  t('User account');
   t('View Client Reloaded');
   t('Webform');
 
