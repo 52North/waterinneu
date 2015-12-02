@@ -138,6 +138,19 @@
 	 * SELECT *  FROM `drupal`.`block` WHERE `title`LIKE '%services%'
 	 */
 	$services_block = module_invoke('block', 'block_view', '1');
+	/*
+	 * Hack to get home button activated (we assume it's the first element of 
+	 * the main menu). The class "active-trail" is added, if not available.
+	 */
+	if (is_array($page['main_menu'])  && is_array($page['main_menu']['system_main-menu'])) {
+		$keys = array_keys($page['main_menu']['system_main-menu']);
+		if (is_array($keys) && count($keys) > 0) {
+			$classes = &$page['main_menu']['system_main-menu'][$keys[0]]['#attributes']['class'];
+			if (!in_array("active-trail", $classes)) {
+				$classes[count($classes)] = "active-trail";
+			}
+		}
+	}
 ?>
 <div id="page" class="page">
 	<div id="page-inner" class="page-inner">

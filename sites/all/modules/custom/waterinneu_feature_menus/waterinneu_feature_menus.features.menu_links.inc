@@ -845,44 +845,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'navigation_chaos-tools-ajax-demo:ctools_ajax_sample',
   );
-  // Exported menu link: navigation_tags:tagclouds.
-  $menu_links['navigation_tags:tagclouds'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'tagclouds',
-    'router_path' => 'tagclouds',
-    'link_title' => 'Tags',
-    'options' => array(
-      'identifier' => 'navigation_tags:tagclouds',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-  );
-  // Exported menu link: navigation_translate-strings:locale.
-  $menu_links['navigation_translate-strings:locale'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'locale',
-    'router_path' => 'locale',
-    'link_title' => 'Translate strings',
-    'options' => array(
-      'identifier' => 'navigation_translate-strings:locale',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-  );
   // Exported menu link: navigation_view-client-reloaded:n52/jsClient.
   $menu_links['navigation_view-client-reloaded:n52/jsClient'] = array(
     'menu_name' => 'navigation',
@@ -948,45 +910,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: user-menu_log-out:user/logout.
-  $menu_links['user-menu_log-out:user/logout'] = array(
-    'menu_name' => 'user-menu',
-    'link_path' => 'user/logout',
-    'router_path' => 'user/logout',
-    'link_title' => 'Log out',
-    'options' => array(
-      'identifier' => 'user-menu_log-out:user/logout',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 10,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-  );
-  // Exported menu link: user-menu_user-account:user.
-  $menu_links['user-menu_user-account:user'] = array(
-    'menu_name' => 'user-menu',
-    'link_path' => 'user',
-    'router_path' => 'user',
-    'link_title' => 'User account',
-    'options' => array(
-      'alter' => TRUE,
-      'identifier' => 'user-menu_user-account:user',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -10,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-  );
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -1008,7 +931,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   t('Feed aggregator');
   t('Glossary');
   t('Home');
-  t('Log out');
   t('Login');
   t('Logout');
   t('Migrate example - dates');
@@ -1023,10 +945,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   t('Sources');
   t('Start');
   t('Successful Jumping');
-  t('Tags');
-  t('Translate strings');
   t('User Guide');
-  t('User account');
   t('View Client Reloaded');
   t('Webform');
 
