@@ -6,6 +6,7 @@ sites/*/settings*.php
 
 # ignore drupal specific stuff
 config-backup/test*
+sites/default/files/languages/*
 
 # waterinneu inventory import exclusions
 sites/all/modules/n52_migrate_waterinneu/csv_files/
