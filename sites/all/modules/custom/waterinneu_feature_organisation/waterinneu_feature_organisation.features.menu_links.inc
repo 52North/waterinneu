@@ -25,7 +25,7 @@ function waterinneu_feature_organisation_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -39,
+    'weight' => -38,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,

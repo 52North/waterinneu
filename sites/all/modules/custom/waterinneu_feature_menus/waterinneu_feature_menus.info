@@ -13,6 +13,7 @@ features[context][] = author
 features[context][] = home
 features[context][] = moderator
 features[context][] = other
+features[context][] = products
 features[context][] = user_guide
 features[ctools][] = context:context:3
 features[features_api][] = api:2

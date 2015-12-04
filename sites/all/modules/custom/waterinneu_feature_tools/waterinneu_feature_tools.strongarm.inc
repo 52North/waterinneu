@@ -183,7 +183,7 @@ function waterinneu_feature_tools_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_tool_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'product/[node:title]';
   $export['pathauto_node_tool_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

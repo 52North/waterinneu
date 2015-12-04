@@ -15,14 +15,14 @@ function waterinneu_feature_tools_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Tool of the Month';
+  $view->human_name = 'Product of the Month';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Tool of the Month';
+  $handler->display->display_options['title'] = 'Product of the Month';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -39,7 +39,7 @@ function waterinneu_feature_tools_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<h2>Tool of the Month</h2>';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Product of the Month</h2>';
   $handler->display->display_options['header']['area']['format'] = 'full_html_tinymce';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -77,7 +77,7 @@ function waterinneu_feature_tools_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
-  $handler->display->display_options['block_description'] = 'Tool of the Month';
+  $handler->display->display_options['block_description'] = 'Product of the Month';
   $export['tool_of_the_month'] = $view;
 
   $view = new view();
@@ -85,14 +85,14 @@ function waterinneu_feature_tools_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Tools';
+  $view->human_name = 'Products';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Tools';
+  $handler->display->display_options['title'] = 'Products';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['group_by'] = TRUE;
@@ -193,7 +193,7 @@ function waterinneu_feature_tools_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'tools';
+  $handler->display->display_options['path'] = 'products';
   $export['tools'] = $view;
 
   return $export;

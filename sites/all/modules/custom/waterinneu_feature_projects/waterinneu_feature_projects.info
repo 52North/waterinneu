@@ -137,4 +137,7 @@ features[variable][] = pathauto_node_project_de_pattern
 features[variable][] = pathauto_node_project_en_pattern
 features[variable][] = pathauto_node_project_pattern
 features[variable][] = pathauto_node_project_und_pattern
+features[variable][] = pathauto_taxonomy_term_administrative_levels_pattern
+features[variable][] = pathauto_taxonomy_term_hydrological_level_pattern
+features[variable][] = pathauto_taxonomy_term_location_pattern
 features[views_view][] = projects

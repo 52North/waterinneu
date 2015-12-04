@@ -32,7 +32,7 @@ function waterinneu_feature_tools_views_api($module = NULL, $api = NULL) {
 function waterinneu_feature_tools_node_info() {
   $items = array(
     'tool' => array(
-      'name' => t('Tool'),
+      'name' => t('Product'),
       'base' => 'node_content',
       'description' => t('Product specification sheet for project results of type tool, e.g. software.'),
       'has_title' => '1',
