@@ -352,6 +352,8 @@ function faq_view($node, $view_mode) {
   // Get the detailed question.
   if ($field_items = field_get_items('node', $node, 'field_detailed_question')) {
     $detailed_question = reset($field_items);
+    $detailed_question_render = field_view_value('node', $node, 'field_detailed_question', $detailed_question);
+    $detailed_question['detailed_question'] = render($detailed_question_render);
   }
 
   // Only show the detailed question if there is something to show.
@@ -1217,15 +1219,17 @@ function faq_view_question(&$data, $node, $path = NULL, $anchor = NULL) {
   }
 
   // Get the detailed question.
-  $detailed_question = '';
+  $detailed_question = array();
   if ($dq = field_get_items('node', $node, 'field_detailed_question')) {
     $detailed_question = reset($dq);
+    $detailed_question_render = field_view_value('node', $node, 'field_detailed_question', $detailed_question);
+    $detailed_question['detailed_question'] = render($detailed_question_render);
   }
 
   if (variable_get('faq_display', 'questions_top') != 'hide_answer'
-        && !empty($detailed_question['value'])
+        && !empty($detailed_question['detailed_question'])
         && variable_get('faq_question_length', 'short') == 'both') {
-    $question .= '<div class="faq-detailed-question">' . $detailed_question['safe_value'] . '</div>';
+    $question .= '<div class="faq-detailed-question">' . $detailed_question['detailed_question'] . '</div>';
   }
   $data['question'] = $question;
 }
@@ -1815,7 +1819,7 @@ function theme_field_detailed_question($variables) {
   }
 
   // Render the items.
-  $output .= '<div class="faq-detailed-question">' . $variables['safe_value'] . '</div>';
+  $output .= '<div class="faq-detailed-question">' . $variables['detailed_question'] . '</div>';
 
   // Render the top-level DIV.
   if (isset($variables['classes']) && isset($variables['attributes'])) {
