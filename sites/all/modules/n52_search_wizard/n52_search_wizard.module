@@ -159,3 +159,21 @@ function n52_search_wizard_menu() {
 	);
 	return $items;
 }
+
+/**
+ * Implements hook_from_FORM-ID_alter()
+ *
+ * Add advanced search link to search form pop-up
+ */
+function n52_search_wizard_block_view_alter(&$data, $block) {
+	if (isset($data) && isset($data['content']) && isset($data['content']['form_id']) && isset($data['content']['form_id']['#value']) &&
+			$data['content']['form_id']['#value'] == 'custom_search_blocks_form_1' &&
+			isset($data['content']['popup'])) {
+		$data['content']['popup']['link'] = array (
+				'#markup' => l(t('Advanced Search'),'search/wizard'),
+				// weight > 0 => link is display below content type checkboxes
+				// weight <= 0 => link is displayed above content type checkboxes
+				'#weight' => 0,
+		);
+	}
+}

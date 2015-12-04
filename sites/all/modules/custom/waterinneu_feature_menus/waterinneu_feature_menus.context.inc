@@ -158,31 +158,6 @@ function waterinneu_feature_menus_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'search';
-  $context->description = '';
-  $context->tag = 'main_menu';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'search*' => 'search*',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'menu' => array(
-      0 => 'main-menu:search/wizard',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('main_menu');
-  $export['search'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'user_guide';
   $context->description = '';
   $context->tag = 'main_menu';

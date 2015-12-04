@@ -2,3 +2,4 @@ name = "52N - Search Wizard"
 description = "Single page wizard resulting in predefined searches."
 package = "52N - WaterInnEU"
 core = "7.x"
+dependencies[] = custom_search

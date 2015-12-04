@@ -1,7 +1,7 @@
 name = "Migrate WaterInnEU"
 description = "Migrate WaterInnEU Inventory data."
 package = "52N - WaterInnEU"
-core = 7.x
+core = "7.x"
 dependencies[] = taxonomy
 dependencies[] = migrate
 
