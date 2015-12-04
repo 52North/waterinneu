@@ -227,7 +227,7 @@ class views_plugin_display_attachment extends views_plugin_display {
 
     $args = $this->get_option('inherit_arguments') ? $this->view->args : array();
     $view->set_arguments($args);
-    $exposed_input = $this->get_option('inherit_exposed_filters') ? $this->view->exposed_input : array();
+    $exposed_input = $this->get_option('inherit_exposed_filters') && isset($this->view->exposed_input) ? $this->view->exposed_input : array();
     $view->set_exposed_input($exposed_input);
     $view->set_display($this->display->id);
     if ($this->get_option('inherit_pager')) {
