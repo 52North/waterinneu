@@ -141,21 +141,21 @@ function custom_search_results_admin() {
       $language_options[$key] = $entity->name;
     }
   }
-  if (count($language_options) > 1) {
-    $form['search_form']['advanced']['languages'] = array(
-      '#type'         => 'fieldset',
-      '#title'        => t('Languages'),
-      '#description'  => t('Select the languages to display on the advanced search form.'),
-      '#collapsible'  => TRUE,
-      '#collapsed'    => TRUE,
+  // Add language neutral to the list.
+  $language_options['und'] = t('Language neutral');
+  $form['search_form']['advanced']['languages'] = array(
+    '#type'         => 'fieldset',
+    '#title'        => t('Languages'),
+    '#description'  => t('Select the languages to display on the advanced search form.'),
+    '#collapsible'  => TRUE,
+    '#collapsed'    => TRUE,
+  );
+  foreach ($language_options as $key => $name) {
+    $form['search_form']['advanced']['languages']['custom_search_advanced_language_' . $key . '_display'] = array(
+      '#type'           => 'checkbox',
+      '#title'          => $name,
+      '#default_value'  => variable_get('custom_search_advanced_language_' . $key . '_display', TRUE),
     );
-    foreach ($language_options as $key => $name) {
-      $form['search_form']['advanced']['languages']['custom_search_advanced_language_' . $key . '_display'] = array(
-        '#type'           => 'checkbox',
-        '#title'          => $name,
-        '#default_value'  => variable_get('custom_search_advanced_language_' . $key . '_display', TRUE),
-      );
-    }
   }
 
   $form['results'] = array(

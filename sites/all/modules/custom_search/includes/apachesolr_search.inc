@@ -21,8 +21,11 @@ function _custom_search_apachesolr_search($variables, &$keys, $fields) {
   $keys = array();
 
   if (count($variables['types']) && !in_array('all', $variables['types'])) {
-    foreach ($variables['types'] as $t) {
-      $keys['fq[' . count($keys) . ']'] = 'bundle:' . $t;
+    if (count($variables['types']) > 1) {
+      $keys['fq[' . count($keys) . ']'] = 'bundle:(' . implode(' OR ', $variables['types']) . ')';
+    }
+    elseif (count($variables['types']) == 1) {
+      $keys['fq[' . count($keys) . ']'] = 'bundle:' . $variables['types'][0];
     }
   }
 

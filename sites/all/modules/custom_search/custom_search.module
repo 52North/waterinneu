@@ -109,6 +109,49 @@ function custom_search_form_alter(&$form, &$form_state, $form_id) {
 
         if (isset($form['advanced'])) {
 
+          // Reprocess the key value for later uses.
+          $search_args = array(
+            'keys'      => array(),
+            'criteria'  => array(
+              'phrase'    => '',
+              'negative'  => array(),
+            ),
+            'types'     => array(),
+            'languages' => array(),
+          );
+          $phrase_pos = strpos($form['basic']['keys']['#default_value'], '"');
+          if ($phrase_pos !== FALSE) {
+            $phrase_pos_end = strpos($form['basic']['keys']['#default_value'], '"', $phrase_pos + 1);
+            $search_args['criteria']['phrase'] = substr($form['basic']['keys']['#default_value'], $phrase_pos + 1, $phrase_pos_end - $phrase_pos - 1);
+            $form['basic']['keys']['#default_value'] = str_replace('"' . $search_args['criteria']['phrase'] . '"', '', $form['basic']['keys']['#default_value']);
+          }
+          $search_key_array = explode(' ', $form['basic']['keys']['#default_value']);
+          foreach ($search_key_array as $key) {
+            $arg = explode(':', $key);
+            if (count($arg) == 2) {
+              switch ($arg[0]) {
+                case 'type':
+                  $search_args['types'] = explode(',', $arg[1]);
+                  break;
+                case 'language':
+                  $search_args['languages'] = explode(',', $arg[1]);
+                  break;
+                default:
+                  $search_args['keys'][] = $arg[1];
+              }
+            }
+            else {
+              if ($arg[0] != '') {
+                if ($arg[0][0] == '-') {
+                  $search_args['criteria']['negative'][] = substr($arg[0], 1);
+                }
+                else {
+                  $search_args['keys'][] = $arg[0];
+                }
+              }
+            }
+          }
+
           // Criteria.
           if (!variable_get('custom_search_advanced_or_display', TRUE)) {
             $form['advanced']['keywords']['or']['#type'] = 'hidden';
@@ -119,6 +162,8 @@ function custom_search_form_alter(&$form, &$form_state, $form_id) {
           if (!variable_get('custom_search_advanced_negative_display', TRUE)) {
             $form['advanced']['keywords']['negative']['#type'] = 'hidden';
           }
+          $form['advanced']['keywords']['phrase']['#default_value'] = $search_args['criteria']['phrase'];
+          $form['advanced']['keywords']['negative']['#default_value'] = implode(' ', $search_args['criteria']['negative']);
 
           // Content types.
           $names = array_keys(node_type_get_names());
@@ -130,6 +175,9 @@ function custom_search_form_alter(&$form, &$form_state, $form_id) {
           if (!count($form['advanced']['type']['#options'])) {
             unset($form['advanced']['type']['#type']);
           }
+          else {
+            $form['advanced']['type']['#default_value'] = $search_args['types'];
+          }
 
           // Languages.
           foreach (language_list('language') as $key => $entity) {
@@ -137,16 +185,23 @@ function custom_search_form_alter(&$form, &$form_state, $form_id) {
               $language_options[$key] = $entity->name;
             }
           }
-          if (count($language_options) > 1) {
-            foreach ($language_options as $key => $name) {
-              if (!variable_get('custom_search_advanced_language_' . $key . '_display', TRUE)) {
-                unset($form['advanced']['language']['#options'][$key]);
-              } 
-            }
-            if (!count($form['advanced']['language']['#options'])) {
-              unset($form['advanced']['language']['#type']);
-            }
+          // Add Language neutral to the list.
+          $form['advanced']['language']['#options']['und'] = t('Language neutral');
+          $language_options['und'] = t('Language neutral');
+          foreach ($language_options as $key => $name) {
+            if (!variable_get('custom_search_advanced_language_' . $key . '_display', TRUE)) {
+              unset($form['advanced']['language']['#options'][$key]);
+            } 
           }
+          if (!count($form['advanced']['language']['#options'])) {
+            unset($form['advanced']['language']['#type']);
+          }
+          else {
+            $form['advanced']['language']['#default_value'] = $search_args['languages'];
+          }
+
+          // Remove unnecessary args from keys.
+          $form['basic']['keys']['#default_value'] = implode(' ', $search_args['keys']);
 
         }
 
@@ -160,7 +215,7 @@ function custom_search_form_alter(&$form, &$form_state, $form_id) {
                 $keys[] = $value;
               }
             }
-            $form['advanced']['keywords']['or']['#default_value'] = implode(' ', $keys);
+            $form['advanced']['keywords']['or']['#default_value'] = implode(' ', $search_args['keys']);
           }
           if (!isset($GLOBALS['custom_search_nb_results']) || (isset($GLOBALS['custom_search_nb_results']) && !$GLOBALS['custom_search_nb_results'])) {
             $form['advanced']['#collapsed'] = FALSE;
@@ -233,7 +288,7 @@ function custom_search_form_alter(&$form, &$form_state, $form_id) {
             $toptions['c-all'] = variable_get('custom_search_' . $delta . 'type_selector_all', CUSTOM_SEARCH_ALL_TEXT_DEFAULT);
           }
           foreach ($types as $type) {
-            $toptions['c-' . $type] = $names[$type];
+            $toptions['c-' . $type] = t($names[$type]);
           }
         }
         $options = array();
@@ -387,7 +442,25 @@ function custom_search_submit($form, &$form_state) {
   $delta = (isset($form_state['values']['delta'])) ? 'blocks_' . $form_state['values']['delta'] . '_' : '';
   variable_set('custom_search_delta', $delta);
   $type = 'node';
-  $keys = $form_state['values'][$form_state['values']['form_id']];
+  $keys = trim($form_state['values'][$form_state['values']['form_id']]);
+
+  if (variable_get('custom_search_' . $delta . 'operator', 'AND') == 'OR') {
+    $exploded_keys = explode('"', ' ' . $keys); // Make sure quotes are never the first char
+    $keys_array = array();
+    for ($a = 0; $a < count($exploded_keys); $a = $a + 2) {
+      if (($a != 0 && strlen($exploded_keys[$a])) || ($a == 0 && $exploded_keys[$a] != ' ')) {
+        if ($a == 0) {
+          $exploded_keys[$a] = substr($exploded_keys[$a], 1);
+        }
+        $keys_array[] = str_replace(' ', ' OR ', $exploded_keys[$a]);
+      }
+      if (isset($exploded_keys[$a + 1])) {
+        $keys_array[] = '"' . $exploded_keys[$a + 1] . '"';
+      }
+    }
+    $keys = implode(' ', $keys_array);
+  }
+
   $original_keywords = $keys;
 
   $types = (isset($form_state['values']['custom_search_types'])) ? $form_state['values']['custom_search_types'] : array();
@@ -420,7 +493,7 @@ function custom_search_submit($form, &$form_state) {
   foreach (module_implements('custom_search_filter') as $module) {
     $function = $module . '_custom_search_filter';
     if (function_exists($function)) {
-      $other = call_user_func_array($function, array($form, $form_state, $other));
+      $other = call_user_func_array($function, array(&$form, &$form_state, $other));
     }   
   }
 
@@ -477,10 +550,11 @@ function custom_search_submit($form, &$form_state) {
   // Integrates other search modules.
   if (module_exists('apachesolr_search')) {
     $fields = field_info_fields();
-    for ($i = 0; $i < count($types); $i++) {
+    $node_types = array_keys(node_type_get_types());
+    foreach ($types as $key => $bundle) {
       // Remove the item from the array if it's not a content type.
-      if (!in_array($types[$i], array_keys(node_type_get_types()))) {
-        unset($types[$i]);
+      if (!in_array($bundle, $node_types)) {
+        unset($types[$key]);
       }
     }
     $search_path = _custom_search_apachesolr_search(array(
@@ -516,7 +590,12 @@ function custom_search_submit($form, &$form_state) {
 
   // Build a custom path if needed.
   if (isset($form_state['values']['custom_search_paths']) && $form_state['values']['custom_search_paths'] != '') {
-    $custom_path = str_replace('[key]', $form_state['values'][$form_state['values']['form_id']], $form_state['values']['custom_search_paths']);
+    $key = $form_state['values'][$form_state['values']['form_id']];
+    // encode the key as it could be in the path
+    $key = drupal_encode_path($key);
+    // Encode dots since this can cause issue when it's the first character in a path
+    $key = str_replace('.', '%2E', $key);
+    $custom_path = str_replace('[key]', $key, $form_state['values']['custom_search_paths']);
     $custom_path = str_replace('[current_path]', current_path(), $custom_path);
     if (strpos($form_state['values']['custom_search_paths'], '[terms]') !== FALSE) {
       $custom_path = str_replace('[terms]', (count($terms)) ? implode($form_state['values']['custom_search_paths_terms_separator'], $terms) : '', $custom_path);

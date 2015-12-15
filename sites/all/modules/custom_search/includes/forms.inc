@@ -57,6 +57,16 @@ function _custom_search_default_admin_form($delta = '') {
       '#description'    => t('The default value is "text".'),
     );
   }
+  $form['search_box']['custom_search_' . $delta . 'operator'] = array(
+    '#type'           => 'select',
+    '#title'          => t('Search operator'),
+    '#options'        => array(
+      'AND' => t('AND'),
+      'OR'  => t('OR'),
+    ),
+    '#default_value'  => variable_get('custom_search_' . $delta . 'operator', 'AND'),
+    '#description'    => t('The default value is "AND", and will search for results containing ALL the words. Choose "OR" to search for results containing ANY of the words.'),
+  );
   $form['search_box']['custom_search_' . $delta . 'size'] = array(
     '#type'           => 'textfield',
     '#title'          => t('Search box size'),
