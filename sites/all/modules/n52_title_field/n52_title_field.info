@@ -1,0 +1,7 @@
+name = "52N Title Field Updater"
+description = "Trigger title field update."
+package = "52N - WaterInnEU"
+core = "7.x"
+dependencies[] = title
+
+files[] = n52_title_field.module
