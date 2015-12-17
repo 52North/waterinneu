@@ -1620,16 +1620,18 @@ function faq_taxonomy_term_delete($term) {
  *   Breadcrumbs.
  */
 function faq_set_breadcrumb($term = NULL) {
+  $faq_base_url = 'user-guide/faq/';
   $breadcrumb = array();
   if (variable_get('faq_custom_breadcrumbs', TRUE)) {
     if (module_exists("taxonomy") && $term) {
-      $breadcrumb[] = l(faq_tt("taxonomy:term:$term->tid:name", $term->name), 'faq-page/' . $term->tid);
+      $breadcrumb[] = l(faq_tt("taxonomy:term:$term->tid:name", $term->name), $faq_base_url . $term->tid);
       while ($parents = taxonomy_get_parents($term->tid)) {
         $term = array_shift($parents);
-        $breadcrumb[] = l(faq_tt("taxonomy:term:$term->tid:name", $term->name), 'faq-page/' . $term->tid);
+        $breadcrumb[] = l(faq_tt("taxonomy:term:$term->tid:name", $term->name), $faq_base_url . $term->tid);
       }
     }
-    $breadcrumb[] = l(t(variable_get('faq_title', 'Frequently Asked Questions')), 'faq-page');
+	$breadcrumb[] = l(t(variable_get('faq_title', 'Faq')), $faq_base_url);
+    $breadcrumb[] = l(t(variable_get('faq_parent_title', 'User Guide')), 'user-guide');
     $breadcrumb[] = l(t('Home'), NULL, array('attributes' => array('title' => variable_get('site_name', ''))));
     $breadcrumb = array_reverse($breadcrumb);
     return drupal_set_breadcrumb($breadcrumb);
