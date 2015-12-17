@@ -233,9 +233,7 @@
 															</div><!-- /frontpage-latest-questions -->
 														</div><!-- /frontpage-line-three-column-two -->
 													</div><!-- /frontpage-line-three -->
-													<div id="frontpage-services" class="frontpage-line">
-														<?php print $services_block['content']; ?>
-													</div><!-- /frontpage-services -->
+													<?php print $services_block['content']; ?>
 												</div><!-- /content-region-inner -->
 											</div><!-- /content-region -->
 										</div><!-- /content-group-inner -->
