@@ -5,3 +5,4 @@ core = "7.x"
 dependencies[] = title
 
 files[] = n52_title_field.module
+files[] = n52_title_field.install
