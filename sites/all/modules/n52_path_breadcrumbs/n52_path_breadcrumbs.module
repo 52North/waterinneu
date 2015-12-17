@@ -1,0 +1,83 @@
+<?php
+/*
+ * Copyright (C) 2015
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ *
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ *
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ *
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+
+/**
+ * Implements template_preprocess_page().
+ *
+ * Override the breadcrumbs for all nodes using the current page path.
+ */
+function n52_path_breadcrumbs_preprocess_page(&$variables) {
+	// 1 Get current path
+	$current_url = drupal_get_path_alias(current_path());
+	if (empty($current_url)) {
+		return;
+	}
+	$path_elements = explode('/', $current_url);
+	if (empty($path_elements)) {
+		return;
+	}
+	// 2 skip if frontpage or path start should be ignored
+	if ($variables['is_front'] || should_ignore_path_start($path_elements)){
+		return;
+	}
+	// 3 split by "/" and remove last element
+	// 4 for each element add one entry to breadcrumb array
+	// 5 set breadcrumbs
+	$current_path = '';
+	$breadcrumb = array();
+	$breadcrumb[] = l(t('Home'), NULL, array('attributes' => array('title' => variable_get('site_name', ''))));
+	for ($i = 0, $length = count($path_elements); $i < $length; $i++) {
+		if ($i == 0) {
+			$current_path = $path_elements[$i];
+		} 
+		else {
+			$current_path = $current_path . '/' . $path_elements[$i];
+		}
+		if ($i < $length - 1) {
+			$breadcrumb[] = l(t(ucfirst($path_elements[$i])), $current_path, array());
+		}
+// 		// Add last element without linking
+// 		else {
+// 			$breadcrumb[] = t(ucfirst($path_elements[$i]));
+// 		}
+		if ($path_elements[$i] == 'forum') {
+			break;
+		}
+	}
+	return drupal_set_breadcrumb($breadcrumb);
+}
+
+function should_ignore_path_start($path_elements) {
+	if (in_array($path_elements[0], array('admin',)) ) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}

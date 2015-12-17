@@ -1,0 +1,7 @@
+name = "52N Path Breadcrumbs"
+description = "This module generates the breadcrumbs using the path of the current node beeing displayed."
+package = "52N - WaterInnEU"
+core = "7.x"
+
+files[] = n52_path_breadcrumbs.module
+files[] = n52_path_breadcrumbs.install
