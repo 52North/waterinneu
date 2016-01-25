@@ -8,9 +8,9 @@ dependencies[] = taxonomy
 
 configure = admin/config/search/custom_search/taxonomy
 
-; Information added by Drupal.org packaging script on 2015-12-11
-version = "7.x-1.19"
+; Information added by Drupal.org packaging script on 2015-12-18
+version = "7.x-1.20"
 core = "7.x"
 project = "custom_search"
-datestamp = "1449821671"
+datestamp = "1450436652"
 
