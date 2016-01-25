@@ -231,7 +231,7 @@
 
 /* This ensure equal column width in grid views
 ----------------------------------------------------------------------------- */
-li.views-row {
+.columnized-item-list ul li.views-row {
     width: 32%;
     display: -moz-inline-stack;
     display: inline-block;
