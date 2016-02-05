@@ -132,6 +132,27 @@ function harmony_core_views_default_views() {
       'override_label' => 1,
       'label' => 'Delete post',
     ),
+    'action::views_bulk_operations_delete_revision' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_script_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::harmony_core_post_locked_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
     'action::views_bulk_operations_modify_action' => array(
       'selected' => 1,
       'postpone_processing' => 1,
@@ -145,6 +166,15 @@ function harmony_core_views_default_views() {
         ),
       ),
     ),
+    'action::views_bulk_operations_argument_selector_action' => array(
+      'selected' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'url' => '',
+      ),
+    ),
     'action::harmony_core_post_publish_action' => array(
       'selected' => 1,
       'postpone_processing' => 1,
@@ -152,8 +182,29 @@ function harmony_core_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
+    'action::harmony_core_post_reassign_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::system_send_email_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
     'action::harmony_core_post_split_action' => array(
       'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::harmony_core_post_unlock_action' => array(
+      'selected' => 0,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
@@ -306,40 +357,6 @@ function harmony_core_views_default_views() {
   $handler->display->display_options['menu']['weight'] = '1';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $translatables['harmony_administration_posts'] = array(
-    t('Master'),
-    t('Posts'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('No posts have been created.'),
-    t('User'),
-    t('- Choose an operation -'),
-    t('Delete post'),
-    t('Re-assign post(s) to a different thread'),
-    t('Thread'),
-    t('Author'),
-    t('Status'),
-    t('Created'),
-    t('Updated'),
-    t('edit'),
-    t('Operations'),
-    t('delete'),
-    t('Text contains'),
-    t('Posted after'),
-    t('Posted before'),
-    t('Page'),
-  );
   $export['harmony_administration_posts'] = $view;
 
   $view = new view();
@@ -481,6 +498,27 @@ function harmony_core_views_default_views() {
       'override_label' => 1,
       'label' => 'Delete thread',
     ),
+    'action::views_bulk_operations_delete_revision' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_script_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::harmony_core_thread_hide_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
     'action::harmony_core_thread_locked_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
@@ -515,6 +553,15 @@ function harmony_core_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
+    'action::views_bulk_operations_argument_selector_action' => array(
+      'selected' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'url' => '',
+      ),
+    ),
     'action::harmony_core_thread_make_pinned_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
@@ -526,6 +573,27 @@ function harmony_core_views_default_views() {
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 1,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::harmony_core_thread_save_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::system_send_email_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::harmony_core_thread_unhide_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
     ),
@@ -763,45 +831,6 @@ function harmony_core_views_default_views() {
   $handler->display->display_options['tab_options']['type'] = 'normal';
   $handler->display->display_options['tab_options']['title'] = 'Threads';
   $handler->display->display_options['tab_options']['weight'] = '0';
-  $translatables['harmony_administration_threads'] = array(
-    t('Master'),
-    t('Threads'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('No threads have been posted.'),
-    t('User'),
-    t('- Choose an operation -'),
-    t('Delete thread'),
-    t('Mass change a field/property'),
-    t('Title'),
-    t('Category'),
-    t('Posts'),
-    t('Created'),
-    t('Updated'),
-    t('Status'),
-    t('Locked'),
-    t('Pinned'),
-    t('edit'),
-    t('Operations'),
-    t('delete'),
-    t('Locked?'),
-    t('Pinned?'),
-    t('Author(s)'),
-    t('Posted after'),
-    t('Posted before'),
-    t('Page'),
-  );
   $export['harmony_administration_threads'] = $view;
 
   $view = new view();
@@ -868,20 +897,6 @@ function harmony_core_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
-  $translatables['harmony_category_sub_category_listing'] = array(
-    t('Master'),
-    t('Sub-categories'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Name'),
-    t('Threads'),
-    t('All'),
-    t('Block'),
-  );
   $export['harmony_category_sub_category_listing'] = $view;
 
   $view = new view();
@@ -928,24 +943,6 @@ function harmony_core_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = array(
     1 => '1',
-  );
-  $translatables['harmony_post_replies_to_post'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('Title'),
-    t('All'),
   );
   $export['harmony_post_replies_to_post'] = $view;
 
@@ -1139,27 +1136,6 @@ function harmony_core_views_default_views() {
   $handler->display->display_options['arguments']['post_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['post_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['post_id']['summary_options']['items_per_page'] = '25';
-  $translatables['harmony_post_revisions'] = array(
-    t('Master'),
-    t('Revisions'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('[field_harmony_thread-revision_id]'),
-    t('author'),
-    t('Name'),
-    t('Edited'),
-    t('[timestamp] by [name]'),
-    t('Log message'),
-    t('Hostname'),
-    t('Current revision'),
-    t('Show differences'),
-    t('Return to the thread'),
-    t('All'),
-  );
   $export['harmony_post_revisions'] = $view;
 
   $view = new view();
@@ -1312,12 +1288,48 @@ function harmony_core_views_default_views() {
       'override_label' => 1,
       'label' => 'Delete post',
     ),
+    'action::views_bulk_operations_delete_revision' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_script_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
     'action::harmony_core_post_locked_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 1,
       'override_label' => 0,
       'label' => '',
+    ),
+    'action::views_bulk_operations_modify_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 1,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'show_all_tokens' => 1,
+        'display_values' => array(
+          'harmony_post::field_harmony_thread' => 'harmony_post::field_harmony_thread',
+        ),
+      ),
+    ),
+    'action::views_bulk_operations_argument_selector_action' => array(
+      'selected' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'url' => '',
+      ),
     ),
     'action::harmony_core_post_publish_action' => array(
       'selected' => 1,
@@ -1330,6 +1342,13 @@ function harmony_core_views_default_views() {
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 1,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::system_send_email_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
     ),
@@ -1474,40 +1493,6 @@ function harmony_core_views_default_views() {
   $handler->display->display_options['menu']['weight'] = '4';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $translatables['harmony_thread_administer_posts'] = array(
-    t('Master'),
-    t('Administer posts'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('No posts have been created.'),
-    t('User'),
-    t('- Choose an operation -'),
-    t('Delete post'),
-    t('Post #@position'),
-    t('Author'),
-    t('Status'),
-    t('Created'),
-    t('Updated'),
-    t('Hostname'),
-    t('view post text'),
-    t('edit'),
-    t('Operations'),
-    t('delete'),
-    t('All'),
-    t('Text contains'),
-    t('Page'),
-  );
   $export['harmony_thread_administer_posts'] = $view;
 
   $view = new view();
@@ -1742,50 +1727,13 @@ function harmony_core_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Marketplace';
-  $handler->display->display_options['path'] = 'marketplace';
+  $handler->display->display_options['title'] = 'Forum';
+  $handler->display->display_options['path'] = 'forum';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Forum';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $translatables['harmony_thread_listing'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('Load more'),
-    t('No threads have been posted.'),
-    t('User'),
-    t('<span class="harmony-pinned">[pinned]</span>'),
-    t('Pinned'),
-    t('Title'),
-    t('Category'),
-    t('Posts'),
-    t('[field_harmony_post_count]<span class="inline-visible-xs"> posts</span>'),
-    t('Author'),
-    t('<span class="inline-visible-xs">By </span>[picture]'),
-    t('Views'),
-    t('[views]<span class="inline-visible-xs"> Views</span>'),
-    t('.'),
-    t(','),
-    t('Likes'),
-    t('<i class="fa fa-heart"></i> [likes] '),
-    t('Updated'),
-    t('All'),
-    t('Page'),
-    t('Marketplace'),
-  );
   $export['harmony_thread_listing'] = $view;
 
   $view = new view();
@@ -1831,24 +1779,6 @@ function harmony_core_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = array(
     1 => '1',
-  );
-  $translatables['harmony_thread_posts_listing'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('Title'),
-    t('All'),
   );
   $export['harmony_thread_posts_listing'] = $view;
 

@@ -2826,7 +2826,7 @@ function harmony_core_preprocess_html(&$variables) {
 function harmony_core_preprocess_page(&$variables) {
   if (arg(0) === 'thread' && ctype_digit((string) arg(1)) && !arg(2)) {
     $thread = harmony_thread_load(arg(1));
-    if (variable_get('harmony_core_bundle__' . $thread->type . '__thread_meta_in_title', 1)) {
+    if ($thread && variable_get('harmony_core_bundle__' . $thread->type . '__thread_meta_in_title', 1)) {
       $thread_properties = harmony_core_thread_get_properties($thread->thread_id, $thread);
       $variables['title_prefix'][] = array(
         '#theme' => 'harmony_core_thread_meta_wrapper',

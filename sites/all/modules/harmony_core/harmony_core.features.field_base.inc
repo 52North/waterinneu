@@ -10,7 +10,7 @@
 function harmony_core_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_harmony_category'.
+  // Exported field_base: 'field_harmony_category'
   $field_bases['field_harmony_category'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -19,6 +19,14 @@ function harmony_core_field_default_field_bases() {
     'field_name' => 'field_harmony_category',
     'field_permissions' => array(
       'type' => 0,
+    ),
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
     ),
     'indexes' => array(
       'tid' => array(
@@ -34,13 +42,12 @@ function harmony_core_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
-      'options_list_callback' => 'i18n_taxonomy_allowed_values',
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_harmony_colour'.
+  // Exported field_base: 'field_harmony_colour'
   $field_bases['field_harmony_colour'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -49,6 +56,14 @@ function harmony_core_field_default_field_bases() {
     'field_name' => 'field_harmony_colour',
     'field_permissions' => array(
       'type' => 0,
+    ),
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
     ),
     'indexes' => array(
       'format' => array(
@@ -64,7 +79,7 @@ function harmony_core_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_harmony_first_post'.
+  // Exported field_base: 'field_harmony_first_post'
   $field_bases['field_harmony_first_post'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -73,6 +88,14 @@ function harmony_core_field_default_field_bases() {
     'field_name' => 'field_harmony_first_post',
     'field_permissions' => array(
       'type' => 0,
+    ),
+    'foreign keys' => array(
+      'harmony_post' => array(
+        'columns' => array(
+          'target_id' => 'post_id',
+        ),
+        'table' => 'harmony_post',
+      ),
     ),
     'indexes' => array(
       'target_id' => array(
@@ -100,7 +123,7 @@ function harmony_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_harmony_last_post'.
+  // Exported field_base: 'field_harmony_last_post'
   $field_bases['field_harmony_last_post'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -109,6 +132,14 @@ function harmony_core_field_default_field_bases() {
     'field_name' => 'field_harmony_last_post',
     'field_permissions' => array(
       'type' => 0,
+    ),
+    'foreign keys' => array(
+      'harmony_post' => array(
+        'columns' => array(
+          'target_id' => 'post_id',
+        ),
+        'table' => 'harmony_post',
+      ),
     ),
     'indexes' => array(
       'target_id' => array(
@@ -136,7 +167,7 @@ function harmony_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_harmony_last_user_to_reply'.
+  // Exported field_base: 'field_harmony_last_user_to_reply'
   $field_bases['field_harmony_last_user_to_reply'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -145,6 +176,14 @@ function harmony_core_field_default_field_bases() {
     'field_name' => 'field_harmony_last_user_to_reply',
     'field_permissions' => array(
       'type' => 0,
+    ),
+    'foreign keys' => array(
+      'users' => array(
+        'columns' => array(
+          'target_id' => 'uid',
+        ),
+        'table' => 'users',
+      ),
     ),
     'indexes' => array(
       'target_id' => array(
@@ -172,7 +211,7 @@ function harmony_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_harmony_machine_name'.
+  // Exported field_base: 'field_harmony_machine_name'
   $field_bases['field_harmony_machine_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -182,6 +221,7 @@ function harmony_core_field_default_field_bases() {
     'field_permissions' => array(
       'type' => 0,
     ),
+    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -198,7 +238,7 @@ function harmony_core_field_default_field_bases() {
     'type' => 'machine_name',
   );
 
-  // Exported field_base: 'field_harmony_post_count'.
+  // Exported field_base: 'field_harmony_post_count'
   $field_bases['field_harmony_post_count'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -208,6 +248,7 @@ function harmony_core_field_default_field_bases() {
     'field_permissions' => array(
       'type' => 0,
     ),
+    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
@@ -216,7 +257,7 @@ function harmony_core_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_harmony_post_is_reply_to'.
+  // Exported field_base: 'field_harmony_post_is_reply_to'
   $field_bases['field_harmony_post_is_reply_to'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -225,6 +266,14 @@ function harmony_core_field_default_field_bases() {
     'field_name' => 'field_harmony_post_is_reply_to',
     'field_permissions' => array(
       'type' => 0,
+    ),
+    'foreign keys' => array(
+      'harmony_post' => array(
+        'columns' => array(
+          'target_id' => 'post_id',
+        ),
+        'table' => 'harmony_post',
+      ),
     ),
     'indexes' => array(
       'target_id' => array(
@@ -252,7 +301,7 @@ function harmony_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_harmony_post_listing'.
+  // Exported field_base: 'field_harmony_post_listing'
   $field_bases['field_harmony_post_listing'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -262,6 +311,7 @@ function harmony_core_field_default_field_bases() {
     'field_permissions' => array(
       'type' => 0,
     ),
+    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'viewfield',
@@ -270,7 +320,7 @@ function harmony_core_field_default_field_bases() {
     'type' => 'viewfield',
   );
 
-  // Exported field_base: 'field_harmony_text'.
+  // Exported field_base: 'field_harmony_text'
   $field_bases['field_harmony_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -279,6 +329,14 @@ function harmony_core_field_default_field_bases() {
     'field_name' => 'field_harmony_text',
     'field_permissions' => array(
       'type' => 0,
+    ),
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
     ),
     'indexes' => array(
       'format' => array(
@@ -292,7 +350,7 @@ function harmony_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_harmony_thread'.
+  // Exported field_base: 'field_harmony_thread'
   $field_bases['field_harmony_thread'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -301,6 +359,14 @@ function harmony_core_field_default_field_bases() {
     'field_name' => 'field_harmony_thread',
     'field_permissions' => array(
       'type' => 0,
+    ),
+    'foreign keys' => array(
+      'harmony_thread' => array(
+        'columns' => array(
+          'target_id' => 'thread_id',
+        ),
+        'table' => 'harmony_thread',
+      ),
     ),
     'indexes' => array(
       'target_id' => array(
@@ -328,7 +394,7 @@ function harmony_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_harmony_thread_cont_from'.
+  // Exported field_base: 'field_harmony_thread_cont_from'
   $field_bases['field_harmony_thread_cont_from'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -337,6 +403,14 @@ function harmony_core_field_default_field_bases() {
     'field_name' => 'field_harmony_thread_cont_from',
     'field_permissions' => array(
       'type' => 0,
+    ),
+    'foreign keys' => array(
+      'harmony_post' => array(
+        'columns' => array(
+          'target_id' => 'post_id',
+        ),
+        'table' => 'harmony_post',
+      ),
     ),
     'indexes' => array(
       'target_id' => array(
@@ -364,7 +438,7 @@ function harmony_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_harmony_thread_count'.
+  // Exported field_base: 'field_harmony_thread_count'
   $field_bases['field_harmony_thread_count'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -374,6 +448,7 @@ function harmony_core_field_default_field_bases() {
     'field_permissions' => array(
       'type' => 0,
     ),
+    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
