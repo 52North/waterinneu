@@ -1,7 +1,7 @@
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings*.php
 
-# Ignore apache sepcific files
+# Ignore apache specific files
 **/.htaccess
 
 # ignore drupal specific stuff
