@@ -11,3 +11,6 @@ sites/default/files/languages/*
 # waterinneu inventory import exclusions
 sites/all/modules/n52_migrate_waterinneu/csv_files/
 sites/all/modules/n52_migrate_waterinneu/csv_files/tmp
+
+# ignore generated js files
+sites/default/files/js/*
