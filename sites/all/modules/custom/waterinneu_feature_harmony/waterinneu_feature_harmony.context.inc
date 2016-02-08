@@ -20,6 +20,7 @@ function waterinneu_feature_harmony_context_default_contexts() {
     'path' => array(
       'values' => array(
         'forum*' => 'forum*',
+        'thread*' => 'thread*',
       ),
     ),
   );
