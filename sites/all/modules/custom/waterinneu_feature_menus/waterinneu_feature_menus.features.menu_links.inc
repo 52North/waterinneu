@@ -197,26 +197,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: main-menu_organisations:organisations.
-  $menu_links['main-menu_organisations:organisations'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'organisations',
-    'router_path' => 'organisations',
-    'link_title' => 'Organisations',
-    'options' => array(
-      'alter' => TRUE,
-      'identifier' => 'main-menu_organisations:organisations',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
   // Exported menu link: main-menu_products:product.
   $menu_links['main-menu_products:product'] = array(
     'menu_name' => 'main-menu',
@@ -733,29 +713,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'navigation_marketplace:forum',
   );
-  // Exported menu link: navigation_faq:node/add/faq.
-  $menu_links['navigation_faq:node/add/faq'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/faq',
-    'router_path' => 'node/add/faq',
-    'link_title' => 'FAQ',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'A frequently asked question and its answer.',
-      ),
-      'identifier' => 'navigation_faq:node/add/faq',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-    'parent_identifier' => 'navigation_add-content:node/add',
-  );
   // Exported menu link: navigation_feed-aggregator:aggregator.
   $menu_links['navigation_feed-aggregator:aggregator'] = array(
     'menu_name' => 'navigation',
@@ -774,44 +731,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
-  );
-  // Exported menu link: navigation_frequently-asked-questions:faq-page.
-  $menu_links['navigation_frequently-asked-questions:faq-page'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'faq-page',
-    'router_path' => 'faq-page',
-    'link_title' => 'Frequently Asked Questions',
-    'options' => array(
-      'identifier' => 'navigation_frequently-asked-questions:faq-page',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 1,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-  );
-  // Exported menu link: navigation_glossary:user-guide/glossary.
-  $menu_links['navigation_glossary:user-guide/glossary'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'user-guide/glossary',
-    'router_path' => 'user-guide/glossary',
-    'link_title' => 'Glossary',
-    'options' => array(
-      'identifier' => 'navigation_glossary:user-guide/glossary',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
   );
   // Exported menu link: navigation_marketplace:forum.
   $menu_links['navigation_marketplace:forum'] = array(
@@ -858,29 +777,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'navigation_add-content:node/add',
   );
-  // Exported menu link: navigation_organisation:node/add/organisation.
-  $menu_links['navigation_organisation:node/add/organisation'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/organisation',
-    'router_path' => 'node/add/organisation',
-    'link_title' => 'Organisation',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Organisation Description',
-      ),
-      'identifier' => 'navigation_organisation:node/add/organisation',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-    'parent_identifier' => 'navigation_add-content:node/add',
-  );
   // Exported menu link: navigation_portal:node/add/portal.
   $menu_links['navigation_portal:node/add/portal'] = array(
     'menu_name' => 'navigation',
@@ -922,48 +818,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -38,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: navigation_project:node/add/project.
-  $menu_links['navigation_project:node/add/project'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/project',
-    'router_path' => 'node/add/project',
-    'link_title' => 'Project',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'A project dealing with hydrological topics.',
-      ),
-      'identifier' => 'navigation_project:node/add/project',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -45,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-    'parent_identifier' => 'navigation_add-content:node/add',
-  );
-  // Exported menu link: navigation_recent-posts:tracker.
-  $menu_links['navigation_recent-posts:tracker'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'tracker',
-    'router_path' => 'tracker',
-    'link_title' => 'Recent posts',
-    'options' => array(
-      'identifier' => 'navigation_recent-posts:tracker',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -41,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1048,67 +902,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'navigation_feed-aggregator:aggregator',
   );
-  // Exported menu link: navigation_tags:tagclouds.
-  $menu_links['navigation_tags:tagclouds'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'tagclouds',
-    'router_path' => 'tagclouds',
-    'link_title' => 'Tags',
-    'options' => array(
-      'identifier' => 'navigation_tags:tagclouds',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-  );
-  // Exported menu link: navigation_tool:node/add/tool.
-  $menu_links['navigation_tool:node/add/tool'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'node/add/tool',
-    'router_path' => 'node/add/tool',
-    'link_title' => 'Tool',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Product specification sheet for project results of type tool, e.g. software.',
-      ),
-      'identifier' => 'navigation_tool:node/add/tool',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -44,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-    'parent_identifier' => 'navigation_add-content:node/add',
-  );
-  // Exported menu link: navigation_translate-strings:locale.
-  $menu_links['navigation_translate-strings:locale'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'locale',
-    'router_path' => 'locale',
-    'link_title' => 'Translate strings',
-    'options' => array(
-      'identifier' => 'navigation_translate-strings:locale',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-  );
   // Exported menu link: navigation_webform:node/add/webform.
   $menu_links['navigation_webform:node/add/webform'] = array(
     'menu_name' => 'navigation',
@@ -1174,25 +967,18 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   t('Content summary');
   t('Create thread');
   t('E-Learning');
-  t('FAQ');
   t('Feed aggregator');
   t('Forum');
-  t('Frequently Asked Questions');
-  t('Glossary');
   t('Home');
   t('Login');
   t('Logout');
   t('Marketplace');
   t('Matchmaking');
   t('Migrate example - dates');
-  t('Organisation');
-  t('Organisations');
   t('Portal');
   t('Portals');
   t('Products');
-  t('Project');
   t('Projects');
-  t('Recent posts');
   t('Register');
   t('Registrieren');
   t('Scheduled publications');
@@ -1201,9 +987,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   t('Sources');
   t('Start');
   t('Support Services');
-  t('Tags');
-  t('Tool');
-  t('Translate strings');
   t('User Guide');
   t('Webform');
 
