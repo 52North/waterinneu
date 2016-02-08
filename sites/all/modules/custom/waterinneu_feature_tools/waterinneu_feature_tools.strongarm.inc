@@ -96,10 +96,10 @@ function waterinneu_feature_tools_strongarm() {
           'weight' => 1,
         ),
         'path' => array(
-          'weight' => 2,
+          'weight' => '2',
         ),
         'language' => array(
-          'weight' => 8,
+          'weight' => '9',
         ),
       ),
       'display' => array(
@@ -138,7 +138,7 @@ function waterinneu_feature_tools_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_tool';
-  $strongarm->value = 'main-menu:912';
+  $strongarm->value = 'main-menu:0';
   $export['menu_parent_tool'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -146,8 +146,7 @@ function waterinneu_feature_tools_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_tool';
   $strongarm->value = array(
-    0 => 'revision',
-    1 => 'revision_moderation',
+    0 => 'revision_moderation',
   );
   $export['node_options_tool'] = $strongarm;
 
@@ -155,7 +154,7 @@ function waterinneu_feature_tools_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_tool';
-  $strongarm->value = '1';
+  $strongarm->value = '2';
   $export['node_preview_tool'] = $strongarm;
 
   $strongarm = new stdClass();

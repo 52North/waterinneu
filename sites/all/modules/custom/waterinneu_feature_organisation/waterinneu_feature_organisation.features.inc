@@ -31,7 +31,7 @@ function waterinneu_feature_organisation_node_info() {
       'description' => t('Organisation Description'),
       'has_title' => '1',
       'title_label' => t('Name'),
-      'help' => t('Explanation or submission guidelines for organisation entities'),
+      'help' => t('Get in touch with our helpdesk if your content does not fit in this form. You can find the helpdesk following the support services tab.'),
     ),
   );
   drupal_alter('node_info', $items);

@@ -20,6 +20,7 @@ function waterinneu_feature_menus_context_default_contexts() {
     'path' => array(
       'values' => array(
         'about' => 'about',
+        'about/*' => 'about/*',
       ),
     ),
   );
@@ -137,7 +138,8 @@ function waterinneu_feature_menus_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'organisation*' => 'organisation*',
+        'organisation/*' => 'organisation/*',
+        'organisations' => 'organisations',
         'portal*' => 'portal*',
         'n52*' => 'n52*',
       ),
@@ -165,13 +167,13 @@ function waterinneu_feature_menus_context_default_contexts() {
     'path' => array(
       'values' => array(
         'product*' => 'product*',
-        'tool*' => 'tool*',
+        'product/*' => 'product/*',
       ),
     ),
   );
   $context->reactions = array(
     'menu' => array(
-      0 => 'main-menu:products',
+      0 => 'main-menu:product',
     ),
   );
   $context->condition_mode = 0;
@@ -190,7 +192,8 @@ function waterinneu_feature_menus_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'page/user-guide*' => 'page/user-guide*',
+        'user-guide' => 'user-guide',
+        'user-guide/*' => 'user-guide/*',
         'filter/tips' => 'filter/tips',
         'glossary' => 'glossary',
       ),

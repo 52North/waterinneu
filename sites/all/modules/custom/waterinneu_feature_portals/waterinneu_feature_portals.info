@@ -4,6 +4,7 @@ core = 7.x
 package = 52N - WaterInnEU
 version = 7.x-1.0-beta1
 dependencies[] = node
+dependencies[] = text
 dependencies[] = views
 dependencies[] = waterinneu_feature_projects
 dependencies[] = waterinneu_feature_tools

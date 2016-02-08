@@ -104,7 +104,6 @@ features[field_instance][] = node-project-field_standards_accounted_for
 features[field_instance][] = node-project-field_tags
 features[field_instance][] = node-project-field_website
 features[field_instance][] = node-project-title_field
-features[menu_links][] = main-menu_projects:projects
 features[menu_links][] = navigation_project:node/add/project
 features[node][] = project
 features[taxonomy][] = administrative_levels

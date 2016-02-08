@@ -21,7 +21,7 @@ function waterinneu_feature_configuration_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'smtp_debugging';
-  $strongarm->value = 0;
+  $strongarm->value = '0';
   $export['smtp_debugging'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -42,7 +42,7 @@ function waterinneu_feature_configuration_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'smtp_host';
-  $strongarm->value = 'list.52north.org';
+  $strongarm->value = 'imaps.52north.org';
   $export['smtp_host'] = $strongarm;
 
   $strongarm = new stdClass();

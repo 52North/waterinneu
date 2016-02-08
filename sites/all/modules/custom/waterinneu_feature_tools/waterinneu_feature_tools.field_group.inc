@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function waterinneu_feature_tools_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -35,7 +35,7 @@ function waterinneu_feature_tools_field_group_info() {
       ),
     ),
   );
-  $export['group_how|node|tool|default'] = $field_group;
+  $field_groups['group_how|node|tool|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -48,10 +48,11 @@ function waterinneu_feature_tools_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'How',
-    'weight' => '2',
+    'weight' => '4',
     'children' => array(
       0 => 'field_case_studies',
       1 => 'field_manuals_training',
+      2 => 'field_product_projects',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -63,7 +64,7 @@ function waterinneu_feature_tools_field_group_info() {
       ),
     ),
   );
-  $export['group_how|node|tool|form'] = $field_group;
+  $field_groups['group_how|node|tool|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -92,7 +93,7 @@ function waterinneu_feature_tools_field_group_info() {
       ),
     ),
   );
-  $export['group_interop|node|tool|default'] = $field_group;
+  $field_groups['group_interop|node|tool|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -105,7 +106,7 @@ function waterinneu_feature_tools_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Interoperability',
-    'weight' => '3',
+    'weight' => '5',
     'children' => array(
       0 => 'field_type_of_input_data',
       1 => 'field_supported_legacy_systems',
@@ -122,7 +123,7 @@ function waterinneu_feature_tools_field_group_info() {
       ),
     ),
   );
-  $export['group_interop|node|tool|form'] = $field_group;
+  $field_groups['group_interop|node|tool|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -151,7 +152,7 @@ function waterinneu_feature_tools_field_group_info() {
       ),
     ),
   );
-  $export['group_metadata|node|tool|default'] = $field_group;
+  $field_groups['group_metadata|node|tool|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -164,16 +165,16 @@ function waterinneu_feature_tools_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Metadata',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
       0 => 'field_description',
       1 => 'field_logo',
       2 => 'field_website',
       3 => 'field_license',
       4 => 'field_tool_of_the_month',
-      5 => 'language',
-      6 => 'title',
-      7 => 'path',
+      5 => 'field_costs',
+      6 => 'path',
+      7 => 'language',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -185,7 +186,7 @@ function waterinneu_feature_tools_field_group_info() {
       ),
     ),
   );
-  $export['group_metadata|node|tool|form'] = $field_group;
+  $field_groups['group_metadata|node|tool|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -214,7 +215,7 @@ function waterinneu_feature_tools_field_group_info() {
       ),
     ),
   );
-  $export['group_what|node|tool|default'] = $field_group;
+  $field_groups['group_what|node|tool|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -227,12 +228,15 @@ function waterinneu_feature_tools_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_purpose',
-      1 => 'field_climate_change_revelance',
-      2 => 'field_application_scale',
-      3 => 'field_category',
+      1 => 'field_application_scale',
+      2 => 'field_category',
+      3 => 'field_user_profile',
+      4 => 'field_wrd_relevance',
+      5 => 'field_innovative_pro',
+      6 => 'field_innovative_contra',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -244,7 +248,14 @@ function waterinneu_feature_tools_field_group_info() {
       ),
     ),
   );
-  $export['group_what|node|tool|form'] = $field_group;
+  $field_groups['group_what|node|tool|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('How');
+  t('Interoperability');
+  t('Metadata');
+  t('What');
+
+  return $field_groups;
 }

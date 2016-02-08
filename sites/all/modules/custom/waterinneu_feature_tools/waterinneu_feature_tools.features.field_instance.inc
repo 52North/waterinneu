@@ -53,7 +53,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -190,54 +190,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 12,
-    ),
-  );
-
-  // Exported field_instance: 'node-tool-field_climate_change_revelance'.
-  $field_instances['node-tool-field_climate_change_revelance'] = array(
-    'bundle' => 'tool',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Indicate the climate change relevance by category.',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'tool_of_the_month' => array(
-        'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_climate_change_revelance',
-    'label' => 'Climate Change Relevance',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -288,6 +241,98 @@ function waterinneu_feature_tools_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tool-field_costs'.
+  $field_instances['node-tool-field_costs'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Costs for using or accessing the product (if there are no costs, should be \'0\').',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_costs',
+    'label' => 'Costs',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 'harmony_filtered',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-tool-field_description'.
   $field_instances['node-tool-field_description'] = array(
     'bundle' => 'tool',
@@ -306,12 +351,14 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'smart_trim',
         'settings' => array(
-          'more_link' => FALSE,
+          'more_link' => 0,
           'more_text' => 'Read more',
           'summary_handler' => 'full',
           'trim_length' => 300,
-          'trim_link' => FALSE,
-          'trim_options' => array(),
+          'trim_link' => 0,
+          'trim_options' => array(
+            'text' => 'text',
+          ),
           'trim_preserve_tags' => '',
           'trim_suffix' => '...',
           'trim_type' => 'chars',
@@ -356,6 +403,190 @@ function waterinneu_feature_tools_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_innovative_contra'.
+  $field_instances['node-tool-field_innovative_contra'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'textual description of innovative disadvantages and risks',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_innovative_contra',
+    'label' => 'innovative disadvantages and risks',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 'harmony_filtered',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_innovative_pro'.
+  $field_instances['node-tool-field_innovative_pro'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'textual description of innovative aspects and advantages',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_innovative_pro',
+    'label' => 'Innovative aspects and advantages',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 'harmony_filtered',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 14,
     ),
   );
 
@@ -548,6 +779,62 @@ function waterinneu_feature_tools_field_default_field_instances() {
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_product_projects'.
+  $field_instances['node-tool-field_product_projects'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => 'links to one or more projects where the product has been developed or used',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 14,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_product_projects',
+    'label' => 'Projects',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete_tags',
+      'weight' => 8,
     ),
   );
 
@@ -787,7 +1074,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -838,6 +1125,53 @@ function waterinneu_feature_tools_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tool-field_user_profile'.
+  $field_instances['node-tool-field_user_profile'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Definition of the target audience',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_user_profile',
+    'label' => 'User Profile',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'node-tool-field_website'.
   $field_instances['node-tool-field_website'] = array(
     'bundle' => 'tool',
@@ -884,11 +1218,16 @@ function waterinneu_feature_tools_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'rel_remove' => 'default',
-      'title' => 'optional',
+      'title' => 'value',
       'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
-      'title_value' => '',
+      'title_value' => 'Website',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
@@ -899,6 +1238,98 @@ function waterinneu_feature_tools_field_default_field_instances() {
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_wrd_relevance'.
+  $field_instances['node-tool-field_wrd_relevance'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'http://ec.europa.eu/environment/water/water-framework/index_en.html',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_wrd_relevance',
+    'label' => 'WRD Relevance',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 'harmony_filtered',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 13,
     ),
   );
 
@@ -947,7 +1378,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -5,
+      'weight' => 0,
     ),
   );
 
@@ -958,11 +1389,13 @@ function waterinneu_feature_tools_field_default_field_instances() {
   t('Case Studies of successful application of tools for RBM.');
   t('Category');
   t('Category of the tool (e.g. models, other software tools, participation, economic tools, data processing tools, monitoring and measuring tools).');
-  t('Climate Change Relevance');
+  t('Costs');
+  t('Costs for using or accessing the product (if there are no costs, should be \'0\').');
   t('Define the type of License. The selection of this field might require additional information in the <b>usage fees</b> field.');
+  t('Definition of the target audience');
   t('Description');
   t('Document support of legacy systems.');
-  t('Indicate the climate change relevance by category.');
+  t('Innovative aspects and advantages');
   t('License');
   t('Link to the website of the tool.');
   t('Links to existing training materials and manuals.');
@@ -971,6 +1404,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
   t('Mention all important standards, which the tool supports. E.g. OGC SOS 2.0, Shapefile,.');
   t('Potential to combine different tools in support of integrated perspective (e.g. integrated model for linkage between surface waters and groundwater);  ');
   t('Potential to combine with other tools');
+  t('Projects');
   t('Purpose');
   t('Relevant scale of application. Potential applicability of models for catchments of different sizes or to reflect impact of climate change.');
   t('Specifiy the use and purpose of the tool by tags/category/terms.');
@@ -982,7 +1416,14 @@ function waterinneu_feature_tools_field_default_field_instances() {
   t('Title');
   t('Tool of the Month');
   t('Type of Input Data');
+  t('User Profile');
+  t('WRD Relevance');
   t('Website');
+  t('http://ec.europa.eu/environment/water/water-framework/index_en.html');
+  t('innovative disadvantages and risks');
+  t('links to one or more projects where the product has been developed or used');
+  t('textual description of innovative aspects and advantages');
+  t('textual description of innovative disadvantages and risks');
 
   return $field_instances;
 }

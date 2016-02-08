@@ -31,7 +31,7 @@ function waterinneu_feature_portals_node_info() {
       'description' => t('A website that provides means for finding projects, organisations, or experts dealing with a common topic.'),
       'has_title' => '1',
       'title_label' => t('Name'),
-      'help' => t('Portal content type submission guildelines.'),
+      'help' => t('Get in touch with our helpdesk if your content does not fit in this form. You can find the helpdesk following the support services tab.'),
     ),
   );
   drupal_alter('node_info', $items);

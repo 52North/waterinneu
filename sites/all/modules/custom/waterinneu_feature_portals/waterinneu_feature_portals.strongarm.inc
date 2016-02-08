@@ -135,7 +135,7 @@ function waterinneu_feature_portals_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_portal';
-  $strongarm->value = 'main-menu:838';
+  $strongarm->value = 'main-menu:0';
   $export['menu_parent_portal'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -143,8 +143,7 @@ function waterinneu_feature_portals_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_portal';
   $strongarm->value = array(
-    0 => 'revision',
-    1 => 'revision_moderation',
+    0 => 'revision_moderation',
   );
   $export['node_options_portal'] = $strongarm;
 
@@ -152,7 +151,7 @@ function waterinneu_feature_portals_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_portal';
-  $strongarm->value = '1';
+  $strongarm->value = '2';
   $export['node_preview_portal'] = $strongarm;
 
   $strongarm = new stdClass();

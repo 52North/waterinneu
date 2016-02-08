@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function waterinneu_feature_projects_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -35,7 +35,7 @@ function waterinneu_feature_projects_field_group_info() {
       ),
     ),
   );
-  $export['group_aggregation_level|node|project|default'] = $field_group;
+  $field_groups['group_aggregation_level|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -63,7 +63,7 @@ function waterinneu_feature_projects_field_group_info() {
       ),
     ),
   );
-  $export['group_aggretation_level|node|project|form'] = $field_group;
+  $field_groups['group_aggretation_level|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -92,7 +92,7 @@ function waterinneu_feature_projects_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|project|default'] = $field_group;
+  $field_groups['group_background|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -123,7 +123,7 @@ function waterinneu_feature_projects_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_background|node|project|form'] = $field_group;
+  $field_groups['group_background|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -150,7 +150,7 @@ function waterinneu_feature_projects_field_group_info() {
       ),
     ),
   );
-  $export['group_data_collection|node|project|default'] = $field_group;
+  $field_groups['group_data_collection|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -178,7 +178,7 @@ function waterinneu_feature_projects_field_group_info() {
       ),
     ),
   );
-  $export['group_data_collection|node|project|form'] = $field_group;
+  $field_groups['group_data_collection|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -209,7 +209,7 @@ function waterinneu_feature_projects_field_group_info() {
       ),
     ),
   );
-  $export['group_geo|node|project|default'] = $field_group;
+  $field_groups['group_geo|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -242,7 +242,7 @@ function waterinneu_feature_projects_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_geo|node|project|form'] = $field_group;
+  $field_groups['group_geo|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -269,7 +269,7 @@ function waterinneu_feature_projects_field_group_info() {
       ),
     ),
   );
-  $export['group_metadata|node|project|default'] = $field_group;
+  $field_groups['group_metadata|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -302,7 +302,7 @@ function waterinneu_feature_projects_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_metadata|node|project|form'] = $field_group;
+  $field_groups['group_metadata|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -337,7 +337,7 @@ function waterinneu_feature_projects_field_group_info() {
       ),
     ),
   );
-  $export['group_results|node|project|default'] = $field_group;
+  $field_groups['group_results|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -374,7 +374,7 @@ function waterinneu_feature_projects_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_results|node|project|form'] = $field_group;
+  $field_groups['group_results|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -400,7 +400,7 @@ function waterinneu_feature_projects_field_group_info() {
       ),
     ),
   );
-  $export['group_temporal|node|project|default'] = $field_group;
+  $field_groups['group_temporal|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -428,7 +428,17 @@ function waterinneu_feature_projects_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_temporal|node|project|form'] = $field_group;
+  $field_groups['group_temporal|node|project|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Aggregation Level');
+  t('Background Information');
+  t('Data Collection');
+  t('Geographical Description');
+  t('Metadata');
+  t('Results');
+  t('Temporal Description');
+
+  return $field_groups;
 }

@@ -41,7 +41,8 @@ function waterinneu_feature_organisation_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ ';
   $handler->display->display_options['pager']['options']['tags']['next'] = ' ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = ' »|';
-  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'columnized-item-list';
   $handler->display->display_options['row_plugin'] = 'node';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -63,12 +64,6 @@ function waterinneu_feature_organisation_views_default_views() {
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['title']['expose']['label'] = 'Title';
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['field_country_value']['id'] = 'field_country_value';
-  $handler->display->display_options['sorts']['field_country_value']['table'] = 'field_data_field_country';
-  $handler->display->display_options['sorts']['field_country_value']['field'] = 'field_country_value';
-  $handler->display->display_options['sorts']['field_country_value']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_country_value']['expose']['label'] = 'Country';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';

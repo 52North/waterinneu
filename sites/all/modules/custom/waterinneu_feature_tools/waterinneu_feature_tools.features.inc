@@ -34,10 +34,12 @@ function waterinneu_feature_tools_node_info() {
     'tool' => array(
       'name' => t('Product'),
       'base' => 'node_content',
-      'description' => t('Product specification sheet for project results of type tool, e.g. software.'),
+      'description' => t('Product specification sheet for project results of type tool, e.g. software.
+
+'),
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => '',
+      'help' => t('Get in touch with our helpdesk if your tool does not fit in this form. You can find the helpdesk following the support services tab.'),
     ),
   );
   drupal_alter('node_info', $items);

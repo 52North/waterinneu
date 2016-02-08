@@ -90,20 +90,6 @@ function waterinneu_feature_frontpage_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['block_description'] = 'frontpage-latest-content';
-  $translatables['frontpage_latest_content'] = array(
-    t('Master'),
-    t('Latest Content'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Title'),
-    t('<h2>Latest Updates</h2>'),
-    t('Block'),
-    t('frontpage-latest-content'),
-  );
   $export['frontpage_latest_content'] = $view;
 
   $view = new view();
@@ -120,7 +106,7 @@ function waterinneu_feature_frontpage_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Latest Questions';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -186,22 +172,6 @@ function waterinneu_feature_frontpage_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['block_description'] = 'frontpage_latest_questions';
-  $translatables['frontpage_latest_questions'] = array(
-    t('Master'),
-    t('Latest Questions'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Title'),
-    t('<h2>Latest Questions</h2>'),
-    t('.'),
-    t(','),
-    t('Block'),
-    t('frontpage_latest_questions'),
-  );
   $export['frontpage_latest_questions'] = $view;
 
   $view = new view();
@@ -218,7 +188,7 @@ function waterinneu_feature_frontpage_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Latest News';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -286,30 +256,6 @@ function waterinneu_feature_frontpage_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['block_description'] = 'frontpage_latest_news';
-  $translatables['latest_news'] = array(
-    t('Master'),
-    t('Latest News'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('title'),
-    t('<h2>Latest News</h2>'),
-    t('Item ID'),
-    t('.'),
-    t(','),
-    t('Frontpage Latest News'),
-    t('frontpage_latest_news'),
-  );
   $export['latest_news'] = $view;
 
   return $export;

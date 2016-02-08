@@ -146,8 +146,7 @@ function waterinneu_feature_organisation_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_organisation';
   $strongarm->value = array(
-    0 => 'revision',
-    1 => 'revision_moderation',
+    0 => 'revision_moderation',
   );
   $export['node_options_organisation'] = $strongarm;
 
@@ -155,7 +154,7 @@ function waterinneu_feature_organisation_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_organisation';
-  $strongarm->value = '1';
+  $strongarm->value = '2';
   $export['node_preview_organisation'] = $strongarm;
 
   $strongarm = new stdClass();

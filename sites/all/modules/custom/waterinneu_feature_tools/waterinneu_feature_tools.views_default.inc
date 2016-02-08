@@ -103,8 +103,12 @@ function waterinneu_feature_tools_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '9';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'columnized-item-list';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'teaser';
   /* No results behavior: Global: Text area */
@@ -121,11 +125,47 @@ function waterinneu_feature_tools_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['fields']['title']['element_type'] = 'h2';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Logo */
+  $handler->display->display_options['fields']['field_logo']['id'] = 'field_logo';
+  $handler->display->display_options['fields']['field_logo']['table'] = 'field_data_field_logo';
+  $handler->display->display_options['fields']['field_logo']['field'] = 'field_logo';
+  $handler->display->display_options['fields']['field_logo']['label'] = '';
+  $handler->display->display_options['fields']['field_logo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_logo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_logo']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_logo']['group_column'] = 'entity_id';
+  /* Field: Content: Description */
+  $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
+  $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['label'] = '';
+  $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_description']['type'] = 'smart_trim_format';
+  $handler->display->display_options['fields']['field_description']['settings'] = array(
+    'trim_link' => '0',
+    'trim_length' => '300',
+    'trim_type' => 'chars',
+    'trim_suffix' => '...',
+    'more_link' => '0',
+    'more_text' => 'Read more',
+    'trim_options' => array(
+      'text' => 'text',
+    ),
+    'trim_preserve_tags' => '',
+  );
+  /* Sort criterion: Content: Category (field_category) */
+  $handler->display->display_options['sorts']['field_category_tid']['id'] = 'field_category_tid';
+  $handler->display->display_options['sorts']['field_category_tid']['table'] = 'field_data_field_category';
+  $handler->display->display_options['sorts']['field_category_tid']['field'] = 'field_category_tid';
+  /* Sort criterion: Content: Title (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -140,60 +180,43 @@ function waterinneu_feature_tools_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'tool' => 'tool',
   );
-  /* Filter criterion: Content: Language */
-  $handler->display->display_options['filters']['language']['id'] = 'language';
-  $handler->display->display_options['filters']['language']['table'] = 'node';
-  $handler->display->display_options['filters']['language']['field'] = 'language';
-  $handler->display->display_options['filters']['language']['value'] = array(
-    'en' => 'en',
-    'de' => 'de',
-  );
-  $handler->display->display_options['filters']['language']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['language']['expose']['operator_id'] = 'language_op';
-  $handler->display->display_options['filters']['language']['expose']['label'] = 'Filter by Language';
-  $handler->display->display_options['filters']['language']['expose']['operator'] = 'language_op';
-  $handler->display->display_options['filters']['language']['expose']['identifier'] = 'language';
-  $handler->display->display_options['filters']['language']['expose']['remember'] = TRUE;
-  $handler->display->display_options['filters']['language']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Category (field_category) */
+  $handler->display->display_options['filters']['field_category_tid']['id'] = 'field_category_tid';
+  $handler->display->display_options['filters']['field_category_tid']['table'] = 'field_data_field_category';
+  $handler->display->display_options['filters']['field_category_tid']['field'] = 'field_category_tid';
+  $handler->display->display_options['filters']['field_category_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_category_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_category_tid']['expose']['operator_id'] = 'field_category_tid_op';
+  $handler->display->display_options['filters']['field_category_tid']['expose']['label'] = 'Category';
+  $handler->display->display_options['filters']['field_category_tid']['expose']['operator'] = 'field_category_tid_op';
+  $handler->display->display_options['filters']['field_category_tid']['expose']['identifier'] = 'field_category_tid';
+  $handler->display->display_options['filters']['field_category_tid']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['field_category_tid']['expose']['remember_roles'] = array(
     2 => '2',
+    8 => '8',
+    10 => '10',
+    9 => '9',
+    11 => '11',
+    3 => '3',
     1 => 0,
-    3 => 0,
-    4 => 0,
   );
-  $handler->display->display_options['filters']['language']['expose']['reduce'] = TRUE;
-  $handler->display->display_options['filters']['language']['group_info']['label'] = 'Language';
-  $handler->display->display_options['filters']['language']['group_info']['identifier'] = 'language';
-  $handler->display->display_options['filters']['language']['group_info']['remember'] = FALSE;
-  $handler->display->display_options['filters']['language']['group_info']['group_items'] = array(
+  $handler->display->display_options['filters']['field_category_tid']['group_info']['label'] = 'Category (field_category)';
+  $handler->display->display_options['filters']['field_category_tid']['group_info']['identifier'] = 'field_category_tid';
+  $handler->display->display_options['filters']['field_category_tid']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_category_tid']['group_info']['group_items'] = array(
     1 => array(),
     2 => array(),
     3 => array(),
   );
-  /* Filter criterion: Content: License (field_license) */
-  $handler->display->display_options['filters']['field_license_tid']['id'] = 'field_license_tid';
-  $handler->display->display_options['filters']['field_license_tid']['table'] = 'field_data_field_license';
-  $handler->display->display_options['filters']['field_license_tid']['field'] = 'field_license_tid';
-  $handler->display->display_options['filters']['field_license_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_license_tid']['expose']['operator_id'] = 'field_license_tid_op';
-  $handler->display->display_options['filters']['field_license_tid']['expose']['label'] = 'Filter by License';
-  $handler->display->display_options['filters']['field_license_tid']['expose']['operator'] = 'field_license_tid_op';
-  $handler->display->display_options['filters']['field_license_tid']['expose']['identifier'] = 'field_license_tid';
-  $handler->display->display_options['filters']['field_license_tid']['expose']['remember'] = TRUE;
-  $handler->display->display_options['filters']['field_license_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-  );
-  $handler->display->display_options['filters']['field_license_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_license_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_license_tid']['vocabulary'] = 'license';
-  $handler->display->display_options['filters']['field_license_tid']['hierarchy'] = 1;
+  $handler->display->display_options['filters']['field_category_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_category_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_category_tid']['vocabulary'] = 'tags';
+  $handler->display->display_options['filters']['field_category_tid']['hierarchy'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'products';
+  $handler->display->display_options['path'] = 'product';
   $export['tools'] = $view;
 
   return $export;

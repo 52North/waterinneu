@@ -37,7 +37,7 @@ function waterinneu_feature_projects_node_info() {
       'description' => t('A project dealing with hydrological topics.'),
       'has_title' => '1',
       'title_label' => t('Name'),
-      'help' => '',
+      'help' => t('Get in touch with our helpdesk if your content does not fit in this form. You can find the helpdesk following the support services tab.'),
     ),
   );
   drupal_alter('node_info', $items);

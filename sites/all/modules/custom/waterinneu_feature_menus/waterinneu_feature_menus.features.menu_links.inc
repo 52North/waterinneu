@@ -23,11 +23,11 @@ function waterinneu_feature_menus_menu_default_menu_links() {
       'identifier' => 'main-menu_about:node/8772',
     ),
     'module' => 'menu',
-    'hidden' => 1,
+    'hidden' => 0,
     'external' => 0,
-    'has_children' => 0,
+    'has_children' => 1,
     'expanded' => 0,
-    'weight' => -36,
+    'weight' => -43,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -50,7 +50,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -41,
+    'weight' => -42,
     'customized' => 1,
     'language' => 'de',
     'menu_links_customized' => 1,
@@ -82,7 +82,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -40,
+    'weight' => -41,
     'customized' => 1,
     'language' => 'de',
     'menu_links_customized' => 1,
@@ -108,62 +108,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
     'language' => 'en',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: main-menu_other:node/42.
-  $menu_links['main-menu_other:node/42'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/42',
-    'router_path' => 'node/%',
-    'link_title' => 'Other',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'This tab collects all other services of the portal. It\'s an mini portal in the portal.',
-      ),
-      'node_type' => 'page',
-      'alter' => TRUE,
-      'identifier' => 'main-menu_other:node/42',
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        8 => 0,
-        10 => 0,
-        9 => 0,
-        11 => 0,
-        3 => 0,
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -44,
-    'customized' => 1,
-    'language' => 'en',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: main-menu_portals:portals.
-  $menu_links['main-menu_portals:portals'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'portals',
-    'router_path' => 'portals',
-    'link_title' => 'Portals',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'alter' => TRUE,
-      'identifier' => 'main-menu_portals:portals',
-    ),
-    'module' => 'menu',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -37,
-    'customized' => 1,
-    'language' => 'und',
     'menu_links_customized' => 1,
   );
   // Exported menu link: main-menu_start:<front>.
@@ -196,9 +140,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'User Guide',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
       'node_type' => 'page',
       'alter' => TRUE,
       'identifier' => 'main-menu_user-guide:node/33',
@@ -217,7 +159,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -42,
+    'weight' => -44,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -635,25 +577,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: navigation_glossary:glossary.
-  $menu_links['navigation_glossary:glossary'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'glossary',
-    'router_path' => 'glossary',
-    'link_title' => 'Glossary',
-    'options' => array(
-      'identifier' => 'navigation_glossary:glossary',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
   // Exported menu link: navigation_migrate-example---dates:node/add/date-migrate-example.
   $menu_links['navigation_migrate-example---dates:node/add/date-migrate-example'] = array(
     'menu_name' => 'navigation',
@@ -906,12 +829,10 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   t('Contact');
   t('Content summary');
   t('Feed aggregator');
-  t('Glossary');
   t('Home');
   t('Login');
   t('Logout');
   t('Migrate example - dates');
-  t('Other');
   t('Portal');
   t('Portals');
   t('Register');
