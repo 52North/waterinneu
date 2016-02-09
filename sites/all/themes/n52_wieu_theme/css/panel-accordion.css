@@ -1,0 +1,31 @@
+.panel-default > .panel-heading-explore {
+  background: #A03416; color: #fff;
+}
+
+.panel-explore {
+  border-color: #A03416;
+}
+
+.panel-default > .panel-heading-about {
+  background: #ADAAA6; color: #fff;
+}
+
+.panel-about {
+  border-color: #ADAAA6;
+}
+
+.panel-default > .panel-heading-our-services {
+  background: #BA9045; color: #fff;
+}
+
+.panel-our-services {
+  border-color: #BA9045;
+}
+
+.panel-default > .panel-heading-upcoming-events {
+  background: #26ADA1; color: #fff;
+}
+
+.panel-upcoming-events {
+  border-color: #26ADA1;
+}
