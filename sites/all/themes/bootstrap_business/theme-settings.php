@@ -38,7 +38,7 @@ function bootstrap_business_form_system_theme_settings_alter(&$form, &$form_stat
         '#type' => 'checkbox',
         '#title' => t('Show scroll-to-top button'),
         '#description'   => t('Use the checkbox to enable or disable scroll-to-top button.'),
-        '#default_value' => theme_get_setting('scrolltop_display', 'bootstrap_business'),
+        '#default_value' => theme_get_setting('scrolltop_display'),
         '#collapsible' => TRUE,
         '#collapsed' => TRUE,
     );

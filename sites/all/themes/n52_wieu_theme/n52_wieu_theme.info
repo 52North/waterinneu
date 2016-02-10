@@ -3,7 +3,8 @@ description = 52North Theme for WaterInnEU project based on Bootstrap Business.
 
 base theme = bootstrap_business
 
-stylesheets[all][] = css/panel-accordion.css
+stylesheets[all][] = css/global-styles.css
+stylesheets[all][] = css/landing-page.css
 
 regions[pre_header_first] = Pre Header First
 regions[pre_header_second] = Pre Header Second
@@ -29,6 +30,7 @@ regions[page_top] = Page top
 regions[page_bottom] = Page bottom
 
 settings[bootstrap_js_cdn]= 3.2.0
+settings[bootstrap_css_cdn] = 3.2.0
 settings[responsive_respond]= 1
 
 version = "7.x-1.0"
