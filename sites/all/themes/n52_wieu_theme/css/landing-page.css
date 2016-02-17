@@ -1,3 +1,21 @@
+/******************************************************************************
+ *
+ *  FEATURES ACCORDION
+ *
+ ******************************************************************************/
+
+#accordion > div.panel > div.panel-heading > h2.panel-title {
+  font-size: 200%;
+}
+
+#landingpage-features-accordion > div.pane-content > article.node > header {
+  display: none;
+}
+
+#landingpage-features-accordion > div.pane-content > article > div.content {
+  margin-top: -3.0em;
+}
+
 .panel-default > .panel-heading-explore {
   background: #A03416; color: #fff;
 }
@@ -30,20 +48,44 @@
   border-color: #26ADA1;
 }
 
+/******************************************************************************
+ *
+ *  PRODUCT OF THE MONTH
+ *
+ ******************************************************************************/
+
 #product-of-the-month {
   border: solid 1px #cecece;
   padding: 1em;
   background: #fff;
 }
 
-#accordion > div.panel > div.panel-heading > h2.panel-title {
-	font-size: 200%;
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content > div.field-name-field-logo {
+  float: left;
+  padding: 2px;
 }
 
-#landingpage-features-accordion > div.pane-content > article.node > header {
-  display: none;
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content {
+  padding: 0px 20px 0px;
 }
 
-#landingpage-features-accordion > div.pane-content > article > div.content {
-  margin-top: -3.0em;
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > header {
+  padding: 0px 20px 0px;
+}
+
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > header > h2{
+  font-size: 24px;
+  margin: 0;
+}
+
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content > div.field-name-field-description > div.field-items > div.field-item > p{
+  margin: 0 0 0;
+}
+
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content > div.field > .field-label {
+  font-weight: 700;
+}
+
+a.more-link {
+  font-weight: 700;
 }
