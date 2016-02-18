@@ -48,6 +48,14 @@
   border-color: #26ADA1;
 }
 
+#landingpage-features-accordion > div.pane-content > article.node > div.content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 0px;
+  padding-rigtht: 0px;
+}
+
+
 /******************************************************************************
  *
  *  PRODUCT OF THE MONTH

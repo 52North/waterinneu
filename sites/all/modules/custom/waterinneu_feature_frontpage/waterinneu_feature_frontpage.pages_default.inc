@@ -190,6 +190,29 @@ function waterinneu_feature_frontpage_default_page_manager_pages() {
     $pane->uuid = 'df9b4537-fc61-4446-9537-d58db53c18c7';
     $display->content['new-df9b4537-fc61-4446-9537-d58db53c18c7'] = $pane;
     $display->panels['left_column'][0] = 'new-df9b4537-fc61-4446-9537-d58db53c18c7';
+    $pane = new stdClass();
+    $pane->pid = 'new-89235da5-fb9c-4025-9393-1d2b0c3208ad';
+    $pane->panel = 'left_column';
+    $pane->type = 'block';
+    $pane->subtype = 'twitter_block-1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '89235da5-fb9c-4025-9393-1d2b0c3208ad';
+    $display->content['new-89235da5-fb9c-4025-9393-1d2b0c3208ad'] = $pane;
+    $display->panels['left_column'][1] = 'new-89235da5-fb9c-4025-9393-1d2b0c3208ad';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = 'new-1b8cd7e8-163d-446d-8552-2582e5442646';
   $handler->conf['display'] = $display;
