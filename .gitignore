@@ -15,3 +15,4 @@ sites/all/modules/n52_migrate_waterinneu/csv_files/tmp
 # ignore generated files
 sites/default/files/js/*
 sites/default/files/color/*
+sites/default/files/ctools/css/*
