@@ -583,3 +583,28 @@ function theme_harmony_core_thread_meta_item($variables) {
 function theme_harmony_anonymous_user_post_profile() {
   return '<span class="grey">' . t('Deleted user') . '</span>';
 }
+
+/**
+ * Output a themed representation of a thread or posts visibility state,
+ * whether or not it's public.
+ *
+ * If you want to alter the text values that are displayed in this function see
+ * harmony_core_determine_public.
+ *
+ * @see harmony_core_determine_public
+ * @see hook_harmony_public_text_alter
+ */
+function theme_harmony_public_state($variables) {
+  $status = $variables['status'];
+  $hidden = $variables['hidden'];
+
+  $state = harmony_core_determine_public($status, $hidden);
+
+  $output = '<span class="harmony-public-state" data-state="' . ($state['value'] ? 'true' : 'false') . '">' . check_plain($state['text']);
+  if ($state['description'] != '') {
+    $output .= ' <span class="h-icon h-icon--question-mark" data-toggle="tooltip" title="' . check_plain($state['description']) . '"><u>?</u></span>';
+  }
+  $output .= '</span>';
+
+  return $output;
+}

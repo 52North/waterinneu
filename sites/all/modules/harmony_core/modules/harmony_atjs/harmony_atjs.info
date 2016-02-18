@@ -13,9 +13,9 @@ features[features_api][] = api:2
 features[features_overrides][] = field_instance.harmony_post-harmony_post-field_harmony_text.widget|settings|atjs_fieldset
 features[features_overrides][] = filter.harmony_filtered.filters|atjs
 
-; Information added by Drupal.org packaging script on 2016-01-06
-version = "7.x-1.0-alpha8"
+; Information added by Drupal.org packaging script on 2016-02-12
+version = "7.x-1.0-alpha9"
 core = "7.x"
 project = "harmony_core"
-datestamp = "1452078542"
+datestamp = "1455300241"
 

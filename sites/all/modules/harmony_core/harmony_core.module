@@ -1093,6 +1093,14 @@ function harmony_core_theme($existing, $type, $theme, $path) {
       'file' => 'theme.inc',
       'path' => $module_dir . '/theme',
     ),
+    'harmony_public_state' => array(
+      'arguments' => array(
+        'status' => NULL,
+        'hidden' => NULL,
+      ),
+      'file' => 'theme.inc',
+      'path' => $module_dir . '/theme',
+    ),
   );
 }
 
@@ -5051,3 +5059,59 @@ function harmony_core_admin_rebuild_execute($action_id, $form_values = array()) 
 
   batch_set($batch);
 }
+
+/**
+ * Return an array of information about whether or not a thread or post is
+ * visible to the public.
+ *
+ * @param bool $status
+ *   Whether or not the content is published or not.
+ * @param $hidden
+ *   If NULL we're dealing with a thread else it's a post with a bool value.
+ *
+ * @return array
+ */
+function harmony_core_determine_public($status, $hidden = NULL) {
+  $text_values = array(
+    'true' => t('Yes'),
+    'false' => t('No'),
+    'descriptions' => array(
+      // Thread is visible.
+      'status_true' => NULL,
+      // Thread isn't visible.
+      'status_false' => t('This thread is unpublished'),
+      // Post is visible.
+      'status_true_hidden_false' => NULL,
+      // Post not visible due to parent thread.
+      'status_true_hidden_true' => t("This post isn't public as the thread it's in is unpublished"),
+      // Post not visible as the post isn't published.
+      'status_false_hidden_false' => t("This post isn't public as it is unpublished"),
+      // Post not visible as both itself and parent thread aren't published.
+      'status_false_hidden_true' => t('Both the thread this post appears in and this post are unpublished'),
+    ),
+  );
+
+  // Allow other modules to alter the text that the user will see.
+  drupal_alter('harmony_public_text', $text_values);
+
+  $raw_value = $status ? TRUE : 0;
+  $text_value = $status ? $text_values['true'] : $text_values['false'];
+  $description_index = $status ? 'status_true' : 'status_false';
+
+  // If a post factor in the hidden flag.
+  if (!is_null($hidden)) {
+    $description_index .= $hidden ? '_hidden_true' : '_hidden_false';
+
+    if ($hidden) {
+      $raw_value = FALSE;
+      $text_value = $text_values['false'];
+    }
+  }
+
+  return array(
+    'value' => $raw_value,
+    'text' => $text_value,
+    'description' => $text_values['descriptions'][$description_index],
+  );
+}
+

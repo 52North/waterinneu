@@ -134,11 +134,15 @@ files[] = views/handlers/harmony_core_views_plugin_argument_default_taxonomy_tid
 files[] = views/handlers/harmony_core_views_handler_argument_default_taxonomy_tid_depth.inc
 files[] = views/handlers/harmony_core_views_plugin_argument_default_thread.inc
 files[] = views/handlers/harmony_core_views_plugin_row_post_view.inc
+files[] = views/handlers/HarmonyCoreViewsHandlerFieldPostPublic.php
+files[] = views/handlers/HarmonyCoreViewsHandlerFieldPublic.php
+files[] = views/handlers/HarmonyCoreViewsHandlerFilterPostPublic.php
+files[] = views/handlers/HarmonyCoreViewsHandlerFilterPublic.php
 files[] = views/plugins/harmony_core_views_plugin_style_harmony_table.inc
 
-; Information added by Drupal.org packaging script on 2016-01-06
-version = "7.x-1.0-alpha8"
+; Information added by Drupal.org packaging script on 2016-02-12
+version = "7.x-1.0-alpha9"
 core = "7.x"
 project = "harmony_core"
-datestamp = "1452078542"
+datestamp = "1455300241"
 
