@@ -22,15 +22,13 @@ function waterinneu_feature_frontpage_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Latest Content';
-  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['row_class'] = 'views-row';
@@ -39,17 +37,34 @@ function waterinneu_feature_frontpage_views_default_views() {
   $handler->display->display_options['row_options']['inline'] = array(
     'changed' => 'changed',
     'type' => 'type',
+    'last_editor' => 'last_editor',
   );
-  $handler->display->display_options['row_options']['separator'] = '-';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['label'] = 'Title';
-  $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<h2>Latest Updates</h2>';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  /* Field: Content: Updated date */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'node';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['label'] = '';
+  $handler->display->display_options['fields']['changed']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['changed']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['changed']['date_format'] = 'time ago';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'short';
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = 'a new ';
+  $handler->display->display_options['fields']['type']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['type']['alter']['text'] = '<i>[type]</i>';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  /* Field: Content: Last edited by */
+  $handler->display->display_options['fields']['last_editor']['id'] = 'last_editor';
+  $handler->display->display_options['fields']['last_editor']['table'] = 'node';
+  $handler->display->display_options['fields']['last_editor']['field'] = 'last_editor';
+  $handler->display->display_options['fields']['last_editor']['label'] = 'by';
+  $handler->display->display_options['fields']['last_editor']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['last_editor']['alter']['text'] = '[last_editor]: ';
+  $handler->display->display_options['fields']['last_editor']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -59,21 +74,6 @@ function waterinneu_feature_frontpage_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Updated date */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'node';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['label'] = '';
-  $handler->display->display_options['fields']['changed']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['changed']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['changed']['date_format'] = 'short';
-  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
-  /* Field: Content: Type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'node';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['label'] = '';
-  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -104,7 +104,6 @@ function waterinneu_feature_frontpage_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Latest Questions';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -121,14 +120,6 @@ function waterinneu_feature_frontpage_views_default_views() {
     'harmony_thread_replies' => 'harmony_thread_replies',
   );
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['label'] = 'Title';
-  $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<h2>Latest Questions</h2>';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Field: Thread: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'harmony_thread';
@@ -168,6 +159,11 @@ function waterinneu_feature_frontpage_views_default_views() {
   $handler->display->display_options['fields']['harmony_thread_replies']['field'] = 'harmony_thread_replies';
   $handler->display->display_options['fields']['harmony_thread_replies']['label'] = '';
   $handler->display->display_options['fields']['harmony_thread_replies']['element_label_colon'] = FALSE;
+  /* Sort criterion: Thread: Date updated */
+  $handler->display->display_options['sorts']['updated']['id'] = 'updated';
+  $handler->display->display_options['sorts']['updated']['table'] = 'harmony_thread';
+  $handler->display->display_options['sorts']['updated']['field'] = 'updated';
+  $handler->display->display_options['sorts']['updated']['order'] = 'DESC';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');

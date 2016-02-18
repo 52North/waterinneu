@@ -97,3 +97,25 @@
 a.more-link {
   font-weight: 700;
 }
+
+
+/******************************************************************************
+ *
+ *  Landing page updates
+ *
+ ******************************************************************************/
+
+#landingpage-updates-block {
+  border: solid 1px #cecece;
+  padding: 1em;
+  background: #fff;
+}
+
+#landingpage-updates-block > div.pane-content > ul.nav-tabs > li {
+  font-weight: 700;
+}
+
+#frontpage-updates-contenttype-field {
+  font-weight: 350;
+  text-transform: lowercase;
+}
