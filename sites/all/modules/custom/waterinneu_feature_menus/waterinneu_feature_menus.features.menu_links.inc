@@ -800,28 +800,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'navigation_add-content:node/add',
   );
-  // Exported menu link: navigation_portals:portals.
-  $menu_links['navigation_portals:portals'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'portals',
-    'router_path' => 'portals',
-    'link_title' => 'Portals',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'navigation_portals:portals',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -38,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
   // Exported menu link: navigation_scheduled-publications:scheduled-publications.
   $menu_links['navigation_scheduled-publications:scheduled-publications'] = array(
     'menu_name' => 'navigation',
@@ -976,7 +954,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   t('Matchmaking');
   t('Migrate example - dates');
   t('Portal');
-  t('Portals');
   t('Products');
   t('Projects');
   t('Register');

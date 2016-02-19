@@ -1,5 +1,86 @@
+/******************************************************************************
+ *                                                                            *
+ *                  NO rounded corners - back to the 90s                      *
+ *                                                                            *
+ ******************************************************************************/
+
 * {
   -webkit-border-radius: 0 !important;
      -moz-border-radius: 0 !important;
           border-radius: 0 !important;
+}
+
+/******************************************************************************
+ *                                                                            *
+ *                  Top-Level Elements in one line                            *
+ *                                                                            *
+ ******************************************************************************/
+.region-pre-header-third, .region-header-top-right {
+    display:flex;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    justify-content:flex-end;
+    height: 2.0em;
+}
+
+.region-pre-header-first > div.block {
+	padding: 0;
+}
+
+#pre-header-inside {
+	padding: 0;
+}
+
+#custom-search-blocks-form-1 > div > div.form-item-custom-search-blocks-form-1 {
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+#block-menu-menu-top-links > div.content > ul.menu,
+#block-menu-menu-top-level-links-registered-  > div.content > ul.menu
+{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	overflow: hidden;
+}
+
+#block-menu-menu-top-links > div.content > ul.menu > li.leaf, 
+#block-menu-menu-top-level-links-registered-  > div.content > ul.menu > li.leaf
+{
+	float: left;
+	list-style-image: unset;
+    list-style-position: unset;
+    border-bottom: 0;
+    list-style-type: unset;
+    padding: 0.2em 0.5em 0 0;
+}
+
+#block-menu-menu-top-links > div.content > ul.menu > li.leaf + li, 
+#block-menu-menu-top-level-links-registered-  > div.content > ul.menu > li.leaf + li
+{
+    border-left: solid 2px #cecece;
+    padding-left: 0.4em;
+}
+
+#header-top {
+	border: 0;
+}
+
+.search-form {
+	margin-top: 6px;
+	margin-bottom: 0;
+}
+
+#lang_dropdown_form_language > div > img {
+	display: unset;
+}
+
+#lang_dropdown_form_language > div > div > select {
+	margin-top: 6px;
+    margin-bottom: 0;
+    min-height: unset;
+    padding: 1em;
+    margin-right: 0.5em;
 }
