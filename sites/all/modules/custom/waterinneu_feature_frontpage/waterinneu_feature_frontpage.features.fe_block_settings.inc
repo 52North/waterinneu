@@ -142,8 +142,8 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
         'weight' => 0,
       ),
       'n52_wieu_theme' => array(
-        'region' => 'content',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'n52_wieu_theme',
         'weight' => -27,
       ),

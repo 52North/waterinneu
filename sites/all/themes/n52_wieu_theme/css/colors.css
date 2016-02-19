@@ -30,8 +30,6 @@
  * 
  * Highlight background: #9ad421
  *
- * #27 63 8c
- *
  * Link/Call-to-Action: #27638c
  */
 body, .comment {
@@ -79,4 +77,8 @@ input.form-text:focus, textarea.form-textarea:focus {
 
 .stickynav-active {
     background-color: #fff;
+}
+
+#toTop {
+	background-color: #9ad421;
 }

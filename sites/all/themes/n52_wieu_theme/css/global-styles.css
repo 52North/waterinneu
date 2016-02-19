@@ -84,6 +84,12 @@
     padding: 0.2em 0.5em 0 0;
 }
 
+#block-menu-menu-top-links > div.content > ul.menu > li.leaf > a, 
+#block-menu-menu-top-level-links-registered-  > div.content > ul.menu > li.leaf > a
+{
+	border-bottom: 0;
+}
+
 #block-menu-menu-top-links > div.content > ul.menu > li.leaf + li, 
 #block-menu-menu-top-level-links-registered-  > div.content > ul.menu > li.leaf + li
 {
@@ -121,4 +127,30 @@
   padding-right: 0px;
   margin-left: 0px;
   margin-right: 0px;
+}
+
+div.toggle-control > a > span {
+	font-size: 32px;
+}
+
+/******************************************************************************
+ *                                                                            *
+ *                            Node listings                                   *
+ *                                                                            *
+ ******************************************************************************/
+ 
+.columnized-item-list > ul > li {
+	    list-style-type: none;
+}
+
+/* This ensure equal column width in grid views
+----------------------------------------------------------------------------- */
+.columnized-item-list > ul > li.views-row {
+    width: 32%;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
+    *display: inline;
+    _height: 250px;
 }
