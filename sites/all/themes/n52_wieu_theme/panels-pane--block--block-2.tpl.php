@@ -28,7 +28,6 @@
  */
 ?>
 <?php 
-	// TODO Recent content
 	/*
 	 * Latest content block
 	 *
@@ -36,7 +35,6 @@
 	 */
 	$latest_content_block = module_invoke('views', 'block_view', 'frontpage_latest_content-block');
 	unset($latest_content_block['subject']);
-	// TODO Recent comments
 	/*
 	 * Latest comments block
 	 *
@@ -44,7 +42,6 @@
 	 */
 	$latest_comments_block = module_invoke('views', 'block_view', 'comments_recent-block');
 	unset($latest_comments_block['subject']);
-	// TODO Recent Posts
 	/*
 	 * Latest questions block
 	 *
@@ -52,7 +49,6 @@
 	 */
 	$latest_posts_block = module_invoke('views', 'block_view', 'frontpage_latest_posts-block');
 	unset($latest_posts_block['subject']);
-	// TODO Recent Threads
 	/*
 	 * Latest questions block
 	 *
