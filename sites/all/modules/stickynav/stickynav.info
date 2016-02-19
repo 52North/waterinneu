@@ -1,0 +1,10 @@
+name = Sticky Nav
+description = Module to make navigation on the website sticky when you scroll down the page. This project is sponsored by Haymarket Media Group.
+core = 7.x
+configure = admin/config/user-interface/stickynav
+; Information added by Drupal.org packaging script on 2014-10-18
+version = "7.x-1.0"
+core = "7.x"
+project = "stickynav"
+datestamp = "1413658429"
+

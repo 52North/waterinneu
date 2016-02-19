@@ -5,6 +5,7 @@ base theme = bootstrap_business
 
 stylesheets[all][] = css/global-styles.css
 stylesheets[all][] = css/landing-page.css
+stylesheets[all][] = css/colors.css
 
 regions[pre_header_first] = Pre Header First
 regions[pre_header_second] = Pre Header Second

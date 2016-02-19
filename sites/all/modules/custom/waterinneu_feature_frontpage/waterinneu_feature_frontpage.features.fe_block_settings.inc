@@ -29,18 +29,6 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
         'theme' => 'adminimal',
         'weight' => 0,
       ),
-      'bootstrap_business' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bootstrap_business',
-        'weight' => 0,
-      ),
-      'fusion_marina' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'fusion_marina',
-        'weight' => 0,
-      ),
       'n52_wieu_theme' => array(
         'region' => '',
         'status' => 0,
@@ -69,18 +57,6 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
         'theme' => 'adminimal',
         'weight' => 1,
       ),
-      'bootstrap_business' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bootstrap_business',
-        'weight' => -11,
-      ),
-      'fusion_marina' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'fusion_marina',
-        'weight' => -11,
-      ),
       'n52_wieu_theme' => array(
         'region' => '',
         'status' => 0,
@@ -107,18 +83,6 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'adminimal',
-        'weight' => 0,
-      ),
-      'bootstrap_business' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bootstrap_business',
-        'weight' => 0,
-      ),
-      'fusion_marina' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'fusion_marina',
         'weight' => 0,
       ),
       'n52_wieu_theme' => array(
@@ -149,18 +113,6 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
         'theme' => 'adminimal',
         'weight' => 0,
       ),
-      'bootstrap_business' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bootstrap_business',
-        'weight' => 0,
-      ),
-      'fusion_marina' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'fusion_marina',
-        'weight' => 0,
-      ),
       'n52_wieu_theme' => array(
         'region' => '',
         'status' => 0,
@@ -189,18 +141,6 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
         'theme' => 'adminimal',
         'weight' => 0,
       ),
-      'bootstrap_business' => array(
-        'region' => 'content',
-        'status' => 1,
-        'theme' => 'bootstrap_business',
-        'weight' => -27,
-      ),
-      'fusion_marina' => array(
-        'region' => 'content',
-        'status' => 1,
-        'theme' => 'fusion_marina',
-        'weight' => -27,
-      ),
       'n52_wieu_theme' => array(
         'region' => 'content',
         'status' => 1,
@@ -214,8 +154,10 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
 
   $export['views-frontpage_latest_posts-block'] = array(
     'cache' => -1,
+    'custom' => 0,
     'delta' => 'frontpage_latest_posts-block',
     'i18n_block_language' => array(),
+    'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
     'pages' => '',
@@ -227,18 +169,6 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
         'theme' => 'adminimal',
         'weight' => 0,
       ),
-      'bootstrap_business' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bootstrap_business',
-        'weight' => 0,
-      ),
-      'fusion_marina' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'fusion_marina',
-        'weight' => 0,
-      ),
       'n52_wieu_theme' => array(
         'region' => '',
         'status' => 0,
@@ -246,6 +176,8 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
+    'title' => '',
+    'visibility' => 0,
   );
 
   $export['views-tool_of_the_month-block'] = array(
@@ -264,18 +196,6 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
         'status' => 0,
         'theme' => 'adminimal',
         'weight' => 0,
-      ),
-      'bootstrap_business' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bootstrap_business',
-        'weight' => -29,
-      ),
-      'fusion_marina' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'fusion_marina',
-        'weight' => -29,
       ),
       'n52_wieu_theme' => array(
         'region' => '',

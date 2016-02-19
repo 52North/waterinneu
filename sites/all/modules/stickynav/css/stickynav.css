@@ -1,0 +1,10 @@
+.stickynav-active {
+  position: fixed;
+  top: 0px;
+  z-index: 1000;
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}

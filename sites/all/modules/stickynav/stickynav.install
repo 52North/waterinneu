@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * Contains install and update functions for advanced_help.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function stickynav_uninstall() {
+  $or = db_or()
+    ->condition('name', 'stickynav-enabled-%', 'LIKE')
+    ->condition('name', 'stickynav-selector-%', 'LIKE')
+    ->condition('name', 'stickynav-roles-%', 'LIKE');
+  $result = db_select('variable', 'v')
+    ->fields('v', array('name'))
+    ->condition($or)
+    ->execute();
+  foreach ($result as $row) {
+    variable_del($row->name);
+  }
+}
