@@ -39,7 +39,7 @@ function harmony_atjs_filter_default_formats_alter(&$data) {
         ),
       ),
       'status' => 1,
-      'weight' => -44,
+      'weight' => -45,
     ); /* WAS: '' */
   }
 }

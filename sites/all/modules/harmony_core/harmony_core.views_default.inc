@@ -138,27 +138,6 @@ function harmony_core_views_default_views() {
       'override_label' => 1,
       'label' => 'Delete post',
     ),
-    'action::views_bulk_operations_delete_revision' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::views_bulk_operations_script_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::harmony_core_post_locked_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
     'action::views_bulk_operations_modify_action' => array(
       'selected' => 1,
       'postpone_processing' => 1,
@@ -172,15 +151,6 @@ function harmony_core_views_default_views() {
         ),
       ),
     ),
-    'action::views_bulk_operations_argument_selector_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'settings' => array(
-        'url' => '',
-      ),
-    ),
     'action::harmony_core_post_publish_action' => array(
       'selected' => 1,
       'postpone_processing' => 1,
@@ -188,29 +158,8 @@ function harmony_core_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-    'action::harmony_core_post_reassign_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::system_send_email_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
     'action::harmony_core_post_split_action' => array(
       'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::harmony_core_post_unlock_action' => array(
-      'selected' => 0,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
@@ -528,27 +477,6 @@ function harmony_core_views_default_views() {
       'override_label' => 1,
       'label' => 'Delete thread',
     ),
-    'action::views_bulk_operations_delete_revision' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::views_bulk_operations_script_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::harmony_core_thread_hide_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
     'action::harmony_core_thread_locked_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
@@ -583,15 +511,6 @@ function harmony_core_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-    'action::views_bulk_operations_argument_selector_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'settings' => array(
-        'url' => '',
-      ),
-    ),
     'action::harmony_core_thread_make_pinned_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
@@ -603,27 +522,6 @@ function harmony_core_views_default_views() {
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 1,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::harmony_core_thread_save_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::system_send_email_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::harmony_core_thread_unhide_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
     ),
@@ -1319,48 +1217,12 @@ function harmony_core_views_default_views() {
       'override_label' => 1,
       'label' => 'Delete post',
     ),
-    'action::views_bulk_operations_delete_revision' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::views_bulk_operations_script_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
     'action::harmony_core_post_locked_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 1,
       'override_label' => 0,
       'label' => '',
-    ),
-    'action::views_bulk_operations_modify_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 1,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'settings' => array(
-        'show_all_tokens' => 1,
-        'display_values' => array(
-          'harmony_post::field_harmony_thread' => 'harmony_post::field_harmony_thread',
-        ),
-      ),
-    ),
-    'action::views_bulk_operations_argument_selector_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'settings' => array(
-        'url' => '',
-      ),
     ),
     'action::harmony_core_post_publish_action' => array(
       'selected' => 1,
@@ -1373,13 +1235,6 @@ function harmony_core_views_default_views() {
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 1,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::system_send_email_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
     ),
@@ -1549,6 +1404,7 @@ function harmony_core_views_default_views() {
     0 => 'harmony_access',
   );
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'load_more';
   $handler->display->display_options['pager']['options']['items_per_page'] = '30';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -1565,7 +1421,7 @@ function harmony_core_views_default_views() {
     'likes' => 'likes',
     'updated' => 'updated',
   );
-  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['default'] = 'updated';
   $handler->display->display_options['style_options']['info'] = array(
     'pinned' => array(
       'sortable' => 0,
@@ -1577,65 +1433,65 @@ function harmony_core_views_default_views() {
       'meta_field' => 0,
     ),
     'title' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => ' ',
-      'empty_column' => 0,
+      'empty_column' => 1,
       'cell_class' => 'tl-title',
       'meta_field' => 0,
     ),
     'field_harmony_category' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => 'text-center',
       'separator' => '',
-      'empty_column' => 0,
+      'empty_column' => 1,
       'cell_class' => 'tl-category',
       'meta_field' => 1,
     ),
     'field_harmony_post_count' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => 'text-center',
       'separator' => '',
-      'empty_column' => 0,
+      'empty_column' => 1,
       'cell_class' => 'tl-posts',
       'meta_field' => 1,
     ),
     'picture' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => 'text-center',
       'separator' => '',
-      'empty_column' => 0,
+      'empty_column' => 1,
       'cell_class' => 'tl-users',
       'meta_field' => 1,
     ),
     'views' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => 'text-center',
       'separator' => '',
-      'empty_column' => 0,
+      'empty_column' => 1,
       'cell_class' => 'tl-views',
       'meta_field' => 1,
     ),
     'likes' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => 'text-center',
       'separator' => '',
-      'empty_column' => 0,
+      'empty_column' => 1,
       'cell_class' => 'tl-likes',
       'meta_field' => 1,
     ),
     'updated' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => 'text-center',
       'separator' => '',
-      'empty_column' => 0,
+      'empty_column' => 1,
       'cell_class' => 'tl-activity',
       'meta_field' => 1,
     ),
@@ -1701,6 +1557,7 @@ function harmony_core_views_default_views() {
   $handler->display->display_options['fields']['picture']['element_type'] = 'span';
   $handler->display->display_options['fields']['picture']['element_class'] = 'avatar';
   $handler->display->display_options['fields']['picture']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['picture']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['picture']['image_style'] = 'harmony-32-32';
   /* Field: Thread: Views */
   $handler->display->display_options['fields']['views']['id'] = 'views';
@@ -1712,6 +1569,7 @@ function harmony_core_views_default_views() {
   $handler->display->display_options['fields']['likes']['id'] = 'likes';
   $handler->display->display_options['fields']['likes']['table'] = 'harmony_thread';
   $handler->display->display_options['fields']['likes']['field'] = 'likes';
+  $handler->display->display_options['fields']['likes']['exclude'] = TRUE;
   $handler->display->display_options['fields']['likes']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['likes']['alter']['text'] = '<i class="fa fa-heart"></i> [likes] ';
   /* Field: Thread: Date updated */

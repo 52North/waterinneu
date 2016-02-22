@@ -29,26 +29,26 @@ function harmony_core_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '6',
+          'weight' => 6,
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => 5,
         ),
         'name' => array(
-          'weight' => '0',
+          'weight' => 0,
         ),
         'description' => array(
-          'weight' => '1',
+          'weight' => 1,
         ),
       ),
       'display' => array(
         'description' => array(
           'default' => array(
-            'weight' => '0',
+            'weight' => 0,
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '0',
+            'weight' => 0,
             'visible' => TRUE,
           ),
         ),
@@ -68,31 +68,31 @@ function harmony_core_strongarm() {
       'display' => array(
         'summary' => array(
           'harmony_user_post_profile' => array(
-            'weight' => '2',
+            'weight' => 2,
             'visible' => FALSE,
           ),
         ),
         'name' => array(
           'harmony_user_post_profile' => array(
-            'weight' => '11',
+            'weight' => 11,
             'visible' => TRUE,
           ),
         ),
         'user_picture' => array(
           'harmony_user_post_profile' => array(
-            'weight' => '10',
+            'weight' => 10,
             'visible' => TRUE,
           ),
         ),
         'username' => array(
           'harmony_user_post_profile' => array(
-            'weight' => '11',
+            'weight' => 11,
             'visible' => TRUE,
           ),
         ),
         'harmony_core_user_name' => array(
           'harmony_user_post_profile' => array(
-            'weight' => '11',
+            'weight' => 11,
             'visible' => TRUE,
           ),
         ),
@@ -105,14 +105,14 @@ function harmony_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_harmony_core_pattern';
-  $strongarm->value = 'thread/[harmony_thread:thread-id]/[harmony_thread:title]';
+  $strongarm->value = 'forum/thread/[harmony_thread:thread-id]/[harmony_thread:title]';
   $export['pathauto_harmony_core_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_harmony_category_pattern';
-  $strongarm->value = 'category/[term:parents:join-path]/[term:name]';
+  $strongarm->value = 'forum/[term:parents:join-path]/[term:name]';
   $export['pathauto_taxonomy_term_harmony_category_pattern'] = $strongarm;
 
   return $export;
