@@ -101,6 +101,14 @@
 	border: 0;
 }
 
+#header {
+	text-align: left;
+}
+
+#logo {
+	padding: 5px;
+}
+
 .search-form {
 	margin-top: 6px;
 	margin-bottom: 0;

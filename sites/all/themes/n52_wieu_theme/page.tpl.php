@@ -121,22 +121,28 @@
                 <div class="col-md-12">
 
                 <?php if ($logo):?>
+                <div style="float:left">
                 <div id="logo">
                 <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"> <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /> </a>
                 </div>
+                </div>
                 <?php endif; ?>
 
-                <?php if ($site_name):?>
-                <div id="site-name">
-                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
-                </div>
+				<?php if ($site_name || $site_slogan):?>
+				<div id="name_and_slogan">
+	                <?php if ($site_name):?>
+	                <div id="site-name">
+	                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
+	                </div>
+	                <?php endif; ?>
+	                
+	                <?php if ($site_slogan):?>
+	                <div id="site-slogan">
+	                <?php print $site_slogan; ?>
+	                </div>
+	                <?php endif; ?>
                 <?php endif; ?>
-                
-                <?php if ($site_slogan):?>
-                <div id="site-slogan">
-                <?php print $site_slogan; ?>
                 </div>
-                <?php endif; ?>
                 
                 <?php if ($page['header']) :?>
                 <?php print render($page['header']); ?>
