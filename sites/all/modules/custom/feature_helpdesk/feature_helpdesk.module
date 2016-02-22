@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature - Helpdesk feature.
+ */
+
+include_once 'feature_helpdesk.features.inc';
