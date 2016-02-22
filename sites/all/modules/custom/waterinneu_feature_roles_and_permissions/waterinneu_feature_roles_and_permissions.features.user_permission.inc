@@ -209,6 +209,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'access site-wide contact form',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
     ),
     'module' => 'contact',
   );
@@ -231,6 +232,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'administer CAPTCHA settings'.
+  $permissions['administer CAPTCHA settings'] = array(
+    'name' => 'administer CAPTCHA settings',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'captcha',
+  );
+
+  // Exported permission: 'administer EU Cookie Compliance popup'.
+  $permissions['administer EU Cookie Compliance popup'] = array(
+    'name' => 'administer EU Cookie Compliance popup',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'eu_cookie_compliance',
+  );
+
   // Exported permission: 'administer Search Autocomplete'.
   $permissions['administer Search Autocomplete'] = array(
     'name' => 'administer Search Autocomplete',
@@ -247,6 +266,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'system',
+  );
+
+  // Exported permission: 'administer advanced pane settings'.
+  $permissions['administer advanced pane settings'] = array(
+    'name' => 'administer advanced pane settings',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
   );
 
   // Exported permission: 'administer atjs'.
@@ -375,6 +403,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'entity_quote',
   );
 
+  // Exported permission: 'administer entity translation'.
+  $permissions['administer entity translation'] = array(
+    'name' => 'administer entity translation',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entity_translation',
+  );
+
   // Exported permission: 'administer entity view modes'.
   $permissions['administer entity view modes'] = array(
     'name' => 'administer entity view modes',
@@ -391,6 +428,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'facetapi',
+  );
+
+  // Exported permission: 'administer faq'.
+  $permissions['administer faq'] = array(
+    'name' => 'administer faq',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'faq',
+  );
+
+  // Exported permission: 'administer faq order'.
+  $permissions['administer faq order'] = array(
+    'name' => 'administer faq order',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'faq',
   );
 
   // Exported permission: 'administer features'.
@@ -511,6 +566,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'menu',
   );
 
+  // Exported permission: 'administer mini panels'.
+  $permissions['administer mini panels'] = array(
+    'name' => 'administer mini panels',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels_mini',
+  );
+
   // Exported permission: 'administer module filter'.
   $permissions['administer module filter'] = array(
     'name' => 'administer module filter',
@@ -557,6 +621,51 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'oauth_common',
   );
 
+  // Exported permission: 'administer page manager'.
+  $permissions['administer page manager'] = array(
+    'name' => 'administer page manager',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'page_manager',
+  );
+
+  // Exported permission: 'administer pane access'.
+  $permissions['administer pane access'] = array(
+    'name' => 'administer pane access',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'administer panel-nodes'.
+  $permissions['administer panel-nodes'] = array(
+    'name' => 'administer panel-nodes',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels_node',
+  );
+
+  // Exported permission: 'administer panels layouts'.
+  $permissions['administer panels layouts'] = array(
+    'name' => 'administer panels layouts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'administer panels styles'.
+  $permissions['administer panels styles'] = array(
+    'name' => 'administer panels styles',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
   // Exported permission: 'administer pathauto'.
   $permissions['administer pathauto'] = array(
     'name' => 'administer pathauto',
@@ -573,6 +682,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'administer recaptcha'.
+  $permissions['administer recaptcha'] = array(
+    'name' => 'administer recaptcha',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'recaptcha',
   );
 
   // Exported permission: 'administer rules'.
@@ -629,6 +747,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: 'administer smtp module'.
+  $permissions['administer smtp module'] = array(
+    'name' => 'administer smtp module',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'smtp',
+  );
+
   // Exported permission: 'administer software updates'.
   $permissions['administer software updates'] = array(
     'name' => 'administer software updates',
@@ -636,6 +763,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'system',
+  );
+
+  // Exported permission: 'administer stickynav'.
+  $permissions['administer stickynav'] = array(
+    'name' => 'administer stickynav',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'stickynav',
   );
 
   // Exported permission: 'administer superfish'.
@@ -672,6 +808,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'system',
+  );
+
+  // Exported permission: 'administer twitter block'.
+  $permissions['administer twitter block'] = array(
+    'name' => 'administer twitter block',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'twitter_block',
   );
 
   // Exported permission: 'administer url aliases'.
@@ -746,6 +891,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'change layouts in place editing'.
+  $permissions['change layouts in place editing'] = array(
+    'name' => 'change layouts in place editing',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
   // Exported permission: 'change own username'.
   $permissions['change own username'] = array(
     'name' => 'change own username',
@@ -781,9 +935,51 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'create faq content'.
+  $permissions['create faq content'] = array(
+    'name' => 'create faq content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create mini panels'.
+  $permissions['create mini panels'] = array(
+    'name' => 'create mini panels',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels_mini',
+  );
+
   // Exported permission: 'create page content'.
   $permissions['create page content'] = array(
     'name' => 'create page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'author' => 'author',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create panel content'.
+  $permissions['create panel content'] = array(
+    'name' => 'create panel content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create panel-nodes'.
+  $permissions['create panel-nodes'] = array(
+    'name' => 'create panel-nodes',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels_node',
+  );
+
+  // Exported permission: 'create portal content'.
+  $permissions['create portal content'] = array(
+    'name' => 'create portal content',
     'roles' => array(
       'administrator' => 'administrator',
       'author' => 'author',
@@ -825,9 +1021,41 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any faq content'.
+  $permissions['delete any faq content'] = array(
+    'name' => 'delete any faq content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any page content'.
   $permissions['delete any page content'] = array(
     'name' => 'delete any page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any panel content'.
+  $permissions['delete any panel content'] = array(
+    'name' => 'delete any panel content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any panel-nodes'.
+  $permissions['delete any panel-nodes'] = array(
+    'name' => 'delete any panel-nodes',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels_node',
+  );
+
+  // Exported permission: 'delete any portal content'.
+  $permissions['delete any portal content'] = array(
+    'name' => 'delete any portal content',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -859,9 +1087,41 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete own faq content'.
+  $permissions['delete own faq content'] = array(
+    'name' => 'delete own faq content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete own page content'.
   $permissions['delete own page content'] = array(
     'name' => 'delete own page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own panel content'.
+  $permissions['delete own panel content'] = array(
+    'name' => 'delete own panel content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own panel-nodes'.
+  $permissions['delete own panel-nodes'] = array(
+    'name' => 'delete own panel-nodes',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels_node',
+  );
+
+  // Exported permission: 'delete own portal content'.
+  $permissions['delete own portal content'] = array(
+    'name' => 'delete own portal content',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -957,6 +1217,21 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'harmony_core',
   );
 
+  // Exported permission: 'display EU Cookie Compliance popup'.
+  $permissions['display EU Cookie Compliance popup'] = array(
+    'name' => 'display EU Cookie Compliance popup',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+      'author' => 'author',
+      'marketplace_author' => 'marketplace_author',
+      'marketplace_moderator' => 'marketplace_moderator',
+      'moderator' => 'moderator',
+    ),
+    'module' => 'eu_cookie_compliance',
+  );
+
   // Exported permission: 'display drupal links'.
   $permissions['display drupal links'] = array(
     'name' => 'display drupal links',
@@ -992,9 +1267,42 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit any faq content'.
+  $permissions['edit any faq content'] = array(
+    'name' => 'edit any faq content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any page content'.
   $permissions['edit any page content'] = array(
     'name' => 'edit any page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'moderator' => 'moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any panel content'.
+  $permissions['edit any panel content'] = array(
+    'name' => 'edit any panel content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any panel-nodes'.
+  $permissions['edit any panel-nodes'] = array(
+    'name' => 'edit any panel-nodes',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels_node',
+  );
+
+  // Exported permission: 'edit any portal content'.
+  $permissions['edit any portal content'] = array(
+    'name' => 'edit any portal content',
     'roles' => array(
       'administrator' => 'administrator',
       'moderator' => 'moderator',
@@ -1029,9 +1337,42 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit own faq content'.
+  $permissions['edit own faq content'] = array(
+    'name' => 'edit own faq content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit own page content'.
   $permissions['edit own page content'] = array(
     'name' => 'edit own page content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'author' => 'author',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own panel content'.
+  $permissions['edit own panel content'] = array(
+    'name' => 'edit own panel content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own panel-nodes'.
+  $permissions['edit own panel-nodes'] = array(
+    'name' => 'edit own panel-nodes',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels_node',
+  );
+
+  // Exported permission: 'edit own portal content'.
+  $permissions['edit own portal content'] = array(
+    'name' => 'edit own portal content',
     'roles' => array(
       'administrator' => 'administrator',
       'author' => 'author',
@@ -1183,6 +1524,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'services',
+  );
+
+  // Exported permission: 'manage de translation overview priorities'.
+  $permissions['manage de translation overview priorities'] = array(
+    'name' => 'manage de translation overview priorities',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'translation_overview',
+  );
+
+  // Exported permission: 'manage en translation overview priorities'.
+  $permissions['manage en translation overview priorities'] = array(
+    'name' => 'manage en translation overview priorities',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'translation_overview',
   );
 
   // Exported permission: 'manage features'.
@@ -1356,9 +1715,23 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'publish revisions of any faq content'.
+  $permissions['publish revisions of any faq content'] = array(
+    'name' => 'publish revisions of any faq content',
+    'roles' => array(),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: 'publish revisions of any page content'.
   $permissions['publish revisions of any page content'] = array(
     'name' => 'publish revisions of any page content',
+    'roles' => array(),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'publish revisions of any portal content'.
+  $permissions['publish revisions of any portal content'] = array(
+    'name' => 'publish revisions of any portal content',
     'roles' => array(),
     'module' => 'revisioning',
   );
@@ -1370,9 +1743,23 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'publish revisions of own faq content'.
+  $permissions['publish revisions of own faq content'] = array(
+    'name' => 'publish revisions of own faq content',
+    'roles' => array(),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: 'publish revisions of own page content'.
   $permissions['publish revisions of own page content'] = array(
     'name' => 'publish revisions of own page content',
+    'roles' => array(),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'publish revisions of own portal content'.
+  $permissions['publish revisions of own portal content'] = array(
+    'name' => 'publish revisions of own portal content',
     'roles' => array(),
     'module' => 'revisioning',
   );
@@ -1570,6 +1957,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'better_formats',
   );
 
+  // Exported permission: 'skip CAPTCHA'.
+  $permissions['skip CAPTCHA'] = array(
+    'name' => 'skip CAPTCHA',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'captcha',
+  );
+
   // Exported permission: 'skip comment approval'.
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
@@ -1577,6 +1973,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'submit translations to localization server'.
+  $permissions['submit translations to localization server'] = array(
+    'name' => 'submit translations to localization server',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'l10n_client',
   );
 
   // Exported permission: 'switch shortcut sets'.
@@ -1597,6 +2002,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'devel',
   );
 
+  // Exported permission: 'toggle field translatability'.
+  $permissions['toggle field translatability'] = array(
+    'name' => 'toggle field translatability',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entity_translation',
+  );
+
   // Exported permission: 'translate admin strings'.
   $permissions['translate admin strings'] = array(
     'name' => 'translate admin strings',
@@ -1604,6 +2018,22 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'i18n_string',
+  );
+
+  // Exported permission: 'translate any entity'.
+  $permissions['translate any entity'] = array(
+    'name' => 'translate any entity',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: 'translate comment entities'.
+  $permissions['translate comment entities'] = array(
+    'name' => 'translate comment entities',
+    'roles' => array(),
+    'module' => 'entity_translation',
   );
 
   // Exported permission: 'translate content'.
@@ -1622,6 +2052,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'locale',
+  );
+
+  // Exported permission: 'translate node entities'.
+  $permissions['translate node entities'] = array(
+    'name' => 'translate node entities',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entity_translation',
+  );
+
+  // Exported permission: 'translate taxonomy_term entities'.
+  $permissions['translate taxonomy_term entities'] = array(
+    'name' => 'translate taxonomy_term entities',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entity_translation',
   );
 
   // Exported permission: 'translate user-defined strings'.
@@ -1719,6 +2167,69 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'flag',
   );
 
+  // Exported permission: 'use ipe with page manager'.
+  $permissions['use ipe with page manager'] = array(
+    'name' => 'use ipe with page manager',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'use on-page translation'.
+  $permissions['use on-page translation'] = array(
+    'name' => 'use on-page translation',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'l10n_client',
+  );
+
+  // Exported permission: 'use page manager'.
+  $permissions['use page manager'] = array(
+    'name' => 'use page manager',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'page_manager',
+  );
+
+  // Exported permission: 'use panels caching features'.
+  $permissions['use panels caching features'] = array(
+    'name' => 'use panels caching features',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'use panels dashboard'.
+  $permissions['use panels dashboard'] = array(
+    'name' => 'use panels dashboard',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'use panels in place editing'.
+  $permissions['use panels in place editing'] = array(
+    'name' => 'use panels in place editing',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'use panels locks'.
+  $permissions['use panels locks'] = array(
+    'name' => 'use panels locks',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
   // Exported permission: 'use text format filtered_html'.
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
@@ -1789,6 +2300,16 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'devel_node_access',
   );
 
+  // Exported permission: 'view faq page'.
+  $permissions['view faq page'] = array(
+    'name' => 'view faq page',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+    ),
+    'module' => 'faq',
+  );
+
   // Exported permission: 'view own unpublished content'.
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
@@ -1797,6 +2318,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'author' => 'author',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'view pane admin links'.
+  $permissions['view pane admin links'] = array(
+    'name' => 'view pane admin links',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
   );
 
   // Exported permission: 'view revision status messages'.
@@ -1829,9 +2359,26 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'view revisions of any faq content'.
+  $permissions['view revisions of any faq content'] = array(
+    'name' => 'view revisions of any faq content',
+    'roles' => array(),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: 'view revisions of any page content'.
   $permissions['view revisions of any page content'] = array(
     'name' => 'view revisions of any page content',
+    'roles' => array(
+      'author' => 'author',
+      'moderator' => 'moderator',
+    ),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'view revisions of any portal content'.
+  $permissions['view revisions of any portal content'] = array(
+    'name' => 'view revisions of any portal content',
     'roles' => array(
       'author' => 'author',
       'moderator' => 'moderator',
@@ -1848,9 +2395,25 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'view revisions of own faq content'.
+  $permissions['view revisions of own faq content'] = array(
+    'name' => 'view revisions of own faq content',
+    'roles' => array(),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: 'view revisions of own page content'.
   $permissions['view revisions of own page content'] = array(
     'name' => 'view revisions of own page content',
+    'roles' => array(
+      'author' => 'author',
+    ),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'view revisions of own portal content'.
+  $permissions['view revisions of own portal content'] = array(
+    'name' => 'view revisions of own portal content',
     'roles' => array(
       'author' => 'author',
     ),
@@ -1864,6 +2427,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'system',
+  );
+
+  // Exported permission: 'view translation overview assigments'.
+  $permissions['view translation overview assigments'] = array(
+    'name' => 'view translation overview assigments',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'translation_overview',
   );
 
   return $permissions;
