@@ -27,8 +27,10 @@
  */
 /*
  * Main background: #f5f5f5
+ *
+ * Light elements: #cecece;
  * 
- * Highlight background: #9ad421
+ * Highlight background: #29648C
  *
  * Link/Call-to-Action: #27638c
  */
@@ -41,15 +43,15 @@ body, .comment {
 }
 
 #bottom-content, .toggle-control a, .toggle-control a:hover {
-	background-color: #9ad421;
+	background-color: #29648C;
 }
 
 #header-top, .toggle-control {
-	border-top: 5px solid #9ad421;
+	border-top: 5px solid #29648C;
 }
 
 #pre-header {
-	background-color: #9ad421;
+	background-color: #29648C;
 }
 
 a, a:hover, a:focus, ul.menu li a.active, ul.menu li a:hover, #forum thead a:hover,
@@ -80,5 +82,9 @@ input.form-text:focus, textarea.form-textarea:focus {
 }
 
 #toTop {
-	background-color: #9ad421;
+	background-color: #29648C;
+}
+
+.glyphicon-light {
+	color: #cecece;
 }

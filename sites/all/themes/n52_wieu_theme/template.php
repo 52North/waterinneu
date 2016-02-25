@@ -71,3 +71,113 @@ function n52_wieu_theme_preprocess_page(&$vars) {
 	}
 	//EOF:Javascript
 }
+
+/**
+ * Implements hook_form_element($variables)
+ * 
+ *  @see includes/form.inc
+ */
+function n52_wieu_theme_form_element($variables) {
+	$element = &$variables['element'];
+
+	// This function is invoked as theme wrapper, but the rendered form element
+	// may not necessarily have been processed by form_builder().
+	$element += array(
+			'#title_display' => 'before',
+	);
+
+	// Add element #id for #type 'item'.
+	if (isset($element['#markup']) && !empty($element['#id'])) {
+		$attributes['id'] = $element['#id'];
+	}
+	// Add element's #type and #name as class to aid with JS/CSS selectors.
+	$attributes['class'] = array('form-item');
+	if (!empty($element['#type'])) {
+		$attributes['class'][] = 'form-type-' . strtr($element['#type'], '_', '-');
+	}
+	if (!empty($element['#name'])) {
+		$attributes['class'][] = 'form-item-' . strtr($element['#name'], array(' ' => '-', '_' => '-', '[' => '-', ']' => ''));
+	}
+	// Add a class for disabled elements to facilitate cross-browser styling.
+	if (!empty($element['#attributes']['disabled'])) {
+		$attributes['class'][] = 'form-disabled';
+	}
+	$output = '<div' . drupal_attributes($attributes) . '>' . "\n";
+
+	// If #title is not set, we don't display any label or required marker.
+	if (!isset($element['#title'])) {
+		$element['#title_display'] = 'none';
+	}
+	$prefix = isset($element['#field_prefix']) ? '<span class="field-prefix">' . $element['#field_prefix'] . '</span> ' : '';
+	$suffix = isset($element['#field_suffix']) ? ' <span class="field-suffix">' . $element['#field_suffix'] . '</span>' : '';
+
+	switch ($element['#title_display']) {
+		case 'before':
+		case 'invisible':
+			$output .= ' ' . theme('form_element_label', $variables);
+			if (!empty($element['#description'])) {
+				$output .= '<div class="description">' . $element['#description'] . "</div>\n";
+			}
+			$output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
+			break;
+
+		case 'after':
+			$output .= ' ' . $prefix . $element['#children'] . $suffix;
+			if (!empty($element['#description'])) {
+				$output .= '<div class="description">' . $element['#description'] . "</div>\n";
+			}
+			$output .= ' ' . theme('form_element_label', $variables) . "\n";
+			break;
+
+		case 'none':
+		case 'attribute':
+			// Output no label and no required marker, only the children.
+			if (!empty($element['#description'])) {
+				$output .= '<div class="description">' . $element['#description'] . "</div>\n";
+			}
+			$output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
+			break;
+	}
+
+	$output .= "</div>\n";
+
+	return $output;
+}
+
+function n52_wieu_theme_field($variables) {
+	$output = '';
+	$field_bundle = $variables['element']['#bundle'];
+	$description = '';
+	
+	if ($field_bundle === 'organisation' || $field_bundle === 'product' || $field_bundle === 'tool') {
+	
+		$field_info = field_info_instance(
+				$variables['element']['#entity_type'],
+				$variables['element']['#field_name'],
+				$field_bundle);
+		$description = $field_info['description'];
+	}
+
+	// Render the label, if it's not hidden.
+	if (!$variables['label_hidden']) {
+		$output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'];
+		if (strlen($description)) {
+			// add info glyphicon and popover stuff
+			$output .= '&nbsp;<span class="glyphicon glyphicon-info-sign glyphicon-light" data-content="<div class=\'popover-light\'>' . $description . '</div>" rel="popover" data-toggle="popover" data-placement="right" data-original-title="Description" data-trigger="click" data-html="true"></span>';
+		}
+		$output .= ':&nbsp;</div>';
+	}
+
+	// Render the items.
+	$output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+	foreach ($variables['items'] as $delta => $item) {
+		$classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+		$output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
+	}
+	$output .= '</div>';
+
+	// Render the top-level DIV.
+	$output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+
+	return $output;
+}

@@ -162,3 +162,17 @@ div.toggle-control > a > span {
     *display: inline;
     _height: 250px;
 }
+
+/******************************************************************************
+ *                                                                            *
+ *                            General                                         *
+ *                                                                            *
+ ******************************************************************************/
+ 
+.table-label {
+    text-align: right;
+ }
+ 
+.popover-light {
+    font-weight: normal;
+ }
