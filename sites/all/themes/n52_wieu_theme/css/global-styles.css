@@ -171,8 +171,14 @@ div.toggle-control > a > span {
  
 .table-label {
     text-align: right;
- }
+}
  
 .popover-light {
     font-weight: normal;
- }
+}
+
+.popover-light-in-heading {
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 160%;
+}

@@ -48,7 +48,7 @@ function waterinneu_feature_tools_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'How',
-    'weight' => '4',
+    'weight' => '9',
     'children' => array(
       0 => 'field_case_studies',
       1 => 'field_manuals_training',
@@ -106,7 +106,7 @@ function waterinneu_feature_tools_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Interoperability',
-    'weight' => '5',
+    'weight' => '10',
     'children' => array(
       0 => 'field_type_of_input_data',
       1 => 'field_supported_legacy_systems',
@@ -165,16 +165,12 @@ function waterinneu_feature_tools_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Metadata',
-    'weight' => '1',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_description',
-      1 => 'field_logo',
-      2 => 'field_website',
-      3 => 'field_license',
-      4 => 'field_tool_of_the_month',
-      5 => 'field_costs',
-      6 => 'path',
-      7 => 'language',
+      0 => 'field_license',
+      1 => 'field_tool_of_the_month',
+      2 => 'field_costs',
+      3 => 'language',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -228,15 +224,14 @@ function waterinneu_feature_tools_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What',
-    'weight' => '2',
+    'weight' => '8',
     'children' => array(
       0 => 'field_purpose',
       1 => 'field_application_scale',
-      2 => 'field_category',
-      3 => 'field_user_profile',
-      4 => 'field_wrd_relevance',
-      5 => 'field_innovative_pro',
-      6 => 'field_innovative_contra',
+      2 => 'field_user_profile',
+      3 => 'field_wrd_relevance',
+      4 => 'field_innovative_pro',
+      5 => 'field_innovative_contra',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

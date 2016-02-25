@@ -81,10 +81,11 @@ function waterinneu_feature_tools_views_default_views() {
     ),
     'trim_preserve_tags' => '',
   );
-  /* Field: Content: License */
+  /* Field: Content: License / Copyright */
   $handler->display->display_options['fields']['field_license']['id'] = 'field_license';
   $handler->display->display_options['fields']['field_license']['table'] = 'field_data_field_license';
   $handler->display->display_options['fields']['field_license']['field'] = 'field_license';
+  $handler->display->display_options['fields']['field_license']['label'] = 'License';
   $handler->display->display_options['fields']['field_license']['empty'] = 'No license specified.';
   $handler->display->display_options['fields']['field_license']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_license']['delta_offset'] = '0';
@@ -255,7 +256,7 @@ function waterinneu_feature_tools_views_default_views() {
   );
   $handler->display->display_options['filters']['field_category_tid']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_category_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_category_tid']['vocabulary'] = 'tags';
+  $handler->display->display_options['filters']['field_category_tid']['vocabulary'] = 'product_categories';
   $handler->display->display_options['filters']['field_category_tid']['hierarchy'] = 1;
 
   /* Display: Page */

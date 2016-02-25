@@ -96,10 +96,10 @@ function waterinneu_feature_tools_strongarm() {
           'weight' => 1,
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '0',
         ),
         'language' => array(
-          'weight' => '9',
+          'weight' => '1',
         ),
       ),
       'display' => array(
@@ -161,7 +161,7 @@ function waterinneu_feature_tools_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_tool';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['node_submitted_tool'] = $strongarm;
 
   $strongarm = new stdClass();

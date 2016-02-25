@@ -34,12 +34,50 @@ function waterinneu_feature_tools_node_info() {
     'tool' => array(
       'name' => t('Product'),
       'base' => 'node_content',
-      'description' => t('Product specification sheet for project results of type tool, e.g. software.
-
-'),
+      'description' => '',
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => t('Get in touch with our helpdesk if your tool does not fit in this form. You can find the helpdesk following the support services tab.'),
+      'help' => t('The submission of product specification sheets underlies a moderation workflow. Hence, adding new content might cost some time. Get in touch with the administrator oder moderator of the category for speeding things up. <br/>
+Please consider the following additional instructions to some of the fields below.
+
+<table>
+<tr>
+<th class="table-label">Field</th>
+<th>Additional Information</th>
+</tr>
+<tr>
+<td class="table-label">Description:</td>
+<td>Short description of the product and background information</td>
+</tr>
+<tr>
+<td class="table-label">Related Links and Supporting Material:</td>
+<td>Links to websites of the product or to projects where the product has been implemented.<br />Download material such as worksheets by the supplier of the product.</td>
+</tr>
+<tr>
+<td class="table-label">License / Copyright:</td>
+<td>Please give details of accessibility criteria in the free text box.</td>
+</tr>
+<tr>
+<td class="table-label">Costs:</td>
+<td>For example, licence costs, costs for implementation and development of the product.<br />Please give cost details in the free text box./td>
+</tr>
+<tr>
+<td class="table-label">Type of output:</td>
+<td>For example, analysed and prepared data qualitative data of stakeholder dialogues, model visualisation, alerts etc.</td>
+</tr>
+<tr>
+<td class="table-label">Potential to combine this tool with other tools:</td>
+<td>For example, products in support of better integration e.g. an integrated model for linkage between surface waters and groundwater or climate models; software tools etc.</td>
+</tr>
+<tr>
+<td class="table-label">Contact details:</td>
+<td>E-mail, telephone, country etc.</td>
+</tr>
+<tr>
+<td class="table-label">Comments:</td>
+<td>Recommendations by product supplier and users.</td>
+</tr>
+</table>'),
     ),
   );
   drupal_alter('node_info', $items);

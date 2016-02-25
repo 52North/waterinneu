@@ -13,7 +13,7 @@ function waterinneu_feature_tools_field_default_field_bases() {
   // Exported field_base: 'field_application_scale'.
   $field_bases['field_application_scale'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_application_scale',
@@ -27,7 +27,7 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'tags',
+          'vocabulary' => 'application_scale',
           'parent' => 0,
         ),
       ),
@@ -38,40 +38,31 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_case_studies'.
-  $field_bases['field_case_studies'] = array(
+  // Exported field_base: 'field_best_practices'.
+  $field_bases['field_best_practices'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_case_studies',
-    'indexes' => array(),
+    'field_name' => 'field_best_practices',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
     'locked' => 0,
-    'module' => 'link',
+    'module' => 'text',
     'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'rel' => '',
-        'target' => 'default',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
     ),
     'translatable' => 0,
-    'type' => 'link_field',
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_category'.
   $field_bases['field_category'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_category',
@@ -85,7 +76,7 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'tags',
+          'vocabulary' => 'product_categories',
           'parent' => 0,
         ),
       ),
@@ -117,13 +108,13 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_costs'.
-  $field_bases['field_costs'] = array(
+  // Exported field_base: 'field_contact_details'.
+  $field_bases['field_contact_details'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_costs',
+    'field_name' => 'field_contact_details',
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -134,8 +125,57 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'settings' => array(
       'entity_translation_sync' => FALSE,
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_costinfo'.
+  $field_bases['field_costinfo'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_costinfo',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_costs'.
+  $field_bases['field_costs'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_costs',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'costs',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_description'.
@@ -159,13 +199,43 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_innovative_contra'.
-  $field_bases['field_innovative_contra'] = array(
+  // Exported field_base: 'field_e_learning_tutorials'.
+  $field_bases['field_e_learning_tutorials'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_e_learning_tutorials',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'link',
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_innovative_advantages'.
+  $field_bases['field_innovative_advantages'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_innovative_contra',
+    'field_name' => 'field_innovative_advantages',
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -176,35 +246,42 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'settings' => array(
       'entity_translation_sync' => FALSE,
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_innovative_pro'.
-  $field_bases['field_innovative_pro'] = array(
+  // Exported field_base: 'field_issue'.
+  $field_bases['field_issue'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => 5,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_innovative_pro',
+    'field_name' => 'field_issue',
     'indexes' => array(
-      'format' => array(
-        0 => 'format',
+      'tid' => array(
+        0 => 'tid',
       ),
     ),
     'locked' => 0,
-    'module' => 'text',
+    'module' => 'taxonomy',
     'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'issue',
+          'parent' => 0,
+        ),
+      ),
       'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
     ),
-    'translatable' => 1,
-    'type' => 'text_long',
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_license'.
   $field_bases['field_license'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_license',
@@ -227,6 +304,57 @@ function waterinneu_feature_tools_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_licenseinfo'.
+  $field_bases['field_licenseinfo'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_licenseinfo',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_links'.
+  $field_bases['field_links'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_links',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'link',
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'link_field',
   );
 
   // Exported field_base: 'field_logo'.
@@ -254,43 +382,13 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_manuals_training'.
-  $field_bases['field_manuals_training'] = array(
+  // Exported field_base: 'field_organisation'.
+  $field_bases['field_organisation'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_manuals_training',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'link',
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'rel' => '',
-        'target' => 'default',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'entity_translation_sync' => FALSE,
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-    ),
-    'translatable' => 0,
-    'type' => 'link_field',
-  );
-
-  // Exported field_base: 'field_product_projects'.
-  $field_bases['field_product_projects'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_product_projects',
+    'field_name' => 'field_organisation',
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -308,9 +406,43 @@ function waterinneu_feature_tools_field_default_field_bases() {
           ),
         ),
         'sort' => array(
-          'direction' => 'ASC',
-          'property' => 'title',
-          'type' => 'property',
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'organisation' => 'organisation',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_project'.
+  $field_bases['field_project'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_project',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
         ),
         'target_bundles' => array(
           'project' => 'project',
@@ -318,14 +450,14 @@ function waterinneu_feature_tools_field_default_field_bases() {
       ),
       'target_type' => 'node',
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_purpose'.
   $field_bases['field_purpose'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 10,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_purpose',
@@ -339,7 +471,63 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'tags',
+          'vocabulary' => 'purpose',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_relevant_water_bodies'.
+  $field_bases['field_relevant_water_bodies'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_relevant_water_bodies',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'waterbodies',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_standard_category'.
+  $field_bases['field_standard_category'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_standard_category',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'standard_category',
           'parent' => 0,
         ),
       ),
@@ -399,6 +587,84 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_supported_standards'.
+  $field_bases['field_supported_standards'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_supported_standards',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_target_user_group'.
+  $field_bases['field_target_user_group'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_target_user_group',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'user',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_technology_readiness_level'.
+  $field_bases['field_technology_readiness_level'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_technology_readiness_level',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'technology_readiness_level',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
   // Exported field_base: 'field_tool_of_the_month'.
   $field_bases['field_tool_of_the_month'] = array(
     'active' => 1,
@@ -425,13 +691,13 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_type_of_input_data'.
-  $field_bases['field_type_of_input_data'] = array(
+  // Exported field_base: 'field_type_of_hardware'.
+  $field_bases['field_type_of_hardware'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_type_of_input_data',
+    'field_name' => 'field_type_of_hardware',
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -442,7 +708,7 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'tags',
+          'vocabulary' => 'type_of_hardware',
           'parent' => 0,
         ),
       ),
@@ -453,13 +719,55 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_user_profile'.
-  $field_bases['field_user_profile'] = array(
+  // Exported field_base: 'field_type_of_input_requirements'.
+  $field_bases['field_type_of_input_requirements'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_user_profile',
+    'field_name' => 'field_type_of_input_requirements',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_type_of_output'.
+  $field_bases['field_type_of_output'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_type_of_output',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_type_of_software'.
+  $field_bases['field_type_of_software'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_type_of_software',
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -470,21 +778,43 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'tags',
+          'vocabulary' => 'type_of_software',
           'parent' => 0,
         ),
       ),
       'entity_translation_sync' => FALSE,
       'options_list_callback' => 'i18n_taxonomy_allowed_values',
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_version'.
+  $field_bases['field_version'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_version',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_website'.
   $field_bases['field_website'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_website',
@@ -511,13 +841,13 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_wrd_relevance'.
-  $field_bases['field_wrd_relevance'] = array(
+  // Exported field_base: 'name_field'.
+  $field_bases['name_field'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_wrd_relevance',
+    'field_name' => 'name_field',
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -527,9 +857,10 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
+      'max_length' => 255,
     ),
     'translatable' => 1,
-    'type' => 'text_long',
+    'type' => 'text',
   );
 
   return $field_bases;
