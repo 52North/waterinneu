@@ -88,3 +88,17 @@ input.form-text:focus, textarea.form-textarea:focus {
 .glyphicon-light {
 	color: #cecece;
 }
+
+div.submitted {
+    color: #cecece;
+}
+
+#main-navigation ul.menu li a.active {
+    background: #27638c;
+    color: #cecece;
+}
+
+#main-navigation ul.menu li a.active:hover, #main-navigation ul.menu li a.active:active{
+	background: unset;
+	color: #27638c;
+}

@@ -186,3 +186,21 @@ div.toggle-control > a > span {
 .logged-in #pre-header {
     padding-top: 5px;
 }
+
+#main-navigation ul.menu li a {
+    text-transform: unset;
+}
+
+/******************************************************************************
+ *                                                                            *
+ *                            Node display                                    *
+ *                                                                            *
+ ******************************************************************************/
+ 
+ul.related-link-list li {
+	border: 0;
+	padding: 0;
+}
+.field-type-taxonomy-term-reference .field-label {
+	font-weight: bold;
+}

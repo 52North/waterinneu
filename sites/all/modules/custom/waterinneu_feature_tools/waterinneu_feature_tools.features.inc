@@ -55,11 +55,11 @@ Please consider the following additional instructions to some of the fields belo
 </tr>
 <tr>
 <td class="table-label">License / Copyright:</td>
-<td>Please give details of accessibility criteria in the free text box.</td>
+<td>Please give details of accessibility criteria in the free text box when selecting <b>other</b>.</td>
 </tr>
 <tr>
 <td class="table-label">Costs:</td>
-<td>For example, licence costs, costs for implementation and development of the product.<br />Please give cost details in the free text box./td>
+<td>For example, licence costs, costs for implementation and development of the product.<br />Please give cost details in the free text box.</td>
 </tr>
 <tr>
 <td class="table-label">Type of output:</td>

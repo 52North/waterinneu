@@ -193,3 +193,15 @@ function n52_wieu_theme_field($variables) {
 
 	return $output;
 }
+
+function n52_waterinneu_theme_node_last_updated($changed, $name) {
+	$output = '<span property="dc:date" content="' .
+		format_date($changed,'custom','c') .
+		'" datatype="xsd:dateTime">' .
+		t('Last updated by ') .
+		$name .
+		t(' on ') .
+		format_date($changed) .
+		'</span>';
+	return $output;
+}
