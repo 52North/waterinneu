@@ -928,7 +928,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'create article content',
     'roles' => array(
       'administrator' => 'administrator',
-      'author' => 'author',
     ),
     'module' => 'node',
   );
@@ -961,7 +960,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'create page content',
     'roles' => array(
       'administrator' => 'administrator',
-      'author' => 'author',
     ),
     'module' => 'node',
   );
@@ -987,7 +985,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'create portal content',
     'roles' => array(
       'administrator' => 'administrator',
-      'author' => 'author',
     ),
     'module' => 'node',
   );
@@ -1397,7 +1394,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'edit own article content',
     'roles' => array(
       'administrator' => 'administrator',
-      'author' => 'author',
     ),
     'module' => 'node',
   );
@@ -1431,7 +1427,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'edit own page content',
     'roles' => array(
       'administrator' => 'administrator',
-      'author' => 'author',
     ),
     'module' => 'node',
   );
@@ -1457,7 +1452,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'edit own portal content',
     'roles' => array(
       'administrator' => 'administrator',
-      'author' => 'author',
     ),
     'module' => 'node',
   );
@@ -2589,7 +2583,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of any article content'] = array(
     'name' => 'view revisions of any article content',
     'roles' => array(
-      'author' => 'author',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2606,7 +2599,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of any page content'] = array(
     'name' => 'view revisions of any page content',
     'roles' => array(
-      'author' => 'author',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2616,7 +2608,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of any portal content'] = array(
     'name' => 'view revisions of any portal content',
     'roles' => array(
-      'author' => 'author',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2625,9 +2616,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'view revisions of own article content'.
   $permissions['view revisions of own article content'] = array(
     'name' => 'view revisions of own article content',
-    'roles' => array(
-      'author' => 'author',
-    ),
+    'roles' => array(),
     'module' => 'revisioning',
   );
 
@@ -2641,18 +2630,14 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'view revisions of own page content'.
   $permissions['view revisions of own page content'] = array(
     'name' => 'view revisions of own page content',
-    'roles' => array(
-      'author' => 'author',
-    ),
+    'roles' => array(),
     'module' => 'revisioning',
   );
 
   // Exported permission: 'view revisions of own portal content'.
   $permissions['view revisions of own portal content'] = array(
     'name' => 'view revisions of own portal content',
-    'roles' => array(
-      'author' => 'author',
-    ),
+    'roles' => array(),
     'module' => 'revisioning',
   );
 
