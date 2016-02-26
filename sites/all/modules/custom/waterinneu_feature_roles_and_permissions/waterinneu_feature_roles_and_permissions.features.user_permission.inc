@@ -210,6 +210,11 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+      'author' => 'author',
+      'marketplace_author' => 'marketplace_author',
+      'marketplace_moderator' => 'marketplace_moderator',
+      'moderator' => 'moderator',
     ),
     'module' => 'contact',
   );
@@ -1144,6 +1149,20 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'delete terms in application_scale'.
+  $permissions['delete terms in application_scale'] = array(
+    'name' => 'delete terms in application_scale',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in costs'.
+  $permissions['delete terms in costs'] = array(
+    'name' => 'delete terms in costs',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'delete terms in countries'.
   $permissions['delete terms in countries'] = array(
     'name' => 'delete terms in countries',
@@ -1171,6 +1190,13 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'delete terms in issue'.
+  $permissions['delete terms in issue'] = array(
+    'name' => 'delete terms in issue',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'delete terms in license'.
   $permissions['delete terms in license'] = array(
     'name' => 'delete terms in license',
@@ -1189,6 +1215,27 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'delete terms in product_categories'.
+  $permissions['delete terms in product_categories'] = array(
+    'name' => 'delete terms in product_categories',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in purpose'.
+  $permissions['delete terms in purpose'] = array(
+    'name' => 'delete terms in purpose',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in standard_category'.
+  $permissions['delete terms in standard_category'] = array(
+    'name' => 'delete terms in standard_category',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'delete terms in standards'.
   $permissions['delete terms in standards'] = array(
     'name' => 'delete terms in standards',
@@ -1204,6 +1251,41 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in technology_readiness_level'.
+  $permissions['delete terms in technology_readiness_level'] = array(
+    'name' => 'delete terms in technology_readiness_level',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in type_of_hardware'.
+  $permissions['delete terms in type_of_hardware'] = array(
+    'name' => 'delete terms in type_of_hardware',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in type_of_software'.
+  $permissions['delete terms in type_of_software'] = array(
+    'name' => 'delete terms in type_of_software',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in user'.
+  $permissions['delete terms in user'] = array(
+    'name' => 'delete terms in user',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in waterbodies'.
+  $permissions['delete terms in waterbodies'] = array(
+    'name' => 'delete terms in waterbodies',
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -1409,6 +1491,20 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'edit terms in application_scale'.
+  $permissions['edit terms in application_scale'] = array(
+    'name' => 'edit terms in application_scale',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in costs'.
+  $permissions['edit terms in costs'] = array(
+    'name' => 'edit terms in costs',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'edit terms in countries'.
   $permissions['edit terms in countries'] = array(
     'name' => 'edit terms in countries',
@@ -1436,6 +1532,13 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'edit terms in issue'.
+  $permissions['edit terms in issue'] = array(
+    'name' => 'edit terms in issue',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'edit terms in license'.
   $permissions['edit terms in license'] = array(
     'name' => 'edit terms in license',
@@ -1454,6 +1557,27 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'edit terms in product_categories'.
+  $permissions['edit terms in product_categories'] = array(
+    'name' => 'edit terms in product_categories',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in purpose'.
+  $permissions['edit terms in purpose'] = array(
+    'name' => 'edit terms in purpose',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in standard_category'.
+  $permissions['edit terms in standard_category'] = array(
+    'name' => 'edit terms in standard_category',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'edit terms in standards'.
   $permissions['edit terms in standards'] = array(
     'name' => 'edit terms in standards',
@@ -1469,6 +1593,41 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in technology_readiness_level'.
+  $permissions['edit terms in technology_readiness_level'] = array(
+    'name' => 'edit terms in technology_readiness_level',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in type_of_hardware'.
+  $permissions['edit terms in type_of_hardware'] = array(
+    'name' => 'edit terms in type_of_hardware',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in type_of_software'.
+  $permissions['edit terms in type_of_software'] = array(
+    'name' => 'edit terms in type_of_software',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in user'.
+  $permissions['edit terms in user'] = array(
+    'name' => 'edit terms in user',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in waterbodies'.
+  $permissions['edit terms in waterbodies'] = array(
+    'name' => 'edit terms in waterbodies',
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -1562,6 +1721,20 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'term_merge',
   );
 
+  // Exported permission: 'merge application_scale terms'.
+  $permissions['merge application_scale terms'] = array(
+    'name' => 'merge application_scale terms',
+    'roles' => array(),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge costs terms'.
+  $permissions['merge costs terms'] = array(
+    'name' => 'merge costs terms',
+    'roles' => array(),
+    'module' => 'term_merge',
+  );
+
   // Exported permission: 'merge countries terms'.
   $permissions['merge countries terms'] = array(
     'name' => 'merge countries terms',
@@ -1589,6 +1762,13 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'term_merge',
   );
 
+  // Exported permission: 'merge issue terms'.
+  $permissions['merge issue terms'] = array(
+    'name' => 'merge issue terms',
+    'roles' => array(),
+    'module' => 'term_merge',
+  );
+
   // Exported permission: 'merge license terms'.
   $permissions['merge license terms'] = array(
     'name' => 'merge license terms',
@@ -1604,6 +1784,27 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge product_categories terms'.
+  $permissions['merge product_categories terms'] = array(
+    'name' => 'merge product_categories terms',
+    'roles' => array(),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge purpose terms'.
+  $permissions['merge purpose terms'] = array(
+    'name' => 'merge purpose terms',
+    'roles' => array(),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge standard_category terms'.
+  $permissions['merge standard_category terms'] = array(
+    'name' => 'merge standard_category terms',
+    'roles' => array(),
     'module' => 'term_merge',
   );
 
@@ -1625,12 +1826,47 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'term_merge',
   );
 
+  // Exported permission: 'merge technology_readiness_level terms'.
+  $permissions['merge technology_readiness_level terms'] = array(
+    'name' => 'merge technology_readiness_level terms',
+    'roles' => array(),
+    'module' => 'term_merge',
+  );
+
   // Exported permission: 'merge terms'.
   $permissions['merge terms'] = array(
     'name' => 'merge terms',
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge type_of_hardware terms'.
+  $permissions['merge type_of_hardware terms'] = array(
+    'name' => 'merge type_of_hardware terms',
+    'roles' => array(),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge type_of_software terms'.
+  $permissions['merge type_of_software terms'] = array(
+    'name' => 'merge type_of_software terms',
+    'roles' => array(),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge user terms'.
+  $permissions['merge user terms'] = array(
+    'name' => 'merge user terms',
+    'roles' => array(),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge waterbodies terms'.
+  $permissions['merge waterbodies terms'] = array(
+    'name' => 'merge waterbodies terms',
+    'roles' => array(),
     'module' => 'term_merge',
   );
 

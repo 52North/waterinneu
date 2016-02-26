@@ -182,3 +182,7 @@ div.toggle-control > a > span {
 	font-size: 14px;
 	line-height: 160%;
 }
+
+.logged-in #pre-header {
+    padding-top: 5px;
+}
