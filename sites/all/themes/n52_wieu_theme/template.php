@@ -28,6 +28,8 @@
  */
 /**
  * Preprocess variables for page template.
+ * 
+ * Adjustment is the changed glyphicons for the pre-header.
  */
 function n52_wieu_theme_preprocess_page(&$vars) {
 
@@ -74,6 +76,10 @@ function n52_wieu_theme_preprocess_page(&$vars) {
 
 /**
  * Implements hook_form_element($variables)
+ * 
+ * Adjustment is to render the description before the fields and not after.
+ * 
+ * TODO fix bugs with certain fields types.
  * 
  *  @see includes/form.inc
  */
@@ -144,6 +150,12 @@ function n52_wieu_theme_form_element($variables) {
 	return $output;
 }
 
+/**
+ * Render the description of fields with glyphicon after the label if content 
+ * type is matching.
+ * 
+ * @param unknown $variables
+ */
 function n52_wieu_theme_field($variables) {
 	$output = '';
 	$field_bundle = $variables['element']['#bundle'];
