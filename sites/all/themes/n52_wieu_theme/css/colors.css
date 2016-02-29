@@ -93,12 +93,30 @@ div.submitted {
     color: #cecece;
 }
 
-#main-navigation ul.menu li a.active {
+#main-navigation ul.menu li a.active, #main-navigation ul.menu li a.active-trail {
     background: #27638c;
     color: #cecece;
 }
 
-#main-navigation ul.menu li a.active:hover, #main-navigation ul.menu li a.active:active{
+#main-navigation ul.menu li a.active:hover, #main-navigation ul.menu li a.active:active, #main-navigation ul.menu li a.active-trail:hover, #main-navigation ul.menu li a.active:active-trail{
 	background: unset;
 	color: #27638c;
+}
+
+.panel-default > .panel-heading-dark-highlight {
+    background: #4092C9;
+    color: #fff;
+}
+
+.panel-dark-highlight {
+    border-color: #4092C9;
+}
+
+.panel-default > .panel-heading-light-highlight {
+    background: #BFDBED;
+    color: #fff;
+}
+
+.panel-light-highlight {
+    border-color: #BFDBED;
 }

@@ -191,6 +191,10 @@ div.toggle-control > a > span {
     text-transform: unset;
 }
 
+li.no-list-style {
+	list-style-type: none;
+}
+
 /******************************************************************************
  *                                                                            *
  *                            Node display                                    *
