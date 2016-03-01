@@ -1,25 +1,25 @@
 /*
  * Copyright (C) 2016
- * 
+ *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 2 as published
  * by the Free Software Foundation.
- * 
+ *
  * If the program is linked with libraries which are licensed under one of
  * the following licenses, the combination of the program with the linked
  * library is not considered a "derivative work" of the program:
- * 
+ *
  *     - Apache License, version 2.0
  *     - Apache Software License, version 1.0
  *     - GNU Lesser General Public License, version 3
  *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
  *     - Common Development and Distribution License (CDDL), version 1.0
- * 
+ *
  * Therefore the distribution of the program linked with libraries licensed
  * under the aforementioned licenses, is permitted by the copyright holders
  * if the distribution is compliant with both the GNU General Public
  * License version 2 and the aforementioned licenses.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
@@ -73,7 +73,7 @@
 	overflow: hidden;
 }
 
-#block-menu-menu-top-links > div.content > ul.menu > li.leaf, 
+#block-menu-menu-top-links > div.content > ul.menu > li.leaf,
 #block-menu-menu-top-level-links-registered-  > div.content > ul.menu > li.leaf
 {
 	float: left;
@@ -84,13 +84,13 @@
     padding: 0.2em 0.5em 0 0;
 }
 
-#block-menu-menu-top-links > div.content > ul.menu > li.leaf > a, 
+#block-menu-menu-top-links > div.content > ul.menu > li.leaf > a,
 #block-menu-menu-top-level-links-registered-  > div.content > ul.menu > li.leaf > a
 {
 	border-bottom: 0;
 }
 
-#block-menu-menu-top-links > div.content > ul.menu > li.leaf + li, 
+#block-menu-menu-top-links > div.content > ul.menu > li.leaf + li,
 #block-menu-menu-top-level-links-registered-  > div.content > ul.menu > li.leaf + li
 {
     border-left: solid 2px #cecece;
@@ -146,7 +146,7 @@ div.toggle-control > a > span {
  *                            Node listings                                   *
  *                                                                            *
  ******************************************************************************/
- 
+
 .columnized-item-list > ul > li {
 	    list-style-type: none;
 }
@@ -168,11 +168,11 @@ div.toggle-control > a > span {
  *                            General                                         *
  *                                                                            *
  ******************************************************************************/
- 
+
 .table-label {
     text-align: right;
 }
- 
+
 .popover-light {
     font-weight: normal;
 }
@@ -200,7 +200,7 @@ li.no-list-style {
  *                            Node display                                    *
  *                                                                            *
  ******************************************************************************/
- 
+
 ul.related-link-list li {
 	border: 0;
 	padding: 0;
