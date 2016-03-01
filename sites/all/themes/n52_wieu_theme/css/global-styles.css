@@ -208,3 +208,12 @@ ul.related-link-list li {
 .field-type-taxonomy-term-reference .field-label {
 	font-weight: bold;
 }
+
+/******************************************************************************
+ *                                                                            *
+ *                            Add product form                                *
+ *                                                                            *
+ ******************************************************************************/
+form#tool-node-form div div#edit-field-tool-of-the-month {
+  display: none;
+}
