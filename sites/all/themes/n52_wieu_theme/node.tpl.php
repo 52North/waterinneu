@@ -8,7 +8,7 @@
     <?php endif; ?>
     <?php print render($title_suffix); ?>
 
-    <?php if ($display_submitted): ?>
+    <?php if ($display_submitted && $view_mode === 'full'): ?>
       <div class="submitted">
         <?php print $user_picture; ?>
         <span class="glyphicon glyphicon-calendar"></span> 
