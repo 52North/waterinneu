@@ -538,13 +538,13 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_standards_accounted_for'.
-  $field_bases['field_standards_accounted_for'] = array(
+  // Exported field_base: 'field_supported_data_discovery_s'.
+  $field_bases['field_supported_data_discovery_s'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_standards_accounted_for',
+    'field_name' => 'field_supported_data_discovery_s',
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -555,7 +555,91 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'standards',
+          'vocabulary' => 'data_discovery_standards',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_supported_data_downloading'.
+  $field_bases['field_supported_data_downloading'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_supported_data_downloading',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'data_downloading_standards',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_supported_data_encoding_st'.
+  $field_bases['field_supported_data_encoding_st'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_supported_data_encoding_st',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'data_encoding_standards',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_supported_data_visualizati'.
+  $field_bases['field_supported_data_visualizati'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_supported_data_visualizati',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'data_visualization_standards',
           'parent' => 0,
         ),
       ),
@@ -587,26 +671,88 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_supported_standards'.
-  $field_bases['field_supported_standards'] = array(
+  // Exported field_base: 'field_supported_other_standards'.
+  $field_bases['field_supported_other_standards'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_supported_standards',
+    'field_name' => 'field_supported_other_standards',
     'indexes' => array(
-      'format' => array(
-        0 => 'format',
+      'tid' => array(
+        0 => 'tid',
       ),
     ),
     'locked' => 0,
-    'module' => 'text',
+    'module' => 'taxonomy',
     'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'other_standards',
+          'parent' => 0,
+        ),
+      ),
       'entity_translation_sync' => FALSE,
-      'max_length' => 255,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
     ),
     'translatable' => 0,
-    'type' => 'text',
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_supported_processes_and_mo'.
+  $field_bases['field_supported_processes_and_mo'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_supported_processes_and_mo',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'processes_and_models_standards',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_supported_sensor_data_stan'.
+  $field_bases['field_supported_sensor_data_stan'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_supported_sensor_data_stan',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'sensor_data_standards',
+          'parent' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_target_user_group'.

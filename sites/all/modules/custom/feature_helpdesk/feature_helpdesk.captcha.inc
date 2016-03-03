@@ -21,14 +21,6 @@ function feature_helpdesk_captcha_default_points() {
   $captcha = new stdClass();
   $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
   $captcha->api_version = 1;
-  $captcha->form_id = 'comment_node_date_migrate_example_form';
-  $captcha->module = '';
-  $captcha->captcha_type = 'default';
-  $export['comment_node_date_migrate_example_form'] = $captcha;
-
-  $captcha = new stdClass();
-  $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
-  $captcha->api_version = 1;
   $captcha->form_id = 'comment_node_faq_form';
   $captcha->module = '';
   $captcha->captcha_type = 'default';
@@ -73,6 +65,22 @@ function feature_helpdesk_captcha_default_points() {
   $captcha->module = '';
   $captcha->captcha_type = 'default';
   $export['comment_node_project_form'] = $captcha;
+
+  $captcha = new stdClass();
+  $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
+  $captcha->api_version = 1;
+  $captcha->form_id = 'comment_node_service_offering_form';
+  $captcha->module = '';
+  $captcha->captcha_type = 'default';
+  $export['comment_node_service_offering_form'] = $captcha;
+
+  $captcha = new stdClass();
+  $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
+  $captcha->api_version = 1;
+  $captcha->form_id = 'comment_node_service_request_form';
+  $captcha->module = '';
+  $captcha->captcha_type = 'default';
+  $export['comment_node_service_request_form'] = $captcha;
 
   $captcha = new stdClass();
   $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */

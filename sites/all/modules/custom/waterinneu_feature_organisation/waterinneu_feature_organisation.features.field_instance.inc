@@ -157,73 +157,6 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-organisation-field_country_term'.
-  $field_instances['node-organisation-field_country_term'] = array(
-    'bundle' => 'organisation',
-    'default_value' => array(
-      0 => array(
-        'tid' => 92,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'textformatter',
-        'settings' => array(
-          'textformatter_class' => 'textformatter-list',
-          'textformatter_comma_and' => 1,
-          'textformatter_comma_full_stop' => 1,
-          'textformatter_comma_override' => 0,
-          'textformatter_comma_tag' => 'span',
-          'textformatter_contrib' => array(),
-          'textformatter_separator_custom' => '',
-          'textformatter_separator_custom_class' => 'textformatter-separator',
-          'textformatter_separator_custom_tag' => 'span',
-          'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
-        ),
-        'type' => 'textformatter_list',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'inline',
-        'module' => 'textformatter',
-        'settings' => array(
-          'textformatter_class' => 'textformatter-list',
-          'textformatter_comma_and' => 0,
-          'textformatter_comma_full_stop' => 0,
-          'textformatter_comma_override' => 0,
-          'textformatter_comma_tag' => 'span',
-          'textformatter_contrib' => array(),
-          'textformatter_separator_custom' => '',
-          'textformatter_separator_custom_class' => 'textformatter-separator',
-          'textformatter_separator_custom_tag' => 'span',
-          'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
-        ),
-        'type' => 'textformatter_list',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_country_term',
-    'label' => 'Country',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 3,
-    ),
-  );
-
   // Exported field_instance: 'node-organisation-field_logo'.
   $field_instances['node-organisation-field_logo'] = array(
     'bundle' => 'organisation',
@@ -328,72 +261,6 @@ function waterinneu_feature_organisation_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete_tags',
       'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'node-organisation-field_tags'.
-  $field_instances['node-organisation-field_tags'] = array(
-    'bundle' => 'organisation',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Keywords describing or giving more details about the organisation, its topics and themes for activities.',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'textformatter',
-        'settings' => array(
-          'textformatter_class' => 'textformatter-list',
-          'textformatter_comma_and' => 1,
-          'textformatter_comma_full_stop' => 1,
-          'textformatter_comma_override' => 0,
-          'textformatter_comma_tag' => 0,
-          'textformatter_contrib' => array(),
-          'textformatter_separator_custom' => '',
-          'textformatter_separator_custom_class' => 'textformatter-separator',
-          'textformatter_separator_custom_tag' => 'span',
-          'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
-        ),
-        'type' => 'textformatter_list',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'module' => 'textformatter',
-        'settings' => array(
-          'textformatter_class' => 'textformatter-list',
-          'textformatter_comma_and' => 0,
-          'textformatter_comma_full_stop' => 0,
-          'textformatter_comma_override' => 0,
-          'textformatter_comma_tag' => 'span',
-          'textformatter_contrib' => array(),
-          'textformatter_separator_custom' => '',
-          'textformatter_separator_custom_class' => 'textformatter-separator',
-          'textformatter_separator_custom_tag' => 'span',
-          'textformatter_term_plain' => 1,
-          'textformatter_type' => 'comma',
-        ),
-        'type' => 'textformatter_list',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tags',
-    'label' => 'Keywords',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 5,
     ),
   );
 
@@ -512,9 +379,6 @@ function waterinneu_feature_organisation_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Class');
   t('Classification of the organisation. Currently available: SME, Large Enterprise, Trade Association, Consulting, Research Institute and Remaining. Combinations are allowed if useful.');
-  t('Country');
-  t('Keywords');
-  t('Keywords describing or giving more details about the organisation, its topics and themes for activities.');
   t('Logo');
   t('Projects');
   t('The projects the organisation participated in.');

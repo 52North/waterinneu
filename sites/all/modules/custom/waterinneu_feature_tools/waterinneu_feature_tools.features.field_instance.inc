@@ -145,7 +145,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 30,
+      'weight' => 36,
     ),
   );
 
@@ -374,7 +374,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 32,
+      'weight' => 38,
     ),
   );
 
@@ -697,7 +697,7 @@ compatible with?',
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 31,
+      'weight' => 37,
     ),
   );
 
@@ -789,7 +789,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 27,
+      'weight' => 33,
     ),
   );
 
@@ -1196,7 +1196,7 @@ compatible with?',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 29,
+      'weight' => 35,
     ),
   );
 
@@ -1258,7 +1258,7 @@ compatible with?',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 28,
+      'weight' => 34,
     ),
   );
 
@@ -1370,7 +1370,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What is the standard category?',
+    'description' => 'With which categories of international and/or national standards is the product compatible?',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1420,7 +1420,195 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
+      'weight' => 24,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_supported_data_discovery_s'.
+  $field_instances['node-tool-field_supported_data_discovery_s'] = array(
+    'bundle' => 'tool',
+    'default_value' => array(),
+    'deleted' => 0,
+    'description' => 'With which international and/or national standards is the product compatible?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 22,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_supported_data_discovery_s',
+    'label' => 'Supported Data Discovery Standards',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'autocomplete_deluxe',
+      'settings' => array(
+        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'size' => 60,
+      ),
+      'type' => 'autocomplete_deluxe_taxonomy',
       'weight' => 25,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_supported_data_downloading'.
+  $field_instances['node-tool-field_supported_data_downloading'] = array(
+    'bundle' => 'tool',
+    'default_value' => array(),
+    'deleted' => 0,
+    'description' => 'With which international and/or national standards is the product compatible?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 23,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_supported_data_downloading',
+    'label' => 'Supported Data Downloading Standards',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'autocomplete_deluxe',
+      'settings' => array(
+        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'size' => 60,
+      ),
+      'type' => 'autocomplete_deluxe_taxonomy',
+      'weight' => 26,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_supported_data_encoding_st'.
+  $field_instances['node-tool-field_supported_data_encoding_st'] = array(
+    'bundle' => 'tool',
+    'default_value' => array(),
+    'deleted' => 0,
+    'description' => 'With which international and/or national standards is the product compatible?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_supported_data_encoding_st',
+    'label' => 'Supported Data Encoding Standards',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'autocomplete_deluxe',
+      'settings' => array(
+        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'size' => 60,
+      ),
+      'type' => 'autocomplete_deluxe_taxonomy',
+      'weight' => 27,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_supported_data_visualizati'.
+  $field_instances['node-tool-field_supported_data_visualizati'] = array(
+    'bundle' => 'tool',
+    'default_value' => array(),
+    'deleted' => 0,
+    'description' => 'With which international and/or national standards is the product compatible?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 25,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_supported_data_visualizati',
+    'label' => 'Supported Data Visualization Standards',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'autocomplete_deluxe',
+      'settings' => array(
+        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'size' => 60,
+      ),
+      'type' => 'autocomplete_deluxe_taxonomy',
+      'weight' => 28,
     ),
   );
 
@@ -1516,34 +1704,19 @@ compatible with?',
     ),
   );
 
-  // Exported field_instance: 'node-tool-field_supported_standards'.
-  $field_instances['node-tool-field_supported_standards'] = array(
+  // Exported field_instance: 'node-tool-field_supported_other_standards'.
+  $field_instances['node-tool-field_supported_other_standards'] = array(
     'bundle' => 'tool',
-    'default_value' => NULL,
+    'default_value' => array(),
     'deleted' => 0,
     'description' => 'With which international and/or national standards is the product compatible?',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
-        'module' => 'textformatter',
-        'settings' => array(
-          'textformatter_class' => 'supported-standards-list',
-          'textformatter_comma_and' => 1,
-          'textformatter_comma_full_stop' => 1,
-          'textformatter_comma_override' => 0,
-          'textformatter_comma_tag' => 0,
-          'textformatter_contrib' => array(
-            'entityreference_link' => TRUE,
-            'link_field_display_type' => 'link_default',
-          ),
-          'textformatter_separator_custom' => '',
-          'textformatter_separator_custom_class' => 'textformatter-separator',
-          'textformatter_separator_custom_tag' => 'span',
-          'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
-        ),
-        'type' => 'textformatter_list',
-        'weight' => 20,
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1559,61 +1732,116 @@ compatible with?',
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_supported_standards',
-    'label' => 'Supported Standards',
+    'field_name' => 'field_supported_other_standards',
+    'label' => 'Supported Other Standards',
     'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
-          'full_html_tinymce' => 'full_html_tinymce',
-          'harmony_filtered' => 'harmony_filtered',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -8,
-            ),
-            'full_html_plain_no_filter_' => array(
-              'weight' => 0,
-            ),
-            'full_html_tinymce' => array(
-              'weight' => -7,
-            ),
-            'harmony_filtered' => array(
-              'weight' => 0,
-            ),
-            'plain_text' => array(
-              'weight' => -10,
-            ),
-          ),
-        ),
-      ),
       'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'autocomplete_deluxe',
       'settings' => array(
+        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
         'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 24,
+      'type' => 'autocomplete_deluxe_taxonomy',
+      'weight' => 31,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_supported_processes_and_mo'.
+  $field_instances['node-tool-field_supported_processes_and_mo'] = array(
+    'bundle' => 'tool',
+    'default_value' => array(),
+    'deleted' => 0,
+    'description' => 'With which international and/or national standards is the product compatible?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 26,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_supported_processes_and_mo',
+    'label' => 'Supported Processes and Modells Standards',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'autocomplete_deluxe',
+      'settings' => array(
+        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'size' => 60,
+      ),
+      'type' => 'autocomplete_deluxe_taxonomy',
+      'weight' => 29,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_supported_sensor_data_stan'.
+  $field_instances['node-tool-field_supported_sensor_data_stan'] = array(
+    'bundle' => 'tool',
+    'default_value' => array(),
+    'deleted' => 0,
+    'description' => 'With which international and/or national standards is the product compatible?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 27,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_supported_sensor_data_stan',
+    'label' => 'Supported Sensor Data Standards',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'autocomplete_deluxe',
+      'settings' => array(
+        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'size' => 60,
+      ),
+      'type' => 'autocomplete_deluxe_taxonomy',
+      'weight' => 30,
     ),
   );
 
@@ -1716,7 +1944,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 26,
+      'weight' => 32,
     ),
   );
 
@@ -1735,7 +1963,7 @@ compatible with?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2138,7 +2366,7 @@ compatible with?',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -2302,9 +2530,272 @@ compatible with?',
     ),
   );
 
+  // Exported field_instance:
+  // 'taxonomy_term-data_discovery_standards-name_field'.
+  $field_instances['taxonomy_term-data_discovery_standards-name_field'] = array(
+    'bundle' => 'data_discovery_standards',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Name',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-data_downloading_standards-name_field'.
+  $field_instances['taxonomy_term-data_downloading_standards-name_field'] = array(
+    'bundle' => 'data_downloading_standards',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Name',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-data_encoding_standards-name_field'.
+  $field_instances['taxonomy_term-data_encoding_standards-name_field'] = array(
+    'bundle' => 'data_encoding_standards',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Name',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-data_visualization_standards-name_field'.
+  $field_instances['taxonomy_term-data_visualization_standards-name_field'] = array(
+    'bundle' => 'data_visualization_standards',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Name',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-issue-name_field'.
   $field_instances['taxonomy_term-issue-name_field'] = array(
     'bundle' => 'issue',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Name',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-other_standards-name_field'.
+  $field_instances['taxonomy_term-other_standards-name_field'] = array(
+    'bundle' => 'other_standards',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Name',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-processes_and_models_standards-name_field'.
+  $field_instances['taxonomy_term-processes_and_models_standards-name_field'] = array(
+    'bundle' => 'processes_and_models_standards',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -2391,6 +2882,49 @@ compatible with?',
   // Exported field_instance: 'taxonomy_term-purpose-name_field'.
   $field_instances['taxonomy_term-purpose-name_field'] = array(
     'bundle' => 'purpose',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Name',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-sensor_data_standards-name_field'.
+  $field_instances['taxonomy_term-sensor_data_standards-name_field'] = array(
+    'bundle' => 'sensor_data_standards',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -2721,8 +3255,14 @@ compatible with?',
   t('Related Links and Supporting Material');
   t('Relevant Water Bodies');
   t('Standard Category');
+  t('Supported Data Discovery Standards');
+  t('Supported Data Downloading Standards');
+  t('Supported Data Encoding Standards');
+  t('Supported Data Visualization Standards');
   t('Supported Legacy Systems');
-  t('Supported Standards');
+  t('Supported Other Standards');
+  t('Supported Processes and Modells Standards');
+  t('Supported Sensor Data Standards');
   t('Target User Group');
   t('Technology Readiness Level');
   t('The setting controls the content of the tool of the month box on the front page, hence, only one tools should have set this to true.');
@@ -2740,7 +3280,6 @@ compatible with?',
   t('What is the product about?');
   t('What is the products’ developer organisation?');
   t('What is the relevant scale of application of the product?');
-  t('What is the standard category?');
   t('What is the status quo of the development of the product?');
   t('What is the target user group of the product?');
   t('What is the type of hardware?');
@@ -2756,6 +3295,7 @@ compatible with?',
   t('Which other products is this product
 compatible with?');
   t('With which (data-) systems can the product be used?');
+  t('With which categories of international and/or national standards is the product compatible?');
   t('With which international and/or national standards is the product compatible?');
 
   return $field_instances;

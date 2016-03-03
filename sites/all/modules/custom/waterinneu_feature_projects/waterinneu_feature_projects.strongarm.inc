@@ -96,10 +96,10 @@ function waterinneu_feature_projects_strongarm() {
           'weight' => 1,
         ),
         'path' => array(
-          'weight' => 23,
+          'weight' => '23',
         ),
         'language' => array(
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'display' => array(
@@ -191,27 +191,6 @@ function waterinneu_feature_projects_strongarm() {
   $strongarm->name = 'pathauto_node_project_und_pattern';
   $strongarm->value = '';
   $export['pathauto_node_project_und_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_administrative_levels_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_administrative_levels_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_hydrological_level_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_hydrological_level_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_location_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_location_pattern'] = $strongarm;
 
   return $export;
 }

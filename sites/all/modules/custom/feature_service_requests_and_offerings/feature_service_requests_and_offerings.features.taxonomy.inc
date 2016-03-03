@@ -1,21 +1,21 @@
 <?php
 /**
  * @file
- * waterinneu_feature_organisation.features.taxonomy.inc
+ * feature_service_requests_and_offerings.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function waterinneu_feature_organisation_taxonomy_default_vocabularies() {
+function feature_service_requests_and_offerings_taxonomy_default_vocabularies() {
   return array(
-    'organisation_classification' => array(
-      'name' => 'Organisation Classification',
-      'machine_name' => 'organisation_classification',
-      'description' => 'Classification of an organiziation',
+    'service_categories' => array(
+      'name' => 'Service Categories',
+      'machine_name' => 'service_categories',
+      'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 8,
+      'weight' => 0,
       'language' => 'und',
       'i18n_mode' => 1,
       'rdf_mapping' => array(

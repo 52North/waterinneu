@@ -16,24 +16,6 @@ function waterinneu_feature_roles_and_permissions_user_default_roles() {
     'weight' => 6,
   );
 
-  // Exported role: author.
-  $roles['author'] = array(
-    'name' => 'author',
-    'weight' => 2,
-  );
-
-  // Exported role: marketplace_author.
-  $roles['marketplace_author'] = array(
-    'name' => 'marketplace_author',
-    'weight' => 3,
-  );
-
-  // Exported role: marketplace_moderator.
-  $roles['marketplace_moderator'] = array(
-    'name' => 'marketplace_moderator',
-    'weight' => 5,
-  );
-
   // Exported role: moderator.
   $roles['moderator'] = array(
     'name' => 'moderator',

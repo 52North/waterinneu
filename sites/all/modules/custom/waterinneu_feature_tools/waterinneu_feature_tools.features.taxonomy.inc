@@ -15,7 +15,7 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => -6,
       'language' => 'und',
       'i18n_mode' => 1,
       'rdf_mapping' => array(
@@ -40,9 +40,109 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => -5,
       'language' => 'und',
       'i18n_mode' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'data_discovery_standards' => array(
+      'name' => 'Data Discovery Standards',
+      'machine_name' => 'data_discovery_standards',
+      'description' => 'With which international and/or national standards is the product compatible?',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => -3,
+      'language' => 'und',
+      'i18n_mode' => 1,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'data_downloading_standards' => array(
+      'name' => 'Data Downloading Standards',
+      'machine_name' => 'data_downloading_standards',
+      'description' => 'With which international and/or national standards is the product compatible?',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => -2,
+      'language' => 'und',
+      'i18n_mode' => 1,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'data_encoding_standards' => array(
+      'name' => 'Data Encoding Standards',
+      'machine_name' => 'data_encoding_standards',
+      'description' => 'With which international and/or national standards is the product compatible?',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => -1,
+      'language' => 'und',
+      'i18n_mode' => 1,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'data_visualization_standards' => array(
+      'name' => 'Data Visualization Standards',
+      'machine_name' => 'data_visualization_standards',
+      'description' => 'With which international and/or national standards is the product compatible?',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'language' => 'und',
+      'i18n_mode' => 1,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -65,7 +165,7 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => 5,
       'language' => 'und',
       'i18n_mode' => 1,
       'rdf_mapping' => array(
@@ -90,9 +190,59 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => 'Type of license for a tool or anything that requires a license.',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => 6,
       'language' => 'und',
       'i18n_mode' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'other_standards' => array(
+      'name' => 'Other Standards',
+      'machine_name' => 'other_standards',
+      'description' => 'With which international and/or national standards is the product compatible?',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 3,
+      'language' => 'und',
+      'i18n_mode' => 1,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'processes_and_models_standards' => array(
+      'name' => 'Processes and Models Standards',
+      'machine_name' => 'processes_and_models_standards',
+      'description' => 'With which international and/or national standards is the product compatible?',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 1,
+      'language' => 'und',
+      'i18n_mode' => 1,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -115,7 +265,7 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => 9,
       'language' => 'und',
       'i18n_mode' => 1,
       'rdf_mapping' => array(
@@ -140,7 +290,32 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => 10,
+      'language' => 'und',
+      'i18n_mode' => 1,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'sensor_data_standards' => array(
+      'name' => 'Sensor Data Standards',
+      'machine_name' => 'sensor_data_standards',
+      'description' => 'With which international and/or national standards is the product compatible?',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 2,
       'language' => 'und',
       'i18n_mode' => 1,
       'rdf_mapping' => array(
@@ -165,59 +340,9 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => 10,
       'language' => 'und',
       'i18n_mode' => 1,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
-    'standards' => array(
-      'name' => 'Standards',
-      'machine_name' => 'standards',
-      'description' => 'Standards, Specifications, ...',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-      'language' => 'und',
-      'i18n_mode' => 0,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
-    'tags' => array(
-      'name' => 'Tags',
-      'machine_name' => 'tags',
-      'description' => 'Use tags to group articles on similar topics into categories.',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-      'language' => 'und',
-      'i18n_mode' => 0,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -240,7 +365,7 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => 10,
       'language' => 'und',
       'i18n_mode' => 0,
       'rdf_mapping' => array(
@@ -265,7 +390,7 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => -9,
       'language' => 'und',
       'i18n_mode' => 1,
       'rdf_mapping' => array(
@@ -290,7 +415,7 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => -8,
       'language' => 'und',
       'i18n_mode' => 1,
       'rdf_mapping' => array(
@@ -315,7 +440,7 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => 10,
       'language' => 'und',
       'i18n_mode' => 1,
       'rdf_mapping' => array(
@@ -340,7 +465,7 @@ function waterinneu_feature_tools_taxonomy_default_vocabularies() {
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => 10,
       'language' => 'und',
       'i18n_mode' => 1,
       'rdf_mapping' => array(

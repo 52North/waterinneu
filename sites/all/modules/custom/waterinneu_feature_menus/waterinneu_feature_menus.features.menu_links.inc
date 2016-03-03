@@ -10,28 +10,6 @@
 function waterinneu_feature_menus_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_about:node/8772.
-  $menu_links['main-menu_about:node/8772'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/8772',
-    'router_path' => 'node/%',
-    'link_title' => 'About',
-    'options' => array(
-      'attributes' => array(),
-      'alter' => TRUE,
-      'node_type' => 'page',
-      'identifier' => 'main-menu_about:node/8772',
-    ),
-    'module' => 'menu',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 1,
-    'expanded' => 0,
-    'weight' => 7,
-    'customized' => 1,
-    'language' => 'en',
-    'menu_links_customized' => 1,
-  );
   // Exported menu link: main-menu_e-learning:http://example.com/E-Learning.
   $menu_links['main-menu_e-learning:http://example.com/E-Learning'] = array(
     'menu_name' => 'main-menu',
@@ -605,7 +583,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   $menu_links['navigation_migrate-example---dates:node/add/date-migrate-example'] = array(
     'menu_name' => 'navigation',
     'link_path' => 'node/add/date-migrate-example',
-    'router_path' => 'node/add/date-migrate-example',
+    'router_path' => 'node/add',
     'link_title' => 'Migrate example - dates',
     'options' => array(
       'attributes' => array(
@@ -628,7 +606,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   $menu_links['navigation_portal:node/add/portal'] = array(
     'menu_name' => 'navigation',
     'link_path' => 'node/add/portal',
-    'router_path' => 'node/add/portal',
+    'router_path' => 'node/add',
     'link_title' => 'Portal',
     'options' => array(
       'attributes' => array(
@@ -777,7 +755,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Abmelden');
-  t('About');
   t('Account');
   t('Add Content');
   t('Add content');

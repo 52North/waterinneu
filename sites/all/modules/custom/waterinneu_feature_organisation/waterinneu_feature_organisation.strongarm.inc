@@ -195,13 +195,6 @@ function waterinneu_feature_organisation_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_countries_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_countries_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_organisation_classification_pattern';
   $strongarm->value = 'organisation/class/[term:parents:join-path]/[term:name]';
   $export['pathauto_taxonomy_term_organisation_classification_pattern'] = $strongarm;

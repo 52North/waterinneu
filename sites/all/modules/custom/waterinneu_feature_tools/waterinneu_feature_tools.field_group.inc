@@ -187,6 +187,41 @@ function waterinneu_feature_tools_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_supported_standards|node|tool|default';
+  $field_group->group_name = 'group_supported_standards';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tool';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Supported Standards',
+    'weight' => '20',
+    'children' => array(
+      0 => 'field_standard_category',
+      1 => 'field_supported_data_discovery_s',
+      2 => 'field_supported_data_downloading',
+      3 => 'field_supported_data_encoding_st',
+      4 => 'field_supported_data_visualizati',
+      5 => 'field_supported_processes_and_mo',
+      6 => 'field_supported_sensor_data_stan',
+      7 => 'field_supported_other_standards',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Supported Standards',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-supported-standards field-group-accordion',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_supported_standards|node|tool|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_what|node|tool|default';
   $field_group->group_name = 'group_what';
   $field_group->entity_type = 'node';
@@ -250,6 +285,7 @@ function waterinneu_feature_tools_field_group_info() {
   t('How');
   t('Interoperability');
   t('Metadata');
+  t('Supported Standards');
   t('What');
 
   return $field_groups;
