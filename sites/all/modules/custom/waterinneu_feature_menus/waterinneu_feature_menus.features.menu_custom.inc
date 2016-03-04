@@ -18,14 +18,6 @@ function waterinneu_feature_menus_menu_default_menu_custom() {
     'language' => 'und',
     'i18n_mode' => 5,
   );
-  // Exported menu: menu-front-page-buttons.
-  $menus['menu-front-page-buttons'] = array(
-    'menu_name' => 'menu-front-page-buttons',
-    'title' => 'front-page-buttons',
-    'description' => 'Action buttons on the frontpage.',
-    'language' => 'und',
-    'i18n_mode' => 5,
-  );
   // Exported menu: menu-moderator.
   $menus['menu-moderator'] = array(
     'menu_name' => 'menu-moderator',
@@ -68,7 +60,6 @@ function waterinneu_feature_menus_menu_default_menu_custom() {
   );
   // Translatables
   // Included for use with string extractors like potx.
-  t('Action buttons on the frontpage.');
   t('Author');
   t('Contains everything regarding author tasks like adding new content');
   t('Everything regarding moderation tasks');
@@ -80,7 +71,6 @@ function waterinneu_feature_menus_menu_default_menu_custom() {
   t('Top-Level-Links (anon)');
   t('Top-Level-Links (registered)');
   t('User menu');
-  t('front-page-buttons');
 
   return $menus;
 }

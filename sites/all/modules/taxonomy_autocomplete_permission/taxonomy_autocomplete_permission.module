@@ -1,0 +1,95 @@
+<?php
+/**
+ * @file
+ * Permission set to allow creation of new terms (disabled by default).
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function taxonomy_autocomplete_permission_permission() {
+  $vocabulary = taxonomy_get_vocabularies();
+  foreach ($vocabulary as $item) {
+    $name = 'add_terms_' . $item->machine_name;
+    $permissions[$name] = array(
+      'title' => t('Add terms in %taxonomy via autocomplete',
+      array('%taxonomy' => $item->name)),
+    );
+  }
+  return $permissions;
+}
+
+/**
+ * Implements hook_form_WIDGET_TYPE_alter().
+ */
+function taxonomy_autocomplete_permission_field_widget_taxonomy_autocomplete_form_alter(&$form, &$form_state) {
+  // Add validate handler; the validation will be applied based on permissions.
+  $form['#element_validate'][] = 'taxonomy_autocomplete_permission_taxonomy_autocomplete_validate';
+}
+
+/**
+ * Form element validate handler for taxonomy term autocomplete element.
+ *
+ * This is a clone of taxonomy_autocomplete_validate
+ * It adds a single additional additional access check
+ * prior to creating a new taxonomy term.
+ */
+function taxonomy_autocomplete_permission_taxonomy_autocomplete_validate($element,
+  &$form_state, $form) {
+  // Autocomplete widgets do not send their tids in the form, so we must detect
+  // them here and process them independently.
+  $value = array();
+  // By default, disallow creating new nodes.
+  $allowed = FALSE;
+  if ($tags = $element['#value']) {
+    // Collect candidate vocabularies.
+    $field = field_widget_field($element, $form_state);
+    $vocabularies = array();
+    foreach ($field['settings']['allowed_values'] as $tree) {
+      if ($vocabulary = taxonomy_vocabulary_machine_name_load($tree['vocabulary'])) {
+        $vocabularies[$vocabulary->vid] = $vocabulary;
+        $permission_name = 'add_terms_' . $vocabulary->machine_name;
+        if (user_access($permission_name)) {
+          // Check if the user has permission to add new taxonomy terms.
+          $allowed = TRUE;
+        }
+      }
+    }
+
+    // Translate term names into actual terms.
+    $typed_terms = drupal_explode_tags($tags);
+    foreach ($typed_terms as $typed_term) {
+      // See if the term exists in the chosen vocabulary and return the tid;
+      // otherwise, create a new 'autocreate' term for insert/update.
+      if ($possibilities = taxonomy_term_load_multiple(array(), array('name' => trim($typed_term), 'vid' => array_keys($vocabularies)))) {
+        $term = array_pop($possibilities);
+      }
+      elseif (!$allowed) {
+        $errors[] = $typed_term;
+      }
+      else {
+        // The current user has permission. Proceed with creating the new term.
+        $vocabulary = reset($vocabularies);
+        $term = array(
+          'tid' => 'autocreate',
+          'vid' => $vocabulary->vid,
+          'name' => $typed_term,
+          'vocabulary_machine_name' => $vocabulary->machine_name,
+        );
+      }
+
+      if (isset($term)) {
+        $value[] = (array) $term;
+      }
+    }
+    if (!empty($errors)) {
+      $disallowed = implode(", ", $errors);
+      // Display error message to user entering a non-existent term.
+      form_error($element, t('You entered the following: %value. Your role does
+        not have permission to create new %vocabulary. Select from the available
+        tags using the autocomplete.',
+        array('%value' => $disallowed, '%vocabulary' => $vocabulary->name)));
+    }
+  }
+  form_set_value($element, $value, $form_state);
+}

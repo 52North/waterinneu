@@ -1363,6 +1363,16 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'panels_mini',
   );
 
+  // Exported permission: 'create organisation content'.
+  $permissions['create organisation content'] = array(
+    'name' => 'create organisation content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create page content'.
   $permissions['create page content'] = array(
     'name' => 'create page content',
@@ -1386,6 +1396,16 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'panels_node',
+  );
+
+  // Exported permission: 'create project content'.
+  $permissions['create project content'] = array(
+    'name' => 'create project content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'create service_offering content'.
@@ -1440,6 +1460,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any organisation content'.
+  $permissions['delete any organisation content'] = array(
+    'name' => 'delete any organisation content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any page content'.
   $permissions['delete any page content'] = array(
     'name' => 'delete any page content',
@@ -1463,6 +1492,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'panels_node',
+  );
+
+  // Exported permission: 'delete any project content'.
+  $permissions['delete any project content'] = array(
+    'name' => 'delete any project content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'delete any service_offering content'.
@@ -1504,6 +1542,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete own organisation content'.
+  $permissions['delete own organisation content'] = array(
+    'name' => 'delete own organisation content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete own page content'.
   $permissions['delete own page content'] = array(
     'name' => 'delete own page content',
@@ -1527,6 +1574,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'panels_node',
+  );
+
+  // Exported permission: 'delete own project content'.
+  $permissions['delete own project content'] = array(
+    'name' => 'delete own project content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'delete own service_offering content'.
@@ -1619,6 +1675,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'delete terms in license'.
   $permissions['delete terms in license'] = array(
     'name' => 'delete terms in license',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in organisation_classification'.
+  $permissions['delete terms in organisation_classification'] = array(
+    'name' => 'delete terms in organisation_classification',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -1771,6 +1836,16 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit any organisation content'.
+  $permissions['edit any organisation content'] = array(
+    'name' => 'edit any organisation content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any page content'.
   $permissions['edit any page content'] = array(
     'name' => 'edit any page content',
@@ -1794,6 +1869,16 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'panels_node',
+  );
+
+  // Exported permission: 'edit any project content'.
+  $permissions['edit any project content'] = array(
+    'name' => 'edit any project content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'edit any service_offering content'.
@@ -1840,6 +1925,16 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit own organisation content'.
+  $permissions['edit own organisation content'] = array(
+    'name' => 'edit own organisation content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit own page content'.
   $permissions['edit own page content'] = array(
     'name' => 'edit own page content',
@@ -1863,6 +1958,16 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'panels_node',
+  );
+
+  // Exported permission: 'edit own project content'.
+  $permissions['edit own project content'] = array(
+    'name' => 'edit own project content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'edit own service_offering content'.
@@ -1972,6 +2077,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'edit terms in license'.
   $permissions['edit terms in license'] = array(
     'name' => 'edit terms in license',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in organisation_classification'.
+  $permissions['edit terms in organisation_classification'] = array(
+    'name' => 'edit terms in organisation_classification',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -2224,6 +2338,15 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'term_merge',
   );
 
+  // Exported permission: 'merge organisation_classification terms'.
+  $permissions['merge organisation_classification terms'] = array(
+    'name' => 'merge organisation_classification terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'term_merge',
+  );
+
   // Exported permission: 'merge other_standards terms'.
   $permissions['merge other_standards terms'] = array(
     'name' => 'merge other_standards terms',
@@ -2411,10 +2534,28 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'publish revisions of any organisation content'.
+  $permissions['publish revisions of any organisation content'] = array(
+    'name' => 'publish revisions of any organisation content',
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: 'publish revisions of any page content'.
   $permissions['publish revisions of any page content'] = array(
     'name' => 'publish revisions of any page content',
     'roles' => array(),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'publish revisions of any project content'.
+  $permissions['publish revisions of any project content'] = array(
+    'name' => 'publish revisions of any project content',
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -2450,10 +2591,28 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'publish revisions of own organisation content'.
+  $permissions['publish revisions of own organisation content'] = array(
+    'name' => 'publish revisions of own organisation content',
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: 'publish revisions of own page content'.
   $permissions['publish revisions of own page content'] = array(
     'name' => 'publish revisions of own page content',
     'roles' => array(),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'publish revisions of own project content'.
+  $permissions['publish revisions of own project content'] = array(
+    'name' => 'publish revisions of own project content',
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -3064,10 +3223,28 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'view revisions of any organisation content'.
+  $permissions['view revisions of any organisation content'] = array(
+    'name' => 'view revisions of any organisation content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: 'view revisions of any page content'.
   $permissions['view revisions of any page content'] = array(
     'name' => 'view revisions of any page content',
     'roles' => array(),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'view revisions of any project content'.
+  $permissions['view revisions of any project content'] = array(
+    'name' => 'view revisions of any project content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'revisioning',
   );
 
@@ -3103,10 +3280,28 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'view revisions of own organisation content'.
+  $permissions['view revisions of own organisation content'] = array(
+    'name' => 'view revisions of own organisation content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: 'view revisions of own page content'.
   $permissions['view revisions of own page content'] = array(
     'name' => 'view revisions of own page content',
     'roles' => array(),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'view revisions of own project content'.
+  $permissions['view revisions of own project content'] = array(
+    'name' => 'view revisions of own project content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'revisioning',
   );
 

@@ -93,6 +93,63 @@ function waterinneu_feature_frontpage_views_default_views() {
   $export['frontpage_latest_content'] = $view;
 
   $view = new view();
+  $view->name = 'frontpage_latest_posts';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'harmony_post_revision';
+  $view->human_name = 'latest-posts';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Post (historical data): Created date */
+  $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['fields']['timestamp']['table'] = 'harmony_post_revision';
+  $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['fields']['timestamp']['date_format'] = 'long';
+  $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'long';
+  /* Field: Post (historical data): Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'harmony_post_revision';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  /* Field: Post (historical data): Thread */
+  $handler->display->display_options['fields']['field_harmony_thread-revision_id']['id'] = 'field_harmony_thread-revision_id';
+  $handler->display->display_options['fields']['field_harmony_thread-revision_id']['table'] = 'field_revision_field_harmony_thread';
+  $handler->display->display_options['fields']['field_harmony_thread-revision_id']['field'] = 'field_harmony_thread-revision_id';
+  $handler->display->display_options['fields']['field_harmony_thread-revision_id']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_harmony_thread-revision_id']['settings'] = array(
+    'link' => 1,
+  );
+  /* Field: Post (historical data): Post is reply to */
+  $handler->display->display_options['fields']['field_harmony_post_is_reply_to-revision_id']['id'] = 'field_harmony_post_is_reply_to-revision_id';
+  $handler->display->display_options['fields']['field_harmony_post_is_reply_to-revision_id']['table'] = 'field_revision_field_harmony_post_is_reply_to';
+  $handler->display->display_options['fields']['field_harmony_post_is_reply_to-revision_id']['field'] = 'field_harmony_post_is_reply_to-revision_id';
+  $handler->display->display_options['fields']['field_harmony_post_is_reply_to-revision_id']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_harmony_post_is_reply_to-revision_id']['settings'] = array(
+    'link' => 1,
+  );
+  /* Sort criterion: Post (historical data): Created date */
+  $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['table'] = 'harmony_post_revision';
+  $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
+
+  /* Display: Latest Posts */
+  $handler = $view->new_display('block', 'Latest Posts', 'block');
+  $export['frontpage_latest_posts'] = $view;
+
+  $view = new view();
   $view->name = 'frontpage_latest_questions';
   $view->description = '';
   $view->tag = 'default';

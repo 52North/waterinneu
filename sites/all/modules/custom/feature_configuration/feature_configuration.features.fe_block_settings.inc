@@ -1,23 +1,25 @@
 <?php
 /**
  * @file
- * waterinneu_feature_frontpage.features.fe_block_settings.inc
+ * feature_configuration.features.fe_block_settings.inc
  */
 
 /**
  * Implements hook_default_fe_block_settings().
  */
-function waterinneu_feature_frontpage_default_fe_block_settings() {
+function feature_configuration_default_fe_block_settings() {
   $export = array();
 
   $export['version'] = '2.0';
 
-  $export['block-landingpage_updates'] = array(
+  $export['block-footer_third_column'] = array(
     'cache' => -1,
     'custom' => 0,
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'machine_name' => 'landingpage_updates',
+    'i18n_block_language' => array(
+      0 => 'en',
+    ),
+    'i18n_mode' => 1,
+    'machine_name' => 'footer_third_column',
     'module' => 'block',
     'node_types' => array(),
     'pages' => '',
@@ -30,13 +32,13 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
         'weight' => 0,
       ),
       'n52_wieu_theme' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'footer_third',
+        'status' => 1,
         'theme' => 'n52_wieu_theme',
         'weight' => 0,
       ),
     ),
-    'title' => 'Updates',
+    'title' => '',
     'visibility' => 0,
   );
 
@@ -68,43 +70,43 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['node-recent'] = array(
-    'cache' => -1,
+  $export['faq-faq_categories'] = array(
+    'cache' => 1,
     'custom' => 0,
-    'delta' => 'recent',
+    'delta' => 'faq_categories',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
-    'module' => 'node',
+    'module' => 'faq',
     'node_types' => array(),
     'pages' => '',
     'roles' => array(),
     'themes' => array(
       'adminimal' => array(
-        'region' => 'dashboard_main',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'adminimal',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'n52_wieu_theme' => array(
         'region' => '',
         'status' => 0,
         'theme' => 'n52_wieu_theme',
-        'weight' => -11,
+        'weight' => 0,
       ),
     ),
     'title' => '',
     'visibility' => 0,
   );
 
-  $export['twitter_block-1'] = array(
+  $export['lang_dropdown-language_content'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => 1,
+    'delta' => 'language_content',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
-    'module' => 'twitter_block',
+    'module' => 'lang_dropdown',
     'node_types' => array(),
-    'pages' => '<front>',
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'adminimal' => array(
@@ -118,121 +120,100 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
         'status' => 0,
         'theme' => 'n52_wieu_theme',
         'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['locale-language'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'language',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'locale',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => -5,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'n52_wieu_theme',
+        'weight' => -18,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['locale-language_content'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'language_content',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'locale',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'n52_wieu_theme',
+        'weight' => -35,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['menu-menu-author'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'menu-author',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'menu',
+    'node_types' => array(),
+    'pages' => '<front>
+e-learning*
+forum*
+thread*',
+    'roles' => array(
+      'administrator' => 3,
+      'authenticated user' => 2,
+      'moderator' => 9,
+    ),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'n52_wieu_theme',
+        'weight' => -43,
       ),
     ),
     'title' => '<none>',
-    'visibility' => 1,
-  );
-
-  $export['views-comments_recent-block'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'comments_recent-block',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'adminimal' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'adminimal',
-        'weight' => 0,
-      ),
-      'n52_wieu_theme' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'n52_wieu_theme',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['views-frontpage_latest_content-block'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'frontpage_latest_content-block',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'adminimal' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'adminimal',
-        'weight' => 0,
-      ),
-      'n52_wieu_theme' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'n52_wieu_theme',
-        'weight' => -27,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['views-frontpage_latest_posts-block'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'frontpage_latest_posts-block',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'adminimal' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'adminimal',
-        'weight' => 0,
-      ),
-      'n52_wieu_theme' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'n52_wieu_theme',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['views-tool_of_the_month-block'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'tool_of_the_month-block',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 1,
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'adminimal' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'adminimal',
-        'weight' => 0,
-      ),
-      'n52_wieu_theme' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'n52_wieu_theme',
-        'weight' => -29,
-      ),
-    ),
-    'title' => 'Product of the Month',
     'visibility' => 0,
   );
 

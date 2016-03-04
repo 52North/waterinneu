@@ -120,26 +120,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'language' => 'en',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: main-menu_projects:project.
-  $menu_links['main-menu_projects:project'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'project',
-    'router_path' => 'project',
-    'link_title' => 'Projects',
-    'options' => array(
-      'alter' => TRUE,
-      'identifier' => 'main-menu_projects:project',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 8,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
   // Exported menu link: menu-top-level-links-registered-_abmelden:user/logout.
   $menu_links['menu-top-level-links-registered-_abmelden:user/logout'] = array(
     'menu_name' => 'menu-top-level-links-registered-',
@@ -776,7 +756,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   t('Migrate example - dates');
   t('Portal');
   t('Products');
-  t('Projects');
   t('Register');
   t('Registrieren');
   t('Scheduled publications');

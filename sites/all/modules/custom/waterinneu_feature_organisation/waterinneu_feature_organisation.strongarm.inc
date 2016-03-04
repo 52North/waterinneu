@@ -96,10 +96,10 @@ function waterinneu_feature_organisation_strongarm() {
           'weight' => 2,
         ),
         'language' => array(
-          'weight' => 0,
+          'weight' => '1',
         ),
         'path' => array(
-          'weight' => 10,
+          'weight' => '5',
         ),
       ),
       'display' => array(

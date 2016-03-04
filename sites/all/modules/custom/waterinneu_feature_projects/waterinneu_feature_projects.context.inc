@@ -16,18 +16,8 @@ function waterinneu_feature_projects_context_default_contexts() {
   $context->name = 'projects';
   $context->description = '';
   $context->tag = 'main_menu';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'project*' => 'project*',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'menu' => array(
-      0 => 'main-menu:projects',
-    ),
-  );
+  $context->conditions = array();
+  $context->reactions = array();
   $context->condition_mode = 1;
 
   // Translatables
