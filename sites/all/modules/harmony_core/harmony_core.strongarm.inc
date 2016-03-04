@@ -64,7 +64,29 @@ function harmony_core_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'l10nclient' => array(
+          'weight' => '10',
+        ),
+        'account' => array(
+          'weight' => '-10',
+        ),
+        'timezone' => array(
+          'weight' => '6',
+        ),
+        'picture' => array(
+          'weight' => '5',
+        ),
+        'contact' => array(
+          'weight' => '5',
+        ),
+        'locale' => array(
+          'weight' => '5',
+        ),
+        'wysiwyg' => array(
+          'weight' => '5',
+        ),
+      ),
       'display' => array(
         'summary' => array(
           'harmony_user_post_profile' => array(

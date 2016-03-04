@@ -12,5 +12,3 @@ datestamp = 1455300241
 features[atjs_listener][] = harmony_users
 features[ctools][] = atjs:default_atjs_listener:1
 features[features_api][] = api:2
-features[features_overrides][] = field_instance.harmony_post-harmony_post-field_harmony_text.widget|settings|atjs_fieldset
-features[features_overrides][] = filter.harmony_filtered.filters|atjs

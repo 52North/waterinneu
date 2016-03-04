@@ -23,6 +23,7 @@ dependencies[] = image
 dependencies[] = inline_entity_form
 dependencies[] = list
 dependencies[] = machine_name
+dependencies[] = markdown
 dependencies[] = pathauto
 dependencies[] = placeholder
 dependencies[] = short_scale_formatter

@@ -27,11 +27,16 @@ function harmony_core_filter_default_formats() {
         'weight' => -49,
         'status' => 1,
         'settings' => array(
-          'nowrap_expand' => 0,
+          'nowrap_expand' => FALSE,
         ),
       ),
       'filter_htmlcorrector' => array(
         'weight' => -49,
+        'status' => 1,
+        'settings' => array(),
+      ),
+      'filter_markdown' => array(
+        'weight' => -48,
         'status' => 1,
         'settings' => array(),
       ),

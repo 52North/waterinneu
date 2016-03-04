@@ -149,7 +149,9 @@ function harmony_default_permissions_user_default_permissions() {
   // Exported permission: 'edit locked harmony_posts'.
   $permissions['edit locked harmony_posts'] = array(
     'name' => 'edit locked harmony_posts',
-    'roles' => array(),
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
     'module' => 'harmony_core',
   );
 
@@ -158,6 +160,7 @@ function harmony_default_permissions_user_default_permissions() {
     'name' => 'edit locked harmony_threads',
     'roles' => array(
       'administrator' => 'administrator',
+      'moderator' => 'moderator',
     ),
     'module' => 'harmony_core',
   );
@@ -203,7 +206,9 @@ function harmony_default_permissions_user_default_permissions() {
   // Exported permission: 'revert any harmony_post revisions'.
   $permissions['revert any harmony_post revisions'] = array(
     'name' => 'revert any harmony_post revisions',
-    'roles' => array(),
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
     'module' => 'harmony_core',
   );
 
@@ -236,7 +241,9 @@ function harmony_default_permissions_user_default_permissions() {
   // Exported permission: 'view harmony_post revisions'.
   $permissions['view harmony_post revisions'] = array(
     'name' => 'view harmony_post revisions',
-    'roles' => array(),
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
     'module' => 'harmony_core',
   );
 
@@ -279,6 +286,7 @@ function harmony_default_permissions_user_default_permissions() {
     'name' => 'view own unpublished harmony_threads',
     'roles' => array(
       'administrator' => 'administrator',
+      'moderator' => 'moderator',
     ),
     'module' => 'harmony_core',
   );
@@ -286,7 +294,9 @@ function harmony_default_permissions_user_default_permissions() {
   // Exported permission: 'view unpublished harmony_posts'.
   $permissions['view unpublished harmony_posts'] = array(
     'name' => 'view unpublished harmony_posts',
-    'roles' => array(),
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
     'module' => 'harmony_core',
   );
 
@@ -295,6 +305,7 @@ function harmony_default_permissions_user_default_permissions() {
     'name' => 'view unpublished harmony_threads',
     'roles' => array(
       'administrator' => 'administrator',
+      'moderator' => 'moderator',
     ),
     'module' => 'harmony_core',
   );
