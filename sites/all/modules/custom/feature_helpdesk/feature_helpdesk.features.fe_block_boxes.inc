@@ -23,13 +23,5 @@ function feature_helpdesk_default_fe_block_boxes() {
 
   $export['contact_additional_information'] = $fe_block_boxes;
 
-  $fe_block_boxes = new stdClass();
-  $fe_block_boxes->info = 'Content of the right column of the footer';
-  $fe_block_boxes->format = 'full_html_tinymce';
-  $fe_block_boxes->machine_name = 'footer_right_content';
-  $fe_block_boxes->body = '<p><a href="/contact">Contact/Helpdesk</a></p>';
-
-  $export['footer_right_content'] = $fe_block_boxes;
-
   return $export;
 }
