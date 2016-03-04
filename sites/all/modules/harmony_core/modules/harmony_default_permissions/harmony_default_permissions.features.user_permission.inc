@@ -215,7 +215,9 @@ function harmony_default_permissions_user_default_permissions() {
   // Exported permission: 'revert own harmony_post revisions'.
   $permissions['revert own harmony_post revisions'] = array(
     'name' => 'revert own harmony_post revisions',
-    'roles' => array(),
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
     'module' => 'harmony_core',
   );
 
@@ -242,6 +244,7 @@ function harmony_default_permissions_user_default_permissions() {
   $permissions['view harmony_post revisions'] = array(
     'name' => 'view harmony_post revisions',
     'roles' => array(
+      'authenticated user' => 'authenticated user',
       'moderator' => 'moderator',
     ),
     'module' => 'harmony_core',
@@ -270,14 +273,18 @@ function harmony_default_permissions_user_default_permissions() {
   // Exported permission: 'view own harmony_post revisions'.
   $permissions['view own harmony_post revisions'] = array(
     'name' => 'view own harmony_post revisions',
-    'roles' => array(),
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'harmony_core',
   );
 
   // Exported permission: 'view own unpublished harmony_posts'.
   $permissions['view own unpublished harmony_posts'] = array(
     'name' => 'view own unpublished harmony_posts',
-    'roles' => array(),
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'harmony_core',
   );
 
@@ -286,6 +293,7 @@ function harmony_default_permissions_user_default_permissions() {
     'name' => 'view own unpublished harmony_threads',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
       'moderator' => 'moderator',
     ),
     'module' => 'harmony_core',
