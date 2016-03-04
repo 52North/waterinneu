@@ -234,6 +234,416 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'add terms in application_scale'.
+  $permissions['add terms in application_scale'] = array(
+    'name' => 'add terms in application_scale',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in costs'.
+  $permissions['add terms in costs'] = array(
+    'name' => 'add terms in costs',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in data_discovery_standards'.
+  $permissions['add terms in data_discovery_standards'] = array(
+    'name' => 'add terms in data_discovery_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in data_downloading_standards'.
+  $permissions['add terms in data_downloading_standards'] = array(
+    'name' => 'add terms in data_downloading_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in data_encoding_standards'.
+  $permissions['add terms in data_encoding_standards'] = array(
+    'name' => 'add terms in data_encoding_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in data_visualization_standards'.
+  $permissions['add terms in data_visualization_standards'] = array(
+    'name' => 'add terms in data_visualization_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in harmony_category'.
+  $permissions['add terms in harmony_category'] = array(
+    'name' => 'add terms in harmony_category',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in issue'.
+  $permissions['add terms in issue'] = array(
+    'name' => 'add terms in issue',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in license'.
+  $permissions['add terms in license'] = array(
+    'name' => 'add terms in license',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in organisation_classification'.
+  $permissions['add terms in organisation_classification'] = array(
+    'name' => 'add terms in organisation_classification',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in other_standards'.
+  $permissions['add terms in other_standards'] = array(
+    'name' => 'add terms in other_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in processes_and_models_standards'.
+  $permissions['add terms in processes_and_models_standards'] = array(
+    'name' => 'add terms in processes_and_models_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in product_categories'.
+  $permissions['add terms in product_categories'] = array(
+    'name' => 'add terms in product_categories',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in purpose'.
+  $permissions['add terms in purpose'] = array(
+    'name' => 'add terms in purpose',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in sensor_data_standards'.
+  $permissions['add terms in sensor_data_standards'] = array(
+    'name' => 'add terms in sensor_data_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in service_categories'.
+  $permissions['add terms in service_categories'] = array(
+    'name' => 'add terms in service_categories',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in standard_category'.
+  $permissions['add terms in standard_category'] = array(
+    'name' => 'add terms in standard_category',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in technology_readiness_level'.
+  $permissions['add terms in technology_readiness_level'] = array(
+    'name' => 'add terms in technology_readiness_level',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in type_of_hardware'.
+  $permissions['add terms in type_of_hardware'] = array(
+    'name' => 'add terms in type_of_hardware',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in type_of_software'.
+  $permissions['add terms in type_of_software'] = array(
+    'name' => 'add terms in type_of_software',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in user'.
+  $permissions['add terms in user'] = array(
+    'name' => 'add terms in user',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in waterbodies'.
+  $permissions['add terms in waterbodies'] = array(
+    'name' => 'add terms in waterbodies',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add_terms_application_scale'.
+  $permissions['add_terms_application_scale'] = array(
+    'name' => 'add_terms_application_scale',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_costs'.
+  $permissions['add_terms_costs'] = array(
+    'name' => 'add_terms_costs',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_data_discovery_standards'.
+  $permissions['add_terms_data_discovery_standards'] = array(
+    'name' => 'add_terms_data_discovery_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_data_downloading_standards'.
+  $permissions['add_terms_data_downloading_standards'] = array(
+    'name' => 'add_terms_data_downloading_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_data_encoding_standards'.
+  $permissions['add_terms_data_encoding_standards'] = array(
+    'name' => 'add_terms_data_encoding_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_data_visualization_standards'.
+  $permissions['add_terms_data_visualization_standards'] = array(
+    'name' => 'add_terms_data_visualization_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_harmony_category'.
+  $permissions['add_terms_harmony_category'] = array(
+    'name' => 'add_terms_harmony_category',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_issue'.
+  $permissions['add_terms_issue'] = array(
+    'name' => 'add_terms_issue',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_license'.
+  $permissions['add_terms_license'] = array(
+    'name' => 'add_terms_license',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_organisation_classification'.
+  $permissions['add_terms_organisation_classification'] = array(
+    'name' => 'add_terms_organisation_classification',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_other_standards'.
+  $permissions['add_terms_other_standards'] = array(
+    'name' => 'add_terms_other_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_processes_and_models_standards'.
+  $permissions['add_terms_processes_and_models_standards'] = array(
+    'name' => 'add_terms_processes_and_models_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_product_categories'.
+  $permissions['add_terms_product_categories'] = array(
+    'name' => 'add_terms_product_categories',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_purpose'.
+  $permissions['add_terms_purpose'] = array(
+    'name' => 'add_terms_purpose',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_sensor_data_standards'.
+  $permissions['add_terms_sensor_data_standards'] = array(
+    'name' => 'add_terms_sensor_data_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_service_categories'.
+  $permissions['add_terms_service_categories'] = array(
+    'name' => 'add_terms_service_categories',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_standard_category'.
+  $permissions['add_terms_standard_category'] = array(
+    'name' => 'add_terms_standard_category',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_technology_readiness_level'.
+  $permissions['add_terms_technology_readiness_level'] = array(
+    'name' => 'add_terms_technology_readiness_level',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_type_of_hardware'.
+  $permissions['add_terms_type_of_hardware'] = array(
+    'name' => 'add_terms_type_of_hardware',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_type_of_software'.
+  $permissions['add_terms_type_of_software'] = array(
+    'name' => 'add_terms_type_of_software',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_user'.
+  $permissions['add_terms_user'] = array(
+    'name' => 'add_terms_user',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_waterbodies'.
+  $permissions['add_terms_waterbodies'] = array(
+    'name' => 'add_terms_waterbodies',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
   // Exported permission: 'administer CAPTCHA settings'.
   $permissions['administer CAPTCHA settings'] = array(
     'name' => 'administer CAPTCHA settings',
@@ -618,7 +1028,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'administer nodes',
     'roles' => array(
       'administrator' => 'administrator',
-      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -979,6 +1388,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'panels_node',
   );
 
+  // Exported permission: 'create service_offering content'.
+  $permissions['create service_offering content'] = array(
+    'name' => 'create service_offering content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create service_request content'.
+  $permissions['create service_request content'] = array(
+    'name' => 'create service_request content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create url aliases'.
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
@@ -1038,6 +1465,20 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'panels_node',
   );
 
+  // Exported permission: 'delete any service_offering content'.
+  $permissions['delete any service_offering content'] = array(
+    'name' => 'delete any service_offering content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any service_request content'.
+  $permissions['delete any service_request content'] = array(
+    'name' => 'delete any service_request content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete backup files'.
   $permissions['delete backup files'] = array(
     'name' => 'delete backup files',
@@ -1088,6 +1529,20 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'panels_node',
   );
 
+  // Exported permission: 'delete own service_offering content'.
+  $permissions['delete own service_offering content'] = array(
+    'name' => 'delete own service_offering content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own service_request content'.
+  $permissions['delete own service_request content'] = array(
+    'name' => 'delete own service_request content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete revisions'.
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
@@ -1106,6 +1561,42 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['delete terms in costs'] = array(
     'name' => 'delete terms in costs',
     'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in data_discovery_standards'.
+  $permissions['delete terms in data_discovery_standards'] = array(
+    'name' => 'delete terms in data_discovery_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in data_downloading_standards'.
+  $permissions['delete terms in data_downloading_standards'] = array(
+    'name' => 'delete terms in data_downloading_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in data_encoding_standards'.
+  $permissions['delete terms in data_encoding_standards'] = array(
+    'name' => 'delete terms in data_encoding_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in data_visualization_standards'.
+  $permissions['delete terms in data_visualization_standards'] = array(
+    'name' => 'delete terms in data_visualization_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -1134,6 +1625,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'delete terms in other_standards'.
+  $permissions['delete terms in other_standards'] = array(
+    'name' => 'delete terms in other_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in processes_and_models_standards'.
+  $permissions['delete terms in processes_and_models_standards'] = array(
+    'name' => 'delete terms in processes_and_models_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'delete terms in product_categories'.
   $permissions['delete terms in product_categories'] = array(
     'name' => 'delete terms in product_categories',
@@ -1144,6 +1653,22 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'delete terms in purpose'.
   $permissions['delete terms in purpose'] = array(
     'name' => 'delete terms in purpose',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in sensor_data_standards'.
+  $permissions['delete terms in sensor_data_standards'] = array(
+    'name' => 'delete terms in sensor_data_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in service_categories'.
+  $permissions['delete terms in service_categories'] = array(
+    'name' => 'delete terms in service_categories',
     'roles' => array(),
     'module' => 'taxonomy',
   );
@@ -1235,7 +1760,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any article content',
     'roles' => array(
       'administrator' => 'administrator',
-      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -1252,7 +1776,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any page content',
     'roles' => array(
       'administrator' => 'administrator',
-      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -1271,6 +1794,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'panels_node',
+  );
+
+  // Exported permission: 'edit any service_offering content'.
+  $permissions['edit any service_offering content'] = array(
+    'name' => 'edit any service_offering content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any service_request content'.
+  $permissions['edit any service_request content'] = array(
+    'name' => 'edit any service_request content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'edit own article content'.
@@ -1324,6 +1865,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'panels_node',
   );
 
+  // Exported permission: 'edit own service_offering content'.
+  $permissions['edit own service_offering content'] = array(
+    'name' => 'edit own service_offering content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own service_request content'.
+  $permissions['edit own service_request content'] = array(
+    'name' => 'edit own service_request content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit revisions'.
   $permissions['edit revisions'] = array(
     'name' => 'edit revisions',
@@ -1358,6 +1917,42 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'edit terms in data_discovery_standards'.
+  $permissions['edit terms in data_discovery_standards'] = array(
+    'name' => 'edit terms in data_discovery_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in data_downloading_standards'.
+  $permissions['edit terms in data_downloading_standards'] = array(
+    'name' => 'edit terms in data_downloading_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in data_encoding_standards'.
+  $permissions['edit terms in data_encoding_standards'] = array(
+    'name' => 'edit terms in data_encoding_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in data_visualization_standards'.
+  $permissions['edit terms in data_visualization_standards'] = array(
+    'name' => 'edit terms in data_visualization_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'edit terms in harmony_category'.
   $permissions['edit terms in harmony_category'] = array(
     'name' => 'edit terms in harmony_category',
@@ -1383,6 +1978,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'edit terms in other_standards'.
+  $permissions['edit terms in other_standards'] = array(
+    'name' => 'edit terms in other_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in processes_and_models_standards'.
+  $permissions['edit terms in processes_and_models_standards'] = array(
+    'name' => 'edit terms in processes_and_models_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'edit terms in product_categories'.
   $permissions['edit terms in product_categories'] = array(
     'name' => 'edit terms in product_categories',
@@ -1393,6 +2006,22 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'edit terms in purpose'.
   $permissions['edit terms in purpose'] = array(
     'name' => 'edit terms in purpose',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in sensor_data_standards'.
+  $permissions['edit terms in sensor_data_standards'] = array(
+    'name' => 'edit terms in sensor_data_standards',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in service_categories'.
+  $permissions['edit terms in service_categories'] = array(
+    'name' => 'edit terms in service_categories',
     'roles' => array(),
     'module' => 'taxonomy',
   );
@@ -1534,6 +2163,42 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'term_merge',
   );
 
+  // Exported permission: 'merge data_discovery_standards terms'.
+  $permissions['merge data_discovery_standards terms'] = array(
+    'name' => 'merge data_discovery_standards terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge data_downloading_standards terms'.
+  $permissions['merge data_downloading_standards terms'] = array(
+    'name' => 'merge data_downloading_standards terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge data_encoding_standards terms'.
+  $permissions['merge data_encoding_standards terms'] = array(
+    'name' => 'merge data_encoding_standards terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge data_visualization_standards terms'.
+  $permissions['merge data_visualization_standards terms'] = array(
+    'name' => 'merge data_visualization_standards terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'term_merge',
+  );
+
   // Exported permission: 'merge harmony_category terms'.
   $permissions['merge harmony_category terms'] = array(
     'name' => 'merge harmony_category terms',
@@ -1559,6 +2224,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'term_merge',
   );
 
+  // Exported permission: 'merge other_standards terms'.
+  $permissions['merge other_standards terms'] = array(
+    'name' => 'merge other_standards terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge processes_and_models_standards terms'.
+  $permissions['merge processes_and_models_standards terms'] = array(
+    'name' => 'merge processes_and_models_standards terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'term_merge',
+  );
+
   // Exported permission: 'merge product_categories terms'.
   $permissions['merge product_categories terms'] = array(
     'name' => 'merge product_categories terms',
@@ -1569,6 +2252,22 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'merge purpose terms'.
   $permissions['merge purpose terms'] = array(
     'name' => 'merge purpose terms',
+    'roles' => array(),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge sensor_data_standards terms'.
+  $permissions['merge sensor_data_standards terms'] = array(
+    'name' => 'merge sensor_data_standards terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge service_categories terms'.
+  $permissions['merge service_categories terms'] = array(
+    'name' => 'merge service_categories terms',
     'roles' => array(),
     'module' => 'term_merge',
   );
@@ -1719,6 +2418,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'publish revisions of any service_offering content'.
+  $permissions['publish revisions of any service_offering content'] = array(
+    'name' => 'publish revisions of any service_offering content',
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'publish revisions of any service_request content'.
+  $permissions['publish revisions of any service_request content'] = array(
+    'name' => 'publish revisions of any service_request content',
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: 'publish revisions of own article content'.
   $permissions['publish revisions of own article content'] = array(
     'name' => 'publish revisions of own article content',
@@ -1737,6 +2454,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of own page content'] = array(
     'name' => 'publish revisions of own page content',
     'roles' => array(),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'publish revisions of own service_offering content'.
+  $permissions['publish revisions of own service_offering content'] = array(
+    'name' => 'publish revisions of own service_offering content',
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'publish revisions of own service_request content'.
+  $permissions['publish revisions of own service_request content'] = array(
+    'name' => 'publish revisions of own service_request content',
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -2309,6 +3044,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
       'moderator' => 'moderator',
     ),
     'module' => 'node',
@@ -2317,9 +3053,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'view revisions of any article content'.
   $permissions['view revisions of any article content'] = array(
     'name' => 'view revisions of any article content',
-    'roles' => array(
-      'moderator' => 'moderator',
-    ),
+    'roles' => array(),
     'module' => 'revisioning',
   );
 
@@ -2333,8 +3067,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'view revisions of any page content'.
   $permissions['view revisions of any page content'] = array(
     'name' => 'view revisions of any page content',
+    'roles' => array(),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'view revisions of any service_offering content'.
+  $permissions['view revisions of any service_offering content'] = array(
+    'name' => 'view revisions of any service_offering content',
     'roles' => array(
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'view revisions of any service_request content'.
+  $permissions['view revisions of any service_request content'] = array(
+    'name' => 'view revisions of any service_request content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'revisioning',
   );
@@ -2357,6 +3107,24 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of own page content'] = array(
     'name' => 'view revisions of own page content',
     'roles' => array(),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'view revisions of own service_offering content'.
+  $permissions['view revisions of own service_offering content'] = array(
+    'name' => 'view revisions of own service_offering content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'view revisions of own service_request content'.
+  $permissions['view revisions of own service_request content'] = array(
+    'name' => 'view revisions of own service_request content',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'revisioning',
   );
 
