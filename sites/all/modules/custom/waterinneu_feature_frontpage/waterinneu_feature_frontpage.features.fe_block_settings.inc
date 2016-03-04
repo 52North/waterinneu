@@ -40,34 +40,6 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['comment-recent'] = array(
-    'cache' => 1,
-    'custom' => 0,
-    'delta' => 'recent',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'comment',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'adminimal' => array(
-        'region' => 'dashboard_main',
-        'status' => 1,
-        'theme' => 'adminimal',
-        'weight' => 2,
-      ),
-      'n52_wieu_theme' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'n52_wieu_theme',
-        'weight' => -12,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
   $export['node-recent'] = array(
     'cache' => -1,
     'custom' => 0,
