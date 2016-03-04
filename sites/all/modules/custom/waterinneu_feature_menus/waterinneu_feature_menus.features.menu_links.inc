@@ -10,38 +10,6 @@
 function waterinneu_feature_menus_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_e-learning:http://example.com/E-Learning.
-  $menu_links['main-menu_e-learning:http://example.com/E-Learning'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'http://example.com/E-Learning',
-    'router_path' => '',
-    'link_title' => 'E-Learning',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'E-Learning',
-      ),
-      'alter' => TRUE,
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        8 => 0,
-        10 => 0,
-        9 => 0,
-        11 => 0,
-        3 => 0,
-      ),
-      'identifier' => 'main-menu_e-learning:http://example.com/E-Learning',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 6,
-    'customized' => 1,
-    'language' => 'en',
-    'menu_links_customized' => 1,
-  );
   // Exported menu link: main-menu_forum:forum.
   $menu_links['main-menu_forum:forum'] = array(
     'menu_name' => 'main-menu',
@@ -746,7 +714,6 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   t('Contact');
   t('Content summary');
   t('Create thread');
-  t('E-Learning');
   t('Feed aggregator');
   t('Forum');
   t('Home');
