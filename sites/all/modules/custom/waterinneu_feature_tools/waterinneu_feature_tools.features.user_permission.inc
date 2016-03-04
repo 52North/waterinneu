@@ -43,7 +43,7 @@ function waterinneu_feature_tools_user_default_permissions() {
     'name' => 'edit any tool content',
     'roles' => array(
       'administrator' => 'administrator',
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -61,14 +61,18 @@ function waterinneu_feature_tools_user_default_permissions() {
   // Exported permission: 'publish revisions of any tool content'.
   $permissions['publish revisions of any tool content'] = array(
     'name' => 'publish revisions of any tool content',
-    'roles' => array(),
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
     'module' => 'revisioning',
   );
 
   // Exported permission: 'publish revisions of own tool content'.
   $permissions['publish revisions of own tool content'] = array(
     'name' => 'publish revisions of own tool content',
-    'roles' => array(),
+    'roles' => array(
+      'moderator' => 'moderator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -77,7 +81,6 @@ function waterinneu_feature_tools_user_default_permissions() {
     'name' => 'view revisions of any tool content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
