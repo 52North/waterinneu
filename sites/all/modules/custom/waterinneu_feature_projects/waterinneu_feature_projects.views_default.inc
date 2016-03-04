@@ -62,12 +62,6 @@ function waterinneu_feature_projects_views_default_views() {
   $handler->display->display_options['sorts']['title']['ui_name'] = 'Title Sort';
   $handler->display->display_options['sorts']['title']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['title']['expose']['label'] = 'Title';
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['field_partners_countries_of_orig_tid']['id'] = 'field_partners_countries_of_orig_tid';
-  $handler->display->display_options['sorts']['field_partners_countries_of_orig_tid']['table'] = 'field_data_field_partners_countries_of_orig';
-  $handler->display->display_options['sorts']['field_partners_countries_of_orig_tid']['field'] = 'field_partners_countries_of_orig_tid';
-  $handler->display->display_options['sorts']['field_partners_countries_of_orig_tid']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_partners_countries_of_orig_tid']['expose']['label'] = 'Partners\' Countries of Origin';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -81,44 +75,6 @@ function waterinneu_feature_projects_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'project' => 'project',
-  );
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['id'] = 'field_standards_accounted_for_tid';
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['table'] = 'field_data_field_standards_accounted_for';
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['field'] = 'field_standards_accounted_for_tid';
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['ui_name'] = 'Standards Filter';
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['operator'] = 'or';
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['value'] = array();
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['expose']['operator_id'] = 'field_standards_accounted_for_tid_op';
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['expose']['label'] = 'Filter by Standards';
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['expose']['use_operator'] = TRUE;
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['expose']['operator'] = 'field_standards_accounted_for_tid_op';
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['expose']['identifier'] = 'standards';
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_standards_accounted_for_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-  );
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['id'] = 'field_partners_countries_of_orig_tid';
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['table'] = 'field_data_field_partners_countries_of_orig';
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['field'] = 'field_partners_countries_of_orig_tid';
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['operator'] = 'or';
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['value'] = array();
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['expose']['operator_id'] = 'field_partners_countries_of_orig_tid_op';
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['expose']['label'] = 'Filter Partners\' Countries of Origin';
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['expose']['operator'] = 'field_partners_countries_of_orig_tid_op';
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['expose']['identifier'] = 'field_partners_countries_of_orig_tid';
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['expose']['remember'] = TRUE;
-  $handler->display->display_options['filters']['field_partners_countries_of_orig_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
   );
   /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
@@ -146,9 +102,11 @@ function waterinneu_feature_projects_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'project';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Projects';
+  $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $export['projects'] = $view;
 
   return $export;
