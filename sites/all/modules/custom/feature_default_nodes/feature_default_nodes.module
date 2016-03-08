@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Feature - Default Nodes feature.
- */
-
-include_once 'feature_default_nodes.features.inc';
