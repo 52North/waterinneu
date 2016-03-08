@@ -36,6 +36,8 @@
 	  if (location.hash){
 	    $(location.hash).collapse('show');
 	    $(location.hash).parents('.accordion-body').collapse('show');
+	    var aTag = $(location.hash);
+	    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
 	  }
 	});
   })(jQuery);
