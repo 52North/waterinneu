@@ -355,9 +355,93 @@ function feature_configuration_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'r4032login_access_denied_message';
+  $strongarm->value = 'Access denied. Please log-in.';
+  $export['r4032login_access_denied_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'r4032login_access_denied_message_type';
+  $strongarm->value = 'error';
+  $export['r4032login_access_denied_message_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'r4032login_default_redirect_code';
+  $strongarm->value = '302';
+  $export['r4032login_default_redirect_code'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'r4032login_display_denied_message';
+  $strongarm->value = 1;
+  $export['r4032login_display_denied_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'r4032login_match_noredirect_pages';
+  $strongarm->value = '';
+  $export['r4032login_match_noredirect_pages'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'r4032login_redirect_authenticated_users_to';
+  $strongarm->value = '';
+  $export['r4032login_redirect_authenticated_users_to'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'r4032login_user_login_path';
+  $strongarm->value = 'user/login';
+  $export['r4032login_user_login_path'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'recaptcha_noscript';
+  $strongarm->value = 0;
+  $export['recaptcha_noscript'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'recaptcha_secret_key';
+  $strongarm->value = '6LeS8xgTAAAAAKpUSLvCxPugh8qVKvNsUXr3_qb1';
+  $export['recaptcha_secret_key'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'recaptcha_site_key';
   $strongarm->value = '6LeS8xgTAAAAAD6jcRvawmLkkS1_CnF5yAMHqjZD';
   $export['recaptcha_site_key'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'recaptcha_tabindex';
+  $strongarm->value = '0';
+  $export['recaptcha_tabindex'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'recaptcha_theme';
+  $strongarm->value = 'light';
+  $export['recaptcha_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'recaptcha_type';
+  $strongarm->value = 'image';
+  $export['recaptcha_type'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -407,6 +491,128 @@ function feature_configuration_strongarm() {
   $strongarm->name = 'site_slogan';
   $strongarm->value = 'Water Innovation in Europe';
   $export['site_slogan'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'uuid_features_entity_node';
+  $strongarm->value = array(
+    'page' => 'page',
+    'panel' => 'panel',
+    'article' => 0,
+    'faq' => 0,
+    'organisation' => 0,
+    'tool' => 0,
+    'project' => 0,
+    'service_offering' => 0,
+    'service_request' => 0,
+  );
+  $export['uuid_features_entity_node'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'uuid_features_entity_taxonomy_term';
+  $strongarm->value = array(
+    'license' => 'license',
+    'harmony_category' => 'harmony_category',
+    'organisation_classification' => 'organisation_classification',
+    'product_categories' => 'product_categories',
+    'type_of_software' => 'type_of_software',
+    'type_of_hardware' => 'type_of_hardware',
+    'purpose' => 'purpose',
+    'issue' => 'issue',
+    'waterbodies' => 'waterbodies',
+    'user' => 'user',
+    'costs' => 'costs',
+    'application_scale' => 'application_scale',
+    'standard_category' => 'standard_category',
+    'technology_readiness_level' => 'technology_readiness_level',
+    'service_categories' => 'service_categories',
+    'data_discovery_standards' => 0,
+    'data_downloading_standards' => 0,
+    'data_encoding_standards' => 0,
+    'data_visualization_standards' => 0,
+    'processes_and_models_standards' => 0,
+    'sensor_data_standards' => 0,
+    'other_standards' => 0,
+  );
+  $export['uuid_features_entity_taxonomy_term'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'uuid_features_file_assets_path';
+  $strongarm->value = '';
+  $export['uuid_features_file_assets_path'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'uuid_features_file_mode';
+  $strongarm->value = 'local';
+  $export['uuid_features_file_mode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'uuid_features_file_node';
+  $strongarm->value = array(
+    'page' => 'page',
+    'panel' => 'panel',
+    'article' => 0,
+    'faq' => 0,
+    'organisation' => 0,
+    'tool' => 0,
+    'project' => 0,
+    'service_offering' => 0,
+    'service_request' => 0,
+  );
+  $export['uuid_features_file_node'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'uuid_features_file_supported_fields';
+  $strongarm->value = 'file, image';
+  $export['uuid_features_file_supported_fields'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'uuid_features_file_taxonomy_term';
+  $strongarm->value = array(
+    'license' => 0,
+    'harmony_category' => 0,
+    'organisation_classification' => 0,
+    'product_categories' => 0,
+    'type_of_software' => 0,
+    'type_of_hardware' => 0,
+    'purpose' => 0,
+    'issue' => 0,
+    'waterbodies' => 0,
+    'user' => 0,
+    'costs' => 0,
+    'application_scale' => 0,
+    'standard_category' => 0,
+    'technology_readiness_level' => 0,
+    'data_discovery_standards' => 0,
+    'data_downloading_standards' => 0,
+    'data_encoding_standards' => 0,
+    'data_visualization_standards' => 0,
+    'processes_and_models_standards' => 0,
+    'sensor_data_standards' => 0,
+    'other_standards' => 0,
+    'service_categories' => 0,
+  );
+  $export['uuid_features_file_taxonomy_term'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'uuid_features_vocabulary_terms';
+  $strongarm->value = 1;
+  $export['uuid_features_vocabulary_terms'] = $strongarm;
 
   return $export;
 }
