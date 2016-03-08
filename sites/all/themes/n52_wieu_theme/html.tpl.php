@@ -37,7 +37,7 @@
 	    $(location.hash).collapse('show');
 	    $(location.hash).parents('.accordion-body').collapse('show');
 	    var aTag = $(location.hash);
-	    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+	    $('html,body').animate({scrollTop: aTag.offset().top-125},'slow');
 	  }
 	});
   })(jQuery);
