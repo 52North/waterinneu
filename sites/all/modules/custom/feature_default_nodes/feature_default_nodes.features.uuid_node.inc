@@ -84,8 +84,21 @@ function feature_default_nodes_uuid_features_default_content() {
     'pathauto' => 0,
   ),
   'translations' => array(
-    'original' => NULL,
-    'data' => array(),
+    'original' => 'en',
+    'data' => array(
+      'en' => array(
+        'entity_type' => 'node',
+        'entity_id' => 8781,
+        'revision_id' => 8836,
+        'language' => 'en',
+        'source' => '',
+        'uid' => 1,
+        'status' => 1,
+        'translate' => 0,
+        'created' => 1455028469,
+        'changed' => 1457450297,
+      ),
+    ),
   ),
   'cid' => 0,
   'last_comment_name' => NULL,
@@ -106,33 +119,33 @@ function feature_default_nodes_uuid_features_default_content() {
 	<div class="panel panel-default panel-explore panel-dark-hightlight">
 		<div id="headingOne" class="panel-heading panel-heading-explore panel-heading-dark-highlight">
 			<h2 class="panel-title">
-				<a href="#collapseOne" class="collapsed" data-toggle="collapse"
+				<a href="#explore" class="collapsed" data-toggle="collapse"
 					data-parent="#accordion"><span
 					class="glyphicon glyphicon-search">&nbsp;</span>Explore</a>
 			</h2>
 		</div>
-		<div id="collapseOne" class="panel-collapse collapse in">
+		<div id="explore" class="panel-collapse collapse in">
 			<div class="panel-body">
 				<div id="explore-search">
-					<a href="/matchmaking"><span class="glyphicon glyphicon-search">&nbsp;</span>Search</a>
+					<a href="/matchmaking#search"><span class="glyphicon glyphicon-search">&nbsp;</span>Search</a>
 				</div>
 				<div id="explore-service-requests">
-					<a href="/matchmaking"><span class="glyphicon glyphicon-tasks">&nbsp;</span>Service Requests</a>
+					<a href="/matchmaking#service-requests"><span class="glyphicon glyphicon-tasks">&nbsp;</span>Service Requests</a>
 				</div>
 				<div id="explore-alerts">
-					<a href="/matchmaking"><span class="glyphicon glyphicon-exclamation-sign">&nbsp;</span>Alerts</a>
+					<a href="/matchmaking#alerts"><span class="glyphicon glyphicon-exclamation-sign">&nbsp;</span>Alerts</a>
 				</div>
 				<div id="explore-ask-experts">
-					<a href="/matchmaking"><span class="glyphicon glyphicon-question-sign">&nbsp;</span>Ask the Expert</a>
+					<a href="/matchmaking#ask-the-expert"><span class="glyphicon glyphicon-question-sign">&nbsp;</span>Ask the Expert</a>
 				</div>
 				<div id="explore-forum">
-					<a href="/matchmaking"><span class="glyphicon glyphicon-comment">&nbsp;</span>Open Discussions in Forum</a>
+					<a href="/matchmaking#forum"><span class="glyphicon glyphicon-comment">&nbsp;</span>Open Discussions in Forum</a>
 				</div>
 				<div id="explore-e-learning">
-					<a href="/matchmaking"><span class="glyphicon glyphicon-plus-sign">&nbsp;</span>E-Learning</a>
+					<a href="/e-learning"><span class="glyphicon glyphicon-plus-sign">&nbsp;</span>E-Learning</a>
 				</div>
 				<div id="explore-events">
-					<a href="/matchmaking"><span class="glyphicon glyphicon-calendar">&nbsp;</span>Events</a>
+					<a href="/matchmaking#events"><span class="glyphicon glyphicon-calendar">&nbsp;</span>Events</a>
 				</div>
 			</div>
 		</div>
@@ -140,12 +153,12 @@ function feature_default_nodes_uuid_features_default_content() {
 	<div class="panel panel-default panel-about panel-light-highlight">
 		<div id="headingTwo" class="panel-heading panel-heading-about panel-heading-light-highlight">
 			<h2 class="panel-title">
-				<a href="#collapseTwo" class="collapsed" data-toggle="collapse"
+				<a href="#about" class="collapsed" data-toggle="collapse"
 					data-parent="#accordion"><span
 					class="glyphicon glyphicon-info-sign">&nbsp;</span>About</a>
 			</h2>
 		</div>
-		<div id="collapseTwo" class="panel-collapse collapse">
+		<div id="about" class="panel-collapse collapse">
 			<div class="panel-body">
 				<h3>
 					<a id="intro"></a>Introduction
@@ -255,12 +268,12 @@ function feature_default_nodes_uuid_features_default_content() {
 		<div id="headingThree"
 			class="panel-heading panel-heading-our-services panel-heading-dark-highlight">
 			<h2 class="panel-title">
-				<a href="#collapseThree" class="collapsed" data-toggle="collapse"
+				<a href="#our-services" class="collapsed" data-toggle="collapse"
 					data-parent="#accordion"><span
 					class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Our Services</a>
 			</h2>
 		</div>
-		<div id="collapseThree" class="panel-collapse collapse">
+		<div id="our-services" class="panel-collapse collapse">
 			<div class="panel-body">Anim pariatur cliche reprehenderit,
 				enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
 				moon officia aute, non cupidatat skateboard dolor brunch. Food truck
@@ -277,12 +290,12 @@ function feature_default_nodes_uuid_features_default_content() {
 		<div id="headingThree1"
 			class="panel-heading panel-heading-upcoming-events panel-heading-light-highlight">
 			<h2 class="panel-title">
-				<a href="#collapseThree1" class="collapsed" data-toggle="collapse"
+				<a href="#upcoming-events" class="collapsed" data-toggle="collapse"
 					data-parent="#accordion"><span
 					class="glyphicon glyphicon-calendar">&nbsp;</span>Upcoming Events</a>
 			</h2>
 		</div>
-		<div id="collapseThree1" class="panel-collapse collapse">
+		<div id="upcoming-events" class="panel-collapse collapse">
 			<div class="panel-body">Here we list the upcoming events during
 				the next weeks or at least one.</div>
 		</div>
@@ -380,8 +393,21 @@ function feature_default_nodes_uuid_features_default_content() {
     'pathauto' => 1,
   ),
   'translations' => array(
-    'original' => NULL,
-    'data' => array(),
+    'original' => 'en',
+    'data' => array(
+      'en' => array(
+        'entity_type' => 'node',
+        'entity_id' => 8784,
+        'revision_id' => 8837,
+        'language' => 'en',
+        'source' => '',
+        'uid' => 1,
+        'status' => 1,
+        'translate' => 0,
+        'created' => 1456744379,
+        'changed' => 1457450190,
+      ),
+    ),
   ),
   'cid' => 0,
   'last_comment_name' => NULL,
@@ -399,10 +425,11 @@ function feature_default_nodes_uuid_features_default_content() {
     'en' => array(
       0 => array(
         'value' => 'The primary goal of the WaterInnEU Portal is to facility a match making between organizations offering certain products for River Basin Management, potential users of these products, and service providers that provide specific services for these products, e.g. to customize a software for a particular river basin. To enable such a match making, the portal provides the functionalities listed below.
-<!--
-SEARCH
--->
+
 <div id="accordion" class="panel-group">
+  <!--
+  SEARCH
+  -->
   <div id="explore-search" class="panel panel-default panel-dark-hightlight">
     <div class="panel-heading panel-heading-dark-highlight">
       <div class="panel-title">
