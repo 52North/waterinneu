@@ -5,7 +5,7 @@ sites/*/settings*.php
 **/.htaccess
 
 # ignore drupal specific stuff
-config-backup/test*
+config-backup/*
 sites/default/files/languages/*
 
 # waterinneu inventory import exclusions
