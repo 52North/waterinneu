@@ -325,6 +325,54 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-author_add-content:node/add',
   );
+  // Exported menu link: menu-author_service-offering:node/add/service-offering.
+  $menu_links['menu-author_service-offering:node/add/service-offering'] = array(
+    'menu_name' => 'menu-author',
+    'link_path' => 'node/add/service-offering',
+    'router_path' => 'node/add/service-offering',
+    'link_title' => 'Service Offering',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Add Service Offering',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-author_service-offering:node/add/service-offering',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'en',
+    'menu_links_customized' => 1,
+    'parent_identifier' => 'menu-author_add-content:node/add',
+  );
+  // Exported menu link: menu-author_service-request:node/add/service-request.
+  $menu_links['menu-author_service-request:node/add/service-request'] = array(
+    'menu_name' => 'menu-author',
+    'link_path' => 'node/add/service-request',
+    'router_path' => 'node/add/service-request',
+    'link_title' => 'Service Request',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Add service request',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-author_service-request:node/add/service-request',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'en',
+    'menu_links_customized' => 1,
+    'parent_identifier' => 'menu-author_add-content:node/add',
+  );
   // Exported menu link: menu-moderator_recent-posts:tracker.
   $menu_links['menu-moderator_recent-posts:tracker'] = array(
     'menu_name' => 'menu-moderator',
