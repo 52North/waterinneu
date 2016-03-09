@@ -240,8 +240,10 @@ function waterinneu_feature_projects_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
+        'settings' => array(
+          'strip_www' => 1,
+        ),
+        'type' => 'link_domain',
         'weight' => 1,
       ),
       'teaser' => array(
