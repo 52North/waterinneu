@@ -219,6 +219,21 @@ function feature_configuration_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'maintenance_mode_message';
+  $strongarm->value = '<div class="maintenance-alert">
+The server is currently under maintenance, e.g. deployment of
+<ul>
+<li>new features,</li>
+<li>software updates,</li>
+<li>or service maintenance.</li>
+</ul>
+We should be back shortly. Thank you for your patience. In the meantime, you can check at twitter for some <a href="https://twitter.com/WaterInnEU" target="_blank">updates from WaterInnEU</a>. Feel free to send a message to <a href="mailto:waterinneu@creaf.uab.cat">WaterInnEU@creaf.uab.cat</a> in the case that the error persists.
+</div>';
+  $export['maintenance_mode_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_article';
   $strongarm->value = array(
     0 => 'main-menu',
