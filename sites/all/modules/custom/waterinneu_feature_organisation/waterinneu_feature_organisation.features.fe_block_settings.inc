@@ -33,7 +33,7 @@ function waterinneu_feature_organisation_default_fe_block_settings() {
         'region' => 'help',
         'status' => 1,
         'theme' => 'n52_wieu_theme',
-        'weight' => -33,
+        'weight' => -41,
       ),
     ),
     'title' => '',
