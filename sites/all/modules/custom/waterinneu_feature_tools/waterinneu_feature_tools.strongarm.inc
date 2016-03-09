@@ -195,9 +195,135 @@ function waterinneu_feature_tools_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_application_scale_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_application_scale_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_costs_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_costs_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_data_discovery_standards_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_data_discovery_standards_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_data_downloading_standards_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_data_downloading_standards_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_data_encoding_standards_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_data_encoding_standards_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_data_visualization_standards_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_data_visualization_standards_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_issue_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_issue_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_license_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_license_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_other_standards_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_other_standards_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_processes_and_models_standards_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_processes_and_models_standards_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_product_categories_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_product_categories_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_purpose_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_purpose_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_sensor_data_standards_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_sensor_data_standards_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_standard_category_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_standard_category_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_technology_readiness_level_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_technology_readiness_level_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_type_of_hardware_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_type_of_hardware_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_type_of_software_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_type_of_software_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_user_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_user_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_waterbodies_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_waterbodies_pattern'] = $strongarm;
 
   return $export;
 }
