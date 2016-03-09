@@ -86,6 +86,17 @@ function waterinneu_feature_frontpage_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'organisation' => 'organisation',
+    'tool' => 'tool',
+    'project' => 'project',
+    'service_offering' => 'service_offering',
+    'service_request' => 'service_request',
+  );
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
