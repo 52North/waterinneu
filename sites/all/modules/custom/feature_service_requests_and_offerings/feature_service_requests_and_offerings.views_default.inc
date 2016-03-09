@@ -305,5 +305,163 @@ function feature_service_requests_and_offerings_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $export['products_for_referencing'] = $view;
 
+  $view = new view();
+  $view->name = 'service_offerings';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Service Offerings';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Service Offerings';
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Filter by';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '9';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'columnized-item-list';
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'teaser';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'service_offering' => 'service_offering',
+  );
+  /* Filter criterion: Content: Category (field_service_category) */
+  $handler->display->display_options['filters']['field_service_category_tid']['id'] = 'field_service_category_tid';
+  $handler->display->display_options['filters']['field_service_category_tid']['table'] = 'field_data_field_service_category';
+  $handler->display->display_options['filters']['field_service_category_tid']['field'] = 'field_service_category_tid';
+  $handler->display->display_options['filters']['field_service_category_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_service_category_tid']['expose']['operator_id'] = 'field_service_category_tid_op';
+  $handler->display->display_options['filters']['field_service_category_tid']['expose']['label'] = 'Filter by Category';
+  $handler->display->display_options['filters']['field_service_category_tid']['expose']['operator'] = 'field_service_category_tid_op';
+  $handler->display->display_options['filters']['field_service_category_tid']['expose']['identifier'] = 'field_service_category_tid';
+  $handler->display->display_options['filters']['field_service_category_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    9 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_service_category_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_service_category_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_service_category_tid']['vocabulary'] = 'service_categories';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['path'] = 'matchmaking/service-offerings';
+  $export['service_offerings'] = $view;
+
+  $view = new view();
+  $view->name = 'service_requests';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Service Requests';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Service Requests';
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Filter by';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '9';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'columnized-item-list';
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'teaser';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'service_request' => 'service_request',
+  );
+  /* Filter criterion: Content: Category (field_service_category) */
+  $handler->display->display_options['filters']['field_service_category_tid']['id'] = 'field_service_category_tid';
+  $handler->display->display_options['filters']['field_service_category_tid']['table'] = 'field_data_field_service_category';
+  $handler->display->display_options['filters']['field_service_category_tid']['field'] = 'field_service_category_tid';
+  $handler->display->display_options['filters']['field_service_category_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_service_category_tid']['expose']['operator_id'] = 'field_service_category_tid_op';
+  $handler->display->display_options['filters']['field_service_category_tid']['expose']['label'] = 'Filter by Category';
+  $handler->display->display_options['filters']['field_service_category_tid']['expose']['operator'] = 'field_service_category_tid_op';
+  $handler->display->display_options['filters']['field_service_category_tid']['expose']['identifier'] = 'field_service_category_tid';
+  $handler->display->display_options['filters']['field_service_category_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    9 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_service_category_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_service_category_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_service_category_tid']['vocabulary'] = 'service_categories';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['path'] = 'matchmaking/service-requests';
+  $export['service_requests'] = $view;
+
   return $export;
 }

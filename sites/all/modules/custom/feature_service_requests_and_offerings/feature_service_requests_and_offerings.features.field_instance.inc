@@ -18,16 +18,29 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
     'description' => 'What is your offering regarding the selected product?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => 0,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 150,
+          'trim_link' => 0,
+          'trim_options' => array(
+            'text' => 'text',
+          ),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
         'weight' => 0,
       ),
       'tool_of_the_month' => array(
@@ -98,7 +111,7 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 1,
     ),
   );
 
@@ -110,19 +123,22 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
     'description' => 'Which organisation offers this service?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 6,
+        'weight' => 3,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 3,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
@@ -149,7 +165,7 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
       'module' => 'entityreference_view_widget',
       'settings' => array(
         'allow_duplicates' => 0,
-        'close_modal' => 0,
+        'close_modal' => 1,
         'pass_argument' => 0,
         'pass_arguments' => '',
         'rendered_entity' => 0,
@@ -157,7 +173,7 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
-      'weight' => 6,
+      'weight' => 3,
     ),
   );
 
@@ -169,19 +185,22 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
     'description' => 'For which product do you offer services?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
@@ -208,7 +227,7 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
       'module' => 'entityreference_view_widget',
       'settings' => array(
         'allow_duplicates' => 0,
-        'close_modal' => 0,
+        'close_modal' => 1,
         'pass_argument' => 0,
         'pass_arguments' => '',
         'rendered_entity' => 0,
@@ -216,7 +235,7 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
-      'weight' => 5,
+      'weight' => 2,
     ),
   );
 
@@ -228,17 +247,18 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
     'description' => 'Which category fits your request?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 7,
+        'weight' => 1,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 1,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
@@ -260,7 +280,7 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 5,
     ),
   );
 
@@ -275,13 +295,13 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
@@ -321,16 +341,29 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
     'description' => 'Please describe your demand as detailed as possible, but be reminded that is request will be published.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => 0,
+          'more_text' => '',
+          'summary_handler' => 'full',
+          'trim_length' => 150,
+          'trim_link' => 0,
+          'trim_options' => array(
+            'text' => 'text',
+          ),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
         'weight' => 0,
       ),
       'tool_of_the_month' => array(
@@ -414,19 +447,22 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
     'description' => 'Which product is your inquiry about?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
@@ -473,17 +509,18 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
     'description' => 'Which category fits your inquiry',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 6,
+        'weight' => 1,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 1,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
@@ -520,13 +557,13 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
