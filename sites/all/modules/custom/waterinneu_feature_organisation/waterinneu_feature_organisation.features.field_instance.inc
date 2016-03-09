@@ -66,7 +66,10 @@ function waterinneu_feature_organisation_field_default_field_instances() {
           'textformatter_comma_full_stop' => 0,
           'textformatter_comma_override' => 0,
           'textformatter_comma_tag' => 'span',
-          'textformatter_contrib' => array(),
+          'textformatter_contrib' => array(
+            'entityreference_link' => TRUE,
+            'link_field_display_type' => 'link_default',
+          ),
           'textformatter_separator_custom' => '',
           'textformatter_separator_custom_class' => 'textformatter-separator',
           'textformatter_separator_custom_tag' => 'span',
@@ -93,7 +96,7 @@ function waterinneu_feature_organisation_field_default_field_instances() {
           'textformatter_type' => 'comma',
         ),
         'type' => 'textformatter_list',
-        'weight' => 1,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -112,47 +115,6 @@ function waterinneu_feature_organisation_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-organisation-field_code'.
-  $field_instances['node-organisation-field_code'] = array(
-    'bundle' => 'organisation',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'internal code for referencing',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_code',
-    'label' => 'code',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max' => 99999,
-      'min' => 1,
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
       'weight' => 6,
     ),
   );
@@ -169,13 +131,26 @@ function waterinneu_feature_organisation_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => 0,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 150,
+          'trim_link' => 0,
+          'trim_options' => array(
+            'text' => 'text',
+          ),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -250,19 +225,23 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'thumbnail',
         ),
         'type' => 'image',
-        'weight' => 4,
+        'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'thumbnail',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
     ),
@@ -290,16 +269,17 @@ function waterinneu_feature_organisation_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
-  // Exported field_instance: 'node-organisation-field_projects'.
-  $field_instances['node-organisation-field_projects'] = array(
+  // Exported field_instance: 'node-organisation-field_product'.
+  $field_instances['node-organisation-field_product'] = array(
     'bundle' => 'organisation',
-    'default_value' => NULL,
+    'default_value' => array(),
+    'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'The projects the organisation participated in.',
+    'description' => 'What products on this platform are provided/supported by this organisation?',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -320,13 +300,79 @@ function waterinneu_feature_organisation_field_default_field_instances() {
           'textformatter_type' => 'comma',
         ),
         'type' => 'textformatter_list',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_product',
+    'label' => 'Products',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'products_for_referencing_multi|entityreference_view_widget_2',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-organisation-field_projects'.
+  $field_instances['node-organisation-field_projects'] = array(
+    'bundle' => 'organisation',
+    'default_value' => array(),
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => 'In which projects on the platform is the organisation involved?',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 0,
+          'textformatter_contrib' => array(
+            'entityreference_link' => 1,
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -334,18 +380,30 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     'label' => 'Projects',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'entityreference_view_widget',
       'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
         'match_operator' => 'CONTAINS',
+        'pass_argument' => 0,
+        'pass_arguments' => '',
         'path' => '',
+        'rendered_entity' => 0,
         'size' => 60,
+        'view' => 'projects_for_referencing|entityreference_view_widget_2',
+        'view_mode' => 'full',
       ),
-      'type' => 'entityreference_autocomplete_tags',
+      'type' => 'entityreference_view_widget',
       'weight' => 3,
     ),
   );
@@ -363,17 +421,19 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 1,
+        'settings' => array(
+          'strip_www' => 1,
+        ),
+        'type' => 'link_domain',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -414,7 +474,7 @@ function waterinneu_feature_organisation_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
@@ -432,10 +492,10 @@ function waterinneu_feature_organisation_field_default_field_instances() {
         'weight' => 6,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -466,13 +526,13 @@ function waterinneu_feature_organisation_field_default_field_instances() {
   t('Class');
   t('Classification of the organisation. Currently available: SME, Large Enterprise, Trade Association, Consulting, Research Institute and Remaining. Combinations are allowed if useful.');
   t('Description');
+  t('In which projects on the platform is the organisation involved?');
   t('Logo');
+  t('Products');
   t('Projects');
-  t('The projects the organisation participated in.');
   t('Title');
   t('Website');
-  t('code');
-  t('internal code for referencing');
+  t('What products on this platform are provided/supported by this organisation?');
 
   return $field_instances;
 }

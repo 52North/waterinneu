@@ -96,7 +96,7 @@ function waterinneu_feature_organisation_strongarm() {
           'weight' => 2,
         ),
         'language' => array(
-          'weight' => '1',
+          'weight' => '8',
         ),
         'path' => array(
           'weight' => '5',
@@ -138,7 +138,7 @@ function waterinneu_feature_organisation_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_organisation';
-  $strongarm->value = 'main-menu:835';
+  $strongarm->value = 'main-menu:0';
   $export['menu_parent_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -161,7 +161,7 @@ function waterinneu_feature_organisation_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_organisation';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['node_submitted_organisation'] = $strongarm;
 
   $strongarm = new stdClass();
