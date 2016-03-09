@@ -13,3 +13,7 @@ sites/all/modules/n52_migrate_waterinneu/csv_files/tmp
 
 # ignore generated files
 sites/default/files/*
+
+# ignore security test files
+sites/all/modules/security_review/file_write_test.*
+sites/all/modules/security_review/IGNOREME.txt
