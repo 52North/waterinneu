@@ -10,6 +10,152 @@
 function feature_service_requests_and_offerings_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance:
+  // 'comment-comment_node_service_offering-comment_body'.
+  $field_instances['comment-comment_node_service_offering-comment_body'] = array(
+    'bundle' => 'comment_node_service_offering',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'comment',
+    'field_name' => 'comment_body',
+    'label' => 'Comment',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => -4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'comment-comment_node_service_offering-subject_field'.
+  $field_instances['comment-comment_node_service_offering-subject_field'] = array(
+    'bundle' => 'comment_node_service_offering',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'comment',
+    'field_name' => 'subject_field',
+    'label' => 'Subject',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'comment-comment_node_service_request-comment_body'.
+  $field_instances['comment-comment_node_service_request-comment_body'] = array(
+    'bundle' => 'comment_node_service_request',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'comment',
+    'field_name' => 'comment_body',
+    'label' => 'Comment',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => -4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'comment-comment_node_service_request-subject_field'.
+  $field_instances['comment-comment_node_service_request-subject_field'] = array(
+    'bundle' => 'comment_node_service_request',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'comment',
+    'field_name' => 'subject_field',
+    'label' => 'Subject',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Exported field_instance: 'node-service_offering-field_description'.
   $field_instances['node-service_offering-field_description'] = array(
     'bundle' => 'service_offering',
@@ -641,12 +787,14 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
   // Translatables
   // Included for use with string extractors like potx.
   t('Category');
+  t('Comment');
   t('Description');
   t('For which product do you offer services?');
   t('Name');
   t('Organisation');
   t('Please describe your demand as detailed as possible, but be reminded that is request will be published.');
   t('Product');
+  t('Subject');
   t('Title');
   t('What is your offering regarding the selected product?');
   t('Which category fits your inquiry');
