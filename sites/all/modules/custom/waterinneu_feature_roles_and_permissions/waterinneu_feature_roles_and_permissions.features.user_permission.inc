@@ -901,7 +901,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'administer flags',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'flag',
   );
@@ -3021,7 +3020,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'use flag import',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'flag',
   );
