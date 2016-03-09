@@ -23,6 +23,13 @@ function feature_helpdesk_contact_categories_defaults() {
       'weight' => 6,
       'selected' => 0,
     ),
+    'Event Addition' => array(
+      'category' => 'Event Addition',
+      'recipients' => 'waterinneu@creaf.uab.cat',
+      'reply' => '',
+      'weight' => 7,
+      'selected' => 0,
+    ),
     'Finding a product' => array(
       'category' => 'Finding a product',
       'recipients' => 'waterinneu@creaf.uab.cat',
@@ -48,7 +55,7 @@ function feature_helpdesk_contact_categories_defaults() {
       'category' => 'Other enquiry',
       'recipients' => 'waterinneu@creat.uab.cat',
       'reply' => '',
-      'weight' => 7,
+      'weight' => 8,
       'selected' => 0,
     ),
     'Uploading a product' => array(
