@@ -29,7 +29,8 @@
 /**
  * Preprocess variables for page template.
  * 
- * Adjustment is the changed glyphicons for the pre-header.
+ * Changes to bootstrap business:
+  * - glyphicons for the pre-header.
  */
 function n52_wieu_theme_preprocess_page(&$vars) {
 
@@ -77,7 +78,8 @@ function n52_wieu_theme_preprocess_page(&$vars) {
 /**
  * Implements hook_form_element($variables)
  * 
- * Adjustment is to render the description before the fields and not after.
+ * Changes to bootstrap business:
+  * - Adjustment is to render the description before the fields and not after.
  * 
  * TODO fix bugs with certain fields types.
  * 
@@ -151,8 +153,10 @@ function n52_wieu_theme_form_element($variables) {
 }
 
 /**
- * Render the description of fields with glyphicon after the label if content 
- * type is matching.
+ * 
+ * Changes to bootstrap business:
+ * - Render the description of fields with glyphicon after the label if content 
+ *   type is matching.
  * 
  * @param unknown $variables
  */
@@ -194,12 +198,19 @@ function n52_wieu_theme_field($variables) {
 	return $output;
 }
 
-function n52_waterinneu_theme_node_last_updated($changed, $name) {
+/**
+ * Renders HTML element for the last updated value using the given parameters. 
+ * The used timestamp format is 'c'.
+ * 
+ * @param unknown $changed the information when the node was last changed
+ * @param unknown $user_name the name of the user that did the last change
+ */
+function n52_waterinneu_theme_node_last_updated($changed, $user_name) {
 	$output = '<span property="dc:date" content="' .
 		format_date($changed,'custom','c') .
 		'" datatype="xsd:dateTime">' .
 		t('Last updated by ') .
-		$name .
+		$user_name .
 		t(' on ') .
 		format_date($changed) .
 		'</span>';

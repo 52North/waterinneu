@@ -26,6 +26,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
+ /*
+  * Changes to bootstrap business:
+  * - removed support for IE version < 10
+  * - add javascript sections at the end
+  */
  ?>
 <!DOCTYPE html>
 <html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces;?>>

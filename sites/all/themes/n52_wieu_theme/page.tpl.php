@@ -26,6 +26,12 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
+ /*
+  * Changes to bootstrap business:
+  * - glyphicon for preHeader: chevron-plus => chevron-down
+  * - add div with style float left around #logo
+  * - add div.name_and_slogan around div#site-name and div#slogan
+  */
  ?>
 <?php if (theme_get_setting('scrolltop_display')): ?>
 <div id="toTop"><span class="glyphicon glyphicon-chevron-up"></span></div>

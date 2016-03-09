@@ -26,6 +26,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
+ /*
+  * Changes to bootstrap business:
+  * - When rendering a tool node, we changes the Comment heading to a question 
+  */
  ?>
 <section id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php if ($content['comments'] && $node->type != 'forum'): ?>
