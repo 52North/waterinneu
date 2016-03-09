@@ -180,6 +180,34 @@ function waterinneu_feature_frontpage_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['views-latest_news-block'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'latest_news-block',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'n52_wieu_theme',
+        'weight' => -25,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['views-tool_of_the_month-block'] = array(
     'cache' => -1,
     'custom' => 0,
