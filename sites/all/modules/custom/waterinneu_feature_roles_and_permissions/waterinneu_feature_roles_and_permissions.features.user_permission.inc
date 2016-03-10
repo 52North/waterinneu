@@ -1958,7 +1958,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit any service_offering content'] = array(
     'name' => 'edit any service_offering content',
     'roles' => array(
-      'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -1967,7 +1967,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit any service_request content'] = array(
     'name' => 'edit any service_request content',
     'roles' => array(
-      'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -3427,6 +3427,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of any service_offering content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3436,6 +3437,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of any service_request content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
