@@ -221,6 +221,8 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'access user contact forms',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'contact',
   );
