@@ -41,13 +41,13 @@
   <?php print $scripts; ?>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
-  <div id="skip-link">
-    <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
-  </div>
+	<div id="skip-link">
+		<a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
+	</div>
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
-  <script>
+  <script type="text/javascript">
   (function($) {
   	$(document).ready(function() {
   		$('[data-toggle="tooltip"]').tooltip();
@@ -64,7 +64,7 @@
   	});
   })(jQuery);
   </script>
-  <script>
+	<script type="text/javascript">
   (function($) {
   $(document).ready(function () {
 	  if (location.hash){
