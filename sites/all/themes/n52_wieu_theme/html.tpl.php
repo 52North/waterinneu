@@ -157,7 +157,8 @@
     $(document).ready(function () {
       if ($(location).attr('pathname').match(/forum$/) &&
           !$('#block-menu-menu-top-level-links-registered-').length) {
-        $('<div class="view-footer alert alert-warning" style="margin-top: 10px;"><?php print t('For adding adding new content, you need to <a href="/user?destination=forum">login</a>.')?></div>').insertAfter('div.view-content');
+        var link = $(location).attr('pathname').replace('forum','user') + '?destination=forum';
+        $('<div class="view-footer alert alert-warning" style="margin-top: 10px;"><?php print t('For adding adding new content, you need to ')?><a href="' + link + '"><?php print t('login')?></a>.</div>').insertAfter('div.view-content');
       }
     });
   })(jQuery);
