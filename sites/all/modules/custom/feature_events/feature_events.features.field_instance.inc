@@ -131,10 +131,10 @@ function feature_events_field_default_field_instances() {
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'filtered_html' => 'filtered_html',
+          'filtered_html' => 0,
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
           'plain_text' => 'plain_text',
         ),
@@ -169,7 +169,7 @@ function feature_events_field_default_field_instances() {
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(

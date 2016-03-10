@@ -241,7 +241,7 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -564,7 +564,7 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
