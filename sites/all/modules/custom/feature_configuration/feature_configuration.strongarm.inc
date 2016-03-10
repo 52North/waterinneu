@@ -287,14 +287,14 @@ We should be back shortly. Thank you for your patience. In the meantime, you can
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_article';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['node_preview_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_page';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['node_preview_page'] = $strongarm;
 
   $strongarm = new stdClass();
