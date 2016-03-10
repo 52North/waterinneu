@@ -18,11 +18,11 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'description' => 'What is the relevant scale of application of the product?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -50,7 +50,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 22,
+      'weight' => 26,
     ),
   );
 
@@ -65,11 +65,11 @@ function waterinneu_feature_tools_field_default_field_instances() {
 </ul>',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 26,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -145,7 +145,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 36,
+      'weight' => 40,
     ),
   );
 
@@ -157,7 +157,7 @@ function waterinneu_feature_tools_field_default_field_instances() {
     'description' => 'What type of product is this?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
@@ -206,7 +206,7 @@ compatible with?',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -282,7 +282,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 21,
+      'weight' => 25,
     ),
   );
 
@@ -294,11 +294,11 @@ compatible with?',
     'description' => 'How can I get in contact with product and / or service provider, river basin managers and consultants related to the products?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 28,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -374,7 +374,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 38,
+      'weight' => 42,
     ),
   );
 
@@ -386,11 +386,11 @@ compatible with?',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -466,7 +466,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 18,
+      'weight' => 22,
     ),
   );
 
@@ -478,11 +478,11 @@ compatible with?',
     'description' => 'What are the costs related to the product?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 16,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -510,7 +510,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 17,
+      'weight' => 21,
     ),
   );
 
@@ -640,11 +640,11 @@ compatible with?',
     'description' => 'Is there an E-learning tutorial for the product on The Virtual Market Place and where can I find it?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 27,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -697,7 +697,7 @@ compatible with?',
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 37,
+      'weight' => 41,
     ),
   );
 
@@ -709,11 +709,11 @@ compatible with?',
     'description' => 'What is the unique selling point of the product?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 23,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -789,7 +789,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 33,
+      'weight' => 37,
     ),
   );
 
@@ -801,7 +801,7 @@ compatible with?',
     'description' => 'What subject is the product related to?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
           'textformatter_class' => 'issue-list',
@@ -820,7 +820,7 @@ compatible with?',
           'textformatter_type' => 'comma',
         ),
         'type' => 'textformatter_list',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -848,7 +848,99 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 12,
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_issue_info'.
+  $field_instances['node-tool-field_issue_info'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'What subject is the product related to?',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_issue_info',
+    'label' => 'Issue info',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 'harmony_filtered',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 14,
     ),
   );
 
@@ -894,7 +986,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 15,
+      'weight' => 19,
     ),
   );
 
@@ -906,11 +998,11 @@ compatible with?',
     'description' => 'What are the conditions to use this product?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -986,7 +1078,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 16,
+      'weight' => 20,
     ),
   );
 
@@ -998,7 +1090,7 @@ compatible with?',
     'description' => 'Where can I find relevant information or download the product?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
           'textformatter_class' => 'related-link-list',
@@ -1016,7 +1108,7 @@ compatible with?',
           'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1152,7 +1244,7 @@ compatible with?',
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 25,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1196,7 +1288,7 @@ compatible with?',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 35,
+      'weight' => 39,
     ),
   );
 
@@ -1214,7 +1306,7 @@ compatible with?',
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 24,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1258,7 +1350,7 @@ compatible with?',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 34,
+      'weight' => 38,
     ),
   );
 
@@ -1270,7 +1362,7 @@ compatible with?',
     'description' => 'For which tasks in water resources management can the product be used?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
@@ -1306,6 +1398,98 @@ compatible with?',
     ),
   );
 
+  // Exported field_instance: 'node-tool-field_purpose_info'.
+  $field_instances['node-tool-field_purpose_info'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'For which tasks in water resources management can the product be used?',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_purpose_info',
+    'label' => 'Purpose Info',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 'harmony_filtered',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'node-tool-field_relevant_water_bodies'.
   $field_instances['node-tool-field_relevant_water_bodies'] = array(
     'bundle' => 'tool',
@@ -1314,7 +1498,7 @@ compatible with?',
     'description' => 'What types of water bodies is the product related to?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
           'textformatter_class' => 'water-bodies-list',
@@ -1333,7 +1517,7 @@ compatible with?',
           'textformatter_type' => 'comma',
         ),
         'type' => 'textformatter_list',
-        'weight' => 13,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1361,7 +1545,99 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 13,
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_relevant_water_bodies_info'.
+  $field_instances['node-tool-field_relevant_water_bodies_info'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'What types of water bodies is the product related to?',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 16,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_relevant_water_bodies_info',
+    'label' => 'Relevant Water Bodies Info',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 'harmony_filtered',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 16,
     ),
   );
 
@@ -1420,7 +1696,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 24,
+      'weight' => 28,
     ),
   );
 
@@ -1432,10 +1708,25 @@ compatible with?',
     'description' => 'With which international and/or national standards is the product compatible?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 0,
+          'textformatter_contrib' => array(
+            'entityreference_link' => TRUE,
+            'link_field_display_type' => 'link_default',
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
         'weight' => 22,
       ),
       'teaser' => array(
@@ -1467,7 +1758,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 25,
+      'weight' => 29,
     ),
   );
 
@@ -1479,10 +1770,25 @@ compatible with?',
     'description' => 'With which international and/or national standards is the product compatible?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 0,
+          'textformatter_contrib' => array(
+            'entityreference_link' => TRUE,
+            'link_field_display_type' => 'link_default',
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
         'weight' => 23,
       ),
       'teaser' => array(
@@ -1514,7 +1820,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 26,
+      'weight' => 30,
     ),
   );
 
@@ -1526,10 +1832,25 @@ compatible with?',
     'description' => 'With which international and/or national standards is the product compatible?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 0,
+          'textformatter_contrib' => array(
+            'entityreference_link' => TRUE,
+            'link_field_display_type' => 'link_default',
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
         'weight' => 24,
       ),
       'teaser' => array(
@@ -1561,7 +1882,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 27,
+      'weight' => 31,
     ),
   );
 
@@ -1573,10 +1894,25 @@ compatible with?',
     'description' => 'With which international and/or national standards is the product compatible?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 0,
+          'textformatter_contrib' => array(
+            'entityreference_link' => TRUE,
+            'link_field_display_type' => 'link_default',
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
         'weight' => 25,
       ),
       'teaser' => array(
@@ -1608,7 +1944,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 28,
+      'weight' => 32,
     ),
   );
 
@@ -1624,7 +1960,7 @@ compatible with?',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1700,7 +2036,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 23,
+      'weight' => 27,
     ),
   );
 
@@ -1712,10 +2048,25 @@ compatible with?',
     'description' => 'With which international and/or national standards is the product compatible?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 0,
+          'textformatter_contrib' => array(
+            'entityreference_link' => TRUE,
+            'link_field_display_type' => 'link_default',
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
         'weight' => 28,
       ),
       'teaser' => array(
@@ -1747,7 +2098,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 31,
+      'weight' => 35,
     ),
   );
 
@@ -1759,10 +2110,25 @@ compatible with?',
     'description' => 'With which international and/or national standards is the product compatible?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 0,
+          'textformatter_contrib' => array(
+            'entityreference_link' => TRUE,
+            'link_field_display_type' => 'link_default',
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
         'weight' => 26,
       ),
       'teaser' => array(
@@ -1794,7 +2160,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 29,
+      'weight' => 33,
     ),
   );
 
@@ -1806,10 +2172,25 @@ compatible with?',
     'description' => 'With which international and/or national standards is the product compatible?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 0,
+          'textformatter_contrib' => array(
+            'entityreference_link' => TRUE,
+            'link_field_display_type' => 'link_default',
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
         'weight' => 27,
       ),
       'teaser' => array(
@@ -1841,7 +2222,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 30,
+      'weight' => 34,
     ),
   );
 
@@ -1853,7 +2234,7 @@ compatible with?',
     'description' => 'What is the target user group of the product?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
           'textformatter_class' => 'target-user-group-list',
@@ -1872,7 +2253,7 @@ compatible with?',
           'textformatter_type' => 'comma',
         ),
         'type' => 'textformatter_list',
-        'weight' => 14,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1900,7 +2281,99 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 14,
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_target_user_group_info'.
+  $field_instances['node-tool-field_target_user_group_info'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'What is the target user group of the product?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 33,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_target_user_group_info',
+    'label' => 'Target User Group Info',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 'harmony_filtered',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 18,
     ),
   );
 
@@ -1912,11 +2385,11 @@ compatible with?',
     'description' => 'What is the status quo of the development of the product?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 22,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1944,7 +2417,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 32,
+      'weight' => 36,
     ),
   );
 
@@ -1963,7 +2436,7 @@ compatible with?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2005,11 +2478,11 @@ compatible with?',
     'description' => 'What is the type of hardware?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2049,11 +2522,11 @@ compatible with?',
     'description' => 'What requirements does the product have regarding knowledge, data and technology?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2129,7 +2602,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 19,
+      'weight' => 23,
     ),
   );
 
@@ -2141,11 +2614,11 @@ compatible with?',
     'description' => 'What are the outcomes of the application of a product?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 19,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2221,7 +2694,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 20,
+      'weight' => 24,
     ),
   );
 
@@ -2233,7 +2706,7 @@ compatible with?',
     'description' => 'What is the type of software?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
@@ -2366,7 +2839,7 @@ compatible with?',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -3244,6 +3717,7 @@ compatible with?',
   t('Is there an E-learning tutorial for the product on The Virtual Market Place and where can I find it?');
   t('Is this a commercial, free or open source product?');
   t('Issue');
+  t('Issue info');
   t('License / Copyright');
   t('Licenseinfo');
   t('Logo');
@@ -3252,8 +3726,10 @@ compatible with?',
   t('Potential to combine this tool with other tools');
   t('Project');
   t('Purpose');
+  t('Purpose Info');
   t('Related Links and Supporting Material');
   t('Relevant Water Bodies');
+  t('Relevant Water Bodies Info');
   t('Standard Category');
   t('Supported Data Discovery Standards');
   t('Supported Data Downloading Standards');
@@ -3264,6 +3740,7 @@ compatible with?',
   t('Supported Processes and Modells Standards');
   t('Supported Sensor Data Standards');
   t('Target User Group');
+  t('Target User Group Info');
   t('Technology Readiness Level');
   t('The setting controls the content of the tool of the month box on the front page, hence, only one tools should have set this to true.');
   t('Title');

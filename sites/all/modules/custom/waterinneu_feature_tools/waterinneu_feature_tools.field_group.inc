@@ -195,7 +195,7 @@ function waterinneu_feature_tools_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Supported Standards',
-    'weight' => '20',
+    'weight' => '23',
     'children' => array(
       0 => 'field_standard_category',
       1 => 'field_supported_data_discovery_s',

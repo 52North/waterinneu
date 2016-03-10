@@ -278,6 +278,27 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
+  // Exported field_base: 'field_issue_info'.
+  $field_bases['field_issue_info'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_issue_info',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_license'.
   $field_bases['field_license'] = array(
     'active' => 1,
@@ -482,6 +503,27 @@ function waterinneu_feature_tools_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
+  // Exported field_base: 'field_purpose_info'.
+  $field_bases['field_purpose_info'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_purpose_info',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_relevant_water_bodies'.
   $field_bases['field_relevant_water_bodies'] = array(
     'active' => 1,
@@ -508,6 +550,27 @@ function waterinneu_feature_tools_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_relevant_water_bodies_info'.
+  $field_bases['field_relevant_water_bodies_info'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_relevant_water_bodies_info',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_standard_category'.
@@ -781,6 +844,27 @@ function waterinneu_feature_tools_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_target_user_group_info'.
+  $field_bases['field_target_user_group_info'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_target_user_group_info',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_technology_readiness_level'.
