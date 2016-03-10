@@ -38,7 +38,7 @@ function feature_search_default_search_api_index() {
         "comment:subject" : { "type" : "text" },
         "comment:url" : { "type" : "uri" },
         "node:author" : { "type" : "integer", "entity_type" : "user" },
-        "node:field_application_scale" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "node:field_application_scale" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "node:field_category" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "node:field_class" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "node:field_costs" : { "type" : "integer", "entity_type" : "taxonomy_term" },
