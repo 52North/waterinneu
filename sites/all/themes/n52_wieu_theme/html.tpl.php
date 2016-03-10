@@ -47,26 +47,36 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
+  <?php 
+  /* 
+   * This function enables popover and tooltip bootstrap features
+   */?>
   <script type="text/javascript">
   (function($) {
   	$(document).ready(function() {
-  		$('[data-toggle="tooltip"]').tooltip();
-  		$('[data-toggle="popover"]').popover();
-  		$('body').on('click', function (e) {
-  		    $('[data-toggle="popover"]').each(function () {
-  		        //the 'is' for buttons that trigger popups
-  		        //the 'has' for icons within a button that triggers a popup
-  		        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-  		            $(this).popover('hide');
-  		        }
-  		    });
+  	  $('[data-toggle="tooltip"]').tooltip();
+  	  $('[data-toggle="popover"]').popover();
+  	  $('body').on('click', function (e) {
+  	    $('[data-toggle="popover"]').each(function () {
+  		  //the 'is' for buttons that trigger popups
+  		  //the 'has' for icons within a button that triggers a popup
+  		  if (!$(this).is(e.target) && 
+  		      $(this).has(e.target).length === 0 &&
+  		      $('.popover').has(e.target).length === 0) {
+  		    $(this).popover('hide');
+  		  }
   		});
+      });
   	});
   })(jQuery);
   </script>
-	<script type="text/javascript">
+  <?php 
+  /*
+   *This function enables linking and scrolling to accordion entries
+   */?>
+  <script type="text/javascript">
   (function($) {
-  $(document).ready(function () {
+    $(document).ready(function () {
 	  if (location.hash){
 	    $(location.hash).collapse('show');
 	    $(location.hash).parents('.accordion-body').collapse('show');
