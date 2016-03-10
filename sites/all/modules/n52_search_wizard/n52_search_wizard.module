@@ -26,101 +26,130 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
- 
+/* Important variables for search and replace
+ * Module Form URL: search/advanced
+ */
 //
 // Form creation
 //
 function n52_search_wizard_form($form, &$form_state) {
-	
-	$form ['expert'] = array (
+
+	$form ['content_type'] = array (
 		'#type' => 'radios',
-		'#title' => t( 'Are you an expert?' ),
+		'#title' => t( 'What are you looking for?' ),
 		'#options' => array (
-			'expert_yes' => t('Yes, I am an expert.'),
-			'expert_no' => t('No, I am not an expert.'),
+			'content-type-event' => t('Events'),
+      		'content-type-organisation' => t('Organisations'),
+      		'content-type-product' => t('Products'),
+      		'content-type-project' => t('Projects'),
+      		'content-type-service-offering' => t('Service Offerings'),
+      		'content-type-service-request' => t('Service Requests'),
 		),
 	);
-	
-	$form['expert_domain'] = array (
-		'#type' => 'radios',
-		'#title' => t('Please select your domain:'),
-		'#options' => array (
-			'expert_domain_web' => t('I am a web developer.'),
-			'expert_domain_hydrology' => t('I am a hydrologist.'),
-		),
-		'#states' => array (
-				'visible' => array (
-						':input[name="expert"]' => array ('value' => 'expert_yes')
-				),
-		),
+
+	$vocabs_map = array();
+	foreach (taxonomy_get_vocabularies() as &$vocab) {
+ 		$vocabs_map[$vocab->name] = $vocab->vid;
+	}
+  
+	$orga_options = array(); 
+	foreach (taxonomy_get_tree($vocabs_map['Organisation Classification']) as &$orga_class) {
+	  	$clean_name = str_replace(' ','-',strtolower($orga_class->name));
+  		$orga_options['orga-class-' . $clean_name] = t($orga_class->name);
+	}
+	$orga_class = null;
+  
+	$form ['orga_class'] = array (
+  		'#type' => 'radios',
+  		'#title' => t( 'What organisation type are you looking for?' ),
+  		'#options' => $orga_options,
+  		'#states' => array (
+  				'visible' => array (
+  						':input[name="content_type"]' => array ('value' => 'content-type-organisation'),
+  				),
+  		),
 	);
 	
-	$form['non_expert_demands'] = array (
-			'#type' => 'radios',
-			'#title' => t('What are you looking for?'),
-			'#options' => array (
-					'non_expert_demands_tools' => t('Tools'),
-					'non_expert_demands_projects' => t('Projects'),
-					'non_expert_demands_organisations' => t('Organisations'),
-			),
-			'#states' => array (
-					'visible' => array (
-							':input[name="expert"]' => array ('value' => 'expert_no')
-					),
-			),
+	$orga_options = null;
+  
+	$product_options = array();
+	foreach (taxonomy_get_tree($vocabs_map['Product Categories']) as &$product_category) {
+  		$clean_name = str_replace(' ','-',strtolower($product_category->name));
+  		$product_options['product-category-' . $clean_name] = t($product_category->name);
+	}
+	$product_category = null;
+  
+	$form ['product_category'] = array (
+  		'#type' => 'radios',
+  		'#title' => t( 'What product category are you looking for?' ),
+  		'#options' => $product_options,
+  		'#states' => array (
+  				'visible' => array (
+  						':input[name="content_type"]' => array ('value' => 'content-type-product'),
+  				),
+  		),
 	);
-	
-	$form['submit_non_expert'] = array (
-			'#type' => 'submit',
-			'#value' => t('Search'),
-			'#states' => array (
-				'visible' => array (
-						array (
-								array (':input[name="non_expert_demands"]' => array ('value' => 'non_expert_demands_tools')),
-								'or',
-								array (':input[name="non_expert_demands"]' => array ('value' => 'non_expert_demands_projects')),
-								'or',
-								array (':input[name="non_expert_demands"]' => array ('value' => 'non_expert_demands_organisations')),
-						),
-						':input[name="expert"]' => array ('value' => 'expert_no'),
-				),
-			),
-			'#submit' => array ('n52_search_wizard_non_expert_search'),
-			'#name' => 'submit_non_expert',
+  
+  	$service_options = array();
+  	foreach (taxonomy_get_tree($vocabs_map['Service Categories']) as &$service_category) {
+  		$clean_name = str_replace(' ','-',strtolower($service_category->name));
+  		$service_options['product-category-' . $clean_name] = t($service_category->name);
+	}
+  
+	$form ['service_category'] = array (
+  		'#type' => 'radios',
+  		'#title' => t( 'What service category are you looking for?' ),
+  		'#options' => $service_options,
+  		'#states' => array (
+  				'visible' => array (
+  						array (':input[name="content_type"]' => array ('value' => 'content-type-service-offering')),
+  						'or',
+  						array (':input[name="content_type"]' => array ('value' => 'content-type-service-request')),
+  				),
+  		),
 	);
-	
-	$form ['submit_hydrologist'] = array (
-			'#type' => 'submit',
-			'#value' => t('Search'), 
-			'#states' => array (
-					'visible' => array (
-							':input[name="expert_domain"]' => array ('value' => 'expert_domain_hydrology'),
-							':input[name="expert"]' => array ('value' => 'expert_yes'),
-					),
-			),
-			'#submit' => array ('n52_search_wizard_hydrologist_search'),
-			'#name' => 'submit_hydrologist',
+  
+	$form['search_textfield'] = array (
+  		'#type' => 'textfield',
+  		'#size' => 60,
+  		'#maxlength' => 128,
+  		'#states' => array (
+  				'visible' => array (
+  						':input[name="content_type"]' => array (
+  							array ('value' => 'content-type-event'),
+  							array ('value' => 'content-type-organisation'),
+							array ('value' => 'content-type-product'),
+  							array ('value' => 'content-type-project'),
+  							array ('value' => 'content-type-service-offering'),
+  							array ('value' => 'content-type-service-request'),
+  						),
+  				),
+  		),
+  		'#attributes' => array ('placeholder' => t('Search marketplace')),
 	);
-	
-	$form ['submit_web_expert'] = array (
-			'#type' => 'submit',
-			'#value' => t('Search'), 
-			'#states' => array (
-					'visible' => array (
-							':input[name="expert_domain"]' => array ('value' => 'expert_domain_web'),
-							':input[name="expert"]' => array ('value' => 'expert_yes'),
-					),
-			),
-			'#submit' => array ('n52_search_wizard_web_expert_search'),
-			'#name' => 'submit_web_expert',
+  
+	$form['submit_search'] = array (
+  		'#type' => 'submit',
+  		'#value' => t('Search'),
+  		'#states' => array (
+  				'visible' => array (
+  						array (':input[name="content_type"]' => array ('value' => 'content-type-event')),
+  						array (':input[name="orga_class"]' => array('checked' => TRUE)),
+  						array (':input[name="product_category"]' => array('checked' => TRUE)),
+  						array (':input[name="content_type"]' => array ('value' => 'content-type-project')),
+  						array (':input[name="service_category"]' => array('checked' => TRUE)),
+  				),
+  		),
+  		'#submit' => array ('n52_search_wizard_submit_search'),
+  		'#name' => 'submit_search',
 	);
 
 	return $form;
 }
 
-function n52_search_wizard_non_expert_search($form, &$form_state) {
+function n52_search_wizard_submit_search($form, &$form_state) {
 	# if something fails, we redirect to the user guide
-	$target = "/user-guide"; 
+	$target = "/user-guide";
 	$demand = $form_state['values']['non_expert_demands'];
 	if ($demand) {
 		if ($demand === 'non_expert_demands_tools') {
@@ -136,23 +165,15 @@ function n52_search_wizard_non_expert_search($form, &$form_state) {
 	drupal_goto($target);
 }
 
-function n52_search_wizard_web_expert_search() {
-	drupal_goto("search/term/webdesign");
-}
-
-function n52_search_wizard_hydrologist_search() {
-	drupal_goto("tags/hydrology");
-}
-
 /**
  * Implements hook_menu()
- * 
+ *
  * Form WebUI
  */
 function n52_search_wizard_menu() {
-	$items ['search/wizard'] = array (
-			'title' => 'Search Wizard',
-			'description' => 'Search Wizard Description.',
+	$items ['search/advanced'] = array (
+			'title' => t('Advanced Search'),
+			'description' => t('Search Wizard Description.'),
 			'page callback' => 'drupal_get_form',
 			'page arguments' => array ('n52_search_wizard_form'),
 			'access arguments' => array ('access content')
@@ -170,7 +191,7 @@ function n52_search_wizard_block_view_alter(&$data, $block) {
 			$data['content']['form_id']['#value'] == 'custom_search_blocks_form_1' &&
 			isset($data['content']['popup'])) {
 		$data['content']['popup']['link'] = array (
-				'#markup' => l(t('Advanced Search'),'search/wizard'),
+				'#markup' => l(t('Advanced Search'),'search/advanced'),
 				// weight > 0 => link is display below content type checkboxes
 				// weight <= 0 => link is displayed above content type checkboxes
 				'#weight' => 0,
