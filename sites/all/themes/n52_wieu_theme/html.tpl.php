@@ -86,5 +86,48 @@
 	});
   })(jQuery);
   </script>
+  <?php 
+  /* 
+   * This function allows toggle of alert subscription mockup elements
+   */?>
+  <script type="text/javascript">
+  (function($) {
+    $(document).ready(function () {
+	  if ($(location).attr('pathname').match(/matchmaking$/)) {
+	    $('#content-type').change(function() {
+		switch($(this).val()) {
+	      case 'Organisation' :
+	        $('#organisation-classes').css('display','initial');
+	        $('#service-categories').css('display','none');
+	        $('#product-categories').css('display','none');
+	        break;
+	      case 'Event' :
+	      	$('#organisation-classes').css('display','none');
+	        $('#service-categories').css('display','none');
+	        $('#product-categories').css('display','none');
+	       	break;
+	      case 'Product' :
+	       	$('#organisation-classes').css('display','none');
+	        $('#service-categories').css('display','none');
+	        $('#product-categories').css('display','initial');
+	      	break;
+	      case 'Service Request' :
+	       	$('#organisation-classes').css('display','none');
+	        $('#service-categories').css('display','initial');
+	        $('#product-categories').css('display','none');
+	        $('#service-categories-label').text('Service Request Categories');
+	       	break;
+	      case 'Service Offering' :
+	        $('#organisation-classes').css('display','none');
+	        $('#service-categories').css('display','initial');
+	        $('#product-categories').css('display','none');
+	        $('#service-categories-label').text('Service Offering Categories');
+	        break;
+	      } 
+		});
+	  }
+    });
+  })(jQuery);
+  </script>
 </body>
 </html>
