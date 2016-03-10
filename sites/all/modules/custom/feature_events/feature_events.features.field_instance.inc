@@ -194,7 +194,7 @@ function feature_events_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Where is the Event happening? Please provide the name of the location.',
+    'description' => 'Where is the Event happening? Please provide the name of the city.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -342,7 +342,7 @@ function feature_events_field_default_field_instances() {
   t('Venue');
   t('What is this event about?');
   t('When is your event happening?');
-  t('Where is the Event happening? Please provide the name of the location.');
+  t('Where is the Event happening? Please provide the name of the city.');
 
   return $field_instances;
 }
