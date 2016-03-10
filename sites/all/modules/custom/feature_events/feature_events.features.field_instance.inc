@@ -14,7 +14,7 @@ function feature_events_field_default_field_instances() {
   $field_instances['node-event-field_date_year_month_day'] = array(
     'bundle' => 'event',
     'deleted' => 0,
-    'description' => 'When is your event happening?',
+    'description' => 'When is your event happening? Give start and end date for longer lasting events.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -73,8 +73,8 @@ function feature_events_field_default_field_instances() {
         'increment' => 30,
         'input_format' => 'd.m.Y - G:i:s T',
         'input_format_custom' => '',
-        'label_position' => 'none',
-        'no_fieldset' => 1,
+        'label_position' => 'above',
+        'no_fieldset' => 0,
         'repeat_collapsed' => 0,
         'text_parts' => array(),
         'year_range' => '-0:+5',
@@ -341,7 +341,7 @@ function feature_events_field_default_field_instances() {
   t('Title');
   t('Venue');
   t('What is this event about?');
-  t('When is your event happening?');
+  t('When is your event happening? Give start and end date for longer lasting events.');
   t('Where is the Event happening? Please provide the name of the city.');
 
   return $field_instances;

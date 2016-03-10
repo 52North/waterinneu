@@ -34,7 +34,7 @@ function feature_events_field_default_field_bases() {
       ),
       'repeat' => 0,
       'timezone_db' => '',
-      'todate' => '',
+      'todate' => 'optional',
       'tz_handling' => 'none',
     ),
     'translatable' => 0,
