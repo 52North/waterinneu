@@ -47,14 +47,11 @@ function n52_advanced_search_form($form, &$form_state) {
 		),
 	);
 
-	$vocabs_map = array();
-	foreach (taxonomy_get_vocabularies() as &$vocab) {
- 		$vocabs_map[$vocab->name] = $vocab->vid;
-	}
+	$vocabs_map = _creat_vocabs_map ();
   
 	$orga_options = array(); 
 	foreach (taxonomy_get_tree($vocabs_map['Organisation Classification']) as &$orga_class) {
-	  	$clean_name = str_replace(' ','-',strtolower($orga_class->name));
+	  	$clean_name = str_replace(' ','-',str_replace('-','---',strtolower($orga_class->name)));
   		$orga_options['orga-class-' . $clean_name] = t($orga_class->name);
 	}
 	$orga_class = null;
@@ -146,6 +143,58 @@ function n52_advanced_search_form($form, &$form_state) {
 
 	return $form;
 }
+function _creat_vocabs_map() {
+	$vocabs_map = array();
+	foreach (taxonomy_get_vocabularies() as &$vocab) {
+ 		$vocabs_map[$vocab->name] = $vocab->vid;
+	}
+	return $vocabs_map;
+}
+
+
+function _n52_advanced_search_submit_search($form, &$form_state) {
+	# if something fails, we redirect back to the form with error messages
+	$default_target = "/search/advanced";
+	$content_type = $form_state['values']['content_type'];
+	if (strlen($content_type) === 0) {
+		// this never happen
+		drupal_set_message(t('Please select a content type'), 'error');
+		drupal_goto($default_target);
+	}
+	$content_type = str_replace('content-type-','',$content_type);
+	$search_text = $form_state['values']['search_textfield'];
+	if (strlen($search_text) === 0) {
+		drupal_set_message(t('Please enter a search term'), 'error');
+		drupal_goto($default_target);
+	}
+	$target = $default_target . "/" . $search_text . "||";
+	switch ($content_type) {
+		case 'event' :
+			$target .= "type:event";
+			break;
+		case 'organisation' :
+			$target .= "type:organisation";
+			if(strlen($form_state['values']['orga_class'])) {
+				$target .= " orga-class:" . str_replace('orga-class-','',str_replace(' ', '__', $form_state['values']['orga_class']));
+			} else {
+				drupal_set_message(t('Please select organisation class'), 'error');
+			}
+			break;
+		case 'product' :
+			$target .= "type:tool";
+			break;
+		case 'project' :
+			$target .= "type:project";
+			break;
+		case 'service-offering' :
+			$target .= "type:service-offering";
+			break;
+		case 'service-request' :
+			$target .= "type:service-request";
+			break;
+	}
+	drupal_goto($target);
+}
 
 /**
  * Implement hook_block_info().
@@ -168,79 +217,78 @@ function n52_advanced_search_block_info() {
  */
 function n52_advanced_search_block_view($block_name = '') {
 	if ($block_name == 'n52_advanced_search_block') {
-		$query = new EntityFieldQuery ();
-		$query
-			->entityCondition ( 'entity_type', 'node' )
-			->entityCondition ( 'bundle', 'tool' );
-		
-		$result = $query->execute ();
-		$nodes = array ();
-		if (isset ( $result ['node'] )) {
-			$nids = array_keys ( $result ['node'] );
-			$nodes = node_load_multiple ( $nids );
-		}
-		
-		$list = array ();
-		foreach ( $nodes as $node ) {
-			$options = array (
-					'absolute' => TRUE 
-			);
-			$url = url ( 'node/' . $node->nid, $options );
-			$list [] = '<a href=' . $url . '>' . $node->title . '</a>';
-		}
-		
-		$theme_args = array (
+		if (sizeof(arg()) > 2) {
+			$tmp = explode('||',arg(2));
+			$keywords = $tmp[0];
+			$parameters = explode(' ',$tmp[1]);
+			$query = new EntityFieldQuery ();
+			$query->entityCondition ( 'entity_type', 'node' );
+			_process_parameters ( $parameters, $query );
+
+			$result = $query->execute ();
+			$nodes = array ();
+			if (isset ( $result ['node'] )) {
+				$nids = array_keys ( $result ['node'] );
+				$nodes = node_load_multiple ( $nids );
+			}
+			
+			$list = array ();
+			foreach ( $nodes as $node ) {
+				$options = array (
+						'absolute' => TRUE 
+				);
+				$url = url ( 'node/' . $node->nid, $options );
+				$list [] = '<a href=' . $url . '>' . $node->title . '</a>';
+			}
+			$theme_args = array (
 				'items' => $list,
 				'type' => 'ol' 
-		);
-		$content = theme ( 'item_list', $theme_args );
+			);
+			$subject = t ( 'Search Results' );
+			if (sizeof($nodes) === 0) {
+				$content = t('Nothing found.');
+			} else {
+				$content = theme ( 'item_list', $theme_args );
+			}
+		} else {
+			$content = '';
+			$subject = '';
+		}
 		
 		$block = array (
-				'subject' => t ( 'Search Results' ),
-				'content' => $content 
+				'subject' => $subject,
+				'content' => $content, 
 		);
 		return $block;
 	}
 }
 
+function _process_parameters($parameters, &$query) {
+	$vocabs_map = _creat_vocabs_map ();
+	if (strpos($parameters[0], 'type:event') > -1) {
+		$query->entityCondition ( 'bundle', 'event' );
+	}
+	elseif (strpos($parameters[0], 'type:organisation') > -1) {
+		$query->entityCondition('bundle', 'organisation')
+			->fieldCondition('field_class', 'tid', _get_term_id(str_replace('orga-class:', '', $parameters[1]), $vocabs_map['Organisation Classification']));
+	}
+	elseif (strpos($parameters[0], 'type:product') > -1) {
+		$query->entityCondition('bundle', 'tool');
+	}
+	elseif (strpos($parameters[0], 'type:project') > -1) {
+		$query->entityCondition('bundle', 'project');
+	}
+	elseif (strpos($parameters[0], 'type:service-offering') > -1) {
+		$query->entityCondition('bundle', 'service-offering');
+	}
+	elseif (strpos($parameters[0], 'type:service-request') > -1) {
+		$query->entityCondition('bundle', 'service-request');
+	}
+}
 
-function _n52_advanced_search_submit_search($form, &$form_state) {
-	# if something fails, we redirect back to the form with error messages
-	$default_target = "/search/advanced"; 
-	$content_type = $form_state['values']['content_type'];
-	if (strlen($content_type) === 0) {
-		// this never happen
-		drupal_set_message(t('Please select a content type'), 'error');
-		drupal_goto($default_target);
-	}
-	$content_type = str_replace('content-type-','',$content_type);
-	$search_text = $form_state['values']['search_textfield'];
-	if (strlen($search_text) === 0) {
-		drupal_set_message(t('Please enter a search term'), 'error');
-		drupal_goto($default_target);
-	}
-	$target = $default_target . "/" . $search_text;
-	switch ($content_type) {
-		case 'event' :
-			$target .= " type:event";
-			break;
-		case 'organisation' :
-			$target .= " type:organisation";
-			break;
-		case 'product' :
-			$target .= " type:tool";
-			break;
-		case 'project' :
-			$target .= " type:project";
-			break;
-		case 'service-offering' :
-			$target .= " type:service-offering";
-			break;
-		case 'service-request' :
-			$target .= " type:service-request";
-			break;
-	}
-	drupal_goto($target);
+function _get_term_id($term_encoded, $vid) {
+	$term = taxonomy_get_term_by_name(str_replace('---','-', str_replace('-',' ', $term_encoded)), $vid);
+	return $term->tid;
 }
 
 /**
