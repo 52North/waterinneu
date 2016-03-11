@@ -201,6 +201,20 @@ function feature_service_requests_and_offerings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_service_offering';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_service_offering'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_service_request';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_service_request'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_service_offering';
   $strongarm->value = '4';
   $export['language_content_type_service_offering'] = $strongarm;
