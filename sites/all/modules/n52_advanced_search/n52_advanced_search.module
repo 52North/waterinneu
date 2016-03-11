@@ -30,9 +30,9 @@
  * Module Form URL: search/advanced
  */
 //
-// Form creation
+// Form creating
 //
-function n52_search_wizard_form($form, &$form_state) {
+function n52_advanced_search_form($form, &$form_state) {
 
 	$form ['content_type'] = array (
 		'#type' => 'radios',
@@ -140,27 +140,105 @@ function n52_search_wizard_form($form, &$form_state) {
   						array (':input[name="service_category"]' => array('checked' => TRUE)),
   				),
   		),
-  		'#submit' => array ('n52_search_wizard_submit_search'),
+  		'#submit' => array ('_n52_advanced_search_submit_search'),
   		'#name' => 'submit_search',
 	);
 
 	return $form;
 }
 
-function n52_search_wizard_submit_search($form, &$form_state) {
-	# if something fails, we redirect to the user guide
-	$target = "/user-guide";
-	$demand = $form_state['values']['non_expert_demands'];
-	if ($demand) {
-		if ($demand === 'non_expert_demands_tools') {
-			$target = "/tools";
+/**
+ * Implement hook_block_info().
+ */
+function n52_advanced_search_block_info() {
+	$blocks = array();
+
+	$blocks['n52_advanced_search_block']['info'] = t('For displaying advanced search results');
+	$blocks['n52_advanced_search_block']['visibility'] = BLOCK_VISIBILITY_LISTED;
+	$blocks['n52_advanced_search_block']['pages'] = 'search/advanced*';
+	$blocks['n52_advanced_search_block']['theme'] = 'n52_wieu_theme';
+	$blocks['n52_advanced_search_block']['region'] = 'content';
+	$blocks['n52_advanced_search_block']['status'] = 1;
+
+	return $blocks;
+}
+
+/**
+ * Implement hook_block_view().
+ */
+function n52_advanced_search_block_view($block_name = '') {
+	if ($block_name == 'n52_advanced_search_block') {
+		$query = new EntityFieldQuery ();
+		$query
+			->entityCondition ( 'entity_type', 'node' )
+			->entityCondition ( 'bundle', 'tool' );
+		
+		$result = $query->execute ();
+		$nodes = array ();
+		if (isset ( $result ['node'] )) {
+			$nids = array_keys ( $result ['node'] );
+			$nodes = node_load_multiple ( $nids );
 		}
-		elseif ($demand === 'non_expert_demands_projects') {
-			$target = "/projects";
+		
+		$list = array ();
+		foreach ( $nodes as $node ) {
+			$options = array (
+					'absolute' => TRUE 
+			);
+			$url = url ( 'node/' . $node->nid, $options );
+			$list [] = '<a href=' . $url . '>' . $node->title . '</a>';
 		}
-		elseif ($demand === 'non_expert_demands_organisations') {
-			$target = "/organisations";
-		}
+		
+		$theme_args = array (
+				'items' => $list,
+				'type' => 'ol' 
+		);
+		$content = theme ( 'item_list', $theme_args );
+		
+		$block = array (
+				'subject' => t ( 'Search Results' ),
+				'content' => $content 
+		);
+		return $block;
+	}
+}
+
+
+function _n52_advanced_search_submit_search($form, &$form_state) {
+	# if something fails, we redirect back to the form with error messages
+	$default_target = "/search/advanced"; 
+	$content_type = $form_state['values']['content_type'];
+	if (strlen($content_type) === 0) {
+		// this never happen
+		drupal_set_message(t('Please select a content type'), 'error');
+		drupal_goto($default_target);
+	}
+	$content_type = str_replace('content-type-','',$content_type);
+	$search_text = $form_state['values']['search_textfield'];
+	if (strlen($search_text) === 0) {
+		drupal_set_message(t('Please enter a search term'), 'error');
+		drupal_goto($default_target);
+	}
+	$target = $default_target . "/" . $search_text;
+	switch ($content_type) {
+		case 'event' :
+			$target .= " type:event";
+			break;
+		case 'organisation' :
+			$target .= " type:organisation";
+			break;
+		case 'product' :
+			$target .= " type:tool";
+			break;
+		case 'project' :
+			$target .= " type:project";
+			break;
+		case 'service-offering' :
+			$target .= " type:service-offering";
+			break;
+		case 'service-request' :
+			$target .= " type:service-request";
+			break;
 	}
 	drupal_goto($target);
 }
@@ -170,12 +248,12 @@ function n52_search_wizard_submit_search($form, &$form_state) {
  *
  * Form WebUI
  */
-function n52_search_wizard_menu() {
+function n52_advanced_search_menu() {
 	$items ['search/advanced'] = array (
 			'title' => t('Advanced Search'),
-			'description' => t('Search Wizard Description.'),
+			'description' => t('Advanced Search provides a form supporting users to find the right content.'),
 			'page callback' => 'drupal_get_form',
-			'page arguments' => array ('n52_search_wizard_form'),
+			'page arguments' => array ('n52_advanced_search_form'),
 			'access arguments' => array ('access content')
 	);
 	return $items;
@@ -186,7 +264,7 @@ function n52_search_wizard_menu() {
  *
  * Add advanced search link to search form pop-up
  */
-function n52_search_wizard_block_view_alter(&$data, $block) {
+function n52_advanced_search_block_view_alter(&$data, $block) {
 	if (isset($data) && isset($data['content']) && isset($data['content']['form_id']) && isset($data['content']['form_id']['#value']) &&
 			$data['content']['form_id']['#value'] == 'custom_search_blocks_form_1' &&
 			isset($data['content']['popup'])) {

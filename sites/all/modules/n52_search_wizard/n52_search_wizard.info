@@ -1,6 +1,0 @@
-name = "52N - Search Wizard"
-description = "Single page wizard resulting in predefined searches."
-package = "52N - WaterInnEU"
-core = "7.x"
-version = "7.x-2.0"
-dependencies[] = custom_search

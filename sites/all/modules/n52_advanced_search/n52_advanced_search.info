@@ -1,0 +1,6 @@
+name = "52N - Advanced Search"
+description = "Single page form resulting in predefined searches."
+package = "52N - WaterInnEU"
+core = "7.x"
+version = "7.x-1.0"
+dependencies[] = custom_search
