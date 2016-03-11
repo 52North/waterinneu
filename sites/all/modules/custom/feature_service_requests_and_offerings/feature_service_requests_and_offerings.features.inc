@@ -31,7 +31,11 @@ function feature_service_requests_and_offerings_node_info() {
       'description' => t('A service offering documents the proposition for support regarding a certain product by someone.'),
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => '',
+      'help' => t('A service offering documents the proposition for support regarding a certain product by someone.
+
+Service Offering deletion is only possible by admins. If you want to have a service offering deleted, please use the <a href="/contact">contact form</a>.
+
+Get in touch with our <a href="helpdeskt">helpdesk</a> if your content does not fit in this form.'),
     ),
     'service_request' => array(
       'name' => t('Service Request'),
@@ -39,7 +43,11 @@ function feature_service_requests_and_offerings_node_info() {
       'description' => t('A service request documents the need for support regarding a certain product by someone.'),
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => '',
+      'help' => t('A service request documents the need for support regarding a certain product by someone.
+
+Service request deletion is only possible by admins. If you want to have a service request deleted, please use the <a href="/contact">contact form</a>.
+
+Get in touch with our <a href="helpdeskt">helpdesk</a> if your content does not fit in this form.'),
     ),
   );
   drupal_alter('node_info', $items);

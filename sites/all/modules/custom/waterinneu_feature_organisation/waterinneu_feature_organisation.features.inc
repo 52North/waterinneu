@@ -31,10 +31,12 @@ function waterinneu_feature_organisation_node_info() {
     'organisation' => array(
       'name' => t('Organisation'),
       'base' => 'node_content',
-      'description' => t('Organisation Description'),
+      'description' => t('Organisation Description missing. If you have any, please send a mail to e.h.juerrens@52north.org.'),
       'has_title' => '1',
       'title_label' => t('Name'),
-      'help' => t('Get in touch with our helpdesk if your content does not fit in this form. You can find the helpdesk following the support services tab.'),
+      'help' => t('Organisation deletion is only possible by admins. If you want to have an organisation deleted, please use the <a href="/contact">contact form</a>.
+
+Get in touch with our <a href="helpdeskt">helpdesk</a> if your content does not fit in this form.'),
     ),
   );
   drupal_alter('node_info', $items);

@@ -28,10 +28,12 @@ function feature_events_node_info() {
     'event' => array(
       'name' => t('Event'),
       'base' => 'node_content',
-      'description' => t('Event Description is missing. Please provide one and send to e.h.juerrens@52north.org'),
+      'description' => t('Event Description is missing. Please provide one and send to e.h.juerrens@52north.org.'),
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => '',
+      'help' => t('Event deletion is only possible by admins. If you want to have an event deleted, please use the <a href="/contact">contact form</a>.
+
+Get in touch with our <a href="helpdeskt">helpdesk</a> if your content does not fit in this form.'),
     ),
   );
   drupal_alter('node_info', $items);

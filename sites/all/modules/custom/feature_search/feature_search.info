@@ -12,7 +12,6 @@ dependencies[] = custom_search_taxonomy
 dependencies[] = entity
 dependencies[] = fe_block
 dependencies[] = harmony_search
-dependencies[] = n52_search_wizard
 dependencies[] = search
 dependencies[] = search_api
 dependencies[] = search_api_db

@@ -37,7 +37,9 @@ function waterinneu_feature_projects_node_info() {
       'description' => t('A project dealing with hydrological topics.'),
       'has_title' => '1',
       'title_label' => t('Name'),
-      'help' => t('Get in touch with our helpdesk if your content does not fit in this form. You can find the helpdesk following the support services tab.'),
+      'help' => t('Project deletion is only possible by admins. If you want to have an project deleted, please use the <a href="/contact">contact form</a>.
+
+Get in touch with our <a href="helpdeskt">helpdesk</a> if your content does not fit in this form.'),
     ),
   );
   drupal_alter('node_info', $items);

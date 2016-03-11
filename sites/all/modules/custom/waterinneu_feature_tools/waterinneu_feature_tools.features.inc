@@ -34,7 +34,7 @@ function waterinneu_feature_tools_node_info() {
     'tool' => array(
       'name' => t('Product'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Product description missing. If you have any, send it to e.h.juerrens@52north.org'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => t('The submission of product specification sheets underlies a moderation workflow. Hence, adding new content might cost some time. Get in touch with the administrator oder moderator of the category for speeding things up. <br/>
@@ -77,7 +77,10 @@ Please consider the following additional instructions to some of the fields belo
 <td class="table-label">Comments:</td>
 <td>Recommendations by product supplier and users.</td>
 </tr>
-</table>'),
+</table>
+
+Product deletion is only possible by admins. If you want to have a product deleted, please use the <a href="/contact">contact form</a>.
+Get in touch with our <a href="helpdeskt">helpdesk</a> if your content does not fit in this form.'),
     ),
   );
   drupal_alter('node_info', $items);
