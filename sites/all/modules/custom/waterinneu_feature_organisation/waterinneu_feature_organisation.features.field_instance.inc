@@ -411,6 +411,71 @@ function waterinneu_feature_organisation_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-organisation-field_service_offerings'.
+  $field_instances['node-organisation-field_service_offerings'] = array(
+    'bundle' => 'organisation',
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => 'Which service offerings of the marketplace are linked to this organisation?',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 0,
+          'textformatter_contrib' => array(
+            'entityreference_link' => 1,
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_service_offerings',
+    'label' => 'Service Offerings',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'service_offerings_for_referencing|entityreference_view_widget_2',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-organisation-field_website'.
   $field_instances['node-organisation-field_website'] = array(
     'bundle' => 'organisation',
@@ -533,9 +598,11 @@ function waterinneu_feature_organisation_field_default_field_instances() {
   t('Logo');
   t('Products');
   t('Projects');
+  t('Service Offerings');
   t('Title');
   t('Website');
   t('What products on this platform are provided/supported by this organisation?');
+  t('Which service offerings of the marketplace are linked to this organisation?');
 
   return $field_instances;
 }
