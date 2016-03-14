@@ -147,8 +147,8 @@ function waterinneu_feature_tools_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'A → Z';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Z → A';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
