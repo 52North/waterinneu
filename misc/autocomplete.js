@@ -310,7 +310,15 @@ Drupal.ACDB.prototype.search = function (searchString) {
         }
       },
       error: function (xmlhttp) {
-        alert(Drupal.ajaxError(xmlhttp, db.uri));
+        if (xmlhttp.status >= 400) {
+          if (window.console) {
+            console.log(Drupal.ajaxError(xmlhttp, db.uri));
+          }
+          else {
+            alert(Drupal.ajaxError(xmlhttp, db.uri));
+          }
+        }
+
       }
     });
   }, this.delay);
