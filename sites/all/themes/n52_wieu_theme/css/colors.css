@@ -33,6 +33,12 @@
  * Highlight background: #29648C
  *
  * Link/Call-to-Action: #27638c
+ *
+ * Button color: #428bca
+ *
+ * Button border color: #357ebd
+ *
+ * Button font color: #fff
  */
 body, .comment {
 	background-color: #f5f5f5;
@@ -125,4 +131,10 @@ div.maintenance-alert {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
+}
+
+input[type="submit"], input[type="reset"], input[type="button"] {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
 }
