@@ -36,7 +36,7 @@ function feature_service_requests_and_offerings_field_default_field_bases() {
   // Exported field_base: 'field_product'.
   $field_bases['field_product'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_product',
