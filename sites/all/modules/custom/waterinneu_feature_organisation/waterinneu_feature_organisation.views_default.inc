@@ -31,7 +31,8 @@ function waterinneu_feature_organisation_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -62,7 +63,7 @@ function waterinneu_feature_organisation_views_default_views() {
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['title']['expose']['label'] = 'Title';
+  $handler->display->display_options['sorts']['title']['expose']['label'] = 'Sort by Title';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -98,6 +99,24 @@ function waterinneu_feature_organisation_views_default_views() {
     4 => 0,
   );
   $handler->display->display_options['filters']['language']['expose']['reduce'] = TRUE;
+  /* Filter criterion: Content: Class (field_class) */
+  $handler->display->display_options['filters']['field_class_tid']['id'] = 'field_class_tid';
+  $handler->display->display_options['filters']['field_class_tid']['table'] = 'field_data_field_class';
+  $handler->display->display_options['filters']['field_class_tid']['field'] = 'field_class_tid';
+  $handler->display->display_options['filters']['field_class_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_class_tid']['expose']['operator_id'] = 'field_class_tid_op';
+  $handler->display->display_options['filters']['field_class_tid']['expose']['label'] = 'Filter by Classification';
+  $handler->display->display_options['filters']['field_class_tid']['expose']['operator'] = 'field_class_tid_op';
+  $handler->display->display_options['filters']['field_class_tid']['expose']['identifier'] = 'field_class_tid';
+  $handler->display->display_options['filters']['field_class_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    9 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_class_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_class_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_class_tid']['vocabulary'] = 'organisation_classification';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
