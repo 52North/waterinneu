@@ -31,7 +31,9 @@ function feature_events_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Filter by';
-  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'A → Z';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Z → A';
+  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -52,6 +54,12 @@ function feature_events_views_default_views() {
   $handler->display->display_options['sorts']['field_date_year_month_day_value']['table'] = 'field_data_field_date_year_month_day';
   $handler->display->display_options['sorts']['field_date_year_month_day_value']['field'] = 'field_date_year_month_day_value';
   $handler->display->display_options['sorts']['field_date_year_month_day_value']['expose']['label'] = 'Date (field_date_year_month_day)';
+  /* Sort criterion: Content: Title (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['title_field_value']['expose']['label'] = 'Title';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
