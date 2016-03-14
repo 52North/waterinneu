@@ -11,14 +11,14 @@ function feature_helpdesk_contact_categories_defaults() {
   return array(
     'Commercialising a product' => array(
       'category' => 'Commercialising a product',
-      'recipients' => 'waterinneu@creat.uab.cat',
+      'recipients' => 'waterinneu@creaf.uab.cat',
       'reply' => '',
       'weight' => 4,
       'selected' => 0,
     ),
     'E-learning material' => array(
       'category' => 'E-learning material',
-      'recipients' => 'waterinneu@creat.uab.cat',
+      'recipients' => 'waterinneu@creaf.uab.cat',
       'reply' => '',
       'weight' => 6,
       'selected' => 0,
@@ -39,7 +39,7 @@ function feature_helpdesk_contact_categories_defaults() {
     ),
     'Finding a supplier/consultant' => array(
       'category' => 'Finding a supplier/consultant',
-      'recipients' => 'waterinneu@creat.uab.cat',
+      'recipients' => 'waterinneu@creaf.uab.cat',
       'reply' => '',
       'weight' => 5,
       'selected' => 0,
@@ -53,7 +53,7 @@ function feature_helpdesk_contact_categories_defaults() {
     ),
     'Other enquiry' => array(
       'category' => 'Other enquiry',
-      'recipients' => 'waterinneu@creat.uab.cat',
+      'recipients' => 'waterinneu@creaf.uab.cat',
       'reply' => '',
       'weight' => 8,
       'selected' => 0,
