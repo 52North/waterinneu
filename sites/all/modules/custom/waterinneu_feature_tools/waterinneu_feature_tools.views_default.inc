@@ -147,6 +147,8 @@ function waterinneu_feature_tools_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -210,6 +212,8 @@ function waterinneu_feature_tools_views_default_views() {
   $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
   $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['title_field_value']['expose']['label'] = 'Sort by Title';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -252,83 +256,6 @@ function waterinneu_feature_tools_views_default_views() {
   $handler->display->display_options['filters']['field_category_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_category_tid']['vocabulary'] = 'product_categories';
   $handler->display->display_options['filters']['field_category_tid']['hierarchy'] = 1;
-  /* Filter criterion: Content: Title */
-  $handler->display->display_options['filters']['title']['id'] = 'title';
-  $handler->display->display_options['filters']['title']['table'] = 'node';
-  $handler->display->display_options['filters']['title']['field'] = 'title';
-  $handler->display->display_options['filters']['title']['operator'] = 'word';
-  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['label'] = 'Filter by Title';
-  $handler->display->display_options['filters']['title']['expose']['description'] = 'Just start typing to filter the list of products';
-  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
-  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    9 => 0,
-    3 => 0,
-  );
-  /* Filter criterion: Content: Costs (field_costs) */
-  $handler->display->display_options['filters']['field_costs_tid']['id'] = 'field_costs_tid';
-  $handler->display->display_options['filters']['field_costs_tid']['table'] = 'field_data_field_costs';
-  $handler->display->display_options['filters']['field_costs_tid']['field'] = 'field_costs_tid';
-  $handler->display->display_options['filters']['field_costs_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_costs_tid']['expose']['operator_id'] = 'field_costs_tid_op';
-  $handler->display->display_options['filters']['field_costs_tid']['expose']['label'] = 'Filter by Costs';
-  $handler->display->display_options['filters']['field_costs_tid']['expose']['description'] = 'Select one or more options to filter the list of products.';
-  $handler->display->display_options['filters']['field_costs_tid']['expose']['operator'] = 'field_costs_tid_op';
-  $handler->display->display_options['filters']['field_costs_tid']['expose']['identifier'] = 'field_costs_tid';
-  $handler->display->display_options['filters']['field_costs_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    9 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_costs_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_costs_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_costs_tid']['vocabulary'] = 'costs';
-  $handler->display->display_options['filters']['field_costs_tid']['error_message'] = FALSE;
-  /* Filter criterion: Content: Issue (field_issue) */
-  $handler->display->display_options['filters']['field_issue_tid']['id'] = 'field_issue_tid';
-  $handler->display->display_options['filters']['field_issue_tid']['table'] = 'field_data_field_issue';
-  $handler->display->display_options['filters']['field_issue_tid']['field'] = 'field_issue_tid';
-  $handler->display->display_options['filters']['field_issue_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_issue_tid']['expose']['operator_id'] = 'field_issue_tid_op';
-  $handler->display->display_options['filters']['field_issue_tid']['expose']['label'] = 'Filter by Issue';
-  $handler->display->display_options['filters']['field_issue_tid']['expose']['description'] = 'Select one or more options to filter the list of products.';
-  $handler->display->display_options['filters']['field_issue_tid']['expose']['operator'] = 'field_issue_tid_op';
-  $handler->display->display_options['filters']['field_issue_tid']['expose']['identifier'] = 'field_issue_tid';
-  $handler->display->display_options['filters']['field_issue_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    9 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_issue_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_issue_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_issue_tid']['vocabulary'] = 'issue';
-  $handler->display->display_options['filters']['field_issue_tid']['error_message'] = FALSE;
-  /* Filter criterion: Content: Relevant Water Bodies (field_relevant_water_bodies) */
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['id'] = 'field_relevant_water_bodies_tid';
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['table'] = 'field_data_field_relevant_water_bodies';
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['field'] = 'field_relevant_water_bodies_tid';
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['expose']['operator_id'] = 'field_relevant_water_bodies_tid_op';
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['expose']['label'] = 'Filter by Relevant Water Bodies';
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['expose']['description'] = 'Select one or more options to filter the list of products.';
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['expose']['operator'] = 'field_relevant_water_bodies_tid_op';
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['expose']['identifier'] = 'field_relevant_water_bodies_tid';
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    9 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['vocabulary'] = 'waterbodies';
-  $handler->display->display_options['filters']['field_relevant_water_bodies_tid']['error_message'] = FALSE;
   /* Filter criterion: Content: Target User Group (field_target_user_group) */
   $handler->display->display_options['filters']['field_target_user_group_tid']['id'] = 'field_target_user_group_tid';
   $handler->display->display_options['filters']['field_target_user_group_tid']['table'] = 'field_data_field_target_user_group';
