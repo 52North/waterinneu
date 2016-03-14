@@ -2891,7 +2891,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'show format selection for comment',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'better_formats',
   );
@@ -3001,6 +3000,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'skip comment approval',
     'roles' => array(
       'administrator' => 'administrator',
+      'moderator' => 'moderator',
     ),
     'module' => 'comment',
   );
