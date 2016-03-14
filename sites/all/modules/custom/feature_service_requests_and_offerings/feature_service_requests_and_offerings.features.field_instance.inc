@@ -29,15 +29,61 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
     'entity_type' => 'comment',
     'field_name' => 'comment_body',
     'label' => 'Comment',
-    'required' => TRUE,
+    'required' => 1,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 'harmony_filtered',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
         'rows' => 5,
       ),
       'type' => 'text_textarea',
@@ -102,15 +148,61 @@ function feature_service_requests_and_offerings_field_default_field_instances() 
     'entity_type' => 'comment',
     'field_name' => 'comment_body',
     'label' => 'Comment',
-    'required' => TRUE,
+    'required' => 1,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 'harmony_filtered',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
         'rows' => 5,
       ),
       'type' => 'text_textarea',
