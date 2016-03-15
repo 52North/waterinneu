@@ -11,13 +11,11 @@
 function search_api_views_views_data() {
   try {
     $data = array();
-    $entity_types = entity_get_info();
     foreach (search_api_index_load_multiple(FALSE) as $index) {
       // Fill in base data.
       $key = 'search_api_index_' . $index->machine_name;
       $table = &$data[$key];
       $type_info = search_api_get_item_type_info($index->item_type);
-      $table['table']['entity type'] = NULL;
       $table['table']['group'] = t('Indexed @entity_type', array('@entity_type' => $type_info['name']));
       $table['table']['base'] = array(
         'field' => 'search_api_id',
@@ -26,12 +24,8 @@ function search_api_views_views_data() {
         'help' => t('Use the %name search index for filtering and retrieving data.', array('%name' => $index->name)),
         'query class' => 'search_api_views_query',
       );
-      if (isset($entity_types[$index->getEntityType()])) {
-        $table['table'] += array(
-          'entity type' => $index->getEntityType(),
-          'skip entity load' => TRUE,
-        );
-      }
+      $table['table']['entity type'] = $index->getEntityType();
+      $table['table']['skip entity load'] = TRUE;
 
       try {
         $wrapper = $index->entityWrapper(NULL, FALSE);
