@@ -37,7 +37,7 @@ function waterinneu_feature_tools_node_info() {
       'description' => t('Product description missing. If you have any, send it to e.h.juerrens@52north.org'),
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => t('The submission of product specification sheets underlies a moderation workflow. Hence, adding new content might cost some time. Get in touch with the administrator oder moderator of the category for speeding things up. <br/>
+      'help' => t('The submission of product specification sheets underlies a moderation workflow. Hence, adding new content might cost some time. Get in touch with the administrator for speeding things up using the <a href="/contact">helpdesk form</a>. <br/>
 Please consider the following additional instructions to some of the fields below.
 
 <table>
