@@ -217,5 +217,38 @@ thread*',
     'visibility' => 0,
   );
 
+  $export['views-my_content-block'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'my_content-block',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => 'users/*
+user',
+    'roles' => array(
+      'administrator' => 3,
+      'authenticated user' => 2,
+      'moderator' => 9,
+    ),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'n52_wieu_theme',
+        'weight' => 17,
+      ),
+    ),
+    'title' => 'My Content',
+    'visibility' => 1,
+  );
+
   return $export;
 }

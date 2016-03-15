@@ -138,3 +138,14 @@ input[type="submit"], input[type="reset"], input[type="button"] {
     background-color: #428bca;
     border-color: #357ebd;
 }
+
+ul.pager li a:hover, ul.pager li.pager-current {
+    background-color: #428bca;
+    border-color: #357ebd;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+}
+
+ul.pager li a, ul.pager li.pager-current {
+    border-color: #eee;
+}

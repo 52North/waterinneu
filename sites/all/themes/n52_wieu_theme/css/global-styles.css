@@ -247,3 +247,23 @@ input[type="submit"], input[type="reset"], input[type="button"] {
     border: 1px solid transparent;
 	text-transform: none;
 }
+
+/******************************************************************************
+ *                                                                            *
+ *                            pager form elements                             *
+ *                                                                            *
+ ******************************************************************************/
+ul.pager li a, ul.pager li.pager-current {
+	border: 1px solid;
+	padding: 14px 20px;
+	display: block;
+	margin: 5px 3px 5px 0; 
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.pager-ellipsis {
+	vertical-align: middle;
+}
+
