@@ -1357,7 +1357,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['create event content'] = array(
     'name' => 'create event content',
     'roles' => array(
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -1899,7 +1899,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit any event content'] = array(
     'name' => 'edit any event content',
     'roles' => array(
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -1997,7 +1997,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit own event content'] = array(
     'name' => 'edit own event content',
     'roles' => array(
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -3387,7 +3387,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of any event content'] = array(
     'name' => 'view revisions of any event content',
     'roles' => array(
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'revisioning',
   );
@@ -3429,7 +3429,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of any service_offering content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3439,7 +3438,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of any service_request content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3455,7 +3453,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of own event content'] = array(
     'name' => 'view revisions of own event content',
     'roles' => array(
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'revisioning',
   );
