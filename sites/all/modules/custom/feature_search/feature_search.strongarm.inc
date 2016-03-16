@@ -112,7 +112,7 @@ function feature_search_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'custom_search_blocks_1_any_restricts';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['custom_search_blocks_1_any_restricts'] = $strongarm;
 
   $strongarm = new stdClass();

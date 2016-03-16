@@ -164,5 +164,18 @@
   })(jQuery);
   </script>
   <?php endif; ?>
+  <?php
+  /*
+   *This function enables linking and scrolling to bootstrap tabs
+   */?>
+  <script type="text/javascript">
+  (function($) {
+    $(document).ready(function () {
+	  if (location.hash){
+		  $('.nav-tabs a[href="' + location.hash + '"]').tab('show');
+	  }
+	});
+  })(jQuery);
+  </script>
 </body>
 </html>

@@ -58,14 +58,14 @@
 	unset($latest_threads_block['subject']);
 ?>
 <div id="landingpage-updates-block" class="panel-pane pane-block pane-block-2">
-	<h2 class="pane-title">Updates</h2>
+	<h2 class="pane-title"><?php print t('Updates'); ?></h2>
 	<div class="pane-content">
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
-			<li class="active"><a href="#tab-1" role="tab" data-toggle="tab">Content</a></li>
-			<li><a href="#tab-2" role="tab" data-toggle="tab">Comments</a></li>
-			<li><a href="#tab-3" role="tab" data-toggle="tab">Threads</a></li>
-			<li><a href="#tab-4" role="tab" data-toggle="tab">Posts</a></li>
+			<li class="active"><a href="#tab-1" role="tab" data-toggle="tab"><?php print t('Content'); ?></a></li>
+			<li><a href="#tab-2" role="tab" data-toggle="tab"><?php print t('Comments'); ?></a></li>
+			<li><a href="#tab-3" role="tab" data-toggle="tab"><?php print t('Threads'); ?></a></li>
+			<li><a href="#tab-4" role="tab" data-toggle="tab"><?php print t('Posts'); ?></a></li>
 
 		</ul>
 
