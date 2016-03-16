@@ -168,15 +168,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'oauth_common',
   );
 
-  // Exported permission: 'access rules debug'.
-  $permissions['access rules debug'] = array(
-    'name' => 'access rules debug',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'rules',
-  );
-
   // Exported permission: 'access security review list'.
   $permissions['access security review list'] = array(
     'name' => 'access security review list',
@@ -1119,15 +1110,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'recaptcha',
   );
 
-  // Exported permission: 'administer rules'.
-  $permissions['administer rules'] = array(
-    'name' => 'administer rules',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'rules',
-  );
-
   // Exported permission: 'administer search'.
   $permissions['administer search'] = array(
     'name' => 'administer search',
@@ -1297,15 +1279,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: 'bypass rules access'.
-  $permissions['bypass rules access'] = array(
-    'name' => 'bypass rules access',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'rules',
   );
 
   // Exported permission: 'cancel account'.
