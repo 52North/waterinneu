@@ -90,7 +90,7 @@ function feature_events_views_default_views() {
     9 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_date_year_month_day_value']['default_date'] = 'now -7 day';
   $handler->display->display_options['filters']['field_date_year_month_day_value']['year_range'] = '-0:+5';
 
   /* Display: Page */
