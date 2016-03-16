@@ -219,7 +219,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => 2,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -248,6 +248,37 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-author_add-content:node/add',
   );
+  // Exported menu link: menu-author_my-content:user.
+  $menu_links['menu-author_my-content:user'] = array(
+    'menu_name' => 'menu-author',
+    'link_path' => 'user',
+    'router_path' => 'user',
+    'link_title' => 'My Content',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'menu_token_link_uuid' => 'menutoken/56e8491708988',
+      'ignore_access_roles' => array(
+        1 => 0,
+        2 => 0,
+        9 => 0,
+        3 => 0,
+      ),
+      'fragment' => 'my-content',
+      'identifier' => 'menu-author_my-content:user',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 1,
+    'customized' => 1,
+    'language' => 'en',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: menu-author_organisation:node/add/organisation.
   $menu_links['menu-author_organisation:node/add/organisation'] = array(
     'menu_name' => 'menu-author',
@@ -266,7 +297,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => 1,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -296,7 +327,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => 2,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -320,7 +351,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => 3,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -344,7 +375,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => 4,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -368,7 +399,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => 5,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -1151,6 +1182,7 @@ function waterinneu_feature_menus_menu_default_menu_links() {
   t('Marketplace');
   t('Matchmaking');
   t('Migrate example - dates');
+  t('My Content');
   t('Organisation');
   t('Organisations');
   t('Portal');

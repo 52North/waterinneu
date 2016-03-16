@@ -109,6 +109,7 @@ features[variable][] = site_frontpage
 features[variable][] = site_mail
 features[variable][] = site_name
 features[variable][] = site_slogan
+features[views_view][] = my_content
 features_exclude[dependencies][image] = image
 features_exclude[dependencies][smart_trim] = smart_trim
 features_exclude[dependencies][strongarm] = strongarm

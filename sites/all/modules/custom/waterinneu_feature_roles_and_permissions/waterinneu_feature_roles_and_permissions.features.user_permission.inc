@@ -1635,7 +1635,9 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'delete revisions'.
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -2833,7 +2835,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
     'roles' => array(
-      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'node',
@@ -3360,6 +3361,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revision status messages',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -3369,9 +3371,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
     'roles' => array(
-      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -3419,7 +3419,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of any project content'] = array(
     'name' => 'view revisions of any project content',
     'roles' => array(
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'revisioning',
   );
@@ -3485,7 +3485,7 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of own project content'] = array(
     'name' => 'view revisions of own project content',
     'roles' => array(
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'revisioning',
   );
