@@ -20,7 +20,7 @@ function waterinneu_feature_tools_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'product',
     'roles' => array(),
     'themes' => array(
       'adminimal' => array(
@@ -37,7 +37,7 @@ function waterinneu_feature_tools_default_fe_block_settings() {
       ),
     ),
     'title' => '',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   return $export;

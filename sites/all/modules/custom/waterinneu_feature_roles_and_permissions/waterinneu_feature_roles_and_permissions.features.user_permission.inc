@@ -2910,16 +2910,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'better_formats',
   );
 
-  // Exported permission: 'show format selection for rules_config'.
-  $permissions['show format selection for rules_config'] = array(
-    'name' => 'show format selection for rules_config',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'better_formats',
-  );
-
   // Exported permission: 'show format selection for taxonomy_term'.
   $permissions['show format selection for taxonomy_term'] = array(
     'name' => 'show format selection for taxonomy_term',

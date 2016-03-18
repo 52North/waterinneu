@@ -37,7 +37,7 @@ function feature_service_requests_and_offerings_default_fe_block_settings() {
       ),
     ),
     'title' => '',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['views--exp-service_requests-page'] = array(
@@ -65,7 +65,7 @@ function feature_service_requests_and_offerings_default_fe_block_settings() {
       ),
     ),
     'title' => '',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   return $export;
