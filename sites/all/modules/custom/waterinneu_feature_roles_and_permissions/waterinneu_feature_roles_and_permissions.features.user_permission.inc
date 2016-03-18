@@ -732,15 +732,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: 'administer configuration management'.
-  $permissions['administer configuration management'] = array(
-    'name' => 'administer configuration management',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'configuration_ui',
-  );
-
   // Exported permission: 'administer consumers'.
   $permissions['administer consumers'] = array(
     'name' => 'administer consumers',
@@ -910,24 +901,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'freelinking',
-  );
-
-  // Exported permission: 'administer fusion'.
-  $permissions['administer fusion'] = array(
-    'name' => 'administer fusion',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'fusion_apply_ui',
-  );
-
-  // Exported permission: 'administer fusion labels'.
-  $permissions['administer fusion labels'] = array(
-    'name' => 'administer fusion labels',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'fusion_labels',
   );
 
   // Exported permission: 'administer harmony_access settings'.
@@ -1852,15 +1825,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
-  // Exported permission: 'edit advanced skin settings'.
-  $permissions['edit advanced skin settings'] = array(
-    'name' => 'edit advanced skin settings',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'fusion_apply_ui',
-  );
-
   // Exported permission: 'edit any article content'.
   $permissions['edit any article content'] = array(
     'name' => 'edit any article content',
@@ -2056,15 +2020,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
-  );
-
-  // Exported permission: 'edit skin settings'.
-  $permissions['edit skin settings'] = array(
-    'name' => 'edit skin settings',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'fusion_apply_ui',
   );
 
   // Exported permission: 'edit terms in application_scale'.
