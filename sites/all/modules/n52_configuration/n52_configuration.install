@@ -27,13 +27,12 @@
  * Public License for more details.
  */
 /**
- * Implements hook_update_N()
- *
- * Add advanced search link to search form pop-up
+ * Implement hook_enable()
  */
-function n52_configuration_update_7100() {
+function n52_configuration_enable() {
 	theme_disable('bartik');
 	theme_enable('adminial','n52_wieu_theme');
 	variable_set('theme_default', 'n52_wieu_theme');
 	drupal_flush_all_caches();
+	drupal_set_message($message = t('The "n52_configuration"  module was successfully enabled.'), $type = 'status');
 }
