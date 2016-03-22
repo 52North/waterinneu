@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature - i18n feature.
+ */
+
+include_once 'feature_i18n.features.inc';
