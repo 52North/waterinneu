@@ -10,7 +10,7 @@ Replace ```http://localhost/``` with the hostname, port and scheme that match yo
 
         ```user@host:/var/www$ git clone <git-url-of-this-repo> waterinneu```
 
-    1. Open ```http://localhost/install.php?profile=minimal&locale=en``` in any browser of your choice and follow the instructions for installing a Drupal default installation.
+    1. Open ```http://localhost/install.php?profile=n52_waterinneu&locale=en``` in any browser of your choice and follow the instructions for installing a Drupal default installation.
     1. Database configuration: Enter the database credentials and select the correct database management system.
     1. Site Configuration: Provide the required information.
     1. Click on **visit your new site**.

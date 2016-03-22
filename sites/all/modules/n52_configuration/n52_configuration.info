@@ -1,5 +1,0 @@
-name = "52N - Configuration"
-description = "Sets and installs configuration options that are not handled by features."
-package = "52N - WaterInnEU"
-core = "7.x"
-version = "7.x-1.0"
