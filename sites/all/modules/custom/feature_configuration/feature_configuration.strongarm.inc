@@ -34,6 +34,13 @@ function feature_configuration_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'admin_theme';
+  $strongarm->value = 'adminimal';
+  $export['admin_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_article';
   $strongarm->value = 0;
   $export['comment_anonymous_article'] = $strongarm;
@@ -268,6 +275,13 @@ We should be back shortly. Thank you for your patience. In the meantime, you can
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_admin_theme';
+  $strongarm->value = 0;
+  $export['node_admin_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_article';
   $strongarm->value = array(
     0 => 'revision_moderation',
@@ -461,6 +475,13 @@ We should be back shortly. Thank you for your patience. In the meantime, you can
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'rules_debug_region_n52_wieu_theme';
+  $strongarm->value = 'help';
+  $export['rules_debug_region_n52_wieu_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'site_403';
   $strongarm->value = 'r4032login';
   $export['site_403'] = $strongarm;
@@ -506,6 +527,94 @@ We should be back shortly. Thank you for your patience. In the meantime, you can
   $strongarm->name = 'site_slogan';
   $strongarm->value = 'Water Innovation in Europe';
   $export['site_slogan'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'stickynav-enabled-n52_wieu_theme';
+  $strongarm->value = 1;
+  $export['stickynav-enabled-n52_wieu_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'stickynav-roles-n52_wieu_theme';
+  $strongarm->value = array(
+    1 => 0,
+    2 => 0,
+    8 => 0,
+    10 => 0,
+    9 => 0,
+    11 => 0,
+    3 => 0,
+  );
+  $export['stickynav-roles-n52_wieu_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'stickynav-selector-n52_wieu_theme';
+  $strongarm->value = '#main-navigation-inside';
+  $export['stickynav-selector-n52_wieu_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'theme_default';
+  $strongarm->value = 'n52_wieu_theme';
+  $export['theme_default'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'theme_n52_wieu_theme_settings';
+  $strongarm->value = array(
+    'toggle_logo' => 1,
+    'toggle_name' => 1,
+    'toggle_slogan' => 1,
+    'toggle_node_user_picture' => 1,
+    'toggle_comment_user_picture' => 1,
+    'toggle_comment_user_verification' => 1,
+    'toggle_favicon' => 1,
+    'toggle_main_menu' => 1,
+    'toggle_secondary_menu' => 1,
+    'default_logo' => 0,
+    'logo_path' => 'public://WaterInnEU_logo_70px.png',
+    'logo_upload' => '',
+    'default_favicon' => 1,
+    'favicon_path' => '',
+    'favicon_upload' => '',
+    'breadcrumb_display' => 1,
+    'scrolltop_display' => 1,
+    'bootstrap_css_cdn' => '3.2.0',
+    'bootstrap_js_cdn' => '3.2.0',
+    'responsive_respond' => 0,
+    'tabs__active_tab' => 'edit-bootstrap-cdn',
+    'jquery_update_jquery_version' => '',
+  );
+  $export['theme_n52_wieu_theme_settings'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'theme_settings';
+  $strongarm->value = array(
+    'toggle_logo' => 1,
+    'toggle_name' => 1,
+    'toggle_slogan' => 1,
+    'toggle_node_user_picture' => 1,
+    'toggle_comment_user_picture' => 1,
+    'toggle_comment_user_verification' => 1,
+    'toggle_favicon' => 1,
+    'toggle_main_menu' => 1,
+    'toggle_secondary_menu' => 1,
+    'default_logo' => 0,
+    'logo_path' => 'public://WaterInnEU_logo_70px.png',
+    'default_favicon' => 1,
+    'favicon_path' => '',
+    'favicon_upload' => '',
+  );
+  $export['theme_settings'] = $strongarm;
 
   return $export;
 }
