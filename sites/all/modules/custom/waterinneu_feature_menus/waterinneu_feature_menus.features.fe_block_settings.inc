@@ -94,7 +94,7 @@ function waterinneu_feature_menus_default_fe_block_settings() {
         'weight' => -32,
       ),
     ),
-    'title' => '',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
@@ -124,7 +124,7 @@ function waterinneu_feature_menus_default_fe_block_settings() {
         'weight' => -33,
       ),
     ),
-    'title' => '',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
