@@ -33,7 +33,9 @@
  *
  * @see system_install()
  */
-function minimal_install() {
-	theme_enable('adminial','n52_wieu_theme');
+function n52_waterinneu_install() {
+	theme_enable(array ('adminial','n52_wieu_theme') );
 	variable_set('theme_default', 'n52_wieu_theme');
+	variable_set('admin_theme', 'adminial');
+	theme_disable(array ('bartik') );
 }
