@@ -36,7 +36,6 @@
 function n52_waterinneu_install() {
 	variable_set('theme_default', 'n52_wieu_theme');
 	variable_set('admin_theme', 'adminial');
-	include_once DRUPAL_ROOT . '/includes/theme.inc';
 	theme_enable(array ('adminial','n52_wieu_theme') );
 	theme_disable(array ('seven') );
 }
