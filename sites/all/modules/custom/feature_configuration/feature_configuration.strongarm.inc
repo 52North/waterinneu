@@ -754,37 +754,9 @@ function feature_configuration_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'cron_key';
-  $strongarm->value = '3Xyblf79pYceDSEarhzRhq6fcplG_c3tqRtEBZAVKKU';
-  $export['cron_key'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'cron_last';
-  $strongarm->value = 1458644277;
-  $export['cron_last'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'cron_safe_threshold';
   $strongarm->value = '0';
   $export['cron_safe_threshold'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'css_js_query_string';
-  $strongarm->value = 'o4gbne';
-  $export['css_js_query_string'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ctools_last_cron';
-  $strongarm->value = 1458644279;
-  $export['ctools_last_cron'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -2696,69 +2668,6 @@ function feature_configuration_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'javascript_parsed';
-  $strongarm->value = array(
-    0 => 'misc/drupal.js',
-    1 => 'sites/all/modules/jquery_update/replace/jquery/1.7/jquery.js',
-    2 => 'misc/jquery.once.js',
-    3 => 'sites/all/themes/adminimal_theme/js/jRespond.js',
-    4 => 'sites/all/themes/adminimal_theme/js/adminimal_theme.js',
-    5 => 'sites/all/modules/entity_quote/js/entity_quote.js',
-    6 => 'sites/all/modules/l10n_client/jquery.hotkeys.js',
-    7 => 'misc/jquery.cookie.js',
-    8 => 'sites/all/modules/l10n_client/l10n_client.js',
-    9 => 'misc/textarea.js',
-    10 => 'sites/all/modules/admin_menu/admin_devel/admin_devel.js',
-    11 => 'sites/all/modules/codefilter/codefilter.js',
-    12 => 'sites/all/modules/devel/devel_krumo_path.js',
-    13 => 'sites/all/modules/custom_search/js/custom_search.js',
-    14 => 'sites/all/modules/adminimal_admin_menu/js/jquery.min.js',
-    15 => 'sites/all/modules/adminimal_admin_menu/js/slicknav/jquery-no-conflict.slicknav.js',
-    16 => 'sites/all/modules/adminimal_admin_menu/js/adminimal_admin_menu.js',
-    17 => 'sites/all/modules/eu_cookie_compliance/js/eu_cookie_compliance.js',
-    18 => 'sites/all/modules/n52_autocomplete/js/jquery.autocomplete.js',
-    19 => 'sites/all/modules/jquery_update/replace/ui/ui/jquery.ui.core.js',
-    20 => 'sites/all/modules/jquery_update/replace/ui/ui/jquery.ui.widget.js',
-    21 => 'sites/all/modules/jquery_update/replace/ui/ui/jquery.ui.position.js',
-    22 => 'sites/all/modules/jquery_update/replace/ui/ui/jquery.ui.menu.js',
-    23 => 'sites/all/modules/jquery_update/replace/ui/ui/jquery.ui.autocomplete.js',
-    24 => 'sites/all/modules/search_autocomplete/js/jquery.autocomplete.js',
-    25 => 'sites/all/modules/features/features.js',
-    26 => 'misc/tableheader.js',
-    27 => 'misc/form.js',
-    28 => 'misc/vertical-tabs.js',
-    29 => 'sites/all/themes/adminimal_theme/skins/default/default.js',
-    30 => 'sites/all/modules/admin_menu/admin_menu.js',
-    'refresh:de' => 'waiting',
-    31 => 'sites/all/modules/features_override/features_override_form.js',
-    32 => 'misc/collapse.js',
-    33 => 'misc/machine-name.js',
-    34 => 'misc/autocomplete.js',
-    35 => 'sites/all/modules/jquery_update/replace/ui/external/jquery.cookie.js',
-    36 => 'sites/all/modules/jquery_update/replace/jquery.form/3/jquery.form.js',
-    37 => 'misc/progress.js',
-    38 => 'sites/all/modules/jquery_update/js/jquery_update.js',
-    39 => 'misc/ajax.js',
-    40 => 'sites/all/modules/jquery_update/replace/ui/ui/jquery.ui.button.js',
-    41 => 'sites/all/modules/jquery_update/replace/ui/ui/jquery.ui.mouse.js',
-    42 => 'sites/all/modules/jquery_update/replace/ui/ui/jquery.ui.draggable.js',
-    43 => 'sites/all/modules/jquery_update/replace/ui/ui/jquery.ui.resizable.js',
-    44 => 'sites/all/modules/jquery_update/replace/ui/ui/jquery.ui.dialog.js',
-    45 => 'http://localhost/sites/default/files/js/wysiwyg/wysiwyg_ckeditor_uWMoMQ7qlhtyf-cFJlMTazsAxhCeS88weKBiAtXujAQ.js',
-    46 => 'sites/all/libraries/ckeditor/ckeditor.js',
-    47 => 'sites/all/modules/wysiwyg/editors/js/ckeditor-3.0.js',
-    48 => 'sites/all/modules/wysiwyg/wysiwyg.init.js',
-    49 => 'sites/all/modules/wysiwyg/editors/js/none.js',
-    50 => 'sites/all/modules/wysiwyg/wysiwyg.js',
-    51 => 'http://localhost/sites/default/files/js/wysiwyg/wysiwyg_tinymce_VxxRIlcaFmzHlghU8SsOGCZd5TC_PCxyhQAlqydMALE.js',
-    52 => 'sites/all/libraries/tinymce/jscripts/tiny_mce/tiny_mce.js',
-    53 => 'sites/all/modules/wysiwyg/editors/js/tinymce-3.js',
-  );
-  $export['javascript_parsed'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'job_scheduler_rebuild_all';
   $strongarm->value = TRUE;
   $export['job_scheduler_rebuild_all'] = $strongarm;
@@ -3203,13 +3112,6 @@ We should be back shortly. Thank you for your patience. In the meantime, you can
   $strongarm->name = 'node_admin_theme';
   $strongarm->value = 0;
   $export['node_admin_theme'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_cron_last';
-  $strongarm->value = '1458058655';
-  $export['node_cron_last'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
