@@ -1,0 +1,26 @@
+name = "52N - WaterInnEU"
+description = "Install with all features pre-configured for the WaterInnEU set-up."
+version = 7.x-1.0
+core = 7.x
+
+; Optional: Mark your installation profile as exclusive, so that the installer
+; will auto-select it.
+exclusive = true
+
+dependencies[] = module_filter
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = features_banish
+dependencies[] = features_override
+dependencies[] = feature_configuration
+dependencies[] = feature_events
+dependencies[] = waterinneu_feature_frontpage
+dependencies[] = waterinneu_feature_harmony
+dependencies[] = feature_helpdesk
+dependencies[] = waterinneu_feature_menus
+dependencies[] = waterinneu_feature_organisation
+dependencies[] = waterinneu_feature_tools
+dependencies[] = waterinneu_feature_projects
+dependencies[] = waterinneu_feature_roles_and_permissions
+dependencies[] = feature_search
+dependencies[] = feature_service_requests_and_offerings
