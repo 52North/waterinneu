@@ -158,7 +158,11 @@
       if ($(location).attr('pathname').match(/forum$/) &&
           !$('#block-menu-menu-top-level-links-registered-').length) {
         var link = $(location).attr('pathname').replace('forum','user') + '?destination=forum';
-        $('<div class="view-footer alert alert-warning" style="margin-top: 10px;"><?php print t('For adding adding new content, you need to ')?><a href="' + link + '"><?php print t('login')?></a>.</div>').insertAfter('div.view-content');
+        var messageDiv = '<div class="view-footer alert alert-warning" style="margin-top: 10px;"><?php print t('For adding adding new content, you need to ')?><a href="' + link + '"><?php print t('login')?></a>.</div>';
+        if ($('div.view-content').length) {
+        	$(messageDiv).insertAfter('div.view-content');
+        } else
+            $(messageDiv).insertAfter('div.view-empty');
       }
     });
   })(jQuery);
