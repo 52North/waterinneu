@@ -55,15 +55,11 @@ function n52_waterinneu_install() {
 			'theme_default' => $default_theme,
 			'admin_theme' => $admin_theme,
 	);
+	// Configure themes
 	theme_enable($theme_enable);
 	foreach ($theme_enable as $var => $theme) {
 		variable_set($var, $theme);
 	}
-	
-	// configure themes
-// 	variable_set('theme_default', $default_theme);
-// 	variable_set('admin_theme', $admin_theme);
-// 	theme_enable(array ($admin_theme,$default_theme) );
 	theme_disable(array ('seven') );
 	
 	// enable modules that require the corresponding theme to be available	
