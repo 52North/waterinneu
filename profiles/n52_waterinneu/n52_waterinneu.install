@@ -19,6 +19,7 @@ function n52_waterinneu_install() {
   $node->path = '';
   node_object_prepare($node);
   $node->uid = 1;
+  $node->revision = 1;
   $node->nid = 8781;
   
   $node->body[$node->language][0]['value'] = '<div id="accordion" class="panel-group">
@@ -217,6 +218,7 @@ function n52_waterinneu_install() {
   $node = node_submit($node);
   node_save($node);
   
+  // Try to publish the node
   $query = new EntityFieldQuery();
 
   $entities = $query->entityCondition('entity_type', 'node')
