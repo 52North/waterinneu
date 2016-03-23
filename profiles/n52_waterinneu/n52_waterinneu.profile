@@ -1,28 +1,24 @@
 <?php
-/*
- * Copyright (C) 2015
+/**
+ * Implements hook_form_FORM_ID_alter().
  *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 as published
- * by the Free Software Foundation.
- *
- * If the program is linked with libraries which are licensed under one of
- * the following licenses, the combination of the program with the linked
- * library is not considered a "derivative work" of the program:
- *
- *     - Apache License, version 2.0
- *     - Apache Software License, version 1.0
- *     - GNU Lesser General Public License, version 3
- *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
- *     - Common Development and Distribution License (CDDL), version 1.0
- *
- * Therefore the distribution of the program linked with libraries licensed
- * under the aforementioned licenses, is permitted by the copyright holders
- * if the distribution is compliant with both the GNU General Public
- * License version 2 and the aforementioned licenses.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
- * Public License for more details.
+ * Allows the profile to alter the site configuration form.
  */
+if (!function_exists("system_form_install_configure_form_alter")) {
+  function system_form_install_configure_form_alter(&$form, $form_state) {
+    $form['site_information']['site_name']['#default_value'] = 'WaterInnEU Marketplace Prototype';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Select the current install profile by default.
+ */
+if (!function_exists("system_form_install_select_profile_form_alter")) {
+  function system_form_install_select_profile_form_alter(&$form, $form_state) {
+    foreach ($form['profile'] as $key => $element) {
+      $form['profile'][$key]['#value'] = 'n52_waterinneu';
+    }
+  }
+}

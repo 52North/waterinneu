@@ -1,77 +1,143 @@
 <?php
-/*
- * Copyright (C) 2016
- * 
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 as published
- * by the Free Software Foundation.
- * 
- * If the program is linked with libraries which are licensed under one of
- * the following licenses, the combination of the program with the linked
- * library is not considered a "derivative work" of the program:
- * 
- *     - Apache License, version 2.0
- *     - Apache Software License, version 1.0
- *     - GNU Lesser General Public License, version 3
- *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
- *     - Common Development and Distribution License (CDDL), version 1.0
- * 
- * Therefore the distribution of the program linked with libraries licensed
- * under the aforementioned licenses, is permitted by the copyright holders
- * if the distribution is compliant with both the GNU General Public
- * License version 2 and the aforementioned licenses.
- * 
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
- * Public License for more details.
- */
 /**
  * Implements hook_install().
  *
- * Performs actions to set up the site for this profile.
- *
- * @see system_install()
+ * Perform actions to set up the site for this profile.
  */
 function n52_waterinneu_install() {
-	// Enable the themes.
-	$default_theme = 'n52_wieu_theme';
-	$admin_theme = 'adminial';
-	db_update('system')
-	->fields(array('status' => 1))
-	->condition('type', 'theme')
-	->condition('name', $admin_theme)
-	->execute();
-	variable_set('admin_theme', $admin_theme);
-	
-	db_update('system')
-	->fields(array('status' => 1))
-	->condition('type', 'theme')
-	->condition('name', $default_theme)
-	->execute();
-	variable_set('theme_default', $default_theme);
-	
-	db_update('system')
-	->fields(array('status' => 0))
-	->condition('type', 'theme')
-	->condition('name', 'seven')
-	->execute();
-	
-	// enable modules that require the corresponding theme to be available	
-	$modules_to_enable = array(
-			'feature_configuration',
-			'feature_events',
-			'feature_helpdesk',
-			'feature_i18n',
-			'feature_search',
-			'feature_service_requests_and_offerings',
-			'waterinneu_feature_frontpage',
-			'waterinneu_feature_harmony',
-			'waterinneu_feature_menus',
-			'waterinneu_feature_organisation',
-			'waterinneu_feature_projects',
-			'waterinneu_roles_and_permissions',
-			'waterinneu_feature_tools',
-	);
-	module_enable($modules_to_enable,TRUE);
+  // Enable some n52_waterinneu blocks.
+  $default_theme = 'n52_wieu_theme';
+  $admin_theme = 'adminimal';
+  // disable all themes
+  db_update('system')
+    ->fields(array('status' => 0))
+    ->condition('type', 'theme')
+    ->execute();
+  // enable $default_theme
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $default_theme)
+    ->execute();
+  // enable $admin_theme
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $admin_theme)
+    ->execute();
+  variable_set('theme_default', $default_theme);
+  variable_set('admin_theme', $admin_theme);
+  // activate admin theme when editing a node
+  variable_set('node_admin_theme', '1');
+  $blocks = array(
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'user',
+      'delta' => 'login',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'sidebar_first',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -10,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'help',
+      'pages' => '',
+      'cache' => -1,
+    ),
+  );
+  // drop system / user blocks to ensure correct building
+  db_delete('block')->condition('module', 'system')->execute();
+  db_delete('block')->condition('module', 'user')->execute();
+  // add in our blocks defined above
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  foreach ($blocks as $block) {
+    $query->values($block);
+  }
+  $query->execute();
+  
+  // From shortcut.install, add shortcuts to the default set on install
+  $shortcut_set = shortcut_set_load(SHORTCUT_DEFAULT_SET_NAME);
+  $shortcut_set->links = NULL;
+  $shortcut_set->links = array(
+    array(
+      'link_path' => 'admin/appearance/settings',
+      'link_title' => st('Theme'),
+      'weight' => -17,
+    ),
+  );
+  shortcut_set_save($shortcut_set);// Create a default role for site administrators, with all available permissions assigned.
+  $admin_role = new stdClass();
+  $admin_role->name = 'administrator';
+  $admin_role->weight = 10;
+  user_role_save($admin_role);
+  user_role_grant_permissions($admin_role->rid, array_keys(module_invoke_all('permission')));
+  // Set this as the administrator role.
+  variable_set('user_admin_role', $admin_role->rid);
+
+  // Assign user 1 the "administrator" role.
+  db_insert('users_roles')
+    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
+    ->execute();
+  // Update the menu router information.
+  menu_rebuild();
+  // revert features to ensure they are all installed
+  $features = array(
+    'feature_service_requests_and_offerings',
+    'waterinneu_feature_tools',
+    'waterinneu_feature_organisation',
+    'waterinneu_feature_projects',
+    'feature_configuration',
+    'feature_events',
+    'feature_helpdesk',
+    'feature_i18n',
+    'harmony_core',
+    'feature_search',
+    'harmony_atjs',
+    'harmony_default_permissions',
+    'waterinneu_feature_menus',
+    'waterinneu_feature_frontpage',
+    'waterinneu_feature_harmony',
+    'waterinneu_feature_roles_and_permissions'
+  );
+  features_revert($features);
+  // ignore any rebuild messages
+  node_access_needs_rebuild(FALSE);
+  // ignore any other install messages
+  drupal_get_messages();
 }
