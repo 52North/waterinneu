@@ -67,6 +67,5 @@ function n52_waterinneu_install() {
 	theme_disable(array ('seven') );
 	
 	// enable modules that require the corresponding theme to be available	
-	module_enable($modules_to_enable);
-	
+	module_enable($modules_to_enable,TRUE);
 }
