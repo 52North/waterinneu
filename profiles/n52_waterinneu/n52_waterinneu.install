@@ -20,7 +20,6 @@ function n52_waterinneu_install() {
   node_object_prepare($node);
   $node->uid = 1;
   $node->nid = 8781;
-  $node->revision_id = 1;
   
   $node->body[$node->language][0]['value'] = '<div id="accordion" class="panel-group">
 	<div class="panel panel-default panel-explore panel-dark-hightlight">
@@ -215,6 +214,7 @@ function n52_waterinneu_install() {
 	</div>
 </div>';
   $node->body[$node->language][0]['format'] = 'full_html_plain_no_filter_';
+  node_publish_action($node);
   $node = node_submit($node);
   node_save($node);
   
