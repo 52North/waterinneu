@@ -10,13 +10,16 @@ function n52_waterinneu_install() {
   _n52_waterinneu_install_features();
   _n52_waterinneu_install_block_configuration($default_theme);
   
+  $node_type = 'page';
+  $node_title = 'Landing page - Content accordion';
   $node = new stdClass();
-  $node->type = 'page';
-  $node->title = 'Landing page - Content accordion';
+  $node->type = $node_type;
+  $node->title = $node_title;
   $node->language = 'en';
   $node->path = '';
   node_object_prepare($node);
   $node->uid = 1;
+  $node->nid = 8781;
   
   $node->body[$node->language][0]['value'] = '<div id="accordion" class="panel-group">
 	<div class="panel panel-default panel-explore panel-dark-hightlight">
@@ -211,9 +214,21 @@ function n52_waterinneu_install() {
 	</div>
 </div>';
   $node->body[$node->language][0]['format'] = 'full_html_plain_no_filter_';
-  node_publish_action($node);
   $node = node_submit($node);
   node_save($node);
+  
+  $query = new EntityFieldQuery();
+
+  $entities = $query->entityCondition('entity_type', 'node')
+  ->propertyCondition('type', $node_type)
+  ->propertyCondition('title', $node_title)
+  ->range(0,1)
+  ->execute();
+
+  if (!empty($entities['node'])) {
+    $node = node_load(array_shift(array_keys($entities['node'])));
+    node_publish_action($node);
+  }
 
   // Update the menu router information.
   menu_rebuild();
