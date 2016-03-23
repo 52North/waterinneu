@@ -26,11 +26,3 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
-/**
- * Implements hook_form_FORM_ID_alter() for install_configure_form().
- *
- * Allows the profile to alter the site configuration form.
- */
-function minimal_form_install_configure_form_alter(&$form, $form_state) {
-	$form['site_information']['site_name']['#default_value'] = 'WaterInnEU Marketplace Prototype';
-}
