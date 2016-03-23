@@ -118,7 +118,7 @@ function n52_waterinneu_install() {
   				'visibility' => 0,
   		),
   );
-  $query = db_update('block')->fields(array(
+  $query = db_insert('block')->fields(array(
   		'module',
   		'delta',
   		'theme',
