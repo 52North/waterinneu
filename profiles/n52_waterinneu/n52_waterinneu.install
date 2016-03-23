@@ -16,7 +16,7 @@ function n52_waterinneu_install() {
   $node->language = 'en';
   $node->path = '';
   node_object_prepare($node);
-  $node->uid = 525252;
+  $node->uid = 1;
   $node->status = 1;
   
   $node->body[$node->language][0]['value'] = '<div id="accordion" class="panel-group">
