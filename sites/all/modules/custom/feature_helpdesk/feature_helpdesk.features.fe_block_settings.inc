@@ -12,15 +12,13 @@ function feature_helpdesk_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
-  $export['block-footer_right_content'] = array(
+  $export['menu-menu-footer-right-links'] = array(
     'cache' => -1,
     'custom' => 0,
-    'i18n_block_language' => array(
-      0 => 'en',
-    ),
-    'i18n_mode' => 1,
-    'machine_name' => 'footer_right_content',
-    'module' => 'block',
+    'delta' => 'menu-footer-right-links',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'menu',
     'node_types' => array(),
     'pages' => '',
     'roles' => array(),
@@ -35,7 +33,7 @@ function feature_helpdesk_default_fe_block_settings() {
         'region' => 'footer_fourth',
         'status' => 1,
         'theme' => 'n52_wieu_theme',
-        'weight' => 0,
+        'weight' => -47,
       ),
     ),
     'title' => '',

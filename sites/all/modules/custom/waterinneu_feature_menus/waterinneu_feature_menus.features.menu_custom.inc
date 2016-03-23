@@ -18,6 +18,14 @@ function waterinneu_feature_menus_menu_default_menu_custom() {
     'language' => 'und',
     'i18n_mode' => 5,
   );
+  // Exported menu: menu-footer-3rd-links.
+  $menus['menu-footer-3rd-links'] = array(
+    'menu_name' => 'menu-footer-3rd-links',
+    'title' => 'Footer 3rd Links',
+    'description' => '',
+    'language' => 'und',
+    'i18n_mode' => 5,
+  );
   // Exported menu: menu-moderator.
   $menus['menu-moderator'] = array(
     'menu_name' => 'menu-moderator',
@@ -63,6 +71,7 @@ function waterinneu_feature_menus_menu_default_menu_custom() {
   t('Author');
   t('Contains everything regarding author tasks like adding new content');
   t('Everything regarding moderation tasks');
+  t('Footer 3rd Links');
   t('Holds all links that are in the top div.');
   t('Moderator');
   t('Navigation');

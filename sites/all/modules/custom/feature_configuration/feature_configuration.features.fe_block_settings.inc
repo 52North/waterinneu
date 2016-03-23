@@ -12,36 +12,6 @@ function feature_configuration_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
-  $export['block-footer_third_column'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'i18n_block_language' => array(
-      0 => 'en',
-    ),
-    'i18n_mode' => 1,
-    'machine_name' => 'footer_third_column',
-    'module' => 'block',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'adminimal' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'adminimal',
-        'weight' => 0,
-      ),
-      'n52_wieu_theme' => array(
-        'region' => 'footer_third',
-        'status' => 1,
-        'theme' => 'n52_wieu_theme',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
   $export['comment-recent'] = array(
     'cache' => 1,
     'custom' => 0,
@@ -63,7 +33,7 @@ function feature_configuration_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'n52_wieu_theme',
-        'weight' => -22,
+        'weight' => -28,
       ),
     ),
     'title' => '',
@@ -91,7 +61,7 @@ function feature_configuration_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'n52_wieu_theme',
-        'weight' => -36,
+        'weight' => -41,
       ),
     ),
     'title' => '',
@@ -119,7 +89,7 @@ function feature_configuration_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'n52_wieu_theme',
-        'weight' => -31,
+        'weight' => -37,
       ),
     ),
     'title' => '',
@@ -147,7 +117,7 @@ function feature_configuration_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'n52_wieu_theme',
-        'weight' => -32,
+        'weight' => -38,
       ),
     ),
     'title' => '',
@@ -175,7 +145,7 @@ function feature_configuration_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'n52_wieu_theme',
-        'weight' => -33,
+        'weight' => -39,
       ),
     ),
     'title' => '',

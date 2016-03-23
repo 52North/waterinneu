@@ -68,6 +68,34 @@ function waterinneu_feature_menus_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['menu-menu-footer-3rd-links'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'menu-footer-3rd-links',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'menu',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => 'footer_third',
+        'status' => 1,
+        'theme' => 'n52_wieu_theme',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['menu-menu-top-level-links-registered-'] = array(
     'cache' => -1,
     'custom' => 0,

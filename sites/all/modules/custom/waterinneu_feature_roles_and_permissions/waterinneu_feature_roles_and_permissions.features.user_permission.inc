@@ -3435,14 +3435,5 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: 'view translation overview assigments'.
-  $permissions['view translation overview assigments'] = array(
-    'name' => 'view translation overview assigments',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'translation_overview',
-  );
-
   return $permissions;
 }
