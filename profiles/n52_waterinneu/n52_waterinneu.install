@@ -9,6 +9,211 @@ function n52_waterinneu_install() {
 
   _n52_waterinneu_install_features();
   _n52_waterinneu_install_block_configuration($default_theme);
+  
+  $node = new stdClass();
+  $node->type = 'page';
+  $node->title = 'Landing page - Content accordion';
+  $node->language = 'en';
+  $node->path = '';
+  node_object_prepare($node);
+  $node->uid = 525252;
+  $node->status = 1;
+  
+  $node->body[$node->language][0]['value'] = '<div id="accordion" class="panel-group">
+	<div class="panel panel-default panel-explore panel-dark-hightlight">
+		<div id="headingOne" class="panel-heading panel-heading-explore panel-heading-dark-highlight">
+			<h2 class="panel-title">
+				<a href="#explore" class="collapsed" data-toggle="collapse"
+					data-parent="#accordion"><span
+					class="glyphicon glyphicon-search">&nbsp;</span>Explore</a>
+			</h2>
+		</div>
+		<div id="explore" class="panel-collapse collapse in">
+			<div class="panel-body">
+				<div id="explore-search">
+					<a href="/matchmaking#search"><span class="glyphicon glyphicon-search">&nbsp;</span>Search</a>
+				</div>
+				<div id="explore-service-requests">
+					<a href="/matchmaking#service-requests"><span class="glyphicon glyphicon-tasks">&nbsp;</span>Service Requests</a>
+				</div>
+				<div id="explore-alerts">
+					<a href="/matchmaking#alerts"><span class="glyphicon glyphicon-exclamation-sign">&nbsp;</span>Alerts</a>
+				</div>
+				<div id="explore-ask-experts">
+					<a href="/matchmaking#ask-the-expert"><span class="glyphicon glyphicon-question-sign">&nbsp;</span>Ask the Expert</a>
+				</div>
+				<div id="explore-forum">
+					<a href="/matchmaking#forum"><span class="glyphicon glyphicon-comment">&nbsp;</span>Open Discussions in Forum</a>
+				</div>
+				<div id="explore-e-learning">
+					<a href="/e-learning"><span class="glyphicon glyphicon-plus-sign">&nbsp;</span>E-Learning</a>
+				</div>
+				<div id="explore-events">
+					<a href="/matchmaking#events"><span class="glyphicon glyphicon-calendar">&nbsp;</span>Events</a>
+				</div>
+				<div id="explore-add-content">
+					<a href="/node/add"><span class="glyphicon glyphicon-plus">&nbsp;</span>Add Entries</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default panel-about panel-light-highlight">
+		<div id="headingTwo" class="panel-heading panel-heading-about panel-heading-light-highlight">
+			<h2 class="panel-title">
+				<a href="#about" class="collapsed" data-toggle="collapse"
+					data-parent="#accordion"><span
+					class="glyphicon glyphicon-info-sign">&nbsp;</span>About</a>
+			</h2>
+		</div>
+		<div id="about" class="panel-collapse collapse">
+			<div class="panel-body">
+				<h3>
+					<a id="intro"></a>Introduction
+				</h3>
+				<p>This sites provides means for finding products, documentation
+					about these products, and experts for these products in the
+					hydrology domain. In addition, an inventory of projects and
+					organisations is available. General questions about tools and
+					problems can be discussed in the forum.</p>
+				<h3>Goal - What is our aim</h3>
+				<div>
+					<p>A marketplace to enhance the exploitation of EU funded ICT
+						models, tools,&nbsp;protocols and policy briefs related to water
+						and to establish suitable conditions for new market opportunities
+						based on&nbsp;these offerings. Create the marketplace as a
+						service:&nbsp;a forum formed by water research projects
+						representatives, stakeholders in the water domain, and companies
+						(in particular SMEs), who are capable of moving current products
+						into the market and offer them to, for example, river basin
+						managers, at different levels. The user segment will mainly
+						benefit from the capability of the water partnerships (e.g. the
+						Global Water Partnership), in bringing together a wide variety of
+						water sector stakeholders and practitioners such as decision
+						makers, public and private users, local, regional and
+						international entities, multidisciplinary stakeholders.</p>
+				</div>
+				<h3>Sections - What is inside WaterInnEU</h3>
+				<ul>
+					<li><a href="#intro">About</a>
+						<ul>
+							<li>This page. <a href="#intro"></a></li>
+							<li><a href="#faqs">FAQs</a> - see down below.</li>
+						</ul></li>
+					<li><a href="marketplace" title="Open the marketplace!">Forum</a>
+						<ul>
+							<li>Find <a href="marketplace/demand">products&nbsp;for
+									a certain problem category</a>,
+							</li>
+							<li>Find <a href="marketplace/offering">users for your
+									product</a>, and
+							</li>
+							<li>Find experts for <a href="marketplace/discussion">discussing
+									methods and models</a>.
+							</li>
+						</ul></li>
+					<li><a href="tools" title="Open tools inventory">Products</a>
+						<ul>
+							<li>Get overview about useful products in the hydrology
+								domain,</li>
+							<li>Find products by search criteria, and</li>
+							<li>Review products features and other additional metadat,
+								e.g. licensing</li>
+						</ul></li>
+				</ul>
+				<h3>
+					<a id="faqs"></a>Frequently asked questions
+				</h3>
+				<p>We provide an extra FAQ section for you.</p>
+				<ul>
+					<li><a href="user-guide/faq">Frequently Asked Questions</a></li>
+				</ul>
+				<h3>Backstage - Who is driving WaterInnEU</h3>
+				<ul>
+					<li><a href="http://52north.org/" target="_blank">52°North</a></li>
+					<li><a href="https://www.adelphi.de/en" target="_blank">adelphi</a></li>
+					<li><a href="http://www.anteagroup.be/en" target="_blank">Antea</a></li>
+					<li><a href="http://www.creaf.cat/en" target="_blank">CREAF</a></li>
+					<li><a
+						href="http://www.gwp.org/gwp-in-action/Central-and-Eastern-Europe/"
+						title="Global Water Partnership - Central and Eastern Europe">GWP-CEE</a></li>
+					<li><a href="http://www.orioninnovations.co.uk/"
+						target="_blank">Orion</a></li>
+					<li><a href="http://www.randbee.com/" target="_blank">Randbee</a></li>
+					<li><a href="http://www.tudelft.nl/en/" target="_blank">TU-Delft</a></li>
+				</ul>
+				<h3>Links - Who is Doing Related Work</h3>
+				<ul>
+					<li><a href="http://www.aquaknow.net/" target="_blank"
+						title="aquaknow.net">Aquaknow</a></li>
+					<li><a href="http://his.cuahsi.org/index.html" target="_blank">CUAHSI-HIS</a></li>
+					<li><a href="http://datahub.io/">Datahub</a></li>
+					<li><a href="http://www.eea.europa.eu/themes/water/dc">EEA
+							Water Centre</a></li>
+					<li><a href="http://www.eionet.europa.eu/">EIONET</a></li>
+					<li><a href="http://www.eip-water.eu/">EIP Water</a></li>
+					<li><a href="https://open-data.europa.eu/en/data"
+						target="_blank">EU Open Data Portal</a></li>
+					<li><a href="http://floods.jrc.ec.europa.eu/" target="_blank">European
+							Floods Portal</a></li>
+					<li><a href="http://ec.europa.eu/eurostat" target="_blank">EUROSTAT
+							Open Data Portal</a></li>
+					<li><a href="http://europeanwatercommunity.eu/"
+						target="_blank">European Water Community (EWC)</a></li>
+					<li><a
+						href="http://ec.europa.eu/research/environment/index_en.cfm?section=geo&amp;pg=geoss"
+						target="_blank">GEOSS</a></li>
+					<li><a href="http://inspire-geoportal.ec.europa.eu/"
+						target="_blank">INSPIRE Geoportal</a></li>
+					<li><a href="http://www.water-switch-on.eu/" target="_blank">SWITCH-ON</a></li>
+					<li><a href="http://water.europa.eu/" target="_blank">WISE</a></li>
+					<li><a href="http://www.wise-rtd.info/en" target="_blank">WISE-RTD</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default panel-our-services panel-dark-hightlight">
+		<div id="headingThree"
+			class="panel-heading panel-heading-our-services panel-heading-dark-highlight">
+			<h2 class="panel-title">
+				<a href="#our-services" class="collapsed" data-toggle="collapse"
+					data-parent="#accordion"><span
+					class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Our Services</a>
+			</h2>
+		</div>
+		<div id="our-services" class="panel-collapse collapse">
+			<div class="panel-body">Anim pariatur cliche reprehenderit,
+				enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+				moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+				quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+				aliqua put a bird on it squid single-origin coffee nulla assumenda
+				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
+				anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+				butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
+				denim aesthetic synth nesciunt you probably haven&apos;t heard of them
+				accusamus labore sustainable VHS.</div>
+		</div>
+	</div>
+	<div class="panel panel-default panel-upcoming-events panel-light-highlight">
+		<div id="headingThree1"
+			class="panel-heading panel-heading-upcoming-events panel-heading-light-highlight">
+			<h2 class="panel-title">
+				<a href="#upcoming-events" class="collapsed" data-toggle="collapse"
+					data-parent="#accordion"><span
+					class="glyphicon glyphicon-calendar">&nbsp;</span>Upcoming Events</a>
+			</h2>
+		</div>
+		<div id="upcoming-events" class="panel-collapse collapse">
+			<div class="panel-body">
+				Here we list the upcoming events during the next weeks.
+				<br />
+        <a href="/node/add/event"><button type="button" class="btn btn-primary">Add new Event</button></a> <a href="/matchmaking/events"><button type="button" class="btn btn-default">Show all Events</button></a>
+			</div>
+		</div>
+	</div>
+</div>';
+  $node->body[$node->language][0]['format'] = 'full_html_plain_no_filter_';
+  $node = node_submit($node);
+  node_save($node);
 
   // Update the menu router information.
   menu_rebuild();
