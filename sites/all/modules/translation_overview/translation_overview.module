@@ -9,7 +9,7 @@ define('TRANSLATION_OVERVIEW_IGNORE', 0);
  */
 function translation_overview_help($path, $arg) {
   switch ($path) {
-    case 'admin/config/content/translation-overview-manage':
+    case 'admin/content/translation-overview-manage':
       $args = array();
       $states = array('original', 'current', 'outofdate', 'missing');
       foreach ($states as $state) {
@@ -43,8 +43,8 @@ function translation_overview_theme() {
  */
 function translation_overview_permission() {
   $perms = array(
-    'view translation overview assigments' => array(
-      'title' => t('View translation overview assigments'),
+    'view translation overview assignments' => array(
+      'title' => t('View translation overview assignments'),
       'description' => t('Allow users to view the translations assignments.'),
     )
   );
@@ -65,7 +65,7 @@ function translation_overview_menu() {
 
   $items = array();
 
-  $items['admin/config/content/translation-overview-manage'] = array(
+  $items['admin/content/translation-overview-manage'] = array(
     'title' => 'Translation overview',
     'type' => MENU_NORMAL_ITEM,
     'description' => "View the translation status of the site's content.",
@@ -73,18 +73,18 @@ function translation_overview_menu() {
     'file' => 'translation_overview.pages.inc',
     'access callback' => 'translation_overview_is_manager',
   );
-  $items['admin/config/content/translation-overview-assignments'] = array(
-    'title' => 'Translator assigments',
+  $items['admin/content/translation-overview-assignments'] = array(
+    'title' => 'Translator assignments',
     'description' => "View the translations assignments.",
     'type' => MENU_NORMAL_ITEM,
     'page callback' => 'translation_overview_assignment_lang_page',
     'file' => 'translation_overview.pages.inc',
-    'access arguments' => array('view translation overview assigments'),
+    'access arguments' => array('view translation overview assignments'),
   );
   $weight = 0;
   $languages = language_list('enabled');
   foreach ($languages[1] as $language) {
-    $items['admin/config/content/translation-overview-assignments/' . $language->language] = array(
+    $items['admin/content/translation-overview-assignments/' . $language->language] = array(
       'title' => $language->name,
       'description' => $language->name,
       'type' => MENU_NORMAL_ITEM,
@@ -92,7 +92,7 @@ function translation_overview_menu() {
       'page callback' => 'translation_overview_assignment_page',
       'page arguments' => array($language->language),
       'file' => 'translation_overview.pages.inc',
-      'access arguments' => array('view translation overview assigments'),
+      'access arguments' => array('view translation overview assignments'),
     );
   }
   return $items;
@@ -292,7 +292,10 @@ function translation_overview_translation_link($node, $translation_node = NULL, 
     'show_long' => $show_long,
     'has_note' => FALSE,
   );
-
+  if ($language) {
+    $installed_languages = language_list();
+    $link['options']['language'] = $installed_languages[$language];
+  }
   if ($language == $node->language) {
     $properties['has_note'] = !empty($node->field_translator_note[0]['value']);
     return theme('translation_overview_translation_link', array('state' => 'original', 'link' => $link, 'properties' => $properties));

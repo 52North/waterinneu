@@ -9,7 +9,32 @@
 function translation_overview_node_page($node) {
   drupal_set_title(t('Translations of %title', array('%title' => $node->title)), PASS_THROUGH);
 
-  return drupal_get_form('translation_overview_node_form', $node);
+  $build['translation_overview_node_form'] = drupal_get_form('translation_overview_node_form', $node);
+
+  if (module_exists('i18n_node') && user_access('administer content translations')) {
+    module_load_include('inc', 'i18n_node', 'i18n_node.pages');
+    $translations = _translation_overview_get_translations_for_node($node);
+    $build['i18n_node_select_translation'] = drupal_get_form('i18n_node_select_translation', $node, reset($translations));
+  }
+
+  return $build;
+}
+
+/**
+ * Helper function that gets the translations for a node.
+ */
+function _translation_overview_get_translations_for_node($node) {
+  if ($node->tnid) {
+    // Already part of a set, grab that set.
+    $tnid = $node->tnid;
+    $translations = translation_node_get_translations($node->tnid);
+  }
+  else {
+    // We have no translation source nid, this could be a new set, emulate that.
+    $tnid = $node->nid;
+    $translations = array($node->language => $node);
+  }
+  return array($tnid => $translations);
 }
 
 /**
@@ -21,16 +46,9 @@ function translation_overview_node_page($node) {
  *   Node object.
  */
 function translation_overview_node_form($form, &$form_state, $node) {
-  if ($node->tnid) {
-    // Already part of a set, grab that set.
-    $tnid = $node->tnid;
-    $translations = translation_node_get_translations($node->tnid);
-  }
-  else {
-    // We have no translation source nid, this could be a new set, emulate that.
-    $tnid = $node->nid;
-    $translations = array($node->language => $node);
-  }
+  $translations = _translation_overview_get_translations_for_node($node);
+  $tnid = key($translations);
+  $translations = reset($translations);
   $priorities = translation_overview_get_node_priority($node);
 
   $form['languages']['#tree'] = TRUE;
@@ -376,7 +394,7 @@ function translation_overview_build_filter_query(SelectQueryInterface $query = N
 function translation_overview_manager_page() {
   drupal_add_css(drupal_get_path('module', 'translation_overview') . '/translation_overview.css');
 
-  $rows_per_page = 30;
+  $rows_per_page = variable_get('translation_overview_rows_per_page', 50);
 
   // Get a list of the enabled languages that this user manages.
   $languages = array();
@@ -409,6 +427,8 @@ function translation_overview_manager_page() {
   $query->addField('n', 'type');
   $query->addField('n', 'created');
   $query->where("(n.nid = n.tnid OR n.tnid = 0) AND n.language <> '' AND n.language IS NOT NULL");
+  $query = $query->extend('PagerDefault');
+  $query->limit($rows_per_page);
 
   $rows = array();
   $result = $query->execute();
@@ -434,7 +454,8 @@ function translation_overview_manager_page() {
     $rows[] = $row;
   }
 
-  return drupal_render(drupal_get_form('translation_overview_filter_form'))
+  $translation_overview_filter_form = drupal_get_form('translation_overview_filter_form');
+  return drupal_render($translation_overview_filter_form)
     . theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('class' => array('trov-all'))))
     . theme('pager', array('tags' => NULL));
 }
@@ -445,7 +466,7 @@ function translation_overview_manager_page() {
 function translation_overview_assignment_lang_page() {
   $items = array();
   foreach (locale_language_list() as $lang_code => $language) {
-    $items[] = l($language, 'admin/config/content/translation-overview-assignments/' . $lang_code);
+    $items[] = l($language, 'admin/content/translation-overview-assignments/' . $lang_code);
   }
   return theme('item_list', array('items' => $items));
 }
@@ -453,7 +474,7 @@ function translation_overview_assignment_lang_page() {
 function translation_overview_assignment_page($language) {
   drupal_add_css(drupal_get_path('module', 'translation_overview') . '/translation_overview.css');
 
-  $rows_per_page = 30;
+  $rows_per_page = variable_get('translation_overview_rows_per_page', 50);
   $node_types = node_type_get_names();
   $languages = language_list();
 
@@ -518,7 +539,8 @@ function translation_overview_assignment_page($language) {
     );
   }
 
-  return drupal_render(drupal_get_form('translation_overview_filter_form'))
+  $translation_overview_filter_form = drupal_get_form('translation_overview_filter_form');
+  return drupal_render($translation_overview_filter_form)
     . theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('class' => array('trov'))))
     . theme('pager', array('tags' => NULL));
 }

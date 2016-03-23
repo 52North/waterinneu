@@ -168,3 +168,15 @@ function translation_overview_update_6002() {
 
   return $ret;
 }
+
+/**
+ * Rename misspelled permission: "view translation overview assignments".
+ */
+function translation_overview_update_7201() {
+  $n = db_update('role_permission')
+  ->condition('permission', 'view translation overview assigments')
+  ->fields(array('permission' => 'view translation overview assignments'))
+  ->execute();
+
+  return t('@n permissions updated', array('@n' => $n));
+}

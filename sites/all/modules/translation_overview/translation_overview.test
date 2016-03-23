@@ -8,11 +8,11 @@ class TranslationOverviewPriorityTestCase extends DrupalWebTestCase {
   /**
    * Implementation of getInfo().
    */
-  function getInfo() {
+  public static function getInfo() {
     return array(
-      'name' => t('Translation Priority'),
-      'description' => t('Submit priorities to the translation tab and ensure that they are saved.'),
-      'group' => t('Translation Overview'),
+      'name' => 'Translation Priority',
+      'description' => 'Submit priorities to the translation tab and ensure that they are saved.',
+      'group' => 'Translation Overview',
     );
   }
 
@@ -46,7 +46,7 @@ class TranslationOverviewPriorityTestCase extends DrupalWebTestCase {
         'create page content',
         'edit own page content',
         'translate content',
-        'view translation overview assigments',
+        'view translation overview assignments',
         'manage en translation overview priorities',
         'manage es translation overview priorities',
         'manage ja translation overview priorities',
