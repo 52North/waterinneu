@@ -12,9 +12,9 @@ files[] = plugins/export_ui/atjs_ctools_export_ui.class.php
 
 configure = admin/structure/atjs
 
-; Information added by Drupal.org packaging script on 2015-02-06
-version = "7.x-1.x-dev"
+; Information added by Drupal.org packaging script on 2016-03-21
+version = "7.x-1.0-alpha1+3-dev"
 core = "7.x"
 project = "atjs"
-datestamp = "1423250885"
+datestamp = "1458582377"
 

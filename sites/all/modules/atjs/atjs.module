@@ -4,6 +4,8 @@
  * @file
  * atjs.module
  */
+define('ATJS_LIBRARY_ATJS_MINIMUM_VERSION', '1.5.0');
+define('ATJS_LIBRARY_CARETJS_MINIMUM_VERSION', '0.3.1');
 
 /**
  * Implements hook_permission().
@@ -228,14 +230,24 @@ function atjs_pre_render($element) {
     $listener = atjs_listener_load($listener_name);
 
     if ($listener) {
-      $js_settings['data']['atjs'][$element['#id']][$listener_name] = array(
-        'at' => filter_xss($listener->at),
-        'tpl' => filter_xss($listener->tpl),
-        'insert_tpl' => filter_xss($listener->insert_tpl),
-        'limit' => filter_xss($listener->query_limit),
-        'max_len' => filter_xss($listener->max_length),
-        'search_key' => filter_xss(str_replace('property:', '', $listener->search_key)),
+      // General listener settings.
+      $js_settings['data']['atjs']['listeners'][$listener_name] = array(
+        'allowSpaces' => filter_xss($listener->allow_spaces),
       );
+
+      // Settings passed to At.js library.
+      $js_settings['data']['atjs']['elements'][$element['#id']][$listener_name] = array(
+        'at' => filter_xss($listener->at),
+        'displayTpl' => filter_xss($listener->tpl),
+        'insertTpl' => filter_xss($listener->insert_tpl),
+        'limit' => filter_xss($listener->query_limit),
+        'maxLen' => intval(filter_xss($listener->max_length)),
+        'searchKey' => filter_xss(str_replace('property:', '', $listener->search_key)),
+      );
+
+      if ($listener->allow_spaces) {
+        $js_settings['data']['atjs']['elements'][$element['#id']][$listener_name]['insertTpl'] = '[' . filter_xss($listener->insert_tpl) . ']';
+      }
     }
   }
 
@@ -263,7 +275,14 @@ function atjs_libraries_info() {
     ),
     'path' => 'dist',
     'files' => array(
-      'js' => array('jquery.caret.min.js'),
+      'js' => array('jquery.caret.js'),
+    ),
+    'variants' => array(
+      'minified' => array(
+        'files' => array(
+          'js' => array('jquery.caret.min.js'),
+        )
+      ),
     ),
   );
 
@@ -274,11 +293,23 @@ function atjs_libraries_info() {
     'version arguments' => array(
       'file' => 'package.json',
       'pattern' => '/"version": "([0-9\.]+)"/',
-      'lines' => 9,
+      'lines' => 10,
     ),
+    'path' => 'dist',
     'files' => array(
-      'css' => array('dist/css/jquery.atwho.css'),
-      'js' => array('dist/js/jquery.atwho.min.js'),
+      'css' => array('css/jquery.atwho.css'),
+      'js' => array('js/jquery.atwho.js'),
+    ),
+    'variants' => array(
+      'minified' => array(
+        'files' => array(
+          'css' => array('css/jquery.atwho.min.css'),
+          'js' => array('js/jquery.atwho.min.js'),
+        )
+      ),
+    ),
+    'dependencies' => array(
+      'caret.js (>=' . ATJS_LIBRARY_CARETJS_MINIMUM_VERSION . ')',
     ),
   );
 
@@ -337,6 +368,13 @@ function atjs_ctools_export_ui_form(&$form, &$form_state) {
     '#default_value' => $listener->at,
     '#maxlength' => 10,
     '#description' => t('A character or string to initiate searching, for example @ for user.'),
+  );
+
+  $form['allow_spaces'] = array(
+    '#title' => t('Allow spaces'),
+    '#type' => 'checkbox',
+    '#default_value' => $listener->allow_spaces,
+    '#description' => t('Allow At.js library to include spaces in the search term. Insert template will automatically be wrapped in square brackets so that the username can be clearly identified.'),
   );
 
   // Templates.
@@ -643,6 +681,10 @@ class AtjsPregCallback {
   }
 
   public function execute($text) {
+    if ($this->listener->allow_spaces) {
+      // If spaces are allowed, the token will be of the format '[@user name]' (without quotes).
+      return preg_replace_callback("/\[[\\" . $this->listener->at . ']{1}(([a-zA-Z0-9-_]+ ?)+)\]/', array($this, 'match_replace'), $text);
+    }
     return preg_replace_callback("/[\\" . $this->listener->at . ']{1}([a-zA-Z0-9-_]+)/', array($this, 'match_replace'), $text);
   }
 

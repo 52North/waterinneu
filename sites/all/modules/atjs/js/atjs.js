@@ -16,7 +16,7 @@
         drupal_atjs.ckeditor(context);
       }
 
-      $.each(Drupal.settings.atjs, function(element, listeners) {
+      $.each(Drupal.settings.atjs.elements, function(element, listeners) {
         if ($('#' + element + '.atjs').length && !$('#' + element).hasClass('atjs-processed')) {
           drupal_atjs.processListeners(element, element, context, false);
 
@@ -28,9 +28,9 @@
 
   drupal_atjs.processListeners = function(element, element_target, context, content_editable) {
     if ($('#' + element + '.atjs').length) {
-      $.each(Drupal.settings.atjs[element], function(listener_name, listener) {
+      $.each(Drupal.settings.atjs.elements[element], function(listener_name, listener) {
         listener['callbacks'] = {};
-        listener['callbacks']['remote_filter'] = function(query, callback) {
+        listener['callbacks']['remoteFilter'] = function(query, callback) {
           var key = query;
 
           if (key.length >= 1) {
@@ -45,6 +45,15 @@
             }
           }
         };
+
+        if (Drupal.settings.atjs.listeners[listener_name].allowSpaces) {
+          listener['callbacks']['matcher'] = function (flag, subtext) {
+            var match, regexp;
+            regexp = new RegExp('(\\s+|^)' + flag + '((\\w+ ?)*(\\w+))', 'gi');
+            match = regexp.exec(subtext);
+            return match ? match[2] : null;
+          };
+        }
 
         if (content_editable) {
           $(element_target, context).atwho(listener);
