@@ -75,7 +75,6 @@ dependencies[] = date_views
 dependencies[] = devel
 dependencies[] = devel_node_access
 dependencies[] = profiler_builder
-dependencies[] = profiler_builder_extras
 ; Features extra
 dependencies[] = fe_block
 dependencies[] = fe_profile
