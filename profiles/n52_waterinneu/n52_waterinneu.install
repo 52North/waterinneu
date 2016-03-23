@@ -34,8 +34,31 @@
  * @see system_install()
  */
 function n52_waterinneu_install() {
-	variable_set('theme_default', 'n52_wieu_theme');
-	variable_set('admin_theme', 'adminial');
-	theme_enable(array ('adminial','n52_wieu_theme') );
+	$default_theme = 'n52_wieu_theme';
+	$admin_theme = 'adminial';
+	$modules_to_enable = array(
+			'feature_configuration',
+			'feature_events',
+			'feature_helpdesk',
+			'feature_i18n',
+			'feature_search',
+			'feature_service_requests_and_offerings',
+			'waterinneu_feature_frontpage',
+			'waterinneu_feature_harmony',
+			'waterinneu_feature_menus',
+			'waterinneu_feature_organisation',
+			'waterinneu_feature_projects',
+			'waterinneu_roles_and_permissions',
+			'waterinneu_feature_tools',
+	);
+	
+	// configure themes
+	variable_set('theme_default', $default_theme);
+	variable_set('admin_theme', $admin_theme);
+	theme_enable(array ($admin_theme,$default_theme) );
 	theme_disable(array ('seven') );
+	
+	// enable modules that require the corresponding theme to be available	
+	module_enable($modules_to_enable);
+	
 }
