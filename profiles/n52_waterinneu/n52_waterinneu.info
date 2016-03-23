@@ -3205,120 +3205,114 @@ variables[l10n_update_translation_status][globalredirect][de] = stdClass::__set_
   ),
    'language' => 'de',
 ))
-/*
-variables[l10n_update_translation_status][harmony_access][de] = stdClass::__set_state(array(
-   'name' => 'harmony_access',
-   'project_type' => 'module',
-   'core' => '7.x',
-   'version' => '7.x-1.0-alpha1',
-   'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
-   'status' => '1',
-   'project' => 'harmony_access',
-   'langcode' => 'de',
-   'type' => '',
-   'timestamp' => 0,
-   'last_checked' => 0,
-   'files' => 
-  array (
-    'remote' => 
-    stdClass::__set_state(array(
-       'project' => 'harmony_access',
-       'langcode' => 'de',
-       'version' => '7.x-1.0-alpha1',
-       'type' => 'remote',
-       'filename' => 'harmony_access-7.x-1.0-alpha1.de.po',
-       'uri' => 'http://ftp.drupal.org/files/translations/7.x/harmony_access/harmony_access-7.x-1.0-alpha1.de.po',
-    )),
-    'local' => 
-    stdClass::__set_state(array(
-       'project' => 'harmony_access',
-       'langcode' => 'de',
-       'version' => '7.x-1.0-alpha1',
-       'type' => 'local',
-       'filename' => 'harmony_access-7.x-1.0-alpha1.de.po',
-       'directory' => 'translations://',
-       'uri' => 'translations://harmony_access-7.x-1.0-alpha1.de.po',
-    )),
-  ),
-   'language' => 'de',
-))
-*/
-/*
-variables[l10n_update_translation_status][harmony_core][de] = stdClass::__set_state(array(
-   'name' => 'harmony_core',
-   'project_type' => 'module',
-   'core' => '7.x',
-   'version' => '7.x-1.0-alpha7',
-   'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
-   'status' => '1',
-   'project' => 'harmony_core',
-   'langcode' => 'de',
-   'type' => '',
-   'timestamp' => 0,
-   'last_checked' => 0,
-   'files' => 
-  array (
-    'remote' => 
-    stdClass::__set_state(array(
-       'project' => 'harmony_core',
-       'langcode' => 'de',
-       'version' => '7.x-1.0-alpha7',
-       'type' => 'remote',
-       'filename' => 'harmony_core-7.x-1.0-alpha7.de.po',
-       'uri' => 'http://ftp.drupal.org/files/translations/7.x/harmony_core/harmony_core-7.x-1.0-alpha7.de.po',
-    )),
-    'local' => 
-    stdClass::__set_state(array(
-       'project' => 'harmony_core',
-       'langcode' => 'de',
-       'version' => '7.x-1.0-alpha7',
-       'type' => 'local',
-       'filename' => 'harmony_core-7.x-1.0-alpha7.de.po',
-       'directory' => 'translations://',
-       'uri' => 'translations://harmony_core-7.x-1.0-alpha7.de.po',
-    )),
-  ),
-   'language' => 'de',
-))
-*/
-/*
-variables[l10n_update_translation_status][harmony_search][de] = stdClass::__set_state(array(
-   'name' => 'harmony_search',
-   'project_type' => 'module',
-   'core' => '7.x',
-   'version' => '7.x-1.x-dev',
-   'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
-   'status' => '1',
-   'project' => 'harmony_search',
-   'langcode' => 'de',
-   'type' => '',
-   'timestamp' => 0,
-   'last_checked' => 0,
-   'files' => 
-  array (
-    'remote' => 
-    stdClass::__set_state(array(
-       'project' => 'harmony_search',
-       'langcode' => 'de',
-       'version' => '7.x-1.x-dev',
-       'type' => 'remote',
-       'filename' => 'harmony_search-7.x-1.x-dev.de.po',
-       'uri' => 'http://ftp.drupal.org/files/translations/7.x/harmony_search/harmony_search-7.x-1.x-dev.de.po',
-    )),
-    'local' => 
-    stdClass::__set_state(array(
-       'project' => 'harmony_search',
-       'langcode' => 'de',
-       'version' => '7.x-1.x-dev',
-       'type' => 'local',
-       'filename' => 'harmony_search-7.x-1.x-dev.de.po',
-       'directory' => 'translations://',
-       'uri' => 'translations://harmony_search-7.x-1.x-dev.de.po',
-    )),
-  ),
-   'language' => 'de',
-))
-*/
+;variables[l10n_update_translation_status][harmony_access][de] = stdClass::__set_state(array(
+;   'name' => 'harmony_access',
+;   'project_type' => 'module',
+;   'core' => '7.x',
+;   'version' => '7.x-1.0-alpha1',
+;   'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
+;   'status' => '1',
+;   'project' => 'harmony_access',
+;   'langcode' => 'de',
+;   'type' => '',
+;   'timestamp' => 0,
+;   'last_checked' => 0,
+;   'files' => 
+;  array (
+;    'remote' => 
+;    stdClass::__set_state(array(
+;       'project' => 'harmony_access',
+;       'langcode' => 'de',
+;       'version' => '7.x-1.0-alpha1',
+;       'type' => 'remote',
+;       'filename' => 'harmony_access-7.x-1.0-alpha1.de.po',
+;       'uri' => 'http://ftp.drupal.org/files/translations/7.x/harmony_access/harmony_access-7.x-1.0-alpha1.de.po',
+;    )),
+;    'local' => 
+;    stdClass::__set_state(array(
+;       'project' => 'harmony_access',
+;       'langcode' => 'de',
+;       'version' => '7.x-1.0-alpha1',
+;       'type' => 'local',
+;       'filename' => 'harmony_access-7.x-1.0-alpha1.de.po',
+;       'directory' => 'translations://',
+;       'uri' => 'translations://harmony_access-7.x-1.0-alpha1.de.po',
+;    )),
+;  ),
+;   'language' => 'de',
+;))
+;variables[l10n_update_translation_status][harmony_core][de] = stdClass::__set_state(array(
+;   'name' => 'harmony_core',
+;   'project_type' => 'module',
+;   'core' => '7.x',
+;   'version' => '7.x-1.0-alpha7',
+;   'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
+;   'status' => '1',
+;   'project' => 'harmony_core',
+;   'langcode' => 'de',
+;   'type' => '',
+;   'timestamp' => 0,
+;   'last_checked' => 0,
+;   'files' => 
+;  array (
+;    'remote' => 
+;    stdClass::__set_state(array(
+;       'project' => 'harmony_core',
+;       'langcode' => 'de',
+;       'version' => '7.x-1.0-alpha7',
+;       'type' => 'remote',
+;       'filename' => 'harmony_core-7.x-1.0-alpha7.de.po',
+;       'uri' => 'http://ftp.drupal.org/files/translations/7.x/harmony_core/harmony_core-7.x-1.0-alpha7.de.po',
+;    )),
+;    'local' => 
+;    stdClass::__set_state(array(
+;       'project' => 'harmony_core',
+;       'langcode' => 'de',
+;       'version' => '7.x-1.0-alpha7',
+;       'type' => 'local',
+;       'filename' => 'harmony_core-7.x-1.0-alpha7.de.po',
+;       'directory' => 'translations://',
+;       'uri' => 'translations://harmony_core-7.x-1.0-alpha7.de.po',
+;    )),
+;  ),
+;   'language' => 'de',
+;))
+;variables[l10n_update_translation_status][harmony_search][de] = stdClass::__set_state(array(
+;   'name' => 'harmony_search',
+;   'project_type' => 'module',
+;   'core' => '7.x',
+;   'version' => '7.x-1.x-dev',
+;   'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
+;   'status' => '1',
+;   'project' => 'harmony_search',
+;   'langcode' => 'de',
+;   'type' => '',
+;   'timestamp' => 0,
+;   'last_checked' => 0,
+;   'files' => 
+;  array (
+;    'remote' => 
+;    stdClass::__set_state(array(
+;       'project' => 'harmony_search',
+;       'langcode' => 'de',
+;       'version' => '7.x-1.x-dev',
+;       'type' => 'remote',
+;       'filename' => 'harmony_search-7.x-1.x-dev.de.po',
+;       'uri' => 'http://ftp.drupal.org/files/translations/7.x/harmony_search/harmony_search-7.x-1.x-dev.de.po',
+;    )),
+;    'local' => 
+;    stdClass::__set_state(array(
+;       'project' => 'harmony_search',
+;       'langcode' => 'de',
+;       'version' => '7.x-1.x-dev',
+;       'type' => 'local',
+;       'filename' => 'harmony_search-7.x-1.x-dev.de.po',
+;       'directory' => 'translations://',
+;       'uri' => 'translations://harmony_search-7.x-1.x-dev.de.po',
+;    )),
+;  ),
+;   'language' => 'de',
+;))
 variables[l10n_update_translation_status][http_client][de] = stdClass::__set_state(array(
    'name' => 'http_client',
    'project_type' => 'module',
