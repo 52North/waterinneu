@@ -267,3 +267,11 @@ ul.pager li a, ul.pager li.pager-current {
 	vertical-align: middle;
 }
 
+#block-menu-menu-footer-right-links > div.content > ul.menu > li.leaf,
+#block-menu-menu-footer-3rd-links > div.content > ul.menu > li.leaf {
+	list-style: none;
+	list-style-image: none;
+	border-bottom: none;
+	padding: 0.2em 0.5em 0 0;
+}
+
