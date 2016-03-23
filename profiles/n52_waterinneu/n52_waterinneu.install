@@ -66,4 +66,72 @@ function n52_waterinneu_install() {
   node_access_needs_rebuild(FALSE);
   // ignore any other install messages
   drupal_get_messages();
+  
+  //configure blocks
+  $blocks = array(
+  		array(
+  				'module' => 'menu',
+  				'delta' => 'menu-footer-right-links',
+  				'theme' => $default_theme,
+  				'status' => 1,
+  				'weight' => -47,
+  				'region' => 'footer_fourth',
+  				'pages' => '',
+  				'cache' => -1,
+  				'title' => '<none>',
+  				'visibility' => 0,
+  		),
+  		array(
+  				'module' => 'custom_search_blocks',
+  				'delta' => 1,
+  				'theme' => $default_theme,
+  				'status' => 1,
+  				'weight' => -34,
+  				'region' => 'header_top_right',
+  				'pages' => '',
+  				'cache' => -1,
+  				'title' => '<none>',
+  				'visibility' => 0,
+  		),
+  		array(
+  				'module' => 'lang_dropdown',
+  				'delta' => 'language',
+  				'theme' => $default_theme,
+  				'status' => 1,
+  				'weight' => -35,
+  				'region' => 'header_top_right',
+  				'pages' => '',
+  				'cache' => -1,
+  				'title' => '<none>',
+  				'visibility' => 0,
+  		),
+  		array(
+  				'module' => 'menu',
+  				'delta' => 'menu-footer-3rd-links',
+  				'theme' => $default_theme,
+  				'status' => 1,
+  				'weight' => 0,
+  				'region' => 'footer_third',
+  				'pages' => '',
+  				'cache' => -1,
+  				'title' => '<none>',
+  				'visibility' => 0,
+  		),
+  );
+  $query = db_update('block')->fields(array(
+  		'module',
+  		'delta',
+  		'theme',
+  		'status',
+  		'weight',
+  		'region',
+  		'pages',
+  		'cache',
+  		'title',
+  		'visibility'
+  ));
+  foreach ($blocks as $block) {
+  	$query->values($block);
+  }
+  $query->execute();
 }
