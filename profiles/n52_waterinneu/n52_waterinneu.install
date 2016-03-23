@@ -5,133 +5,140 @@
  * Perform actions to set up the site for this profile.
  */
 function n52_waterinneu_install() {
-  // Enable some n52_waterinneu blocks.
-  $default_theme = 'n52_wieu_theme';
-  $admin_theme = 'adminimal';
-  // disable all themes
-  db_update('system')
-    ->fields(array('status' => 0))
-    ->condition('type', 'theme')
-    ->execute();
-  // enable $default_theme
-  db_update('system')
-    ->fields(array('status' => 1))
-    ->condition('type', 'theme')
-    ->condition('name', $default_theme)
-    ->execute();
-  // enable $admin_theme
-  db_update('system')
-    ->fields(array('status' => 1))
-    ->condition('type', 'theme')
-    ->condition('name', $admin_theme)
-    ->execute();
-  variable_set('theme_default', $default_theme);
-  variable_set('admin_theme', $admin_theme);
-  
-  // From shortcut.install, add shortcuts to the default set on install
-  $shortcut_set = shortcut_set_load(SHORTCUT_DEFAULT_SET_NAME);
-  $shortcut_set->links = NULL;
-  $shortcut_set->links = array(
-    array(
-      'link_path' => 'admin/appearance/settings',
-      'link_title' => st('Theme'),
-      'weight' => -17,
-    ),
-  );
-  shortcut_set_save($shortcut_set);
+  $default_theme = _n52_waterinneu_install_theme_configuration();
+
+  _n52_waterinneu_install_features();
+  _n52_waterinneu_install_block_configuration($default_theme);
 
   // Update the menu router information.
   menu_rebuild();
-  // revert features to ensure they are all installed
-  $features = array(
-    'feature_service_requests_and_offerings',
-    'waterinneu_feature_tools',
-    'waterinneu_feature_organisation',
-    'waterinneu_feature_projects',
-    'feature_configuration',
-    'feature_events',
-    'feature_helpdesk',
-    'feature_i18n',
-    'harmony_core',
-    'feature_search',
-    'harmony_atjs',
-    'harmony_default_permissions',
-    'waterinneu_feature_menus',
-    'waterinneu_feature_frontpage',
-    'waterinneu_feature_harmony',
-    'waterinneu_feature_roles_and_permissions'
-  );
-  features_revert($features);
-  // ignore any rebuild messages
-  node_access_needs_rebuild(FALSE);
-  // ignore any other install messages
-  drupal_get_messages();
-  
-  //configure blocks
-  $blocks = array(
-  		array(
-  				'module' => 'menu',
-  				'delta' => 'menu-footer-right-links',
-  				'theme' => $default_theme,
-  				'status' => 1,
-  				'weight' => -47,
-  				'region' => 'footer_fourth',
-  				'pages' => '',
-  				'cache' => -1,
-  				'title' => '<none>',
-  				'visibility' => 0,
-  		),
-  		array(
-  				'module' => 'custom_search_blocks',
-  				'delta' => 1,
-  				'theme' => $default_theme,
-  				'status' => 1,
-  				'weight' => -34,
-  				'region' => 'header_top_right',
-  				'pages' => '',
-  				'cache' => -1,
-  				'title' => '<none>',
-  				'visibility' => 0,
-  		),
-  		array(
-  				'module' => 'lang_dropdown',
-  				'delta' => 'language',
-  				'theme' => $default_theme,
-  				'status' => 1,
-  				'weight' => -35,
-  				'region' => 'header_top_right',
-  				'pages' => '',
-  				'cache' => -1,
-  				'title' => '<none>',
-  				'visibility' => 0,
-  		),
-  		array(
-  				'module' => 'menu',
-  				'delta' => 'menu-footer-3rd-links',
-  				'theme' => $default_theme,
-  				'status' => 1,
-  				'weight' => 0,
-  				'region' => 'footer_third',
-  				'pages' => '',
-  				'cache' => -1,
-  				'title' => '<none>',
-  				'visibility' => 0,
-  		),
-  );
-  $query = db_insert('block')->fields(array(
-  		'module',
-  		'delta',
-  		'theme',
-  		'status',
-  		'weight',
-  		'region',
-  		'pages',
-  		'cache',
-  		'title',
-  		'visibility'
-  ));
-  foreach ($blocks as $block) {
-  	$query->values($block);
-  }
-  $query->execute();
+}
+
+function _n52_waterinneu_install_block_configuration($default_theme) {
+	//configure blocks
+	  $blocks = array(
+	  		array(
+	  				'module' => 'menu',
+	  				'delta' => 'menu-footer-right-links',
+	  				'theme' => $default_theme,
+	  				'status' => 1,
+	  				'weight' => -47,
+	  				'region' => 'footer_fourth',
+	  				'pages' => '',
+	  				'cache' => -1,
+	  				'title' => '<none>',
+	  				'visibility' => 0,
+	  		),
+	  		array(
+	  				'module' => 'custom_search_blocks',
+	  				'delta' => 1,
+	  				'theme' => $default_theme,
+	  				'status' => 1,
+	  				'weight' => -34,
+	  				'region' => 'header_top_right',
+	  				'pages' => '',
+	  				'cache' => -1,
+	  				'title' => '<none>',
+	  				'visibility' => 0,
+	  		),
+	  		array(
+	  				'module' => 'lang_dropdown',
+	  				'delta' => 'language',
+	  				'theme' => $default_theme,
+	  				'status' => 1,
+	  				'weight' => -35,
+	  				'region' => 'header_top_right',
+	  				'pages' => '',
+	  				'cache' => -1,
+	  				'title' => '<none>',
+	  				'visibility' => 0,
+	  		),
+	  		array(
+	  				'module' => 'menu',
+	  				'delta' => 'menu-footer-3rd-links',
+	  				'theme' => $default_theme,
+	  				'status' => 1,
+	  				'weight' => 0,
+	  				'region' => 'footer_third',
+	  				'pages' => '',
+	  				'cache' => -1,
+	  				'title' => '<none>',
+	  				'visibility' => 0,
+	  		),
+	  );
+	  $query = db_insert('block')->fields(array(
+	  		'module',
+	  		'delta',
+	  		'theme',
+	  		'status',
+	  		'weight',
+	  		'region',
+	  		'pages',
+	  		'cache',
+	  		'title',
+	  		'visibility'
+	  ));
+	  foreach ($blocks as $block) {
+	  	$query->values($block);
+	  }
+	  $query->execute();
+}
+
+/**
+ * Revert a fixed list of features ensuring installation.
+ */
+function _n52_waterinneu_install_features() {
+	// revert features to ensure they are all installed
+	  $features = array(
+	    'feature_service_requests_and_offerings',
+	    'waterinneu_feature_tools',
+	    'waterinneu_feature_organisation',
+	    'waterinneu_feature_projects',
+	    'feature_configuration',
+	    'feature_events',
+	    'feature_helpdesk',
+	    'feature_i18n',
+	    'harmony_core',
+	    'feature_search',
+	    'harmony_atjs',
+	    'harmony_default_permissions',
+	    'waterinneu_feature_menus',
+	    'waterinneu_feature_frontpage',
+	    'waterinneu_feature_harmony',
+	    'waterinneu_feature_roles_and_permissions'
+	  );
+	  features_revert($features);
+	  // ignore any rebuild messages
+	  node_access_needs_rebuild(FALSE);
+	  // ignore any other install messages
+	  drupal_get_messages();
+}
+
+/**
+ * Enables theme and configures the correct admin and default theme.
+ */
+function _n52_waterinneu_install_theme_configuration() {
+	// Enable some n52_waterinneu blocks.
+	  $default_theme = 'n52_wieu_theme';
+	  $admin_theme = 'adminimal';
+	  // disable all themes
+	  db_update('system')
+	    ->fields(array('status' => 0))
+	    ->condition('type', 'theme')
+	    ->execute();
+	  // enable $default_theme
+	  db_update('system')
+	    ->fields(array('status' => 1))
+	    ->condition('type', 'theme')
+	    ->condition('name', $default_theme)
+	    ->execute();
+	  // enable $admin_theme
+	  db_update('system')
+	    ->fields(array('status' => 1))
+	    ->condition('type', 'theme')
+	    ->condition('name', $admin_theme)
+	    ->execute();
+	  variable_set('theme_default', $default_theme);
+	  variable_set('admin_theme', $admin_theme);
+	return $default_theme;
 }
