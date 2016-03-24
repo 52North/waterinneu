@@ -634,7 +634,7 @@ compatible with?',
           'more_link' => 1,
           'more_text' => '  Read more',
           'summary_handler' => 'full',
-          'trim_length' => 300,
+          'trim_length' => 100,
           'trim_link' => 0,
           'trim_options' => array(
             'text' => 0,
