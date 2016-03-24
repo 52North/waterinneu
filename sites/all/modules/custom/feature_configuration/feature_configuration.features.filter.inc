@@ -116,6 +116,15 @@ function feature_configuration_filter_default_formats() {
         'status' => 1,
         'settings' => array(),
       ),
+      'atjs' => array(
+        'weight' => 0,
+        'status' => 1,
+        'settings' => array(
+          'atjs_listeners' => array(
+            'harmony_users' => 'harmony_users',
+          ),
+        ),
+      ),
     ),
   );
 

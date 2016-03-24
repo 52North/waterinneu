@@ -309,7 +309,7 @@ function _n52_waterinneu_install_features() {
 	    'waterinneu_feature_menus',
 	    'waterinneu_feature_frontpage',
 	    'waterinneu_feature_harmony',
-	    'waterinneu_feature_roles_and_permissions'
+	    'waterinneu_feature_roles_and_permissions',
 	  );
 	  features_revert($features);
 	  // ignore any rebuild messages
