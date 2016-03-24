@@ -31,13 +31,16 @@
   * - removed support for IE version < 10
   * - add javascript sections at the end
   */
+function endsWith($haystack, $needle) {
+	return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
+}
  ?>
 <!DOCTYPE html>
 <html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces;?>>
 <head profile="<?php print $grddl_profile; ?>">
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
-  <?php print $styles; ?>
+  <?php print $styles;?>
   <?php print $scripts; ?>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
@@ -89,11 +92,11 @@
   <?php
   /*
    * This function allows toggle of alert subscription mockup elements
-   */?>
+   */
+  if (endsWith(request_path(),'matchmaking')) { ?>
   <script type="text/javascript">
   (function($) {
     $(document).ready(function () {
-  	  if ($(location).attr('pathname').match(/matchmaking$/)) {
   	    $('#content-type').change(function() {
   		    switch($(this).val()) {
   	      case 'Organisation' :
@@ -125,49 +128,48 @@
   	        break;
   	      }
   		});
-	  }
     });
   })(jQuery);
   </script>
-  <?php if ($logged_in) :?>
-  <?php
-  /*
-   * Adjustment to the forum landing page
-   * - Change the layout of the Create new thread button
-   *
-   */?>
-  <script type="text/javascript">
-  (function($) {
-    $(document).ready(function () {
-      if ($(location).attr('pathname').match(/forum$/)) {
-        $('div.harmony-listing-header > a').addClass('btn btn-primary');
-      }
-    });
-  })(jQuery);
-  </script>
-  <?php
-  else :
-  /*
-   * Adjustment to the forum landing page
-   * - Add info if not logged in
-   *
-   */?>
-  <script type="text/javascript">
-  (function($) {
-    $(document).ready(function () {
-      if ($(location).attr('pathname').match(/forum$/) &&
-          !$('#block-menu-menu-top-level-links-registered-').length) {
-        var link = $(location).attr('pathname').replace('forum','user') + '?destination=forum';
-        var messageDiv = '<div class="view-footer alert alert-warning" style="margin-top: 10px;"><?php print t('For adding adding new content, you need to ')?><a href="' + link + '"><?php print t('login')?></a>.</div>';
-        if ($('div.view-content').length) {
-        	$(messageDiv).insertAfter('div.view-content');
-        } else
-            $(messageDiv).insertAfter('div.view-empty');
-      }
-    });
-  })(jQuery);
-  </script>
-  <?php endif; ?>
+  <?php } ?>
+  <?php if (endsWith(request_path(),'forum')) { ?>
+  	<?php if ($logged_in) { ?>
+  	<?php
+  	/*
+   	* Adjustment to the forum landing page
+   	* - Change the layout of the Create new thread button
+   	*
+   	*/?>
+  	<script type="text/javascript">
+  	(function($) {
+	    $(document).ready(function () {
+      	$('div.harmony-listing-header > a').addClass('btn btn-primary');
+    	});
+  	})(jQuery);
+  	</script>
+  	<?php
+  	} else {
+  	/*
+   	* Adjustment to the forum landing page
+   	* - Add info if not logged in
+   	*
+   	*/?>
+  	<script type="text/javascript">
+  	(function($) {
+	    $(document).ready(function () {
+      		if (!$('#block-menu-menu-top-level-links-registered-').length) {
+        		var link = $(location).attr('pathname').replace('forum','user') + '?destination=forum';
+	        	var messageDiv = '<div class="view-footer alert alert-warning" style="margin-top: 10px;"><?php print t('For adding adding new content, you need to ')?><a href="' + link + '"><?php print t('login')?></a>.</div>';
+        		if ($('div.view-content').length) {
+		        	$(messageDiv).insertAfter('div.view-content');
+    	    	} else
+	    	        $(messageDiv).insertAfter('div.view-empty');
+      		}
+    	});
+  	})(jQuery);
+  	</script>
+  	<?php } ?>
+  <?php } ?>
   <?php
   /*
    *This function enables linking and scrolling to bootstrap tabs
