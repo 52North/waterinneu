@@ -87,6 +87,10 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
 
    ```http://localhost/en/admin/structure/block/manage/twitter_block/1/configure```
 
+1. Adjust the e-mail that receives comment handling requests at the following page:
+
+   ```http://localhost/en/admin/config/system/actions/configure/111```
+
 1. Clear cache: Select ```Flush all caches``` from the black admin menu on top. Mouse over the house icon.
 
 1. Test contact form: Open the following link and try to send a mail via the global contact form:
