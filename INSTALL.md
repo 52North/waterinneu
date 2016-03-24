@@ -10,14 +10,11 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
 
     ```user@host:/var/www$ git clone <git-url-of-this-repo> waterinneu```
 
-1. Set-Up database: Install the MySQL script
-
-    ```/var/www/waterinneu/config-backup/WaterInnEUMarketplacePrototype_installation.mysql.zip``` (Extract before).
+1. Set-Up database: Install the MySQL script  ```/var/www/waterinneu/config-backup/WaterInnEUMarketplacePrototype_installation.mysql.zip``` (Extract beforehand).
 
     into the database, e.g. by using phpMyAdmin.
 
-1. Configure the database for drupal:
-    1. Create the file ```/var/www/waterinneu/sites/default/settings.php``` with the following content:
+1. Configure the database for drupal: Create the file ```/var/www/waterinneu/sites/default/settings.php``` with the following content:
 
     ```php
     <?php
@@ -49,13 +46,13 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
     $conf['404_fast_paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
     $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
     ```
-    1. Ensure that the file is protected, e.g.
+1. Ensure that the file is protected, e.g.
 
-      ```user@host:/var/www$ chmod 440 /var/www/waterinneu/sites/default/settings.php```
+  ```user@host:/var/www$ chmod 440 /var/www/waterinneu/sites/default/settings.php```
 
-       More detailed instructions regarding secure file permission set-up for Drupal can be found at
+  More detailed instructions regarding secure file permission set-up for Drupal can be found at
 
-       https://www.drupal.org/node/244924.
+  https://www.drupal.org/node/244924.
 
 1. Access the site ```http://localhost/en/user``` and login with the example credentials:
 
@@ -65,15 +62,15 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
 
 1. Update the administrator account to match your set-up. Change the password and e-mail address at the following page:
 
-  ```http://localhost/en/user/1/edit```
+    ``` http://localhost/en/user/1/edit ```
 
 1. Configure SMTP module for sending and receiving system mails. Change the STMP configuration at the following page:
 
-    ```http://localhost/en/admin/config/system/smtp```
+    ``` http://localhost/en/admin/config/system/smtp ```
 
 1. Set-Up drupal cron: For testing the so called poor man's cron is enough. Go to
 
-     ```http://localhost/en/admin/config/system/cron```
+     ``` http://localhost/en/admin/config/system/cron ```
 
   and select ```1 hour```. This will result in the execution of cron tasks every hour at the end of any request. For production set-up, follow these instructions:
 
@@ -81,20 +78,20 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
 
 1. Adjust the imprint: Go to the following page and adjust the imprint to your needs:
 
-  ```http://localhost/en/node/8782/edit```
+  ``` http://localhost/en/node/8782/edit ```
 
 1. Update the _widget ID_ and _username_ of the twitter block to your needs:
 
-   ```http://localhost/en/admin/structure/block/manage/twitter_block/1/configure```
+   ``` http://localhost/en/admin/structure/block/manage/twitter_block/1/configure ```
 
 1. Adjust the e-mail that receives comment handling requests at the following page:
 
-   ```http://localhost/en/admin/config/system/actions/configure/111```
+   ``` http://localhost/en/admin/config/system/actions/configure/111 ```
 
 1. Clear cache: Select ```Flush all caches``` from the black admin menu on top. Mouse over the house icon.
 
 1. Test contact form: Open the following link and try to send a mail via the global contact form:
 
-    ```http://localhost/en/contact```
+    ``` http://localhost/en/contact ```
 
   If the mails doesn't reach your inbox, you should review the configuration of the STMP module (see according section above).
