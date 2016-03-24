@@ -620,7 +620,7 @@ function feature_i18n_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_last_check';
-  $strongarm->value = 1458145666;
+  $strongarm->value = 1458748534;
   $export['l10n_update_last_check'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -3250,6 +3250,45 @@ function feature_i18n_strongarm() {
             'filename' => 'prepopulate-7.x-2.0.de.po',
             'directory' => 'translations://',
             'uri' => 'translations://prepopulate-7.x-2.0.de.po',
+          ),
+        ),
+        'language' => 'de',
+      ),
+    ),
+    'profiler_builder' => array(
+      'de' => (object) array(
+        'name' => 'profiler_builder',
+        'project_type' => 'module',
+        'core' => '7.x',
+        'version' => '7.x-1.2',
+        'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
+        'status' => '1',
+        'project' => 'profiler_builder',
+        'langcode' => 'de',
+        'type' => 'current',
+        'timestamp' => 1458748533,
+        'last_checked' => 1458748533,
+        'files' => array(
+          'remote' => (object) array(
+            'project' => 'profiler_builder',
+            'langcode' => 'de',
+            'version' => '7.x-1.2',
+            'type' => 'remote',
+            'filename' => 'profiler_builder-7.x-1.2.de.po',
+            'uri' => 'https://ftp.drupal.org/files/translations/7.x/profiler_builder/profiler_builder-7.x-1.2.de.po',
+            'timestamp' => 1409129560,
+          ),
+          'local' => (object) array(
+            'project' => 'profiler_builder',
+            'langcode' => 'de',
+            'version' => '7.x-1.2',
+            'type' => 'local',
+            'filename' => 'profiler_builder-7.x-1.2.de.po',
+            'uri' => 'translations://profiler_builder-7.x-1.2.de.po',
+            'timestamp' => 1458748533,
+            'directory' => 'translations://',
+            'last_checked' => 1458748533,
+            'language' => 'de',
           ),
         ),
         'language' => 'de',
