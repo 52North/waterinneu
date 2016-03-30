@@ -416,15 +416,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy_access_fix',
   );
 
-  // Exported permission: 'add terms in venue'.
-  $permissions['add terms in venue'] = array(
-    'name' => 'add terms in venue',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'taxonomy_access_fix',
-  );
-
   // Exported permission: 'add terms in waterbodies'.
   $permissions['add terms in waterbodies'] = array(
     'name' => 'add terms in waterbodies',
@@ -620,15 +611,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'add_terms_user',
     'roles' => array(
       'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy_autocomplete_permission',
-  );
-
-  // Exported permission: 'add_terms_venue'.
-  $permissions['add_terms_venue'] = array(
-    'name' => 'add_terms_venue',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'taxonomy_autocomplete_permission',
   );
@@ -1776,15 +1758,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'delete terms in venue'.
-  $permissions['delete terms in venue'] = array(
-    'name' => 'delete terms in venue',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'delete terms in waterbodies'.
   $permissions['delete terms in waterbodies'] = array(
     'name' => 'delete terms in waterbodies',
@@ -2211,15 +2184,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'edit terms in venue'.
-  $permissions['edit terms in venue'] = array(
-    'name' => 'edit terms in venue',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'edit terms in waterbodies'.
   $permissions['edit terms in waterbodies'] = array(
     'name' => 'edit terms in waterbodies',
@@ -2502,15 +2466,6 @@ function waterinneu_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'merge user terms'.
   $permissions['merge user terms'] = array(
     'name' => 'merge user terms',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'term_merge',
-  );
-
-  // Exported permission: 'merge venue terms'.
-  $permissions['merge venue terms'] = array(
-    'name' => 'merge venue terms',
     'roles' => array(
       'administrator' => 'administrator',
     ),
