@@ -65,7 +65,8 @@
 
 #product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content > div.field-name-field-logo {
     float: left;
-    padding: 2px;
+    padding: 5px;
+    margin:  5px;
 }
 
 #product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content {
