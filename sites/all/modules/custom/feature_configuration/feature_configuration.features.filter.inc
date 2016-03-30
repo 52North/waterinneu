@@ -150,6 +150,7 @@ function feature_configuration_filter_default_formats() {
         'status' => 1,
         'settings' => array(
           'nowrap_expand' => 1,
+          'codefilter_prism' => FALSE,
         ),
       ),
       'entity_quote' => array(
