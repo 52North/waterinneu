@@ -118,6 +118,14 @@ function atjs_schema() {
         'default' => 0,
         'boolean' => TRUE,
       ),
+      'lookup_on_click' => array(
+        'description' => 'Render the display results when an insert template is clicked.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 1,
+        'boolean' => TRUE,
+      ),
     ),
     'primary key' => array('name'),
   );
@@ -188,6 +196,20 @@ function atjs_schema() {
         'length' => 32,
         'not null' => TRUE,
         'default' => '',
+      ),
+      'timestamp' => array(
+        'description' => 'UNIX timestamp when the usage occurred.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'dismissed' => array(
+        'description' => 'Flag indicating whether At.js usage has been dismissed.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
+        'boolean' => TRUE,
       ),
     ),
     'indexes' => array(
@@ -280,16 +302,26 @@ function atjs_requirements($phase) {
 }
 
 /**
- * Add allow_spaces field to atjs_listener table.
+ * Add allow_spaces & lookup_on_click fields to atjs_listener table.
+ * Add timestamp & dismissed fields to atjs_listener_usage table.
  */
-function atjs_update_7001() {
-  $allow_spaces = array(
-    'description' => 'Allow At.js library to include spaces in the search term.',
-    'type' => 'int',
-    'size' => 'tiny',
-    'not null' => TRUE,
-    'default' => 0,
-    'boolean' => TRUE,
-  );
-  db_add_field('atjs_listener', 'allow_spaces', $allow_spaces);
+function atjs_update_7101() {
+  $listener_schema = drupal_get_schema('atjs_listener');
+  $usage_schema = drupal_get_schema('atjs_listener_usage');
+
+  if (!db_field_exists('atjs_listener', 'allow_spaces')) {
+    db_add_field('atjs_listener', 'allow_spaces', $listener_schema['fields']['allow_spaces']);
+  }
+
+  if (!db_field_exists('atjs_listener', 'lookup_on_click')) {
+    db_add_field('atjs_listener', 'lookup_on_click', $listener_schema['fields']['lookup_on_click']);
+  }
+
+  if (!db_field_exists('atjs_listener_usage', 'timestamp')) {
+    db_add_field('atjs_listener_usage', 'timestamp', $usage_schema['fields']['timestamp']);
+  }
+
+  if (!db_field_exists('atjs_listener_usage', 'dismissed')) {
+    db_add_field('atjs_listener_usage', 'dismissed', $usage_schema['fields']['dismissed']);
+  }
 }

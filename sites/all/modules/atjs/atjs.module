@@ -232,7 +232,7 @@ function atjs_pre_render($element) {
     if ($listener) {
       // General listener settings.
       $js_settings['data']['atjs']['listeners'][$listener_name] = array(
-        'allowSpaces' => filter_xss($listener->allow_spaces),
+        'allowSpaces' => !empty($listener->allow_spaces),
       );
 
       // Settings passed to At.js library.
