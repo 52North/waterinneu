@@ -127,26 +127,30 @@ function feature_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_country'.
-  $field_instances['node-event-field_country'] = array(
+  // Exported field_instance: 'node-event-field_address'.
+  $field_instances['node-event-field_address'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'In which country is the event taking place?',
+    'description' => 'Where does your event take place?',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 4,
+        'label' => 'above',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            0 => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 3,
       ),
       'teaser' => array(
-        'label' => 'inline',
-        'module' => 'taxonomy',
+        'label' => 'above',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 3,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
@@ -156,8 +160,8 @@ function feature_events_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_country',
-    'label' => 'Country',
+    'field_name' => 'field_address',
+    'label' => 'Venue',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -165,17 +169,23 @@ function feature_events_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'autocomplete_deluxe',
+      'module' => 'addressfield',
       'settings' => array(
-        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-        'delimiter' => '',
-        'limit' => 10,
-        'min_length' => 0,
-        'not_found_message' => 'The term \'@term\' will be added.',
-        'size' => 60,
+        'available_countries' => array(),
+        'default_country' => 'site_default',
+        'format_handlers' => array(
+          'address' => 'address',
+          'organisation' => 'organisation',
+          'address-hide-postal-code' => 0,
+          'address-hide-street' => 0,
+          'address-hide-country' => 0,
+          'name-full' => 0,
+          'name-oneline' => 0,
+          'address-optional' => 0,
+        ),
       ),
-      'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 4,
+      'type' => 'addressfield_standard',
+      'weight' => 10,
     ),
   );
 
@@ -186,7 +196,7 @@ function feature_events_field_default_field_instances() {
     'description' => 'When is your event happening? Give start and end date for longer lasting events.',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'long',
@@ -445,7 +455,7 @@ function feature_events_field_default_field_instances() {
           'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -502,58 +512,6 @@ function feature_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_venue'.
-  $field_instances['node-event-field_venue'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Where is the Event happening? Please provide the name of the city.',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'inline',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 2,
-      ),
-      'tool_of_the_month' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_venue',
-    'label' => 'Venue',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'autocomplete_deluxe',
-      'settings' => array(
-        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-        'delimiter' => '',
-        'limit' => 10,
-        'min_length' => 0,
-        'not_found_message' => 'The venue \'@term\' will be added.',
-        'size' => 60,
-      ),
-      'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 3,
-    ),
-  );
-
   // Exported field_instance: 'node-event-title_field'.
   $field_instances['node-event-title_field'] = array(
     'bundle' => 'event',
@@ -565,7 +523,7 @@ function feature_events_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -603,109 +561,20 @@ function feature_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-country-name_field'.
-  $field_instances['taxonomy_term-country-name_field'] = array(
-    'bundle' => 'country',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'taxonomy_term',
-    'field_name' => 'name_field',
-    'label' => 'Name',
-    'required' => TRUE,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'hide_label' => array(
-        'entity' => 0,
-        'page' => 0,
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => -5,
-    ),
-  );
-
-  // Exported field_instance: 'taxonomy_term-venue-name_field'.
-  $field_instances['taxonomy_term-venue-name_field'] = array(
-    'bundle' => 'venue',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'taxonomy_term',
-    'field_name' => 'name_field',
-    'label' => 'Name',
-    'required' => TRUE,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'hide_label' => array(
-        'entity' => 0,
-        'page' => 0,
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => -5,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Comment');
-  t('Country');
   t('Date');
   t('Description');
   t('Image');
-  t('In which country is the event taking place?');
   t('Links');
-  t('Name');
   t('Subject');
   t('Title');
   t('Venue');
   t('What internet content could be useful to list next to your event?');
   t('What is this event about?');
   t('When is your event happening? Give start and end date for longer lasting events.');
-  t('Where is the Event happening? Please provide the name of the city.');
+  t('Where does your event take place?');
   t('Which image whould describe your event?');
 
   return $field_instances;
