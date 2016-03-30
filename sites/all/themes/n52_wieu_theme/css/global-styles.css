@@ -253,7 +253,8 @@ input[type="submit"], input[type="reset"], input[type="button"] {
  *                            Teaser: Display images inline                   *
  *                                                                            *
  ******************************************************************************/
-div.content > div.view > div.view-content > div.views-row > article.node-teaser > div.content > div.field-type-image {
+div.content > div.view > div.view-content > div.views-row > article.node-teaser > div.content > div.field-type-image,
+div.content > article.node > div.content > div.field-name-field-logo > div.field-items > div.field-item > img {
     margin: 5px;
     float: left;
     padding: 5px;
@@ -264,11 +265,11 @@ div.content > div.view > div.view-content > div.views-row > article.node-teaser 
  *                            Default: Display images above centered          *
  *                                                                            *
  ******************************************************************************/
-div.content > article.node > div.content > div.field-type-image {
+div.content > article.node > div.content > div.field-name-field-image {
 	width: 100%;
 }
-
-div.content > article.node > div.content > div.field-type-image > div.field-items > div.field-item > img {
+/*field-name-field-logo*/
+div.content > article.node > div.content > div.field-name-field-image > div.field-items > div.field-item > img {
     margin-left: auto;
     margin-right: auto;
     display: block;
