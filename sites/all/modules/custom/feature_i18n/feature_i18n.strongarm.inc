@@ -620,7 +620,7 @@ function feature_i18n_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_last_check';
-  $strongarm->value = 1458748534;
+  $strongarm->value = 1459344200;
   $export['l10n_update_last_check'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -635,6 +635,45 @@ function feature_i18n_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_translation_status';
   $strongarm->value = array(
+    'addressfield' => array(
+      'de' => (object) array(
+        'name' => 'addressfield',
+        'project_type' => 'module',
+        'core' => '7.x',
+        'version' => '7.x-1.2',
+        'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
+        'status' => '1',
+        'project' => 'addressfield',
+        'langcode' => 'de',
+        'type' => 'current',
+        'timestamp' => 1459344192,
+        'last_checked' => 1459344197,
+        'files' => array(
+          'remote' => (object) array(
+            'project' => 'addressfield',
+            'langcode' => 'de',
+            'version' => '7.x-1.2',
+            'type' => 'remote',
+            'filename' => 'addressfield-7.x-1.2.de.po',
+            'uri' => 'https://ftp.drupal.org/files/translations/7.x/addressfield/addressfield-7.x-1.2.de.po',
+            'timestamp' => 1444459653,
+          ),
+          'local' => (object) array(
+            'project' => 'addressfield',
+            'langcode' => 'de',
+            'version' => '7.x-1.2',
+            'type' => 'local',
+            'filename' => 'addressfield-7.x-1.2.de.po',
+            'uri' => 'translations://addressfield-7.x-1.2.de.po',
+            'timestamp' => 1459344192,
+            'directory' => 'translations://',
+            'last_checked' => 1459344197,
+            'language' => 'de',
+          ),
+        ),
+        'language' => 'de',
+      ),
+    ),
     'adminimal_admin_menu' => array(
       'de' => (object) array(
         'name' => 'adminimal_admin_menu',
