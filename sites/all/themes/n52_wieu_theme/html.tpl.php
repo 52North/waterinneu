@@ -131,6 +131,26 @@ function endsWith($haystack, $needle) {
     });
   })(jQuery);
   </script>
+  <?php 
+  /*
+   * This function clones the search form on the match making page and puts it 
+   * to the regarding accordion section.
+   * In addition the original search form is disabled.
+   */
+  ?>
+  <script type="text/javascript">
+  (function($) {
+    $(document).ready(function () {
+  	   $('#custom-search-blocks-form-1').clone(true,true).appendTo('#search-form-duplicate');
+	   $('div.content > form > div > div > input#edit-custom-search-blocks-form-1--2').prop('disabled','true');
+	   $('div.content > form > div > div > input#edit-custom-search-blocks-form-1--2').attr('placeholder','<?php print t('disabled here'); ?>');
+	   $('div.content > form > div > div > input#edit-custom-search-blocks-form-1--2').attr('title','<?php print t('please use the search form down below!'); ?>');
+  	   $('div#search-form-duplicate > form > div > div > #edit-custom-search-blocks-form-1--2').css('width','100%');
+  	   $('div#search-form-duplicate > form > div > div > #edit-custom-search-blocks-form-1--2').attr('size','60');
+  	   $('div#search-form-duplicate > form').css('float','initial');
+    });
+  })(jQuery);
+  </script>
   <?php } ?>
   <?php if (endsWith(request_path(),'forum')) { ?>
   	<?php if ($logged_in) { ?>
