@@ -118,13 +118,13 @@ function endsWith($haystack, $needle) {
   	       	$('#organisation-classes').css('display','none');
   	        $('#service-categories').css('display','initial');
   	        $('#product-categories').css('display','none');
-  	        $('#service-categories-label').text('Service Request Categories');
+  	        $('#service-categories-label').text('<?php print t('Service Request Categories'); ?>');
   	       	break;
   	      case 'Service Offering' :
   	        $('#organisation-classes').css('display','none');
   	        $('#service-categories').css('display','initial');
   	        $('#product-categories').css('display','none');
-  	        $('#service-categories-label').text('Service Offering Categories');
+  	        $('#service-categories-label').text('<?php print t('Service Offering Categories'); ?>');
   	        break;
   	      }
   		});
