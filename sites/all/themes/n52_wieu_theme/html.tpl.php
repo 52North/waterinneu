@@ -31,9 +31,6 @@
   * - removed support for IE version < 10
   * - add javascript sections at the end
   */
-function endsWith($haystack, $needle) {
-	return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
-}
  ?>
 <!DOCTYPE html>
 <html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces;?>>
@@ -93,7 +90,7 @@ function endsWith($haystack, $needle) {
   /*
    * This function allows toggle of alert subscription mockup elements
    */
-  if (endsWith(request_path(),'matchmaking')) { ?>
+  if (n52_endsWith(request_path(),'matchmaking')) { ?>
   <script type="text/javascript">
   (function($) {
     $(document).ready(function () {

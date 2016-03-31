@@ -1,0 +1,4 @@
+name = "52N - WaterInnEU - PHP Functions"
+description = "Provides access to shared php functions."
+package = "52N - WaterInnEU"
+core = "7.x"

@@ -64,6 +64,36 @@
       hide($content['comments']);
       hide($content['links']);
       hide($content['field_tags']);
+      // on the match making page, we want to display some dynamic content
+      if (n52_endsWith($node_url, 'matchmaking')) {
+      	/*
+      	 * Latest service requests block
+      	 *
+      	 * SELECT *  FROM `drupal`.`block` WHERE `delta`LIKE '%frontpage_latest_content%'
+      	 */
+      	$latest_service_requests_block = module_invoke('views', 'block_view', 'matchmaking_latest_service_requests-block');
+      	unset($latest_service_requests_block['subject']);
+      	$latest_service_requests_content = render($latest_service_requests_block);
+      	$content['body'][0]['#markup'] = str_replace('<div id="latest-service-requests" />', $latest_service_requests_content, $content['body'][0]['#markup']);
+      	/*
+      	 * Latest service offerings block
+      	 *
+      	 * SELECT *  FROM `drupal`.`block` WHERE `delta`LIKE '%offerings%'
+      	 */
+      	$latest_service_offerings_block = module_invoke('views', 'block_view', 'matchmaking_latest_service_offerings-block');
+      	unset($latest_service_offerings_block['subject']);
+      	$latest_service_offerings_content = render($latest_service_offerings_block);
+      	$content['body'][0]['#markup'] = str_replace('<div id="latest-service-offerings" />', $latest_service_offerings_content, $content['body'][0]['#markup']);
+      	/*
+      	 * Latest forum threads block
+      	 *
+      	 * SELECT *  FROM `drupal`.`block` WHERE `delta`LIKE '%frontpage_latest_questions%'
+      	 */
+      	$latest_threads_block = module_invoke('views', 'block_view', 'frontpage_latest_questions-block');
+      	unset($latest_threads_block['subject']);
+      	$latest_forum_threads_content = render($latest_threads_block);
+      	$content['body'][0]['#markup'] = str_replace('<div id="latest-forum-threads"></div>', '<div id="latest-forum-threads">' . $latest_forum_threads_content . '</div>', $content['body'][0]['#markup']);
+      }
       print render($content);
     ?>
   </div>

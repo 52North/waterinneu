@@ -14,7 +14,7 @@ function feature_alerting_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'subscriptions_avoid_empty_subscribe_links';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['subscriptions_avoid_empty_subscribe_links'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -129,12 +129,7 @@ function feature_alerting_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'subscriptions_unlisted_content_types';
-  $strongarm->value = array(
-    'faq' => 'faq',
-    'article' => 'article',
-    'page' => 'page',
-    'panel' => 'panel',
-  );
+  $strongarm->value = array();
   $export['subscriptions_unlisted_content_types'] = $strongarm;
 
   $strongarm = new stdClass();
