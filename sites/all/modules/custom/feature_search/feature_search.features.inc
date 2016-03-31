@@ -44,7 +44,6 @@ function feature_search_default_search_api_index() {
         "field_date_year_month_day:value" : { "type" : "date" },
         "field_date_year_month_day:value2" : { "type" : "date" },
         "field_description" : { "type" : "text" },
-        "field_venue" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "nid" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
         "title_field" : { "type" : "text", "boost" : "2.0" }
@@ -199,7 +198,6 @@ function feature_search_default_search_api_index() {
         "node:field_type_of_input_requirements" : { "type" : "text", "boost" : "0.8" },
         "node:field_type_of_output" : { "type" : "text", "boost" : "0.8" },
         "node:field_type_of_software" : { "type" : "integer", "entity_type" : "taxonomy_term" },
-        "node:field_venue" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "node:field_version" : { "type" : "text", "boost" : "0.8" },
         "node:language" : { "type" : "string" },
         "node:title" : { "type" : "text", "boost" : "2.0" },

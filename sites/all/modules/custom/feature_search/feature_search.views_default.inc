@@ -38,7 +38,7 @@ function feature_search_views_default_views() {
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_event_index';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  /* Filter criterion: Indexed Node: Venue */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_venue']['id'] = 'field_venue';
   $handler->display->display_options['filters']['field_venue']['table'] = 'search_api_index_event_index';
   $handler->display->display_options['filters']['field_venue']['field'] = 'field_venue';
@@ -55,7 +55,6 @@ function feature_search_views_default_views() {
     9 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_venue']['expose']['reduce'] = 0;
   /* Filter criterion: Date: Start date (indexed) */
   $handler->display->display_options['filters']['field_date_year_month_day_value']['id'] = 'field_date_year_month_day_value';
   $handler->display->display_options['filters']['field_date_year_month_day_value']['table'] = 'search_api_index_event_index';
