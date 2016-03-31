@@ -620,7 +620,7 @@ function feature_i18n_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_last_check';
-  $strongarm->value = 1459344200;
+  $strongarm->value = 1459354775;
   $export['l10n_update_last_check'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -2975,6 +2975,45 @@ function feature_i18n_strongarm() {
         'language' => 'de',
       ),
     ),
+    'mail_edit' => array(
+      'de' => (object) array(
+        'name' => 'mail_edit',
+        'project_type' => 'module',
+        'core' => '7.x',
+        'version' => '7.x-1.1',
+        'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
+        'status' => '1',
+        'project' => 'mail_edit',
+        'langcode' => 'de',
+        'type' => 'current',
+        'timestamp' => 1459354769,
+        'last_checked' => 1459354768,
+        'files' => array(
+          'remote' => (object) array(
+            'project' => 'mail_edit',
+            'langcode' => 'de',
+            'version' => '7.x-1.1',
+            'type' => 'remote',
+            'filename' => 'mail_edit-7.x-1.1.de.po',
+            'uri' => 'https://ftp.drupal.org/files/translations/7.x/mail_edit/mail_edit-7.x-1.1.de.po',
+            'timestamp' => 1436164657,
+          ),
+          'local' => (object) array(
+            'project' => 'mail_edit',
+            'langcode' => 'de',
+            'version' => '7.x-1.1',
+            'type' => 'local',
+            'filename' => 'mail_edit-7.x-1.1.de.po',
+            'uri' => 'translations://mail_edit-7.x-1.1.de.po',
+            'timestamp' => 1459354769,
+            'directory' => 'translations://',
+            'last_checked' => 1459354768,
+            'language' => 'de',
+          ),
+        ),
+        'language' => 'de',
+      ),
+    ),
     'markdown' => array(
       'de' => (object) array(
         'name' => 'markdown',
@@ -3875,6 +3914,48 @@ function feature_i18n_strongarm() {
           ),
         ),
         'language' => 'de',
+      ),
+    ),
+    'subscriptions' => array(
+      'de' => (object) array(
+        'name' => 'subscriptions',
+        'project_type' => 'module',
+        'core' => '7.x',
+        'version' => '7.x-1.1',
+        'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
+        'status' => '1',
+        'project' => 'subscriptions',
+        'langcode' => 'de',
+        'type' => 'current',
+        'timestamp' => 1459354769,
+        'last_checked' => 1459354774,
+        'files' => array(
+          'remote' => (object) array(
+            'project' => 'subscriptions',
+            'langcode' => 'de',
+            'version' => '7.x-1.1',
+            'type' => 'remote',
+            'filename' => 'subscriptions-7.x-1.1.de.po',
+            'uri' => 'https://ftp.drupal.org/files/translations/7.x/subscriptions/subscriptions-7.x-1.1.de.po',
+            'timestamp' => 1428670291,
+          ),
+          'local' => (object) array(
+            'project' => 'subscriptions',
+            'langcode' => 'de',
+            'version' => '7.x-1.1',
+            'type' => 'local',
+            'filename' => 'subscriptions-7.x-1.1.de.po',
+            'uri' => 'translations://subscriptions-7.x-1.1.de.po',
+            'timestamp' => 1459354769,
+            'directory' => 'translations://',
+            'last_checked' => 1459354774,
+            'language' => 'de',
+          ),
+        ),
+        'language' => 'de',
+        'filename' => '',
+        'fileurl' => '',
+        'uri' => '',
       ),
     ),
     'superfish' => array(
