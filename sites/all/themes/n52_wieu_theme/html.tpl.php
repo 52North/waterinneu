@@ -149,7 +149,7 @@
   })(jQuery);
   </script>
   <?php } ?>
-  <?php if (endsWith(request_path(),'forum')) { ?>
+  <?php if (n52_endsWith(request_path(),'forum')) { ?>
   	<?php if ($logged_in) { ?>
   	<?php
   	/*
