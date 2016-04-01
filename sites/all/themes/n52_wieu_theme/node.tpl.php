@@ -74,7 +74,10 @@
       	$latest_service_requests_block = module_invoke('views', 'block_view', 'matchmaking_latest_service_requests-block');
       	unset($latest_service_requests_block['subject']);
       	$latest_service_requests_content = render($latest_service_requests_block);
-      	$content['body'][0]['#markup'] = str_replace('<div id="latest-service-requests" />', $latest_service_requests_content, $content['body'][0]['#markup']);
+      	$content['body'][0]['#markup'] = str_replace(
+      			'<div id="latest-service-requests"></div>',
+      			'<div id="latest-service-requests">' . $latest_service_requests_content . '</div>',
+      			$content['body'][0]['#markup']);
       	/*
       	 * Latest service offerings block
       	 *
@@ -83,7 +86,10 @@
       	$latest_service_offerings_block = module_invoke('views', 'block_view', 'matchmaking_latest_service_offerings-block');
       	unset($latest_service_offerings_block['subject']);
       	$latest_service_offerings_content = render($latest_service_offerings_block);
-      	$content['body'][0]['#markup'] = str_replace('<div id="latest-service-offerings" />', $latest_service_offerings_content, $content['body'][0]['#markup']);
+      	$content['body'][0]['#markup'] = str_replace(
+      			'<div id="latest-service-offerings"></div>',
+      			'<div id="latest-service-offerings">' . $latest_service_offerings_content . '</div>',
+      			$content['body'][0]['#markup']);
       	/*
       	 * Latest forum threads block
       	 *
@@ -92,7 +98,22 @@
       	$latest_threads_block = module_invoke('views', 'block_view', 'frontpage_latest_questions-block');
       	unset($latest_threads_block['subject']);
       	$latest_forum_threads_content = render($latest_threads_block);
-      	$content['body'][0]['#markup'] = str_replace('<div id="latest-forum-threads"></div>', '<div id="latest-forum-threads">' . $latest_forum_threads_content . '</div>', $content['body'][0]['#markup']);
+      	$content['body'][0]['#markup'] = str_replace(
+      			'<div id="latest-forum-threads"></div>',
+      			'<div id="latest-forum-threads">' . $latest_forum_threads_content . '</div>',
+      			$content['body'][0]['#markup']);
+      	/*
+      	 * Upcoming event block
+      	 *
+      	 * SELECT *  FROM `drupal`.`block` WHERE `delta`LIKE '%upcoming_events%'
+      	 */
+      	$upcoming_events_block = module_invoke('views', 'block_view', 'matchmaking_upcoming_events-block');
+      	unset($upcoming_events_block['subject']);
+      	$upcoming_events_block_content = render($upcoming_events_block);
+      	$content['body'][0]['#markup'] = str_replace(
+      			'<div id="upcoming-events"></div>',
+      			'<div id="upcoming-events">' . $upcoming_events_block_content . '</div>',
+      			$content['body'][0]['#markup']);
       }
       print render($content);
     ?>
