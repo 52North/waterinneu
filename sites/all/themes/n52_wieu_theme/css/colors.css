@@ -110,21 +110,21 @@ div.submitted {
 }
 
 .panel-default > .panel-heading-dark-highlight {
-    background: #4092C9;
+    background: #27638c;
     color: #fff;
 }
 
 .panel-dark-highlight {
-    border-color: #4092C9;
+    border-color: #27638c;
 }
 
 .panel-default > .panel-heading-light-highlight {
-    background: #BFDBED;
+    background: #4092C9;
     color: #fff;
 }
 
 .panel-light-highlight {
-    border-color: #BFDBED;
+    border-color: #4092C9;
 }
 
 div.maintenance-alert {

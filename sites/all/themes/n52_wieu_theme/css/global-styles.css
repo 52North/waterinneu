@@ -168,6 +168,10 @@ div.toggle-control > a > span {
  *                            General                                         *
  *                                                                            *
  ******************************************************************************/
+ 
+body {
+    overflow-y: scroll;
+}
 
 .table-label {
     text-align: right;
@@ -275,8 +279,6 @@ div.content > article.node > div.content > div.field-name-field-image > div.fiel
     display: block;
 }
 
-
-
 /******************************************************************************
  *                                                                            *
  *                            pager form elements                             *
@@ -304,3 +306,16 @@ ul.pager li a, ul.pager li.pager-current {
 	padding: 0.2em 0.5em 0 0;
 }
 
+/******************************************************************************
+ *                                                                            *
+ *                            accordion elements                              *
+ *                                                                            *
+ ******************************************************************************/
+
+.panel-heading {
+    cursor: pointer;
+}
+
+.panel-title {
+	font-size: 24px;
+}
