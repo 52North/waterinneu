@@ -65,7 +65,7 @@
       hide($content['links']);
       hide($content['field_tags']);
       // on the match making page, we want to display some dynamic content
-      if (n52_endsWith($node_url, 'matchmaking')) {
+      if (!$is_front && n52_endsWith($node_url, 'matchmaking')) {
       	/*
       	 * Latest service requests block
       	 *
@@ -114,6 +114,20 @@
       			'<div id="upcoming-events"></div>',
       			'<div id="upcoming-events">' . $upcoming_events_block_content . '</div>',
       			$content['body'][0]['#markup']);
+      }
+      if ($is_front) {
+      	/*
+      	 * Upcoming event block
+      	 *
+      	 * SELECT *  FROM `drupal`.`block` WHERE `delta`LIKE '%upcoming_events%'
+      	 */
+      	$upcoming_events_block = module_invoke('views', 'block_view', 'matchmaking_upcoming_events-block');
+      	unset($upcoming_events_block['subject']);
+      	$upcoming_events_block_content = render($upcoming_events_block);
+      	$content['body'][0]['#markup'] = str_replace(
+      			'<div id="upcoming-events"></div>',
+      			'<div id="upcoming-events">' . $upcoming_events_block_content . '</div>',
+      			@$content['body'][0]['#markup']);
       }
       print render($content);
     ?>
