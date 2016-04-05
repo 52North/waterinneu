@@ -68,5 +68,53 @@ function feature_service_requests_and_offerings_default_fe_block_settings() {
     'visibility' => 1,
   );
 
+  $export['views-5533515c7cf03440898f8e331eb70e6d'] = array(
+    'cache' => -1,
+    'delta' => '5533515c7cf03440898f8e331eb70e6d',
+    'i18n_block_language' => array(),
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'n52_wieu_theme',
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  $export['views-8cb0ff3fc943e490cd77766adfc2089e'] = array(
+    'cache' => -1,
+    'delta' => '8cb0ff3fc943e490cd77766adfc2089e',
+    'i18n_block_language' => array(),
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'n52_wieu_theme',
+        'weight' => 0,
+      ),
+    ),
+  );
+
   return $export;
 }

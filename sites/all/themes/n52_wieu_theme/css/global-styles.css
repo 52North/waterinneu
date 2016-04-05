@@ -324,7 +324,10 @@ ul.pager li a, ul.pager li.pager-current {
  *                 dynamic lists with nice bullet list icon                   *
  *                                                                            *
  ******************************************************************************/
-ul.upcoming-event-list > li {
+ul.upcoming-event-list > li,
+ul.latest-questions-list > li,
+ul.service-requests-list > li,
+ul.service-offerings-list > li {
 	list-style-type: none;
 }
 
@@ -336,12 +339,17 @@ ul.upcoming-event-list > li:before {
     padding-right: 10px;
 }
 
-ul.latest-questions-list > li {
-    list-style-type: none;
-}
-
 ul.latest-questions-list > li:before {
     content: "\e111";
+    font-family: 'Glyphicons Halflings';
+    float: left;
+    padding-right: 10px;
+    margin-left: -20px;
+}
+
+ul.service-offerings-list > li:before,
+ul.service-requests-list > li:before {
+    content: "\e137";
     font-family: 'Glyphicons Halflings';
     float: left;
     padding-right: 10px;
