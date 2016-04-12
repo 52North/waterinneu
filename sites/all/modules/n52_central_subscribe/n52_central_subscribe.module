@@ -59,9 +59,7 @@ function n52_central_subscribe_post_render(&$content, &$element) {
 			// for each vocabulary get the terms and add a multi-select for each vocab
 			// CONTINUE HERE
 		// render subscribe form
-		$block_content = '<div class="alert alert-danger" role="alert">' .
-				'<strong>Warning!</strong> This is a mockup, hence nothing ' .
-				'happens after you click on subscribe.</div>' . $wip;
+		$block_content = $wip;
 	}
 	// else
 	else {
