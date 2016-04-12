@@ -161,6 +161,7 @@ function subscriptions_uninstall() {
   variable_del('subscriptions_show_by_author_options');
   variable_del('subscriptions_static_content_types');
   variable_del('subscriptions_unlisted_content_types');
+  variable_del('subscriptions_form_show_login_hint');
 
   // also remove legacy 5.x-1.9(-dev) variables:
   variable_del('subscriptions_allow_vid');

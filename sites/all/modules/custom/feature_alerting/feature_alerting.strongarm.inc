@@ -67,6 +67,13 @@ function feature_alerting_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'subscriptions_form_show_login_hint';
+  $strongarm->value = 1;
+  $export['subscriptions_form_show_login_hint'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'subscriptions_number_of_mails';
   $strongarm->value = '0';
   $export['subscriptions_number_of_mails'] = $strongarm;
@@ -96,7 +103,7 @@ function feature_alerting_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'subscriptions_show_by_author_options';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['subscriptions_show_by_author_options'] = $strongarm;
 
   $strongarm = new stdClass();
