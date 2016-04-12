@@ -25,6 +25,7 @@ function feature_alerting_strongarm() {
     'faq' => 'faq',
     'article' => 'article',
     'page' => 'page',
+    'project' => 'project',
     'panel' => 'panel',
   );
   $export['subscriptions_blocked_content_types'] = $strongarm;

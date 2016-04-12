@@ -1,0 +1,71 @@
+<?php
+/*
+ * Copyright (C) 2015
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ *
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ *
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ *
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+/**
+ * Implements hook_node_view_alter
+ *
+ * Registers post_render callback for certain nodes:
+ * - frontpage
+ * - matchmaking page
+ */
+function n52_dynamic_content_node_view_alter(&$build) {
+	if (drupal_is_front_page()) {
+		$build['#post_render'][] = 'n52_dynamic_content_node_post_render_front_page';
+		return;
+	}
+	elseif (n52_endsWith(request_uri(), "matchmaking")) {
+		$build['#post_render'][] = 'n52_dynamic_content_node_post_render_matchmaking';
+		return;
+	}
+}
+
+function n52_dynamic_content_node_post_render_front_page(&$content, &$element) {
+	return _52n_dynamic_content_replace($content, 'upcoming-events', 'matchmaking_upcoming_events-block');
+}
+
+function n52_dynamic_content_node_post_render_matchmaking(&$content, &$element) {
+	$content = _52n_dynamic_content_replace($content, 'latest-service-requests', 'matchmaking_latest_service_requests-block');
+	$content = _52n_dynamic_content_replace($content, 'latest-service-offerings', 'matchmaking_latest_service_offerings-block');
+	$content = _52n_dynamic_content_replace($content, 'latest-forum-threads',  'frontpage_latest_questions-block');
+	return _52n_dynamic_content_replace($content, 'upcoming-events', 'matchmaking_upcoming_events-block');
+}
+
+function _52n_dynamic_content_replace($content, $div_id, $block_id) {
+	/*
+	 * SELECT *  FROM `drupal`.`block` WHERE `delta`LIKE '%my_block_id%'
+	 */
+	$block = module_invoke('views', 'block_view', $block_id);
+	unset($block['subject']);
+	$block_content = render($block);
+	$content = str_replace(
+			'<div id="' . $div_id . '"></div>',
+			'<div id="' . $div_id . '">' . $block_content . '</div>',
+			$content);
+	return $content;
+}
+
