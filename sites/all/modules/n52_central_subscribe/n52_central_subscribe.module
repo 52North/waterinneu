@@ -1,0 +1,89 @@
+<?php
+/*
+ * Copyright (C) 2015
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ *
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ *
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ *
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+/**
+ * Implements hook_node_view_alter
+ *
+ * Registers post_render callback for certain nodes:
+ * - frontpage
+ * - matchmaking page
+ */
+function n52_central_subscribe_node_view_alter(&$build) {
+	if (n52_endsWith(request_uri(), "matchmaking")) {
+		$build['#post_render'][] = 'n52_central_subscribe_post_render';
+	}
+}
+
+function n52_central_subscribe_post_render(&$content, &$element) {
+	global $user;
+	$wip = '<div class="alert alert-danger" role="alert">' .
+				'<strong>Warning!</strong> Search the code for ' . 
+				'<code>CONTINUE HERE</code> and continue your work there.</div>';
+	if (user_is_logged_in() && user_access('subscribe to content', $user)) {
+		// get list of all subscribable content types
+		$blocked_types = variable_get('subscriptions_blocked_content_types', array());
+		$available_types = node_type_get_names();
+		$allowed_types = array_diff_key($available_types, $blocked_types);
+		// get list of all subscribable taxonomy terms relevant for subscription
+		$blocked_vocabs = variable_get('subscriptions_restricted_taxa', array());
+		$blocked_vocabs = array_merge($blocked_vocabs, variable_get('subscriptions_omitted_taxa', array()));
+		$available_vocabs = n52_taxonomy_name_vid_map();
+		$allowed_vocabs = array_diff($available_vocabs, $blocked_vocabs);
+		// create subscribe form
+			// for each content type add a checkbox
+			// for each vocabulary get the terms and add a multi-select for each vocab
+			// CONTINUE HERE
+		// render subscribe form
+		$block_content = '<div class="alert alert-danger" role="alert">' .
+				'<strong>Warning!</strong> This is a mockup, hence nothing ' .
+				'happens after you click on subscribe.</div>' . $wip;
+	}
+	// else
+	else {
+		// create info message to login for subscriptions
+		$block_content = $wip .'<div class="alert alert-info">' .
+		t('<a href="@login">Log in</a> or <a href="@register">register</a> to subscribe.',
+				array ('@login' => url(
+						'user/login',
+						array ('query' => array( 'destination' => current_path() . '#alerts'))
+				),
+						'@register' => url(
+								'user/register',
+								array ('query' => array ('destination' => current_path() . '#alerts'))
+						),
+				)
+		) . '</div>';
+	}
+	// replace subscribe form
+	$div_id = 'subscribe-form';
+	$content = str_replace(
+			'<div id="' . $div_id . '"></div>',
+			'<div id="' . $div_id . '">' . $block_content . '</div>',
+			$content);
+	return $content;
+}

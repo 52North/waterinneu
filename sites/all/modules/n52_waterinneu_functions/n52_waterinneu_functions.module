@@ -29,3 +29,12 @@
 function n52_endsWith($haystack, $needle) {
 	return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
 }
+
+function n52_taxonomy_name_vid_map() {
+	$vocabs = taxonomy_get_vocabularies();
+	$vocab_names = array();
+	foreach($vocabs as $vocab) {
+		$vocab_names[$vocab->name] = $vocab->vid;
+	}
+	return $vocab_names;
+}
