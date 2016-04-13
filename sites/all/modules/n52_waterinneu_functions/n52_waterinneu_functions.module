@@ -35,6 +35,47 @@ function n52_taxonomy_name_vid_map() {
 	$vocab_names = array();
 	foreach($vocabs as $vocab) {
 		$vocab_names[$vocab->name] = $vocab->vid;
+		$vocab_names[$vocab->machine_name] = $vocab->vid;
 	}
 	return $vocab_names;
+}
+
+function n52_taxonomy_get_name_by_vid($vid) {
+	$vocabs = taxonomy_get_vocabularies();
+	foreach ($vocabs as $vocab) {
+		if ($vocab->vid == $vid) {
+			return $vocab->name;
+		}
+	}
+	return NULL;
+}
+
+function n52_taxonomy_get_machine_name_by_vid($vid) {
+	$vocabs = taxonomy_get_vocabularies();
+	foreach ($vocabs as $vocab) {
+		if ($vocab->vid == $vid) {
+			return $vocab->machine_name;
+		}
+	}
+	return NULL;
+}
+
+function n52_taxonomy_get_vid_content_type_map() {
+	$name_vid_map = n52_taxonomy_name_vid_map();
+	$type_vid_map = array();
+	foreach (node_type_get_types() as $type){
+		$fields = field_info_instances('node', $type->type);
+		//$extra_fields = field_info_extra_fields('node', $type->type, 'form');
+		
+		foreach ($fields as $field) {
+			$field_info = field_info_field($field['field_name']);
+			if ($field_info['type'] == 'taxonomy_term_reference'){
+				$vid = $name_vid_map[$field_info['settings']['allowed_values'][0]['vocabulary']];
+				$type_vid_map[$vid][] = $type->type; 
+			}
+		}
+		$fields = NULL;
+		$extra_fields = NULL;
+	}
+	return $type_vid_map;
 }

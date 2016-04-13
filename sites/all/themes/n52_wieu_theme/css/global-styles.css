@@ -127,14 +127,14 @@
 }
 
 .stickynav-active {
-  position: fixed;
-  top: 0px;
-  z-index: 1000;
-  width: 100%;
-  padding-left: 0px;
-  padding-right: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
+	position: fixed;
+	top: 0px;
+	z-index: 1000;
+	width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 div.toggle-control > a > span {
@@ -148,7 +148,7 @@ div.toggle-control > a > span {
  ******************************************************************************/
 
 .columnized-item-list > ul > li {
-	    list-style-type: none;
+    list-style-type: none;
 }
 
 /* This ensure equal column width in grid views
@@ -219,12 +219,12 @@ ul.related-link-list li {
  *                                                                            *
  ******************************************************************************/
 form#tool-node-form div div#edit-field-tool-of-the-month {
-  display: none;
+    display: none;
 }
 
 div.maintenance-alert {
-  border-radius: 0px;
-  padding: 15px;
+	border-radius: 0px;
+	padding: 15px;
 }
 
 /******************************************************************************
@@ -250,6 +250,10 @@ input[type="submit"], input[type="reset"], input[type="button"] {
     background-image: none;
     border: 1px solid transparent;
 	text-transform: none;
+}
+
+select {
+	-webkit-appearance: initial;
 }
 
 /******************************************************************************

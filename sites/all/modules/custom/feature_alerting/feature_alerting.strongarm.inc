@@ -83,7 +83,9 @@ function feature_alerting_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'subscriptions_omitted_taxa';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    7 => '7',
+  );
   $export['subscriptions_omitted_taxa'] = $strongarm;
 
   $strongarm = new stdClass();
