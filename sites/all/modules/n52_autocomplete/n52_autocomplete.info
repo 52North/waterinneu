@@ -26,13 +26,12 @@
 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 ;  Public License for more details.
 ;
-name = "52N - Autocomplete "
+name = "52N - Autocomplete"
 description = "This module provides autocompletion features"
 package = "52N - WaterInnEU"
 core = "7.x"
-version = 7.x-1.0"
+version = 7.x-1.1"
 
-dependencies[] = n52_feature_config
 dependencies[] = views
 dependencies[] = search_autocomplete
 dependencies[] = jquery_update
