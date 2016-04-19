@@ -26,10 +26,8 @@
 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 ;  Public License for more details.
 ;
-name = "52N - WaterInnEU - Menu Access"
+name = "52N - Display Hidden Menu"
 description = "Menu to show hidden items on the frontpage buttons menu."
 package = "52N - WaterInnEU"
 core = "7.x"
-version = "7.x-1.0"
-
-dependencies[] = n52_feature_config
+version = "7.x-1.1"
