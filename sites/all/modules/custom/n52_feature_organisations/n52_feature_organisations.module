@@ -4,4 +4,4 @@
  * Code for the Feature - Organisation feature.
  */
 
-include_once 'waterinneu_feature_organisation.features.inc';
+include_once 'n52_feature_organisations.features.inc';

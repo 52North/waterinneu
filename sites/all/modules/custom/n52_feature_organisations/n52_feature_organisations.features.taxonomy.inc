@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_organisation.features.taxonomy.inc
+ * n52_feature_organisations.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function waterinneu_feature_organisation_taxonomy_default_vocabularies() {
+function n52_feature_organisations_taxonomy_default_vocabularies() {
   return array(
     'organisation_classification' => array(
       'name' => 'Organisation Classification',
