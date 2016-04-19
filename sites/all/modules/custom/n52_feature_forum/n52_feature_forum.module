@@ -4,4 +4,4 @@
  * Code for the Feature - Harmony feature.
  */
 
-include_once 'waterinneu_feature_harmony.features.inc';
+include_once 'n52_feature_forum.features.inc';

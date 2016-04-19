@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_harmony.features.wysiwyg.inc
+ * n52_feature_forum.features.wysiwyg.inc
  */
 
 /**
  * Implements hook_wysiwyg_default_profiles().
  */
-function waterinneu_feature_harmony_wysiwyg_default_profiles() {
+function n52_feature_forum_wysiwyg_default_profiles() {
   $profiles = array();
 
   // Exported profile: harmony_filtered

@@ -1,8 +1,9 @@
-name = Feature - Harmony
-description = Contains everything WaterInnEU specific in Harmony configuration
+name = 52N - Feature - Forum
+description = Contains everything WaterInnEU specific in Forum (e.g. Harmony) configuration
 core = 7.x
 package = 52N - WaterInnEU
-version = 7.x-1.2
+version = 7.x-1.4
+
 dependencies[] = context
 dependencies[] = ctools
 dependencies[] = entity
@@ -15,7 +16,6 @@ dependencies[] = harmony_default_permissions
 dependencies[] = harmony_search
 dependencies[] = menu
 dependencies[] = strongarm
-dependencies[] = waterinneu_feature_tools
 features[context][] = forum
 features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1

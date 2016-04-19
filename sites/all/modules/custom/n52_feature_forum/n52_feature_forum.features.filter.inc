@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_harmony.features.filter.inc
+ * n52_feature_forum.features.filter.inc
  */
 
 /**
  * Implements hook_filter_default_formats().
  */
-function waterinneu_feature_harmony_filter_default_formats() {
+function n52_feature_forum_filter_default_formats() {
   $formats = array();
 
   // Exported format: Harmony Filtered.

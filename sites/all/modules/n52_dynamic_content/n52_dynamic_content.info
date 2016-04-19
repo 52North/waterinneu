@@ -35,4 +35,4 @@ version = "7.x-1.2"
 dependencies[] = n52_shared_functions
 dependencies[] = feature_events
 dependencies[] = feature_service_requests_and_offerings
-dependencies[] = waterinneu_feature_harmony
+dependencies[] = n52_feature_forum

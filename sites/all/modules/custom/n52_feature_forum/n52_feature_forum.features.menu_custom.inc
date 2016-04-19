@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_harmony.features.menu_custom.inc
+ * n52_feature_forum.features.menu_custom.inc
  */
 
 /**
  * Implements hook_menu_default_menu_custom().
  */
-function waterinneu_feature_harmony_menu_default_menu_custom() {
+function n52_feature_forum_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: management.

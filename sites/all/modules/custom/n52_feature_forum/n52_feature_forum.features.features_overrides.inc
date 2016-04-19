@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_harmony.features.features_overrides.inc
+ * n52_feature_forum.features.features_overrides.inc
  */
 
 /**
  * Implements hook_features_override_default_overrides().
  */
-function waterinneu_feature_harmony_features_override_default_overrides() {
+function n52_feature_forum_features_override_default_overrides() {
   // This code is only used for UI in features. Exported alters hooks do the magic.
   $overrides = array();
 
