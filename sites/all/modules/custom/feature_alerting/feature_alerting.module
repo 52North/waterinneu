@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Feature - Alerting feature.
- */
-
-include_once 'feature_alerting.features.inc';

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the 52N - Feature - Alerting feature.
+ */
+
+include_once 'n52_feature_alerting.features.inc';

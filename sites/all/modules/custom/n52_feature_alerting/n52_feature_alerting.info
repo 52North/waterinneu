@@ -1,15 +1,14 @@
-name = Feature - Alerting
+name = 52N - Feature - Alerting
 description = Contains everything regarding alerting and subscriptions
 core = 7.x
 package = 52N - WaterInnEU
-version = 7.x-1.5
+version = 7.x-1.7
 dependencies[] = chosen
 dependencies[] = ctools
 dependencies[] = fe_block
 dependencies[] = features
 dependencies[] = mail_edit
 dependencies[] = n52_central_subscribe
-dependencies[] = n52_dynamic_content
 dependencies[] = strongarm
 dependencies[] = subscriptions
 dependencies[] = subscriptions_content

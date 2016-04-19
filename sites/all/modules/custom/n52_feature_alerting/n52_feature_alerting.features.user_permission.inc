@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_alerting.features.user_permission.inc
+ * n52_feature_alerting.features.user_permission.inc
  */
 
 /**
  * Implements hook_user_default_permissions().
  */
-function feature_alerting_user_default_permissions() {
+function n52_feature_alerting_user_default_permissions() {
   $permissions = array();
 
   // Exported permission: 'administer mail templates'.
