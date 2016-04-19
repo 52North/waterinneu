@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_configuration.features.field_base.inc
+ * n52_feature_config.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function feature_configuration_field_default_field_bases() {
+function n52_feature_config_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'body'.

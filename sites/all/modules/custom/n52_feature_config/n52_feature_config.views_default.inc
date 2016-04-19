@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_configuration.views_default.inc
+ * n52_feature_config.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function feature_configuration_views_default_views() {
+function n52_feature_config_views_default_views() {
   $export = array();
 
   $view = new view();

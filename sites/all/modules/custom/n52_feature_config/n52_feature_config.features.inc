@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_configuration.features.inc
+ * n52_feature_config.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function feature_configuration_ctools_plugin_api($module = NULL, $api = NULL) {
+function n52_feature_config_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "backup_migrate" && $api == "backup_migrate_exportables") {
     return array("version" => "1");
   }
@@ -22,14 +22,14 @@ function feature_configuration_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_views_api().
  */
-function feature_configuration_views_api($module = NULL, $api = NULL) {
+function n52_feature_config_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function feature_configuration_node_info() {
+function n52_feature_config_node_info() {
   $items = array(
     'article' => array(
       'name' => t('Article'),

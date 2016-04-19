@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_configuration.backup_migrate_exportables.inc
+ * n52_feature_config.backup_migrate_exportables.inc
  */
 
 /**
  * Implements hook_exportables_backup_migrate_destinations().
  */
-function feature_configuration_exportables_backup_migrate_destinations() {
+function n52_feature_config_exportables_backup_migrate_destinations() {
   $export = array();
 
   $item = new stdClass();
@@ -29,7 +29,7 @@ function feature_configuration_exportables_backup_migrate_destinations() {
 /**
  * Implements hook_exportables_backup_migrate_profiles().
  */
-function feature_configuration_exportables_backup_migrate_profiles() {
+function n52_feature_config_exportables_backup_migrate_profiles() {
   $export = array();
 
   $item = new stdClass();
@@ -106,7 +106,7 @@ sites/default/settings.php
 /**
  * Implements hook_exportables_backup_migrate_schedules().
  */
-function feature_configuration_exportables_backup_migrate_schedules() {
+function n52_feature_config_exportables_backup_migrate_schedules() {
   $export = array();
 
   $item = new stdClass();

@@ -32,4 +32,4 @@ package = "52N - WaterInnEU"
 core = "7.x"
 version = "7.x-1.0"
 
-dependencies[] = feature_configuration
+dependencies[] = n52_feature_config

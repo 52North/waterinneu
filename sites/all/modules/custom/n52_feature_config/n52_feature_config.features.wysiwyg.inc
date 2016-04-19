@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_configuration.features.wysiwyg.inc
+ * n52_feature_config.features.wysiwyg.inc
  */
 
 /**
  * Implements hook_wysiwyg_default_profiles().
  */
-function feature_configuration_wysiwyg_default_profiles() {
+function n52_feature_config_wysiwyg_default_profiles() {
   $profiles = array();
 
   // Exported profile: full_html

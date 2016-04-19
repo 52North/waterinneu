@@ -4,4 +4,4 @@
  * Code for the Feature - Configuration feature.
  */
 
-include_once 'feature_configuration.features.inc';
+include_once 'n52_feature_config.features.inc';

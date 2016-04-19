@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_configuration.features.filter.inc
+ * n52_feature_config.features.filter.inc
  */
 
 /**
  * Implements hook_filter_default_formats().
  */
-function feature_configuration_filter_default_formats() {
+function n52_feature_config_filter_default_formats() {
   $formats = array();
 
   // Exported format: Filtered HTML.

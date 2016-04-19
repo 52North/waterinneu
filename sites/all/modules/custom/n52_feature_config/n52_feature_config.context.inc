@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_configuration.context.inc
+ * n52_feature_config.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function feature_configuration_context_default_contexts() {
+function n52_feature_config_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();

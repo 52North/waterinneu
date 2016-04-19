@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_configuration.features.field_instance.inc
+ * n52_feature_config.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function feature_configuration_field_default_field_instances() {
+function n52_feature_config_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-article-body'.
