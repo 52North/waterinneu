@@ -4,4 +4,4 @@
  * Code for the Feature - i18n feature.
  */
 
-include_once 'feature_i18n.features.inc';
+include_once 'n52_n52_feature_i18n.features.inc';
