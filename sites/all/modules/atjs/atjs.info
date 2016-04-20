@@ -13,9 +13,9 @@ files[] = views/AtjsViewsHandlerRelationship.php
 
 configure = admin/structure/atjs
 
-; Information added by Drupal.org packaging script on 2016-04-11
-version = "7.x-1.0-alpha1+14-dev"
+; Information added by Drupal.org packaging script on 2016-04-20
+version = "7.x-1.0-alpha1+15-dev"
 core = "7.x"
 project = "atjs"
-datestamp = "1460380744"
+datestamp = "1461153846"
 
