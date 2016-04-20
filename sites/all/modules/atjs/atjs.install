@@ -240,6 +240,7 @@ function atjs_requirements($phase) {
     'atjs_libraries' => array(
       'title' => $t('At.js - Libraries'),
       'severity' => REQUIREMENT_OK,
+      'value' => '&nbsp;',
     ),
   );
 
