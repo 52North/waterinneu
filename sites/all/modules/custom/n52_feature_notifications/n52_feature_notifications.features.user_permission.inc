@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_notifications.features.user_permission.inc
+ * n52_n52_feature_notifications.features.user_permission.inc
  */
 
 /**
  * Implements hook_user_default_permissions().
  */
-function feature_notifications_user_default_permissions() {
+function n52_feature_notifications_user_default_permissions() {
   $permissions = array();
 
   // Exported permission: 'access rules debug'.

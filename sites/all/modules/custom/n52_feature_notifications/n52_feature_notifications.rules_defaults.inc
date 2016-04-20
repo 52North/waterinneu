@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_notifications.rules_defaults.inc
+ * n52_n52_feature_notifications.rules_defaults.inc
  */
 
 /**
  * Implements hook_default_rules_configuration().
  */
-function feature_notifications_default_rules_configuration() {
+function n52_feature_notifications_default_rules_configuration() {
   $items = array();
   $items['rules_comment_for_moderation'] = entity_import('rules_config', '{ "rules_comment_for_moderation" : {
       "LABEL" : "Comment for moderation",
