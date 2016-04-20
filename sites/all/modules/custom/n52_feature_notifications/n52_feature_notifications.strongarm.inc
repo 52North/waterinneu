@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * n52_n52_feature_notifications.strongarm.inc
+ * n52_feature_notifications.strongarm.inc
  */
 
 /**

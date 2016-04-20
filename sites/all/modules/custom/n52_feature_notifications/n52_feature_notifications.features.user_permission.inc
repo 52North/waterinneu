@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * n52_n52_feature_notifications.features.user_permission.inc
+ * n52_feature_notifications.features.user_permission.inc
  */
 
 /**

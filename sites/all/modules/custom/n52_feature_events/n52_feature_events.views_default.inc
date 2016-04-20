@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * n52_n52_feature_events.views_default.inc
+ * n52_feature_events.views_default.inc
  */
 
 /**

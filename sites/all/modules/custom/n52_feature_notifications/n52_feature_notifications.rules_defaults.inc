@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * n52_n52_feature_notifications.rules_defaults.inc
+ * n52_feature_notifications.rules_defaults.inc
  */
 
 /**
