@@ -35,7 +35,7 @@
 
           if (key.length >= 1) {
             if (typeof drupal_atjs['storage'][listener_name + '::' + key] === 'undefined') {
-              $.get(Drupal.settings.basePath + '?q=atjs/ajax/' + listener_name + '/' + key, function(response) {
+              $.get(Drupal.settings.basePath + '?q=atjs/ajax/' + listener_name + '/' + encodeURIComponent(key), function(response) {
                 drupal_atjs['storage'][listener_name + '::' + key] = response;
                 callback(response);
               });
@@ -49,9 +49,9 @@
         if (Drupal.settings.atjs.listeners[listener_name].allowSpaces) {
           listener['callbacks']['matcher'] = function (flag, subtext) {
             var match, regexp;
-            regexp = new RegExp('(\\s+|^)' + flag + '((\\w+ ?)*(\\w+))', 'gi');
+            regexp = new RegExp('(\\s+|^)' + flag + '((\\w+\\s?)*)$', 'gi');
             match = regexp.exec(subtext);
-            return match ? match[2] : null;
+            return match ? match[2].replace(/(\s)/g, ' ') : null;
           };
         }
 

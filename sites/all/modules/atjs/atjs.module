@@ -22,6 +22,16 @@ function atjs_permission() {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function atjs_views_api() {
+  return array(
+    'api' => '3',
+    'path' => drupal_get_path('module', 'atjs') . '/views',
+  );
+}
+
+/**
  * Implements hook_menu().
  */
 function atjs_menu() {
@@ -72,6 +82,30 @@ function atjs_listener_load($name) {
   $result = ctools_export_load_object('atjs_listener', 'names', array($name));
 
   return isset($result[$name]) ? $result[$name] : NULL;
+}
+
+/**
+ * Return all listeners.
+ */
+function atjs_listener_load_all() {
+  ctools_include('export');
+  return ctools_export_load_object('atjs_listener');
+}
+
+/**
+ * Return an array of listeners for use with form options.
+ */
+function atjs_listener_load_all_flat() {
+  $listeners = atjs_listener_load_all();
+  $options = array();
+
+  if (!empty($listeners)) {
+    foreach ($listeners as $name => $listener) {
+      $options[$name] = check_plain($listener->title);
+    }
+  }
+
+  return $options;
 }
 
 /**
@@ -130,20 +164,12 @@ function atjs_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_id
       '#default_value' => isset($form['#instance']['widget']['settings']['atjs_fieldset']['atjs']) ? $form['#instance']['widget']['settings']['atjs_fieldset']['atjs'] : NULL,
     );
 
-    // Load listeners.
-    ctools_include('export');
-    $listeners = ctools_export_load_object('atjs_listener');
-
+    $listeners = atjs_listener_load_all_flat();
     if (!empty($listeners)) {
-      $options = array();
-      foreach ($listeners as $name => $listener) {
-        $options[$name] = check_plain($listener->title);
-      }
-
       $form['instance']['widget']['settings']['atjs_fieldset']['atjs_listeners'] = array(
         '#title' => t('At.js Listeners that should be active on this field'),
         '#type' => 'checkboxes',
-        '#options' => $options,
+        '#options' => $listeners,
         '#default_value' => isset($form['#instance']['widget']['settings']['atjs_fieldset']['atjs_listeners']) ? $form['#instance']['widget']['settings']['atjs_fieldset']['atjs_listeners'] : array(),
         '#states' => array(
           'visible' => array(
@@ -243,6 +269,7 @@ function atjs_pre_render($element) {
         'limit' => filter_xss($listener->query_limit),
         'maxLen' => intval(filter_xss($listener->max_length)),
         'searchKey' => filter_xss(str_replace('property:', '', $listener->search_key)),
+        'lookUpOnClick' => !empty($listener->lookup_on_click),
       );
 
       if ($listener->allow_spaces) {
@@ -284,6 +311,9 @@ function atjs_libraries_info() {
         )
       ),
     ),
+    'versions' => array(
+      '0.3.1' => array(),
+    )
   );
 
   $libraries['at.js'] = array(
@@ -310,6 +340,9 @@ function atjs_libraries_info() {
     ),
     'dependencies' => array(
       'caret.js (>=' . ATJS_LIBRARY_CARETJS_MINIMUM_VERSION . ')',
+    ),
+    'versions' => array(
+      '1.5.0' => array(),
     ),
   );
 
@@ -375,6 +408,13 @@ function atjs_ctools_export_ui_form(&$form, &$form_state) {
     '#type' => 'checkbox',
     '#default_value' => $listener->allow_spaces,
     '#description' => t('Allow At.js library to include spaces in the search term. Insert template will automatically be wrapped in square brackets so that the username can be clearly identified.'),
+  );
+
+  $form['lookup_on_click'] = array(
+    '#title' => t('Lookup on click'),
+    '#type' => 'checkbox',
+    '#default_value' => isset($listener->lookup_on_click) ? $listener->lookup_on_click : TRUE,
+    '#description' => t('Render the display results when an insert template is clicked.'),
   );
 
   // Templates.
@@ -869,27 +909,36 @@ function atjs_field_attach_check_usage($entity_type, $entity) {
               // Add in new mentions to database.
               if (!empty($new_mentions)) {
                 // Allow other modules to respond.
-                module_invoke_all('atjs_new_entity_mentions', $listener_clone, $entity_type, $entity, $listener_clone->entity_type, $new_mentions);
+                $source_entity = array(
+                  'type' => $entity_type,
+                  'data' => clone $entity,
+                );
+                drupal_alter('atjs_new_mentions', $new_mentions, $listener_clone, $source_entity);
 
-                $insert_values = array();
-                foreach ($new_mentions as $new_mention) {
-                  $insert_values[] = array(
-                    'listener' => $listener->name,
-                    'source_entity_type' => $entity_type,
-                    'source_bundle' => $bundle,
-                    'source_field_name' => $field_name,
-                    'source_entity_id' => $id,
-                    'mentioned_entity_type' => $listener->entity_type,
-                    'mentioned_entity_id' => $new_mention,
-                    'uid' => $entity->uid,
-                    'language' => $language,
-                  );
+                if (is_array($new_mentions) && count($new_mentions) > 0) {
+                  module_invoke_all('atjs_new_entity_mentions', $listener_clone, $entity_type, $entity, $listener_clone->entity_type, $new_mentions);
+
+                  $insert_values = array();
+                  foreach ($new_mentions as $new_mention) {
+                    $insert_values[] = array(
+                      'listener' => $listener->name,
+                      'source_entity_type' => $entity_type,
+                      'source_bundle' => $bundle,
+                      'source_field_name' => $field_name,
+                      'source_entity_id' => $id,
+                      'mentioned_entity_type' => $listener->entity_type,
+                      'mentioned_entity_id' => $new_mention,
+                      'uid' => $entity->uid,
+                      'language' => $language,
+                      'timestamp' => REQUEST_TIME,
+                    );
+                  }
+                  $insert_query = db_insert('atjs_listener_usage')->fields(array_keys($insert_values[0]));
+                  foreach ($insert_values as $record) {
+                    $insert_query->values($record);
+                  }
+                  $insert_query->execute();
                 }
-                $insert_query = db_insert('atjs_listener_usage')->fields(array_keys($insert_values[0]));
-                foreach ($insert_values as $record) {
-                  $insert_query->values($record);
-                }
-                $insert_query->execute();
               }
 
               // Work out which mentions have been removed.
@@ -909,24 +958,33 @@ function atjs_field_attach_check_usage($entity_type, $entity) {
               // Mentions have been removed!
               if (!empty($removed_mentions)) {
                 // Allow other modules to respond.
-                module_invoke_all('atjs_new_entity_mentions_removed', $listener_clone, $entity_type, $entity, $listener_clone->entity_type, $removed_mentions);
+                $source_entity = array(
+                  'type' => $entity_type,
+                  'data' => clone $entity,
+                );
 
-                foreach ($removed_mentions as $removed_mention) {
-                  db_query('DELETE FROM {atjs_listener_usage}
+                drupal_alter('atjs_removed_mentions', $removed_mentions, $listener_clone, $source_entity);
+
+                if (is_array($removed_mentions) && count($removed_mentions)) {
+                  module_invoke_all('atjs_new_entity_mentions_removed', $listener_clone, $entity_type, $entity, $listener_clone->entity_type, $removed_mentions);
+
+                  foreach ($removed_mentions as $removed_mention) {
+                    db_query('DELETE FROM {atjs_listener_usage}
                     WHERE listener = :listener
                     AND source_entity_type = :source_entity_type
                     AND source_entity_id = :source_entity_id
                     AND language = :language
                     AND mentioned_entity_type = :mentioned_entity_type
                     AND mentioned_entity_id = :mentioned_entity_id', array(
-                      ':listener' => $listener->name,
-                      ':source_entity_type' => $entity_type,
-                      ':source_entity_id' => $id,
-                      ':language' => $language,
-                      ':mentioned_entity_type' => $listener->entity_type,
-                      ':mentioned_entity_id' => $removed_mention,
-                    )
-                  );
+                        ':listener' => $listener->name,
+                        ':source_entity_type' => $entity_type,
+                        ':source_entity_id' => $id,
+                        ':language' => $language,
+                        ':mentioned_entity_type' => $listener->entity_type,
+                        ':mentioned_entity_id' => $removed_mention,
+                      )
+                    );
+                  }
                 }
               }
             }
@@ -967,4 +1025,39 @@ function atjs_field_delete_instance($instance) {
       ':field_name' => $instance['field_name'],
     )
   );
+}
+
+/**
+ * Dismiss At.js usages.
+ *
+ * @param int|array $aluids
+ *   The usage ID, or an array of IDs to dismiss.
+ *   If not specified, all usages will be dismissed.
+ *
+ * @return int
+ *   The number of usages dismissed by the current query.
+ */
+function atjs_dismiss_usage($aluids = array()) {
+  if (is_numeric($aluids)) {
+    $aluids = array($aluids);
+  }
+
+  // Reject any aluids arg that isn't either an int or array.
+  if (!is_array($aluids)) {
+    return 0;
+  }
+
+  foreach ($aluids as $key => $aluid) {
+    if (!is_numeric($aluid)) {
+      unset($aluids[$key]);
+    }
+  }
+
+  $query = db_update('atjs_listener_usage')
+    ->fields(array('dismissed' => TRUE));
+
+  if (!empty($aluids)) {
+    $query = $query->condition('aluid', $aluids, 'IN');
+  }
+  return $query->execute();
 }

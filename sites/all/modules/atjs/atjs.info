@@ -9,12 +9,13 @@ dependencies[] = libraries
 package = Other
 
 files[] = plugins/export_ui/atjs_ctools_export_ui.class.php
+files[] = views/AtjsViewsHandlerRelationship.php
 
 configure = admin/structure/atjs
 
-; Information added by Drupal.org packaging script on 2016-03-29
-version = "7.x-1.0-alpha1+5-dev"
+; Information added by Drupal.org packaging script on 2016-04-11
+version = "7.x-1.0-alpha1+14-dev"
 core = "7.x"
 project = "atjs"
-datestamp = "1459242852"
+datestamp = "1460380744"
 
