@@ -4,4 +4,4 @@
  * Code for the Feature - Service Requests and Offerings feature.
  */
 
-include_once 'feature_service_requests_and_offerings.features.inc';
+include_once 'n52_feature_service_requests_and_offerings.features.inc';

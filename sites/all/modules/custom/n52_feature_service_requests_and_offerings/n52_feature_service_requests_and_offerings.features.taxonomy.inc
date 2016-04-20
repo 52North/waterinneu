@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_service_requests_and_offerings.features.taxonomy.inc
+ * n52_feature_service_requests_and_offerings.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function feature_service_requests_and_offerings_taxonomy_default_vocabularies() {
+function n52_feature_service_requests_and_offerings_taxonomy_default_vocabularies() {
   return array(
     'service_categories' => array(
       'name' => 'Service Categories',

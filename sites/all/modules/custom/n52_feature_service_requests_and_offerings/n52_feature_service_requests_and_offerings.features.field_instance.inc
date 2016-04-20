@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_service_requests_and_offerings.features.field_instance.inc
+ * n52_feature_service_requests_and_offerings.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function feature_service_requests_and_offerings_field_default_field_instances() {
+function n52_feature_service_requests_and_offerings_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:

@@ -55,5 +55,5 @@ features[variable][] = pathauto_node_event_en_pattern
 features[variable][] = pathauto_node_event_pattern
 features[variable][] = pathauto_node_event_und_pattern
 features[views_view][] = events
-features_exclude[dependencies][feature_service_requests_and_offerings] = feature_service_requests_and_offerings
+features_exclude[dependencies][n52_feature_service_requests_and_offerings] = n52_feature_service_requests_and_offerings
 features_exclude[dependencies][n52_feature_config] = n52_feature_config
