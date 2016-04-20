@@ -11,7 +11,7 @@ function harmony_core_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->disabled = FALSE;
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_taxonomy_term__harmony_category';
   $strongarm->value = array(
@@ -58,7 +58,7 @@ function harmony_core_strongarm() {
   $export['field_bundle_settings_taxonomy_term__harmony_category'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->disabled = FALSE;
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_user__user';
   $strongarm->value = array(
@@ -124,14 +124,14 @@ function harmony_core_strongarm() {
   $export['field_bundle_settings_user__user'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->disabled = FALSE;
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_harmony_core_pattern';
   $strongarm->value = 'forum/thread/[harmony_thread:thread-id]/[harmony_thread:title]';
   $export['pathauto_harmony_core_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->disabled = FALSE;
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_harmony_category_pattern';
   $strongarm->value = 'forum/[term:parents:join-path]/[term:name]';

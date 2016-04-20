@@ -11,7 +11,7 @@ function n52_feature_config_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = FALSE;
   $context->api_version = 3;
   $context->name = 'matchmaking';
   $context->description = '';
@@ -37,7 +37,7 @@ function n52_feature_config_context_default_contexts() {
   $export['matchmaking'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = FALSE;
   $context->api_version = 3;
   $context->name = 'my_content';
   $context->description = 'Show my content view block only on own profile page';

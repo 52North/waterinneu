@@ -11,7 +11,7 @@ function harmony_core_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = FALSE;
   $context->api_version = 3;
   $context->name = 'harmony_category_page';
   $context->description = 'Is active on category term pages.';

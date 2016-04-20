@@ -11,7 +11,7 @@ function n52_feature_config_exportables_backup_migrate_destinations() {
   $export = array();
 
   $item = new stdClass();
-  $item->disabled = FALSE; /* Edit this to true to make a default item disabled initially */
+  $item->disabled = FALSE;
   $item->api_version = 1;
   $item->machine_name = 'server_configuration_backup';
   $item->name = 'server_configuration_backup';
@@ -33,7 +33,7 @@ function n52_feature_config_exportables_backup_migrate_profiles() {
   $export = array();
 
   $item = new stdClass();
-  $item->disabled = FALSE; /* Edit this to true to make a default item disabled initially */
+  $item->disabled = FALSE;
   $item->api_version = 1;
   $item->machine_name = 'uncompressed';
   $item->name = 'Uncompressed_without-timestamp';
@@ -110,7 +110,7 @@ function n52_feature_config_exportables_backup_migrate_schedules() {
   $export = array();
 
   $item = new stdClass();
-  $item->disabled = FALSE; /* Edit this to true to make a default item disabled initially */
+  $item->disabled = FALSE;
   $item->api_version = 1;
   $item->machine_name = 'waterinneu_config_backup_schedule';
   $item->name = 'waterinneu_config_backup_schedule';
