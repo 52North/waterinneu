@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_menus.features.menu_custom.inc
+ * n52_feature_menus.features.menu_custom.inc
  */
 
 /**
  * Implements hook_menu_default_menu_custom().
  */
-function waterinneu_feature_menus_menu_default_menu_custom() {
+function n52_feature_menus_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: menu-author.

@@ -4,4 +4,4 @@
  * Code for the Feature - Menus feature.
  */
 
-include_once 'waterinneu_feature_menus.features.inc';
+include_once 'n52_feature_menus.features.inc';
