@@ -4,4 +4,4 @@
  * Code for the Feature - Frontpage feature.
  */
 
-include_once 'waterinneu_feature_frontpage.features.inc';
+include_once 'n52_feature_frontpage.features.inc';
