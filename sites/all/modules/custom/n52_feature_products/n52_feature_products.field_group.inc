@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_tools.field_group.inc
+ * n52_feature_products.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function waterinneu_feature_tools_field_group_info() {
+function n52_feature_products_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();

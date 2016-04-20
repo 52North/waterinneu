@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_tools.strongarm.inc
+ * n52_feature_products.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function waterinneu_feature_tools_strongarm() {
+function n52_feature_products_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

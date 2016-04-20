@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_tools.context.inc
+ * n52_feature_products.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function waterinneu_feature_tools_context_default_contexts() {
+function n52_feature_products_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();

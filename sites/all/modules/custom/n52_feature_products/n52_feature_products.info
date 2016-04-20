@@ -10,7 +10,6 @@ dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = fe_block
-dependencies[] = feature_service_requests_and_offerings
 dependencies[] = features
 dependencies[] = field_group
 dependencies[] = i18n_taxonomy

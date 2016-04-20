@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_tools.features.taxonomy.inc
+ * n52_feature_products.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function waterinneu_feature_tools_taxonomy_default_vocabularies() {
+function n52_feature_products_taxonomy_default_vocabularies() {
   return array(
     'application_scale' => array(
       'name' => 'Application Scale',

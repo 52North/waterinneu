@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_tools.views_default.inc
+ * n52_feature_products.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function waterinneu_feature_tools_views_default_views() {
+function n52_feature_products_views_default_views() {
   $export = array();
 
   $view = new view();

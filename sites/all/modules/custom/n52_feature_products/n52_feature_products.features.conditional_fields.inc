@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_tools.features.conditional_fields.inc
+ * n52_feature_products.features.conditional_fields.inc
  */
 
 /**
  * Implements hook_conditional_fields_default_fields().
  */
-function waterinneu_feature_tools_conditional_fields_default_fields() {
+function n52_feature_products_conditional_fields_default_fields() {
   $items = array();
 
   $items["node:tool:0"] = array(

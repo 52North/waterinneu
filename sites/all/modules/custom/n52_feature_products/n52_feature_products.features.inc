@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_tools.features.inc
+ * n52_feature_products.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function waterinneu_feature_tools_ctools_plugin_api($module = NULL, $api = NULL) {
+function n52_feature_products_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
@@ -22,14 +22,14 @@ function waterinneu_feature_tools_ctools_plugin_api($module = NULL, $api = NULL)
 /**
  * Implements hook_views_api().
  */
-function waterinneu_feature_tools_views_api($module = NULL, $api = NULL) {
+function n52_feature_products_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function waterinneu_feature_tools_node_info() {
+function n52_feature_products_node_info() {
   $items = array(
     'tool' => array(
       'name' => t('Product'),
