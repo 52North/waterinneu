@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_roles_and_permissions.features.user_role.inc
+ * n52_feature_roles_and_permissions.features.user_role.inc
  */
 
 /**
  * Implements hook_user_default_roles().
  */
-function waterinneu_feature_roles_and_permissions_user_default_roles() {
+function n52_feature_roles_and_permissions_user_default_roles() {
   $roles = array();
 
   // Exported role: administrator.
