@@ -4,4 +4,4 @@
  * Code for the Feature - Search feature.
  */
 
-include_once 'feature_search.features.inc';
+include_once 'n52_feature_search.features.inc';

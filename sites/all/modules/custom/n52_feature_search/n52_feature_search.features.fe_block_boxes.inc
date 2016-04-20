@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_search.features.fe_block_boxes.inc
+ * n52_feature_search.features.fe_block_boxes.inc
  */
 
 /**
  * Implements hook_default_fe_block_boxes().
  */
-function feature_search_default_fe_block_boxes() {
+function n52_feature_search_default_fe_block_boxes() {
   $export = array();
 
   $fe_block_boxes = new stdClass();

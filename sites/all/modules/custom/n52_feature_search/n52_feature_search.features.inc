@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_search.features.inc
+ * n52_feature_search.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function feature_search_ctools_plugin_api($module = NULL, $api = NULL) {
+function n52_feature_search_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
@@ -19,14 +19,14 @@ function feature_search_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_views_api().
  */
-function feature_search_views_api($module = NULL, $api = NULL) {
+function n52_feature_search_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
 /**
  * Implements hook_default_search_api_index().
  */
-function feature_search_default_search_api_index() {
+function n52_feature_search_default_search_api_index() {
   $items = array();
   $items['event_index'] = entity_import('search_api_index', '{
     "name" : "Event Index",
@@ -697,7 +697,7 @@ function feature_search_default_search_api_index() {
 /**
  * Implements hook_default_search_api_server().
  */
-function feature_search_default_search_api_server() {
+function n52_feature_search_default_search_api_server() {
   $items = array();
   $items['search_server_solr_localhost'] = entity_import('search_api_server', '{
     "name" : "Local Solr Server",

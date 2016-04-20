@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_search.views_default.inc
+ * n52_feature_search.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function feature_search_views_default_views() {
+function n52_feature_search_views_default_views() {
   $export = array();
 
   $view = new view();
