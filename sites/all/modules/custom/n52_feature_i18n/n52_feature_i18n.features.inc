@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * n52_n52_feature_i18n.features.inc
+ * n52_feature_i18n.features.inc
  */
 
 /**
