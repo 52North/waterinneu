@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_projects.features.inc
+ * n52_feature_projects.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function waterinneu_feature_projects_ctools_plugin_api($module = NULL, $api = NULL) {
+function n52_feature_projects_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
@@ -22,14 +22,14 @@ function waterinneu_feature_projects_ctools_plugin_api($module = NULL, $api = NU
 /**
  * Implements hook_views_api().
  */
-function waterinneu_feature_projects_views_api($module = NULL, $api = NULL) {
+function n52_feature_projects_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function waterinneu_feature_projects_node_info() {
+function n52_feature_projects_node_info() {
   $items = array(
     'project' => array(
       'name' => t('Project'),

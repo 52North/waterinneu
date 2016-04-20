@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_projects.features.field_base.inc
+ * n52_feature_projects.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function waterinneu_feature_projects_field_default_field_bases() {
+function n52_feature_projects_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_end_date'.

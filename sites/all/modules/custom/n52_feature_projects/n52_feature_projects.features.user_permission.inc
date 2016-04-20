@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_projects.features.user_permission.inc
+ * n52_feature_projects.features.user_permission.inc
  */
 
 /**
  * Implements hook_user_default_permissions().
  */
-function waterinneu_feature_projects_user_default_permissions() {
+function n52_feature_projects_user_default_permissions() {
   $permissions = array();
 
   // Exported permission: 'create project content'.

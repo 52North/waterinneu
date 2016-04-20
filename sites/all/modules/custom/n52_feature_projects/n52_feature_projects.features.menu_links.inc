@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_projects.features.menu_links.inc
+ * n52_feature_projects.features.menu_links.inc
  */
 
 /**
  * Implements hook_menu_default_menu_links().
  */
-function waterinneu_feature_projects_menu_default_menu_links() {
+function n52_feature_projects_menu_default_menu_links() {
   $menu_links = array();
 
   // Exported menu link: navigation_project:node/add/project.

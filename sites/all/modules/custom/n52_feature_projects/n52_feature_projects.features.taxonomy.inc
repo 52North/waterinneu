@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_projects.features.taxonomy.inc
+ * n52_feature_projects.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function waterinneu_feature_projects_taxonomy_default_vocabularies() {
+function n52_feature_projects_taxonomy_default_vocabularies() {
   return array(
     'administrative_levels' => array(
       'name' => 'Administrative Levels',

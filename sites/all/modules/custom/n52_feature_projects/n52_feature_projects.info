@@ -1,4 +1,4 @@
-name = Feature - Projects
+name = 52N - Feature - Projects
 description = Contains everything regarding projects
 core = 7.x
 package = 52N - WaterInnEU
@@ -9,7 +9,6 @@ dependencies[] = date
 dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = fe_block
-dependencies[] = feature_service_requests_and_offerings
 dependencies[] = features
 dependencies[] = field_group
 dependencies[] = geofield

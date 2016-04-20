@@ -4,4 +4,4 @@
  * Code for the Feature - Projects feature.
  */
 
-include_once 'waterinneu_feature_projects.features.inc';
+include_once 'n52_feature_projects.features.inc';

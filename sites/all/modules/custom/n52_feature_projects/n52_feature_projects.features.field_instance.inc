@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * waterinneu_feature_projects.features.field_instance.inc
+ * n52_feature_projects.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function waterinneu_feature_projects_field_default_field_instances() {
+function n52_feature_projects_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'comment-comment_node_project-comment_body'.
