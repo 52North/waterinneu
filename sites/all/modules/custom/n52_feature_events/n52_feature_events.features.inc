@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_events.features.inc
+ * n52_feature_events.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function feature_events_ctools_plugin_api($module = NULL, $api = NULL) {
+function n52_feature_events_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -16,14 +16,14 @@ function feature_events_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_views_api().
  */
-function feature_events_views_api($module = NULL, $api = NULL) {
+function n52_feature_events_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function feature_events_node_info() {
+function n52_feature_events_node_info() {
   $items = array(
     'event' => array(
       'name' => t('Event'),

@@ -4,4 +4,4 @@
  * Code for the Feature - Events feature.
  */
 
-include_once 'feature_events.features.inc';
+include_once 'n52_n52_feature_events.features.inc';

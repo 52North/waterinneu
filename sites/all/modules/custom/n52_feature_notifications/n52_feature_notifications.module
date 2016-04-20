@@ -4,4 +4,4 @@
  * Code for the Feature - Notifications feature.
  */
 
-include_once 'n52_n52_feature_notifications.features.inc';
+include_once 'n52_feature_notifications.features.inc';

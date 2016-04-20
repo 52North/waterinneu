@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_events.features.field_instance.inc
+ * n52_feature_events.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function feature_events_field_default_field_instances() {
+function n52_feature_events_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'comment-comment_node_event-comment_body'.

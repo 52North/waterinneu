@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_events.features.taxonomy.inc
+ * n52_feature_events.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function feature_events_taxonomy_default_vocabularies() {
+function n52_feature_events_taxonomy_default_vocabularies() {
   return array(
     'country' => array(
       'name' => 'Country',

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_events.strongarm.inc
+ * n52_n52_feature_events.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function feature_events_strongarm() {
+function n52_feature_events_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

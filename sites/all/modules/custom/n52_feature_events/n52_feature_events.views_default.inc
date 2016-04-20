@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_events.views_default.inc
+ * n52_n52_feature_events.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function feature_events_views_default_views() {
+function n52_feature_events_views_default_views() {
   $export = array();
 
   $view = new view();
