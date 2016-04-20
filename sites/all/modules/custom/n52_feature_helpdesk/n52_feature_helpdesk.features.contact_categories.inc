@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_helpdesk.features.contact_categories.inc
+ * n52_feature_helpdesk.features.contact_categories.inc
  */
 
 /**
  * Implements hook_contact_categories_defaults().
  */
-function feature_helpdesk_contact_categories_defaults() {
+function n52_feature_helpdesk_contact_categories_defaults() {
   return array(
     'Commercialising a product' => array(
       'category' => 'Commercialising a product',

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_helpdesk.captcha.inc
+ * n52_feature_helpdesk.captcha.inc
  */
 
 /**
  * Implements hook_captcha_default_points().
  */
-function feature_helpdesk_captcha_default_points() {
+function n52_feature_helpdesk_captcha_default_points() {
   $export = array();
 
   $captcha = new stdClass();

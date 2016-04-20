@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_helpdesk.features.menu_custom.inc
+ * n52_feature_helpdesk.features.menu_custom.inc
  */
 
 /**
  * Implements hook_menu_default_menu_custom().
  */
-function feature_helpdesk_menu_default_menu_custom() {
+function n52_feature_helpdesk_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: menu-footer-right-links.

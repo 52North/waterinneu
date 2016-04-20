@@ -1,8 +1,9 @@
-name = Feature - Helpdesk
+name = 52N - Feature - Helpdesk
 description = Contains everything regarding help desk and contact forms
 core = 7.x
 package = 52N - WaterInnEU
-version = 7.x-1.10
+version = 7.x-1.11
+
 dependencies[] = captcha
 dependencies[] = contact
 dependencies[] = fe_block

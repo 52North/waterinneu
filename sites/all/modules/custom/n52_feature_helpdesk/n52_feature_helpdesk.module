@@ -4,4 +4,4 @@
  * Code for the Feature - Helpdesk feature.
  */
 
-include_once 'feature_helpdesk.features.inc';
+include_once 'n52_feature_helpdesk.features.inc';
