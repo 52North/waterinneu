@@ -323,6 +323,22 @@ ul.pager li a, ul.pager li.pager-current {
 	font-size: 24px;
 }
 
+.panel-heading.collapsed .accordion-toggle:after {
+    /* symbol for "collapsed" panels */
+    font-family: 'Glyphicons Halflings';
+    float: right;
+    color: #cecece;
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e113";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: #cecece;         /* adjust as needed */
+}
+
 /******************************************************************************
  *                                                                            *
  *                 dynamic lists with nice bullet list icon                   *
