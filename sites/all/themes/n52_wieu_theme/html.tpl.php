@@ -189,7 +189,7 @@
   <?php } ?>
   <?php
   /*
-   *This function enables linking and scrolling to bootstrap tabs
+   * This function enables linking and scrolling to bootstrap tabs
    */?>
   <script type="text/javascript">
   (function($) {
@@ -197,6 +197,23 @@
 	  if (location.hash){
 		  $('.nav-tabs a[href="' + location.hash + '"]').tab('show');
 	  }
+	});
+  })(jQuery);
+  </script>
+  <?php
+  /*
+   * This function fixes the add comment link.
+   */?>
+  <script type="text/javascript">
+  (function($) {
+    $(document).ready(function () {
+    	if ($('li.comment-add.last.active').length) {
+        	$('li.comment-add.last.active > a.active').on('click', function() {
+            	$('#comments-accordion > section > div > div').trigger('click');
+            	var aTag = $('#comment-form');
+            	$('html,body').animate({scrollTop: aTag.offset().top-125},'slow');
+        	});
+    	}
 	});
   })(jQuery);
   </script>

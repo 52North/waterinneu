@@ -149,3 +149,15 @@ ul.pager li a:hover, ul.pager li.pager-current {
 ul.pager li a, ul.pager li.pager-current {
     border-color: #eee;
 }
+
+.panel-heading.collapsed .accordion-toggle:after {
+    color: #cecece;
+}
+
+.panel-heading .accordion-toggle:after {
+    color: #cecece;
+}
+
+span.background {
+    color: #cecece;
+}
