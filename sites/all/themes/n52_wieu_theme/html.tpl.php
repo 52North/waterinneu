@@ -174,14 +174,14 @@
   	<script type="text/javascript">
   	(function($) {
 	    $(document).ready(function () {
-      		if (!$('#block-menu-menu-top-level-links-registered-').length) {
-        		var link = $(location).attr('pathname').replace('forum','user') + '?destination=forum';
-	        	var messageDiv = '<div class="view-footer alert alert-warning" style="margin-top: 10px;"><?php print t('For adding adding new content, you need to ')?><a href="' + link + '"><?php print t('login')?></a>.</div>';
-        		if ($('div.view-content').length) {
-		        	$(messageDiv).insertAfter('div.view-content');
-    	    	} else
-	    	        $(messageDiv).insertAfter('div.view-empty');
-      		}
+        if (!$('#block-menu-menu-top-level-links-registered-').length) {
+          var link = $(location).attr('pathname').replace('forum','user') + '?destination=forum';
+          var messageDiv = '<div class="view-footer alert alert-info" style="margin-top: 10px;"><?php print t('For adding adding new content, you need to ')?><a href="' + link + '"><?php print t('login')?></a>.</div>';
+          if ($('div.view-content').length) {
+            $(messageDiv).insertAfter('div.view-content');
+          } else
+            $(messageDiv).insertAfter('div.view-empty');
+          }
     	});
   	})(jQuery);
   	</script>
