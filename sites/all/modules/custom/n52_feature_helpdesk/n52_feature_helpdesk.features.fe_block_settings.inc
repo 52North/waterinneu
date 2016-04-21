@@ -36,7 +36,7 @@ function n52_feature_helpdesk_default_fe_block_settings() {
         'weight' => -47,
       ),
     ),
-    'title' => '',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
