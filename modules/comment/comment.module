@@ -2072,7 +2072,9 @@ function comment_preview($comment) {
 
   if (!form_get_errors()) {
     $comment_body = field_get_items('comment', $comment, 'comment_body');
-    $comment->format = $comment_body[0]['format'];
+    if(isset($comment_body[0]['format'])){
+    	$comment->format = $comment_body[0]['format'];
+    }
     // Attach the user and time information.
     if (!empty($comment->name)) {
       $account = user_load_by_name($comment->name);
