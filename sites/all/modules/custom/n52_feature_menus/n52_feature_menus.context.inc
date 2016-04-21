@@ -11,7 +11,7 @@ function n52_feature_menus_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
-  $context->disabled = FALSE;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'about';
   $context->description = '';
@@ -37,7 +37,7 @@ function n52_feature_menus_context_default_contexts() {
   $export['about'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'author';
   $context->description = 'Everything that is relevant for authors';
@@ -71,7 +71,7 @@ function n52_feature_menus_context_default_contexts() {
   $export['author'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'home';
   $context->description = '';
@@ -96,7 +96,7 @@ function n52_feature_menus_context_default_contexts() {
   $export['home'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'moderator';
   $context->description = 'Everything that is relevant for moderators';
@@ -130,7 +130,7 @@ function n52_feature_menus_context_default_contexts() {
   $export['moderator'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'other';
   $context->description = '';
@@ -158,7 +158,7 @@ function n52_feature_menus_context_default_contexts() {
   $export['other'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'products';
   $context->description = '';
@@ -184,7 +184,7 @@ function n52_feature_menus_context_default_contexts() {
   $export['products'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'user_guide';
   $context->description = '';
