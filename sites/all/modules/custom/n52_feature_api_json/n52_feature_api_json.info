@@ -1,0 +1,16 @@
+name = 52N - Feature - API::JSON
+description = Contains view that provide a simple JSON API for our content types
+core = 7.x
+package = 52N - WaterInnEU
+version = 7.x-1.0
+dependencies[] = views
+dependencies[] = views_json
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = n52_views_api_events
+features[views_view][] = n52_views_api_organisations
+features[views_view][] = n52_views_api_products
+features[views_view][] = n52_views_api_projects
+features[views_view][] = n52_views_api_service_offerings
+features[views_view][] = n52_views_api_service_requests
+features_exclude[dependencies][ctools] = ctools
