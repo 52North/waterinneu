@@ -9,7 +9,9 @@ core = "7.x"
 ; 52N - WaterInnEU
 dependencies[] = n52_advanced_search
 dependencies[] = n52_autocomplete
-dependencies[] = n52_waterinneu_menu
+dependencies[] = n52_central_subscribe
+dependencies[] = n52_dynamic_content
+dependencies[] = n52_shared_functions
 ; Administration
 dependencies[] = admin_devel
 dependencies[] = admin_menu
@@ -236,17 +238,18 @@ dependencies[] = views_load_more
 dependencies[] = views_ui
 ; Features
 dependencies[] = features
-dependencies[] = feature_configuration
-dependencies[] = feature_events
-dependencies[] = feature_helpdesk
-dependencies[] = feature_i18n
-dependencies[] = feature_search
-dependencies[] = feature_service_requests_and_offerings
-dependencies[] = features_banish
-dependencies[] = features_override
-dependencies[] = waterinneu_feature_frontpage
-dependencies[] = waterinneu_feature_menus
-dependencies[] = waterinneu_feature_organisation
-dependencies[] = waterinneu_feature_projects
-dependencies[] = waterinneu_feature_roles_and_permissions
-dependencies[] = waterinneu_feature_tools
+dependencies[] = n52_feature_alerting
+dependencies[] = n52_feature_config
+dependencies[] = n52_feature_events
+dependencies[] = n52_feature_forum
+dependencies[] = n52_feature_frontpage
+dependencies[] = n52_feature_helpdesk
+dependencies[] = n52_feature_i18n
+dependencies[] = n52_feature_menus
+dependencies[] = n52_feature_notifications
+dependencies[] = n52_feature_organisations
+dependencies[] = n52_feature_products
+dependencies[] = n52_feature_roles_and_permissions
+dependencies[] = n52_feature_search
+dependencies[] = n52_feature_service_requests_and_offerings
+
