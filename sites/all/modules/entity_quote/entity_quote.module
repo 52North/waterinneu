@@ -303,14 +303,14 @@ class EntityQuotePregCallback {
       }
     }
 
-    $user = NULL;
+    $_user = NULL;
     if ($entity) {
       // Attempt to load the user.
       if (!empty($entity->uid)) {
-        $user = user_load($entity->uid);
+        $_user = user_load($entity->uid);
       }
       elseif (($entity_type === 'node' || $entity_type === 'comment') && !empty($entity->name)) {
-        $user = user_load_by_name($entity->name);
+        $_user = user_load_by_name($entity->name);
       }
 
       $entity_path = NULL;
@@ -335,15 +335,15 @@ class EntityQuotePregCallback {
     }
     elseif (!$entity && !empty($author)) {
       if (intval($author) > 0) {
-        $user = user_load(intval($author));
+        $_user = user_load(intval($author));
       }
       elseif (is_string($author)) {
-        $user = user_load_by_name($author);
+        $_user = user_load_by_name($author);
       }
     }
 
-    if ($user) {
-      $variables['author'] = user_access('access user profiles') ? l(check_plain($user->name), "user/$user->uid") : check_plain($user->name);
+    if ($_user) {
+      $variables['author'] = user_access('access user profiles') ? l(check_plain($_user->name), "user/$_user->uid") : check_plain($_user->name);
     }
 
     if (stristr($matches[2], '[quote')) {
