@@ -60,7 +60,6 @@ dependencies[] = system
 dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = translation
-dependencies[] = trigger
 dependencies[] = update
 dependencies[] = user
 ; Date/Time
