@@ -256,9 +256,11 @@ function atjs_pre_render($element) {
     $listener = atjs_listener_load($listener_name);
 
     if ($listener) {
+      $allow_spaces = !empty($listener->allow_spaces);
+
       // General listener settings.
       $js_settings['data']['atjs']['listeners'][$listener_name] = array(
-        'allowSpaces' => !empty($listener->allow_spaces),
+        'allowSpaces' => $allow_spaces,
       );
 
       // Settings passed to At.js library.
@@ -272,7 +274,7 @@ function atjs_pre_render($element) {
         'lookUpOnClick' => !empty($listener->lookup_on_click),
       );
 
-      if ($listener->allow_spaces) {
+      if ($allow_spaces) {
         $js_settings['data']['atjs']['elements'][$element['#id']][$listener_name]['insertTpl'] = '[' . filter_xss($listener->insert_tpl) . ']';
       }
     }

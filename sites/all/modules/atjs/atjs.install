@@ -234,70 +234,75 @@ function atjs_schema() {
  * Implements hook_requirements().
  */
 function atjs_requirements($phase) {
-  $t = get_t();
+  $requirements = array();
 
-  $requirements = array(
-    'atjs_libraries' => array(
-      'title' => $t('At.js - Libraries'),
+  if ($phase === 'runtime') {
+    $t = get_t();
+
+    $requirements = array(
+      'atjs_libraries' => array(
+        'title' => $t('At.js - Libraries'),
+        'severity' => REQUIREMENT_OK,
+      ),
+    );
+
+    $libraries = libraries_get_libraries();
+    $installed_atjs = libraries_detect('at.js');
+    $installed_caretjs = libraries_detect('caret.js');
+
+    $atjs_library = array(
+      'status' => '',
       'severity' => REQUIREMENT_OK,
-    ),
-  );
+    );
+    $caretjs_library = array(
+      'status' => '',
+      'severity' => REQUIREMENT_OK,
+    );
 
-  $libraries = libraries_get_libraries();
-  $installed_atjs = libraries_detect('at.js');
-  $installed_caretjs = libraries_detect('caret.js');
+    if (!isset($libraries['at.js']) || $libraries['at.js'] === FALSE) {
+      $atjs_library['status'] = $t('At.js library was not found.');
+      $atjs_library['severity'] = REQUIREMENT_ERROR;
+    }
+    elseif (version_compare($installed_atjs['version'], ATJS_LIBRARY_ATJS_MINIMUM_VERSION) < 0) {
+      $atjs_library['status'] = $t('Your installation of At.js library is incompatible, please upgrade to at least v@minimum_version', array(
+        '@minimum_version' => ATJS_LIBRARY_ATJS_MINIMUM_VERSION,
+      ));
+      $atjs_library['severity'] = REQUIREMENT_ERROR;
+    }
+    else {
+      $atjs_library['status'] = $t('At.js library installed at v@installed_version.', array(
+        '@installed_version' => $installed_atjs['version'],
+      ));
+    }
 
-  $atjs_library = array(
-    'status' => '',
-    'severity' => REQUIREMENT_OK,
-  );
-  $caretjs_library = array(
-    'status' => '',
-    'severity' => REQUIREMENT_OK,
-  );
+    if (!isset($libraries['caret.js']) || $libraries['caret.js'] === FALSE) {
+      $caretjs_library['status'] = $t('Caret.js library was not found.');
+      $caretjs_library['severity'] = REQUIREMENT_ERROR;
+    }
+    elseif (version_compare($installed_caretjs['version'], ATJS_LIBRARY_CARETJS_MINIMUM_VERSION) < 0) {
+      $caretjs_library['status'] = $t('Your installation of Caret.js library is incompatible, please upgrade to at least v@minimum_version', array(
+        '@minimum_version' => ATJS_LIBRARY_CARETJS_MINIMUM_VERSION,
+      ));
+      $caretjs_library['severity'] = REQUIREMENT_ERROR;
+    }
+    else {
+      $caretjs_library['status'] = $t('Caret.js library installed at v@installed_version.', array(
+        '@installed_version' => $installed_caretjs['version'],
+      ));
+    }
 
-  if (!isset($libraries['at.js']) || $libraries['at.js'] === FALSE) {
-    $atjs_library['status'] = $t('At.js library was not found.');
-    $atjs_library['severity'] = REQUIREMENT_ERROR;
-  }
-  elseif (version_compare($installed_atjs['version'], ATJS_LIBRARY_ATJS_MINIMUM_VERSION) < 0) {
-    $atjs_library['status'] = $t('Your installation of At.js library is incompatible, please upgrade to at least v@minimum_version', array(
-      '@minimum_version' => ATJS_LIBRARY_ATJS_MINIMUM_VERSION,
-    ));
-    $atjs_library['severity'] = REQUIREMENT_ERROR;
-  }
-  else {
-    $atjs_library['status'] = $t('At.js library installed at v@installed_version.', array(
-      '@installed_version' => $installed_atjs['version'],
-    ));
-  }
+    $requirements['atjs_libraries']['value'] = $t('@atjs_status @caretjs_status',
+      array(
+        '@atjs_status' => $atjs_library['status'],
+        '@caretjs_status' => $caretjs_library['status'],
+      )
+    );
 
-  if (!isset($libraries['caret.js']) || $libraries['caret.js'] === FALSE) {
-    $caretjs_library['status'] = $t('Caret.js library was not found.');
-    $caretjs_library['severity'] = REQUIREMENT_ERROR;
-  }
-  elseif (version_compare($installed_atjs['version'], ATJS_LIBRARY_CARETJS_MINIMUM_VERSION) < 0) {
-    $caretjs_library['status'] = $t('Your installation of Caret.js library is incompatible, please upgrade to at least v@minimum_version', array(
-      '@minimum_version' => ATJS_LIBRARY_CARETJS_MINIMUM_VERSION,
-    ));
-    $caretjs_library['severity'] = REQUIREMENT_ERROR;
-  }
-  else {
-    $caretjs_library['status'] = $t('Caret.js library installed at v@installed_version.', array(
-      '@installed_version' => $installed_caretjs['version'],
-    ));
+    if (!($atjs_library['severity'] === REQUIREMENT_OK && $caretjs_library['severity'] === REQUIREMENT_OK)) {
+      $requirements['atjs_libraries']['severity'] = REQUIREMENT_ERROR;
+    }
   }
 
-  $requirements['atjs_libraries']['description'] = $t('@atjs_status @caretjs_status',
-    array(
-      '@atjs_status' => $atjs_library['status'],
-      '@caretjs_status' => $caretjs_library['status'],
-    )
-  );
-
-  if (!($atjs_library['severity'] === REQUIREMENT_OK && $caretjs_library['severity'] === REQUIREMENT_OK)) {
-    $requirements['atjs_libraries']['severity'] = REQUIREMENT_ERROR;
-  }
   return $requirements;
 }
 
