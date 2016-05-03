@@ -236,5 +236,19 @@
 	  });
   })(jQuery); 
   </script>
+  <?php 
+  /* 
+   * This function hides the old venue field in events when adding new events
+   */
+  ?>
+  <?php if (n52_endsWith(request_path(),'node/add/event')) { ?>
+  <script type="text/javascript">
+  (function($) {
+	  $(document).ready(function () {
+		  $('#edit-field-venue').css('display','none');
+	  });
+  })(jQuery); 
+  </script>
+  <?php } ?>
 </body>
 </html>
