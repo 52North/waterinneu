@@ -59,8 +59,8 @@ function n52_feature_notifications_default_rules_configuration() {
         { "mail" : {
             "to" : "[comment:node:author:name] \\u003C[comment:node:author:mail]\\u003E",
             "subject" : "[WIEU-Portal] Comment published for one of your entries",
-            "message" : "Dear [node:author:name],\\r\\nyour entry\\r\\n\\r\\n    \\u0022[revision:title]\\u0022\\r\\n\\r\\nhas been checked and approved by our moderators. It is now published and \\r\\navailable via\\r\\n\\r\\n    [revision:url]\\r\\n\\r\\nThank you for your patience!\\r\\n\\r\\nThe WaterInnEU-Marketplace-Prototype\\r\\n\\r\\n--\\r\\nThis is an automated mail from\\r\\n\\u0022[site:name]\\u0022\\r\\nIf you do not want to receive these mails in future, please get in touch via\\r\\n[site:url]\\/contact",
-            "language" : [ "" ]
+            "message" : "Dear [comment:node:author:name],\\r\\nfor your entry\\r\\n\\r\\n    \\u0022[comment:node:title]\\u0022\\r\\n\\r\\na comment is posted and approved by our moderators. It is now published and \\r\\navailable via\\r\\n\\r\\n    [comment:node:url]#comment-[comment:cid]\\r\\n\\r\\nThank you for your patience!\\r\\n\\r\\nThe WaterInnEU-Marketplace-Prototype\\r\\n\\r\\n--\\r\\nThis is an automated mail from\\r\\n\\u0022[site:name]\\u0022\\r\\nIf you do not want to receive these mails in future, please get in touch via\\r\\n[site:url]\\/contact",
+            "language" : [ "comment:node:author:language" ]
           }
         }
       ]

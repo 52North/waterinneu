@@ -72,7 +72,7 @@
   </script>
   <?php
   /*
-   *This function enables linking and scrolling to accordion entries
+   * This function enables linking and scrolling to accordion entries
    */?>
   <script type="text/javascript">
   (function($) {
@@ -202,7 +202,9 @@
   </script>
   <?php
   /*
-   * This function fixes the add comment link.
+   * This function fixes the add comment link, hence is clicks on the comment
+   * accordion heading when the link is clicked and scrolles down to the 
+   * add comment form.
    */?>
   <script type="text/javascript">
   (function($) {
@@ -216,6 +218,23 @@
     	}
 	});
   })(jQuery);
+  </script>
+  <?php 
+  /* 
+   * This function expands the comment accordion if the location hash 
+   * contains #comment- to enable direct linking to comments
+   */
+  ?>
+  <script type="text/javascript">
+  (function($) {
+	  $(document).ready(function () {
+		  if (location.hash && location.hash.startsWith('#comment-')) {
+			  $('#comments-panel').collapse('show');
+			  var aTag = $(location.hash);
+			  $('html,body').animate({scrollTop: aTag.offset().top-125},'slow');
+		  }
+	  });
+  })(jQuery); 
   </script>
 </body>
 </html>
