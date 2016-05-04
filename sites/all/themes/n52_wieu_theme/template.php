@@ -216,3 +216,20 @@ function n52_waterinneu_theme_node_last_updated($changed, $user_name) {
 		'</span>';
 	return $output;
 }
+
+/**
+ * Returns a randomly choosen absolute web context path to an header background
+ * image from images folder in current theme.
+ */
+function n52_random_header_background_image_path(){
+	$folder = path_to_theme() . '/images';
+	if (file_exists($folder)) {
+		GLOBAL $base_url;
+		$mask = '/^header-background-*/';
+		$files = file_scan_directory($folder, $mask);
+		return $base_url . '/' . array_keys($files)[rand(0,count($files)-1)];
+//		return "/drupal/sites/all/themes/n52_wieu_theme/images/header-background-30.png";
+	} else {
+		return "";
+	}
+}

@@ -250,5 +250,17 @@
   })(jQuery); 
   </script>
   <?php } ?>
+    <?php 
+  /* 
+   * This function changes the header background image randomly 
+   */
+  ?>
+  <script type="text/javascript">
+  (function($) {
+	  $(document).ready(function () {
+		  $('#header').css('background-image','url(<?php print n52_random_header_background_image_path(); ?>)');
+	  });
+  })(jQuery); 
+  </script>
 </body>
 </html>
