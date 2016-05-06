@@ -110,8 +110,7 @@ function revisioning_events_argument_current_revision($arguments, $name, $info) 
     return FALSE;
   }
   $node = $arguments['node'];
-  // Use revisioning_get_current_node_revision_id($node->nid); ?
-  $current_vid = $node->current_revision_id;
+  $current_vid = revisioning_get_current_node_revision_id($node->nid);
   if ($node->vid != $current_vid) {
     $current = node_load($node->nid, $current_vid);
     return $current;
