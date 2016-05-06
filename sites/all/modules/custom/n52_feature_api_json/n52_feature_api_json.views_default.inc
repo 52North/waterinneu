@@ -53,11 +53,10 @@ function n52_feature_api_json_views_default_views() {
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
-  /* Field: Content: Venue */
+  /* Field: Content: Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Address';
   $handler->display->display_options['fields']['field_address']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_address']['click_sort_column'] = 'country';
   $handler->display->display_options['fields']['field_address']['settings'] = array(
@@ -141,11 +140,10 @@ function n52_feature_api_json_views_default_views() {
   $handler->display->display_options['fields']['path']['field'] = 'path';
   $handler->display->display_options['fields']['path']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['path']['hide_empty'] = TRUE;
-  /* Field: Content: Venue */
+  /* Field: Content: Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = 'Address';
   $handler->display->display_options['fields']['field_address']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_address']['click_sort_column'] = 'country';
   $handler->display->display_options['fields']['field_address']['settings'] = array(
@@ -393,11 +391,10 @@ function n52_feature_api_json_views_default_views() {
   $handler->display->display_options['fields']['field_purpose_info']['table'] = 'field_data_field_purpose_info';
   $handler->display->display_options['fields']['field_purpose_info']['field'] = 'field_purpose_info';
   $handler->display->display_options['fields']['field_purpose_info']['hide_empty'] = TRUE;
-  /* Field: Content: Links */
+  /* Field: Content: Related Links and Supporting Material */
   $handler->display->display_options['fields']['field_links']['id'] = 'field_links';
   $handler->display->display_options['fields']['field_links']['table'] = 'field_data_field_links';
   $handler->display->display_options['fields']['field_links']['field'] = 'field_links';
-  $handler->display->display_options['fields']['field_links']['label'] = 'Related Links and Supporting Material';
   $handler->display->display_options['fields']['field_links']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_links']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_links']['delta_offset'] = '0';
