@@ -33,7 +33,7 @@ function n52_feature_events_node_info() {
       'title_label' => t('Title'),
       'help' => t('Event deletion is only possible by admins. If you want to have an event deleted, please use the <a href="/contact">contact form</a>.
 
-Get in touch with our <a href="helpdeskt">helpdesk</a> if your content does not fit in this form.'),
+Get in touch with our <a href="helpdesk">helpdesk</a> if your content does not fit in this form.'),
     ),
   );
   drupal_alter('node_info', $items);
