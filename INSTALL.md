@@ -95,3 +95,9 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
     ``` http://localhost/en/contact ```
 
   If the mails doesn't reach your inbox, you should review the configuration of the STMP module (see according section above).
+
+1. Update all dependencies: Open the following URL
+
+    ``` http://localhost/drupal/en/admin/reports/updates/update ```
+
+  If the latest check is not 0 seconds ago, click on the link "check manuall".
