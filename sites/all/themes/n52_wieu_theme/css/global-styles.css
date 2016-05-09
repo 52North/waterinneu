@@ -199,22 +199,6 @@ li.no-list-style {
 	list-style-type: none;
 }
 
-
-/******************************************************************************
- *                                                                            *
- *                            Header polish                                   *
- *                                                                            *
- ******************************************************************************/
-#header {
-	background: none;
-	background-repeat: no-repeat;
-	background-position: center center;
-}
-
-#site-slogan {
-	font-weight: bold;
-	font-size: 16px;
-}
 /******************************************************************************
  *                                                                            *
  *                            Node display                                    *

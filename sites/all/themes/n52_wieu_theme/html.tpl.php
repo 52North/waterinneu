@@ -250,17 +250,55 @@
   })(jQuery); 
   </script>
   <?php } ?>
-    <?php 
+  <?php 
   /* 
-   * This function changes the header background image randomly 
+   * This function changes the header background image randomly if theme setting
+   * is active.
    */
   ?>
+  <?php if (theme_get_setting('n52_header_background_images','n52_wieu_theme')) { ?>
   <script type="text/javascript">
   (function($) {
 	  $(document).ready(function () {
-		  $('#header').css('background-image','url(<?php print n52_random_header_background_image_path(); ?>)');
+		  var header = $('#header');
+		  header.css('background', 'none');
+		  header.css('background-image','url(<?php print n52_random_header_background_image_path(); ?>)');
+		  header.css('background-repeat', 'no-repeat');
+	      header.css('background-position', 'center center');
+	      var slogan = $('#site-slogan');
+	      slogan.css('font-weight', 'bold');
+	      slogan.css('font-size', '16px');
+	      slogan.css('color', '#29648C');
 	  });
   })(jQuery); 
   </script>
+  <?php } ?>
+  <?php 
+  /* 
+   * This function fixes the position of the floating/sticky nav div and pre-header
+   */
+  ?>
+  <?php if (user_is_logged_in()) {?>
+    <script type="text/javascript">
+    (function($) {
+	  $(document).ready(function () {
+		  setTimeout(function () {
+			  if ($('#admin-menu').length && $('body').hasClass('logged-in')) {
+				  $('#pre-header').css('padding-top', '50px');
+			  }
+		  },200);
+		  setInterval( function() {
+			  if ($('#admin-menu').length) {
+				  if ($('#main-navigation-inside').hasClass('stickynav-active')) {
+					  $('#main-navigation-inside').css('top', '50px');
+				  } else {
+					  $('#main-navigation-inside').css('top', '0px');
+				  }
+			  }
+		  },500);
+	  });
+  })(jQuery); 
+  </script>
+  <?php }?>
 </body>
 </html>

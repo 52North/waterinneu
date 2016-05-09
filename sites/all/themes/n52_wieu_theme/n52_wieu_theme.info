@@ -37,6 +37,7 @@ regions[page_bottom] = Page bottom
 settings[bootstrap_js_cdn]= 3.2.0
 settings[bootstrap_css_cdn] = 3.2.0
 settings[responsive_respond]= 1
+settings[n52_header_background_images] = 1
 
-version = "7.x-1.0"
+version = "7.x-1.1"
 core = "7.x"
