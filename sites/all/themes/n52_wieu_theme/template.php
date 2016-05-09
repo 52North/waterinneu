@@ -39,7 +39,7 @@ function n52_wieu_theme_preprocess_page(&$vars) {
 }
 
 function _n52_remove_search_form_from_content(&$vars) {
-	if ($vars['page']['content']['system_main']['search_form']) {
+	if (isset($vars['page']['content']['system_main']['search_form'])) {
 		unset($vars['page']['content']['system_main']['search_form']);
 	}
 }
