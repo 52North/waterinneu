@@ -31,9 +31,20 @@
  * 
  * Changes to bootstrap business:
   * - glyphicons for the pre-header.
+  * - remove search form from results display
  */
 function n52_wieu_theme_preprocess_page(&$vars) {
+	_n52_fix_pre_header($vars);
+	_n52_remove_search_form_from_content($vars);
+}
 
+function _n52_remove_search_form_from_content(&$vars) {
+	if ($vars['page']['content']['system_main']['search_form']) {
+		unset($vars['page']['content']['system_main']['search_form']);
+	}
+}
+
+function _n52_fix_pre_header(&$vars) {
 	/**
 	 * insert variables into page template.
 	 */
@@ -46,7 +57,7 @@ function n52_wieu_theme_preprocess_page(&$vars) {
 	} else {
 		$vars['main_grid_class'] = 'col-md-12';
 	}
-
+	
 	if($vars['page']['header_top_left'] && $vars['page']['header_top_right']) {
 		$vars['header_top_left_grid_class'] = 'col-md-8';
 		$vars['header_top_right_grid_class'] = 'col-md-4';
@@ -54,7 +65,7 @@ function n52_wieu_theme_preprocess_page(&$vars) {
 		$vars['header_top_left_grid_class'] = 'col-md-12';
 		$vars['header_top_right_grid_class'] = 'col-md-12';
 	}
-
+	
 	/**
 	 * Add Javascript
 	 */
@@ -64,7 +75,7 @@ function n52_wieu_theme_preprocess_page(&$vars) {
 	jQuery(".toggle-control").html("<a href=\"javascript:showPreHeader()\"><span class=\"glyphicon glyphicon-chevron-down\"></span></a>");
 	jQuery("#pre-header-inside").slideUp("fast");
 	}
-
+	
 	function showPreHeader() {
 	jQuery(".toggle-control").html("<a href=\"javascript:hidePreHeader()\"><span class=\"glyphicon glyphicon-chevron-up\"></span></a>");
 	jQuery("#pre-header-inside").slideDown("fast");
