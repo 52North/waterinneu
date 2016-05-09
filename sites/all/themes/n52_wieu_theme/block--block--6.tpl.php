@@ -44,6 +44,7 @@
 			<li><a href="#service-requests" role="tab" data-toggle="tab"><?php print t('Service Requests'); ?></a></li>
 			<li><a href="#service-offerings" role="tab" data-toggle="tab"><?php print t('Service Offerings'); ?></a></li>
 			<li><a href="#events" role="tab" data-toggle="tab"><?php print t('Events'); ?></a></li>
+			<li><a href="#posts" role="tab" data-toggle="tab"><?php print t('Forum Posts'); ?></a></li>
 <?php /* ?>
 			<li><a href="#other" role="tab" data-toggle="tab"><?php print t('Other'); ?></a></li>
 <?php */ ?>
@@ -65,6 +66,9 @@
 			</div>
 			<div class="tab-pane" id="events">
 				<?php print views_embed_view('advanced_event_search','block'); ?>
+			</div>
+			<div class="tab-pane" id="posts">
+				<?php print views_embed_view('n52_views_advanced_search_forum','block'); ?>
 			</div>
 <?php /* ?>
 			<div class="tab-pane" id="other">

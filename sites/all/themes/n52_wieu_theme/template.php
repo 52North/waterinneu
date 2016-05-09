@@ -244,3 +244,12 @@ function n52_random_header_background_image_path(){
 		return "";
 	}
 }
+
+function n52_get_destination_alias() {
+	$destination_alias = array();
+	$destination = drupal_get_destination();
+	if(!empty($destination['destination'])) {
+		$destination_alias['destination'] = drupal_get_path_alias($destination['destination']);
+	}
+	return $destination_alias['destination'];
+}

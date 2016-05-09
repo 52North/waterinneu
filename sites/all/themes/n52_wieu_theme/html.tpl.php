@@ -139,33 +139,58 @@
   (function($) {
     $(document).ready(function () {
   	   $('#custom-search-blocks-form-1').clone(true,true).appendTo('#search-form-duplicate');
-	   $('div.content > form > div > div > input#edit-custom-search-blocks-form-1--2').prop('disabled','true');
-	   $('div.content > form > div > div > input#edit-custom-search-blocks-form-1--2').attr('placeholder','<?php print t('disabled here'); ?>');
-	   $('div.content > form > div > div > input#edit-custom-search-blocks-form-1--2').attr('title','<?php print t('please use the search form down below!'); ?>');
-  	   $('div#search-form-duplicate > form > div > div > #edit-custom-search-blocks-form-1--2').css('width','100%');
-  	   $('div#search-form-duplicate > form > div > div > #edit-custom-search-blocks-form-1--2').attr('size','60');
+  	   var elem = $('div.content > form > div > div > input#edit-custom-search-blocks-form-1--2');
+	   elem.prop('disabled','true');
+	   elem.attr('placeholder','<?php print t('disabled here'); ?>');
+	   elem.attr('title','<?php print t('please use the search form down below!'); ?>');
+	   var elem2 = $('div#search-form-duplicate > form > div > div > #edit-custom-search-blocks-form-1--2'); 
+  	   elem2.css('width','100%');
+  	   elem2.attr('size','60');
   	   $('div#search-form-duplicate > form').css('float','initial');
     });
   })(jQuery);
   </script>
   <?php } ?>
-  <?php if (n52_endsWith(request_path(),'forum')) { ?>
-  	<?php if ($logged_in) { ?>
-  	<?php
-  	/*
-   	* Adjustment to the forum landing page
-   	* - Change the layout of the Create new thread button
-   	*
-   	*/?>
+  <?php
+  /*
+   * Adjustment to the forum landing page
+   * - Change the layout of the Create new thread button
+   * - Add search button which links to advanced search
+   */?>
+  <?php if (n52_endsWith(request_path(),'forum*',TRUE)) { ?>
+  <?php $search_button = '<a href="search/advanced#posts" style="margin-left: 5px;" class="btn btn-primary"><span class="glyphicon glyphicon-search">&nbsp;</span>' . t('Search forum') . '</a>'; ?>
+  <script type="text/javascript">
+  (function($) {
+	$(document).ready(function () {
+    	var elem = $('div.harmony-listing-header > a')
+    	elem.addClass('btn btn-primary');
+    	elem.prepend('<span class="glyphicon glyphicon-plus">&nbsp;</span>');
+    });
+  })(jQuery);
+  </script>
+  <?php if ($logged_in) { ?>
   	<script type="text/javascript">
   	(function($) {
 	    $(document).ready(function () {
-      	$('div.harmony-listing-header > a').addClass('btn btn-primary');
+      		var searchButton = '<?php print $search_button; ?>';
+      		$(searchButton).insertAfter('div.harmony-listing-header > a'); 
     	});
   	})(jQuery);
   	</script>
+  	<?php } else { ?> 
+  		<script type="text/javascript">
+  		(function($) {
+  			$(document).ready(function () {
+  				var searchButton = '<div class="view-header">' +
+  					'<div class="harmony-listing-header clearfix">' +
+  					'<?php print $search_button; ?>' +
+  					'</div>' +
+  					'</div>';
+  				$(searchButton).insertBefore('div.view-content');
+  			});
+  		})(jQuery);
+  		</script>
   	<?php
-  	} else {
   	/*
    	* Adjustment to the forum landing page
    	* - Add info if not logged in
@@ -300,5 +325,54 @@
   })(jQuery); 
   </script>
   <?php }?>
+  <?php
+  /*
+   * This function fixes bug with some advanced search blocks which display all
+   * content if search text field is empty.
+   */
+  ?>
+  <?php if (n52_endsWith(request_path(),'search/advanced')) { ?>
+  	<script type="text/javascript">
+    (function($) {
+	  $(document).ready(function () {
+		  $('#edit-submit-n52-views-advanced-search-forum').trigger('click');
+		  $('#edit-submit-advanced-event-search').trigger('click');
+		  $('#edit-submit-view-advanced-search-organsations').trigger('click');
+	  });
+  	})(jQuery); 
+  	</script>
+  <?php } ?>
+  <?php 
+  /*
+   * Add destination to login link.
+   */
+  ?>
+  <?php if (!user_is_logged_in() && !$is_front) {?>
+  	<script type="text/javascript">
+    (function($) {
+	  $(document).ready(function () {
+		  var elem = $('#block-menu-menu-top-links > div > ul > li.first > a');
+		  var href = elem.attr('href') + '?destination=<?php print n52_get_destination_alias() ?>';
+		  elem.attr('href', href);
+	  });
+  	})(jQuery);
+  	</script>
+  <?php } ?>
+  <?php 
+  /*
+   * Add destination to logout link.
+   */
+  ?>
+  <?php if (user_is_logged_in() && !$is_front) {?>
+  	<script type="text/javascript">
+    (function($) {
+	  $(document).ready(function () {
+		  var elem = $('#block-menu-menu-top-level-links-registered- > div > ul > li.last > a').last();
+		  var href = elem.attr('href') + '?destination=<?php print n52_get_destination_alias() ?>';
+		  elem.attr('href', href);
+	  });
+  	})(jQuery);
+  	</script>
+  <?php } ?>
 </body>
 </html>

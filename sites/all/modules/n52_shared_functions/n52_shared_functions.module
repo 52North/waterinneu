@@ -26,8 +26,12 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
-function n52_endsWith($haystack, $needle) {
-	return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
+function n52_endsWith($haystack, $needle, $is_regex = FALSE) {
+	if ($is_regex) {
+		return $needle === "" || fnmatch('*' . $needle, $haystack);
+	} else {
+		return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
+	}
 }
 
 function n52_taxonomy_name_vid_map() {

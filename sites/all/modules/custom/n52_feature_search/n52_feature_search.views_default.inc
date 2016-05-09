@@ -38,23 +38,6 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_event_index';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_venue']['id'] = 'field_venue';
-  $handler->display->display_options['filters']['field_venue']['table'] = 'search_api_index_event_index';
-  $handler->display->display_options['filters']['field_venue']['field'] = 'field_venue';
-  $handler->display->display_options['filters']['field_venue']['value'] = array();
-  $handler->display->display_options['filters']['field_venue']['group'] = 1;
-  $handler->display->display_options['filters']['field_venue']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_venue']['expose']['operator_id'] = 'field_venue_op';
-  $handler->display->display_options['filters']['field_venue']['expose']['label'] = 'Venue';
-  $handler->display->display_options['filters']['field_venue']['expose']['operator'] = 'field_venue_op';
-  $handler->display->display_options['filters']['field_venue']['expose']['identifier'] = 'field_venue';
-  $handler->display->display_options['filters']['field_venue']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    9 => 0,
-    3 => 0,
-  );
   /* Filter criterion: Date: Start date (indexed) */
   $handler->display->display_options['filters']['field_date_year_month_day_value']['id'] = 'field_date_year_month_day_value';
   $handler->display->display_options['filters']['field_date_year_month_day_value']['table'] = 'search_api_index_event_index';
@@ -488,6 +471,170 @@ function n52_feature_search_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $export['advanced_search_service_requests'] = $view;
+
+  $view = new view();
+  $view->name = 'n52_views_advanced_search_forum';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'search_api_index_n52_search_api_index_thread';
+  $view->human_name = 'Advanced Forum Search';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Advanced Forum Search';
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Search';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['style_plugin'] = 'harmony_table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'last_post_uri' => 'last_post_uri',
+    'posts_title' => 'posts_title',
+    'field_harmony_last_user_to_reply' => 'field_harmony_last_user_to_reply',
+    'created' => 'created',
+    'thread_id' => 'thread_id',
+    'field_harmony_post_count' => 'field_harmony_post_count',
+    'title' => 'title',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'last_post_uri' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+      'cell_class' => '',
+      'meta_field' => 0,
+    ),
+    'posts_title' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+      'cell_class' => '',
+      'meta_field' => 0,
+    ),
+    'field_harmony_last_user_to_reply' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+      'cell_class' => '',
+      'meta_field' => 0,
+    ),
+    'created' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+      'cell_class' => '',
+      'meta_field' => 0,
+    ),
+    'thread_id' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+      'cell_class' => '',
+      'meta_field' => 0,
+    ),
+    'field_harmony_post_count' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+      'cell_class' => '',
+      'meta_field' => 0,
+    ),
+    'title' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+      'cell_class' => '',
+      'meta_field' => 0,
+    ),
+  );
+  /* Field: last_post_uri */
+  $handler->display->display_options['fields']['last_post_uri']['id'] = 'last_post_uri';
+  $handler->display->display_options['fields']['last_post_uri']['table'] = 'search_api_index_n52_search_api_index_thread';
+  $handler->display->display_options['fields']['last_post_uri']['field'] = 'last_post_uri';
+  $handler->display->display_options['fields']['last_post_uri']['ui_name'] = 'last_post_uri';
+  $handler->display->display_options['fields']['last_post_uri']['label'] = '';
+  $handler->display->display_options['fields']['last_post_uri']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['last_post_uri']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['last_post_uri']['link_to_entity'] = 0;
+  /* Field: Posts: Title (indexed) */
+  $handler->display->display_options['fields']['posts_title']['id'] = 'posts_title';
+  $handler->display->display_options['fields']['posts_title']['table'] = 'search_api_index_n52_search_api_index_thread';
+  $handler->display->display_options['fields']['posts_title']['field'] = 'posts_title';
+  $handler->display->display_options['fields']['posts_title']['label'] = 'Title';
+  $handler->display->display_options['fields']['posts_title']['alter']['path'] = '[last_post_uri]';
+  $handler->display->display_options['fields']['posts_title']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['posts_title']['link_to_entity'] = 1;
+  /* Field: Indexed Thread: Last user to post a reply */
+  $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['id'] = 'field_harmony_last_user_to_reply';
+  $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['table'] = 'search_api_index_n52_search_api_index_thread';
+  $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['field'] = 'field_harmony_last_user_to_reply';
+  $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['label'] = 'Author';
+  $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['bypass_access'] = 0;
+  /* Field: Indexed Thread: Date created */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'search_api_index_n52_search_api_index_thread';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'search_api_facetapi_YEAR';
+  $handler->display->display_options['fields']['created']['link_to_entity'] = 0;
+  /* Field: Indexed Thread: Thread ID */
+  $handler->display->display_options['fields']['thread_id']['id'] = 'thread_id';
+  $handler->display->display_options['fields']['thread_id']['table'] = 'search_api_index_n52_search_api_index_thread';
+  $handler->display->display_options['fields']['thread_id']['field'] = 'thread_id';
+  $handler->display->display_options['fields']['thread_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['thread_id']['link_to_entity'] = 0;
+  /* Field: Indexed Thread: Post count */
+  $handler->display->display_options['fields']['field_harmony_post_count']['id'] = 'field_harmony_post_count';
+  $handler->display->display_options['fields']['field_harmony_post_count']['table'] = 'search_api_index_n52_search_api_index_thread';
+  $handler->display->display_options['fields']['field_harmony_post_count']['field'] = 'field_harmony_post_count';
+  $handler->display->display_options['fields']['field_harmony_post_count']['label'] = 'Replies';
+  $handler->display->display_options['fields']['field_harmony_post_count']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Indexed Thread: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_n52_search_api_index_thread';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'in Thread';
+  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  /* Filter criterion: Search: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_n52_search_api_index_thread';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['operator'] = 'OR';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Search';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['required'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    9 => 0,
+    3 => 0,
+  );
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $export['n52_views_advanced_search_forum'] = $view;
 
   $view = new view();
   $view->name = 'view_advanced_search_organsations';
