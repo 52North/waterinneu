@@ -267,7 +267,9 @@ function n52_feature_products_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 8,
     ),
@@ -588,7 +590,9 @@ compatible with?',
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 21,
     ),
@@ -1064,7 +1068,9 @@ compatible with?',
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 19,
     ),
@@ -2495,58 +2501,11 @@ compatible with?',
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 36,
-    ),
-  );
-
-  // Exported field_instance: 'node-tool-field_tool_of_the_month'.
-  $field_instances['node-tool-field_tool_of_the_month'] = array(
-    'bundle' => 'tool',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'The setting controls the content of the tool of the month box on the front page, hence, only one tools should have set this to true.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 32,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-      'tool_of_the_month' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tool_of_the_month',
-    'label' => 'Tool of the Month',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 0,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 2,
     ),
   );
 
@@ -2588,7 +2547,9 @@ compatible with?',
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 10,
     ),
@@ -2816,7 +2777,9 @@ compatible with?',
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 9,
     ),
@@ -3823,9 +3786,7 @@ compatible with?',
   t('Target User Group');
   t('Target User Group Info');
   t('Technology Readiness Level');
-  t('The setting controls the content of the tool of the month box on the front page, hence, only one tools should have set this to true.');
   t('Title');
-  t('Tool of the Month');
   t('Type of Hardware');
   t('Type of Input requirements');
   t('Type of Output');

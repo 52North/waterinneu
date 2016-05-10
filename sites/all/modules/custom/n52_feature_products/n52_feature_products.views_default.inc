@@ -113,13 +113,11 @@ function n52_feature_products_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'tool' => 'tool',
   );
-  /* Filter criterion: Content: Tool of the Month (field_tool_of_the_month) */
-  $handler->display->display_options['filters']['field_tool_of_the_month_value']['id'] = 'field_tool_of_the_month_value';
-  $handler->display->display_options['filters']['field_tool_of_the_month_value']['table'] = 'field_data_field_tool_of_the_month';
-  $handler->display->display_options['filters']['field_tool_of_the_month_value']['field'] = 'field_tool_of_the_month_value';
-  $handler->display->display_options['filters']['field_tool_of_the_month_value']['value'] = array(
-    1 => '1',
-  );
+  /* Filter criterion: Content: Promoted to front page */
+  $handler->display->display_options['filters']['promote']['id'] = 'promote';
+  $handler->display->display_options['filters']['promote']['table'] = 'node';
+  $handler->display->display_options['filters']['promote']['field'] = 'promote';
+  $handler->display->display_options['filters']['promote']['value'] = '1';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
