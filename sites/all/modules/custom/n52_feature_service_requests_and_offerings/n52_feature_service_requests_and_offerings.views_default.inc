@@ -536,7 +536,6 @@ function n52_feature_service_requests_and_offerings_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Filter by';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'A → Z';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Z → A';
   $handler->display->display_options['pager']['type'] = 'full';
@@ -626,7 +625,6 @@ function n52_feature_service_requests_and_offerings_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Filter by';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'A → Z';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Z → A';
   $handler->display->display_options['pager']['type'] = 'full';
@@ -649,12 +647,14 @@ function n52_feature_service_requests_and_offerings_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['created']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['created']['expose']['label'] = 'Date';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['title']['expose']['label'] = 'Sort by Title';
+  $handler->display->display_options['sorts']['title']['expose']['label'] = 'Title';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
