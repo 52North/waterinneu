@@ -48,4 +48,5 @@ function n52_wieu_theme_form_system_theme_settings_alter(&$form, &$form_state) {
 			. 'The filename MUST start with "header-background-".'),
 		'#default_value' => theme_get_setting('n52_header_background_images', 'n52_wieu_theme'),
 	);
+	
 }

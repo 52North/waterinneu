@@ -26,10 +26,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
-
-// TODO: get list of content types to search for? dynamic search possible?
-// 
-
+/*
+ * Implementation of /search/advanced
+ * 
+ * @todo: get list of content types to search for? dynamic search possible?
+ */
 ?>
 <div id="advanced-search-block" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 	<h2 class="pane-title"><?php print $block->subject; ?></h2>
