@@ -70,8 +70,10 @@ function n52_feature_service_requests_and_offerings_default_fe_block_settings() 
 
   $export['views-5533515c7cf03440898f8e331eb70e6d'] = array(
     'cache' => -1,
+    'custom' => 0,
     'delta' => '5533515c7cf03440898f8e331eb70e6d',
     'i18n_block_language' => array(),
+    'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
     'pages' => '',
@@ -90,12 +92,16 @@ function n52_feature_service_requests_and_offerings_default_fe_block_settings() 
         'weight' => 0,
       ),
     ),
+    'title' => '',
+    'visibility' => 0,
   );
 
   $export['views-8cb0ff3fc943e490cd77766adfc2089e'] = array(
     'cache' => -1,
+    'custom' => 0,
     'delta' => '8cb0ff3fc943e490cd77766adfc2089e',
     'i18n_block_language' => array(),
+    'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
     'pages' => '',
@@ -114,6 +120,8 @@ function n52_feature_service_requests_and_offerings_default_fe_block_settings() 
         'weight' => 0,
       ),
     ),
+    'title' => '',
+    'visibility' => 0,
   );
 
   return $export;
