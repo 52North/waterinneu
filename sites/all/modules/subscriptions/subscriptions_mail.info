@@ -8,9 +8,9 @@ dependencies[] = token
 
 core = 7.x
 
-; Information added by drupal.org packaging script on 2012-11-01
-version = "7.x-1.1"
+; Information added by Drupal.org packaging script on 2016-05-25
+version = "7.x-1.2"
 core = "7.x"
 project = "subscriptions"
-datestamp = "1351811854"
+datestamp = "1464181817"
 

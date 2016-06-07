@@ -23,6 +23,11 @@ function subscriptions_content_install() {
     ->condition('type', 'module')
     ->condition('name', 'subscriptions_content')
     ->execute();
+
+  // Reset statics for the subscription types,so they are regenerated
+  // (see #2088375).
+  drupal_static_reset('subscriptions_types_types');
+  drupal_static_reset('subscriptions_types_list');
 }
 
 /**

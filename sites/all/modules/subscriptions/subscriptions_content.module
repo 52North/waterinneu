@@ -121,7 +121,7 @@ function _subscriptions_content_node_options($account, $node) {
   $options = array();
   /** @var $statics array */
   $statics = variable_get('subscriptions_static_content_types', array());
-  if (!in_array($node->type, $statics)) {
+  if (!in_array($node->type, $statics, TRUE)) {
     $options['nid'][] = array(
       'name' => t('Subscribe to this page'),
       'params' => array('module' => 'node', 'field' => 'nid', 'value' => $node->nid),
@@ -133,7 +133,7 @@ function _subscriptions_content_node_options($account, $node) {
   $unlisteds = variable_get('subscriptions_unlisted_content_types', array());
   if (user_access('subscribe to content types', $account)) {
     $unlisted_tag = '';
-    if (in_array($node->type, $unlisteds)) {
+    if (in_array($node->type, $unlisteds, TRUE)) {
       if (user_access('subscribe to all content types', $account)) {
         $unlisted_tag = '&nbsp;' . SUBSCRIPTIONS_UNAVAILABLE;
       }
@@ -248,10 +248,45 @@ function subscriptions_content_node_load(array $nodes, array $types) {
   $unpublished_nids = &drupal_static('subscriptions_content_unpublished_nids', array());
   foreach ($nodes as $node) {
     if (!$node->status) {
-      $unpublished_nids[] = $node->nid;
+      // Since workbench_moderate does some unconventional things to the node
+      // statuses we need to make a special case to check if a node that is
+      // moderated by workbench_moderation is actually unpublished.
+      if (module_exists('workbench_moderation') && workbench_moderation_node_type_moderated($node->type)) {
+        if (subscriptions_content_workbench_moderation_check_is_unpublished($node)) {
+          $unpublished_nids[] = $node->nid;
+        }
+      }
+      else {
+        $unpublished_nids[] = $node->nid;
+      }
     }
     subscriptions_content_node_prepare($node);
   }
+}
+
+/**
+ * Check if a node that is moderated by workbench is actually published.
+ *
+ * @param object $node
+ *   The node object of a workbench_moderation moderated node.
+ *
+ * @return bool
+ *   Returns TRUE if the node is unpublished by workbench_moderation standards.
+ */
+function subscriptions_content_workbench_moderation_check_is_unpublished($node) {
+  $states = db_select('workbench_moderation_node_history', 'wbmnh')
+    ->condition('nid', $node->nid)
+    ->fields('wbmnh', array('state'))
+    ->execute()->fetchCol();
+
+  $states = array_count_values($states);
+
+  // Is there any published states in the history? If so it has been published
+  // before.
+  if (empty($states[workbench_moderation_state_published()])) {
+    return TRUE;
+  }
+  return FALSE;
 }
 
 /**
@@ -640,7 +675,7 @@ function _subscriptions_content_autosubscribe($content_type, $module, $field, $v
 function subscriptions_content_type_is_blocked($content_type) {
   /** @var $blockeds array */
   $blockeds = variable_get('subscriptions_blocked_content_types', array());
-  return in_array($content_type, $blockeds);
+  return in_array($content_type, $blockeds, TRUE);
 }
 
 /**
@@ -654,7 +689,7 @@ function subscriptions_content_type_is_blocked($content_type) {
  *   Subscriptions queue item.
  */
 function subscriptions_content_data(array &$data, $node, array $queue_item) {
-  $data['node'] = (is_array($node) ? (object) $node : $node);
+  $data[$data['object_type'] = 'node'] = (is_array($node) ? (object) $node : $node);
   subscriptions_data($data, $queue_item);
 }
 
@@ -825,6 +860,26 @@ function subscriptions_content_views_data_alter(&$data) {
     'field' => array(
       'handler' => 'subscriptions_content_views_handler_field_node_link',
     ),
+  );
+}
+
+/**
+ * Implements hook_advuser_filters_alter().
+ *
+ * @param $filters
+ *   Array of filter definitions.
+ */
+function subscriptions_content_advuser_filters_alter(array &$filters) {
+  include_once DRUPAL_ROOT . '/modules/forum/forum.admin.inc';
+  $forum_tree = _forum_parent_select(-1, '', 'forum');
+  unset($forum_tree['#options'][0]);
+  $filters['subscriptions_forum'] = array(
+    'title' => t('Subscribed forum'),
+    'where' => "%alias.module = 'node' AND %alias.field = 'tid' AND %alias.value %op %subscriptions_forum_pkey",
+    'options' => $forum_tree['#options'],
+    'form_type' => 'select',
+    'operations' => array('=', '!='),
+    'join' => array('subscriptions', 's', '%alias.recipient_uid = u.uid'),
   );
 }
 

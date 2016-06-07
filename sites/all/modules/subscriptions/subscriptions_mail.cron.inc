@@ -28,18 +28,16 @@ function _subscriptions_mail_cron() {
   $lost_seconds = timer_read('page')/1000;
   $available_seconds = $total_seconds - $lost_seconds;
   $usable_seconds = min(array($available_seconds - 5, $total_seconds*subscriptions_mail_get_cron_percentage()/100));
+  $watchdog = 'watchdog';  // disable automatic translation
+  $watchdog_variables = array('@Subscriptions' => 'Subscriptions');
   //TEST: watchdog('cron', "Subscriptions has $available_seconds of $total_seconds seconds available.");
   if ($usable_seconds <= 0) {
-    $variables = array(
-      '@Subscriptions' => 'Subscriptions',
-      '@link'          => url(SUBSCRIPTIONS_CONFIG_PATH, array('fragment' => 'edit-subscriptions-cron-percent')),
-    );
-    $watchdog = 'watchdog';  // keep potx from translating 'cron'
+    $watchdog_variables += array('@link' => url(SUBSCRIPTIONS_CONFIG_PATH, array('fragment' => 'edit-subscriptions-cron-percent')));
     if ($usable_seconds == 0) {
-      $watchdog('cron', t('@Subscriptions cannot send any notifications because its <a href="@link">cron job time</a> is 0!', $variables), NULL, WATCHDOG_WARNING);
+      $watchdog('cron', t('@Subscriptions cannot send any notifications because its <a href="@link">cron job time</a> is 0!', $watchdog_variables), NULL, WATCHDOG_WARNING);
     }
     else {
-      $watchdog('cron', t('@Subscriptions cannot send any notifications because the cron run has less than 5 available seconds left!', $variables), NULL, WATCHDOG_WARNING);
+      $watchdog('cron', t('@Subscriptions cannot send any notifications because the cron run has less than 5 available seconds left!', $watchdog_variables), NULL, WATCHDOG_WARNING);
     }
   }
 
@@ -56,9 +54,21 @@ function _subscriptions_mail_cron() {
     $user = user_load($queue_item['uid']);
     $lang_code = $language->language;
     $digest_data = array('subs' => array('type' => 'digest'));
+    $watchdog_variables['%user_name'] = $user->name;
 
     do {  // once and repeat while adding to a digest
-      if ($user->status && $user->access) {
+      $watchall = variable_get('subscriptions_watchall', 0);
+      if (!$user->status) {
+        if ($watchall) {
+          $watchdog('subscriptions', t('Subscription of blocked user %user_name ignored.', $watchdog_variables), NULL, WATCHDOG_DEBUG);
+        }
+      }
+      elseif (!$user->access && !variable_get('subscriptions_mail_unaccessed_users', FALSE)) {
+        if ($watchall) {
+          $watchdog('subscriptions', t('Subscription of never-logged-in user %user_name ignored.', $watchdog_variables), NULL, WATCHDOG_DEBUG);
+        }
+      }
+      else {
         $queue_item['mail'] = $user->mail;
         /** @var $load_function string */
         $load_function = $queue_item['load_function'];
@@ -71,10 +81,19 @@ function _subscriptions_mail_cron() {
 
           // One FALSE vote is enough to deny. Also, we need a non-empty array.
           $allow = !empty($access) && array_search(FALSE, $access) === FALSE;
+          if (!$allow && $watchall) {
+            $watchdog('subscriptions', t("User %user_name was denied access to %load(!args).", $watchdog_variables + array('%load' => $load_function, '!args' => filter_xss(serialize($load_args)))), NULL, WATCHDOG_DEBUG);
+            $watchall = FALSE;
+          }
           $loaded_objects[$user->uid][$load_function][$load_args] = $allow ? $object : FALSE;
         }
-        if (isset($loaded_objects[$user->uid][$load_function][$load_args]) &&
-            ($object = $loaded_objects[$user->uid][$load_function][$load_args])) {
+        if (empty($loaded_objects[$user->uid][$load_function][$load_args])) {
+          if ($watchall) {
+            $watchdog('subscriptions', t('User %user_name was unable or not allowed to %load(!args).', $watchdog_variables + array('%load' => $load_function, '!args' => filter_xss(serialize($load_args)))), NULL, WATCHDOG_DEBUG);
+          }
+        }
+        else {
+          $object = $loaded_objects[$user->uid][$load_function][$load_args];
           $module = $queue_item['module'];
           $ori_field = $field = $queue_item['field'];
           $ori_value = $value = $queue_item['value'];
@@ -84,7 +103,7 @@ function _subscriptions_mail_cron() {
           $data_function = $fields[$lang_code][$module][$field]['data_function'];
           $mailmod = (empty($fields[$lang_code][$module][$field]['mail_module']) ? 'subscriptions_mail' : $fields[$lang_code][$module][$field]['mail_module']);
           $mailkey = $fields[$lang_code][$module][$field]['mailkey'];
-          if ($mailkey_altered = module_invoke_all('subscriptions', 'mailkey_alter', $mailkey, $object)) {
+          if ($mailkey_altered = module_invoke_all('subscriptions', 'mailkey_alter', $mailkey, $object, $queue_item)) {
             $mailkey = $mailkey_altered[0];
           }
           $digest = $queue_item['digest'] > 0 || $queue_item['digest'] == -1 && _subscriptions_get_setting('digest', 0) > 0;
@@ -139,8 +158,7 @@ function _subscriptions_mail_cron() {
 
   if ($single_count + $digest_count + $single_failed + $digest_failed > 0) {
     $current_seconds = timer_read('page')/1000;
-    $variables = array(
-      '@Subscriptions'     => 'Subscriptions',
+    $variables = $watchdog_variables + array(
       '!single_count'      => $single_count,
       '!digest_count'      => $digest_count,
       '!single_failed'     => $single_failed,
@@ -163,8 +181,7 @@ function _subscriptions_mail_cron() {
       $message = t('@Subscriptions sent !single_count single and !digest_count digest notifications in !used_seconds of !total_seconds seconds.', $variables);
     }
     $message .= ' ' . t('!remaining_items queue items remaining (plus !suspended_items suspended), !remaining_seconds seconds left for other !cron client modules.', $variables);
-    $watchdog = 'watchdog'; // keep potx from translating 'cron'
-    $watchdog('cron', $message);
+    $watchdog('cron', $message, NULL);
 
     _subscriptions_mail_check_baseurl(FALSE);
   }
@@ -193,7 +210,7 @@ function subscriptions_mail_digest_add_item($digest_data, $mailmod, $mailkey, $d
   );
 
   // This code is adapted from drupal_mail() and simulates mailing the item.
-  // We probably need to provide all data in order to not surprise any
+  // We probably need to provide all the data in order to not surprise any
   // third-party module that implements hook_mail() or hook_mail_alter().
   $message = array(
     'id'       => $mailmod . '_' . $mailkey,
@@ -279,10 +296,22 @@ function _subscriptions_mail_send($module, $mailkey, $name, $to, $from, $uid, $s
     'object' => NULL,
   ), $from, TRUE);
 
-  $watchdog_params = array('%name' => $name, '!address' => "<a href='mailto:$to'>$to</a>");
+  $to = check_plain($to);
+  $watchdog = 'watchdog';
+  $watchdog_params = array(
+    '%name'        => $name,
+    '!address'     => "<a href='mailto:$to'>$to</a>",
+    '!result'      => 'result',
+    '%result'      => $mail_success['result'],
+    '!drupal_mail' => l('drupal_mail', 'http://api.drupal.org/api/search/7/drupal_mail'),
+  );
+  if (variable_get('subscriptions_watchall', 0)) {
+    $watchdog('subscriptions', t('Notification for %name (!address) passed on to !drupal_mail(), !result=[%result].', $watchdog_params), NULL, WATCHDOG_DEBUG);
+  }
+
   if (!empty($mail_success['result'])) {
     if (variable_get('subscriptions_watchgood', 1)) {
-      watchdog('subscriptions', 'Notification sent to...', $watchdog_params);
+      $watchdog('subscriptions', t('Notification sent to...'), NULL);
     }
     foreach ($send_intervals as $send_interval) {
       db_merge('subscriptions_last_sent')
@@ -297,16 +326,47 @@ function _subscriptions_mail_send($module, $mailkey, $name, $to, $from, $uid, $s
     }
     return TRUE;
   }
-  watchdog('subscriptions', 'Error e-mailing notification to %name (!address).', $watchdog_params, WATCHDOG_ERROR, l(t('edit user'), "user/$uid/edit"));
+  $watchdog('subscriptions', t('Error e-mailing notification to %name (!address).', $watchdog_params), NULL, WATCHDOG_ERROR);
   return FALSE;
 }
 
 /**
  * Implements hook_mail_alter().
  *
+ * Optionally change links to use HTTPS, but only for Subscriptions mails.
+ *
  * @param $message
  */
-function subscriptions_mail_mail_alter(&$message) {
+function _subscriptions_mail_mail_alter(array &$message) {
+  global $user;
+  static $site_url = NULL;
+  static $replacement;
+
+  if (!isset($site_url)) {
+    $site_url = url('', array('absolute' => TRUE));
+    if (_subscriptions_get_setting('secure_links', $user) > 0) {
+      if (strpos($site_url, 'http:') === 0) {
+        $site_url = $replacement[$site_url] = 'https:' . substr($site_url, 5);
+      }
+    }
+    else {
+      if (strpos($site_url, 'https:') === 0) {
+        $site_url = $replacement[$site_url] = 'http:' . substr($site_url, 6);
+      }
+    }
+  }
+
+  if (!empty($replacement)) {
+    $msg = strtr($message['body'][0], $replacement);
+    while (preg_match("#(?P<before>(.*)(<[aA] +)(href|HREF)=([\"']))/(?P<after>.*)$#sAD", $msg, $matches)) {
+      $msg = $matches['before'] . $site_url . $matches['after'];
+    }
+    while (preg_match("#(?P<before>(.*)<(img|IMG) +(src|SRC)=([\"']))/(?P<after>.*)$#sAD", $msg, $matches)) {
+      $msg = $matches['before'] . $site_url . $matches['after'];
+    }
+    $message['body'][0] = $msg;
+  }
+
   /* Comment this line for debugging...
   dpm($message, 'drupal_mail() is disabled in subscriptions_mail_mail_alter(); this would be sent');
   $message['to'] = '';

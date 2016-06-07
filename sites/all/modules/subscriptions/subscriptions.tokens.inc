@@ -74,7 +74,7 @@ function subscriptions_token_info() {
         'items' => array(
           'name' => t('Digest Items'),
           'description' => t('The array of formatted items to send to one recipient (for building a digest).'),
-          'type' => 'list<subs_item>',
+          'type' => 'subs_list<subs_item>',
         ),
         'subs-module' => array(
           'name' => t('Subscription module'),
@@ -88,19 +88,13 @@ function subscriptions_token_info() {
           'name' => t('Subscription value'),
           'description' => t('The value of the field of the item that triggered the notification.'),
         ),
-        'files' => array(
-          'name' => t('Files'),
-          'description' => t('The array of attached files in the specified field.'),
-          'type' => 'list<file>',
-          'dynamic' => TRUE,
+        // The following tokens need to be implemented for each entity type
+        // that can be subscribed to, if they are applicable.
+        'view' => array(
+          'name' => t('View'),
+          'description' => t('The item rendered using the %Subscriptions view mode.', array('%Subscriptions' => t('Subscriptions'))),
         ),
-        'terms' => array(
-           'name' => t('Terms'),
-           'description' => t('The array of taxonomy terms in the specified field.'),
-           'type' => 'list<term>',
-           'dynamic' => TRUE,
-         ),
-       ),
+      ),
       'subs_item' => array(
         'as-TYPE' => array(
           'name' => t('Cast to %TYPE', $variables),
@@ -121,6 +115,28 @@ function subscriptions_token_info() {
         ),
       ),
     ),
+  );
+  if (module_exists('file')) {
+    $info['tokens']['subs']['files'] = array(
+      'name' => t('Files'),
+      'description' => t('The array of attached files in the specified !File field.', array('!File' => t('File'))),
+      'type' => 'subs_list<file>',
+      'dynamic' => TRUE,
+    );
+  }
+  if (module_exists('taxonomy')) {
+    $info['tokens']['subs']['terms'] = array(
+      'name' => t('Terms'),
+      'description' => t('The array of taxonomy terms in the specified !Term_reference field.', array('!Term_reference' => t('Term reference'))),
+      'type' => 'subs_list<term>',
+      'dynamic' => TRUE,
+    );
+  }
+  $info['tokens']['subs']['texts'] = array(
+    'name' => t('Texts'),
+    'description' => t('The single value or array of values in the specified field, represented as text.'),
+    'type' => 'array',
+    'dynamic' => TRUE,
   );
   return $info;
 }
@@ -178,7 +194,7 @@ function subscriptions_tokens($type, array $tokens, array $data = array(), array
       }
     }
 
-    // Chained token relationships.
+      // Chained token relationships.
     if ($url_tokens = token_find_with_prefix($tokens, 'manage-url')) {
       $replacements += token_generate('url', $url_tokens, array('path' => 'user/' . $user->uid . '/subscriptions'), $options);
     }
@@ -189,7 +205,7 @@ function subscriptions_tokens($type, array $tokens, array $data = array(), array
       $replacements += token_generate('term', $forum_tokens, array('term' => taxonomy_term_load($data['node']->forum_tid)), $options);
     }
     if (isset($data['subs']['items']) && ($items_tokens = token_find_with_prefix($tokens, 'items'))) {
-      $replacements += token_generate('list<subs_item>', $items_tokens, array('list<subs_item>' => $data['subs']['items']), $options);
+      $replacements += token_generate('subs_list<subs_item>', $items_tokens, array('subs_list<subs_item>' => $data['subs']['items']), $options);
     }
   }
 
@@ -220,10 +236,10 @@ function subscriptions_tokens($type, array $tokens, array $data = array(), array
     }
   }
 
-  // List<TYPE> tokens.
+  // subs_list<TYPE> tokens.
   // We've tried to contribute this code to Token module, see
   // http://drupal.org/node/1195874#comment-5070144
-  if (preg_match('/list<([a-z_]*)>/', $type, $match) && !empty($data[$type]) && is_array($data[$type])) {
+  if (preg_match('/subs_list<([a-z_]*)>/', $type, $match) && !empty($data[$type]) && is_array($data[$type])) {
     $array_type = $type;
     $element_type = $match[1];
     $array = $data[$array_type];
@@ -233,7 +249,7 @@ function subscriptions_tokens($type, array $tokens, array $data = array(), array
 
     foreach ($tokens as $name => $original) {
       if ($name == ':') {
-        // Plain [list<>] token.
+        // Plain [subs_list<>] token.
         switch ($element_type) {
           case 'term':
             foreach ($array as $term) {
@@ -272,7 +288,7 @@ function subscriptions_tokens($type, array $tokens, array $data = array(), array
       }
     }
 
-    // [list<>:key:*] dynamic tokens.
+    // [subs_list<>:key:*] dynamic tokens.
     if (($value_tokens = token_find_with_prefix($tokens, 'key')) ||
         ($value_tokens = token_find_with_prefix($tokens, 'value'))) {
       $tokss = array();
@@ -287,7 +303,7 @@ function subscriptions_tokens($type, array $tokens, array $data = array(), array
       }
     }
 
-    // [list<>:index:*] dynamic tokens.
+    // [subs_list<>:index:*] dynamic tokens.
     if ($index_tokens = token_find_with_prefix($tokens, 'index')) {
       $tokss = array();
       foreach ($index_tokens as $index => $original) {
@@ -302,17 +318,17 @@ function subscriptions_tokens($type, array $tokens, array $data = array(), array
       }
     }
 
-    // [list<>:first:*] chained tokens.
+    // [subs_list<>:first:*] chained tokens.
     if ($first_tokens = token_find_with_prefix($tokens, 'first')) {
       $replacements += token_generate($element_type, $first_tokens, array($element_type => $array[$keys[0]]), $options);
     }
 
-    // [list<>:last:*] chained tokens.
+    // [subs_list<>:last:*] chained tokens.
     if ($last_tokens = token_find_with_prefix($tokens, 'last')) {
       $replacements += token_generate($element_type, $last_tokens, array($element_type => $array[count($keys) - 1]), $options);
     }
 
-    // [list<>:join:?] dynamic tokens.
+    // [subs_list<>:join:?] dynamic tokens.
     if ($join_tokens = token_find_with_prefix($tokens, 'join')) {
       $formatted = array();
       foreach ($array as $item) {
@@ -323,15 +339,93 @@ function subscriptions_tokens($type, array $tokens, array $data = array(), array
       }
     }
 
-    // [list<>:keys:*] chained tokens.
+    // [subs_list<>:keys:*] chained tokens.
     if ($key_tokens = token_find_with_prefix($tokens, 'keys')) {
       $replacements += token_generate('array', $key_tokens, array('array' => $keys), $options);
     }
 
-    // [list<>:reversed:*] chained tokens.
+    // [subs_list<>:reversed:*] chained tokens.
     if ($reversed_tokens = token_find_with_prefix($tokens, 'reversed')) {
       $reversed = array_reverse($array, TRUE);
       $replacements += token_generate($array_type, $reversed_tokens, array($array_type => $reversed), $options);
+    }
+  }
+
+  $field_types = array(
+    'files' => 'subs_list<file>',             // files:field_FILE
+    'terms' => 'subs_list<term>',             // terms:field_TERM
+    'texts' => 'array',                       // texts:field_TEXT
+  );
+
+  // Entity field tokens.
+  if (isset($data['object_type']))
+  {
+    $type = $data['object_type'];
+    if (!empty($data[$type]) && $entity_type = token_get_entity_mapping('token', $type)) {
+      $entity = NULL;
+
+      foreach ($field_types as $field_type => $array_type) {
+        if ($field_tokens = token_find_with_prefix($tokens, $field_type)) {
+
+          if (empty($entity)) {
+            $entity = clone $data[$type];
+          }
+
+          $tokenss = array();
+          foreach ($field_tokens as $field_token => $original) {
+            $field_name = strtok($field_token, ':');
+            $tokenss[$field_name][substr($field_token, strlen($field_name) + 1)] = $original;
+          }
+
+          list(, , $bundle) = entity_extract_ids($entity_type, $entity);
+          $fields = field_info_instances($entity_type, $bundle);
+          foreach ($tokenss as $field_name => $tokens2) {
+            if (isset($fields[$field_name])) {
+              if (empty($entity->{$field_name})) {
+                if (isset($tokens2['count'])) {
+                  $replacements[$tokens2['count']] = 0;
+                }
+              } else {
+                $objs = array();
+                if ($array_type == 'array') {
+                  $field_output = field_view_field($entity_type, $entity, $field_name, 'token', $language_code);
+                  $field_output['#token_options'] = $options;
+                  $field_output['#pre_render'][] = 'token_pre_render_field_token';
+                  foreach (element_children($field_output) as $key) {
+                    $obj = $field_output[$key]['#markup'];
+                    if (preg_match('/^<p>(.*)<\/p>\n$/', $obj, $match)) {
+                      $obj = $match[1];
+                    }
+                    $objs[$key] = $obj;
+                  }
+                  $replacements += token_generate($array_type, $tokens2, array($array_type => $objs), array('sanitize' => FALSE ) + $options);
+                }
+                else {
+                  if ($field_items = field_get_items($type, $entity, $field_name, $language_code)) {
+                    switch ($field_type) {
+                      case 'terms':
+                        // Term references are stored as tids only.
+                        $tids = array();
+                        foreach ($field_items as $term) {
+                          $tids[] = $term['tid'];
+                        }
+                        $objs = taxonomy_term_load_multiple($tids);
+                        break;
+                      default:
+                        foreach ($field_items as $key => $item) {
+                          $objs[$key] = (object) $item;
+                        }
+                    }
+                    $replacements += token_generate($array_type, $tokens2, array($array_type => $objs), $options);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      unset($entity);
     }
   }
 
@@ -352,6 +446,7 @@ function subscriptions_token_info_alter(array &$data) {
   }
 
   //dpm($data, "BEF subscriptions_content_token_info_alter");
+
   // Remove some types and tokens that are not applicable for
   // Subscriptions notifications.
   unset($data['types']['current-page']);
@@ -368,17 +463,19 @@ function subscriptions_token_info_alter(array &$data) {
 
   // Note: Adding tokens to existing types doesn't work here.
 
-  // Add list<TYPE> types.
+  // Add our subs_list<TYPE> types.
   $list_types = array();
   foreach ($data['tokens'] as $group => $tokens) {
     foreach ($tokens as $token) {
-      if (isset($token['type']) && preg_match('/list<([a-z_]*)>/', $token['type'], $match)) {
+      if (isset($token['type']) && preg_match('/subs_list<([a-z_]*)>/', $token['type'], $match)) {
         $list_types[$match[1]] = $match[0];
       }
     }
   }
   foreach ($list_types as $type => $list) {
+    // Start out with Token module's 'array' type to ensure consistent terminology.
     $data['tokens'][$list] = $data['tokens']['array'];
+    // Adjust what needs to be adjusted.
     $data['tokens'][$list]['first']['type'] = $type;
     $data['tokens'][$list]['last']['type'] = $type;
     $data['tokens'][$list]['reversed']['type'] = $list;
@@ -394,14 +491,51 @@ function subscriptions_token_info_alter(array &$data) {
       'description' => t('The specific element of the array, indexed by zero-based numeric index.'),
       'dynamic' => TRUE,
     );
-    $type_name = $data['types'][$type]['name'];
+    // Remove the 'value' member, use 'index' instead.
+    unset($data['tokens'][$list]['value']);
+
+    // Let's call it "array" because that term is more familiar to the user.
+    $variables = array('@type' => $data['types'][$type]['name']);
     $data['types'][$list] = array(
-      'name' => t('Array of @type', array('@type' => $type_name)),
-      'description' => t('Tokens related to arrays of @type', array('@type' => $type_name)),
+      'name' => t('Array of @type', $variables),
+      'description' => t('Tokens related to arrays of @type', $variables),
       'needs-data' => $list,
     );
-    unset($data['tokens'][$list]['value']);
   }
 
   //dpm($data, "AFT subscriptions_content_token_info_alter");
 }
+
+/**
+ * Implements hook_tokens_alter().
+ *
+ * Add missing file tokens.
+ */
+function subscriptions_tokens_alter(array &$replacements, array $context) {
+  $options = $context['options'];
+
+  $sanitize = !empty($options['sanitize']);
+  $langcode = !empty($options['language']->language) ? $options['language']->language : NULL;
+
+  if ($context['type'] == 'file' && !empty($context['data']['file'])) {
+    $file = $context['data']['file'];
+
+    foreach ($context['tokens'] as $name => $original) {
+      if (isset($replacements[$original])) {
+        continue;
+      }
+      switch ($name) {
+        case 'description':
+        case 'display':
+        case 'title':
+        case 'alt':
+          if (isset($file->{$name})) {
+            $value = $file->{$name};
+            $replacements[$original] = $sanitize ? check_plain($value) : $value;
+          }
+          break;
+      }
+    }
+  }
+}
+

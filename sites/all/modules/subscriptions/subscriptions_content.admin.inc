@@ -142,7 +142,7 @@ function _subscriptions_content_node_form(array $form, $uid) {
                                 ELSE n.changed END', 'latest_activity');
   }
   else {
-    $query->addExpression('IF(s.send_updates = 0, n.created, n.changed)', 'latest_activity');
+    $query->addExpression('CASE WHEN s.send_updates = 0 THEN n.created ELSE n.changed END', 'latest_activity');
   }
   $query
     ->condition('s.module', 'node')
@@ -223,7 +223,7 @@ function _subscriptions_content_node_form(array $form, $uid) {
   unset($form[0]['author']);
 
   if (count(element_children($form[0]))) {
-    $form[0]['extra_info']['#title'] = $tr($fields, array('@latest_activity' => 'Latest activity', '@authored' => 'authored', '@commented' => 'commented'));
+    $form[0]['extra_info']['#title'] = $tr($fields, array('@latest_activity' => t('Latest activity'), '@authored' => t('authored'), '@commented' => t('commented')));
     $form[0]['defaults'] = array(
       '#type' => 'value',
       '#value' => $defaults,

@@ -5,6 +5,40 @@ CHANGELOG for Subscriptions 1.x for Drupal 7
 subscriptions 7.x-1.x-dev:
 
 
+subscriptions 7.x-1.2 (2016-05-25):
+  Enhancements:
+    - #2604466 by brad.bulger: Add strict parameter to in_array() tests of content types to allow replacing the selects with checkboxes.
+    - Tune watchdog message for denied notifications.
+    - #1867454 by salvis: Implement integration with the Advanced User module for building a list of users subscribed to a given forum.
+    - Add a note about a dependency on the Field UI core module.
+    - #2344699 by salvis: Implement support for all core field types at the entity level.
+    - #2027767 by grndlvl, pattersonc, salvis: Added Workbench moderation support.
+    - #1575838 by rooby, salvis: Add support to allow making term subscribe options visible for hidden term fields.
+    - #2073855 by torrance123: Added Allow sending mail notifications to users with $user->access == 0.
+    - #1993136: Add option to send https links.
+    - #1984634 by torrance123: Pass the full queue item to hook_subscriptions('mailkey_alter').
+    - #1932394: New [subs:view] tokens and new 'Subscriptions' view mode.
+    - #1895602: Add more debug logging.
+    - Clean up and enhance debug logging from cron.
+    - Add an option to log all drupal_mail() calls to help testing.
+  Bugs fixed:
+    - #2235101 by Anybody: Translation for 'Latest activity', 'authored', 'commented' phrases on /user/[uid]/subscriptions/node page.
+    - #2023013: Avoid a conflict with Entity API's list<> tokens.
+    - #2135461: Explain the elements of the subscriptions links in README.txt.
+    - #2088375 by Yaron Tal: Fixed raw statics causing problems with Features module.
+    - #2033869 by malc0mn: Fixed Wrong project reference in README.txt.
+    - #2065531: Pages/Threads throws PDOException when core comment.module is disabled (PostgreSQL+other).
+    - #2021775 by jyeany: Fixed SQL Server Invalid Group By.
+    - #2014867: Avoid a crash due to suppressed 'secure_links' form element.
+    - Remove redundant check (no functional change).
+    - #2014867: Fix a stray dpm() call.
+    - #1807356 by karleberts: Fix PostgreSQL 'Object not in prerequisite state' error when trying error when trying to create a user.
+    - #1895602-8: Fix a buglet in the new debug logging code.
+    - #1853644 by kimwes: Fix a PDOException in subscriptions_get().
+    - #1831666: Add the missing 'base_table' meta data to a node access query.
+    - #1821116: Fix the [subs:files:*] token.
+
+
 subscriptions 7.x-1.1 (2012-11-01):
   Enhancements:
     - Implement [subs:has-distinct-summary] token and improve the default template.

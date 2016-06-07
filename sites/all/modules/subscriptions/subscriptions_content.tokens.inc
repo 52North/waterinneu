@@ -18,6 +18,7 @@
 function subscriptions_content_tokens($type, array $tokens, array $data = array(), array $options = array()) {
   //dpm($tokens, "subscriptions_content_tokens($type) - tokens");
   //dpm($data, "subscriptions_content_tokens($type) - data");
+  //dpm($options, "subscriptions_content_tokens($type) - options");
   $sanitize = !empty($options['sanitize']);
 
   $replacements = array();
@@ -54,16 +55,12 @@ function subscriptions_content_tokens($type, array $tokens, array $data = array(
         case 'has-distinct-summary':
           $replacements[$original] = 0;
           break;
+        case 'view':
+          $element = comment_view($comment, $data['node'], 'subscriptions', $options['language']->language);
+          $replacements[$original] = drupal_render($element);
+          break;
       }
     }
-
-    // files:field_FILE
-    if (user_access('view uploaded files')) {
-      $replacements += _subscriptions_content_tokens_field_array($type, $tokens, $data, $options, 'comment', 'files', 'list<file>');
-    }
-
-    // terms:field_TERM
-    $replacements += _subscriptions_content_tokens_field_array($type, $tokens, $data, $options, 'comment', 'terms', 'list<term>');
   }
   elseif ($type == 'subs' && !empty($data['node'])) {
     $node = $data['node'];
@@ -85,87 +82,25 @@ function subscriptions_content_tokens($type, array $tokens, array $data = array(
           $repls = token_generate('node', array('summary' => '[node:summary]', 'body' => '[node:body]'), $data, $options);
           $replacements[$original] = (int) (!empty($repls['[node:summary]']) && $repls['[node:summary]'] != $repls['[node:body]']);
           break;
+        case 'view':
+          $element = node_view($node, 'subscriptions', $options['language']->language);
+          $replacements[$original] = drupal_render($element);
+          break;
       }
     }
 
     if (($comments_tokens = token_find_with_prefix($tokens, 'comments')) && !empty($node->_subscriptions_comments)) {
       if (empty($node->_subscriptions_comments_rendered)) {
         foreach ($node->_subscriptions_comments as $comment) {
-          $node->_subscriptions_comments_rendered[] = mail_edit_format($data['template']['subscriptions_comment_body'], $data + array('comment' => $comment), $options);
+          $node->_subscriptions_comments_rendered[] = mail_edit_format($data['template']['subscriptions_comment_body'], array('comment' => $comment, 'object_type' => 'comment') + $data, $options);
         }
       }
       $replacements += token_generate('array', $comments_tokens, array(
         'array' => (isset($node->_subscriptions_comments_rendered) ? $node->_subscriptions_comments_rendered : array()),
       ), array('sanitize' => FALSE) + $options);
     }
-
-    // files:field_FILE
-    if (user_access('view uploaded files')) {
-      $replacements += _subscriptions_content_tokens_field_array($type, $tokens, $data, $options, 'node', 'files', 'list<file>');
-    }
-
-    // terms:field_TERM
-    $replacements += _subscriptions_content_tokens_field_array($type, $tokens, $data, $options, 'node', 'terms', 'list<term>');
   }
 
-  return $replacements;
-}
-
-/**
- * Helper function to resolve a field which is a files array.
- *
- * @param $type
- * @param $tokens
- * @param array $data
- * @param array $options
- * @param $data_type
- * @param $token
- * @param $token_type
- *
- * @return array
- */
-function _subscriptions_content_tokens_field_array($type, $tokens, array $data, array $options, $data_type, $token, $token_type) {
-  $replacements = array();
-
-  if ($field_tokens = token_find_with_prefix($tokens, $token)) {
-
-    $url_options = array('absolute' => TRUE);
-    if (isset($options['language'])) {
-      $url_options['language'] = $options['language'];
-      $language_code = $options['language']->language;
-    }
-    else {
-      $language_code = NULL;
-    }
-
-    $tokenss = array();
-    foreach ($field_tokens as $field_token => $original) {
-      $field_name = strtok($field_token, ':');
-      $tokenss[$field_name][substr($field_token, strlen($field_name) + 1)] = $original;
-    }
-    foreach ($tokenss as $field_name => $tokens) {
-      if ($field_items = field_get_items($data_type, $data[$data_type], $field_name, $language_code)) {
-        $objs = array();
-        switch ($token) {
-          case 'terms':
-            // Terms are stored as tids only.
-            $tids = array();
-            foreach ($field_items as $term) {
-              $tids[] = $term['tid'];
-            }
-            $objs = taxonomy_term_load_multiple($tids);
-            break;
-          default:
-            foreach ($field_items as $key => $item) {
-              $objs[$key] = (object) $item;
-            }
-        }
-        if (!empty($objs)) {
-          $replacements += token_generate($token_type, $tokens, array($token_type => $objs), $options);
-        }
-      }
-    }
-  }
   return $replacements;
 }
 

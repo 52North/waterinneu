@@ -58,6 +58,7 @@ function subscriptions_schema() {
     'fields'                  => array(
       'uid'                   => array('type' => 'int', 'not null' => TRUE, 'default' => 0),
       'digest'                => array('type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => -1),
+      'secure_links'          => array('type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => -1),
       'send_interval'         => array('type' => 'int', 'not null' => TRUE, 'default' => -1),
       'send_updates'          => array('type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => -1),
       'send_comments'         => array('type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => -1),
@@ -110,6 +111,7 @@ function subscriptions_install() {
     ->fields(array(
       'uid' => -DRUPAL_AUTHENTICATED_RID,
       'digest' => 0,
+      'secure_links' => 0,
       'send_interval' => 1,
       'send_updates' => 1,
       'send_comments' => 1,
@@ -161,7 +163,6 @@ function subscriptions_uninstall() {
   variable_del('subscriptions_show_by_author_options');
   variable_del('subscriptions_static_content_types');
   variable_del('subscriptions_unlisted_content_types');
-  variable_del('subscriptions_form_show_login_hint');
 
   // also remove legacy 5.x-1.9(-dev) variables:
   variable_del('subscriptions_allow_vid');
@@ -328,5 +329,20 @@ function subscriptions_update_7002() {
       ->condition('language', $langcode)
       ->execute();
   }
+}
+
+/**
+ * Add the 'secure_links' column.
+ */
+function subscriptions_update_7100() {
+  db_add_field('subscriptions_user', 'secure_links', array(
+    'type' => 'int',
+    'size' => 'tiny',
+    'not null' => TRUE,
+    'default' => -1));
+  db_update('subscriptions_user')
+    ->condition('uid', -DRUPAL_AUTHENTICATED_RID)
+    ->expression('secure_links', 0)
+    ->execute();
 }
 

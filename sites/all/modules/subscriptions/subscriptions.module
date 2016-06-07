@@ -331,7 +331,7 @@ function subscriptions_user_insert(array $edit, &$account, $category) {
   $query
     ->fields('s', array('send_interval', 'author_uid', 'send_updates', 'send_comments'))
     ->condition('s.recipient_uid', $rids, 'IN');
-  db_insert('subscriptions')
+  db_insert('subscriptions', array('return' => Database::RETURN_NULL))
     ->from($query)
     ->execute();
 }
@@ -495,7 +495,7 @@ function subscriptions_queue(array $event) {
           // author-specific subscriptions trigger on comments, when the node author is subscribed to:
           ->condition('s.author_uid', array(($module == 'node' && $event['type'] == 'comment' && isset($event['node']->uid) ? $event['node']->uid : $event['uid']) , -1), 'IN')
           ->groupBy('u.uid');
-        if (db_driver() == 'pgsql') {
+        if (db_driver() == 'pgsql' || db_driver() == 'sqlsrv') {
           $select
             ->groupBy('u.uid')->groupBy('u.name')->groupBy('u.language')
             ->groupBy('s.module')->groupBy('s.field')->groupBy('s.value')->groupBy('s.author_uid')->groupBy('s.send_interval')
@@ -671,6 +671,7 @@ function subscriptions_get(array $params) {
   $subscriptions = array();
   // Build query
   $query = db_select('subscriptions', 's');
+  $query->fields('s');
   foreach ($params as $field => $value) {
     $query->condition($field, $value);
   }
@@ -693,7 +694,8 @@ function subscriptions_get(array $params) {
  * @ingroup hooks
  */
 function subscriptions_types($field = NULL, $type = NULL) {
-  static $types, $list;
+  $types = &drupal_static(__FUNCTION__ . '_types');
+  $list = &drupal_static(__FUNCTION__ . '_list');
 
   if (!isset($types)) {
     $types = module_invoke_all('subscriptions', 'types');
@@ -804,9 +806,14 @@ function _subscriptions_cmp_by_weight(array $a, array $b) {
 
 /**
  * Helper function to retrieve
- *   send_self/autosub_on_post/autosub_on_update/autosub_on_comment/    | 1, 0,
- *   digest/send_interval/send_updates/send_comments/                   | -1 = use default
- *   send_interval_visible/send_updates_visible/send_comments_visible/  | 1, 0, -1 = only preference, -2 = always use site default
+ *   send_self/autosub_on_post/autosub_on_update/autosub_on_comment/
+ *     | 1, 0,
+ *   digest/send_interval/send_updates/send_comments/
+ *     | -1 = use default
+ *   send_interval_visible/send_updates_visible/send_comments_visible/
+ *     | 1, 0, -1 = only preference, -2 = always use site default
+ *   secure_links
+ *     | 1, 0 for $uid>0; 1, 0, -1, -2 for -DRUPAL_AUTHENTICATED_RID
  *   uses_defaults values;
  *
  * @param string $name
@@ -838,7 +845,7 @@ function _subscriptions_get_setting($name, $account) {
   static $defaults = array();
   if (!isset($defaults[$uid][$name])) {
     $result = db_select('subscriptions_user', 'su', array('fetch' => PDO::FETCH_ASSOC))
-      ->fields('su', array('uid', 'digest', 'send_interval', 'send_updates', 'send_comments', 'send_interval_visible', 'send_updates_visible', 'send_comments_visible', 'autosub_on_post', 'autosub_on_update', 'autosub_on_comment', 'send_self'))
+      ->fields('su', array('uid', 'digest', 'secure_links', 'send_interval', 'send_updates', 'send_comments', 'send_interval_visible', 'send_updates_visible', 'send_comments_visible', 'autosub_on_post', 'autosub_on_update', 'autosub_on_comment', 'send_self'))
       ->condition('su.uid', array(-DRUPAL_AUTHENTICATED_RID, $uid), 'IN')
       ->orderBy('su.uid')
       ->execute();
@@ -866,6 +873,14 @@ function _subscriptions_get_setting($name, $account) {
       }
       return _subscriptions_get_setting($name, $uid);
     }
+
+    $secure_links_site = _subscriptions_get_setting('secure_links', NULL);
+    if ($uid > 0) {
+      if ($secure_links_site >= 0 || $defaults[$uid]['secure_links'] == -1) {
+        $defaults[$uid]['secure_links'] = (abs($secure_links_site) >= 2);
+      }
+    }
+
     $defaults[$uid]['uses_defaults'] = FALSE;
     foreach ($defaults[$uid] as $key => $value) {
       if ($value < 0) {  // not set, use site dft

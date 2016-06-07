@@ -48,6 +48,7 @@ function subscriptions_mail_uninstall() {
   variable_del('subscriptions_number_of_mails');
   variable_del('subscriptions_site_mail_name');
   variable_del('subscriptions_site_mail');
+  variable_del('subscriptions_watchall');
   variable_del('subscriptions_watchgood');
   variable_del('subscriptions_watchstats');
 }

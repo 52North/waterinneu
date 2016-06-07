@@ -31,7 +31,33 @@ function subscriptions_mail_menu() {
  */
 function subscriptions_mail_cron() {
   _subscriptions_mail_module_load_include('cron.inc');
+  _subscriptions_mail_cron_is_running(TRUE);
   _subscriptions_mail_cron();
+  _subscriptions_mail_cron_is_running(FALSE);
+}
+
+/**
+ * Helper function to remember whether cron is running.
+ */
+function _subscriptions_mail_cron_is_running($value = NULL) {
+  static $cron_is_running = FALSE;
+  if (isset($value)) {
+    $cron_is_running = $value;
+  }
+  return $cron_is_running;
+}
+
+/**
+ * Implements hook_mail_alter().
+ *
+ * Optionally change links to use HTTPS, but only for Subscriptions mails.
+ *
+ * @param $message
+ */
+function subscriptions_mail_mail_alter(array &$message) {
+  if (_subscriptions_mail_cron_is_running()) {
+    _subscriptions_mail_mail_alter($message);
+  }
 }
 
 /**
@@ -264,3 +290,22 @@ function _subscriptions_mail_check_baseurl($interactive) {
   }
 }
 
+/**
+ * Implements hook_entity_info_alter().
+ */
+function subscriptions_mail_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes'] += array(
+    'subscriptions' => array(
+      'label' => t('Subscriptions'),
+      'custom settings' => FALSE,
+    ),
+  );
+  if (module_exists('comment')) {
+    $entity_info['comment']['view modes'] += array(
+      'subscriptions' => array(
+        'label' => t('Subscriptions'),
+        'custom settings' => FALSE,
+      ),
+    );
+  }
+}

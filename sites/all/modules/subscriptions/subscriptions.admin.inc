@@ -650,6 +650,31 @@ function subscriptions_user_settings_form(array $form, array &$form_state, $acco
     '#default_value' => _subscriptions_get_setting('digest', $account),
     '#description'   => t("Merges your notifications into a single email, sent at the interval you specify."),
   );
+  $secure_links_site = _subscriptions_get_setting('secure_links', 0);
+  $variables = array('!http' => 'http', '!https' => 'https');
+  if (empty($account)) {
+    $form['settings']['secure_links'] = array(
+      '#title'         => t('Type of links to send'),
+      '#type'          => 'select',
+      '#options'       => array(
+                             0 => t('Always !http', $variables),
+                            -1 => t('Let the user choose, default to !http', $variables),
+                            -2 => t('Let the user choose, default to !https', $variables),
+                             2 => t('Always !https', $variables)
+      ),
+      '#default_value' => $secure_links_site,
+      '#description'   => t('Set the type of the links in the notifications, depending on what protocol(s) your site support. Default is %always_http.', array('%always_http' => t('Always !http', $variables))),
+    );
+  }
+  else if ($secure_links_site < 0) {
+    $form['settings']['secure_links'] = array(
+      '#title'         => t('Type of links to send'),
+      '#type'          => 'select',
+      '#options'       => array(-1 => t('Site default'), 0 => 'http', 1 => 'https'),
+      '#default_value' => _subscriptions_get_setting('secure_links', $account),
+      '#description'   => t('Set the type of the links in the notifications. %Site_default is %default.', array('%Site_default' => t('Site default'), '%default' => (abs($secure_links_site) >= 2 ? 'https' : 'http'))),
+    );
+  }
   if (_subscriptions_get_setting('send_interval_visible', $account) == -2) {
     $intervals = _subscriptions_send_intervals();
     $interval = $intervals[_subscriptions_get_setting('send_interval', $account)];
@@ -771,6 +796,7 @@ function _subscriptions_user_settings_form_submit(array $form, array &$form_stat
       db_update('subscriptions_user')
         ->fields(array(
           'digest' => -1,
+          'secure_links' => -1,
           'send_interval' => -1,
           'send_updates' => -1,
           'send_comments' => -1,
@@ -801,6 +827,7 @@ function _subscriptions_user_settings_form_submit(array $form, array &$form_stat
     db_update('subscriptions_user')
       ->fields(array(
         'digest' => $form_state['values']['digest'],
+        'secure_links' => (isset($form_state['values']['secure_links']) ? $form_state['values']['secure_links'] : 0),
         'send_interval' => ($uid > 0 && $send_interval_visible == - 2 ? - 1 : $form_state['values']['send_interval']),
         'send_updates' => ($uid > 0 && $send_updates_visible == - 2 ? - 1 : $form_state['values']['send_updates']),
         'send_comments' => ($uid > 0 && $send_comments_visible == - 2 ? - 1 : $form_state['values']['send_comments']),

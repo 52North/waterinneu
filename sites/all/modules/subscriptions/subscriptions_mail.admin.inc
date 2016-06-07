@@ -76,17 +76,23 @@ function _subscriptions_mail_form_subscriptions_settings_form_alter(array &$form
     '#name'          => 'op',
     '#value'         => t('Purge the queue'),
   );
+  $form['mail_settings']['subscriptions_watchstats'] = array(
+    '#type'          => 'checkbox',
+    '#title'         => t('Display summary watchdog entries per cron job'),
+    '#default_value' => variable_get('subscriptions_watchstats', 1),
+    '#description'   => t('Logs the mailing counts, time spent, and size of the remaining queue to the watchdog log.  This is valuable information for estimating the load on the cron job and on your mail server.  Default is ON.'),
+  );
   $form['mail_settings']['subscriptions_watchgood'] = array(
     '#type'          => 'checkbox',
     '#title'         => t('Display watchdog entries for successful mailings'),
     '#default_value' => variable_get('subscriptions_watchgood', 1),
     '#description'   => t('Logs successful mailings to the watchdog log.  Default is ON, but with many subscribers this will generate a huge number of log entries.'),
   );
-  $form['mail_settings']['subscriptions_watchstats'] = array(
+  $form['mail_settings']['subscriptions_watchall'] = array(
     '#type'          => 'checkbox',
-    '#title'         => t('Display summary watchdog entries per cron job'),
-    '#default_value' => variable_get('subscriptions_watchstats', 1),
-    '#description'   => t('Logs the mailing counts, time spent, and size of the remaining queue to the watchdog log.  This is valuable information for estimating the load on the cron job and on your mail server.  Default is ON.'),
+    '#title'         => t('Display watchdog debug entries for all queued and ready notifications'),
+    '#default_value' => variable_get('subscriptions_watchall', 0),
+    '#description'   => t('Logs every call to drupal_mail() as well as every dropped notification to the watchdog log.  Default is OFF.'),
   );
   if (module_exists('mail_edit')) {
     $form['mail_settings']['subscriptions_showmailkeys'] = array(

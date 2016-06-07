@@ -114,7 +114,7 @@ function _subscriptions_mail_mail_edit_form_extra(array &$form, array &$form_sta
     else {
       $description = t('The mail body contains one node of the named type.');
     }
-    $form['mail']['body']['#description'] = $description . ' ' . t('Recommended tokens: <ul><li>@t1, except for @t2,</li> <li>@t3, @t4, and @t5,</li> <li>!t6, if comments should be included.</li></ul>', array(
+    $description = $description . ' ' . t('Recommended tokens: <ul><li>@t1, except for @t2,</li> <li>@t3, @t4, and @t5,</li> <li>!t6, if comments should be included.</li></ul>', array(
       '@t1' => '[subs:*]',
       '@t2' => '[subs:items]',
       '@t3' => '[node:*]',
@@ -122,22 +122,40 @@ function _subscriptions_mail_mail_edit_form_extra(array &$form, array &$form_sta
       '@t5' => '[current-user:*]',
       '!t6' => '<code>{{[subs:comments:count]#...[subs:comments:value:#0]...}}</code>',
     ));
+    $comment_description = t('This template formats one comment for inclusion in the @Body template above. Recommended tokens:<ul><li>@t1, @t2, @t3, @t4, and @t5, if available,</li> <li>@t6 and @t7.</li></ul>', array(
+      '@Body' => t('Body'),
+      '@t1'   => '[subs:is-new]',
+      '@t2'   => '[subs:is-updated]',
+      '@t3'   => '[subs:is-published]',
+      '@t4'   => '[subs:type]',
+      '@t5'   => '[subs:files:field_FILES]',
+      '@t6'   => '[comment:*]',
+      '@t7'   => '[comment:author:*]',
+    ));
+    $node_type_id = 'subscriptions_mail_node-type-';
+    if (strpos($form['id']['#value'], $node_type_id) === 0) {
+      $content_type = substr($form['id']['#value'], strlen($node_type_id));
+      $note = module_exists('field_ui') ? '' : ' (' . t('Requires the !Field_UI core module.', array('!Field_UI' => 'Field UI')) . ')';
+      $description = $description . t('Alternatively, @t7 provides the entire rendered item as defined in the <a href="!link">display settings for the %Subscriptions view mode</a>.', array(
+        '@t7' => '[subs:view]',
+        '%Subscriptions' => t('Subscriptions'),
+        '!link' => url("admin/structure/types/manage/$content_type/display"),
+      )) . $note;
+      $comment_description = $comment_description . t('Alternatively, @t8 provides the entire rendered comment as defined in the <a href="!link">comment display settings for the %Subscriptions view mode</a>.', array(
+        '@t8' => '[subs:view]',
+        '%Subscriptions' => t('Subscriptions'),
+        '!link' => url("admin/structure/types/manage/$content_type/comment/display"),
+       )) . $note;
+    }
+    $form['mail']['body']['#description'] = $description;
+
     if (isset($template['subscriptions_comment_body'])) {
       $form['mail']['subscriptions_comment_body'] = array(
         '#title'         => module_exists('comment') ? t('Comment') : t('@Comment (unused because @Comment module is disabled on this site)', array('@Comment' => t('Comment'))),
         '#type'          => 'textarea',
         '#default_value' => $template['subscriptions_comment_body'],
         '#rows'          => 5,
-        '#description'   => t('This template formats one comment for inclusion in the @Body template above. Recommended tokens:<ul><li>@t1, @t2, @t3, @t4, and @t5, if available,</li> <li>@t6 and @t7.</li></ul>', array(
-          '@Body'        => t('Body'),
-          '@t1'          => '[subs:is-new]',
-          '@t2'          => '[subs:is-updated]',
-          '@t3'          => '[subs:is-published]',
-          '@t4'          => '[subs:type]',
-          '@t5'          => '[subs:files:field_FILES]',
-          '@t6'          => '[comment:*]',
-          '@t7'          => '[comment:author:*]',
-        )),
+        '#description'   => $comment_description,
         '#weight'        => 5,
       );
     }
@@ -282,17 +300,22 @@ function _subscriptions_mail_preview_form(array $values) {
         );
         $data_function($data, $node, $queue_item);
         drupal_alter('subscriptions_data', $data, $node, $queue_item);
-        $digest_data = subscriptions_mail_digest_add_item($digest_data, $mailmod, $mailkey, $data, $user);
+        if ($is_digest) {
+          // Accumulate up to three digest items in $digest_data and ultimately
+          // pass them out of the loop as $data.
+          $data = $digest_data = subscriptions_mail_digest_add_item($digest_data, $mailmod, $mailkey, $data, $user);
+          if (count($digest_data['subs']['items']) >= 3) {
+            break;
+          }
+        }
+        else {
+          // Pass $data out of the (one-time) loop.
+          break;
+        }
       }
-    }
-    if (count($digest_data['subs']['items']) >= ($is_digest ? 3 : 1)) {
-      break;
     }
   }
 
-  if ($is_digest) {
-    $data = $digest_data;
-  }
   if (empty($data)) {
     $form['note'] = array(
       '#markup' => '<span class="error">' . t('No displayable content found!') . '</span>',
@@ -301,11 +324,18 @@ function _subscriptions_mail_preview_form(array $values) {
   }
 
   $subject = mail_edit_format($values['subject'], $data, array('language' => $language));
-  $body = $values['body'];
+  $body_template = $values['body'];
   if ($preview_mode == 'html-rendered-nl') {
-    $body = str_replace("\n", "<br />\n", $body);
+    $body_template = str_replace("\n", "<br />\n", $body_template);
   }
-  $body = mail_edit_format($body, $data, array('language' => $language));
+  if (!$is_digest) {
+    $comment_template = $values['subscriptions_comment_body'];
+    if ($preview_mode == 'html-rendered-nl') {
+      $comment_template = str_replace("\n", "<br />\n", $comment_template);
+    }
+    $data['template']['subscriptions_comment_body'] = $comment_template;
+  }
+  $body = mail_edit_format($body_template, $data, array('language' => $language));
   switch ($preview_mode) {
     case 'text':
       $body = drupal_html_to_text($body);
@@ -339,7 +369,8 @@ function _subscriptions_mail_preview_form(array $values) {
   );
   $form['preview_mode_info'] = array(
     '#type' => 'item',
-    '#description' => t("The input to drupal_mail() is HTML. Drupal's default mail system converts it to text before sending it out as an email message. Sending HTML mail is possible by installing an alternative mail system and converting the template to HTML.", array('@drupal_mail', 'drupal_mail()')),
+    '#description' => t("The input to drupal_mail() is HTML. Drupal's default mail system converts it to text before sending it out as an email message. Sending HTML mail is possible by installing an alternative mail system and converting the template to HTML.", array('@drupal_mail' => 'drupal_mail()')) . ' ' .
+                      t("The @t1 tokens provide customizable rendered views, which may be easier to maintain than writing HTML.", array('@t1' => '[subs:view]')),
   );
   return $form;
 }

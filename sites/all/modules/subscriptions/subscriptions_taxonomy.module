@@ -88,40 +88,54 @@ function subscriptions_taxonomy_subscriptions($op, $arg0 = NULL, $arg1 = NULL, $
  * @see subscriptions_ui_node_form()
  */
 function _subscriptions_taxonomy_node_options($account, $node) {
+  global $user;
+
   if (!user_access('subscribe to taxonomy terms')) {
     return NULL;
   }
   $options = array();
+  $taxonomy_fields = field_read_fields(array('type' => 'taxonomy_term_reference'));
   /** @var $vids_to_omit array */
   $vids_to_omit = variable_get('subscriptions_omitted_taxa', array());
-  foreach ((array) $node as $field_key => $field_value) {
-    if (is_array($field_value)) {
-      foreach ($field_value as $lang_key => $field_lang_value) {
-        if (is_array($field_lang_value)) {
-          foreach ($field_lang_value as $item) {
-            if (is_array($item)) {
-              if (isset($item['taxonomy_term'])) {
-                $term = $item['taxonomy_term'];
-                if (!in_array($term->vid, $vids_to_omit)) {
-                  $tid = $term->tid;
-                  $options['tid'][] = array(
-                    'name' => t('To content in %term', array('%term' => $term->name)),
-                    'params' => array('module' => 'node', 'field' => 'tid', 'value' => $tid),
-                    'link' => 'taxa/' . $tid,
-                  );
-                  $options['tid'][] = array(
-                    'name' => t('To content in %term by %name', array('%term' => $term->name, '%name' => format_username(user_load($node->uid)))),
-                    'params' => array('module' => 'node', 'field' => 'tid', 'value' => $tid, 'author_uid' => $node->uid),
-                    'link' => 'taxa/' . $tid . '/' . $node->uid,
-                  );
-                  if ($field_key == 'taxonomy_forums') {
-                    // Move forum items to the top.
-                    array_unshift($options['tid'], array_pop($options['tid']));
-                    array_unshift($options['tid'], array_pop($options['tid']));
-                  }
-                  $options['tid']['weight'] = -1;
-                }
+  foreach ($taxonomy_fields as $field_key => $field) {
+    if (isset($node->$field_key)) {
+      if ($items = field_get_items('node', $node, $field_key)) {
+        foreach ($items as $item) {
+          $term = NULL;
+          $hidden = array();
+          $unavailable = '';
+          if (!empty($item['taxonomy_term'])) {
+            $term = $item['taxonomy_term'];
+          }
+          elseif (!empty($item['tid'])) {
+            // The field is hidden for this content type.
+            $term = taxonomy_term_load($item['tid']);
+            if ($user->uid == 1) {
+              $unavailable = ' ' . SUBSCRIPTIONS_UNAVAILABLE;
+            }
+            else {
+              $hidden = array('#access' => FALSE);
+            }
+          }
+          if ($term) {
+            if (!in_array($term->vid, $vids_to_omit)) {
+              $tid = $term->tid;
+              $options['tid'][] = array(
+                'name'   => t('To content in %term', array('%term' => $term->name)) . $unavailable,
+                'params' => array('module' => 'node', 'field' => 'tid', 'value' => $tid),
+                'link'   => 'taxa/' . $tid,
+              ) + $hidden;
+              $options['tid'][] = array(
+                'name'   => t('To content in %term by %name', array('%term' => $term->name, '%name' => format_username(user_load($node->uid)))) . $unavailable,
+                'params' => array('module' => 'node', 'field' => 'tid', 'value' => $tid, 'author_uid' => $node->uid),
+                'link'   => 'taxa/' . $tid . '/' . $node->uid,
+              ) + $hidden;
+              if ($field_key == 'taxonomy_forums') {
+                // Move forum items to the top.
+                array_unshift($options['tid'], array_pop($options['tid']));
+                array_unshift($options['tid'], array_pop($options['tid']));
               }
+              $options['tid']['weight'] = -1;
             }
           }
         }
