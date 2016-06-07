@@ -81,12 +81,12 @@ class SmtpMailSystem implements MailSystemInterface {
     // of the email being sent.
     $from_name = FALSE;
     if (function_exists('i18n_variable_get')) {
-      if (i18n_variable_get('smtp_fromname', $message['language'], '') != '') {
-        $from_name = i18n_variable_get('smtp_fromname', $message['language'], '');
+      if (i18n_variable_get('smtp_fromname', $message['language']->language, '') != '') {
+        $from_name = i18n_variable_get('smtp_fromname', $message['language']->language, '');
       }
       else {
         // If value is not defined in settings, use site_name.
-        $from_name = i18n_variable_get('site_name', $message['language'], '');
+        $from_name = i18n_variable_get('site_name', $message['language']->language, '');
       }
     }
 
