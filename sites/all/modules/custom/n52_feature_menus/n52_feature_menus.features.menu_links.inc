@@ -25,7 +25,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 6,
+    'weight' => -45,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -57,32 +57,9 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 5,
+    'weight' => -46,
     'customized' => 1,
     'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: main-menu_home:<front>.
-  $menu_links['main-menu_home:<front>'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'Home',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'alter' => TRUE,
-      'identifier' => 'main-menu_home:<front>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 1,
-    'customized' => 1,
-    'language' => 'en',
     'menu_links_customized' => 1,
   );
   // Exported menu link: main-menu_matchmaking:node/8784.
@@ -110,52 +87,9 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 4,
+    'weight' => -47,
     'customized' => 1,
     'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: main-menu_organisations:organisation.
-  $menu_links['main-menu_organisations:organisation'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'organisation',
-    'router_path' => 'organisation',
-    'link_title' => 'Organisations',
-    'options' => array(
-      'alter' => TRUE,
-      'identifier' => 'main-menu_organisations:organisation',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 3,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: main-menu_products:product.
-  $menu_links['main-menu_products:product'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'product',
-    'router_path' => 'product',
-    'link_title' => 'Products',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'alter' => TRUE,
-      'identifier' => 'main-menu_products:product',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 2,
-    'customized' => 1,
-    'language' => 'en',
     'menu_links_customized' => 1,
   );
   // Exported menu link: main-menu_success-stories:node/8787.
@@ -173,7 +107,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 7,
+    'weight' => -44,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -196,7 +130,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -219,7 +153,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 2,
+    'weight' => -48,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -242,7 +176,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -274,7 +208,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 1,
+    'weight' => -49,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -297,7 +231,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 1,
+    'weight' => -49,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -327,7 +261,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 2,
+    'weight' => -48,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -351,7 +285,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 3,
+    'weight' => -47,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -375,7 +309,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 4,
+    'weight' => -46,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -399,7 +333,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 5,
+    'weight' => -45,
     'customized' => 1,
     'language' => 'en',
     'menu_links_customized' => 1,
@@ -1176,7 +1110,6 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Event');
   t('Feed aggregator');
   t('Forum');
-  t('Home');
   t('Login');
   t('Logout');
   t('Marketplace');
@@ -1184,10 +1117,8 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Migrate example - dates');
   t('My Content');
   t('Organisation');
-  t('Organisations');
   t('Portal');
   t('Product');
-  t('Products');
   t('Project');
   t('Recent posts');
   t('Register');
