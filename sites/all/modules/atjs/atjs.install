@@ -126,6 +126,13 @@ function atjs_schema() {
         'default' => 1,
         'boolean' => TRUE,
       ),
+      'character_set' => array(
+        'description' => 'The characters supported by this listener.',
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => FALSE,
+        'default' => 'basic',
+      )
     ),
     'primary key' => array('name'),
   );
@@ -328,5 +335,16 @@ function atjs_update_7101() {
 
   if (!db_field_exists('atjs_listener_usage', 'dismissed')) {
     db_add_field('atjs_listener_usage', 'dismissed', $usage_schema['fields']['dismissed']);
+  }
+}
+
+/**
+ * Add character_set field to atjs_listener table.
+ */
+function atjs_update_7102() {
+  $listener_schema = drupal_get_schema('atjs_listener');
+
+  if (!db_field_exists('atjs_listener', 'character_set')) {
+    db_add_field('atjs_listener', 'character_set', $listener_schema['fields']['character_set']);
   }
 }

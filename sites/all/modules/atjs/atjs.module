@@ -261,6 +261,7 @@ function atjs_pre_render($element) {
       // General listener settings.
       $js_settings['data']['atjs']['listeners'][$listener_name] = array(
         'allowSpaces' => $allow_spaces,
+        'characterSet' => $listener->character_set,
       );
 
       // Settings passed to At.js library.
@@ -564,6 +565,17 @@ function atjs_ctools_export_ui_form(&$form, &$form_state) {
     '#required' => TRUE,
     '#description' => t('Data to make available to the templates. Data should be used in the form of ${name}.'),
   );
+
+  $form['settings']['character_set'] = array(
+    '#title' => t('Character set'),
+    '#type' => 'radios',
+    '#options' => array(
+      'basic' => t('Basic - lower & uppercase letters, numbers, hyphens (-) and underscores (_) only.'),
+      'extended' => t('Extended - matches ANY non-whitespace character.'),
+    ),
+    '#default_value' => isset($listener->character_set) ? $listener->character_set : 'basic',
+    '#description' => t('Characters to be considered when searching for a referenced entity. The query will include all supported characters up until an unsupported character is found.'),
+  );
 }
 
 /**
@@ -723,11 +735,21 @@ class AtjsPregCallback {
   }
 
   public function execute($text) {
+    switch ($this->listener->character_set) {
+      case 'extended':
+        $character_set = '^\s';
+        break;
+      case 'basic':
+        // Falls through.
+      default:
+        $character_set = 'a-zA-Z0-9-_';
+    }
+
     if (isset($this->listener->allow_spaces) && $this->listener->allow_spaces) {
       // If spaces are allowed, the token will be of the format '[@user name]' (without quotes).
-      return preg_replace_callback("/\[[\\" . $this->listener->at . ']{1}(([a-zA-Z0-9-_]+ ?)+)\]/', array($this, 'match_replace'), $text);
+      return preg_replace_callback('/\[[\\' . $this->listener->at . ']{1}(([' . $character_set . '\]]+ ?)+)\]/', array($this, 'match_replace'), $text);
     }
-    return preg_replace_callback("/[\\" . $this->listener->at . ']{1}([a-zA-Z0-9-_]+)/', array($this, 'match_replace'), $text);
+    return preg_replace_callback('/[\\' . $this->listener->at . ']{1}([' . $character_set . ']+)/', array($this, 'match_replace'), $text);
   }
 
   public function match_replace($matches) {
