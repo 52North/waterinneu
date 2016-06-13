@@ -564,6 +564,9 @@ function custom_search_submit($form, &$form_state) {
       'other'     => (!empty($other)) ? $other : array(),
     ), $keys, $fields);
   }
+  elseif (module_exists('search_api_solr')) {
+//   	$search_path 
+  }
   elseif (module_exists('google_appliance')) {
     $search_path = _custom_search_google_appliance_search(array(
       'keys'  => $keys,
