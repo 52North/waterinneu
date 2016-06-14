@@ -749,25 +749,6 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: navigation_frequently-asked-questions:faq-page.
-  $menu_links['navigation_frequently-asked-questions:faq-page'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'faq-page',
-    'router_path' => 'faq-page',
-    'link_title' => 'Frequently Asked Questions',
-    'options' => array(
-      'identifier' => 'navigation_frequently-asked-questions:faq-page',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 1,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-  );
   // Exported menu link: navigation_glossary:user-guide/glossary.
   $menu_links['navigation_glossary:user-guide/glossary'] = array(
     'menu_name' => 'navigation',
@@ -1099,25 +1080,6 @@ function n52_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'navigation_feed-aggregator:aggregator',
   );
-  // Exported menu link: navigation_tags:tagclouds.
-  $menu_links['navigation_tags:tagclouds'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'tagclouds',
-    'router_path' => 'tagclouds',
-    'link_title' => 'Tags',
-    'options' => array(
-      'identifier' => 'navigation_tags:tagclouds',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
-  );
   // Exported menu link: navigation_translate-strings:locale.
   $menu_links['navigation_translate-strings:locale'] = array(
     'menu_name' => 'navigation',
@@ -1136,25 +1098,6 @@ function n52_feature_menus_menu_default_menu_links() {
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
-  );
-  // Exported menu link: navigation_user-list:profile.
-  $menu_links['navigation_user-list:profile'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'profile',
-    'router_path' => 'profile',
-    'link_title' => 'User list',
-    'options' => array(
-      'identifier' => 'navigation_user-list:profile',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-    'language' => 'und',
-    'menu_links_customized' => 0,
   );
   // Exported menu link: navigation_webform:node/add/webform.
   $menu_links['navigation_webform:node/add/webform'] = array(
@@ -1279,7 +1222,6 @@ function n52_feature_menus_menu_default_menu_links() {
   t('FAQ');
   t('Feed aggregator');
   t('Forum');
-  t('Frequently Asked Questions');
   t('Glossary');
   t('Home');
   t('Log out');
@@ -1305,10 +1247,8 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Service Request');
   t('Sources');
   t('Success Stories');
-  t('Tags');
   t('Translate');
   t('Translate strings');
-  t('User list');
   t('Webform');
 
   return $menu_links;
