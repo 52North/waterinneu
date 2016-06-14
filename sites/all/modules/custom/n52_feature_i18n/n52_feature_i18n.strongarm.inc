@@ -620,7 +620,7 @@ function n52_feature_i18n_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_last_check';
-  $strongarm->value = 1465306329;
+  $strongarm->value = 1465911719;
   $export['l10n_update_last_check'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -4432,6 +4432,45 @@ function n52_feature_i18n_strongarm() {
             'timestamp' => 1465306217,
             'directory' => 'translations://',
             'last_checked' => 1465306183,
+            'language' => 'de',
+          ),
+        ),
+        'language' => 'de',
+      ),
+    ),
+    'tmgmt' => array(
+      'de' => (object) array(
+        'name' => 'tmgmt',
+        'project_type' => 'module',
+        'core' => '7.x',
+        'version' => '7.x-1.0-rc1',
+        'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
+        'status' => '1',
+        'project' => 'tmgmt',
+        'langcode' => 'de',
+        'type' => 'current',
+        'timestamp' => 1465911716,
+        'last_checked' => 1465911715,
+        'files' => array(
+          'remote' => (object) array(
+            'project' => 'tmgmt',
+            'langcode' => 'de',
+            'version' => '7.x-1.0-rc1',
+            'type' => 'remote',
+            'filename' => 'tmgmt-7.x-1.0-rc1.de.po',
+            'uri' => 'https://ftp.drupal.org/files/translations/7.x/tmgmt/tmgmt-7.x-1.0-rc1.de.po',
+            'timestamp' => 1394004458,
+          ),
+          'local' => (object) array(
+            'project' => 'tmgmt',
+            'langcode' => 'de',
+            'version' => '7.x-1.0-rc1',
+            'type' => 'local',
+            'filename' => 'tmgmt-7.x-1.0-rc1.de.po',
+            'uri' => 'translations://tmgmt-7.x-1.0-rc1.de.po',
+            'timestamp' => 1465911716,
+            'directory' => 'translations://',
+            'last_checked' => 1465911715,
             'language' => 'de',
           ),
         ),

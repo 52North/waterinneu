@@ -199,7 +199,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -222,7 +222,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -48,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -251,6 +251,29 @@ function n52_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-author_add-content:node/add',
   );
+  // Exported menu link: menu-author_manage-translation-tasks:manage-translate.
+  $menu_links['menu-author_manage-translation-tasks:manage-translate'] = array(
+    'menu_name' => 'menu-author',
+    'link_path' => 'manage-translate',
+    'router_path' => 'manage-translate',
+    'link_title' => 'Manage translation tasks',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-author_manage-translation-tasks:manage-translate',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: menu-author_my-content:user.
   $menu_links['menu-author_my-content:user'] = array(
     'menu_name' => 'menu-author',
@@ -270,7 +293,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -394,6 +417,29 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-author_add-content:node/add',
+  );
+  // Exported menu link: menu-author_translate:translate.
+  $menu_links['menu-author_translate:translate'] = array(
+    'menu_name' => 'menu-author',
+    'link_path' => 'translate',
+    'router_path' => 'translate',
+    'link_title' => 'Translate',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-author_translate:translate',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -46,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
   );
   // Exported menu link: menu-moderator_recent-posts:tracker.
   $menu_links['menu-moderator_recent-posts:tracker'] = array(
@@ -1176,6 +1222,46 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: user-menu_manage-translation-tasks:manage-translate.
+  $menu_links['user-menu_manage-translation-tasks:manage-translate'] = array(
+    'menu_name' => 'user-menu',
+    'link_path' => 'manage-translate',
+    'router_path' => 'manage-translate',
+    'link_title' => 'Manage translation tasks',
+    'options' => array(
+      'alter' => TRUE,
+      'identifier' => 'user-menu_manage-translation-tasks:manage-translate',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: user-menu_translate:translate.
+  $menu_links['user-menu_translate:translate'] = array(
+    'menu_name' => 'user-menu',
+    'link_path' => 'translate',
+    'router_path' => 'translate',
+    'link_title' => 'Translate',
+    'options' => array(
+      'alter' => TRUE,
+      'identifier' => 'user-menu_translate:translate',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 1,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -1198,6 +1284,7 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Home');
   t('Log out');
   t('Login');
+  t('Manage translation tasks');
   t('Marketplace');
   t('Matchmaking');
   t('Migrate example - dates');
@@ -1219,6 +1306,7 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Sources');
   t('Success Stories');
   t('Tags');
+  t('Translate');
   t('Translate strings');
   t('User list');
   t('Webform');
