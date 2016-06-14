@@ -62,6 +62,29 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: main-menu_home:<front>.
+  $menu_links['main-menu_home:<front>'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'Home',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'main-menu_home:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: main-menu_matchmaking:node/8784.
   $menu_links['main-menu_matchmaking:node/8784'] = array(
     'menu_name' => 'main-menu',
@@ -92,6 +115,52 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: main-menu_organisations:organisation.
+  $menu_links['main-menu_organisations:organisation'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'organisation',
+    'router_path' => 'organisation',
+    'link_title' => 'Organisations',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'main-menu_organisations:organisation',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: main-menu_products:product.
+  $menu_links['main-menu_products:product'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'product',
+    'router_path' => 'product',
+    'link_title' => 'Products',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'main-menu_products:product',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: main-menu_success-stories:node/8787.
   $menu_links['main-menu_success-stories:node/8787'] = array(
     'menu_name' => 'main-menu',
@@ -117,7 +186,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'menu_name' => 'menu-author',
     'link_path' => 'node/add',
     'router_path' => 'node/add',
-    'link_title' => 'Add content',
+    'link_title' => 'Add Content',
     'options' => array(
       'attributes' => array(
         'title' => 'Add content to the site.',
@@ -130,9 +199,9 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -50,
+    'weight' => 0,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
   );
   // Exported menu link: menu-author_compose-tips:filter/tips.
@@ -153,9 +222,9 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => 0,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
   );
   // Exported menu link: menu-author_event:node/add/event.
@@ -178,7 +247,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -50,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-author_add-content:node/add',
   );
@@ -189,18 +258,11 @@ function n52_feature_menus_menu_default_menu_links() {
     'router_path' => 'user',
     'link_title' => 'My Content',
     'options' => array(
+      'fragment' => 'my-content',
       'attributes' => array(
         'title' => '',
       ),
       'alter' => TRUE,
-      'menu_token_link_uuid' => 'menutoken/56e8491708988',
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        9 => 0,
-        3 => 0,
-      ),
-      'fragment' => 'my-content',
       'identifier' => 'menu-author_my-content:user',
     ),
     'module' => 'menu',
@@ -208,9 +270,9 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => 0,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
   );
   // Exported menu link: menu-author_organisation:node/add/organisation.
@@ -221,7 +283,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'link_title' => 'Organisation',
     'options' => array(
       'attributes' => array(
-        'title' => 'Add an \'organisation\' to the site',
+        'title' => 'Add an \'organisation\' to the site.',
       ),
       'alter' => TRUE,
       'identifier' => 'menu-author_organisation:node/add/organisation',
@@ -233,7 +295,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -49,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-author_add-content:node/add',
   );
@@ -245,15 +307,9 @@ function n52_feature_menus_menu_default_menu_links() {
     'link_title' => 'Product',
     'options' => array(
       'attributes' => array(
-        'title' => 'Product specification sheet for project results of type tool, e.g. software.',
+        'title' => 'Product specification sheet for project results of type product, e.g. software.',
       ),
       'alter' => TRUE,
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        9 => 0,
-        3 => 0,
-      ),
       'identifier' => 'menu-author_product:node/add/tool',
     ),
     'module' => 'menu',
@@ -263,7 +319,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -48,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-author_add-content:node/add',
   );
@@ -287,7 +343,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -47,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-author_add-content:node/add',
   );
@@ -299,7 +355,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'link_title' => 'Service Offering',
     'options' => array(
       'attributes' => array(
-        'title' => 'Add Service Offering',
+        'title' => 'Add a \'Service Offering\' to the site.',
       ),
       'alter' => TRUE,
       'identifier' => 'menu-author_service-offering:node/add/service-offering',
@@ -311,7 +367,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -46,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-author_add-content:node/add',
   );
@@ -323,7 +379,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'link_title' => 'Service Request',
     'options' => array(
       'attributes' => array(
-        'title' => 'Add service request',
+        'title' => 'Add a \'Service Request\' to the site.',
       ),
       'alter' => TRUE,
       'identifier' => 'menu-author_service-request:node/add/service-request',
@@ -335,7 +391,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -45,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-author_add-content:node/add',
   );
@@ -359,7 +415,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
   );
   // Exported menu link: menu-moderator_scheduled-publications:scheduled-publications.
@@ -382,181 +438,21 @@ function n52_feature_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: menu-top-level-links-registered-_abmelden:user/logout.
-  $menu_links['menu-top-level-links-registered-_abmelden:user/logout'] = array(
-    'menu_name' => 'menu-top-level-links-registered-',
-    'link_path' => 'user/logout',
-    'router_path' => 'user/logout',
-    'link_title' => 'Abmelden',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Hier klicken zur Abmeldung vom System.',
-      ),
-      'alter' => TRUE,
-      'identifier' => 'menu-top-level-links-registered-_abmelden:user/logout',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-    'language' => 'de',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-top-level-links-registered-_account:user.
-  $menu_links['menu-top-level-links-registered-_account:user'] = array(
-    'menu_name' => 'menu-top-level-links-registered-',
-    'link_path' => 'user',
-    'router_path' => 'user',
-    'link_title' => 'Account',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Click here to get to your account\'s settings.',
-      ),
-      'identifier' => 'menu-top-level-links-registered-_account:user',
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        8 => 0,
-        10 => 0,
-        9 => 0,
-        11 => 0,
-        3 => 0,
-      ),
-      'alter' => TRUE,
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-    'language' => 'en',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-top-level-links-registered-_benutzer:user.
-  $menu_links['menu-top-level-links-registered-_benutzer:user'] = array(
-    'menu_name' => 'menu-top-level-links-registered-',
-    'link_path' => 'user',
-    'router_path' => 'user',
-    'link_title' => 'Benutzer',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Hier klicken zur Anpassung der Benutzer-Einstellungen.',
-      ),
-      'alter' => TRUE,
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        8 => 0,
-        10 => 0,
-        9 => 0,
-        11 => 0,
-        3 => 0,
-      ),
-      'identifier' => 'menu-top-level-links-registered-_benutzer:user',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
-    'customized' => 1,
-    'language' => 'de',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-top-level-links-registered-_logout:user/logout.
-  $menu_links['menu-top-level-links-registered-_logout:user/logout'] = array(
-    'menu_name' => 'menu-top-level-links-registered-',
-    'link_path' => 'user/logout',
-    'router_path' => 'user/logout',
-    'link_title' => 'Logout',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Click here to log out from the system and end your session.',
-      ),
-      'identifier' => 'menu-top-level-links-registered-_logout:user/logout',
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        8 => 0,
-        10 => 0,
-        9 => 0,
-        11 => 0,
-        3 => 0,
-      ),
-      'alter' => TRUE,
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-    'language' => 'en',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-top-links_anmelden:user.
-  $menu_links['menu-top-links_anmelden:user'] = array(
+  // Exported menu link: menu-top-links_login:user/login.
+  $menu_links['menu-top-links_login:user/login'] = array(
     'menu_name' => 'menu-top-links',
-    'link_path' => 'user',
-    'router_path' => 'user',
-    'link_title' => 'Anmelden',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Hier klicken zur Anmeldung am System.',
-      ),
-      'alter' => TRUE,
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        8 => 0,
-        10 => 0,
-        9 => 0,
-        11 => 0,
-        3 => 0,
-      ),
-      'identifier' => 'menu-top-links_anmelden:user',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
-    'customized' => 1,
-    'language' => 'de',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-top-links_login:user.
-  $menu_links['menu-top-links_login:user'] = array(
-    'menu_name' => 'menu-top-links',
-    'link_path' => 'user',
-    'router_path' => 'user',
+    'link_path' => 'user/login',
+    'router_path' => 'user/login',
     'link_title' => 'Login',
     'options' => array(
       'attributes' => array(
         'title' => 'Click here to log in to the system.',
       ),
-      'identifier' => 'menu-top-links_login:user',
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        8 => 0,
-        10 => 0,
-        9 => 0,
-        11 => 0,
-        3 => 0,
-      ),
       'alter' => TRUE,
+      'identifier' => 'menu-top-links_login:user/login',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -565,7 +461,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -50,
     'customized' => 1,
-    'language' => 'en',
+    'language' => 'und',
     'menu_links_customized' => 1,
   );
   // Exported menu link: menu-top-links_register:user/register.
@@ -576,51 +472,10 @@ function n52_feature_menus_menu_default_menu_links() {
     'link_title' => 'Register',
     'options' => array(
       'attributes' => array(
-        'title' => 'Click here to register for requesting a new account.',
+        'title' => 'Click here for requesting a new account.',
       ),
+      'alter' => TRUE,
       'identifier' => 'menu-top-links_register:user/register',
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        8 => 0,
-        10 => 0,
-        9 => 0,
-        11 => 0,
-        3 => 0,
-      ),
-      'alter' => TRUE,
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-    'language' => 'en',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-top-links_registrieren:user/register.
-  $menu_links['menu-top-links_registrieren:user/register'] = array(
-    'menu_name' => 'menu-top-links',
-    'link_path' => 'user/register',
-    'router_path' => 'user/register',
-    'link_title' => 'Registrieren',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Hier klicken zur Registrierung für einen neuen Benutzer.',
-      ),
-      'alter' => TRUE,
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        8 => 0,
-        10 => 0,
-        9 => 0,
-        11 => 0,
-        3 => 0,
-      ),
-      'identifier' => 'menu-top-links_registrieren:user/register',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -629,7 +484,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 1,
-    'language' => 'de',
+    'language' => 'und',
     'menu_links_customized' => 1,
   );
   // Exported menu link: navigation_add-content:node/add.
@@ -645,9 +500,9 @@ function n52_feature_menus_menu_default_menu_links() {
       'identifier' => 'navigation_add-content:node/add',
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
-    'has_children' => 1,
+    'has_children' => 0,
     'expanded' => 1,
     'weight' => -49,
     'customized' => 1,
@@ -667,7 +522,7 @@ function n52_feature_menus_menu_default_menu_links() {
       'identifier' => 'navigation_article:node/add/article',
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
@@ -690,7 +545,7 @@ function n52_feature_menus_menu_default_menu_links() {
       'identifier' => 'navigation_basic-page:node/add/page',
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
@@ -751,7 +606,7 @@ function n52_feature_menus_menu_default_menu_links() {
       'identifier' => 'navigation_content-summary:content-summary',
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
@@ -773,7 +628,7 @@ function n52_feature_menus_menu_default_menu_links() {
       'identifier' => 'navigation_create-thread:thread/add',
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
@@ -782,6 +637,52 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
     'parent_identifier' => 'navigation_marketplace:forum',
+  );
+  // Exported menu link: navigation_event:node/add/event.
+  $menu_links['navigation_event:node/add/event'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'node/add/event',
+    'router_path' => 'node/add/event',
+    'link_title' => 'Event',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Event Description is missing. Please provide one and send to e.h.juerrens@52north.org',
+      ),
+      'identifier' => 'navigation_event:node/add/event',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+    'parent_identifier' => 'navigation_add-content:node/add',
+  );
+  // Exported menu link: navigation_faq:node/add/faq.
+  $menu_links['navigation_faq:node/add/faq'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'node/add/faq',
+    'router_path' => 'node/add/faq',
+    'link_title' => 'FAQ',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'A frequently asked question and its answer.',
+      ),
+      'identifier' => 'navigation_faq:node/add/faq',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -38,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+    'parent_identifier' => 'navigation_add-content:node/add',
   );
   // Exported menu link: navigation_feed-aggregator:aggregator.
   $menu_links['navigation_feed-aggregator:aggregator'] = array(
@@ -802,6 +703,44 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: navigation_frequently-asked-questions:faq-page.
+  $menu_links['navigation_frequently-asked-questions:faq-page'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'faq-page',
+    'router_path' => 'faq-page',
+    'link_title' => 'Frequently Asked Questions',
+    'options' => array(
+      'identifier' => 'navigation_frequently-asked-questions:faq-page',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 1,
+    'customized' => 0,
+    'language' => 'und',
+    'menu_links_customized' => 0,
+  );
+  // Exported menu link: navigation_glossary:user-guide/glossary.
+  $menu_links['navigation_glossary:user-guide/glossary'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'user-guide/glossary',
+    'router_path' => 'user-guide/glossary',
+    'link_title' => 'Glossary',
+    'options' => array(
+      'identifier' => 'navigation_glossary:user-guide/glossary',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: navigation_marketplace:forum.
   $menu_links['navigation_marketplace:forum'] = array(
     'menu_name' => 'navigation',
@@ -815,9 +754,9 @@ function n52_feature_menus_menu_default_menu_links() {
       'identifier' => 'navigation_marketplace:forum',
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
-    'has_children' => 1,
+    'has_children' => 0,
     'expanded' => 0,
     'weight' => -50,
     'customized' => 1,
@@ -860,11 +799,34 @@ function n52_feature_menus_menu_default_menu_links() {
       'identifier' => 'navigation_organisation:node/add/organisation',
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -47,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+    'parent_identifier' => 'navigation_add-content:node/add',
+  );
+  // Exported menu link: navigation_panel:node/add/panel.
+  $menu_links['navigation_panel:node/add/panel'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'node/add/panel',
+    'router_path' => 'node/add/panel',
+    'link_title' => 'Panel',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'A panel layout broken up into rows and columns.',
+      ),
+      'identifier' => 'navigation_panel:node/add/panel',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -46,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -913,7 +875,7 @@ function n52_feature_menus_menu_default_menu_links() {
       'alter' => TRUE,
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
@@ -936,7 +898,7 @@ function n52_feature_menus_menu_default_menu_links() {
       'identifier' => 'navigation_project:node/add/project',
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
@@ -975,7 +937,7 @@ function n52_feature_menus_menu_default_menu_links() {
       'identifier' => 'navigation_scheduled-publications:scheduled-publications',
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
@@ -1025,6 +987,52 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: navigation_service-offering:node/add/service-offering.
+  $menu_links['navigation_service-offering:node/add/service-offering'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'node/add/service-offering',
+    'router_path' => 'node/add/service-offering',
+    'link_title' => 'Service Offering',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'A service offering documents the proposition for support regarding a certain product by someone.',
+      ),
+      'identifier' => 'navigation_service-offering:node/add/service-offering',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -43,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+    'parent_identifier' => 'navigation_add-content:node/add',
+  );
+  // Exported menu link: navigation_service-request:node/add/service-request.
+  $menu_links['navigation_service-request:node/add/service-request'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'node/add/service-request',
+    'router_path' => 'node/add/service-request',
+    'link_title' => 'Service Request',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'A service request documents the need for support regarding a certain product by someone.',
+      ),
+      'identifier' => 'navigation_service-request:node/add/service-request',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -42,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+    'parent_identifier' => 'navigation_add-content:node/add',
+  );
   // Exported menu link: navigation_sources:aggregator/sources.
   $menu_links['navigation_sources:aggregator/sources'] = array(
     'menu_name' => 'navigation',
@@ -1044,6 +1052,63 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
     'parent_identifier' => 'navigation_feed-aggregator:aggregator',
+  );
+  // Exported menu link: navigation_tags:tagclouds.
+  $menu_links['navigation_tags:tagclouds'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'tagclouds',
+    'router_path' => 'tagclouds',
+    'link_title' => 'Tags',
+    'options' => array(
+      'identifier' => 'navigation_tags:tagclouds',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'language' => 'und',
+    'menu_links_customized' => 0,
+  );
+  // Exported menu link: navigation_translate-strings:locale.
+  $menu_links['navigation_translate-strings:locale'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'locale',
+    'router_path' => 'locale',
+    'link_title' => 'Translate strings',
+    'options' => array(
+      'identifier' => 'navigation_translate-strings:locale',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: navigation_user-list:profile.
+  $menu_links['navigation_user-list:profile'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'profile',
+    'router_path' => 'profile',
+    'link_title' => 'User list',
+    'options' => array(
+      'identifier' => 'navigation_user-list:profile',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'language' => 'und',
+    'menu_links_customized' => 0,
   );
   // Exported menu link: navigation_webform:node/add/webform.
   $menu_links['navigation_webform:node/add/webform'] = array(
@@ -1068,25 +1133,45 @@ function n52_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'navigation_add-content:node/add',
   );
-  // Exported menu link: user-menu_add-content:node/add.
-  $menu_links['user-menu_add-content:node/add'] = array(
+  // Exported menu link: user-menu_account:user.
+  $menu_links['user-menu_account:user'] = array(
     'menu_name' => 'user-menu',
-    'link_path' => 'node/add',
-    'router_path' => 'node/add',
-    'link_title' => 'Add Content',
+    'link_path' => 'user',
+    'router_path' => 'user',
+    'link_title' => 'Account',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'user-menu_add-content:node/add',
       'alter' => TRUE,
+      'attributes' => array(
+        'title' => 'Click here to see your account\'s details.',
+      ),
+      'identifier' => 'user-menu_account:user',
     ),
-    'module' => 'menu',
+    'module' => 'system',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -10,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: user-menu_log-out:user/logout.
+  $menu_links['user-menu_log-out:user/logout'] = array(
+    'menu_name' => 'user-menu',
+    'link_path' => 'user/logout',
+    'router_path' => 'user/logout',
+    'link_title' => 'Log out',
+    'options' => array(
+      'alter' => TRUE,
+      'identifier' => 'user-menu_log-out:user/logout',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 10,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1094,35 +1179,38 @@ function n52_feature_menus_menu_default_menu_links() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Abmelden');
   t('Account');
   t('Add Content');
   t('Add content');
-  t('Anmelden');
   t('Article');
   t('Basic page');
-  t('Benutzer');
   t('Compose tips');
   t('Contact');
   t('Content summary');
   t('Create thread');
   t('E-Learning');
   t('Event');
+  t('FAQ');
   t('Feed aggregator');
   t('Forum');
+  t('Frequently Asked Questions');
+  t('Glossary');
+  t('Home');
+  t('Log out');
   t('Login');
-  t('Logout');
   t('Marketplace');
   t('Matchmaking');
   t('Migrate example - dates');
   t('My Content');
   t('Organisation');
+  t('Organisations');
+  t('Panel');
   t('Portal');
   t('Product');
+  t('Products');
   t('Project');
   t('Recent posts');
   t('Register');
-  t('Registrieren');
   t('Scheduled publications');
   t('Search');
   t('Search Wizard');
@@ -1130,6 +1218,9 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Service Request');
   t('Sources');
   t('Success Stories');
+  t('Tags');
+  t('Translate strings');
+  t('User list');
   t('Webform');
 
   return $menu_links;

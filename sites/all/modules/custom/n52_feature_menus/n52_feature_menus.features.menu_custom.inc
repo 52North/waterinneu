@@ -29,16 +29,8 @@ function n52_feature_menus_menu_default_menu_custom() {
   // Exported menu: menu-moderator.
   $menus['menu-moderator'] = array(
     'menu_name' => 'menu-moderator',
-    'title' => 'Moderator',
+    'title' => 'Moderator\'s Tasks',
     'description' => 'Everything regarding moderation tasks',
-    'language' => 'und',
-    'i18n_mode' => 5,
-  );
-  // Exported menu: menu-top-level-links-registered-.
-  $menus['menu-top-level-links-registered-'] = array(
-    'menu_name' => 'menu-top-level-links-registered-',
-    'title' => 'Top-Level-Links (registered)',
-    'description' => '',
     'language' => 'und',
     'i18n_mode' => 5,
   );
@@ -54,7 +46,7 @@ function n52_feature_menus_menu_default_menu_custom() {
   $menus['navigation'] = array(
     'menu_name' => 'navigation',
     'title' => 'Navigation',
-    'description' => 'The <em>Navigation</em> menu contains links intended for site visitors. Links are added to the <em>Navigation</em> menu automatically by some modules.',
+    'description' => 'THIS MENU IS NOT USED ATM.',
     'language' => 'und',
     'i18n_mode' => 0,
   );
@@ -73,12 +65,11 @@ function n52_feature_menus_menu_default_menu_custom() {
   t('Everything regarding moderation tasks');
   t('Footer 3rd Links');
   t('Holds all links that are in the top div.');
-  t('Moderator');
+  t('Moderator\'s Tasks');
   t('Navigation');
-  t('The <em>Navigation</em> menu contains links intended for site visitors. Links are added to the <em>Navigation</em> menu automatically by some modules.');
+  t('THIS MENU IS NOT USED ATM.');
   t('The <em>User</em> menu contains links related to the user\'s account, as well as the \'Log out\' link.');
   t('Top-Level-Links (anon)');
-  t('Top-Level-Links (registered)');
   t('User menu');
 
   return $menus;

@@ -96,36 +96,6 @@ function n52_feature_menus_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['menu-menu-top-level-links-registered-'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'menu-top-level-links-registered-',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'menu',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(
-      'authenticated user' => 2,
-    ),
-    'themes' => array(
-      'adminimal' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'adminimal',
-        'weight' => 0,
-      ),
-      'n52_wieu_theme' => array(
-        'region' => 'pre_header_third',
-        'status' => 1,
-        'theme' => 'n52_wieu_theme',
-        'weight' => -32,
-      ),
-    ),
-    'title' => '<none>',
-    'visibility' => 0,
-  );
-
   $export['menu-menu-top-links'] = array(
     'cache' => -1,
     'custom' => 0,
@@ -149,7 +119,7 @@ function n52_feature_menus_default_fe_block_settings() {
         'region' => 'pre_header_third',
         'status' => 1,
         'theme' => 'n52_wieu_theme',
-        'weight' => -33,
+        'weight' => -49,
       ),
     ),
     'title' => '<none>',

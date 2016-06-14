@@ -367,7 +367,7 @@
   	<script type="text/javascript">
     (function($) {
 	  $(document).ready(function () {
-		  var elem = $('#block-menu-menu-top-level-links-registered- > div > ul > li.last > a').last();
+		  var elem = $('#block-system-user-menu > div > ul > li.last > a').last();
 		  var href = elem.attr('href') + '?destination=<?php print n52_get_destination_alias() ?>';
 		  elem.attr('href', href);
 	  });

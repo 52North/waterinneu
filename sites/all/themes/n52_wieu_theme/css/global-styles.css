@@ -64,8 +64,8 @@
     margin-bottom: 0em;
 }
 
-#block-menu-menu-top-links > div.content > ul.menu,
-#block-menu-menu-top-level-links-registered-  > div.content > ul.menu
+#block-system-user-menu > div.content > ul.menu,
+#block-menu-menu-top-links > div.content > ul.menu
 {
 	margin: 0;
 	padding: 0;
@@ -73,8 +73,8 @@
 	overflow: hidden;
 }
 
-#block-menu-menu-top-links > div.content > ul.menu > li.leaf,
-#block-menu-menu-top-level-links-registered-  > div.content > ul.menu > li.leaf
+#block-system-user-menu > div.content > ul.menu > li.leaf,
+#block-menu-menu-top-links > div.content > ul.menu > li.leaf
 {
 	float: left;
 	list-style-image: unset;
@@ -84,14 +84,14 @@
     padding: 0.2em 0.5em 0 0;
 }
 
-#block-menu-menu-top-links > div.content > ul.menu > li.leaf > a,
-#block-menu-menu-top-level-links-registered-  > div.content > ul.menu > li.leaf > a
+#block-system-user-menu > div.content > ul.menu > li.leaf > a,
+#block-menu-menu-top-links > div.content > ul.menu > li.leaf > a
 {
 	border-bottom: 0;
 }
 
-#block-menu-menu-top-links > div.content > ul.menu > li.leaf + li,
-#block-menu-menu-top-level-links-registered-  > div.content > ul.menu > li.leaf + li
+#block-system-user-menu > div.content > ul.menu > li.leaf + li,
+#block-menu-menu-top-links > div.content > ul.menu > li.leaf + li
 {
     border-left: solid 2px #cecece;
     padding-left: 0.4em;
