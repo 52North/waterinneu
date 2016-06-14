@@ -237,9 +237,9 @@ function n52_feature_i18n_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_node__article';
   $strongarm->value = array(
-    'default_language' => 'en',
+    'default_language' => 'und',
     'hide_language_selector' => 0,
-    'exclude_language_none' => 1,
+    'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
   );
@@ -250,9 +250,9 @@ function n52_feature_i18n_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_node__organisation';
   $strongarm->value = array(
-    'default_language' => 'en',
+    'default_language' => 'und',
     'hide_language_selector' => 0,
-    'exclude_language_none' => 1,
+    'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
   );
@@ -263,9 +263,9 @@ function n52_feature_i18n_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_node__page';
   $strongarm->value = array(
-    'default_language' => 'en',
+    'default_language' => 'und',
     'hide_language_selector' => 0,
-    'exclude_language_none' => 1,
+    'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
   );
@@ -289,9 +289,9 @@ function n52_feature_i18n_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_node__project';
   $strongarm->value = array(
-    'default_language' => 'en',
+    'default_language' => 'und',
     'hide_language_selector' => 0,
-    'exclude_language_none' => 1,
+    'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
   );
@@ -302,9 +302,9 @@ function n52_feature_i18n_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_settings_node__tool';
   $strongarm->value = array(
-    'default_language' => 'en',
+    'default_language' => 'und',
     'hide_language_selector' => 0,
-    'exclude_language_none' => 1,
+    'exclude_language_none' => 0,
     'lock_language' => 0,
     'shared_fields_original_only' => 0,
   );
@@ -620,7 +620,7 @@ function n52_feature_i18n_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_last_check';
-  $strongarm->value = 1465911719;
+  $strongarm->value = 1465916836;
   $export['l10n_update_last_check'] = $strongarm;
 
   $strongarm = new stdClass();
