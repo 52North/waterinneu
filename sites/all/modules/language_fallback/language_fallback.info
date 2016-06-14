@@ -1,0 +1,19 @@
+name = Language Fallback
+description = This module allows you to specify a language fallback for each defined language, so translation can fallback to another language.
+package = Multilingual - Internationalization
+core = 7.x
+
+dependencies[] = locale
+
+files[] = language_fallback.fallback.inc
+files[] = views/views_handler_filter_locale_language_with_fallback.inc
+files[] = views/views_handler_sort_fallback_chain.inc
+
+configure = admin/config/regional/language_fallback
+
+; Information added by Drupal.org packaging script on 2015-12-23
+version = "7.x-2.x-dev"
+core = "7.x"
+project = "language_fallback"
+datestamp = "1450859645"
+

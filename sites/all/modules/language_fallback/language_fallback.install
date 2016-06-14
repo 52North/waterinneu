@@ -1,0 +1,158 @@
+<?php
+
+/**
+ * @file
+ * Schema, update and install function for Language Fallback.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function language_fallback_schema() {
+  $schema['language_fallback'] = array(
+    'description' => 'Contains fallback chains for languages',
+    'fields' => array(
+      'language' => array(
+        'description' => 'Lang code',
+        'type' => 'varchar',
+        // Language codes can be long: http://en.wikipedia.org/wiki/IETF_language_tag
+        'length' => 16,
+        'not null' => TRUE,
+      ),
+      'country' => array(
+        'description' => 'Visitor country code or "all" for all countries',
+        'type' => 'varchar',
+        'length' => 3,
+        'not null' => TRUE,
+        'default' => 'all'
+      ),
+      'chain' => array(
+        'description' => 'Fallback chain ("|" delimiter)',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('language', 'country'),
+  );
+  return $schema;
+}
+
+/**
+ * Implements hook_disable().
+ *
+ * WARNING!
+ * It is mandatory to remove all "locale_custom_strings_ID" variables!
+ * After this module is disabled the class localeWithFallback is no longer
+ * available but these variables hold reference to it.
+ */
+function language_fallback_disable() {
+  /*
+   * We do not know all our variable names because they are created dynamically.
+   * So to remove unwanted variables we first need to know their names.
+   *
+   * Our variables are "locale_custom_strings_ID"
+   * and their values contain "localeWithFallback" stirng.
+   *
+   * So the trick is to read all variable names from "variable" table
+   * that met the criteria above.
+   */
+
+  $result = db_update("variable")
+      ->expression('name', "CONCAT('_', name)")
+      ->condition('name', 'locale_custom_string_%', 'LIKE')
+      ->condition('value', '%localeWithFallback%', 'LIKE')
+      ->execute();
+}
+
+/**
+ * Implements hook_enable().
+ *
+ * Revert back "locale_custom_strings_ID" variable names.
+ * See language_fallback_disable() for details.
+ */
+function language_fallback_enable() {
+  $result = db_update("variable")
+      ->expression('name', "REPLACE(name, '_locale_custom_strings_', 'locale_custom_strings_')")
+      ->condition('name', '_locale_custom_string_%', 'LIKE')
+      ->condition('value', '%localeWithFallback%', 'LIKE')
+      ->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * WARNING!
+ * It is mandatory to remove all "locale_custom_strings_ID" variables!
+ * After this module is disabled the class localeWithFallback is no longer
+ * available but these variables hold reference to it.
+ */
+function language_fallback_uninstall() {
+
+  /*
+   * We do not know all our variable names because they are created dynamically.
+   * So to remove unwanted variables we first need to know their names.
+   *
+   * Our variables are "locale_custom_strings_ID" but they were renamed on
+   * hook_disable to "_locale_custom_strings_ID".
+   * and their values contain "localeWithFallback" stirng.
+   *
+   * So the trick is to read all variable names from "variable" table
+   * that met the criteria above.
+   */
+  $result = db_select("variable", "v")
+      ->fields('v', array('name'))
+      ->condition('name', '_locale_custom_string_%', 'LIKE')
+      ->condition('value', '%localeWithFallback%', 'LIKE')
+      ->execute();
+
+  while ($name = $result->fetchField()) {
+    variable_del($name);
+  }
+
+  if (isset($_SESSION['language_fallback'])) {
+    unset($_SESSION['language_fallback']);
+  }
+
+  /*
+   * WARNING!
+   * This is also very important as variables are cached!
+   */
+  cache_clear_all('variables', 'cache_bootstrap');
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Upgrades module to 2.x version
+ */
+function language_fallback_update_7200() {
+  // Make sure the legacy database field exists
+  if (!db_field_exists('language', 'fallback')) {
+    // No legacy fallbacks found. Nothing to update.
+    return NULL;
+  }
+
+  // Get all legacy fallbacks
+  $query = db_select('languages', 'l');
+  $query
+      ->fields('l', array('language', 'fallback'))
+      ->condition('l.fallback', '', '<>');
+
+  $legacy = $query->execute->fetchAllKeyed();
+
+  if (empty($legacy)) {
+    return NULL; // No legacy fallbacks found. Nothing to update.
+  }
+
+  foreach ($legacy as $language => $fallback) {
+    // Store fallback. Default country is 'all' so no need to specify explicitly
+    db_insert('language_fallback')->fields(array('language' => $language, 'chain' => implode('|', $fixed)))->execute();
+
+    // This tells drupal to use our fallback mechanism for string translation
+    variable_set('locale_custom_strings_' . $language, new localeWithFallback($language));
+  }
+
+  // Remove legacy configuration
+  db_drop_field('languages', 'fallback');
+}

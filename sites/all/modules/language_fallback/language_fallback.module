@@ -1,0 +1,261 @@
+<?php
+
+/**
+ * @file
+ * Provide language fallbacks for languages.
+ */
+
+define('LANGUAGE_FALLBACK_ALL_COUNTRIES', 'all');
+
+module_load_include('inc', 'language_fallback', 'language_fallback.admin');
+module_load_include('inc', 'language_fallback', 'language_fallback.block');
+if (module_exists('i18n_string')) {
+  module_load_include('inc', 'language_fallback', 'language_fallback.i18n');
+}
+
+/**
+ * Implements hook_menu().
+ */
+function language_fallback_menu() {
+  $items = array();
+
+  $items['admin/config/regional/language_fallback'] = array(
+    'title' => 'Language fallback',
+    'description' => 'Configuration for Language fallback module',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('language_fallback_settings_form'),
+    'access arguments' => array('administer language fallback'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'language_fallback.settings.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function language_fallback_permission() {
+  return array(
+    'administer language fallback' => array(
+      'title' => t('Administer language fallback'),
+      'description' => t('Access the language fallback configuration page.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements Drupal hook_language_fallback_candidates_alter().
+ *
+ * This function provides fallback features for entities.
+ */
+function language_fallback_language_fallback_candidates_alter(array &$fallback_candidates) {
+
+  // Check if entity fallback is enabled.
+  if (!variable_get('language_fallback_entity', FALSE)) {
+    return;
+  }
+
+  global $language;
+
+  if (LANGUAGE_NONE == $language->language) {
+    // There is no fallback for "Undeterminated" language.
+    return;
+  }
+
+  // Get fallback chain for current language.
+  $fallbacks = language_fallback_get_chain($language->language);
+
+  if (count($fallbacks) > 0) {
+    $fallback_candidates = $fallbacks;
+  }
+  else {
+    /* By default Drupal uses list of all enabled languages as a fallback chain.
+     * This is a bit weird and makes no sense in case of sites that actually
+     * make use of fallback mechanisms.
+     *
+     * That is why we rewrite the fallback chain with one default value only.
+     */
+    $fallback_candidates = array(LANGUAGE_NONE);
+  }
+}
+
+/**
+ * Gets fallback chain for specified language.
+ *
+ * If you want to hook up to language fallback module
+ * this is the place to start.
+ *
+ * @param string $lang
+ *   Language code for which fallback chain is needed.
+ * @param string $country
+ *   Country code for which fallback chain is needed.
+ * @param bool $strict
+ *   Used only internally.
+ *
+ * @return array
+ *   Array of languages or an empty array if no fallback is defined.
+ */
+function language_fallback_get_chain($lang, $country = FALSE, $strict = FALSE) {
+
+  if (!$strict) {
+    /* User defined fallback always takes precedence before any other fallback
+     * But we can't use it on administration pages!
+     */
+    $user_chain = language_fallback_get_user_chain();
+
+    if (count($user_chain) > 0) {
+      return $user_chain;
+    }
+  }
+
+  $chains = &drupal_static(__FUNCTION__);
+
+  if (!isset($chains)) {
+    $chains = array();
+  }
+
+  if ($country === FALSE) {
+    $country = language_fallback_get_country();
+  }
+
+  // Check cache - maybe the chain was already loaded.
+  if (!isset($chains[$lang][$country])) {
+
+    $chain = db_select('language_fallback', 'f')
+        ->fields('f', array('chain'))
+        ->condition('language', $lang, '=')
+        ->condition('country', $country, '=')
+        ->execute()
+        ->fetchField();
+
+    if ($chain) {
+      // We have a fallback chain for this country, for better readability
+      // fallback chains are stored in a string separated with "|" character.
+      $chains[$lang][$country] = explode("|", $chain);
+    }
+    elseif ($country == LANGUAGE_FALLBACK_ALL_COUNTRIES) {
+      // We don't have a fallback chain for all countries.
+      $chains[$lang][$country] = array();
+    }
+    elseif ($strict) {
+      // Do not use default fallback if no fallback was found.
+      return array();
+    }
+    else {
+      // We dno't have fallback so we try default fallback for all
+      // countries. WARNING! Recurency!
+      $chains[$lang][$country] = language_fallback_get_chain($lang, LANGUAGE_FALLBACK_ALL_COUNTRIES);
+    }
+  }
+
+  return $chains[$lang][$country];
+}
+
+/**
+ * Gets user defined fallback chain if it exists.
+ *
+ * @return array
+ *   User defined fallback chain or an empty array if user defined chain
+ *   does not exists.
+ */
+function language_fallback_get_user_chain() {
+  if (isset($_SESSION['language_fallback']['user_chain']) && is_array($_SESSION['language_fallback']['user_chain']) && count($_SESSION['language_fallback']['user_chain']) > 0) {
+    return $_SESSION['language_fallback']['user_chain'];
+  }
+
+  return array();
+}
+
+/**
+ * Sets user defined fallback chain for current user.
+ *
+ * User fallback chain is stored in a session variable.
+ * Empty chain will unset user session variable.
+ *
+ * @param array $chain
+ *   Array of fallback languages.
+ */
+function language_fallback_set_user_chain(array $chain = NULL) {
+  if (empty($chain)) {
+    unset($_SESSION['language_fallback']['user_chain']);
+  }
+  else {
+    $_SESSION['language_fallback']['user_chain'] = $chain;
+  }
+}
+
+/**
+ * Gets country code for fallback check.
+ *
+ * @return string
+ *   Either country code for fallback chain lookup or an empty string if
+ *   no country is specified for current visitor.
+ */
+function language_fallback_get_country() {
+  // Check if country is stored in a session variable.
+  if (isset($_SESSION['language_fallback']['country'])) {
+    return $_SESSION['language_fallback']['country'];
+  }
+  elseif (function_exists('smart_ip_get_location')) {
+
+    // Use smart IP to get user location.
+    $country = smart_ip_get_location(ip_address());
+    if ($country !== FALSE) {
+      $_SESSION['language_fallback']['country'] = strtoupper($country['country_code']);
+    }
+    else {
+      $_SESSION['language_fallback']['country'] = LANGUAGE_FALLBACK_ALL_COUNTRIES;
+    }
+  }
+
+  // We store country in a a session variable only if it is really needed.
+  if (isset($_SESSION['language_fallback']['country'])) {
+    return $_SESSION['language_fallback']['country'];
+  }
+
+  return LANGUAGE_FALLBACK_ALL_COUNTRIES;
+}
+
+/**
+ * Sets country code for current user.
+ *
+ * @param string $country
+ *   Country ISO code.
+ */
+function language_fallback_set_country($country = FALSE) {
+  if (!$country) {
+    $country = LANGUAGE_FALLBACK_ALL_COUNTRIES;
+  }
+
+  $_SESSION['language_fallback']['country'] = $country;
+}
+
+/**
+ * Gets list of countries for country specific fallback.
+ *
+ * @return array
+ *   Array with country names keyed by country code.
+ */
+function language_fallback_get_countries() {
+  $ret = array(
+    LANGUAGE_FALLBACK_ALL_COUNTRIES => t('All countries'),
+  );
+
+  if (variable_get('language_fallback_country', FALSE)) {
+    $ret += country_get_list();
+  }
+
+  return $ret;
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function language_fallback_views_api() {
+  return array(
+    'api' => '3',
+    'path' => drupal_get_path('module', 'language_fallback') . '/views',
+  );
+}
