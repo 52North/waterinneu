@@ -374,5 +374,27 @@
   	})(jQuery);
   	</script>
   <?php } ?>
+  <?php 
+  /*
+   * Add label informing about language fallback and to keep first version in
+   * neutral language setting
+   */
+  ?>
+  <?php if (user_is_logged_in() && n52_endsWith(request_path(), 'node/add*', TRUE)) {?>
+  	<script type="text/javascript">
+	(function($) {
+		$(document).ready(function () {
+			var elem = $('.form-item-language').last();
+			var messageDiv = '<div class="alert alert-info"><?php print t(
+				'For the initial version of any content, please select the ' . 
+				'language "<i>language neutral</i>". This ensures that for each ' .
+				'language something is rendered. Translations for different ' . 
+				'languages should be added after the first version is ' .
+				'published as "<i>language neutral</i>".') ?></div>';
+			$(messageDiv).insertAfter(elem);
+		});
+	})(jQuery);
+  	</script>
+  <?php } ?>
 </body>
 </html>
