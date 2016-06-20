@@ -1,0 +1,108 @@
+<?php
+/*
+ * Copyright (C) 2016
+ * 
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ * 
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ * 
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ * 
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ * 
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+ 
+include_once drupal_get_path('module', 'module_name') . 'nodes/api_json.php';
+include_once drupal_get_path('module', 'module_name') . 'nodes/cookies.php';
+include_once drupal_get_path('module', 'module_name') . 'nodes/imprint.php';
+include_once drupal_get_path('module', 'module_name') . 'nodes/javascript-required.php';
+include_once drupal_get_path('module', 'module_name') . 'nodes/landingpage_accordion.php';
+include_once drupal_get_path('module', 'module_name') . 'nodes/matchmaking.php';
+ 
+function n52_default_nodes_enable() {
+	global $user; 
+	
+	$nodes = array (
+		_n52_default_nodes_api_json(),
+		_n52_default_nodes_cookies(),
+		_n52_default_nodes_imprint(),
+		_n52_default_nodes_javascript_required(),
+		_n52_default_nodes_landingpage_accordion(),
+		_n52_default_nodes_matchmaking(),
+	);
+	
+	foreach ($nodes as $node_content) {
+	
+		$query = db_select('node', 'n');
+		$query->condition('title', $node_content['title'])
+			->fields('n', array('nid'));
+		$result = $query->execute();
+	
+		// Create new node
+		if($result->rowCount() <= 0) {
+			$body_text = $node_content['text'];
+			
+			$node = entity_create('node', array('type' => 'page'));
+			$node->uid = $user->uid;
+			$entity = entity_metadata_wrapper('node',$node);
+			
+			$entity->title->set($node_content['title']);
+			$entity->body->set(array (
+					'value' => $node_content['text']['und'],
+					'format' => 'full_html_plain_no_filter_',
+					) );
+			// comments closed
+			$entity->comment->set(1);
+			$entity->revision->set(TRUE);
+			$entity->language->set(LANGUAGE_NONE);
+			
+			$entity->save();
+			$nid = entity_id('node', $node);
+			$path = array (
+					'source' => "node/$nid",
+					'alias' => $node_content['alias'],
+			);
+			path_save($path);
+			$landingpage_node = node_load($nid);
+			$landingpage_node->revision_moderation = FALSE;
+			$landingpage_node->status = 1;
+			$landingpage_node->subscriptions_notify = FALSE;
+			node_save($landingpage_node);
+		}
+		
+		// Update body of existing node
+		else {
+			$nid = $result->fetchAssoc()['nid'];
+			$landingpage_node = node_load($nid);
+			$changed = FALSE;
+			foreach ($node_content['text'] as $lang_code => $value) {
+				if (isset($landingpage_node->body[$lang_code]) &&
+						strcmp($landingpage_node->body[$lang_code][0]['value'], $value) != 0) {
+					$changed = TRUE;
+					$landingpage_node->body[$lang_code][0]['value'] = $value;
+				}
+			}
+			if ($changed) {
+				$landingpage_node->revision_moderation = FALSE;
+				$landingpage_node->subscriptions_notify = FALSE;
+				node_save($landingpage_node);
+			}
+		}
+	
+	}
+}
