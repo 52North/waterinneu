@@ -745,6 +745,8 @@ class AtjsPregCallback {
         $character_set = 'a-zA-Z0-9-_';
     }
 
+    $text = html_entity_decode($text);
+
     if (isset($this->listener->allow_spaces) && $this->listener->allow_spaces) {
       // If spaces are allowed, the token will be of the format '[@user name]' (without quotes).
       return preg_replace_callback('/\[[\\' . $this->listener->at . ']{1}(([' . $character_set . '\]]+ ?)+)\]/', array($this, 'match_replace'), $text);

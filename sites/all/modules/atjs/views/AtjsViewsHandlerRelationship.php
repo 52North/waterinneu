@@ -64,6 +64,7 @@ class AtjsViewsHandlerRelationship extends views_handler_relationship {
    */
   function query() {
     if (!$this->to_entity) {
+      parent::query();
       return;
     }
 
@@ -75,13 +76,6 @@ class AtjsViewsHandlerRelationship extends views_handler_relationship {
       $this->definition['extra'][] = array(
         'field' => 'listener',
         'value' => $listeners,
-      );
-    }
-    else {
-      $this->definition['extra'][] = array(
-        'field' => $this->definition['base field'] == 'source_entity_id' ? 'source_entity_type' : 'mentioned_entity_type',
-        'value' => $this->table,
-        'numeric' => FALSE,
       );
     }
 

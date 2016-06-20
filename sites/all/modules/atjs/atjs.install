@@ -130,7 +130,7 @@ function atjs_schema() {
         'description' => 'The characters supported by this listener.',
         'type' => 'varchar',
         'length' => '255',
-        'not null' => FALSE,
+        'not null' => TRUE,
         'default' => 'basic',
       )
     ),
