@@ -86,23 +86,6 @@ The primary goal of the WaterInnEU Portal is to facility a match making between 
     </div>
   </div>
   <!--
-    ALERTS
-  -->
-  <div id="explore-alerts" class="panel panel-default panel-dark-hightlight">
-    <div class="panel-heading panel-heading-dark-highlight collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#alerts">
-        <h3 class="panel-title accordion-toggle">
-            <span class="glyphicon glyphicon-exclamation-sign">&nbsp;</span>Alerts
-        </h3>
-    </div>
-    <div id="alerts" class="panel-collapse collapse">
-      <div class="panel-body">
-        In case you don’t want to miss a new product that is registered at the portal or a new service offer/request, you can subscribe for new products, service offers, and service requests. Therefore, please use the form below.
-        <h4>Subscribe</h4>
-        <div id="subscribe-form"></div>
-      </div>
-    </div>
-  </div>
-  <!--
     ASK
   -->
   <div id="explore-ask-experts" class="panel panel-default panel-light-hightlight">
@@ -120,20 +103,19 @@ The primary goal of the WaterInnEU Portal is to facility a match making between 
     </div>
   </div>
   <!--
-  FORUM
+    ALERTS
   -->
-  <div id="explore-forum" class="panel panel-default panel-dark-hightlight">
-    <div class="panel-heading panel-heading-dark-highlight collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#forum">
+  <div id="explore-alerts" class="panel panel-default panel-dark-hightlight">
+    <div class="panel-heading panel-heading-dark-highlight collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#alerts">
         <h3 class="panel-title accordion-toggle">
-            <span class="glyphicon glyphicon-comment">&nbsp;</span>Open discussions in Forum
+            <span class="glyphicon glyphicon-exclamation-sign">&nbsp;</span>Alerts
         </h3>
     </div>
-    <div id="forum" class="panel-collapse collapse">
+    <div id="alerts" class="panel-collapse collapse">
       <div class="panel-body">
-        The WaterInnEU <a href="forum">discussion forum</a> is meant to be used for open discussion on products or specific services. Feel free to add a new thread or contribute to existing threads.
-        <h4>Latest Threads</h4>
-        <div id="latest-forum-threads"></div>
-        <a href="forum"><button type="submit" class="btn btn-primary">Enter forum</button></a>
+        In case you don’t want to miss a new product that is registered at the portal or a new service offer/request, you can subscribe for new products, service offers, and service requests. Therefore, please use the form below.
+        <h4>Subscribe</h4>
+        <div id="subscribe-form"></div>
       </div>
     </div>
   </div>

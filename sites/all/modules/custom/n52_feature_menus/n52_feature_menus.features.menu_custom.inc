@@ -34,6 +34,22 @@ function n52_feature_menus_menu_default_menu_custom() {
     'language' => 'und',
     'i18n_mode' => 5,
   );
+  // Exported menu: menu-n52-footer-first-links.
+  $menus['menu-n52-footer-first-links'] = array(
+    'menu_name' => 'menu-n52-footer-first-links',
+    'title' => 'Footer First Links',
+    'description' => '',
+    'language' => 'und',
+    'i18n_mode' => 5,
+  );
+  // Exported menu: menu-n52-footer-second-links.
+  $menus['menu-n52-footer-second-links'] = array(
+    'menu_name' => 'menu-n52-footer-second-links',
+    'title' => 'Second Footer Links',
+    'description' => '',
+    'language' => 'und',
+    'i18n_mode' => 5,
+  );
   // Exported menu: menu-top-links.
   $menus['menu-top-links'] = array(
     'menu_name' => 'menu-top-links',
@@ -64,9 +80,11 @@ function n52_feature_menus_menu_default_menu_custom() {
   t('Contains everything regarding author tasks like adding new content');
   t('Everything regarding moderation tasks');
   t('Footer 3rd Links');
+  t('Footer First Links');
   t('Holds all links that are in the top div.');
   t('Moderator\'s Tasks');
   t('Navigation');
+  t('Second Footer Links');
   t('THIS MENU IS NOT USED ATM.');
   t('The <em>User</em> menu contains links related to the user\'s account, as well as the \'Log out\' link.');
   t('Top-Level-Links (anon)');

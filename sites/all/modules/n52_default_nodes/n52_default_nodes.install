@@ -33,6 +33,8 @@ include_once drupal_get_path('module', 'module_name') . 'nodes/imprint.php';
 include_once drupal_get_path('module', 'module_name') . 'nodes/javascript-required.php';
 include_once drupal_get_path('module', 'module_name') . 'nodes/landingpage_accordion.php';
 include_once drupal_get_path('module', 'module_name') . 'nodes/matchmaking.php';
+include_once drupal_get_path('module', 'module_name') . 'nodes/related-portals.php';
+include_once drupal_get_path('module', 'module_name') . 'nodes/sitemap.php';
  
 function n52_default_nodes_enable() {
 	global $user; 
@@ -44,6 +46,8 @@ function n52_default_nodes_enable() {
 		_n52_default_nodes_javascript_required(),
 		_n52_default_nodes_landingpage_accordion(),
 		_n52_default_nodes_matchmaking(),
+		_n52_default_nodes_related_portals(),
+		_n52_default_nodes_sitemap(),
 	);
 	
 	foreach ($nodes as $node_content) {
