@@ -44,6 +44,13 @@ function n52_feature_organisations_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = ' »|';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = 'A list of organisations associated with river basin management. <a href="./search/advanced#organisations">Search</a> or browse through the list, or use the <a href="./matchmaking">matchmaking</a> facilities to look for partners or support in finding or implementing products.';
+  $handler->display->display_options['header']['area']['format'] = 'full_html_plain_no_filter_';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
