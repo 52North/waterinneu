@@ -92,6 +92,15 @@ function n52_feature_events_views_default_views() {
   );
   $handler->display->display_options['filters']['field_date_year_month_day_value']['default_date'] = 'now -7 day';
   $handler->display->display_options['filters']['field_date_year_month_day_value']['year_range'] = '-0:+5';
+  /* Filter criterion: Content: Categorie (field_n52_event_categorie) */
+  $handler->display->display_options['filters']['field_n52_event_categorie_tid']['id'] = 'field_n52_event_categorie_tid';
+  $handler->display->display_options['filters']['field_n52_event_categorie_tid']['table'] = 'field_data_field_n52_event_categorie';
+  $handler->display->display_options['filters']['field_n52_event_categorie_tid']['field'] = 'field_n52_event_categorie_tid';
+  $handler->display->display_options['filters']['field_n52_event_categorie_tid']['value'] = array(
+    0 => '3549',
+  );
+  $handler->display->display_options['filters']['field_n52_event_categorie_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_n52_event_categorie_tid']['vocabulary'] = 'n52_event_categories';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
