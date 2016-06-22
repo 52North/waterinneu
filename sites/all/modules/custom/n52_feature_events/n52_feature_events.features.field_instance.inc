@@ -512,6 +512,56 @@ function n52_feature_events_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-event-field_n52_event_categorie'.
+  $field_instances['node-event-field_n52_event_categorie'] = array(
+    'bundle' => 'event',
+    'default_value' => array(
+      0 => array(
+        'tid' => 3549,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_n52_event_categorie',
+    'label' => 'Categorie',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-event-title_field'.
   $field_instances['node-event-title_field'] = array(
     'bundle' => 'event',
@@ -561,13 +611,58 @@ function n52_feature_events_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-n52_event_categories-name_field'.
+  $field_instances['taxonomy_term-n52_event_categories-name_field'] = array(
+    'bundle' => 'n52_event_categories',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Name',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Categorie');
   t('Comment');
   t('Date');
   t('Description');
   t('Image');
   t('Links');
+  t('Name');
   t('Subject');
   t('Title');
   t('Venue');

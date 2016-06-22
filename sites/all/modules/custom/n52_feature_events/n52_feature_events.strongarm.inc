@@ -96,11 +96,17 @@ function n52_feature_events_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'subscriptions' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'path' => array(
           'weight' => '6',
+        ),
+        'language' => array(
+          'weight' => '5',
         ),
       ),
       'display' => array(),
