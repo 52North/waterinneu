@@ -26,6 +26,14 @@ function n52_feature_menus_menu_default_menu_custom() {
     'language' => 'und',
     'i18n_mode' => 5,
   );
+  // Exported menu: menu-footer-right-links.
+  $menus['menu-footer-right-links'] = array(
+    'menu_name' => 'menu-footer-right-links',
+    'title' => 'Footer 4th Links',
+    'description' => '',
+    'language' => 'und',
+    'i18n_mode' => 5,
+  );
   // Exported menu: menu-moderator.
   $menus['menu-moderator'] = array(
     'menu_name' => 'menu-moderator',
@@ -37,7 +45,7 @@ function n52_feature_menus_menu_default_menu_custom() {
   // Exported menu: menu-n52-footer-first-links.
   $menus['menu-n52-footer-first-links'] = array(
     'menu_name' => 'menu-n52-footer-first-links',
-    'title' => 'Footer First Links',
+    'title' => 'Footer 1st Links',
     'description' => '',
     'language' => 'und',
     'i18n_mode' => 5,
@@ -45,7 +53,7 @@ function n52_feature_menus_menu_default_menu_custom() {
   // Exported menu: menu-n52-footer-second-links.
   $menus['menu-n52-footer-second-links'] = array(
     'menu_name' => 'menu-n52-footer-second-links',
-    'title' => 'Second Footer Links',
+    'title' => 'Footer 2nd Links',
     'description' => '',
     'language' => 'und',
     'i18n_mode' => 5,
@@ -79,12 +87,13 @@ function n52_feature_menus_menu_default_menu_custom() {
   t('Author');
   t('Contains everything regarding author tasks like adding new content');
   t('Everything regarding moderation tasks');
+  t('Footer 1st Links');
+  t('Footer 2nd Links');
   t('Footer 3rd Links');
-  t('Footer First Links');
+  t('Footer 4th Links');
   t('Holds all links that are in the top div.');
   t('Moderator\'s Tasks');
   t('Navigation');
-  t('Second Footer Links');
   t('THIS MENU IS NOT USED ATM.');
   t('The <em>User</em> menu contains links related to the user\'s account, as well as the \'Log out\' link.');
   t('Top-Level-Links (anon)');

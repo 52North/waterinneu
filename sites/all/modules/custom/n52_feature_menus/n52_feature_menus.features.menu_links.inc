@@ -85,16 +85,18 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: main-menu_matchmaking:node/8784.
-  $menu_links['main-menu_matchmaking:node/8784'] = array(
+  // Exported menu link: main-menu_matchmaking-and-support:node/8784.
+  $menu_links['main-menu_matchmaking-and-support:node/8784'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'node/8784',
     'router_path' => 'node/%',
-    'link_title' => 'Matchmaking',
+    'link_title' => 'Matchmaking and Support',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'title' => '',
+      ),
       'alter' => TRUE,
-      'identifier' => 'main-menu_matchmaking:node/8784',
+      'identifier' => 'main-menu_matchmaking-and-support:node/8784',
       'ignore_access_roles' => array(
         1 => 0,
         2 => 0,
@@ -157,6 +159,29 @@ function n52_feature_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -49,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: main-menu_related-portals:node/8815.
+  $menu_links['main-menu_related-portals:node/8815'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/8815',
+    'router_path' => 'node/%',
+    'link_title' => 'Related Portals',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'main-menu_related-portals:node/8815',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1228,7 +1253,7 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Login');
   t('Manage translation tasks');
   t('Marketplace');
-  t('Matchmaking');
+  t('Matchmaking and Support');
   t('Migrate example - dates');
   t('My Content');
   t('Organisation');
@@ -1240,6 +1265,7 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Project');
   t('Recent posts');
   t('Register');
+  t('Related Portals');
   t('Scheduled publications');
   t('Search');
   t('Search Wizard');
