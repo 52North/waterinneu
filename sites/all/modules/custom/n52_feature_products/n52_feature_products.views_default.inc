@@ -155,6 +155,23 @@ function n52_feature_products_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'teaser';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = 'The platform provides detailed information on a select number of screened products, together with supporting material and case studies, and relevant contacts for further communication. You can search for these using the <a href="./search/advanced#products">advanced search tool</a>.
+Products can be:
+<ul>
+<li>Best practice guidance</li>
+<li>Technology (hardware)</li>
+<li>Software tools</li>
+<li>Dataset</li>
+<li>Methodology</li>
+<li>Standard</li>
+</ul>
+The live comments box associated with each product enables active and ongoing discussions between developers. If you have any experience with a specific tool, or indeed a question for the developer, please post these using the products’ comments box.';
+  $handler->display->display_options['header']['area']['format'] = 'full_html_plain_no_filter_';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
