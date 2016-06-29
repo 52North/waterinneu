@@ -37,7 +37,15 @@ include_once drupal_get_path('module', 'module_name') . 'nodes/related-portals.p
 include_once drupal_get_path('module', 'module_name') . 'nodes/sitemap.php';
  
 function n52_default_nodes_enable() {
-	global $user; 
+	global $user;
+	
+	$edit_warning = "
+			<!--
+			
+			YOU MUST NOT EDIT THIS CONTENT USING THE WEB UI! USE THE CODE!
+			
+			-->
+			";
 	
 	$nodes = array (
 		_n52_default_nodes_api_json(),
@@ -59,7 +67,6 @@ function n52_default_nodes_enable() {
 	
 		// Create new node
 		if($result->rowCount() <= 0) {
-			$body_text = $node_content['text'];
 			
 			$node = entity_create('node', array('type' => 'page'));
 			$node->uid = $user->uid;
@@ -67,7 +74,8 @@ function n52_default_nodes_enable() {
 			
 			$entity->title->set($node_content['title']);
 			$entity->body->set(array (
-					'value' => $node_content['text']['und'],
+					'value' => $edit_warning . 
+					_n52_default_nodes_apply_replacement_tags($node_content['text']['und']),
 					'format' => 'full_html_plain_no_filter_',
 					) );
 			// comments closed
@@ -96,9 +104,11 @@ function n52_default_nodes_enable() {
 			$changed = FALSE;
 			foreach ($node_content['text'] as $lang_code => $value) {
 				if (isset($landingpage_node->body[$lang_code]) &&
-						strcmp($landingpage_node->body[$lang_code][0]['value'], $value) != 0) {
+						strcmp($landingpage_node->body[$lang_code][0]['value'], 
+							_n52_default_nodes_apply_replacement_tags($value)) != 0) {
 					$changed = TRUE;
-					$landingpage_node->body[$lang_code][0]['value'] = $value;
+					$landingpage_node->body[$lang_code][0]['value'] = $edit_warning . 
+						_n52_default_nodes_apply_replacement_tags($value);
 				}
 			}
 			if ($changed) {
@@ -109,4 +119,14 @@ function n52_default_nodes_enable() {
 		}
 	
 	}
+}
+
+function _n52_default_nodes_apply_replacement_tags($text_to_filter) {
+	// the base url without trailing "/"
+	// hence %BASE_URL% requires the user to add a trailing "/"
+	global $base_url;
+	
+	$filtered_text = str_replace("%BASE_URL%", $base_url, $text_to_filter);
+	
+	return $filtered_text;
 }

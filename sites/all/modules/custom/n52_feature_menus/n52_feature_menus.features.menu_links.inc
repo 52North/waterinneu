@@ -163,16 +163,18 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: main-menu_related-portals:node/8815.
-  $menu_links['main-menu_related-portals:node/8815'] = array(
+  // Exported menu link: main-menu_related-portals:node/8816.
+  $menu_links['main-menu_related-portals:node/8816'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'node/8815',
+    'link_path' => 'node/8816',
     'router_path' => 'node/%',
     'link_title' => 'Related Portals',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'title' => '',
+      ),
       'alter' => TRUE,
-      'identifier' => 'main-menu_related-portals:node/8815',
+      'identifier' => 'main-menu_related-portals:node/8816',
     ),
     'module' => 'menu',
     'hidden' => 0,

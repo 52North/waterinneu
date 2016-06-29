@@ -381,3 +381,32 @@ ul.service-requests-list > li:before {
     padding-right: 10px;
     margin-left: -20px;
 }
+
+/******************************************************************************
+ *                                                                            *
+ *                            portal list styles                              *
+ *                                                                            *
+ ******************************************************************************/
+ div#portal-list > div > div {
+    border: #cecece 1px solid;
+    background: #f5f5f5;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    min-width: 450px;
+    min-height: 220px;
+    padding: 15px;
+ }
+ 
+ img.portal-logo {
+    border: none;
+    float: left;
+    margin-right: 15px;
+ }
+ 
+ a.portal-link {
+    font-size: 150%;
+ }
+ 
+ p.portal-description {
+    margin: 0;
+ }
