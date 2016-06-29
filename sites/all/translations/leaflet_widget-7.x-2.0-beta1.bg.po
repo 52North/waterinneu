@@ -1,0 +1,16 @@
+# Bulgarian translation of Leaflet Widget for Geofield (7.x-2.0-beta1)
+# Copyright (c) 2014 by the Bulgarian translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Leaflet Widget for Geofield (7.x-2.0-beta1)\n"
+"POT-Creation-Date: 2014-08-06 14:06+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Bulgarian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Add"
+msgstr "Добави"

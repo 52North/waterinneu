@@ -1,0 +1,26 @@
+# Bulgarian translation of Libraries API (7.x-2.3)
+# Copyright (c) 2016 by the Bulgarian translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Libraries API (7.x-2.3)\n"
+"POT-Creation-Date: 2016-05-13 04:49+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Bulgarian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Status"
+msgstr "Статус"
+msgid "Version"
+msgstr "Версия"
+msgid "Links"
+msgstr "Връзки"
+msgid "Name"
+msgstr "Име"
+msgid "OK"
+msgstr "OK"
+msgid "Installed version"
+msgstr "Инсталирана версия"

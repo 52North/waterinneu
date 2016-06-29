@@ -1,0 +1,20 @@
+# Bulgarian translation of Machine name (7.x-1.0)
+# Copyright (c) 2012 by the Bulgarian translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Machine name (7.x-1.0)\n"
+"POT-Creation-Date: 2012-11-15 21:02+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Bulgarian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Default"
+msgstr "По подразбиране"
+msgid "This field stores varchar text in the database."
+msgstr ""
+"Това поле съхранява  текст с "
+"променлива дължина"
