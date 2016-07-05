@@ -375,6 +375,7 @@ function tmgmt_job_item_load_latest($plugin, $item_type, $item_id, $source_langu
     ->orderBy('tji.changed', 'DESC')
     ->groupBy('tj.target_language')
     ->groupBy('tji.tjiid')
+    ->groupBy('tji.changed')
     ->execute();
   if ($items = $result->fetchAllKeyed()) {
     $return = array();
@@ -840,7 +841,7 @@ function tmgmt_translator_access($op, TMGMTTranslator $translator = NULL, $accou
 /**
  * Checks whether a translator entity with the supplied name already exists.
  *
- * We can't user entity_load or any of its wrapper functions for that as our
+ * We can't use entity_load or any of its wrapper functions for that as our
  * translator entity controller filters out broken translator entities (e.g. if
  * the translator plugin of the translator entity doesn't exist (anymore).
  *

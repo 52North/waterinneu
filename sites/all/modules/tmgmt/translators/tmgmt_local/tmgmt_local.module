@@ -661,7 +661,7 @@ function tmgmt_local_field_access($op, $field, $entity_type, $entity = NULL, $ac
     }
 
     // Administrators are allowed to deal with others only.
-    if (user_access('administer translation server', $account)) {
+    if (user_access('administer tmgmt', $account)) {
       return TRUE;
     }
 
