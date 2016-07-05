@@ -28,9 +28,11 @@
  */
 function _n52_default_nodes_matchmaking() {
 	return array (
-		'title' => 'Matchmaking',
+		'title' =>  array (
+				'en' => 'Matchmaking',
+		),
 		'alias' => 'matchmaking',
-		'text' => array ('und' => '
+		'text' => array ('en' => '
 <p>
 The primary goal of the WaterInnEU Portal is to facilitate matchmaking between 
 organizations offering products which are relevant to river basin management, 

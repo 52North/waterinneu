@@ -28,9 +28,11 @@
  */
 function _n52_default_nodes_api_json() {
 	return array (
-		'title' => 'JSON API',
+		'title' =>  array (
+				'en' => 'JSON API',
+		),
 		'alias' => 'api',
-		'text' => array ('und' => '
+		'text' => array ('en' => '
 <p>
     The marketplace content is in addition to the human readable form available 
     via an JSON API. The following endpoints are provided:

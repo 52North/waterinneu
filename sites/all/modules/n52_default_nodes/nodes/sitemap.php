@@ -28,9 +28,11 @@
  */
 function _n52_default_nodes_sitemap() {
 	return array (
-		'title' => 'Site Map',
+		'title' => array (
+				'en' => 'Site Map',
+		),
 		'alias' => 'sitemap',
-		'text' => array ('und' => '
+		'text' => array ('en' => '
 <ul>
 	<li>
 		<a href="#top">Home</a><br />The landingpage including

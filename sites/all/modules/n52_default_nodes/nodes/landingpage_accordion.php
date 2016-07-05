@@ -28,9 +28,11 @@
  */
 function _n52_default_nodes_landingpage_accordion() {
 	return array (
-		'title' => 'Landing page - Content accordion',
-		'alias' => 'test/my-path/yo-wrapper',
-		'text' => array ('und' => '
+		'title' =>  array (
+				'en' => 'Landing page - Content accordion',
+		),
+		'alias' => NULL,
+		'text' => array ('en' => '
 <div id="accordion" class="panel-group">
 	<!--
 	ABOUT

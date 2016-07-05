@@ -28,9 +28,11 @@
  */
 function _n52_default_nodes_cookies() {
 	return array (
-		'title' => 'Cookies',
+		'title' =>  array (
+				'en' => 'Cookies',
+		),
 		'alias' => 'cookies',
-		'text' => array ('und' => '
+		'text' => array ('en' => '
 <p>
 	The Marketplace uses cookies for storing user preferences and session 
 	information for logged in users. By using it and agreeing to this policy, 

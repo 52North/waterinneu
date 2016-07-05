@@ -28,9 +28,11 @@
  */
 function _n52_default_nodes_imprint() {
 	return array (
-		'title' => 'Imprint',
+		'title' =>  array (
+				'en' => 'Imprint',
+		),
 		'alias' => 'imprint',
-		'text' => array ('und' => '
+		'text' => array ('en' => '
 <p>
     <a href="http://52north.org/" target="_blank">52&deg;North GmbH</a> is 
 	responsible for this website.<br />

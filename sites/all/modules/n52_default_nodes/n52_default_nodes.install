@@ -35,7 +35,7 @@ include_once drupal_get_path('module', 'module_name') . 'nodes/landingpage_accor
 include_once drupal_get_path('module', 'module_name') . 'nodes/matchmaking.php';
 include_once drupal_get_path('module', 'module_name') . 'nodes/related-portals.php';
 include_once drupal_get_path('module', 'module_name') . 'nodes/sitemap.php';
- 
+
 function n52_default_nodes_enable() {
 	global $user;
 	
@@ -65,61 +65,123 @@ function n52_default_nodes_enable() {
 			->fields('n', array('nid'));
 		$result = $query->execute();
 	
-		// Create new node
 		if($result->rowCount() <= 0) {
-			
-			$node = entity_create('node', array('type' => 'page'));
-			$node->uid = $user->uid;
-			$entity = entity_metadata_wrapper('node',$node);
-			
-			$entity->title->set($node_content['title']);
-			$entity->body->set(array (
-					'value' => $edit_warning . 
-					_n52_default_nodes_apply_replacement_tags($node_content['text']['und']),
-					'format' => 'full_html_plain_no_filter_',
-					) );
-			// comments closed
-			$entity->comment->set(1);
-			$entity->revision->set(TRUE);
-			$entity->language->set(LANGUAGE_NONE);
-			
-			$entity->save();
-			$nid = entity_id('node', $node);
-			$path = array (
-					'source' => "node/$nid",
-					'alias' => $node_content['alias'],
-			);
-			path_save($path);
-			$landingpage_node = node_load($nid);
-			$landingpage_node->revision_moderation = FALSE;
-			$landingpage_node->status = 1;
-			$landingpage_node->subscriptions_notify = FALSE;
-			node_save($landingpage_node);
+			_n52_default_nodes_add_node($node_content, $edit_warning);
 		}
-		
-		// Update body of existing node
 		else {
 			$nid = $result->fetchAssoc()['nid'];
-			$landingpage_node = node_load($nid);
-			$changed = FALSE;
-			foreach ($node_content['text'] as $lang_code => $value) {
-				if (isset($landingpage_node->body[$lang_code]) &&
-						strcmp($landingpage_node->body[$lang_code][0]['value'], 
-							_n52_default_nodes_apply_replacement_tags($value)) != 0) {
-					$changed = TRUE;
-					$landingpage_node->body[$lang_code][0]['value'] = $edit_warning . 
-						_n52_default_nodes_apply_replacement_tags($value);
-				}
-			}
-			if ($changed) {
-				$landingpage_node->revision_moderation = FALSE;
-				$landingpage_node->subscriptions_notify = FALSE;
-				node_save($landingpage_node);
-			}
+			_n52_default_nodes_update_node($nid, $node_content, $edit_warning);
 		}
-	
 	}
 }
+
+/*
+ * Update body, title and alias for each given language of existing node
+ */
+function _n52_default_nodes_update_node($nid, $node_content, $edit_warning) {
+	$node = node_load($nid);
+	$changed = FALSE;
+	$current_alias = drupal_get_path_alias("node/$nid");
+	if (isset($node_content['alias']) && strcmp($current_alias, $node_content['alias']) != 0) {
+		$delete = array (
+				'source' => "node/$nid",
+				'alias' => $node_content['alias'],
+		);
+		path_save($delete);
+	}
+	// update body
+	foreach ($node_content['text'] as $lang_code => $value) {
+		// 1. body is different
+		// 2. TODO body is absent
+		if ( isset($node->body[$lang_code]) && strcmp($node->body[$lang_code][0]['value'],_n52_default_nodes_apply_replacement_tags($value)) != 0) {
+			$changed = TRUE;
+			$node->body[$lang_code][0]['value'] = $edit_warning . 
+				_n52_default_nodes_apply_replacement_tags($value);
+			$node->body[$lang_code][0]['format'] = 'full_html_plain_no_filter_';
+		}
+		elseif (!isset($node->body[$lang_code])) {
+			$changed = TRUE;
+			$node->body[$lang_code]['0']['value'] = $edit_warning . 
+				_n52_default_nodes_apply_replacement_tags($value);
+			$node->body[$lang_code][0]['format'] = 'full_html_plain_no_filter_';
+		}
+	}
+	$lang_code = NULL;
+	$value = NULL;
+	// update title
+	foreach ($node_content['title'] as $lang_code => $value) {
+		// 1. title is different
+		// 2. title is absent
+		if ( isset($nody->title_field[$lang_code])  && strcmp($node->title_field[$lang_code][0]['value'], $value) != 0) {
+			$changed = TRUE;
+			$node->title_field[$lang_code][0]['value'] = $value;
+		}
+		elseif (!isset($nody->title_field[$lang_code])) {
+			$changed = TRUE;
+			$node->title_field[$lang_code][0]['value'] = $value;
+		}
+	}
+	if ($changed) {
+		$node->revision_moderation = FALSE;
+		$node->subscriptions_notify = FALSE;
+		node_save($node);
+	}
+	if (isset($node_content['menu'])) {
+		_n52_default_nodes_ensure_menu_item_existence($nid, $node_content);
+	}
+}
+
+/*
+ * Create new node
+ */
+function _n52_default_nodes_add_node($node_content, $edit_warning) {
+	$new_node = entity_create('node', array('type' => 'page'));
+	$new_node->uid = $user->uid;
+	$entity = entity_metadata_wrapper('node',$new_node);
+
+	// comments closed
+	$entity->comment->set(1);
+	$entity->revision->set(TRUE);
+	$entity->language->set(LANGUAGE_NONE);
+	
+	$entity->save();
+	$nid = entity_id('node', $new_node);
+	if (isset($node_content['alias'])) {
+		$path = array (
+				'source' => "node/$nid",
+				'alias' => $node_content['alias'],
+		);
+		path_save($path);
+	}
+	$node = node_load($nid);
+	$node->revision_moderation = FALSE;
+	$node->status = 1;
+	$node->subscriptions_notify = FALSE;
+	foreach ($node_content['text'] as $lang_code => $value) {
+		$node->body[$lang_code][0] = array (
+			'value' => $edit_warning .
+			_n52_default_nodes_apply_replacement_tags($value),
+			'format' => 'full_html_plain_no_filter_',
+		);
+	}
+	// Default is english or undefined
+	if (isset($node_content['title']['en'])) {
+		$node->title = $node_content['title']['en'];
+		$node->title_original = $node_content['title']['en'];
+	}
+	else {
+		$node->title = $node_content['title']['und'];
+		$node->title_original = $node_content['title']['und'];
+	}
+	foreach ($node_content['title'] as $lang_code => $value) {
+		$node->title_field[$lang_code][0]['value'] = $value;
+	}
+	node_save($node);
+	if (isset($node_content['menu'])) {
+		_n52_default_nodes_ensure_menu_item_existence($nid, $node_content);
+	}
+}
+
 
 function _n52_default_nodes_apply_replacement_tags($text_to_filter) {
 	// the base url without trailing "/"
@@ -129,4 +191,29 @@ function _n52_default_nodes_apply_replacement_tags($text_to_filter) {
 	$filtered_text = str_replace("%BASE_URL%", $base_url, $text_to_filter);
 	
 	return $filtered_text;
+}
+
+/*
+ * Method checks for an menu item with the given title in the given menu
+ */
+function _n52_default_nodes_ensure_menu_item_existence($nid, $node_content){
+	$changed = false;
+	
+	$menu = menu_load_links($node_content['menu']['name']);
+	
+	// TODO
+	
+// 	i18n_string
+	
+	// check for menu item with title $node_content['title']['en']
+	// if not found
+		// add new menu item
+		// with label for different languages
+	// else
+		// update menu item
+		// check for each language the label
+	
+	if ($changed) {
+		menu_cache_clear($node_content['menu']['name']);
+	}
 }

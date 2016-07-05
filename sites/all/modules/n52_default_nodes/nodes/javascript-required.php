@@ -28,9 +28,11 @@
  */
 function _n52_default_nodes_javascript_required() {
 	return array (
-		'title' => 'Javascript Required',
+		'title' =>  array (
+				'en' => 'Javascript Required',
+		),
 		'alias' => 'javascript-required',
-		'text' => array ('und' => '
+		'text' => array ('en' => '
 This page uses javascript to get interactive elements working. Hence, please 
 allow javascript for
 <ul>
