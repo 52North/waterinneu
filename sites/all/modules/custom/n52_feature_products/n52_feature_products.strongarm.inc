@@ -177,6 +177,13 @@ function n52_feature_products_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_tool_bg_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_tool_bg_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_tool_de_pattern';
   $strongarm->value = '';
   $export['pathauto_node_tool_de_pattern'] = $strongarm;
@@ -257,6 +264,13 @@ function n52_feature_products_strongarm() {
   $strongarm->name = 'pathauto_taxonomy_term_license_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_license_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_n52_commercial_development_pattern';
+  $strongarm->value = 'commercial-development/[term:parents:join-path]/[term:name]';
+  $export['pathauto_taxonomy_term_n52_commercial_development_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

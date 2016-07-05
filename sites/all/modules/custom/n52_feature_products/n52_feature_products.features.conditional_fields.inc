@@ -345,6 +345,92 @@ function n52_feature_products_conditional_fields_default_fields() {
   $items["node:tool:3"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
+    'dependent' => 'field_n52_comm_dev_info',
+    'dependee' => 'field_n52_comm_dev',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'fade',
+      'effect_options' => array(
+        'speed' => 750,
+      ),
+      'element_view' => array(
+        1 => 1,
+        2 => 2,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 1,
+        3 => 0,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 3555,
+      'value' => array(
+        0 => array(
+          'tid' => 3555,
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items["node:tool:4"] = array(
+    'entity' => 'node',
+    'bundle' => 'tool',
     'dependent' => 'field_purpose_info',
     'dependee' => 'field_purpose',
     'options' => array(
@@ -444,7 +530,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:4"] = array(
+  $items["node:tool:5"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_relevant_water_bodies_info',
@@ -540,7 +626,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:5"] = array(
+  $items["node:tool:6"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_supported_data_discovery_s',
@@ -667,7 +753,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:6"] = array(
+  $items["node:tool:7"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_supported_data_downloading',
@@ -794,7 +880,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:7"] = array(
+  $items["node:tool:8"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_supported_data_encoding_st',
@@ -921,7 +1007,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:8"] = array(
+  $items["node:tool:9"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_supported_data_visualizati',
@@ -1048,7 +1134,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:9"] = array(
+  $items["node:tool:10"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_supported_legacy_systems',
@@ -1083,7 +1169,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:10"] = array(
+  $items["node:tool:11"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_supported_other_standards',
@@ -1210,7 +1296,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:11"] = array(
+  $items["node:tool:12"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_supported_processes_and_mo',
@@ -1337,7 +1423,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:12"] = array(
+  $items["node:tool:13"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_supported_sensor_data_stan',
@@ -1464,7 +1550,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:13"] = array(
+  $items["node:tool:14"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_target_user_group_info',
@@ -1566,7 +1652,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:14"] = array(
+  $items["node:tool:15"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_type_of_hardware',
@@ -1685,7 +1771,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:15"] = array(
+  $items["node:tool:16"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_type_of_software',

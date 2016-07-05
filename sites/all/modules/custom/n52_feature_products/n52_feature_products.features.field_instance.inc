@@ -130,7 +130,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 26,
+      'weight' => 31,
     ),
   );
 
@@ -225,7 +225,7 @@ function n52_feature_products_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 40,
+      'weight' => 45,
     ),
   );
 
@@ -271,7 +271,7 @@ function n52_feature_products_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 2,
     ),
   );
 
@@ -364,7 +364,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 25,
+      'weight' => 30,
     ),
   );
 
@@ -456,7 +456,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 42,
+      'weight' => 47,
     ),
   );
 
@@ -548,7 +548,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 22,
+      'weight' => 27,
     ),
   );
 
@@ -594,7 +594,7 @@ compatible with?',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 21,
+      'weight' => 26,
     ),
   );
 
@@ -653,7 +653,7 @@ compatible with?',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_description',
-    'label' => 'Description',
+    'label' => 'Product Description',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -712,7 +712,99 @@ compatible with?',
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_detailed_question'.
+  $field_instances['node-tool-field_detailed_question'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 36,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_detailed_question',
+    'label' => 'Application & Target Markets',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 0,
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 7,
     ),
   );
 
@@ -781,7 +873,64 @@ compatible with?',
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 41,
+      'weight' => 46,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_image'.
+  $field_instances['node-tool-field_image'] = array(
+    'bundle' => 'tool',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 35,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_image',
+    'label' => 'Photo',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'entity_translation_sync' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 6,
     ),
   );
 
@@ -873,7 +1022,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 37,
+      'weight' => 42,
     ),
   );
 
@@ -932,7 +1081,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 13,
+      'weight' => 18,
     ),
   );
 
@@ -1024,7 +1173,7 @@ compatible with?',
         'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 14,
+      'weight' => 19,
     ),
   );
 
@@ -1072,7 +1221,7 @@ compatible with?',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 19,
+      'weight' => 24,
     ),
   );
 
@@ -1164,7 +1313,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 20,
+      'weight' => 25,
     ),
   );
 
@@ -1247,7 +1396,7 @@ compatible with?',
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 7,
+      'weight' => 13,
     ),
   );
 
@@ -1312,7 +1461,329 @@ compatible with?',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 3,
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_n52_comm_dev'.
+  $field_instances['node-tool-field_n52_comm_dev'] = array(
+    'bundle' => 'tool',
+    'default_value' => array(),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 39,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_n52_comm_dev',
+    'label' => 'Stage of Commercial Development',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'delimiter' => '',
+        'limit' => 10,
+        'min_length' => 0,
+        'not_found_message' => 'The stage \'@term\' will be added.',
+        'size' => 60,
+      ),
+      'type' => 'options_select',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_n52_comm_dev_info'.
+  $field_instances['node-tool-field_n52_comm_dev_info'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The status quo of product development, (if appropriate, please use standard TRL definitions).',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 38,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_n52_comm_dev_info',
+    'label' => 'Stage of Commercial Development Info',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 0,
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_n52_competitve_advantages'.
+  $field_instances['node-tool-field_n52_competitve_advantages'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The unique selling point of the product',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 37,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_n52_competitve_advantages',
+    'label' => 'Competitive Advantages',
+    'required' => 1,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 0,
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_n52_product_owner'.
+  $field_instances['node-tool-field_n52_product_owner'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Who is the first or best one to contact?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 34,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_n52_product_owner',
+    'label' => 'Product Owner',
+    'required' => 1,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 0,
+          'harmony_filtered' => 0,
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
     ),
   );
 
@@ -1374,7 +1845,7 @@ compatible with?',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 39,
+      'weight' => 44,
     ),
   );
 
@@ -1436,7 +1907,7 @@ compatible with?',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 38,
+      'weight' => 43,
     ),
   );
 
@@ -1480,7 +1951,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 11,
+      'weight' => 16,
     ),
   );
 
@@ -1572,7 +2043,7 @@ compatible with?',
         'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 17,
     ),
   );
 
@@ -1631,7 +2102,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 15,
+      'weight' => 20,
     ),
   );
 
@@ -1723,7 +2194,7 @@ compatible with?',
         'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 16,
+      'weight' => 21,
     ),
   );
 
@@ -1782,7 +2253,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 28,
+      'weight' => 33,
     ),
   );
 
@@ -1844,7 +2315,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 29,
+      'weight' => 34,
     ),
   );
 
@@ -1906,7 +2377,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 30,
+      'weight' => 35,
     ),
   );
 
@@ -1968,7 +2439,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 31,
+      'weight' => 36,
     ),
   );
 
@@ -2030,7 +2501,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 32,
+      'weight' => 37,
     ),
   );
 
@@ -2122,7 +2593,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 27,
+      'weight' => 32,
     ),
   );
 
@@ -2184,7 +2655,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 35,
+      'weight' => 40,
     ),
   );
 
@@ -2246,7 +2717,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 33,
+      'weight' => 38,
     ),
   );
 
@@ -2308,7 +2779,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 34,
+      'weight' => 39,
     ),
   );
 
@@ -2367,7 +2838,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 17,
+      'weight' => 22,
     ),
   );
 
@@ -2459,7 +2930,7 @@ compatible with?',
         'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 18,
+      'weight' => 23,
     ),
   );
 
@@ -2505,7 +2976,7 @@ compatible with?',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 36,
+      'weight' => 41,
     ),
   );
 
@@ -2551,7 +3022,7 @@ compatible with?',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 15,
     ),
   );
 
@@ -2643,7 +3114,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 23,
+      'weight' => 28,
     ),
   );
 
@@ -2735,7 +3206,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 24,
+      'weight' => 29,
     ),
   );
 
@@ -2781,7 +3252,7 @@ compatible with?',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 14,
     ),
   );
 
@@ -2867,7 +3338,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 12,
     ),
   );
 
@@ -2956,7 +3427,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -3225,6 +3696,50 @@ compatible with?',
   // Exported field_instance: 'taxonomy_term-issue-name_field'.
   $field_instances['taxonomy_term-issue-name_field'] = array(
     'bundle' => 'issue',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Name',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-n52_commercial_development-name_field'.
+  $field_instances['taxonomy_term-n52_commercial_development-name_field'] = array(
+    'bundle' => 'n52_commercial_development',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -3746,14 +4261,15 @@ compatible with?',
 <li>What are best practices and lessons learned from the application of the product?</li>
 <li>Where can I find this information?</li>
 </ul>');
+  t('Application & Target Markets');
   t('Application Scale');
   t('Best Practices');
   t('Category');
   t('Comment');
+  t('Competitive Advantages');
   t('Contact Details');
   t('Costinfo');
   t('Costs');
-  t('Description');
   t('E-learning Tutorials');
   t('For which tasks in water resources management can the product be used?');
   t('How can I get in contact with product and / or service provider, river basin managers and consultants related to the products?');
@@ -3767,13 +4283,18 @@ compatible with?',
   t('Logo');
   t('Name');
   t('Organisation');
+  t('Photo');
   t('Potential to combine this tool with other tools');
+  t('Product Description');
+  t('Product Owner');
   t('Project');
   t('Purpose');
   t('Purpose Info');
   t('Related Links and Supporting Material');
   t('Relevant Water Bodies');
   t('Relevant Water Bodies Info');
+  t('Stage of Commercial Development');
+  t('Stage of Commercial Development Info');
   t('Standard Category');
   t('Supported Data Discovery Standards');
   t('Supported Data Downloading Standards');
@@ -3786,6 +4307,8 @@ compatible with?',
   t('Target User Group');
   t('Target User Group Info');
   t('Technology Readiness Level');
+  t('The status quo of product development, (if appropriate, please use standard TRL definitions).');
+  t('The unique selling point of the product');
   t('Title');
   t('Type of Hardware');
   t('Type of Input requirements');
@@ -3813,6 +4336,7 @@ compatible with?',
   t('Where can I find relevant information or download the product?');
   t('Which other products is this product
 compatible with?');
+  t('Who is the first or best one to contact?');
   t('With which (data-) systems can the product be used?');
   t('With which categories of international and/or national standards is the product compatible?');
   t('With which international and/or national standards is the product compatible?');

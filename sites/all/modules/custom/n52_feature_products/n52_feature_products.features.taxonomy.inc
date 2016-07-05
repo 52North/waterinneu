@@ -209,6 +209,31 @@ function n52_feature_products_taxonomy_default_vocabularies() {
         ),
       ),
     ),
+    'n52_commercial_development' => array(
+      'name' => 'Stage of Commercial Development',
+      'machine_name' => 'n52_commercial_development',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'language' => 'und',
+      'i18n_mode' => 1,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
     'other_standards' => array(
       'name' => 'Other Standards',
       'machine_name' => 'other_standards',
