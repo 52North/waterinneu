@@ -89,7 +89,7 @@ function n52_feature_i18n_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_hide_translation_links_article';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['entity_translation_hide_translation_links_article'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -117,7 +117,7 @@ function n52_feature_i18n_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_hide_translation_links_page';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['entity_translation_hide_translation_links_page'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1126,7 +1126,7 @@ function n52_feature_i18n_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_last_check';
-  $strongarm->value = 1467207667;
+  $strongarm->value = 1467715482;
   $export['l10n_update_last_check'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -2894,9 +2894,9 @@ function n52_feature_i18n_strongarm() {
         'status' => '1',
         'project' => 'drupal',
         'langcode' => 'de',
-        'type' => 'local',
+        'type' => 'current',
         'timestamp' => 1465306188,
-        'last_checked' => 1467193169,
+        'last_checked' => 1467715482,
         'files' => array(
           'remote' => (object) array(
             'project' => 'drupal',
@@ -2916,6 +2916,8 @@ function n52_feature_i18n_strongarm() {
             'directory' => 'translations://',
             'uri' => 'translations://drupal-7.41.de.po',
             'timestamp' => 1465306188,
+            'last_checked' => 1467715482,
+            'language' => 'de',
           ),
         ),
         'language' => 'de',
@@ -4214,9 +4216,9 @@ function n52_feature_i18n_strongarm() {
         'status' => '1',
         'project' => 'flag',
         'langcode' => 'de',
-        'type' => 'local',
+        'type' => 'current',
         'timestamp' => 1467193222,
-        'last_checked' => 1467193169,
+        'last_checked' => 1467277767,
         'files' => array(
           'remote' => (object) array(
             'project' => 'flag',
@@ -4236,6 +4238,8 @@ function n52_feature_i18n_strongarm() {
             'uri' => 'translations://flag-7.x-3.7.de.po',
             'timestamp' => 1467193222,
             'directory' => 'translations://',
+            'last_checked' => 1467277767,
+            'language' => 'de',
           ),
         ),
         'language' => 'de',
@@ -4982,9 +4986,9 @@ function n52_feature_i18n_strongarm() {
         'status' => '1',
         'project' => 'i18n',
         'langcode' => 'de',
-        'type' => 'local',
-        'timestamp' => 1467206808,
-        'last_checked' => 1467206789,
+        'type' => 'current',
+        'timestamp' => 1467209263,
+        'last_checked' => 1467277767,
         'files' => array(
           'remote' => (object) array(
             'project' => 'i18n',
@@ -5002,8 +5006,10 @@ function n52_feature_i18n_strongarm() {
             'type' => 'local',
             'filename' => 'i18n-7.x-1.13.de.po',
             'uri' => 'translations://i18n-7.x-1.13.de.po',
-            'timestamp' => 1467206808,
+            'timestamp' => 1467209263,
             'directory' => 'translations://',
+            'last_checked' => 1467277767,
+            'language' => 'de',
           ),
         ),
         'language' => 'de',
@@ -7392,9 +7398,9 @@ function n52_feature_i18n_strongarm() {
         'status' => '1',
         'project' => 'revisioning',
         'langcode' => 'de',
-        'type' => 'local',
+        'type' => 'current',
         'timestamp' => 1465306203,
-        'last_checked' => 1467207667,
+        'last_checked' => 1467277767,
         'files' => array(
           'remote' => (object) array(
             'project' => 'revisioning',
@@ -7414,6 +7420,8 @@ function n52_feature_i18n_strongarm() {
             'directory' => 'translations://',
             'uri' => 'translations://revisioning-7.x-1.9.de.po',
             'timestamp' => 1465306203,
+            'last_checked' => 1467277767,
+            'language' => 'de',
           ),
         ),
         'language' => 'de',
@@ -8176,9 +8184,9 @@ function n52_feature_i18n_strongarm() {
         'status' => '1',
         'project' => 'smtp',
         'langcode' => 'de',
-        'type' => 'local',
-        'timestamp' => 1467207707,
-        'last_checked' => 1467207667,
+        'type' => 'current',
+        'timestamp' => 1467209263,
+        'last_checked' => 1467277767,
         'files' => array(
           'remote' => (object) array(
             'project' => 'smtp',
@@ -8196,8 +8204,10 @@ function n52_feature_i18n_strongarm() {
             'type' => 'local',
             'filename' => 'smtp-7.x-1.2.de.po',
             'uri' => 'translations://smtp-7.x-1.2.de_0.po',
-            'timestamp' => 1467207707,
+            'timestamp' => 1467209263,
             'directory' => 'translations://',
+            'last_checked' => 1467277767,
+            'language' => 'de',
           ),
         ),
         'language' => 'de',
@@ -8328,9 +8338,9 @@ function n52_feature_i18n_strongarm() {
         'status' => '1',
         'project' => 'strongarm',
         'langcode' => 'de',
-        'type' => '',
-        'timestamp' => 0,
-        'last_checked' => 0,
+        'type' => 'current',
+        'timestamp' => 1467277780,
+        'last_checked' => 1467277767,
         'files' => array(
           'remote' => (object) array(
             'project' => 'strongarm',
@@ -8338,7 +8348,8 @@ function n52_feature_i18n_strongarm() {
             'version' => '7.x-2.0',
             'type' => 'remote',
             'filename' => 'strongarm-7.x-2.0.de.po',
-            'uri' => 'http://ftp.drupal.org/files/translations/7.x/strongarm/strongarm-7.x-2.0.de.po',
+            'uri' => 'https://ftp.drupal.org/files/translations/7.x/strongarm/strongarm-7.x-2.0.de.po',
+            'timestamp' => 1339605246,
           ),
           'local' => (object) array(
             'project' => 'strongarm',
@@ -8346,8 +8357,11 @@ function n52_feature_i18n_strongarm() {
             'version' => '7.x-2.0',
             'type' => 'local',
             'filename' => 'strongarm-7.x-2.0.de.po',
-            'directory' => 'translations://',
             'uri' => 'translations://strongarm-7.x-2.0.de.po',
+            'timestamp' => 1467277780,
+            'directory' => 'translations://',
+            'last_checked' => 1467277767,
+            'language' => 'de',
           ),
         ),
         'language' => 'de',
@@ -8485,9 +8499,9 @@ function n52_feature_i18n_strongarm() {
         'status' => '1',
         'project' => 'superfish',
         'langcode' => 'de',
-        'type' => 'remote',
-        'timestamp' => 1367055053,
-        'last_checked' => 1465306183,
+        'type' => 'current',
+        'timestamp' => 1467277781,
+        'last_checked' => 1467277767,
         'files' => array(
           'remote' => (object) array(
             'project' => 'superfish',
@@ -8504,8 +8518,11 @@ function n52_feature_i18n_strongarm() {
             'version' => '7.x-1.9',
             'type' => 'local',
             'filename' => 'superfish-7.x-1.9.de.po',
-            'directory' => 'translations://',
             'uri' => 'translations://superfish-7.x-1.9.de.po',
+            'timestamp' => 1467277781,
+            'directory' => 'translations://',
+            'last_checked' => 1467277767,
+            'language' => 'de',
           ),
         ),
         'language' => 'de',
@@ -8561,9 +8578,9 @@ function n52_feature_i18n_strongarm() {
         'status' => '1',
         'project' => 'tagclouds',
         'langcode' => 'de',
-        'type' => '',
-        'timestamp' => 0,
-        'last_checked' => 0,
+        'type' => 'current',
+        'timestamp' => 1467277783,
+        'last_checked' => 1467277767,
         'files' => array(
           'remote' => (object) array(
             'project' => 'tagclouds',
@@ -8571,7 +8588,8 @@ function n52_feature_i18n_strongarm() {
             'version' => '7.x-1.10',
             'type' => 'remote',
             'filename' => 'tagclouds-7.x-1.10.de.po',
-            'uri' => 'http://ftp.drupal.org/files/translations/7.x/tagclouds/tagclouds-7.x-1.10.de.po',
+            'uri' => 'https://ftp.drupal.org/files/translations/7.x/tagclouds/tagclouds-7.x-1.10.de.po',
+            'timestamp' => 1407341532,
           ),
           'local' => (object) array(
             'project' => 'tagclouds',
@@ -8579,8 +8597,11 @@ function n52_feature_i18n_strongarm() {
             'version' => '7.x-1.10',
             'type' => 'local',
             'filename' => 'tagclouds-7.x-1.10.de.po',
-            'directory' => 'translations://',
             'uri' => 'translations://tagclouds-7.x-1.10.de.po',
+            'timestamp' => 1467277783,
+            'directory' => 'translations://',
+            'last_checked' => 1467277767,
+            'language' => 'de',
           ),
         ),
         'language' => 'de',
@@ -8789,9 +8810,9 @@ function n52_feature_i18n_strongarm() {
         'status' => '1',
         'project' => 'taxonomy_display',
         'langcode' => 'de',
-        'type' => '',
-        'timestamp' => 0,
-        'last_checked' => 0,
+        'type' => 'current',
+        'timestamp' => 1465306212,
+        'last_checked' => 1467277767,
         'files' => array(
           'remote' => (object) array(
             'project' => 'taxonomy_display',
@@ -8799,7 +8820,8 @@ function n52_feature_i18n_strongarm() {
             'version' => '7.x-1.1',
             'type' => 'remote',
             'filename' => 'taxonomy_display-7.x-1.1.de.po',
-            'uri' => 'http://ftp.drupal.org/files/translations/7.x/taxonomy_display/taxonomy_display-7.x-1.1.de.po',
+            'uri' => 'https://ftp.drupal.org/files/translations/7.x/taxonomy_display/taxonomy_display-7.x-1.1.de.po',
+            'timestamp' => 1362278454,
           ),
           'local' => (object) array(
             'project' => 'taxonomy_display',
@@ -8809,6 +8831,9 @@ function n52_feature_i18n_strongarm() {
             'filename' => 'taxonomy_display-7.x-1.1.de.po',
             'directory' => 'translations://',
             'uri' => 'translations://taxonomy_display-7.x-1.1.de.po',
+            'timestamp' => 1465306212,
+            'last_checked' => 1467277767,
+            'language' => 'de',
           ),
         ),
         'language' => 'de',
