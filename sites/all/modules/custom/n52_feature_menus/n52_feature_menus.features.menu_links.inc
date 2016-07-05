@@ -85,10 +85,10 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: main-menu_matchmaking-and-support:node/8784.
-  $menu_links['main-menu_matchmaking-and-support:node/8784'] = array(
+  // Exported menu link: main-menu_matchmaking-and-support:node/8824.
+  $menu_links['main-menu_matchmaking-and-support:node/8824'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'node/8784',
+    'link_path' => 'node/8824',
     'router_path' => 'node/%',
     'link_title' => 'Matchmaking and Support',
     'options' => array(
@@ -96,16 +96,7 @@ function n52_feature_menus_menu_default_menu_links() {
         'title' => '',
       ),
       'alter' => TRUE,
-      'identifier' => 'main-menu_matchmaking-and-support:node/8784',
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        8 => 0,
-        10 => 0,
-        9 => 0,
-        11 => 0,
-        3 => 0,
-      ),
+      'identifier' => 'main-menu_matchmaking-and-support:node/8824',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -163,10 +154,10 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: main-menu_related-portals:node/8816.
-  $menu_links['main-menu_related-portals:node/8816'] = array(
+  // Exported menu link: main-menu_related-portals:node/8825.
+  $menu_links['main-menu_related-portals:node/8825'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'node/8816',
+    'link_path' => 'node/8825',
     'router_path' => 'node/%',
     'link_title' => 'Related Portals',
     'options' => array(
@@ -174,7 +165,7 @@ function n52_feature_menus_menu_default_menu_links() {
         'title' => '',
       ),
       'alter' => TRUE,
-      'identifier' => 'main-menu_related-portals:node/8816',
+      'identifier' => 'main-menu_related-portals:node/8825',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -466,52 +457,6 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: menu-footer-3rd-links_cookies:node/8813.
-  $menu_links['menu-footer-3rd-links_cookies:node/8813'] = array(
-    'menu_name' => 'menu-footer-3rd-links',
-    'link_path' => 'node/8813',
-    'router_path' => 'node/%',
-    'link_title' => 'Cookies',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'alter' => TRUE,
-      'identifier' => 'menu-footer-3rd-links_cookies:node/8813',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-footer-3rd-links_imprint:node/8782.
-  $menu_links['menu-footer-3rd-links_imprint:node/8782'] = array(
-    'menu_name' => 'menu-footer-3rd-links',
-    'link_path' => 'node/8782',
-    'router_path' => 'node/%',
-    'link_title' => 'Imprint',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'alter' => TRUE,
-      'identifier' => 'menu-footer-3rd-links_imprint:node/8782',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
   // Exported menu link: menu-footer-right-links_contacthelpdesk:contact.
   $menu_links['menu-footer-right-links_contacthelpdesk:contact'] = array(
     'menu_name' => 'menu-footer-right-links',
@@ -576,29 +521,6 @@ function n52_feature_menus_menu_default_menu_links() {
       ),
       'alter' => TRUE,
       'identifier' => 'menu-moderator_scheduled-publications:scheduled-publications',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-n52-footer-first-links_site-map:node/8814.
-  $menu_links['menu-n52-footer-first-links_site-map:node/8814'] = array(
-    'menu_name' => 'menu-n52-footer-first-links',
-    'link_path' => 'node/8814',
-    'router_path' => 'node/%',
-    'link_title' => 'Site Map',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'alter' => TRUE,
-      'identifier' => 'menu-n52-footer-first-links_site-map:node/8814',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -1340,7 +1262,6 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Contact');
   t('Contact/HelpDesk');
   t('Content summary');
-  t('Cookies');
   t('Create thread');
   t('E-Learning');
   t('Event');
@@ -1349,7 +1270,6 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Forum');
   t('Glossary');
   t('Home');
-  t('Imprint');
   t('Log out');
   t('Login');
   t('Manage translation tasks');
@@ -1372,7 +1292,6 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Search Wizard');
   t('Service Offering');
   t('Service Request');
-  t('Site Map');
   t('Sources');
   t('Success Stories');
   t('Translate');
