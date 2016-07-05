@@ -10,6 +10,17 @@
 function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'accept translation jobs'.
+  $permissions['accept translation jobs'] = array(
+    'name' => 'accept translation jobs',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
+    ),
+    'module' => 'tmgmt',
+  );
+
   // Exported permission: 'access administration menu'.
   $permissions['access administration menu'] = array(
     'name' => 'access administration menu',
@@ -308,6 +319,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy_access_fix',
   );
 
+  // Exported permission: 'add terms in n52_event_categories'.
+  $permissions['add terms in n52_event_categories'] = array(
+    'name' => 'add terms in n52_event_categories',
+    'roles' => array(),
+    'module' => 'taxonomy_access_fix',
+  );
+
   // Exported permission: 'add terms in organisation_classification'.
   $permissions['add terms in organisation_classification'] = array(
     'name' => 'add terms in organisation_classification',
@@ -503,6 +521,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_n52_event_categories'.
+  $permissions['add_terms_n52_event_categories'] = array(
+    'name' => 'add_terms_n52_event_categories',
+    'roles' => array(),
     'module' => 'taxonomy_autocomplete_permission',
   );
 
@@ -912,6 +937,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'imce',
   );
 
+  // Exported permission: 'administer language fallback'.
+  $permissions['administer language fallback'] = array(
+    'name' => 'administer language fallback',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'language_fallback',
+  );
+
   // Exported permission: 'administer languages'.
   $permissions['administer languages'] = array(
     'name' => 'administer languages',
@@ -1056,6 +1090,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'administer profiler builder'.
+  $permissions['administer profiler builder'] = array(
+    'name' => 'administer profiler builder',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'profiler_builder',
+  );
+
   // Exported permission: 'administer recaptcha'.
   $permissions['administer recaptcha'] = array(
     'name' => 'administer recaptcha',
@@ -1171,6 +1214,25 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'system',
+  );
+
+  // Exported permission: 'administer tmgmt'.
+  $permissions['administer tmgmt'] = array(
+    'name' => 'administer tmgmt',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'tmgmt',
+  );
+
+  // Exported permission: 'administer translation tasks'.
+  $permissions['administer translation tasks'] = array(
+    'name' => 'administer translation tasks',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'moderator' => 'moderator',
+    ),
+    'module' => 'tmgmt_local',
   );
 
   // Exported permission: 'administer twitter block'.
@@ -1306,6 +1368,17 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'panels_mini',
   );
 
+  // Exported permission: 'create n52_sucess_story content'.
+  $permissions['create n52_sucess_story content'] = array(
+    'name' => 'create n52_sucess_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create organisation content'.
   $permissions['create organisation content'] = array(
     'name' => 'create organisation content',
@@ -1369,6 +1442,16 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'create translation jobs'.
+  $permissions['create translation jobs'] = array(
+    'name' => 'create translation jobs',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'moderator' => 'moderator',
+    ),
+    'module' => 'tmgmt',
+  );
+
   // Exported permission: 'create url aliases'.
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
@@ -1409,6 +1492,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['delete any faq content'] = array(
     'name' => 'delete any faq content',
     'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any n52_sucess_story content'.
+  $permissions['delete any n52_sucess_story content'] = array(
+    'name' => 'delete any n52_sucess_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -1500,6 +1592,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['delete own faq content'] = array(
     'name' => 'delete own faq content',
     'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own n52_sucess_story content'.
+  $permissions['delete own n52_sucess_story content'] = array(
+    'name' => 'delete own n52_sucess_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -1644,6 +1745,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'delete terms in license'.
   $permissions['delete terms in license'] = array(
     'name' => 'delete terms in license',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in n52_event_categories'.
+  $permissions['delete terms in n52_event_categories'] = array(
+    'name' => 'delete terms in n52_event_categories',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -1823,6 +1933,16 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit any n52_sucess_story content'.
+  $permissions['edit any n52_sucess_story content'] = array(
+    'name' => 'edit any n52_sucess_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'moderator' => 'moderator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any organisation content'.
   $permissions['edit any organisation content'] = array(
     'name' => 'edit any organisation content',
@@ -1918,6 +2038,17 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit own faq content'] = array(
     'name' => 'edit own faq content',
     'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own n52_sucess_story content'.
+  $permissions['edit own n52_sucess_story content'] = array(
+    'name' => 'edit own n52_sucess_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
+    ),
     'module' => 'node',
   );
 
@@ -2070,6 +2201,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'edit terms in license'.
   $permissions['edit terms in license'] = array(
     'name' => 'edit terms in license',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in n52_event_categories'.
+  $permissions['edit terms in n52_event_categories'] = array(
+    'name' => 'edit terms in n52_event_categories',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -2247,6 +2387,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'services',
   );
 
+  // Exported permission: 'manage bg translation overview priorities'.
+  $permissions['manage bg translation overview priorities'] = array(
+    'name' => 'manage bg translation overview priorities',
+    'roles' => array(),
+    'module' => 'translation_overview',
+  );
+
   // Exported permission: 'manage de translation overview priorities'.
   $permissions['manage de translation overview priorities'] = array(
     'name' => 'manage de translation overview priorities',
@@ -2352,6 +2499,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge n52_event_categories terms'.
+  $permissions['merge n52_event_categories terms'] = array(
+    'name' => 'merge n52_event_categories terms',
+    'roles' => array(),
     'module' => 'term_merge',
   );
 
@@ -2545,6 +2699,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'comment',
   );
 
+  // Exported permission: 'provide translation services'.
+  $permissions['provide translation services'] = array(
+    'name' => 'provide translation services',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'tmgmt_local',
+  );
+
   // Exported permission: 'publish revisions'.
   $permissions['publish revisions'] = array(
     'name' => 'publish revisions',
@@ -2575,6 +2738,16 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of any faq content'] = array(
     'name' => 'publish revisions of any faq content',
     'roles' => array(),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'publish revisions of any n52_sucess_story content'.
+  $permissions['publish revisions of any n52_sucess_story content'] = array(
+    'name' => 'publish revisions of any n52_sucess_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'moderator' => 'moderator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -2641,6 +2814,16 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of own faq content'] = array(
     'name' => 'publish revisions of own faq content',
     'roles' => array(),
+    'module' => 'revisioning',
+  );
+
+  // Exported permission: 'publish revisions of own n52_sucess_story content'.
+  $permissions['publish revisions of own n52_sucess_story content'] = array(
+    'name' => 'publish revisions of own n52_sucess_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'moderator' => 'moderator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -2820,6 +3003,16 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'better_formats',
   );
 
+  // Exported permission: 'show format selection for rules_config'.
+  $permissions['show format selection for rules_config'] = array(
+    'name' => 'show format selection for rules_config',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'better_formats',
+  );
+
   // Exported permission: 'show format selection for taxonomy_term'.
   $permissions['show format selection for taxonomy_term'] = array(
     'name' => 'show format selection for taxonomy_term',
@@ -2877,6 +3070,16 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'moderator' => 'moderator',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'submit translation jobs'.
+  $permissions['submit translation jobs'] = array(
+    'name' => 'submit translation jobs',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'moderator' => 'moderator',
+    ),
+    'module' => 'tmgmt',
   );
 
   // Exported permission: 'submit translations to localization server'.
@@ -3272,6 +3475,16 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'view revisions of any n52_sucess_story content'.
+  $permissions['view revisions of any n52_sucess_story content'] = array(
+    'name' => 'view revisions of any n52_sucess_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'moderator' => 'moderator',
+    ),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: 'view revisions of any organisation content'.
   $permissions['view revisions of any organisation content'] = array(
     'name' => 'view revisions of any organisation content',
@@ -3338,6 +3551,17 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'view revisions of own n52_sucess_story content'.
+  $permissions['view revisions of own n52_sucess_story content'] = array(
+    'name' => 'view revisions of own n52_sucess_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
+    ),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: 'view revisions of own organisation content'.
   $permissions['view revisions of own organisation content'] = array(
     'name' => 'view revisions of own organisation content',
@@ -3388,6 +3612,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'system',
+  );
+
+  // Exported permission: 'view translation overview assignments'.
+  $permissions['view translation overview assignments'] = array(
+    'name' => 'view translation overview assignments',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'translation_overview',
   );
 
   return $permissions;

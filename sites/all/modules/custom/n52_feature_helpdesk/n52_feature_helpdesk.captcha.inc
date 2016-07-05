@@ -37,6 +37,14 @@ function n52_feature_helpdesk_captcha_default_points() {
   $captcha = new stdClass();
   $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
   $captcha->api_version = 1;
+  $captcha->form_id = 'comment_node_n52_sucess_story_form';
+  $captcha->module = '';
+  $captcha->captcha_type = 'default';
+  $export['comment_node_n52_sucess_story_form'] = $captcha;
+
+  $captcha = new stdClass();
+  $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
+  $captcha->api_version = 1;
   $captcha->form_id = 'comment_node_organisation_form';
   $captcha->module = '';
   $captcha->captcha_type = 'default';

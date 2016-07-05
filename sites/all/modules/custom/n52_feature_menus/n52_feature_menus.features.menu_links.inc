@@ -177,15 +177,18 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: main-menu_success-stories:node/8787.
-  $menu_links['main-menu_success-stories:node/8787'] = array(
+  // Exported menu link: main-menu_success-stories:success-story.
+  $menu_links['main-menu_success-stories:success-story'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'node/8787',
-    'router_path' => 'node/%',
+    'link_path' => 'success-story',
+    'router_path' => 'success-story',
     'link_title' => 'Success Stories',
     'options' => array(
       'alter' => TRUE,
-      'identifier' => 'main-menu_success-stories:node/8787',
+      'identifier' => 'main-menu_success-stories:success-story',
+      'attributes' => array(
+        'title' => '',
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,
