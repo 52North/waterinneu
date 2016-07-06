@@ -218,13 +218,13 @@ ul.related-link-list li {
  *                            Add product form                                *
  *                                                                            *
  ******************************************************************************/
-form#tool-node-form div div#edit-field-tool-of-the-month {
-    display: none;
-}
-
 div.maintenance-alert {
 	border-radius: 0px;
 	padding: 15px;
+}
+
+form#tool-node-form > div > div.field-type-entityreference > div > fieldset > legend > span {
+	font-weight: bold;
 }
 
 /******************************************************************************

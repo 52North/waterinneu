@@ -109,7 +109,7 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  /* Filter criterion: Indexed Node: Application Scale */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_application_scale']['id'] = 'field_application_scale';
   $handler->display->display_options['filters']['field_application_scale']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_application_scale']['field'] = 'field_application_scale';
@@ -125,7 +125,6 @@ function n52_feature_search_views_default_views() {
     9 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_application_scale']['expose']['reduce'] = 0;
   /* Filter criterion: Indexed Node: Category */
   $handler->display->display_options['filters']['field_category']['id'] = 'field_category';
   $handler->display->display_options['filters']['field_category']['table'] = 'search_api_index_product_index';
@@ -194,7 +193,7 @@ function n52_feature_search_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_license']['expose']['reduce'] = 0;
-  /* Filter criterion: Indexed Node: Purpose */
+  /* Filter criterion: Indexed Node: WFD objectives */
   $handler->display->display_options['filters']['field_purpose']['id'] = 'field_purpose';
   $handler->display->display_options['filters']['field_purpose']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_purpose']['field'] = 'field_purpose';
@@ -262,7 +261,7 @@ function n52_feature_search_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_target_user_group']['expose']['reduce'] = 0;
-  /* Filter criterion: Indexed Node: Technology Readiness Level */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_technology_readiness_level']['id'] = 'field_technology_readiness_level';
   $handler->display->display_options['filters']['field_technology_readiness_level']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_technology_readiness_level']['field'] = 'field_technology_readiness_level';
@@ -278,7 +277,6 @@ function n52_feature_search_views_default_views() {
     9 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_technology_readiness_level']['expose']['reduce'] = 0;
   /* Filter criterion: Indexed Node: Type of Hardware */
   $handler->display->display_options['filters']['field_type_of_hardware']['id'] = 'field_type_of_hardware';
   $handler->display->display_options['filters']['field_type_of_hardware']['table'] = 'search_api_index_product_index';
@@ -447,7 +445,7 @@ function n52_feature_search_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_service_category']['expose']['reduce'] = 0;
-  /* Filter criterion: Indexed Node: Products */
+  /* Filter criterion: Indexed Node: Product */
   $handler->display->display_options['filters']['field_product']['id'] = 'field_product';
   $handler->display->display_options['filters']['field_product']['table'] = 'search_api_index_service_requests_index';
   $handler->display->display_options['filters']['field_product']['field'] = 'field_product';
@@ -679,6 +677,7 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['filters']['field_class']['expose']['label'] = 'Class';
   $handler->display->display_options['filters']['field_class']['expose']['operator'] = 'field_class_op';
   $handler->display->display_options['filters']['field_class']['expose']['identifier'] = 'field_class';
+  $handler->display->display_options['filters']['field_class']['expose']['multiple'] = FALSE;
   $handler->display->display_options['filters']['field_class']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,

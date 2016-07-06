@@ -90,145 +90,6 @@ function n52_feature_products_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tool-field_application_scale'.
-  $field_instances['node-tool-field_application_scale'] = array(
-    'bundle' => 'tool',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'What is the relevant scale of application of the product?',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'tool_of_the_month' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_application_scale',
-    'label' => 'Application Scale',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 31,
-    ),
-  );
-
-  // Exported field_instance: 'node-tool-field_best_practices'.
-  $field_instances['node-tool-field_best_practices'] = array(
-    'bundle' => 'tool',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '<ul>
-<li>What are best practices and lessons learned from the application of the product?</li>
-<li>Where can I find this information?</li>
-</ul>',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 28,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'tool_of_the_month' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_best_practices',
-    'label' => 'Best Practices',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'filtered_html' => 'filtered_html',
-          'full_html' => 0,
-          'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
-          'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 1,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -8,
-            ),
-            'full_html_plain_no_filter_' => array(
-              'weight' => 0,
-            ),
-            'full_html_tinymce' => array(
-              'weight' => -7,
-            ),
-            'harmony_filtered' => array(
-              'weight' => 0,
-            ),
-            'plain_text' => array(
-              'weight' => -10,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'atjs_fieldset' => array(
-          'atjs' => 0,
-          'atjs_listeners' => array(
-            'harmony_users' => 0,
-          ),
-        ),
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 45,
-    ),
-  );
-
   // Exported field_instance: 'node-tool-field_category'.
   $field_instances['node-tool-field_category'] = array(
     'bundle' => 'tool',
@@ -280,8 +141,11 @@ function n52_feature_products_field_default_field_instances() {
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which other products is this product
-compatible with?',
+    'description' => 'Compatibility with other products.
+<div class="author-instructions">
+    For example, products in support of better integration e.g. an integrated model for linkage between surface waters and groundwater or climate models; software tools etc.
+</div>
+',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -305,7 +169,7 @@ compatible with?',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_combinability',
-    'label' => 'Potential to combine this tool with other tools',
+    'label' => 'Potential to combine this product with other products',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -373,7 +237,10 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'How can I get in contact with product and / or service provider, river basin managers and consultants related to the products?',
+    'description' => 'How can I get in contact with product and / or service provider, river basin managers and consultants related to the products?
+<div class="author-instructions">
+    E-mail, telephone, country etc.
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -440,7 +307,7 @@ compatible with?',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -453,10 +320,10 @@ compatible with?',
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 5,
+        'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 47,
+      'weight' => 44,
     ),
   );
 
@@ -465,7 +332,10 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Details of costs related to the product.
+<div class="author-instructions">
+    For example, licence costs, costs for implementation and development of the product.
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -548,7 +418,7 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 27,
+      'weight' => 15,
     ),
   );
 
@@ -557,7 +427,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What are the costs related to the product?',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -594,7 +464,7 @@ compatible with?',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 26,
+      'weight' => 14,
     ),
   );
 
@@ -603,7 +473,10 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What is the product about?',
+    'description' => 'What is the product about?
+<div class="author-instructions">
+    Short description of the product and background information 
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -712,7 +585,7 @@ compatible with?',
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -721,7 +594,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'What the product is used for, where and by whom?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -804,76 +677,7 @@ compatible with?',
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-tool-field_e_learning_tutorials'.
-  $field_instances['node-tool-field_e_learning_tutorials'] = array(
-    'bundle' => 'tool',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Is there an E-learning tutorial for the product on The Virtual Market Place and where can I find it?',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 29,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'tool_of_the_month' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_e_learning_tutorials',
-    'label' => 'E-learning Tutorials',
-    'required' => 0,
-    'settings' => array(
-      'absolute_url' => 1,
-      'attributes' => array(
-        'class' => '',
-        'configurable_class' => 0,
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_label_use_field_label' => 0,
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 46,
+      'weight' => 8,
     ),
   );
 
@@ -930,99 +734,7 @@ compatible with?',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-tool-field_innovative_advantages'.
-  $field_instances['node-tool-field_innovative_advantages'] = array(
-    'bundle' => 'tool',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'What is the unique selling point of the product?',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 25,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'tool_of_the_month' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_innovative_advantages',
-    'label' => 'Innovative Advantages',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'filtered_html' => 'filtered_html',
-          'full_html' => 0,
-          'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
-          'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 1,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -8,
-            ),
-            'full_html_plain_no_filter_' => array(
-              'weight' => 0,
-            ),
-            'full_html_tinymce' => array(
-              'weight' => -7,
-            ),
-            'harmony_filtered' => array(
-              'weight' => 0,
-            ),
-            'plain_text' => array(
-              'weight' => -10,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'atjs_fieldset' => array(
-          'atjs' => 0,
-          'atjs_listeners' => array(
-            'harmony_users' => 0,
-          ),
-        ),
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 42,
+      'weight' => 7,
     ),
   );
 
@@ -1031,7 +743,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What subject is the product related to?',
+    'description' => 'The water management subject addressed by the product.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1081,7 +793,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 18,
+      'weight' => 22,
     ),
   );
 
@@ -1090,7 +802,10 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What subject is the product related to?',
+    'description' => 'The water management subject addressed by the product.
+<div class="author-instructions">
+   Please give details on the subject addressed by this product in the free text box.
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1173,7 +888,7 @@ compatible with?',
         'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 19,
+      'weight' => 23,
     ),
   );
 
@@ -1182,7 +897,9 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Is this a commercial, free or open source product?',
+    'description' => '<div class="author-instructions"
+   Please give details of accessibility criteria in the free text box.
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1221,7 +938,7 @@ compatible with?',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 24,
+      'weight' => 12,
     ),
   );
 
@@ -1230,7 +947,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What are the conditions to use this product?',
+    'description' => 'Details of accessibility criteria.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1297,7 +1014,7 @@ compatible with?',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1310,10 +1027,10 @@ compatible with?',
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 5,
+        'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 25,
+      'weight' => 13,
     ),
   );
 
@@ -1322,7 +1039,11 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Where can I find relevant information or download the product?',
+    'description' => 'Any leaflets, fact-sheet etc. associated with the product.
+<div class="author-instructions">
+    Please use the TITLE to give a brief description of what each link provides (Limit 128 characters).
+</div>
+',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1360,7 +1081,7 @@ compatible with?',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_links',
-    'label' => 'Related Links and Supporting Material',
+    'label' => 'Project & promotional material about the product',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -1383,7 +1104,7 @@ compatible with?',
         'profile' => '',
       ),
       'rel_remove' => 'default',
-      'title' => 'optional',
+      'title' => 'required',
       'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
       'title_value' => '',
@@ -1396,7 +1117,7 @@ compatible with?',
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 13,
+      'weight' => 42,
     ),
   );
 
@@ -1461,14 +1182,86 @@ compatible with?',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 11,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_n52_case_studies'.
+  $field_instances['node-tool-field_n52_case_studies'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Case studies, best practice examples and lessons learned from the application of the product. 
+<div class="author-instructions">
+    Please use the TITLE to give a brief description of what each link provides (Limit 128 characters).
+</div>',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 41,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_n52_case_studies',
+    'label' => 'Case Studies',
+    'required' => 1,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 18,
     ),
   );
 
   // Exported field_instance: 'node-tool-field_n52_comm_dev'.
   $field_instances['node-tool-field_n52_comm_dev'] = array(
     'bundle' => 'tool',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1495,7 +1288,7 @@ compatible with?',
     'entity_type' => 'node',
     'field_name' => 'field_n52_comm_dev',
     'label' => 'Stage of Commercial Development',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -1505,15 +1298,9 @@ compatible with?',
       'module' => 'options',
       'settings' => array(
         'apply_chosen' => '',
-        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-        'delimiter' => '',
-        'limit' => 10,
-        'min_length' => 0,
-        'not_found_message' => 'The stage \'@term\' will be added.',
-        'size' => 60,
       ),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1522,7 +1309,9 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The status quo of product development, (if appropriate, please use standard TRL definitions).',
+    'description' => '<div class="author-instructions">
+    The status quo of product development (if appropriate, please use standard TRL definitions).
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1605,7 +1394,7 @@ compatible with?',
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -1614,7 +1403,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The unique selling point of the product',
+    'description' => 'The unique selling point of the product.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1697,7 +1486,79 @@ compatible with?',
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_n52_e_learn_and_support'.
+  $field_instances['node-tool-field_n52_e_learn_and_support'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'E-learning, tutorials and/or other supporting material available for the product.
+<div class="author-instructions">
+    Please use the TITLE to give a brief description of what each link provides (Limit 128 characters).
+</div>',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 40,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_n52_e_learn_and_support',
+    'label' => 'E-learning, tutorials and supporting material',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 19,
     ),
   );
 
@@ -1792,7 +1653,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'What is the products’ developer organisation?',
+    'description' => 'The name of the product’s developer organisation.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1818,8 +1679,8 @@ compatible with?',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_organisation',
-    'label' => 'Organisation',
-    'required' => 0,
+    'label' => 'Organisation/Institution',
+    'required' => 1,
     'settings' => array(
       'behaviors' => array(
         'prepopulate' => array(
@@ -1835,6 +1696,7 @@ compatible with?',
       'settings' => array(
         'fields' => array(),
         'type_settings' => array(
+          'allow_clone' => 0,
           'allow_existing' => 1,
           'allow_new' => 1,
           'delete_references' => 0,
@@ -1845,7 +1707,7 @@ compatible with?',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 44,
+      'weight' => 43,
     ),
   );
 
@@ -1854,7 +1716,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'What is the name of the project in which the product has been developed?',
+    'description' => 'The project in which the product was developed.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1881,7 +1743,7 @@ compatible with?',
     'entity_type' => 'node',
     'field_name' => 'field_project',
     'label' => 'Project',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'behaviors' => array(
         'prepopulate' => array(
@@ -1897,6 +1759,7 @@ compatible with?',
       'settings' => array(
         'fields' => array(),
         'type_settings' => array(
+          'allow_clone' => 0,
           'allow_existing' => 1,
           'allow_new' => 1,
           'delete_references' => 0,
@@ -1907,7 +1770,7 @@ compatible with?',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 43,
+      'weight' => 41,
     ),
   );
 
@@ -1940,7 +1803,7 @@ compatible with?',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_purpose',
-    'label' => 'Purpose',
+    'label' => 'WFD objectives',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1951,7 +1814,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 16,
+      'weight' => 20,
     ),
   );
 
@@ -1960,7 +1823,10 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'For which tasks in water resources management can the product be used?',
+    'description' => 'For which tasks in water resources management can the product be used?
+<div class="author-instructions">
+   Please give details on the tasks this product can be used for in the free text box.
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1984,7 +1850,7 @@ compatible with?',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_purpose_info',
-    'label' => 'Purpose Info',
+    'label' => 'WFD objectives Info',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -2043,7 +1909,7 @@ compatible with?',
         'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 17,
+      'weight' => 21,
     ),
   );
 
@@ -2052,7 +1918,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What types of water bodies is the product related to?',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2102,7 +1968,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 24,
     ),
   );
 
@@ -2111,7 +1977,9 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What types of water bodies is the product related to?',
+    'description' => '<div class="author-instructions">
+   Please give details on the relevant water bodies in the free text box.
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2194,7 +2062,7 @@ compatible with?',
         'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 21,
+      'weight' => 25,
     ),
   );
 
@@ -2203,7 +2071,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'With which categories of international and/or national standards is the product compatible?',
+    'description' => 'What is the standard category',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2253,16 +2121,16 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 33,
+      'weight' => 39,
     ),
   );
 
   // Exported field_instance: 'node-tool-field_supported_data_discovery_s'.
   $field_instances['node-tool-field_supported_data_discovery_s'] = array(
     'bundle' => 'tool',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'With which international and/or national standards is the product compatible?',
+    'description' => 'International and/or national standards the product is compatible with.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2312,19 +2180,23 @@ compatible with?',
       'module' => 'autocomplete_deluxe',
       'settings' => array(
         'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'delimiter' => '',
+        'limit' => 10,
+        'min_length' => 0,
+        'not_found_message' => 'The term \'@term\' will be added.',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 34,
+      'weight' => 32,
     ),
   );
 
   // Exported field_instance: 'node-tool-field_supported_data_downloading'.
   $field_instances['node-tool-field_supported_data_downloading'] = array(
     'bundle' => 'tool',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'With which international and/or national standards is the product compatible?',
+    'description' => 'International and/or national standards the product is compatible with.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2374,19 +2246,23 @@ compatible with?',
       'module' => 'autocomplete_deluxe',
       'settings' => array(
         'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'delimiter' => '',
+        'limit' => 10,
+        'min_length' => 0,
+        'not_found_message' => 'The term \'@term\' will be added.',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 35,
+      'weight' => 33,
     ),
   );
 
   // Exported field_instance: 'node-tool-field_supported_data_encoding_st'.
   $field_instances['node-tool-field_supported_data_encoding_st'] = array(
     'bundle' => 'tool',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'With which international and/or national standards is the product compatible?',
+    'description' => 'International and/or national standards the product is compatible with.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2436,19 +2312,23 @@ compatible with?',
       'module' => 'autocomplete_deluxe',
       'settings' => array(
         'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'delimiter' => '',
+        'limit' => 10,
+        'min_length' => 0,
+        'not_found_message' => 'The term \'@term\' will be added.',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 36,
+      'weight' => 34,
     ),
   );
 
   // Exported field_instance: 'node-tool-field_supported_data_visualizati'.
   $field_instances['node-tool-field_supported_data_visualizati'] = array(
     'bundle' => 'tool',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'With which international and/or national standards is the product compatible?',
+    'description' => 'International and/or national standards the product is compatible with.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2498,10 +2378,14 @@ compatible with?',
       'module' => 'autocomplete_deluxe',
       'settings' => array(
         'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'delimiter' => '',
+        'limit' => 10,
+        'min_length' => 0,
+        'not_found_message' => 'The term \'@term\' will be added.',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 37,
+      'weight' => 35,
     ),
   );
 
@@ -2510,7 +2394,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'With which (data-) systems can the product be used?',
+    'description' => 'Existing (data-) systems the product can be used with.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2593,16 +2477,16 @@ compatible with?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 32,
+      'weight' => 31,
     ),
   );
 
   // Exported field_instance: 'node-tool-field_supported_other_standards'.
   $field_instances['node-tool-field_supported_other_standards'] = array(
     'bundle' => 'tool',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'With which international and/or national standards is the product compatible?',
+    'description' => 'International and/or national standards the product is compatible with.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2652,19 +2536,23 @@ compatible with?',
       'module' => 'autocomplete_deluxe',
       'settings' => array(
         'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'delimiter' => '',
+        'limit' => 10,
+        'min_length' => 0,
+        'not_found_message' => 'The term \'@term\' will be added.',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 40,
+      'weight' => 38,
     ),
   );
 
   // Exported field_instance: 'node-tool-field_supported_processes_and_mo'.
   $field_instances['node-tool-field_supported_processes_and_mo'] = array(
     'bundle' => 'tool',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'With which international and/or national standards is the product compatible?',
+    'description' => 'International and/or national standards the product is compatible with.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2714,19 +2602,23 @@ compatible with?',
       'module' => 'autocomplete_deluxe',
       'settings' => array(
         'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'delimiter' => '',
+        'limit' => 10,
+        'min_length' => 0,
+        'not_found_message' => 'The term \'@term\' will be added.',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 38,
+      'weight' => 36,
     ),
   );
 
   // Exported field_instance: 'node-tool-field_supported_sensor_data_stan'.
   $field_instances['node-tool-field_supported_sensor_data_stan'] = array(
     'bundle' => 'tool',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'With which international and/or national standards is the product compatible?',
+    'description' => 'International and/or national standards the product is compatible with.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2776,10 +2668,14 @@ compatible with?',
       'module' => 'autocomplete_deluxe',
       'settings' => array(
         'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'delimiter' => '',
+        'limit' => 10,
+        'min_length' => 0,
+        'not_found_message' => 'The term \'@term\' will be added.',
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 39,
+      'weight' => 37,
     ),
   );
 
@@ -2788,7 +2684,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What is the target user group of the product?',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -2838,7 +2734,7 @@ compatible with?',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 22,
+      'weight' => 26,
     ),
   );
 
@@ -2847,7 +2743,9 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What is the target user group of the product?',
+    'description' => '<div class="author-instructions">
+   Please give details on the target user group of this product in the free text box.
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2930,53 +2828,7 @@ compatible with?',
         'rows' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 23,
-    ),
-  );
-
-  // Exported field_instance: 'node-tool-field_technology_readiness_level'.
-  $field_instances['node-tool-field_technology_readiness_level'] = array(
-    'bundle' => 'tool',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'What is the status quo of the development of the product?',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 24,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'tool_of_the_month' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_technology_readiness_level',
-    'label' => 'Technology Readiness Level',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 41,
+      'weight' => 27,
     ),
   );
 
@@ -2985,7 +2837,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What is the type of hardware?',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -3022,7 +2874,7 @@ compatible with?',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 15,
+      'weight' => 17,
     ),
   );
 
@@ -3098,7 +2950,7 @@ compatible with?',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3111,7 +2963,7 @@ compatible with?',
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 5,
+        'rows' => 3,
       ),
       'type' => 'text_textarea',
       'weight' => 28,
@@ -3123,7 +2975,10 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What are the outcomes of the application of a product?',
+    'description' => 'The outcomes of product implementation.
+<div class="author-instructions">
+    For example, analysed and prepared data qualitative data of stakeholder dialogues, model visualisation, alerts etc.
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -3190,7 +3045,7 @@ compatible with?',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3203,7 +3058,7 @@ compatible with?',
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 5,
+        'rows' => 3,
       ),
       'type' => 'text_textarea',
       'weight' => 29,
@@ -3215,7 +3070,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What is the type of software?',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -3252,7 +3107,7 @@ compatible with?',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 16,
     ),
   );
 
@@ -3261,7 +3116,7 @@ compatible with?',
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What is the version or publication date of the product?',
+    'description' => 'Version or publication date of the product.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -3338,7 +3193,7 @@ compatible with?',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 40,
     ),
   );
 
@@ -3370,7 +3225,7 @@ compatible with?',
     ),
     'entity_type' => 'node',
     'field_name' => 'title_field',
-    'label' => 'Title',
+    'label' => 'Product Name',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
@@ -3428,49 +3283,6 @@ compatible with?',
       ),
       'type' => 'text_textfield',
       'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'taxonomy_term-application_scale-name_field'.
-  $field_instances['taxonomy_term-application_scale-name_field'] = array(
-    'bundle' => 'application_scale',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'taxonomy_term',
-    'field_name' => 'name_field',
-    'label' => 'Name',
-    'required' => TRUE,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'hide_label' => array(
-        'entity' => 0,
-        'page' => 0,
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => -5,
     ),
   );
 
@@ -4039,50 +3851,6 @@ compatible with?',
     ),
   );
 
-  // Exported field_instance:
-  // 'taxonomy_term-technology_readiness_level-name_field'.
-  $field_instances['taxonomy_term-technology_readiness_level-name_field'] = array(
-    'bundle' => 'technology_readiness_level',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'taxonomy_term',
-    'field_name' => 'name_field',
-    'label' => 'Name',
-    'required' => TRUE,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'hide_label' => array(
-        'entity' => 0,
-        'page' => 0,
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => -5,
-    ),
-  );
-
   // Exported field_instance: 'taxonomy_term-type_of_hardware-name_field'.
   $field_instances['taxonomy_term-type_of_hardware-name_field'] = array(
     'bundle' => 'type_of_hardware',
@@ -4257,40 +4025,75 @@ compatible with?',
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('<ul>
-<li>What are best practices and lessons learned from the application of the product?</li>
-<li>Where can I find this information?</li>
-</ul>');
+  t('<div class="author-instructions"
+   Please give details of accessibility criteria in the free text box.
+</div>');
+  t('<div class="author-instructions">
+    The status quo of product development (if appropriate, please use standard TRL definitions).
+</div>');
+  t('<div class="author-instructions">
+   Please give details on the relevant water bodies in the free text box.
+</div>');
+  t('<div class="author-instructions">
+   Please give details on the target user group of this product in the free text box.
+</div>');
+  t('Any leaflets, fact-sheet etc. associated with the product.
+<div class="author-instructions">
+    Please use the TITLE to give a brief description of what each link provides (Limit 128 characters).
+</div>
+');
   t('Application & Target Markets');
-  t('Application Scale');
-  t('Best Practices');
+  t('Case Studies');
+  t('Case studies, best practice examples and lessons learned from the application of the product. 
+<div class="author-instructions">
+    Please use the TITLE to give a brief description of what each link provides (Limit 128 characters).
+</div>');
   t('Category');
   t('Comment');
+  t('Compatibility with other products.
+<div class="author-instructions">
+    For example, products in support of better integration e.g. an integrated model for linkage between surface waters and groundwater or climate models; software tools etc.
+</div>
+');
   t('Competitive Advantages');
   t('Contact Details');
   t('Costinfo');
   t('Costs');
-  t('E-learning Tutorials');
+  t('Details of accessibility criteria.');
+  t('Details of costs related to the product.
+<div class="author-instructions">
+    For example, licence costs, costs for implementation and development of the product.
+</div>');
+  t('E-learning, tutorials and supporting material');
+  t('E-learning, tutorials and/or other supporting material available for the product.
+<div class="author-instructions">
+    Please use the TITLE to give a brief description of what each link provides (Limit 128 characters).
+</div>');
+  t('Existing (data-) systems the product can be used with.');
   t('For which tasks in water resources management can the product be used?');
-  t('How can I get in contact with product and / or service provider, river basin managers and consultants related to the products?');
-  t('Innovative Advantages');
-  t('Is there an E-learning tutorial for the product on The Virtual Market Place and where can I find it?');
-  t('Is this a commercial, free or open source product?');
+  t('For which tasks in water resources management can the product be used?
+<div class="author-instructions">
+   Please give details on the tasks this product can be used for in the free text box.
+</div>');
+  t('How can I get in contact with product and / or service provider, river basin managers and consultants related to the products?
+<div class="author-instructions">
+    E-mail, telephone, country etc.
+</div>');
+  t('International and/or national standards the product is compatible with.');
   t('Issue');
   t('Issue info');
   t('License / Copyright');
   t('Licenseinfo');
   t('Logo');
   t('Name');
-  t('Organisation');
+  t('Organisation/Institution');
   t('Photo');
-  t('Potential to combine this tool with other tools');
+  t('Potential to combine this product with other products');
   t('Product Description');
+  t('Product Name');
   t('Product Owner');
   t('Project');
-  t('Purpose');
-  t('Purpose Info');
-  t('Related Links and Supporting Material');
+  t('Project & promotional material about the product');
   t('Relevant Water Bodies');
   t('Relevant Water Bodies Info');
   t('Stage of Commercial Development');
@@ -4306,40 +4109,36 @@ compatible with?',
   t('Supported Sensor Data Standards');
   t('Target User Group');
   t('Target User Group Info');
-  t('Technology Readiness Level');
-  t('The status quo of product development, (if appropriate, please use standard TRL definitions).');
-  t('The unique selling point of the product');
-  t('Title');
+  t('The name of the product’s developer organisation.');
+  t('The outcomes of product implementation.
+<div class="author-instructions">
+    For example, analysed and prepared data qualitative data of stakeholder dialogues, model visualisation, alerts etc.
+</div>');
+  t('The project in which the product was developed.');
+  t('The unique selling point of the product.');
+  t('The water management subject addressed by the product.');
+  t('The water management subject addressed by the product.
+<div class="author-instructions">
+   Please give details on the subject addressed by this product in the free text box.
+</div>');
   t('Type of Hardware');
   t('Type of Input requirements');
   t('Type of Output');
   t('Type of Software');
   t('Version');
-  t('What are the conditions to use this product?');
-  t('What are the costs related to the product?');
-  t('What are the outcomes of the application of a product?');
-  t('What is the name of the project in which the product has been developed?');
-  t('What is the product about?');
-  t('What is the products’ developer organisation?');
-  t('What is the relevant scale of application of the product?');
-  t('What is the status quo of the development of the product?');
-  t('What is the target user group of the product?');
-  t('What is the type of hardware?');
-  t('What is the type of software?');
-  t('What is the unique selling point of the product?');
-  t('What is the version or publication date of the product?');
+  t('Version or publication date of the product.');
+  t('WFD objectives');
+  t('WFD objectives Info');
+  t('What is the product about?
+<div class="author-instructions">
+    Short description of the product and background information 
+</div>');
+  t('What is the standard category');
   t('What requirements does the product have regarding knowledge, data and technology?');
-  t('What subject is the product related to?');
+  t('What the product is used for, where and by whom?');
   t('What type of product is this?');
-  t('What types of water bodies is the product related to?');
   t('What’s the title or name of the product?');
-  t('Where can I find relevant information or download the product?');
-  t('Which other products is this product
-compatible with?');
   t('Who is the first or best one to contact?');
-  t('With which (data-) systems can the product be used?');
-  t('With which categories of international and/or national standards is the product compatible?');
-  t('With which international and/or national standards is the product compatible?');
 
   return $field_instances;
 }

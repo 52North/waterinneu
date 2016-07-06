@@ -9,31 +9,6 @@
  */
 function n52_feature_products_taxonomy_default_vocabularies() {
   return array(
-    'application_scale' => array(
-      'name' => 'Application Scale',
-      'machine_name' => 'application_scale',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => -6,
-      'language' => 'und',
-      'i18n_mode' => 1,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
     'costs' => array(
       'name' => 'Costs',
       'machine_name' => 'costs',
@@ -368,31 +343,6 @@ function n52_feature_products_taxonomy_default_vocabularies() {
       'weight' => 10,
       'language' => 'und',
       'i18n_mode' => 1,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
-    'technology_readiness_level' => array(
-      'name' => 'Technology Readiness Level',
-      'machine_name' => 'technology_readiness_level',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 10,
-      'language' => 'und',
-      'i18n_mode' => 0,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

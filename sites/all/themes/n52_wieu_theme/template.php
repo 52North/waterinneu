@@ -189,8 +189,18 @@ function n52_wieu_theme_field($variables) {
 	if (!$variables['label_hidden']) {
 		$output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'];
 		if (strlen($description)) {
-			// add info glyphicon and popover stuff
-			$output .= '&nbsp;<span class="glyphicon glyphicon-info-sign glyphicon-light" data-content="<div class=\'popover-light\'>' . $description . '</div>" rel="popover" data-toggle="popover" data-placement="right" data-original-title="Description" data-trigger="click" data-html="true"></span>';
+			// remove div with author instructions
+			if (strpos($description,'<div') >= 0) {
+				// assumption: <div is always after stuff to render
+				$description_tmp = explode('<div', $description);
+				if (sizeof($description_tmp) > 1) {
+					$description = trim(preg_replace('/\s+/', ' ', $description_tmp[0]));
+				}
+			}
+			if (strlen($description)) {
+				// add info glyphicon and popover stuff
+				$output .= '&nbsp;<span class="glyphicon glyphicon-info-sign glyphicon-light" data-content="<div class=\'popover-light\'>' . $description . '</div>" rel="popover" data-toggle="popover" data-placement="right" data-original-title="Description" data-trigger="click" data-html="true"></span>';
+			} 
 		}
 		$output .= ':&nbsp;</div>';
 	}

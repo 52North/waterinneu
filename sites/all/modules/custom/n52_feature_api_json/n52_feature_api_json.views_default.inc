@@ -53,7 +53,7 @@ function n52_feature_api_json_views_default_views() {
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
-  /* Field: Content: Address */
+  /* Field: Content: Venue */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
@@ -140,7 +140,7 @@ function n52_feature_api_json_views_default_views() {
   $handler->display->display_options['fields']['path']['field'] = 'path';
   $handler->display->display_options['fields']['path']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['path']['hide_empty'] = TRUE;
-  /* Field: Content: Address */
+  /* Field: Content: Venue */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
@@ -295,13 +295,12 @@ function n52_feature_api_json_views_default_views() {
   $handler->display->display_options['fields']['path']['field'] = 'path';
   $handler->display->display_options['fields']['path']['alter']['text'] = 'http://localhost[path]';
   $handler->display->display_options['fields']['path']['hide_empty'] = TRUE;
-  /* Field: Content: Application Scale */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_application_scale']['id'] = 'field_application_scale';
   $handler->display->display_options['fields']['field_application_scale']['table'] = 'field_data_field_application_scale';
   $handler->display->display_options['fields']['field_application_scale']['field'] = 'field_application_scale';
   $handler->display->display_options['fields']['field_application_scale']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_application_scale']['delta_offset'] = '0';
-  /* Field: Content: Best Practices */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_best_practices']['id'] = 'field_best_practices';
   $handler->display->display_options['fields']['field_best_practices']['table'] = 'field_data_field_best_practices';
   $handler->display->display_options['fields']['field_best_practices']['field'] = 'field_best_practices';
@@ -326,14 +325,12 @@ function n52_feature_api_json_views_default_views() {
   $handler->display->display_options['fields']['field_costs']['table'] = 'field_data_field_costs';
   $handler->display->display_options['fields']['field_costs']['field'] = 'field_costs';
   $handler->display->display_options['fields']['field_costs']['hide_empty'] = TRUE;
-  /* Field: Content: E-learning Tutorials */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_e_learning_tutorials']['id'] = 'field_e_learning_tutorials';
   $handler->display->display_options['fields']['field_e_learning_tutorials']['table'] = 'field_data_field_e_learning_tutorials';
   $handler->display->display_options['fields']['field_e_learning_tutorials']['field'] = 'field_e_learning_tutorials';
   $handler->display->display_options['fields']['field_e_learning_tutorials']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_e_learning_tutorials']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_e_learning_tutorials']['delta_offset'] = '0';
-  /* Field: Content: Innovative Advantages */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_innovative_advantages']['id'] = 'field_innovative_advantages';
   $handler->display->display_options['fields']['field_innovative_advantages']['table'] = 'field_data_field_innovative_advantages';
   $handler->display->display_options['fields']['field_innovative_advantages']['field'] = 'field_innovative_advantages';
@@ -367,7 +364,7 @@ function n52_feature_api_json_views_default_views() {
   $handler->display->display_options['fields']['field_organisation']['settings'] = array(
     'link' => 0,
   );
-  /* Field: Content: Potential to combine this tool with other tools */
+  /* Field: Content: Potential to combine this product with other products */
   $handler->display->display_options['fields']['field_combinability']['id'] = 'field_combinability';
   $handler->display->display_options['fields']['field_combinability']['table'] = 'field_data_field_combinability';
   $handler->display->display_options['fields']['field_combinability']['field'] = 'field_combinability';
@@ -380,18 +377,18 @@ function n52_feature_api_json_views_default_views() {
   $handler->display->display_options['fields']['field_project']['settings'] = array(
     'link' => 0,
   );
-  /* Field: Content: Purpose */
+  /* Field: Content: WFD objectives */
   $handler->display->display_options['fields']['field_purpose']['id'] = 'field_purpose';
   $handler->display->display_options['fields']['field_purpose']['table'] = 'field_data_field_purpose';
   $handler->display->display_options['fields']['field_purpose']['field'] = 'field_purpose';
   $handler->display->display_options['fields']['field_purpose']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_purpose']['delta_offset'] = '0';
-  /* Field: Content: Purpose Info */
+  /* Field: Content: WFD objectives Info */
   $handler->display->display_options['fields']['field_purpose_info']['id'] = 'field_purpose_info';
   $handler->display->display_options['fields']['field_purpose_info']['table'] = 'field_data_field_purpose_info';
   $handler->display->display_options['fields']['field_purpose_info']['field'] = 'field_purpose_info';
   $handler->display->display_options['fields']['field_purpose_info']['hide_empty'] = TRUE;
-  /* Field: Content: Related Links and Supporting Material */
+  /* Field: Content: Links */
   $handler->display->display_options['fields']['field_links']['id'] = 'field_links';
   $handler->display->display_options['fields']['field_links']['table'] = 'field_data_field_links';
   $handler->display->display_options['fields']['field_links']['field'] = 'field_links';
@@ -473,7 +470,7 @@ function n52_feature_api_json_views_default_views() {
   $handler->display->display_options['fields']['field_target_user_group_info']['table'] = 'field_data_field_target_user_group_info';
   $handler->display->display_options['fields']['field_target_user_group_info']['field'] = 'field_target_user_group_info';
   $handler->display->display_options['fields']['field_target_user_group_info']['hide_empty'] = TRUE;
-  /* Field: Content: Technology Readiness Level */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_technology_readiness_level']['id'] = 'field_technology_readiness_level';
   $handler->display->display_options['fields']['field_technology_readiness_level']['table'] = 'field_data_field_technology_readiness_level';
   $handler->display->display_options['fields']['field_technology_readiness_level']['field'] = 'field_technology_readiness_level';

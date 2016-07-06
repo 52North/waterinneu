@@ -212,13 +212,6 @@ function n52_feature_products_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_application_scale_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_application_scale_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_costs_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_costs_pattern'] = $strongarm;
@@ -297,7 +290,7 @@ function n52_feature_products_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_purpose_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'wfd-objective/[term:parents:join-path]/[term:name]';
   $export['pathauto_taxonomy_term_purpose_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -313,13 +306,6 @@ function n52_feature_products_strongarm() {
   $strongarm->name = 'pathauto_taxonomy_term_standard_category_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_standard_category_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_technology_readiness_level_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_technology_readiness_level_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

@@ -328,6 +328,13 @@ We should be back shortly. Thank you for your patience. In the meantime, you can
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_article_bg_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_article_bg_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_article_de_pattern';
   $strongarm->value = '';
   $export['pathauto_node_article_de_pattern'] = $strongarm;
@@ -352,6 +359,13 @@ We should be back shortly. Thank you for your patience. In the meantime, you can
   $strongarm->name = 'pathauto_node_article_und_pattern';
   $strongarm->value = '';
   $export['pathauto_node_article_und_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_page_bg_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_page_bg_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

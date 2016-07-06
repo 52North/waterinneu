@@ -238,15 +238,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: 'add terms in application_scale'.
-  $permissions['add terms in application_scale'] = array(
-    'name' => 'add terms in application_scale',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy_access_fix',
-  );
-
   // Exported permission: 'add terms in costs'.
   $permissions['add terms in costs'] = array(
     'name' => 'add terms in costs',
@@ -398,15 +389,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy_access_fix',
   );
 
-  // Exported permission: 'add terms in technology_readiness_level'.
-  $permissions['add terms in technology_readiness_level'] = array(
-    'name' => 'add terms in technology_readiness_level',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy_access_fix',
-  );
-
   // Exported permission: 'add terms in type_of_hardware'.
   $permissions['add terms in type_of_hardware'] = array(
     'name' => 'add terms in type_of_hardware',
@@ -441,15 +423,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'taxonomy_access_fix',
-  );
-
-  // Exported permission: 'add_terms_application_scale'.
-  $permissions['add_terms_application_scale'] = array(
-    'name' => 'add_terms_application_scale',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy_autocomplete_permission',
   );
 
   // Exported permission: 'add_terms_costs'.
@@ -598,15 +571,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'add_terms_standard_category'.
   $permissions['add_terms_standard_category'] = array(
     'name' => 'add_terms_standard_category',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy_autocomplete_permission',
-  );
-
-  // Exported permission: 'add_terms_technology_readiness_level'.
-  $permissions['add_terms_technology_readiness_level'] = array(
-    'name' => 'add_terms_technology_readiness_level',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -1670,15 +1634,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete terms in application_scale'.
-  $permissions['delete terms in application_scale'] = array(
-    'name' => 'delete terms in application_scale',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'delete terms in costs'.
   $permissions['delete terms in costs'] = array(
     'name' => 'delete terms in costs',
@@ -1826,15 +1781,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'delete terms in standard_category'.
   $permissions['delete terms in standard_category'] = array(
     'name' => 'delete terms in standard_category',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in technology_readiness_level'.
-  $permissions['delete terms in technology_readiness_level'] = array(
-    'name' => 'delete terms in technology_readiness_level',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -2126,15 +2072,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
-  // Exported permission: 'edit terms in application_scale'.
-  $permissions['edit terms in application_scale'] = array(
-    'name' => 'edit terms in application_scale',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'edit terms in costs'.
   $permissions['edit terms in costs'] = array(
     'name' => 'edit terms in costs',
@@ -2288,15 +2225,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'edit terms in technology_readiness_level'.
-  $permissions['edit terms in technology_readiness_level'] = array(
-    'name' => 'edit terms in technology_readiness_level',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'edit terms in type_of_hardware'.
   $permissions['edit terms in type_of_hardware'] = array(
     'name' => 'edit terms in type_of_hardware',
@@ -2419,15 +2347,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'features',
-  );
-
-  // Exported permission: 'merge application_scale terms'.
-  $permissions['merge application_scale terms'] = array(
-    'name' => 'merge application_scale terms',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'term_merge',
   );
 
   // Exported permission: 'merge costs terms'.
@@ -2575,15 +2494,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'merge standard_category terms'.
   $permissions['merge standard_category terms'] = array(
     'name' => 'merge standard_category terms',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'term_merge',
-  );
-
-  // Exported permission: 'merge technology_readiness_level terms'.
-  $permissions['merge technology_readiness_level terms'] = array(
-    'name' => 'merge technology_readiness_level terms',
     'roles' => array(
       'administrator' => 'administrator',
     ),
