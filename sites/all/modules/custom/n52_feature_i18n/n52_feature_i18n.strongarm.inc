@@ -1126,7 +1126,7 @@ function n52_feature_i18n_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_last_check';
-  $strongarm->value = 1467715482;
+  $strongarm->value = 1467809053;
   $export['l10n_update_last_check'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -5088,6 +5088,85 @@ function n52_feature_i18n_strongarm() {
           ),
         ),
         'language' => 'de',
+      ),
+    ),
+    'iek' => array(
+      'bg' => (object) array(
+        'name' => 'iek',
+        'project_type' => 'module',
+        'core' => '7.x',
+        'version' => '7.x-1.4',
+        'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
+        'status' => '1',
+        'project' => 'iek',
+        'langcode' => 'bg',
+        'type' => 'current',
+        'timestamp' => 1467809052,
+        'last_checked' => 1467809051,
+        'files' => array(
+          'remote' => (object) array(
+            'project' => 'iek',
+            'langcode' => 'bg',
+            'version' => '7.x-1.4',
+            'type' => 'remote',
+            'filename' => 'iek-7.x-1.4.bg.po',
+            'uri' => 'https://ftp.drupal.org/files/translations/7.x/iek/iek-7.x-1.4.bg.po',
+            'timestamp' => 1407339367,
+          ),
+          'local' => (object) array(
+            'project' => 'iek',
+            'langcode' => 'bg',
+            'version' => '7.x-1.4',
+            'type' => 'local',
+            'filename' => 'iek-7.x-1.4.bg.po',
+            'uri' => 'translations://iek-7.x-1.4.bg.po',
+            'timestamp' => 1467809052,
+            'directory' => 'translations://',
+            'last_checked' => 1467809051,
+            'language' => 'bg',
+          ),
+        ),
+        'language' => 'bg',
+      ),
+      'de' => (object) array(
+        'name' => 'iek',
+        'project_type' => 'module',
+        'core' => '7.x',
+        'version' => '7.x-1.4',
+        'server_pattern' => 'http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po',
+        'status' => '1',
+        'project' => 'iek',
+        'langcode' => 'de',
+        'type' => 'current',
+        'timestamp' => 1467809052,
+        'last_checked' => 1467809052,
+        'files' => array(
+          'remote' => (object) array(
+            'project' => 'iek',
+            'langcode' => 'de',
+            'version' => '7.x-1.4',
+            'type' => 'remote',
+            'filename' => 'iek-7.x-1.4.de.po',
+            'uri' => 'https://ftp.drupal.org/files/translations/7.x/iek/iek-7.x-1.4.de.po',
+            'timestamp' => 1407339374,
+          ),
+          'local' => (object) array(
+            'project' => 'iek',
+            'langcode' => 'de',
+            'version' => '7.x-1.4',
+            'type' => 'local',
+            'filename' => 'iek-7.x-1.4.de.po',
+            'uri' => 'translations://iek-7.x-1.4.de.po',
+            'timestamp' => 1467809052,
+            'directory' => 'translations://',
+            'last_checked' => 1467809052,
+            'language' => 'de',
+          ),
+        ),
+        'language' => 'de',
+        'filename' => '',
+        'fileurl' => '',
+        'uri' => '',
       ),
     ),
     'imce' => array(

@@ -1,0 +1,1410 @@
+<?php
+
+/**
+ * @file
+ * Primarily Drupal hooks and global API functions to manipulate image styles.
+ */
+
+/**
+ * Implements hook_init().
+ */
+function iek_init() {
+  // Checks which image toolkit we are using.
+  if (variable_get('image_toolkit', 'gd') == 'gd') {
+    module_load_include('inc', 'iek', 'iek.gd');
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function iek_menu() {
+  $items = array();
+  /**
+   * @todo To add an admin UI to allow upload custom fonts or
+   * watermarks.
+   */
+  /*
+  $items['admin/config/media/iek'] = array(
+    'title' => 'Image effect kit',
+    'page callback' => 'drupal_get_form',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'page arguments' => array('iek_admin_form'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'iek.admin.inc',
+  );
+  $items['admin/config/media/iek/watermark'] = array(
+    'title' => 'Add watermark font',
+    'page callback' => 'drupal_get_form',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'page arguments' => array('iek_admin_watermark_form'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'iek.admin.inc',
+  );
+  */
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function iek_theme() {
+  return array(
+    'iek_image_border_summary' => array(
+      'variables' => array('data' => NULL),
+    ),
+    'iek_image_corner_summary' => array(
+      'variables' => array('data' => NULL),
+    ),
+    'iek_image_padding_summary' => array(
+      'variables' => array('data' => NULL),
+    ),
+    'iek_image_resize_summary' => array(
+      'variables' => array('data' => NULL),
+    ),
+    'iek_image_watermark_summary' => array(
+      'variables' => array('data' => NULL),
+    ),
+    'iek_image_overlay_summary' => array(
+      'variables' => array('data' => NULL),
+    ),
+    'iek_image_filter_summary' => array(
+      'variables' => array('data' => NULL),
+    ),
+  );
+}
+
+/**
+ * Implements hook_image_default_styles().
+ *
+ * Creates a default image style.
+ */
+function iek_image_default_styles() {
+  $styles = array();
+
+  $styles['iek_photo'] = array(
+    'label' => 'IEK - Photo',
+    'effects' => array(
+      array(
+        'name' => 'iek_image_padding',
+        'data' => array(
+          'padding_top' => 10,
+          'padding_right' => 10,
+          'padding_bottom' => 10,
+          'padding_left' => 10,
+          'bg_color' => '#ffffff',
+        ),
+        'weight' => 4,
+      ),
+      array(
+        'name' => 'iek_image_watermark',
+        'data' => array(
+          'text' => variable_get('site_name', t('Watermark')),
+          'font' => 'tuffy_bold',
+          'color' => '#ffffff',
+          'size' => 30,
+          'angle' => 0,
+          'position' => 'bottom_center',
+          'padding_top' => 10,
+          'padding_right' => 10,
+          'padding_bottom' => 10,
+          'padding_left' => 10,
+        ),
+        'weight' => 3,
+      ),
+      array(
+        'name' => 'iek_image_overlay',
+        'data' => array(
+          'overlay_name' => 'basic_dropshadow_001_1024x768',
+          'overlay_offset' => 20,
+          'bg_offset' => 0,
+        ),
+        'weight' => 10,
+      ),
+    ),
+  );
+  return $styles;
+}
+
+/**
+ * Implements hook_image_effect_info().
+ */
+function iek_image_effect_info() {
+  $effects = array(
+    'iek_image_border' => array(
+      'label' => t('IEK - Border'),
+      'help' => t('Add border to an image'),
+      'effect callback' => 'iek_image_border_effect',
+      'form callback' => 'iek_image_border_form',
+      'summary theme' => 'iek_image_border_summary',
+    ),
+    'iek_image_corner' => array(
+      'label' => t('IEK - Rounded corner'),
+      'help' => t('Add rounded corner to an image'),
+      'effect callback' => 'iek_image_corner_effect',
+      'form callback' => 'iek_image_corner_form',
+      'summary theme' => 'iek_image_corner_summary',
+    ),
+    'iek_image_padding' => array(
+      'label' => t('IEK - Padding'),
+      'help' => t('Add padding to an image'),
+      'effect callback' => 'iek_image_padding_effect',
+      'form callback' => 'iek_image_padding_form',
+      'summary theme' => 'iek_image_padding_summary',
+    ),
+    'iek_image_resize' => array(
+      'label' => t('IEK - Smart Resizer'),
+      'help' => t('Resize an image'),
+      'effect callback' => 'iek_image_resize_effect',
+      'form callback' => 'iek_image_resize_form',
+      'summary theme' => 'iek_image_resize_summary',
+    ),
+    'iek_image_watermark' => array(
+      'label' => t('IEK - Watermark'),
+      'help' => t('Watermark an image with a text'),
+      'effect callback' => 'iek_image_watermark_effect',
+      'form callback' => 'iek_image_watermark_form',
+      'summary theme' => 'iek_image_watermark_summary',
+    ),
+    'iek_image_overlay' => array(
+      'label' => t('IEK - Overlay'),
+      'help' => t('Apply a overlay to an image'),
+      'effect callback' => 'iek_image_overlay_effect',
+      'form callback' => 'iek_image_overlay_form',
+      'summary theme' => 'iek_image_overlay_summary',
+    ),
+    'iek_image_filter' => array(
+      'label' => t('IEK - Filter'),
+      'help' => t('Apply a filter to an image'),
+      'effect callback' => 'iek_image_filter_effect',
+      'form callback' => 'iek_image_filter_form',
+      'summary theme' => 'iek_image_filter_summary',
+    ),
+  );
+  return $effects;
+}
+
+/**
+ * Implements hook_iek_watermark_font().
+ */
+function iek_iek_watermark_font() {
+  $path = drupal_get_path('module', 'iek') . '/fonts';
+
+  return array(
+    'bubble' => array(
+      'name' => 'bubble',
+      'title' => t('Bubble'),
+      'file' => 'bubble.ttf',
+      'path' => $path,
+    ),
+    'digital' => array(
+      'name' => 'digital',
+      'title' => t('Digital'),
+      'file' => 'digital.ttf',
+      'path' => $path,
+    ),
+    'snow' => array(
+      'name' => 'snow',
+      'title' => t('Snow'),
+      'file' => 'snow.ttf',
+      'path' => $path,
+    ),
+    'tuffy_bold' => array(
+      'name' => 'tuffy_bold',
+      'title' => t('Tuffy Bold'),
+      'file' => 'tuffy_bold.ttf',
+      'path' => $path,
+    ),
+    'wedding' => array(
+      'name' => 'wedding',
+      'title' => t('Wedding'),
+      'file' => 'wedding.ttf',
+      'path' => $path,
+    ),
+  );
+}
+
+/**
+ * Implements hook_iek_overlay().
+ */
+function iek_iek_overlay() {
+  $path = drupal_get_path('module', 'iek') . '/overlays';
+
+  return array(
+    'basic' => array(
+      'name' => 'basic',
+      'title' => t('Basic'),
+      'children' => array(
+        'basic_dropshadow_001_1024x768' => array(
+          'name' => 'basic_dropshadow_001_1024x768',
+          'title' => t('Drop shadow 001 - 1024x768'),
+          'path' => $path . '/basic',
+          'file' => 'basic-dropshadow-001-1024x768.png',
+        ),
+        'basic_dropshadow_001_768x1024' => array(
+          'name' => 'basic_dropshadow_001_768x1024',
+          'title' => t('Drop shadow 001 - 768x1024'),
+          'path' => $path . '/basic',
+          'file' => 'basic-dropshadow-001-768x1024.png',
+        ),
+        'basic_dropshadow_001_600x600' => array(
+          'name' => 'basic_dropshadow_001_600x600',
+          'title' => t('Drop shadow 001 - 600x600'),
+          'path' => $path . '/basic',
+          'file' => 'basic-dropshadow-001-600x600.png',
+        ),
+        'basic_film_001_1024x768' => array(
+          'name' => 'basic_film_001_1024x768',
+          'title' => t('Film 001 - 1024x768'),
+          'path' => $path . '/basic',
+          'file' => 'basic-film-001-1024x768.png',
+        ),
+        'basic_film_001_768x1024' => array(
+          'name' => 'basic_film_001_768x1024',
+          'title' => t('Film 001 - 768x1024'),
+          'path' => $path . '/basic',
+          'file' => 'basic-film-001-768x1024.png',
+        ),
+        'basic_film_001_600x600' => array(
+          'name' => 'basic_film_001_600x600',
+          'title' => t('Film 001 - 600x600'),
+          'path' => $path . '/basic',
+          'file' => 'basic-film-001-600x600.png',
+        ),
+        'basic_overlap_001_1024x768' => array(
+          'name' => 'basic_overlap_001_1024x768',
+          'title' => t('Overlap 001 - 1024x768'),
+          'path' => $path . '/basic',
+          'file' => 'basic-overlap-001-1024x768.png',
+        ),
+        'basic_overlap_001_768x1024' => array(
+          'name' => 'basic_overlap_001_768x1024',
+          'title' => t('Overlap 001 - 768x1024'),
+          'path' => $path . '/basic',
+          'file' => 'basic-overlap-001-768x1024.png',
+        ),
+        'basic_overlap_001_600x600' => array(
+          'name' => 'basic_overlap_001_600x600',
+          'title' => t('Overlap 001 - 600x600'),
+          'path' => $path . '/basic',
+          'file' => 'basic-overlap-001-600x600.png',
+        ),
+        'basic_stamp_001_1024x768' => array(
+          'name' => 'basic_stamp_001_1024x768',
+          'title' => t('Stamp 001 - 1024x768'),
+          'path' => $path . '/basic',
+          'file' => 'basic-stamp-001-1024x768.png',
+        ),
+        'basic_stamp_001_768x1024' => array(
+          'name' => 'basic_stamp_001_768x1024',
+          'title' => t('Stamp 001 - 768x1024'),
+          'path' => $path . '/basic',
+          'file' => 'basic-stamp-001-768x1024.png',
+        ),
+        'basic_stamp_001_600x600' => array(
+          'name' => 'basic_stamp_001_600x600',
+          'title' => t('Stamp 001 - 600x600'),
+          'path' => $path . '/basic',
+          'file' => 'basic-stamp-001-600x600.png',
+        ),
+      ),
+    ),
+  );
+}
+
+/********************************************************************
+ * Border effect.
+ ********************************************************************/
+
+/**
+ * Effect configuration form for iek_image_border.
+ */
+function iek_image_border_form($data) {
+  $form['border_color'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Border color'),
+    '#default_value' => isset($data['border_color']) ? $data['border_color'] : '#ededed',
+    '#required' => TRUE,
+    '#size' => 10,
+    '#element_validate' => array('iek_image_effect_color_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['border_thick_top'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Border thick - top'),
+    '#default_value' => isset($data['border_thick_top']) ? $data['border_thick_top'] : '5',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['border_thick_right'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Border thick - right'),
+    '#default_value' => isset($data['border_thick_right']) ? $data['border_thick_right'] : '5',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['border_thick_bottom'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Border thick - bottom'),
+    '#default_value' => isset($data['border_thick_bottom']) ? $data['border_thick_bottom'] : '5',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['border_thick_left'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Border thick - left'),
+    '#default_value' => isset($data['border_thick_left']) ? $data['border_thick_left'] : '5',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  return $form;
+}
+
+/**
+ * Effect callback for iek_image_border.
+ */
+function iek_image_border_effect(&$image, $data) {
+  if (!iek_image_border($image, $data)) {
+    watchdog('image', 'Image add border failed using the %toolkit toolkit on %path (%mimetype)', array(
+      '%toolkit' => $image->toolkit,
+      '%path' => $image->source,
+      '%mimetype' => $image->info['mime_type'],
+    ), WATCHDOG_ERROR);
+    return FALSE;
+  }
+  return TRUE;
+}
+
+/**
+ * Invoke the image toolkit so user can choose to use GD or ImageMagick.
+ */
+function iek_image_border(stdClass $image, $data) {
+  $data['border_thick_top'] = (int) round($data['border_thick_top']);
+  $data['border_thick_right'] = (int) round($data['border_thick_right']);
+  $data['border_thick_bottom'] = (int) round($data['border_thick_bottom']);
+  $data['border_thick_left'] = (int) round($data['border_thick_left']);
+  return iek_toolkit_invoke('border', $image, array($data));
+}
+
+/**
+ * Theme function for border effect summary.
+ */
+function theme_iek_image_border_summary($variables) {
+  $data = $variables['data'];
+
+  if (isset($data['border_color'])
+    && isset($data['border_thick_top'])
+    && isset($data['border_thick_right'])
+    && isset($data['border_thick_bottom'])
+    && isset($data['border_thick_left'])) {
+    $summary = array();
+    $summary['border'] = $data['border_color'];
+    $summary['top'] = $data['border_thick_top'] . 'px';
+    $summary['right'] = $data['border_thick_right'] . 'px';
+    $summary['bottom'] = $data['border_thick_bottom'] . 'px';
+    $summary['left'] = $data['border_thick_left'] . 'px';
+    return iek_generate_summary($summary);
+  }
+  return '';
+}
+
+/**
+ * Effect configuration form for iek_image_corner.
+ */
+function iek_image_corner_form($data) {
+  $form['radius'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Radius'),
+    '#default_value' => isset($data['radius']) ? $data['radius'] : '10',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  return $form;
+}
+
+/**
+ * Effect callback for iek_image_border.
+ */
+function iek_image_corner_effect(&$image, $data) {
+  if (!iek_image_corner($image, $data)) {
+    watchdog('image', 'Image add rounded corner failed using the %toolkit toolkit on %path (%mimetype)', array(
+      '%toolkit' => $image->toolkit,
+      '%path' => $image->source,
+      '%mimetype' => $image->info['mime_type'],
+    ), WATCHDOG_ERROR);
+    return FALSE;
+  }
+  return TRUE;
+}
+
+/**
+ * Invoke the image toolkit so user can choose to use GD or ImageMagick.
+ */
+function iek_image_corner(stdClass $image, $data) {
+  $data['radius'] = (int) round($data['radius']);
+  return iek_toolkit_invoke('corner', $image, array($data));
+}
+
+/**
+ * Theme function for border effect summary.
+ */
+function theme_iek_image_corner_summary($variables) {
+  $data = $variables['data'];
+
+  if (isset($data['radius'])) {
+    $summary = array();
+    $summary['radius'] = $data['radius'] . 'px';
+    return iek_generate_summary($summary);
+  }
+  return '';
+}
+
+/********************************************************************
+ * Padding effect.
+ ********************************************************************/
+
+/**
+ * Effect configuration form for iek_image_padding.
+ */
+function iek_image_padding_form($data) {
+  $form['padding_top'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Padding top'),
+    '#default_value' => isset($data['padding_top']) ? $data['padding_top'] : '10',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['padding_right'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Padding right'),
+    '#default_value' => isset($data['padding_right']) ? $data['padding_right'] : '10',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['padding_bottom'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Padding bottom'),
+    '#default_value' => isset($data['padding_bottom']) ? $data['padding_bottom'] : '10',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['padding_left'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Padding left'),
+    '#default_value' => isset($data['padding_left']) ? $data['padding_left'] : '10',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['bg_color'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Background color'),
+    '#default_value' => isset($data['bg_color']) ? $data['bg_color'] : '#ffffff',
+    '#required' => TRUE,
+    '#size' => 10,
+    '#maxlength' => 7,
+    '#element_validate' => array('iek_image_effect_color_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  return $form;
+}
+
+/**
+ * Effect callback for iek_image_border.
+ */
+function iek_image_padding_effect(&$image, $data) {
+  if (!iek_image_padding($image, $data)) {
+    watchdog('image', 'Image add padding failed using the %toolkit toolkit on %path (%mimetype)', array(
+      '%toolkit' => $image->toolkit,
+      '%path' => $image->source,
+      '%mimetype' => $image->info['mime_type'],
+    ), WATCHDOG_ERROR);
+    return FALSE;
+  }
+  return TRUE;
+}
+
+/**
+ * Invoke the image toolkit so user can choose to use GD or ImageMagick.
+ */
+function iek_image_padding(stdClass $image, $data) {
+  $data['padding_top'] = (int) round($data['padding_top']);
+  $data['padding_right'] = (int) round($data['padding_right']);
+  $data['padding_bottom'] = (int) round($data['padding_bottom']);
+  $data['padding_left'] = (int) round($data['padding_left']);
+  return iek_toolkit_invoke('padding', $image, array($data));
+}
+
+/**
+ * Theme function for border effect summary.
+ */
+function theme_iek_image_padding_summary($variables) {
+  $data = $variables['data'];
+
+  if (isset($data['padding_top'])
+    && isset($data['padding_right'])
+    && isset($data['padding_bottom'])
+    && isset($data['padding_left'])
+    && isset($data['bg_color'])) {
+    $summary = array();
+    $summary['top'] = $data['padding_top'] . 'px';
+    $summary['right'] = $data['padding_right'] . 'px';
+    $summary['bottom'] = $data['padding_bottom'] . 'px';
+    $summary['left'] = $data['padding_left'] . 'px';
+    $summary['background'] = $data['bg_color'];
+    return iek_generate_summary($summary);
+  }
+  return '';
+}
+
+/********************************************************************
+ * Smart resizing effect.
+ ********************************************************************/
+
+/**
+ * Effect configuration form for iek_image_resize.
+ */
+function iek_image_resize_form($data) {
+  $form['width'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Width'),
+    '#default_value' => isset($data['width']) ? $data['width'] : '',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 10,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['height'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Height'),
+    '#default_value' => isset($data['height']) ? $data['height'] : '',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 10,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['blank_margin'] = array(
+    '#id' => 'blank_margin',
+    '#type' => 'select',
+    '#title' => t('Blank margin'),
+    '#default_value' => isset($data['blank_margin']) && $data['blank_margin'] ? 1 : 0,
+    '#options' => array(1 => t('True'), 0 => t('False')),
+    '#required' => TRUE,
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['blank_margin_bg_color'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Blank margin background color'),
+    '#default_value' => isset($data['blank_margin_bg_color']) ? $data['blank_margin_bg_color'] : '#FFFFFF',
+    '#size' => 10,
+    '#maxlength' => 7,
+    '#element_validate' => array('iek_image_effect_blank_margin_bg_color_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+    '#states' => array(
+      'visible' => array(
+        ':input[id=blank_margin]' => array('value' => 1),
+      ),
+    ),
+  );
+  $form['position'] = array(
+    '#id' => 'position',
+    '#type' => 'select',
+    '#title' => t('Align position'),
+    '#default_value' => isset($data['position']) ? $data['position'] : 'middle_center',
+    '#options' => array(
+      'top_left' => t('Top Left'),
+      'top_center' => t('Top Center'),
+      'top_right' => t('Top Right'),
+      'middle_left' => t('Middle Left'),
+      'middle_center' => t('Middle Center'),
+      'middle_right' => t('Middle Right'),
+      'bottom_left' => t('Bottom Left'),
+      'bottom_center' => t('Bottom Center'),
+      'bottom_right' => t('Bottom Right'),
+      'coordinate' => t('Coordinate'),
+    ),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['x'] = array(
+    '#type' => 'textfield',
+    '#title' => t('x-axis'),
+    '#default_value' => isset($data['x']) ? $data['x'] : '0',
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+    '#states' => array(
+      'visible' => array(
+        ':input[id=position]' => array('value' => 'coordinate'),
+      ),
+    ),
+  );
+  $form['y'] = array(
+    '#type' => 'textfield',
+    '#title' => t('y-axis'),
+    '#default_value' => isset($data['y']) ? $data['y'] : '0',
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+    '#states' => array(
+      'visible' => array(
+        ':input[id=position]' => array('value' => 'coordinate'),
+      ),
+    ),
+  );
+  return $form;
+}
+
+/**
+ * Effect callback for iek_image_resize.
+ */
+function iek_image_resize_effect(&$image, $data) {
+  if (!iek_image_resize($image, $data)) {
+    watchdog('image', 'Image resize failed using the %toolkit toolkit on %path (%mimetype)', array(
+      '%toolkit' => $image->toolkit,
+      '%path' => $image->source,
+      '%mimetype' => $image->info['mime_type'],
+    ), WATCHDOG_ERROR);
+    return FALSE;
+  }
+  return TRUE;
+}
+
+/**
+ * Invoke the image toolkit so user can choose to use GD or ImageMagick.
+ */
+function iek_image_resize(stdClass $image, $data) {
+  $data['width'] = (int) round($data['width']);
+  $data['height'] = (int) round($data['height']);
+  return iek_toolkit_invoke('resize', $image, array($data));
+}
+
+/**
+ * Theme function for resizing effect summary.
+ */
+function theme_iek_image_resize_summary($variables) {
+  $data = $variables['data'];
+
+  if (isset($data['width'])
+    && isset($data['height'])) {
+    $summary = array();
+    $summary['width'] = $data['width'] . 'px';
+    $summary['height'] = $data['height'] . 'px';
+    $summary['blank margin'] = $data['blank_margin'] ? 'true' : 'false';
+    if ($data['blank_margin']) {
+      $summary['blank margin background color'] = $data['blank_margin_bg_color'];
+    }
+
+    $summary['position'] = $data['position'];
+    if ($data['position'] == 'coordinate') {
+      $summary['x'] = $data['x'] . 'px';
+      $summary['y'] = $data['y'] . 'px';
+    }
+    return iek_generate_summary($summary);
+  }
+  return '';
+}
+
+/********************************************************************
+ * Watermark effect.
+ ********************************************************************/
+
+/**
+ * Effect configuration form for iek_image_watermark.
+ */
+function iek_image_watermark_form($data) {
+  $iek_fonts = iek_get_watermark_fonts();
+  $fonts = array();
+
+  foreach ($iek_fonts as $item) {
+    $fonts[$item['name']] = $item['title'];
+  }
+
+  $form['text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Text'),
+    '#default_value' => isset($data['text']) ? $data['text'] : '',
+    '#required' => TRUE,
+    '#size' => 64,
+    '#maxlength' => 256,
+    '#allow_natural_number' => array('zero', 'positive'),
+    '#description' => t('Available tokens are: !tokens.', array('!tokens' => '[site:mail], [site:login-url], [site:name], [site:slogan], [site:url], [site:url-brief]')),
+  );
+  $form['font'] = array(
+    '#type' => 'select',
+    '#options' => $fonts,
+    '#title' => t('Font'),
+    '#default_value' => isset($data['font']) ? $data['font'] : '',
+    '#required' => TRUE,
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['color'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Text color'),
+    '#default_value' => isset($data['color']) ? $data['color'] : '#ffffff',
+    '#required' => TRUE,
+    '#size' => 10,
+    '#maxlength' => 7,
+    '#element_validate' => array('iek_image_effect_color_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['size'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Size'),
+    '#default_value' => isset($data['size']) ? $data['size'] : '24',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['angle'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Angle'),
+    '#default_value' => isset($data['angle']) ? $data['angle'] : '-45',
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('negative', 'zero', 'positive'),
+    '#description' => t('The angle of watermark. e.g. 45, 0, or -45'),
+  );
+  $form['position'] = array(
+    '#id' => 'position',
+    '#type' => 'select',
+    '#title' => t('Align position'),
+    '#default_value' => isset($data['position']) ? $data['position'] : 'middle_center',
+    '#options' => array(
+      'top_left' => t('Top Left'),
+      'top_center' => t('Top Center'),
+      'top_right' => t('Top Right'),
+      'middle_left' => t('Middle Left'),
+      'middle_center' => t('Middle Center'),
+      'middle_right' => t('Middle Right'),
+      'bottom_left' => t('Bottom Left'),
+      'bottom_center' => t('Bottom Center'),
+      'bottom_right' => t('Bottom Right'),
+    ),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['padding_top'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Padding top'),
+    '#default_value' => isset($data['padding_top']) ? $data['padding_top'] : '10',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['padding_right'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Padding right'),
+    '#default_value' => isset($data['padding_right']) ? $data['padding_right'] : '10',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['padding_bottom'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Padding bottom'),
+    '#default_value' => isset($data['padding_bottom']) ? $data['padding_bottom'] : '10',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  $form['padding_left'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Padding left'),
+    '#default_value' => isset($data['padding_left']) ? $data['padding_left'] : '10',
+    '#field_suffix' => ' ' . t('pixels'),
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('zero', 'positive'),
+  );
+  return $form;
+}
+
+/**
+ * Effect callback for iek_image_watermark.
+ */
+function iek_image_watermark_effect(&$image, $data) {
+  if (!iek_image_watermark($image, $data)) {
+    watchdog('image', 'Image watermark failed using the %toolkit toolkit on %path (%mimetype)', array(
+      '%toolkit' => $image->toolkit,
+      '%path' => $image->source,
+      '%mimetype' => $image->info['mime_type'],
+    ), WATCHDOG_ERROR);
+    return FALSE;
+  }
+  return TRUE;
+}
+
+/**
+ * Invoke the image toolkit so user can choose to use GD or ImageMagick.
+ */
+function iek_image_watermark(stdClass $image, $data) {
+  $data['text'] = (string) $data['text'];
+  $data['size'] = (int) round($data['size']);
+  return iek_toolkit_invoke('watermark', $image, array($data));
+}
+
+/**
+ * Theme function for watermark effect summary.
+ */
+function theme_iek_image_watermark_summary($variables) {
+  $data = $variables['data'];
+
+  if (isset($data['text'])
+    && isset($data['font'])
+    && isset($data['color'])
+    && isset($data['size'])
+    && isset($data['angle'])
+    && isset($data['position'])
+    && isset($data['padding_top'])
+    && isset($data['padding_right'])
+    && isset($data['padding_bottom'])
+    && isset($data['padding_left'])) {
+    $summary = array();
+    $summary['text'] = $data['text'];
+    $summary['font'] = $data['font'];
+    $summary['color'] = $data['color'];
+    $summary['size'] = $data['size'] . 'px';
+    $summary['angle'] = $data['angle'] . '°';
+    $summary['position'] = $data['position'];
+    $summary['top'] = $data['padding_left'] . 'px';
+    $summary['right'] = $data['padding_right'] . 'px';
+    $summary['bottom'] = $data['padding_bottom'] . 'px';
+    $summary['left'] = $data['padding_left'] . 'px';
+    return iek_generate_summary($summary);
+  }
+  return '';
+}
+
+/********************************************************************
+ * Overlay effect.
+ ********************************************************************/
+
+/**
+ * Effect configuration form for iek_image_overlay.
+ */
+function iek_image_overlay_form($data, &$form_state = NULL) {
+  $iek_overlays = iek_get_overlays();
+  foreach ($iek_overlays as $item1) {
+    foreach ($item1['children'] as $item2) {
+      $overlay_names[$item1['name']][$item2['name']] = $item2['title'];
+    }
+  }
+
+  $form['overlay_name'] = array(
+    '#type' => 'select',
+    '#options' => $overlay_names,
+    '#title' => t('Overlay name'),
+    '#default_value' => isset($data['overlay_name']) ? $data['overlay_name'] : '',
+    '#required' => TRUE,
+  );
+  $form['overlay_offset'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Overlay offset'),
+    '#default_value' => isset($data['overlay_offset']) ? $data['overlay_offset'] : '0',
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('negative', 'zero', 'positive'),
+  );
+  $form['bg_offset'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Background offset'),
+    '#default_value' => isset($data['bg_offset']) ? $data['bg_offset'] : '0',
+    '#required' => TRUE,
+    '#size' => 5,
+    '#element_validate' => array('iek_effect_natural_number_validate'),
+    '#allow_natural_number' => array('negative', 'zero', 'positive'),
+  );
+
+  return $form;
+}
+
+/**
+ * Effect callback for iek_image_overlay.
+ */
+function iek_image_overlay_effect(&$image, $data) {
+  if (!iek_image_overlay($image, $data)) {
+    watchdog('image', 'Image overlay failed using the %toolkit toolkit on %path (%mimetype)', array(
+      '%toolkit' => $image->toolkit,
+      '%path' => $image->source,
+      '%mimetype' => $image->info['mime_type'],
+    ), WATCHDOG_ERROR);
+    return FALSE;
+  }
+  return TRUE;
+}
+
+/**
+ * Invoke the image toolkit so user can choose to use GD or ImageMagick.
+ */
+function iek_image_overlay(stdClass $image, $data) {
+  $data['overlay_name'] = (string) $data['overlay_name'];
+  $data['overlay_offset'] = $data['overlay_offset'];
+  $data['bg_offset'] = $data['bg_offset'];
+  return iek_toolkit_invoke('overlay', $image, array($data));
+}
+
+/**
+ * Theme function for overlay effect summary.
+ */
+function theme_iek_image_overlay_summary($variables) {
+  $data = $variables['data'];
+
+  if (isset($data['overlay_name'])
+    && isset($data['overlay_offset'])
+    && isset($data['bg_offset'])) {
+    $summary = array();
+    $summary['overlay name'] = $data['overlay_name'];
+    $summary['overlay offset'] = $data['overlay_offset'] . 'px';
+    $summary['bg offset'] = $data['bg_offset'] . 'px';
+    return iek_generate_summary($summary);
+  }
+  return '';
+}
+
+/********************************************************************
+ * Filter effect.
+ ********************************************************************/
+
+/**
+ * Effect configuration form for iek_image_filter.
+ */
+function iek_image_filter_form($data, &$form_state = NULL) {
+  $filters = iek_get_image_filters();
+
+  $int127 = array();
+  $int255 = array();
+  for ($i = 0; $i <= 255; $i++) {
+    if ($i <= 127) {
+      $int127[$i] = $i;
+    }
+    $int255[$i] = $i;
+  }
+
+  $form['filter_name'] = array(
+    '#id' => 'filter_name',
+    '#type' => 'select',
+    '#title' => t('Filter name'),
+    '#description' => t('Choose a filter.'),
+    '#options' => $filters,
+    '#default_value' => isset($data['filter_name']) ? $data['filter_name'] : '',
+    '#required' => TRUE,
+  );
+  $form['repeat'] = array(
+    '#type' => 'select',
+    '#options' => $int255,
+    '#title' => t('Repeat'),
+    '#description' => t('How many times do you want to repeat the filter action? <br>Caution: higher repeat times will cause your site performance issue.'),
+    '#default_value' => isset($data['repeat']) ? $data['repeat'] : 1,
+    '#required' => TRUE,
+  );
+  $form['arg1'] = array(
+    '#type' => 'select',
+    '#options' => $int255,
+    '#title' => t('arg1'),
+    '#default_value' => isset($data['arg1']) ? $data['arg1'] : 10,
+    '#required' => TRUE,
+    '#states' => array(
+      'visible' => array(
+        ':input[id=filter_name]' => array(
+          array('value' => IMG_FILTER_BRIGHTNESS),
+          array('value' => IMG_FILTER_CONTRAST),
+          array('value' => IMG_FILTER_COLORIZE),
+          array('value' => IMG_FILTER_SMOOTH),
+          array('value' => IMG_FILTER_PIXELATE),
+        ),
+      ),
+    ),
+  );
+  $form['arg2'] = array(
+    '#type' => 'select',
+    '#options' => $int255,
+    '#title' => t('arg2'),
+    '#default_value' => isset($data['arg2']) ? $data['arg2'] : 0,
+    '#required' => TRUE,
+    '#states' => array(
+      'visible' => array(
+        ':input[id=filter_name]' => array(
+          array('value' => IMG_FILTER_COLORIZE),
+          array('value' => IMG_FILTER_PIXELATE),
+        ),
+      ),
+    ),
+  );
+  $form['arg3'] = array(
+    '#type' => 'select',
+    '#options' => $int255,
+    '#title' => t('arg3'),
+    '#default_value' => isset($data['arg3']) ? $data['arg3'] : 0,
+    '#required' => TRUE,
+    '#states' => array(
+      'visible' => array(
+        ':input[id=filter_name]' => array(
+          array('value' => IMG_FILTER_COLORIZE),
+        ),
+      ),
+    ),
+  );
+  $form['arg4'] = array(
+    '#type' => 'select',
+    '#options' => $int127,
+    '#title' => t('arg4'),
+    '#default_value' => isset($data['arg4']) ? $data['arg4'] : 0,
+    '#required' => TRUE,
+    '#states' => array(
+      'visible' => array(
+        ':input[id=filter_name]' => array(
+          array('value' => IMG_FILTER_COLORIZE),
+        ),
+      ),
+    ),
+  );
+
+  return $form;
+}
+
+/**
+ * Effect callback for iek_image_filter.
+ */
+function iek_image_filter_effect(&$image, $data) {
+  if (!iek_image_filter($image, $data)) {
+    watchdog('image', 'Image filter failed using the %toolkit toolkit on %path (%mimetype)', array(
+      '%toolkit' => $image->toolkit,
+      '%path' => $image->source,
+      '%mimetype' => $image->info['mime_type'],
+    ), WATCHDOG_ERROR);
+    return FALSE;
+  }
+  return TRUE;
+}
+
+/**
+ * Invoke the image toolkit so user can choose to use GD or ImageMagick.
+ */
+function iek_image_filter(stdClass $image, $data) {
+  $data['filter_name'] = (string) $data['filter_name'];
+  return iek_toolkit_invoke('filter', $image, array($data));
+}
+
+/**
+ * Theme function for filter effect summary.
+ */
+function theme_iek_image_filter_summary($variables) {
+  $data = $variables['data'];
+  $filters = iek_get_image_filters();
+
+  if (isset($data['filter_name'])
+    && isset($data['arg1'])
+    && isset($data['arg2'])
+    && isset($data['arg3'])
+    && isset($data['arg4'])) {
+    $summary = array();
+    $summary['filter name'] = $filters[$data['filter_name']];
+    $summary['repeat'] = isset($data['repeat']) ? $data['repeat'] : 1;
+    $summary['arg1'] = $data['arg1'];
+    $summary['arg2'] = $data['arg2'];
+    $summary['arg3'] = $data['arg3'];
+    $summary['arg4'] = $data['arg4'];
+    return iek_generate_summary($summary);
+  }
+  return '';
+}
+
+/********************************************************************
+ * Validation functions.
+ ********************************************************************/
+
+/**
+ * Validation function for color format.
+ */
+function iek_image_effect_color_validate($element, &$form_state) {
+  if (!iek_image_hex2rgb($element['#value'])) {
+    form_error($element, t('!name is an invalid hex color code.', array('!name' => $element['#title'])));
+  }
+}
+
+/**
+ * Validation function for color format.
+ */
+function iek_effect_natural_number_validate($element, &$form_state) {
+  $allow_natural_number = isset($element['#allow_natural_number']) ? $element['#allow_natural_number'] : array(
+    'negative',
+    'zero',
+    'positive',
+  );
+  $value = $element['#value'];
+  if (!is_numeric($value)) {
+    form_error($element, t('!name must be a number.', array('!name' => $element['#title'])));
+  }
+  elseif ($value > 0 && !in_array('positive', $allow_natural_number)) {
+    form_error($element, t('!name must be not a positive number.', array('!name' => $element['#title'])));
+  }
+  elseif ($value == 0 && !in_array('zero', $allow_natural_number)) {
+    form_error($element, t('!name must be not zero.', array('!name' => $element['#title'])));
+  }
+  elseif ($value < 0 && !in_array('negative', $allow_natural_number)) {
+    form_error($element, t('!name must be not a negative number.', array('!name' => $element['#title'])));
+  }
+}
+
+/**
+ * Validation function for color format.
+ */
+function iek_image_effect_blank_margin_bg_color_validate($element, &$form_state) {
+  if ($form_state['values']['data']['blank_margin'] && empty($element['#value'])) {
+    form_error($element, t('!name is required.', array('!name' => $element['#title'])));
+  }
+  elseif ($form_state['values']['data']['blank_margin'] && !iek_image_hex2rgb($element['#value'])) {
+    form_error($element, t('!name is an invalid hex color code.', array('!name' => $element['#title'])));
+  }
+}
+
+/********************************************************************
+ * Helper functions.
+ ********************************************************************/
+
+/**
+ * Invokes the given method using the currently selected toolkit.
+ *
+ * @param string $method
+ *   A string containing the method to invoke.
+ * @param object $image
+ *   An image object returned by image_load().
+ * @param array $params
+ *   An optional array of parameters to pass to the toolkit method.
+ *
+ * @return bool
+ *   Mixed values (typically Boolean indicating successful operation).
+ */
+function iek_toolkit_invoke($method, stdClass $image, array $params = array()) {
+  $function = 'iek_' . $image->toolkit . '_' . $method;
+  if (function_exists($function)) {
+    array_unshift($params, $image);
+    return call_user_func_array($function, $params);
+  }
+  watchdog('image', 'The selected image handling toolkit %toolkit can not correctly process %function.', array(
+    '%toolkit' => $image->toolkit,
+    '%function' => $function,
+  ), WATCHDOG_ERROR);
+  return FALSE;
+}
+
+/**
+ * Gets a list of available watermark fonts.
+ *
+ * @param string $font_name
+ *   A font name if you just want to get a particular watermark font.
+ *   Leaves empty if you want to get all available watermark fonts.
+ *
+ * @return array
+ *   Particular watermark font if the 'font_name' is given.
+ *   All available watermark fonts otherwise.
+ */
+function iek_get_watermark_fonts($font_name = '') {
+  $fonts = module_invoke_all('iek_watermark_font');
+  // Invoke hook_iek_watermark_fonts_alter().
+  // To allow all modules to alter the fonts.
+  drupal_alter('iek_watermark_font', $fonts);
+
+  if (!empty($font_name)) {
+    if (isset($fonts[$font_name])) {
+      return $fonts[$font_name];
+    }
+    else {
+      return array();
+    }
+  }
+  return $fonts;
+}
+
+/**
+ * Gets a list of available image overlays.
+ *
+ * @param string $overlay_name
+ *   A overlay name if you just want to get a particular image overlay.
+ *   Leaves empty if you want to get all available overlays.
+ *
+ * @return array
+ *   Particular overlays if the 'overlay_name' is given.
+ *   All available overlays otherwise.
+ */
+function iek_get_overlays($overlay_name = '') {
+  $overlays = module_invoke_all('iek_overlay');
+  // Invoke hook_iek_overlay_alter().
+  // To allow all modules to alter the overlays.
+  drupal_alter('iek_overlay', $overlays);
+
+  if (!empty($overlay_name)) {
+    foreach ($overlays as $item1) {
+      foreach ($item1['children'] as $item2) {
+        if ($item2['name'] == $overlay_name) {
+          return $item2;
+        }
+      }
+    }
+  }
+  return $overlays;
+}
+
+/**
+ * Gets a list of available image filters.
+ *
+ * @return array
+ *   All available filters array.
+ */
+function iek_get_image_filters() {
+  $filters = array(
+    IMG_FILTER_NEGATE => t('Negate'),
+    IMG_FILTER_GRAYSCALE => t('Grayscale'),
+    IMG_FILTER_BRIGHTNESS => t('Brightness'),
+    IMG_FILTER_CONTRAST => t('Contrast'),
+    IMG_FILTER_COLORIZE => t('Colorize'),
+    IMG_FILTER_EDGEDETECT => t('Edgedetect'),
+    IMG_FILTER_EMBOSS => t('Emboss'),
+    IMG_FILTER_GAUSSIAN_BLUR => t('Gaussian blur'),
+    IMG_FILTER_SELECTIVE_BLUR => t('Selective blur'),
+    IMG_FILTER_MEAN_REMOVAL => t('Mean removal'),
+    IMG_FILTER_SMOOTH => t('Smooth'),
+    // IMG_FILTER_PIXELATE => t('Pixelate'),
+  );
+  return $filters;
+}
+
+/**
+ * Generates an image effects summary string.
+ *
+ * @param array $summary
+ *   An array that contains the effect items such as width, height, background,
+ *   border, and so on.
+ *
+ * @return string
+ *   A summary string that was split with the 'summary' array.
+ */
+function iek_generate_summary($summary = array()) {
+  $text = '';
+  foreach ($summary as $k => $v) {
+    $summary[$k] = $k . ': ' . check_plain($v);
+  }
+  if (count($summary) > 0) {
+    $text = '(' . implode(', ', $summary) . ')';
+  }
+  return $text;
+}
+
+/**
+ * Converts color format from Hex to RGB.
+ *
+ * @param string $hex_str
+ *   A Hex color format like '#cccccc'.
+ * @param bool $return_as_string
+ *   A boolean flag to indicate to return a string or an array.
+ * @param string $separator
+ *   A character or string to join the RGB array elements.
+ *
+ * @return array
+ *   An associative RGB array if 'return_as_string' is set to FALSE.
+ * @return string
+ *   A RGB string that was split by the 'separator' will be returned
+ *   if 'return_as_string' is set to TRUE.
+ * @return bool
+ *   Return FALSE if an invalid Hex color code.
+ */
+function iek_image_hex2rgb($hex_str, $return_as_string = FALSE, $separator = ',') {
+  // Gets a proper Hex string.
+  $hex_str = preg_replace("/[^0-9A-Fa-f]/", '', $hex_str);
+  $rgb_array = array();
+  // If a proper Hex code, convert using bitwise operation.
+  if (strlen($hex_str) == 6) {
+    $border_color_val = hexdec($hex_str);
+    $rgb_array['red'] = 0xFF & ($border_color_val >> 0x10);
+    $rgb_array['green'] = 0xFF & ($border_color_val >> 0x8);
+    $rgb_array['blue'] = 0xFF & $border_color_val;
+  }
+  // If shorthand notation, need some string manipulations.
+  elseif (strlen($hex_str) == 3) {
+    $rgb_array['red'] = hexdec(str_repeat(substr($hex_str, 0, 1), 2));
+    $rgb_array['green'] = hexdec(str_repeat(substr($hex_str, 1, 1), 2));
+    $rgb_array['blue'] = hexdec(str_repeat(substr($hex_str, 2, 1), 2));
+  }
+  else {
+    // Invalid Hex color code.
+    return FALSE;
+  }
+
+  // Returns the RGB string or the associative array.
+  return $return_as_string ? implode($separator, $rgb_array) : $rgb_array;
+}
+
+/**
+ * Creates an image from file or URL.
+ *
+ * @param string $file
+ *   Path to the image.
+ *
+ * @return object
+ *   An image identifier representing the image obtained from
+ *   the given filename.
+ */
+function iek_gd_create_image($file) {
+  $data = @getimagesize($file);
+
+  switch ($data['mime']) {
+    case 'image/jpeg':
+      $image = imagecreatefromjpeg($file);
+      break;
+
+    case 'image/gif':
+      $image = imagecreatefromgif($file);
+      break;
+
+    case 'image/png':
+      $image = imagecreatefrompng($file);
+      break;
+
+    default:
+      $image = NULL;
+      break;
+  }
+  return $image;
+}

@@ -1,0 +1,29 @@
+Image effect kit 7.x-1.4, 2014-07-02
+------------------------------------
+- Issue #2296601 by cdmo: IEK - Added new option for repeating a filter action.
+
+Image effect kit 7.x-1.3, 2014-03-31
+------------------------------------
+- Issue #2141463 by Alan Delval: IEK - Padding problem, blank images.
+- Issue #2188359 by nonzod: IEK - Font path incorrect in a multi-language site.
+- Issue #2227775 by nicolasg: IEK - Incorrect path to font.
+
+Image effect kit 7.x-1.2, 2013-10-15
+------------------------------------
+- Added rounded corner effect.
+- Added filter effect.
+- Removed some watermark fonts.
+
+Image effect kit 7.x-1.1, 2013-10-14
+------------------------------------
+- Removed some overlay images.
+
+Image effect kit 7.x-1.0, 2013-10-14
+------------------------------------
+- Initial release of Image effect kit module.
+- It includes the following effects:
+    Border effect
+    Padding effect
+    Watermark effect
+    Resizing effect
+    Overlay effect
