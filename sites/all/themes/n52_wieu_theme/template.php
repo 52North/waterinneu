@@ -174,6 +174,7 @@ function n52_wieu_theme_form_element($variables) {
 function n52_wieu_theme_field($variables) {
 	$output = '';
 	$field_bundle = $variables['element']['#bundle'];
+	$field_name = $variables['element']['#field_name'];
 	$description = '';
 	
 	if ($field_bundle === 'organisation' || $field_bundle === 'product' || $field_bundle === 'tool') {
@@ -184,7 +185,7 @@ function n52_wieu_theme_field($variables) {
 				$field_bundle);
 		$description = $field_info['description'];
 	}
-
+	
 	// Render the label, if it's not hidden.
 	if (!$variables['label_hidden']) {
 		$output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'];
@@ -199,7 +200,7 @@ function n52_wieu_theme_field($variables) {
 			}
 			if (strlen($description)) {
 				// add info glyphicon and popover stuff
-				$output .= '&nbsp;<span class="glyphicon glyphicon-info-sign glyphicon-light" data-content="<div class=\'popover-light\'>' . $description . '</div>" rel="popover" data-toggle="popover" data-placement="right" data-original-title="Description" data-trigger="click" data-html="true"></span>';
+				$output .= '&nbsp;<span class="field-with-info glyphicon glyphicon-info-sign glyphicon-light" data-content="<div class=\'popover-light\'>' . $description . '</div>" rel="popover" data-toggle="popover" data-placement="right" data-original-title="Description" data-trigger="click" data-html="true"></span>';
 			} 
 		}
 		$output .= ':&nbsp;</div>';
@@ -212,6 +213,7 @@ function n52_wieu_theme_field($variables) {
 		$output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
 	}
 	$output .= '</div>';
+		
 
 	// Render the top-level DIV.
 	$output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';

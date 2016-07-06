@@ -213,6 +213,43 @@ ul.related-link-list li {
 	font-weight: bold;
 }
 
+/* icons and not text*/
+#product-of-the-month div.field-name-field-category,
+.node-teaser div.field-name-field-category,
+#product-of-the-month div.field-name-field-n52-comm-dev,
+.node-teaser div.field-name-field-n52-comm-dev {
+	top: -40px;
+	float: right;
+}
+
+.node-teaser div.field-name-field-category,
+.node-teaser div.field-name-field-n52-comm-dev {
+	top: -80px;
+}
+
+div.field-as-icon {
+    font-size: 200%;
+}
+
+div.field-with-info,
+#product-of-the-month div.field-as-icon {
+	cursor: help;
+}
+
+.node-teaser div.field-as-icon {
+	cursor: pointer;
+}
+
+div.icon-with-link {
+	margin-right: 10px;
+}
+
+div.content > div.field-name-field-n52-comm-dev,
+div.content > div.field-name-field-category {
+    position: relative;
+    float: right;
+    top: -70px;
+}
 /******************************************************************************
  *                                                                            *
  *                            Add product form                                *
@@ -333,7 +370,6 @@ ul.pager li a, ul.pager li.pager-current {
     /* symbol for "collapsed" panels */
     font-family: 'Glyphicons Halflings';
     float: right;
-    color: #cecece;
     content: "\e114";    /* adjust as needed, taken from bootstrap.css */
 }
 
@@ -342,7 +378,6 @@ ul.pager li a, ul.pager li.pager-current {
     font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
     content: "\e113";    /* adjust as needed, taken from bootstrap.css */
     float: right;        /* adjust as needed */
-    color: #cecece;         /* adjust as needed */
 }
 
 /******************************************************************************
@@ -388,8 +423,8 @@ ul.service-requests-list > li:before {
  *                                                                            *
  ******************************************************************************/
  div#portal-list > div > div {
-    border: #cecece 1px solid;
-    background: #f5f5f5;
+    border-width: 1px;
+    border-style: solid;
     margin-bottom: 30px;
     margin-left: 30px;
     min-width: 450px;

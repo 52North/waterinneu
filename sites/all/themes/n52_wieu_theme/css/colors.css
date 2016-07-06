@@ -161,3 +161,29 @@ ul.pager li a, ul.pager li.pager-current {
 span.background {
     color: #cecece;
 }
+
+#product-of-the-month div.field-name-field-n52-comm-dev,
+.node-teaser div.field-name-field-n52-comm-dev {
+    color: #4092C9;
+}
+
+#product-of-the-month div.field-name-field-category,
+.node-teaser div.field-name-field-category {
+    color: #27638c;
+}
+
+.panel-heading.collapsed .accordion-toggle:after {
+    /* symbol for "collapsed" panels */
+    color: #cecece;
+}
+
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    color: #cecece;         /* adjust as needed */
+}
+
+ div#portal-list > div > div {
+    border-color: #cecece;
+    background: #f5f5f5;
+ }
+ 

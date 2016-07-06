@@ -1,0 +1,105 @@
+<?php
+/*
+ * Copyright (C) 2015
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ *
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ *
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ *
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+/**
+ * Implements hook_field_formatter_info().
+ */
+function n52_term_formatter_icons_field_formatter_info() {
+	return array(
+			'n52_term_formatter_icons' => array(
+					'label' => t('52N - Term Formatter Using Icons'),
+					'description' => t('This formatter can be used in view modes and displays terms as icons with a fixed lookup table: term -> icon.'),
+					'field types' => array('taxonomy_term_reference'), 
+			),
+			'n52_term_formatter_icons_with_links' => array(
+					'label' => t('52N - Term Formatter Using Icons With Links'),
+					'description' => t('This formatter can be used in view modes and displays terms as icons with a fixed lookup table: term -> icon. In addtion, a link to the vocabulary term is available.'),
+					'field types' => array('taxonomy_term_reference'),
+			),
+	);
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function n52_term_formatter_icons_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+	$element = array();
+	if (!isset($items[0]['tid'])) {
+		return $element;
+	}
+	// Collect information
+	$term = taxonomy_term_load($items[0]['tid']);
+	if (!$term) {
+		return $element;
+	}
+	if (isset($term->name_field[$langcode])){
+		$field_title_i18n = $term->name_field[$langcode][0]['value'];
+	} else {
+		$field_title_i18n = $term->name_original;
+	}
+	$field_label_i18n = taxonomy_get_vocabularies()[n52_taxonomy_name_vid_map()[$field['settings']['allowed_values'][0]['vocabulary']]]->name;
+	// Render da field
+	$output = '<div class="field-as-icon glyphicon ' .
+			_n52_term_formatter_icons_get_icon_by_term_name(strtolower($term->name_original)) .
+			'" data-content="<div class=\'popover-light category-popover\'>' .
+			$field_title_i18n .
+			'</div>" rel="popover" data-toggle="popover" data-placement="top" data-original-title="' .
+			$field_label_i18n .
+			'" data-trigger="hover" data-html="true"></div>';
+	// Surround div with link	
+	if ($display['type'] == 'n52_term_formatter_icons_with_links') {
+		$output = '<div class="icon-with-link"><a href="' . url(drupal_get_path_alias(taxonomy_term_uri($term)['path'])) . '">' . $output . '</a></div>';
+	}
+	$element[0]['#markup'] = $output;
+	return $element;
+}
+
+function _n52_term_formatter_icons_get_icon_by_term_name($term_name) {
+	$lookup_table = array (
+			// product categories
+			'best practise guidance' => 'book',
+			'technology (hardware)' => 'wrench',
+			'software products' => 'cloud-download',
+			'dataset list' => 'list-alt',
+			'methodology' => 'random',
+			'standard' => 'ok',
+			'other' => 'plus',
+			// stage of commercial development
+			'commercially available' => 'check',
+			'looking for first markets' => 'share',
+			'looking for development partners' => 'zoom-in',
+			'awaiting product validation/certification' => 'edit',
+			'other' => 'sort',
+	);
+	if (isset($lookup_table[$term_name])) {
+		return 'glyphicon-' .$lookup_table[$term_name];
+	}
+	else {
+		return 'glyphicon-ban-circle';
+	}
+}
