@@ -214,41 +214,43 @@ ul.related-link-list li {
 }
 
 /* icons and not text*/
-#product-of-the-month div.field-name-field-category,
-.node-teaser div.field-name-field-category,
-#product-of-the-month div.field-name-field-n52-comm-dev,
-.node-teaser div.field-name-field-n52-comm-dev {
-	top: -40px;
+.page-title div.field_category,
+#product-of-the-month div.field_category,
+.node-teaser div.field_category,
+.page-title div.field_n52_comm_dev,
+#product-of-the-month div.field_n52_comm_dev,
+.node-teaser div.field_n52_comm_dev {
 	float: right;
+	padding: 0 0 0 10px;
 }
 
-.node-teaser div.field-name-field-category,
-.node-teaser div.field-name-field-n52-comm-dev {
-	top: -80px;
+
+.page-title div.popover-content,
+#product-of-the-month div.popover-content,
+.node-teaser div.popover-content {
+	font-size: 50%;
+	width: 100%;
 }
 
-div.field-as-icon {
-    font-size: 200%;
+.page-title div.popover,
+#product-of-the-month div.popover,
+.node-teaser div.popover {
+	width: 100%;
 }
 
 div.field-with-info,
 #product-of-the-month div.field-as-icon {
-	cursor: help;
+    cursor: help;
 }
 
 .node-teaser div.field-as-icon {
 	cursor: pointer;
 }
 
-div.icon-with-link {
-	margin-right: 10px;
-}
-
-div.content > div.field-name-field-n52-comm-dev,
-div.content > div.field-name-field-category {
-    position: relative;
-    float: right;
-    top: -70px;
+div.content > div.field-name-field-image,
+div.content > div.field-name-field-image > div > div > a > img {
+	width: 100%;
+	height: auto;
 }
 /******************************************************************************
  *                                                                            *
@@ -291,18 +293,6 @@ input[type="submit"], input[type="reset"], input[type="button"] {
 
 select {
 	-webkit-appearance: initial;
-}
-
-/******************************************************************************
- *                                                                            *
- *                            Teaser: Display images inline                   *
- *                                                                            *
- ******************************************************************************/
-div.content > div.view > div.view-content > div.views-row > article.node-teaser > div.content > div.field-type-image,
-div.content > article.node > div.content > div.field-name-field-logo > div.field-items > div.field-item > img {
-    margin: 5px;
-    float: left;
-    padding: 5px;
 }
 
 /******************************************************************************

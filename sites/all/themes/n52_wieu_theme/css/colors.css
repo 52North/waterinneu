@@ -162,14 +162,20 @@ span.background {
     color: #cecece;
 }
 
-#product-of-the-month div.field-name-field-n52-comm-dev,
-.node-teaser div.field-name-field-n52-comm-dev {
+.page-title  div.field_n52_comm_dev,
+#product-of-the-month div.field_n52_comm_dev,
+.node-teaser div.field_n52_comm_dev {
     color: #4092C9;
 }
 
-#product-of-the-month div.field-name-field-category,
-.node-teaser div.field-name-field-category {
+.page-title div.field_category,
+#product-of-the-month div.field_category,
+.node-teaser div.field_category {
     color: #27638c;
+}
+
+.popover {
+	color: #000;
 }
 
 .panel-heading.collapsed .accordion-toggle:after {

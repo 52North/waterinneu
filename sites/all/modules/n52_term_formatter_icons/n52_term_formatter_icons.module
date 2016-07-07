@@ -66,14 +66,14 @@ function n52_term_formatter_icons_field_formatter_view($entity_type, $entity, $f
 	// Render da field
 	$output = '<div class="field-as-icon glyphicon ' .
 			_n52_term_formatter_icons_get_icon_by_term_name(strtolower($term->name_original)) .
-			'" data-content="<div class=\'popover-light category-popover\'>' .
-			$field_title_i18n .
-			'</div>" rel="popover" data-toggle="popover" data-placement="top" data-original-title="' .
-			$field_label_i18n .
-			'" data-trigger="hover" data-html="true"></div>';
+			' ' . $field['field_name'] .
+			'" data-content="<div class=\'popover-light category-popover\'><b>' .
+			$field_label_i18n . '</b>:&nbsp;' . $field_title_i18n .
+			'</div>" rel="popover" data-toggle="popover" data-placement="top"' .
+			' data-trigger="hover" data-html="true"></div>';
 	// Surround div with link	
 	if ($display['type'] == 'n52_term_formatter_icons_with_links') {
-		$output = '<div class="icon-with-link"><a href="' . url(drupal_get_path_alias(taxonomy_term_uri($term)['path'])) . '">' . $output . '</a></div>';
+		$output = '<a href="' . url(drupal_get_path_alias(taxonomy_term_uri($term)['path'])) . '">' . $output . '</a>';
 	}
 	$element[0]['#markup'] = $output;
 	return $element;
