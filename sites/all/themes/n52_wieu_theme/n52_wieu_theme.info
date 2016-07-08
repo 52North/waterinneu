@@ -10,6 +10,7 @@ stylesheets[all][] = css/colors.css
 files[][] = images/header-background-01.png
 files[][] = images/header-background-02.png
 files[][] = images/header-background-03.png
+files[][] = print.tpl.php
 
 regions[pre_header_first] = Pre Header First
 regions[pre_header_second] = Pre Header Second

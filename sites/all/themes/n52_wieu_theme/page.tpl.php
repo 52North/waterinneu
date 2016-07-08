@@ -45,7 +45,7 @@
         <!-- #pre-header-inside -->
         <div id="pre-header-inside" class="clearfix">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <?php if ($page['pre_header_first']):?>
                     <div class="pre-header-area">
                     <?php print render($page['pre_header_first']); ?>
@@ -53,7 +53,7 @@
                     <?php endif; ?>
                 </div>
                 
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <?php if ($page['pre_header_second']):?>
                     <div class="pre-header-area">
                     <?php print render($page['pre_header_second']); ?>
@@ -61,7 +61,7 @@
                     <?php endif; ?>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <?php if ($page['pre_header_third']):?>
                     <div class="pre-header-area">
                     <?php print render($page['pre_header_third']); ?>
@@ -124,7 +124,7 @@
         <!-- #header-inside -->
         <div id="header-inside" class="clearfix">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12">
 
                 <?php if ($logo):?>
                 <div style="float:left">
@@ -171,7 +171,7 @@
         <!-- #main-navigation-inside -->
         <div id="main-navigation-inside" class="clearfix">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12">
                     <nav role="navigation">
                         <?php if ($page['navigation']) :?>
                         <?php print drupal_render($page['navigation']); ?>
@@ -198,7 +198,7 @@
         <!-- #banner-inside -->
         <div id="banner-inside" class="clearfix">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12">
                 <?php print render($page['banner']); ?>
                 </div>
             </div>
@@ -221,7 +221,7 @@
             <!-- #top-content-inside -->
             <div id="top-content-inside" class="clearfix">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12">
                     <?php print render($page['highlighted']); ?>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
             <?php if ($messages):?>
             <div id="messages-console" class="clearfix">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12">
                     <?php print $messages; ?>
                     </div>
                 </div>
@@ -295,8 +295,8 @@
                             <?php print render($title_prefix); ?>
                             <?php if ($title):?>
 	                            <h1 class="page-title"><?php print $title;
-	                            if ($node && $node->type === 'tool') {
-		                            if (isset($page['content']['system_main']['nodes'][$node->nid]['field_n52_comm_dev'])) {
+	                            if (isset($node) && $node->type === 'tool') {
+	                            	if (isset($page['content']['system_main']['nodes'][$node->nid]['field_n52_comm_dev'])) {
 			      						print $page['content']['system_main']['nodes'][$node->nid]['field_n52_comm_dev'][0]['#markup'];
 			      						$page['content']['system_main']['nodes'][$node->nid]['field_n52_comm_dev'] = NULL;
 			    					}
@@ -384,7 +384,7 @@
         <!-- #footer-inside -->
         <div id="footer-inside" class="clearfix">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-xs-3">
                     <?php if ($page['footer_first']):?>
                     <div class="footer-area">
                     <?php print render($page['footer_first']); ?>
@@ -392,7 +392,7 @@
                     <?php endif; ?>
                 </div>
                 
-                <div class="col-md-3">
+                <div class="col-xs-3">
                     <?php if ($page['footer_second']):?>
                     <div class="footer-area">
                     <?php print render($page['footer_second']); ?>
@@ -400,7 +400,7 @@
                     <?php endif; ?>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-xs-3">
                     <?php if ($page['footer_third']):?>
                     <div class="footer-area">
                     <?php print render($page['footer_third']); ?>
@@ -408,7 +408,7 @@
                     <?php endif; ?>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-xs-3">
                     <?php if ($page['footer_fourth']):?>
                     <div class="footer-area">
                     <?php print render($page['footer_fourth']); ?>
@@ -430,7 +430,7 @@
         <!-- #subfooter-inside -->
         <div id="subfooter-inside" class="clearfix">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12">
                     <!-- #subfooter-left -->
                     <div class="subfooter-area">
                     <?php print theme('links__system_secondary_menu', array('links' => $secondary_menu, 'attributes' => array('class' => array('menu', 'secondary-menu', 'links', 'clearfix')))); ?>                        

@@ -178,6 +178,18 @@ span.background {
 	color: #000;
 }
 
+fieldset.group-n52-product-details {
+	background: #fafafa;
+}
+
+div.field-group-div {
+    background: #fff;
+}
+
+div.field-group-div div.row:not(:last-child) {
+    border-bottom-color: #eaeaea;
+}
+
 .panel-heading.collapsed .accordion-toggle:after {
     /* symbol for "collapsed" panels */
     color: #cecece;
@@ -191,5 +203,10 @@ span.background {
  div#portal-list > div > div {
     border-color: #cecece;
     background: #f5f5f5;
+ }
+ 
+ div#supported-standards-group ul.textformatter-list a {
+    background-color: #27638c;
+    color: #fff;
  }
  

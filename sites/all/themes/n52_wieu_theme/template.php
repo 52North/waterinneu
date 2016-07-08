@@ -187,8 +187,9 @@ function n52_wieu_theme_field($variables) {
 	}
 	
 	// Render the label, if it's not hidden.
+	$is_in_row = strpos($variables['classes'],'row')>0;
 	if (!$variables['label_hidden']) {
-		$output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'];
+		$output .= '<div class="field-label' . (($is_in_row)?' col-xs-6':'') . '"' . $variables['title_attributes'] . '>' . $variables['label'];
 		if (strlen($description)) {
 			// remove div with author instructions
 			if (strpos($description,'<div') >= 0) {
@@ -207,7 +208,7 @@ function n52_wieu_theme_field($variables) {
 	}
 
 	// Render the items.
-	$output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+	$output .= '<div class="field-items' . (($is_in_row)?' col-xs-6':'') . '"' . $variables['content_attributes'] . '>';
 	foreach ($variables['items'] as $delta => $item) {
 		$classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
 		$output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';

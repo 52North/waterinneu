@@ -204,6 +204,10 @@ li.no-list-style {
  *                            Node display                                    *
  *                                                                            *
  ******************************************************************************/
+.field-name-field-logo img {
+	float: left;
+	margin: 10px 10px 10px 10px;
+}
 
 ul.related-link-list li {
 	border: 0;
@@ -238,7 +242,7 @@ ul.related-link-list li {
 	width: 100%;
 }
 
-div.field-with-info,
+.field-with-info,
 #product-of-the-month div.field-as-icon {
     cursor: help;
 }
@@ -247,11 +251,55 @@ div.field-with-info,
 	cursor: pointer;
 }
 
-div.content > div.field-name-field-image,
-div.content > div.field-name-field-image > div > div > a > img {
+div.field-name-field-image,
+div.field-name-field-image > div > div > a > img {
 	width: 100%;
 	height: auto;
 }
+
+/*
+ *  node::field-groups
+ */
+div.field-group-div {
+	margin: 10px;
+	padding: 10px;
+}
+
+div.field-group-div div.row:not(:last-child) {
+	border-bottom: 1px solid;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+}
+
+div.field-group-div div.row:last-child{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+div.field-group-div div.row div.field-label {
+	text-align: right;
+}
+
+/*
+ * node::field-groups::supported-standards
+ */
+div#supported-standards-group ul.textformatter-list a {
+	display: inline;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    vertical-align: baseline;
+    padding-left: 4px;
+    padding-right: 4px;
+} 
+
+div#supported-standards-group div.item-list ul li {
+	border-bottom: none;
+    margin-bottom: 0;
+    padding: 0 0;
+}
+ 
 /******************************************************************************
  *                                                                            *
  *                            Add product form                                *
@@ -303,11 +351,13 @@ select {
 div.content > article.node > div.content > div.field-name-field-image {
 	width: 100%;
 }
-/*field-name-field-logo*/
+
 div.content > article.node > div.content > div.field-name-field-image > div.field-items > div.field-item > img {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    width: 100%;
+    height: auto;
 }
 
 /******************************************************************************
