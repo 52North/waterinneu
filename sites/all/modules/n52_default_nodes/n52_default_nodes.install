@@ -27,14 +27,14 @@
  * Public License for more details.
  */
  
-include_once drupal_get_path('module', 'module_name') . 'nodes/api_json.php';
-include_once drupal_get_path('module', 'module_name') . 'nodes/cookies.php';
-include_once drupal_get_path('module', 'module_name') . 'nodes/imprint.php';
-include_once drupal_get_path('module', 'module_name') . 'nodes/javascript-required.php';
-include_once drupal_get_path('module', 'module_name') . 'nodes/landingpage_accordion.php';
-include_once drupal_get_path('module', 'module_name') . 'nodes/matchmaking.php';
-include_once drupal_get_path('module', 'module_name') . 'nodes/related-portals.php';
-include_once drupal_get_path('module', 'module_name') . 'nodes/sitemap.php';
+include_once 'nodes/api_json.php';
+include_once 'nodes/cookies.php';
+include_once 'nodes/imprint.php';
+include_once 'nodes/javascript-required.php';
+include_once 'nodes/landingpage_accordion.php';
+include_once 'nodes/matchmaking.php';
+include_once 'nodes/related-portals.php';
+include_once 'nodes/sitemap.php';
 
 function n52_default_nodes_enable() {
 	global $user;
