@@ -148,7 +148,7 @@ For bespoke support and advice, go to <a data-toggle="collapse"
   -->
   <div id="explore-ask-experts" class="panel panel-default 
       panel-light-hightlight">
-    <div class="panel-heading panel-heading-light-highlight collapsed" 
+    <div class="panel-heading panel-heading-dark-highlight collapsed" 
 			data-toggle="collapse" data-parent="#accordion" 
 			data-target="#ask-the-expert">
         <h3 class="panel-title accordion-toggle">
@@ -203,7 +203,7 @@ For bespoke support and advice, go to <a data-toggle="collapse"
     ALERTS
   -->
   <div id="explore-alerts" class="panel panel-default panel-dark-hightlight">
-    <div class="panel-heading panel-heading-dark-highlight collapsed" 
+    <div class="panel-heading panel-heading-light-highlight collapsed" 
 			data-toggle="collapse" data-parent="#accordion" 
 			data-target="#alerts">
         <h3 class="panel-title accordion-toggle">
@@ -223,7 +223,7 @@ For bespoke support and advice, go to <a data-toggle="collapse"
   EVENTS
   -->
   <div id="explore-events" class="panel panel-default panel-light-hightlight">
-    <div class="panel-heading panel-heading-light-highlight collapsed" 
+    <div class="panel-heading panel-heading-dark-highlight collapsed" 
 			data-toggle="collapse" data-parent="#accordion" 
 			data-target="#events">
         <h3 class="panel-title accordion-toggle">
