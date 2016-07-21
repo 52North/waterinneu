@@ -37,6 +37,7 @@
 <head profile="<?php print $grddl_profile; ?>">
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
+  <link href='//fonts.googleapis.com/css?family=Titillium+Web:900,700italic,700,600italic,600,400italic,400,300italic,300,200italic,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <?php print $styles;?>
   <?php print $scripts; ?>
 </head>

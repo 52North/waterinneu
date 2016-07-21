@@ -27,21 +27,18 @@
  */
 /*
  * Main background: #f5f5f5
- *
- * Light elements: #cecece;
- *
- * Highlight background: #29648C
- *
- * Link/Call-to-Action: #27638c
- *
- * Button color: #428bca
- *
- * Button border color: #357ebd
- *
- * Button font color: #fff
+ * Light elements : #cecece
+ * Dark color     : #2b4c6e
+ * Middle color   : #419fbe
+ * Grey color     : #a8aca7
  */
 body, .comment {
 	background-color: #f5f5f5;
+}
+
+.btn-primary {
+	background-color: #419fbe;
+	border-color: #2b4c6e;
 }
 
 .node footer {
@@ -49,38 +46,38 @@ body, .comment {
 }
 
 #bottom-content, .toggle-control a, .toggle-control a:hover {
-	background-color: #29648C;
+	background-color: #2b4c6e;
 }
 
 #header-top, .toggle-control {
-	border-top: 5px solid #29648C;
+	border-top: 5px solid #2b4c6e;
 }
 
 #pre-header {
-	background-color: #29648C;
+	background-color: #2b4c6e;
 }
 
 a, a:hover, a:focus, ul.menu li a.active, ul.menu li a:hover, #forum thead a:hover,
 	#block-node-recent .node-title a:hover {
-	color: #27638c;
+	color: #2b4c6e;
 }
 
 input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover,
 	.dark input[type="submit"], .highlighted-block .btn:hover,
 	.highlighted-block .btn:focus, .call-to-action .btn, .tag a:hover {
-	background-color: #27638c;
+	background-color: #2b4c6e;
 }
 
 ::-moz-selection {
-	background-color: #27638c;
+	background-color: #2b4c6e;
 }
 
 ::selection {
-	background-color: #27638c;
+	background-color: #2b4c6e;
 }
 
 input.form-text:focus, textarea.form-textarea:focus {
-	border-color: #27638c;
+	border-color: #2b4c6e;
 }
 
 .stickynav-active {
@@ -88,7 +85,7 @@ input.form-text:focus, textarea.form-textarea:focus {
 }
 
 #toTop {
-	background-color: #29648C;
+	background-color: #2b4c6e;
 }
 
 .glyphicon-light {
@@ -100,31 +97,31 @@ div.submitted {
 }
 
 #main-navigation ul.menu li a.active, #main-navigation ul.menu li a.active-trail {
-    background: #27638c;
+    background: #2b4c6e;
     color: #cecece;
 }
 
 #main-navigation ul.menu li a.active:hover, #main-navigation ul.menu li a.active:active, #main-navigation ul.menu li a.active-trail:hover, #main-navigation ul.menu li a.active:active-trail{
 	background: unset;
-	color: #27638c;
+	color: #2b4c6e;
 }
 
 .panel-default > .panel-heading-dark-highlight {
-    background: #27638c;
+    background: #2b4c6e;
     color: #fff;
 }
 
 .panel-dark-highlight {
-    border-color: #27638c;
+    border-color: #2b4c6e;
 }
 
 .panel-default > .panel-heading-light-highlight {
-    background: #4092C9;
+    background: #419fbe;
     color: #fff;
 }
 
 .panel-light-highlight {
-    border-color: #4092C9;
+    border-color: #419fbe;
 }
 
 div.maintenance-alert {
@@ -135,12 +132,12 @@ div.maintenance-alert {
 
 input[type="submit"], input[type="reset"], input[type="button"] {
     color: #fff;
-    background-color: #428bca;
+    background-color: #419fbe;
     border-color: #357ebd;
 }
 
 ul.pager li a:hover, ul.pager li.pager-current {
-    background-color: #428bca;
+    background-color: #419fbe;
     border-color: #357ebd;
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
@@ -165,13 +162,13 @@ span.background {
 .page-title  div.field_n52_comm_dev,
 #product-of-the-month div.field_n52_comm_dev,
 .node-teaser div.field_n52_comm_dev {
-    color: #4092C9;
+    color: #419fbe;
 }
 
 .page-title div.field_category,
 #product-of-the-month div.field_category,
 .node-teaser div.field_category {
-    color: #27638c;
+    color: #2b4c6e;
 }
 
 .popover {
@@ -206,7 +203,7 @@ div.field-group-div div.row:not(:last-child) {
  }
  
  div#supported-standards-group ul.textformatter-list a {
-    background-color: #27638c;
+    background-color: #2b4c6e;
     color: #fff;
  }
  
