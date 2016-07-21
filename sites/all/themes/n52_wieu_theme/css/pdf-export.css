@@ -1,0 +1,185 @@
+/*
+ * Copyright (C) 2016
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ *
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ *
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ *
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+body.print {
+  background-color: #fff;
+}
+
+/*
+ * Blue ribbon on the left side
+ */
+body.print div.print-content,
+body.print div.print-header {
+	border-left-width: 30px;
+  border-left-color: #419fbe;
+  border-left-style: solid;
+}
+
+body.print div.print-header {
+	padding: 20px 20px 20px 10px;
+}
+
+body.print img.print-logo {
+	margin: auto
+}
+
+body.print div.print-logo-eu {
+	position: relative;
+  top: -100px;
+  float: right;
+}
+
+body.print .node header,
+body.print .node div.content {
+	padding-left: 10px;
+}
+
+body.print fieldset.group-n52-product-details {
+	background: #fff;
+	border: 1px solid #fff;
+}
+
+body.print fieldset.group-n52-product-details legend {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+body.print fieldset.group-n52-product-details legend span.fieldset-legend::after { 
+    content: " : ";
+}
+
+body.print, 
+body.print h1, body.print h2, body.print h3, 
+body.print h4, body.print h5, body.print h6, 
+body.print .h1, body.print .h2, body.print .h3, 
+body.print .h4, body.print .h5, body.print .h6 {
+    font-family: 'Titillium Web';
+}
+
+body.print h3, body.print .h3 {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@media (min-width: 992px) {
+  body.print .col-md-1, body.print .col-md-2, body.print .col-md-3, 
+  body.print .col-md-4, body.print .col-md-5, body.print .col-md-6,
+  body.print .col-md-7, body.print .col-md-8, body.print .col-md-9,
+  body.print .col-md-10, body.print .col-md-11, body.print .col-md-12 {
+    float: none;
+  }
+}
+
+body.print span.field-with-info {
+	display: none;
+}
+
+body.print div#supported-standards-group ul.textformatter-list a {
+  background-color: inherit;
+  color: #000;
+  font-weight: normal;
+}
+
+body.print div#supported-standards-group {
+	border: 1px solid #a8aca7;
+	page-break-inside: avoid;
+}
+
+body.print div.field {
+	page-break-inside: avoid;
+}
+
+body.print div#supported-standards-group ul.textformatter-list a {
+  white-space: inherit;
+}
+
+body.print .print-meta-title,
+body.print .print-meta-partner {
+  border-left-width: 30px;
+  border-left-color: #419fbe;
+  border-left-style: solid;
+  margin-top: -20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+body.print .print-meta-title {
+  text-align: center;
+  page-break-inside: avoid;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  background: #66c5e4;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+body.print table#meta-text-table {
+	border: none;
+	width: 100%;
+}
+
+body.print .meta-partner {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  border-left-width: 30px;
+  border-left-color: #a8aca7;
+  border-left-style: solid;
+  
+}
+
+body.print table#meta-partner td img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.print table#meta-partner{
+  border: none;
+}
+
+body.print .print-meta-footer {
+  border-left-width: 30px;
+  border-left-color: #a8aca7;
+  border-left-style: solid;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  background-color: #2b4c6e;
+  color: #fff;
+}
+
+body.print td.table-cell-centered {
+  text-align: center;
+  padding-top: 15px;
+}
+
+body.print td.table-cell-centered a {
+	color: #fff;
+}
+
+body.print td.meta-text-table-cell {
+	width: 75%;
+}

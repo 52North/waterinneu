@@ -168,6 +168,7 @@ function n52_wieu_theme_form_element($variables) {
  * Changes to bootstrap business:
  * - Render the description of fields with glyphicon after the label if content 
  *   type is matching.
+ * - grid layout classes for fields
  * 
  * @param unknown $variables
  */

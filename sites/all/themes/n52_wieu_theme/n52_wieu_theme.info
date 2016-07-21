@@ -6,6 +6,7 @@ base theme = bootstrap_business
 stylesheets[all][] = css/global-styles.css
 stylesheets[all][] = css/landing-page.css
 stylesheets[all][] = css/colors.css
+stylesheets[all][] = css/pdf-export.css
 
 files[][] = images/header-background-01.png
 files[][] = images/header-background-02.png

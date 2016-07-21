@@ -106,30 +106,67 @@
     <?php if (theme_get_setting('toggle_favicon')): ?>
       <link rel='shortcut icon' href='<?php print theme_get_setting('favicon') ?>' type='image/x-icon' />
     <?php endif; ?>
+    <link href='//fonts.googleapis.com/css?family=Titillium+Web:900,700italic,700,600italic,600,400italic,400,300italic,300,200italic,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <?php print $css; ?>
+    <link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/<?php print theme_get_setting('bootstrap_css_cdn'); ?>/css/bootstrap.min.css" media="all" />
   </head>
   <body class="print">
     <?php if (!empty($message)): ?>
       <div class="print-message"><?php print $message; ?></div><p />
     <?php endif; ?>
-    <?php if ($print_logo): ?>
-      <div class="print-logo"><?php print $print_logo; ?></div>
-    <?php endif; ?>
-    <div class="print-site_name"><?php print theme('print_published'); ?></div>
-    <p />
-    <div class="print-breadcrumb"><?php print theme('print_breadcrumb', array('node' => $node)); ?></div>
-    <hr class="print-hr" />
-    <?php if (!isset($node->type)): ?>
+    <div class="print-header">
+	    <?php if ($print_logo): ?>
+	    <div class="print-logo"><?php print $print_logo; ?></div>
+	    <div class="print-logo-eu">
+	    	<figure>
+	    		<img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/eu_flag_yellow_low_75x112.png'); ?>" alt="EU Flag" />
+	    		<figcaption>GA number: 641821</figcaption>
+    		</figure>
+	    </div>
+	    <?php endif; ?>
+	    <div class="print-site_name"><?php print theme('print_published'); ?></div>
+	    <?php if (!isset($node->type)): ?>
       <h2 class="print-title"><?php print $print_title; ?></h2>
-    <?php endif; ?>
-    <div class="print-content"><?php print $content; ?></div>
-    <div class="print-footer"><?php print theme('print_footer'); ?></div>
-    <hr class="print-hr" />
-    <?php if ($sourceurl_enabled): ?>
-      <div class="print-source_url">
-        <?php print theme('print_sourceurl', array('url' => $source_url, 'node' => $node, 'cid' => $cid)); ?>
-      </div>
-    <?php endif; ?>
-    <div class="print-links"><?php print theme('print_url_list'); ?></div>
+      <?php endif; ?>
+    </div>
+    <div class="print-content <?php print $main_grid_class; ?>"><?php print $content; ?></div>
+    <div class="print-meta-title">
+      <h2><?php print t('Partners'); ?></h2>
+    </div>
+    <div class="print-meta-partner">
+    			<table id="meta-partner">
+    				<tbody>
+    					<tr>
+    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
+    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
+    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
+    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
+    					</tr>
+    					<tr>
+    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
+    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
+    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
+    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
+    					</tr>
+    				</tbody>
+    			</table>
+    	</div>
+    </div>
+    <div class="print-meta-footer">
+      <table id="meta-text-table">
+    		<tbody>
+    			<tr>
+    				<td class="meta-text-table-cell"><p><?php print t('This project has received funding from the European Union\'s  Horizon 2020 research and innovation programm under grant agreement No G41821.'); ?></p></td>
+    				<td class="table-cell-centered"><a href="http://www.waterinneu.org/" target="_blank">www.waterinneu.org</a></td>
+    			</tr>
+    			<?php if ($sourceurl_enabled): ?>
+    			<tr>
+    				<td colspan="2"><div class="print-source_url"><?php print theme('print_sourceurl', array('url' => $source_url, 'node' => $node, 'cid' => $cid)); ?></div></td>
+    		  </tr>
+    		  <?php endif; ?>
+    		</tbody>
+    	</table>
+    	<div class="print-links"><?php print theme('print_url_list'); ?></div>
+    </div>
   </body>
 </html>
