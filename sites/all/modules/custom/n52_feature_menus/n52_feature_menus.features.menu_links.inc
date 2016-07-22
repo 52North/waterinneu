@@ -437,6 +437,30 @@ function n52_feature_menus_menu_default_menu_links() {
     'menu_links_customized' => 1,
     'parent_identifier' => 'menu-author_add-content:node/add',
   );
+  // Exported menu link: menu-author_success-story:node/add/n52-sucess-story.
+  $menu_links['menu-author_success-story:node/add/n52-sucess-story'] = array(
+    'menu_name' => 'menu-author',
+    'link_path' => 'node/add/n52-sucess-story',
+    'router_path' => 'node/add/n52-sucess-story',
+    'link_title' => 'Success Story',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-author_success-story:node/add/n52-sucess-story',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -44,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+    'parent_identifier' => 'menu-author_add-content:node/add',
+  );
   // Exported menu link: menu-author_translate:translate.
   $menu_links['menu-author_translate:translate'] = array(
     'menu_name' => 'menu-author',
@@ -456,6 +480,29 @@ function n52_feature_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -46,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-footer-3rd-links_imprint:node/8821.
+  $menu_links['menu-footer-3rd-links_imprint:node/8821'] = array(
+    'menu_name' => 'menu-footer-3rd-links',
+    'link_path' => 'node/8821',
+    'router_path' => 'node/%',
+    'link_title' => 'Imprint',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-footer-3rd-links_imprint:node/8821',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -524,6 +571,52 @@ function n52_feature_menus_menu_default_menu_links() {
       ),
       'alter' => TRUE,
       'identifier' => 'menu-moderator_scheduled-publications:scheduled-publications',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-n52-footer-first-links_apijson:node/8819.
+  $menu_links['menu-n52-footer-first-links_apijson:node/8819'] = array(
+    'menu_name' => 'menu-n52-footer-first-links',
+    'link_path' => 'node/8819',
+    'router_path' => 'node/%',
+    'link_title' => 'API::JSON',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-n52-footer-first-links_apijson:node/8819',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-n52-footer-second-links_site-map:node/8826.
+  $menu_links['menu-n52-footer-second-links_site-map:node/8826'] = array(
+    'menu_name' => 'menu-n52-footer-second-links',
+    'link_path' => 'node/8826',
+    'router_path' => 'node/%',
+    'link_title' => 'Site Map',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-n52-footer-second-links_site-map:node/8826',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -1256,6 +1349,7 @@ function n52_feature_menus_menu_default_menu_links() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('API::JSON');
   t('Account');
   t('Add Content');
   t('Add content');
@@ -1273,6 +1367,7 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Forum');
   t('Glossary');
   t('Home');
+  t('Imprint');
   t('Log out');
   t('Login');
   t('Manage translation tasks');
@@ -1295,8 +1390,10 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Search Wizard');
   t('Service Offering');
   t('Service Request');
+  t('Site Map');
   t('Sources');
   t('Success Stories');
+  t('Success Story');
   t('Translate');
   t('Translate strings');
   t('Webform');
