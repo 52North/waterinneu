@@ -27,6 +27,41 @@ function n52_feature_config_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function n52_feature_config_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: n52_image_style_product_of_the_month.
+  $styles['n52_image_style_product_of_the_month'] = array(
+    'label' => '52N - Product of the Month',
+    'effects' => array(
+      3 => array(
+        'name' => 'iek_image_resize',
+        'data' => array(
+          'width' => 475,
+          'height' => 200,
+          'blank_margin' => 0,
+          'blank_margin_bg_color' => '#FFFFFF',
+          'position' => 'middle_center',
+          'x' => 0,
+          'y' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: n52_image_style_teaser_photo.
+  $styles['n52_image_style_teaser_photo'] = array(
+    'label' => '52N - Teaser Photo',
+    'effects' => array(),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_node_info().
  */
 function n52_feature_config_node_info() {
