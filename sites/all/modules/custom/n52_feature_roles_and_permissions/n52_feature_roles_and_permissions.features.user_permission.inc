@@ -21,6 +21,16 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'tmgmt',
   );
 
+  // Exported permission: 'access PDF version'.
+  $permissions['access PDF version'] = array(
+    'name' => 'access PDF version',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+    ),
+    'module' => 'print_pdf',
+  );
+
   // Exported permission: 'access administration menu'.
   $permissions['access administration menu'] = array(
     'name' => 'access administration menu',
@@ -179,6 +189,16 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'oauth_common',
   );
 
+  // Exported permission: 'access print'.
+  $permissions['access print'] = array(
+    'name' => 'access print',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+    ),
+    'module' => 'print',
+  );
+
   // Exported permission: 'access security review list'.
   $permissions['access security review list'] = array(
     'name' => 'access security review list',
@@ -307,6 +327,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in n52_commercial_development'.
+  $permissions['add terms in n52_commercial_development'] = array(
+    'name' => 'add terms in n52_commercial_development',
+    'roles' => array(),
     'module' => 'taxonomy_access_fix',
   );
 
@@ -494,6 +521,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_n52_commercial_development'.
+  $permissions['add_terms_n52_commercial_development'] = array(
+    'name' => 'add_terms_n52_commercial_development',
+    'roles' => array(),
     'module' => 'taxonomy_autocomplete_permission',
   );
 
@@ -847,6 +881,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'field_group',
   );
 
+  // Exported permission: 'administer fields'.
+  $permissions['administer fields'] = array(
+    'name' => 'administer fields',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field',
+  );
+
   // Exported permission: 'administer filters'.
   $permissions['administer filters'] = array(
     'name' => 'administer filters',
@@ -1052,6 +1095,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'administer print'.
+  $permissions['administer print'] = array(
+    'name' => 'administer print',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'print',
   );
 
   // Exported permission: 'administer profiler builder'.
@@ -1706,6 +1758,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'delete terms in n52_commercial_development'.
+  $permissions['delete terms in n52_commercial_development'] = array(
+    'name' => 'delete terms in n52_commercial_development',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'delete terms in n52_event_categories'.
   $permissions['delete terms in n52_event_categories'] = array(
     'name' => 'delete terms in n52_event_categories',
@@ -2144,6 +2203,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'edit terms in n52_commercial_development'.
+  $permissions['edit terms in n52_commercial_development'] = array(
+    'name' => 'edit terms in n52_commercial_development',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'edit terms in n52_event_categories'.
   $permissions['edit terms in n52_event_categories'] = array(
     'name' => 'edit terms in n52_event_categories',
@@ -2421,6 +2487,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'term_merge',
   );
 
+  // Exported permission: 'merge n52_commercial_development terms'.
+  $permissions['merge n52_commercial_development terms'] = array(
+    'name' => 'merge n52_commercial_development terms',
+    'roles' => array(),
+    'module' => 'term_merge',
+  );
+
   // Exported permission: 'merge n52_event_categories terms'.
   $permissions['merge n52_event_categories terms'] = array(
     'name' => 'merge n52_event_categories terms',
@@ -2552,6 +2625,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'migrate',
+  );
+
+  // Exported permission: 'node-specific print configuration'.
+  $permissions['node-specific print configuration'] = array(
+    'name' => 'node-specific print configuration',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'print_ui',
   );
 
   // Exported permission: 'notify of path changes'.
