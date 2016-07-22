@@ -532,7 +532,7 @@ We should be back shortly. Thank you for your patience. In the meantime, you can
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_name';
-  $strongarm->value = 'WaterInnEU Marketplace Prototype';
+  $strongarm->value = 'Marketplace Prototype';
   $export['site_name'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -593,17 +593,16 @@ We should be back shortly. Thank you for your patience. In the meantime, you can
     'toggle_main_menu' => 1,
     'toggle_secondary_menu' => 1,
     'default_logo' => 0,
-    'logo_path' => 'public://WaterInnEU_logo_70px.png',
-    'logo_upload' => '',
+    'logo_path' => 'public://waterinneu_logo_print_100x298.png',
     'default_favicon' => 1,
     'favicon_path' => '',
     'favicon_upload' => '',
     'breadcrumb_display' => 1,
     'scrolltop_display' => 1,
+    'n52_header_background_images' => 1,
     'bootstrap_css_cdn' => '3.2.0',
     'bootstrap_js_cdn' => '3.2.0',
-    'responsive_respond' => 0,
-    'tabs__active_tab' => 'edit-bootstrap-cdn',
+    'tabs__active_tab' => 'edit-basic-settings',
     'jquery_update_jquery_version' => '',
   );
   $export['theme_n52_wieu_theme_settings'] = $strongarm;

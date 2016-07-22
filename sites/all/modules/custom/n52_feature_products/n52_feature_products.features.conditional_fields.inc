@@ -24,8 +24,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -46,28 +46,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -96,19 +75,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
         9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
           1 => 1,
           3 => 0,
         ),
@@ -143,8 +110,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -237,8 +204,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -259,28 +226,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -309,19 +255,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
         9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
           1 => 1,
           3 => 0,
         ),
@@ -356,8 +290,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -442,8 +376,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -544,8 +478,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -640,8 +574,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -662,28 +596,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -712,19 +625,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
         9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
           1 => 1,
           3 => 0,
         ),
@@ -767,8 +668,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -789,28 +690,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -839,19 +719,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
         9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
           1 => 1,
           3 => 0,
         ),
@@ -894,8 +762,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -916,28 +784,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -966,19 +813,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
         9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
           1 => 1,
           3 => 0,
         ),
@@ -1021,8 +856,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -1043,28 +878,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -1093,19 +907,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
         9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
           1 => 1,
           3 => 0,
         ),
@@ -1137,41 +939,6 @@ function n52_feature_products_conditional_fields_default_fields() {
   $items["node:tool:10"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
-    'dependent' => 'field_supported_legacy_systems',
-    'dependee' => 'field_standard_category',
-    'options' => array(
-      'state' => 'visible',
-      'condition' => 'value',
-      'grouping' => 'AND',
-      'values_set' => 1,
-      'value' => array(),
-      'values' => array(),
-      'value_form' => array(),
-      'effect' => 'show',
-      'effect_options' => array(),
-      'element_view' => array(
-        1 => 1,
-        2 => 2,
-        5 => 0,
-        3 => 0,
-        4 => 0,
-      ),
-      'element_view_per_role' => 0,
-      'element_view_roles' => array(),
-      'element_edit' => array(
-        1 => 1,
-        2 => 0,
-        3 => 0,
-      ),
-      'element_edit_per_role' => 0,
-      'element_edit_roles' => array(),
-      'selector' => '',
-    ),
-  );
-
-  $items["node:tool:11"] = array(
-    'entity' => 'node',
-    'bundle' => 'tool',
     'dependent' => 'field_supported_other_standards',
     'dependee' => 'field_standard_category',
     'options' => array(
@@ -1183,8 +950,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -1205,28 +972,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -1255,19 +1001,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
         9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
           1 => 1,
           3 => 0,
         ),
@@ -1296,7 +1030,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:12"] = array(
+  $items["node:tool:11"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_supported_processes_and_mo',
@@ -1310,8 +1044,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -1332,28 +1066,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -1382,19 +1095,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
         9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
           1 => 1,
           3 => 0,
         ),
@@ -1423,7 +1124,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:13"] = array(
+  $items["node:tool:12"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_supported_sensor_data_stan',
@@ -1437,8 +1138,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -1459,28 +1160,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -1509,19 +1189,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
         9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
           1 => 1,
           3 => 0,
         ),
@@ -1550,7 +1218,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:14"] = array(
+  $items["node:tool:13"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_target_user_group_info',
@@ -1564,8 +1232,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -1652,7 +1320,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:15"] = array(
+  $items["node:tool:14"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_type_of_hardware',
@@ -1666,8 +1334,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -1688,28 +1356,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -1738,19 +1385,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
         9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
           1 => 1,
           3 => 0,
         ),
@@ -1771,7 +1406,7 @@ function n52_feature_products_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:tool:16"] = array(
+  $items["node:tool:15"] = array(
     'entity' => 'node',
     'bundle' => 'tool',
     'dependent' => 'field_type_of_software',
@@ -1785,8 +1420,8 @@ function n52_feature_products_conditional_fields_default_fields() {
         'speed' => 750,
       ),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -1807,28 +1442,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        11 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -1857,19 +1471,7 @@ function n52_feature_products_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        8 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
-          1 => 1,
-          3 => 0,
-        ),
         9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        11 => array(
           1 => 1,
           3 => 0,
         ),

@@ -20,7 +20,9 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -100,21 +102,27 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'n52_term_formatter_icons',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'n52_term_formatter_icons_with_links',
         'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'n52_term_formatter_icons',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'n52_term_formatter_icons_with_links',
         'weight' => 0,
       ),
       'tool_of_the_month' => array(
         'label' => 'hidden',
         'module' => 'n52_term_formatter_icons',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'n52_term_formatter_icons',
         'weight' => 0,
       ),
@@ -152,9 +160,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 53,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -247,9 +257,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_default',
-        'weight' => 26,
+        'weight' => 49,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -342,9 +354,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 44,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -434,9 +448,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'i18n_taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 19,
+        'weight' => 43,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -483,14 +499,17 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'smart_trim',
         'settings' => array(
+          'field_formatter_class' => '',
           'more_link' => 0,
           'more_text' => 'Read more',
           'summary_handler' => 'full',
@@ -510,6 +529,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'smart_trim',
         'settings' => array(
+          'field_formatter_class' => '',
           'more_link' => 1,
           'more_text' => '  Read more',
           'summary_handler' => 'full',
@@ -601,9 +621,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 30,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -692,19 +714,21 @@ function n52_feature_products_field_default_field_instances() {
 </div>',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_class' => '',
           'image_link' => '',
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 29,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_class' => '',
           'image_link' => 'content',
           'image_style' => 'n52_image_style_product_of_the_month',
         ),
@@ -715,6 +739,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_class' => '',
           'image_link' => 'content',
           'image_style' => 'n52_image_style_product_of_the_month',
         ),
@@ -761,6 +786,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'issue-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -777,7 +803,7 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_type' => 'comma',
         ),
         'type' => 'textformatter_list',
-        'weight' => 13,
+        'weight' => 45,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -822,9 +848,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_default',
-        'weight' => 14,
+        'weight' => 46,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -916,21 +944,27 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 5,
+        'weight' => 41,
       ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'i18n_taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 4,
       ),
       'tool_of_the_month' => array(
         'label' => 'inline',
         'module' => 'i18n_taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 4,
       ),
@@ -964,9 +998,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 42,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1061,6 +1097,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'related-link-list',
           'textformatter_comma_and' => 0,
           'textformatter_comma_full_stop' => 0,
@@ -1076,7 +1113,7 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 11,
+        'weight' => 47,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1143,11 +1180,12 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_class' => '',
           'image_link' => '',
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -1168,7 +1206,7 @@ function n52_feature_products_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 1,
-      'default_image' => 0,
+      'default_image' => 27,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'logos',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1203,9 +1241,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'link',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'link_default',
-        'weight' => 34,
+        'weight' => 42,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1272,21 +1312,27 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'n52_term_formatter_icons',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'n52_term_formatter_icons_with_links',
         'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'n52_term_formatter_icons',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'n52_term_formatter_icons_with_links',
         'weight' => 1,
       ),
       'tool_of_the_month' => array(
         'label' => 'hidden',
         'module' => 'n52_term_formatter_icons',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'n52_term_formatter_icons',
         'weight' => 1,
       ),
@@ -1322,9 +1368,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 32,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1414,9 +1462,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 31,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1509,9 +1559,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'link',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'link_default',
-        'weight' => 33,
+        'weight' => 43,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1576,11 +1628,13 @@ function n52_feature_products_field_default_field_instances() {
     'description' => 'Who is the first or best one to contact?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'text_default',
-        'weight' => 28,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1665,10 +1719,11 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 25,
+        'weight' => 48,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1728,10 +1783,11 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 24,
+        'weight' => 46,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1790,9 +1846,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'i18n_taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 7,
+        'weight' => 43,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1837,9 +1895,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 44,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1930,6 +1990,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'water-bodies-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -1946,7 +2007,7 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_type' => 'comma',
         ),
         'type' => 'textformatter_list',
-        'weight' => 15,
+        'weight' => 47,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1990,9 +2051,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_default',
-        'weight' => 16,
+        'weight' => 48,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2083,6 +2146,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'standard-category-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -2096,10 +2160,10 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_separator_custom_class' => 'textformatter-separator',
           'textformatter_separator_custom_tag' => 'span',
           'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
+          'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 21,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2127,7 +2191,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 39,
+      'weight' => 32,
     ),
   );
 
@@ -2142,11 +2206,12 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
           'textformatter_comma_override' => 0,
-          'textformatter_comma_tag' => 0,
+          'textformatter_comma_tag' => 'div',
           'textformatter_contrib' => array(
             'entityreference_link' => TRUE,
             'link_field_display_type' => 'link_default',
@@ -2155,10 +2220,10 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_separator_custom_class' => 'textformatter-separator',
           'textformatter_separator_custom_tag' => 'span',
           'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
+          'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 22,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2193,7 +2258,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 32,
+      'weight' => 33,
     ),
   );
 
@@ -2208,6 +2273,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -2221,10 +2287,10 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_separator_custom_class' => 'textformatter-separator',
           'textformatter_separator_custom_tag' => 'span',
           'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
+          'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 23,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2259,7 +2325,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 33,
+      'weight' => 34,
     ),
   );
 
@@ -2274,6 +2340,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -2287,10 +2354,10 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_separator_custom_class' => 'textformatter-separator',
           'textformatter_separator_custom_tag' => 'span',
           'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
+          'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 24,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2325,7 +2392,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 34,
+      'weight' => 35,
     ),
   );
 
@@ -2340,6 +2407,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -2353,10 +2421,10 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_separator_custom_class' => 'textformatter-separator',
           'textformatter_separator_custom_tag' => 'span',
           'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
+          'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 25,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2391,7 +2459,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 35,
+      'weight' => 36,
     ),
   );
 
@@ -2405,9 +2473,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 54,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2498,6 +2568,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -2511,10 +2582,10 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_separator_custom_class' => 'textformatter-separator',
           'textformatter_separator_custom_tag' => 'span',
           'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
+          'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 28,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2549,7 +2620,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 38,
+      'weight' => 39,
     ),
   );
 
@@ -2564,6 +2635,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -2577,10 +2649,10 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_separator_custom_class' => 'textformatter-separator',
           'textformatter_separator_custom_tag' => 'span',
           'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
+          'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 26,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2615,7 +2687,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 36,
+      'weight' => 37,
     ),
   );
 
@@ -2630,6 +2702,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -2643,10 +2716,10 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_separator_custom_class' => 'textformatter-separator',
           'textformatter_separator_custom_tag' => 'span',
           'textformatter_term_plain' => 0,
-          'textformatter_type' => 'comma',
+          'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 27,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2681,7 +2754,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
-      'weight' => 37,
+      'weight' => 38,
     ),
   );
 
@@ -2696,6 +2769,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => 'row',
           'textformatter_class' => 'target-user-group-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -2712,7 +2786,7 @@ function n52_feature_products_field_default_field_instances() {
           'textformatter_type' => 'comma',
         ),
         'type' => 'textformatter_list',
-        'weight' => 17,
+        'weight' => 49,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2756,9 +2830,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_default',
-        'weight' => 27,
+        'weight' => 50,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2848,9 +2924,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'i18n_taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 12,
+        'weight' => 46,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2894,9 +2972,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_default',
-        'weight' => 21,
+        'weight' => 51,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2989,9 +3069,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_default',
-        'weight' => 22,
+        'weight' => 52,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3081,9 +3163,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'i18n_taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 6,
+        'weight' => 45,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3127,9 +3211,11 @@ function n52_feature_products_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => 'row',
+        ),
         'type' => 'text_plain',
-        'weight' => 4,
+        'weight' => 45,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3214,7 +3300,7 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'hidden',
