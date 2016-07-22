@@ -135,6 +135,7 @@ function _n52_default_nodes_update_node($nid, $node_content, $edit_warning) {
  * Create new node
  */
 function _n52_default_nodes_add_node($node_content, $edit_warning) {
+	global $user;
 	$new_node = entity_create('node', array('type' => 'page'));
 	$new_node->uid = $user->uid;
 	$entity = entity_metadata_wrapper('node',$new_node);
