@@ -78,6 +78,8 @@ function _n52_default_nodes_sitemap() {
 			</li>
 		</ul>
 	</li>
+	<li><a href="related-portals">Related Portals</a><br />A list of portals that deal with related topics.</li>
+	<li><a href="api">API::JSON</a><br />A JSON endpoint to the content of this marketplace.</li>
 </ul>',),
 	);
 }

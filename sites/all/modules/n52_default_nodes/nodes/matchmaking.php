@@ -29,7 +29,7 @@
 function _n52_default_nodes_matchmaking() {
 	return array (
 		'title' =>  array (
-				'en' => 'Matchmaking',
+				'en' => 'Matchmaking and Support Services',
 		),
 		'alias' => 'matchmaking',
 		'text' => array ('en' => '
