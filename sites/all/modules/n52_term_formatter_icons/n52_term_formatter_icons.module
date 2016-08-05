@@ -82,7 +82,10 @@ function n52_term_formatter_icons_field_formatter_view($entity_type, $entity, $f
 function _n52_term_formatter_icons_get_icon_by_term_name($term_name) {
 	$lookup_table = array (
 			// product categories
+			// with typo
 			'best practise guidance' => 'book',
+			// correct
+			'best practice guidance' => 'book',
 			'technology (hardware)' => 'wrench',
 			'software products' => 'cloud-download',
 			'dataset list' => 'list-alt',
