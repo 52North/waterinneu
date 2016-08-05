@@ -238,6 +238,7 @@ ul.related-link-list li {
 .node-teaser div.popover-content {
 	font-size: 50%;
 	width: 100%;
+	line-height: initial;
 }
 
 .page-title div.popover,
