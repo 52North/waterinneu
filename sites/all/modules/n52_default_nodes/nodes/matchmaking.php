@@ -163,31 +163,26 @@ For bespoke support and advice, go to <a data-toggle="collapse"
 		following. One of our experts will get in touch with you as soon as 
 		possible.
 		</p>
-		<ul style="display:none">
+		<ul>
 			<li>
-				Finding an appropriate product: help with product filtering and 
-				evaluation
+				<strong>Finding an appropriate product:</strong> help with product 
+				filtering and evaluation
 			</li>
 			<li>
-				Finding a supplier or consultant: help with identifying the type
-				of support organisation that would fit your needs
+				<strong>Finding a supplier or consultant:</strong> help with 
+				identifying the type of support organisation that would fit your needs
 			</li>
 			<li>
-				Bringing a product to market: we provide a range of bespoke 
-				services that are tailored to the development phase of your 
+				<strong>Bringing a product to market:</strong> we provide a range of 
+				bespoke services that are tailored to the development phase of your 
 				product. These range from producing promotional material and 
 				disseminating to targeted audiences to supporting development 
 				of strategic plans, review of your value proposition and 
 				development of E-learning materials				
 			</li>
 			<li>
-				Uploading a product or event
-			</li>
-			<li>
-				Using the Forum
-			</li>
-			<li>
-				The E-learning functionality
+				<strong>For technical support:</strong> please use the Contact/Helpdesk 
+				button below	
 			</li>
 		</ul>
         <br />
