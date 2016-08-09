@@ -491,10 +491,11 @@ function n52_feature_organisations_views_default_views() {
   $handler->display->display_options['fields']['field_service_category']['table'] = 'field_data_field_service_category';
   $handler->display->display_options['fields']['field_service_category']['field'] = 'field_service_category';
   $handler->display->display_options['fields']['field_service_category']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Organisation */
+  /* Field: Content: Organisation/Institution */
   $handler->display->display_options['fields']['field_organisation']['id'] = 'field_organisation';
   $handler->display->display_options['fields']['field_organisation']['table'] = 'field_data_field_organisation';
   $handler->display->display_options['fields']['field_organisation']['field'] = 'field_organisation';
+  $handler->display->display_options['fields']['field_organisation']['label'] = 'Organisation';
   $handler->display->display_options['fields']['field_organisation']['alter']['max_length'] = '50';
   $handler->display->display_options['fields']['field_organisation']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_organisation']['settings'] = array(

@@ -20,7 +20,9 @@ function n52_feature_organisations_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -101,6 +103,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'above',
         'module' => 'addressfield',
         'settings' => array(
+          'field_formatter_class' => '',
           'format_handlers' => array(
             0 => 'address',
           ),
@@ -197,6 +200,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => '',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 0,
           'textformatter_comma_full_stop' => 0,
@@ -219,6 +223,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => '',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 0,
           'textformatter_comma_full_stop' => 0,
@@ -268,7 +273,9 @@ function n52_feature_organisations_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'text_default',
         'weight' => 1,
       ),
@@ -276,6 +283,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'smart_trim',
         'settings' => array(
+          'field_formatter_class' => '',
           'more_link' => 0,
           'more_text' => 'Read more',
           'summary_handler' => 'full',
@@ -367,6 +375,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_class' => '',
           'image_link' => '',
           'image_style' => 'thumbnail',
         ),
@@ -377,6 +386,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
+          'field_formatter_class' => '',
           'image_link' => '',
           'image_style' => 'thumbnail',
         ),
@@ -424,6 +434,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => '',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -445,6 +456,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => '',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -505,6 +517,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => '',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -573,6 +586,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => '',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -594,6 +608,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'textformatter',
         'settings' => array(
+          'field_formatter_class' => '',
           'textformatter_class' => 'textformatter-list',
           'textformatter_comma_and' => 1,
           'textformatter_comma_full_stop' => 1,
@@ -658,6 +673,7 @@ function n52_feature_organisations_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'link',
         'settings' => array(
+          'field_formatter_class' => '',
           'strip_www' => 1,
         ),
         'type' => 'link_domain',

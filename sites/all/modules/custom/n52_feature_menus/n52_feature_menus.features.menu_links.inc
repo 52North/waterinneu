@@ -512,7 +512,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'menu_name' => 'menu-footer-right-links',
     'link_path' => 'contact',
     'router_path' => 'contact',
-    'link_title' => 'Contact/HelpDesk',
+    'link_title' => 'Contact/Helpdesk',
     'options' => array(
       'attributes' => array(
         'title' => '',
@@ -1281,7 +1281,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -10,
+    'weight' => -50,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1301,7 +1301,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 10,
+    'weight' => -49,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1321,7 +1321,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -48,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1341,7 +1341,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -47,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1357,7 +1357,7 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Basic page');
   t('Compose tips');
   t('Contact');
-  t('Contact/HelpDesk');
+  t('Contact/Helpdesk');
   t('Content summary');
   t('Create thread');
   t('E-Learning');
