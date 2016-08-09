@@ -130,23 +130,23 @@
       <?php endif; ?>
     </div>
     <div class="print-content <?php print $main_grid_class; ?>"><?php print $content; ?></div>
-    <div class="print-meta-title">
-      <h2><?php print t('Partners'); ?></h2>
-    </div>
     <div class="print-meta-partner">
+        <div class="print-meta-title">
+      		<h2><?php print t('Partners'); ?></h2>
+    		</div>
     			<table id="meta-partner">
     				<tbody>
     					<tr>
-    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
-    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
-    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
-    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
+    						<td><img class="print-log-eu" id="52n-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="52North" /></td>
+    						<td><img class="print-log-eu" id="adelphi-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/adelphi_logo.png'); ?>" alt="adelphi" /></td>
+    						<td><img class="print-log-eu" id="creaf-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/CREAF_logo.png'); ?>" alt="CREAF" /></td>
+    						<td><img class="print-log-eu" id="orion-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/orionlogo_small.png'); ?>" alt="Orion" /></td>
     					</tr>
     					<tr>
-    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
-    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
-    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
-    						<td><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="EU Flag" /></td>
+    						<td><img class="print-log-eu" id="52n-logo-2" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="52North" /></td>
+    						<td><img class="print-log-eu" id="52n-logo-3" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="52North" /></td>
+    						<td><img class="print-log-eu" id="52n-logo-4" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="52North" /></td>
+    						<td><img class="print-log-eu" id="52n-logo-5" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="52North" /></td>
     					</tr>
     				</tbody>
     			</table>

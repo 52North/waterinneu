@@ -183,3 +183,7 @@ body.print td.table-cell-centered a {
 body.print td.meta-text-table-cell {
 	width: 75%;
 }
+
+body.print div.print-meta-partner {
+    page-break-inside: avoid;
+}
