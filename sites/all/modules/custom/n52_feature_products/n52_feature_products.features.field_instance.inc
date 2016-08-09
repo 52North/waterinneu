@@ -443,7 +443,10 @@ function n52_feature_products_field_default_field_instances() {
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Details of costs related to the product.
+<div class="author-instructions">
+    For example, licence costs, costs for implementation and development of the product.
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -993,7 +996,11 @@ function n52_feature_products_field_default_field_instances() {
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Details of accessibility criteria.',
+    'description' => 'Details of accessibility criteria.
+<div class="author-instructions">
+    Please give details of accessibility criteria in the free text box.
+</div>
+',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1307,7 +1314,9 @@ function n52_feature_products_field_default_field_instances() {
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '<div class="author-instructions">
+    The status quo of product development, (if appropriate, please use standard TRL definitions).
+</div>',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -4127,6 +4136,9 @@ function n52_feature_products_field_default_field_instances() {
     The status quo of product development (if appropriate, please use standard TRL definitions).
 </div>');
   t('<div class="author-instructions">
+    The status quo of product development, (if appropriate, please use standard TRL definitions).
+</div>');
+  t('<div class="author-instructions">
    Please give details on the relevant water bodies in the free text box.
 </div>');
   t('<div class="author-instructions">
@@ -4154,7 +4166,11 @@ function n52_feature_products_field_default_field_instances() {
   t('Contact Details');
   t('Costinfo');
   t('Costs');
-  t('Details of accessibility criteria.');
+  t('Details of accessibility criteria.
+<div class="author-instructions">
+    Please give details of accessibility criteria in the free text box.
+</div>
+');
   t('Details of costs related to the product.
 <div class="author-instructions">
     For example, licence costs, costs for implementation and development of the product.
