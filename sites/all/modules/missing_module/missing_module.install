@@ -31,12 +31,13 @@ function missing_module_requirements($phase) {
                                                     array('@missing_count' => count($missing_modules)));
 
       foreach ($missing_modules as $mm_name => $mm_path) {
-        $value .= $t('<li>@module_path | <a href="@module_url">link to module on drupal.org</a> | <a href="@module_disable">disable</a></li>',
+        $value .= $t('<li>@module_path | <a href="@module_url">link to module on drupal.org</a> | <a href="@module_disable">disable</a> | <a href="@module_remove">remove</a></li>',
           array(
             '@module_path' => $mm_path,
             '@module_url' => "http://drupal.org/project/$mm_name",
             '@module_name' => $mm_name,
             '@module_disable' => '/admin/reports/status/disable_module/' . $mm_name,
+            '@module_remove' => '/admin/reports/status/remove_module/' . $mm_name,
           ));
       }
       $value .= '</ul>';

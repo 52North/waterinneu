@@ -1,4 +1,5 @@
 Missing Modules
+===============
 
 This module lists modules that are activated in your database but missing
 from your file system.
@@ -16,5 +17,9 @@ To use either view the site status report
 
 or from drush run
 
+drush list-missing-modules (alias drush lmm)
 
-drush mm
+INSTALL
+=======
+
+This module can be installed as any other Drupal module, or as a drush module in e.g. ~/.drush/.
