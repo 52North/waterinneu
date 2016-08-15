@@ -117,13 +117,10 @@ body.print div#supported-standards-group ul.textformatter-list a {
   white-space: inherit;
 }
 
-body.print .print-meta-title,
 body.print .print-meta-partner {
   border-left-width: 30px;
   border-left-color: #419fbe;
   border-left-style: solid;
-  margin-top: -20px;
-  padding-top: 10px;
   padding-bottom: 10px;
 }
 
@@ -186,4 +183,14 @@ body.print td.meta-text-table-cell {
 
 body.print div.print-meta-partner {
     page-break-inside: avoid;
+}
+
+body.print .field-label-inline .field-label {
+	text-align: right;
+}
+
+body.print .field-name-field-n52-comm-dev {
+	margin-bottom: 20px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #e5e5e5;
 }

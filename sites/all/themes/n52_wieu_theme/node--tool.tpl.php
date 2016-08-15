@@ -38,11 +38,11 @@
     <?php print render($title_prefix); ?>
     <?php if (!$page): ?>
       <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a><?php 
-	    if (isset($content['field_n52_comm_dev'])) {
+	    if (isset($content['field_n52_comm_dev']) && $view_mode != 'print') {
 	      print $content['field_n52_comm_dev'][0]['#markup'];
 	      $content['field_n52_comm_dev'] = NULL;
 	    }
-	    if (isset($content['field_category'])) {
+	    if (isset($content['field_category']) && $view_mode != 'print') {
 	      print $content['field_category'][0]['#markup'];
 	      $content['field_category'] = NULL;
 	    }

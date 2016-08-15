@@ -143,10 +143,10 @@
     						<td><img class="print-log-eu" id="orion-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/orionlogo_small.png'); ?>" alt="Orion" /></td>
     					</tr>
     					<tr>
-    						<td><img class="print-log-eu" id="52n-logo-2" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="52North" /></td>
-    						<td><img class="print-log-eu" id="52n-logo-3" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="52North" /></td>
-    						<td><img class="print-log-eu" id="52n-logo-4" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="52North" /></td>
-    						<td><img class="print-log-eu" id="52n-logo-5" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/52n-logo-and-name-color_75x161.png'); ?>" alt="52North" /></td>
+    						<td><img class="print-log-eu" id="tud-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/tud_log_75.png'); ?>" alt="TUDelft" /></td>
+    						<td><img class="print-log-eu" id="gwpcee-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/GWPCEE_logo_75px.png'); ?>" alt="GWPCEE" /></td>
+    						<td><img class="print-log-eu" id="antea-group" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/antea-group_logo_75.png'); ?>" alt="antea group" /></td>
+    						<td><img class="print-log-eu" id="randbee-logo" typeof="foaf:Image" src="<?php print file_create_url(variable_get('file_public_path', conf_path() . '/files') . '/logos/randbee_logo_75px.png'); ?>" alt="randbee" /></td>
     					</tr>
     				</tbody>
     			</table>

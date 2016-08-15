@@ -92,6 +92,9 @@ function n52_feature_products_strongarm() {
       'subscriptions' => array(
         'custom_settings' => FALSE,
       ),
+      'print' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -113,6 +116,10 @@ function n52_feature_products_strongarm() {
           ),
           'tool_of_the_month' => array(
             'weight' => 15,
+            'visible' => FALSE,
+          ),
+          'print' => array(
+            'weight' => 4,
             'visible' => FALSE,
           ),
         ),
