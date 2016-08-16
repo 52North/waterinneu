@@ -12,6 +12,34 @@ function n52_feature_search_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
+  $export['block-advanced_search_instructions'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'i18n_block_language' => array(),
+    'i18n_mode' => 1,
+    'machine_name' => 'advanced_search_instructions',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => 'search/advanced',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'n52_wieu_theme',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Advanced Search',
+    'visibility' => 1,
+  );
+
   $export['current_search-standard'] = array(
     'cache' => -1,
     'custom' => 0,
