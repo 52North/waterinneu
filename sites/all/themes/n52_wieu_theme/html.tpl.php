@@ -290,11 +290,11 @@
 		  header.css('background', 'none');
 		  header.css('background-image','url(<?php print n52_random_header_background_image_path(); ?>)');
 		  header.css('background-repeat', 'no-repeat');
-	      header.css('background-position', 'center center');
-	      var slogan = $('#site-slogan');
-	      slogan.css('font-weight', 'bold');
-	      slogan.css('font-size', '16px');
-	      slogan.css('color', '#29648C');
+	    header.css('background-position', 'center center');
+	    var slogan = $('#site-slogan');
+	    slogan.css('font-weight', 'bold');
+	    slogan.css('font-size', '16px');
+	    slogan.css('color', '#29648C');
 	  });
   })(jQuery); 
   </script>
@@ -393,6 +393,34 @@
 				'languages should be added after the first version is ' .
 				'published as "<i>language neutral</i>".') ?></div>';
 			$(messageDiv).insertAfter(elem);
+		});
+	})(jQuery);
+  	</script>
+  <?php } ?>
+  <?php 
+  /*
+   * Hide add project for authenticated users
+   */
+  ?>
+  <?php if (user_is_logged_in() && n52_endsWith(request_path(), 'node/add*', TRUE)) {?>
+  	<script type="text/javascript">
+	(function($) {
+		$(document).ready(function () {
+			var elem = $('#block-menu-menu-author > div.content > ul.menu > li.expanded > ul.menu > li.leaf');
+			elem.each(function (key, value) {
+				var first = $(this).children('a').first(); 
+				if (first.attr('href').indexOf('project') !== -1 ) {
+					first.parent().css('display', 'none');
+				}
+			});
+			var elem2 = $('.node-type-list > dt');
+			elem2.each(function (key, value){
+				var first = $(this).children('a').first(); 
+				if (first.attr('href').indexOf('project') !== -1 ) {
+					first.parent().css('display', 'none');
+					first.parent().next().css('display', 'none');
+				}
+			});
 		});
 	})(jQuery);
   	</script>

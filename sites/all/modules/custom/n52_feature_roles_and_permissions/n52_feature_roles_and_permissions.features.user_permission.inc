@@ -1435,6 +1435,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'create project content',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
       'moderator' => 'moderator',
     ),
     'module' => 'node',
@@ -2097,6 +2098,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'edit own project content',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
       'moderator' => 'moderator',
     ),
     'module' => 'node',
@@ -2763,6 +2765,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of any project content'] = array(
     'name' => 'publish revisions of any project content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2839,6 +2842,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of own project content'] = array(
     'name' => 'publish revisions of own project content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -3497,6 +3501,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of any project content'] = array(
     'name' => 'view revisions of any project content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'revisioning',
@@ -3574,6 +3579,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of own project content'] = array(
     'name' => 'view revisions of own project content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'revisioning',
