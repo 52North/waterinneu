@@ -1126,7 +1126,7 @@ function n52_feature_i18n_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_last_check';
-  $strongarm->value = 1470745620;
+  $strongarm->value = 1471342177;
   $export['l10n_update_last_check'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -8042,8 +8042,8 @@ function n52_feature_i18n_strongarm() {
         'project' => 'search_api_db',
         'langcode' => 'de',
         'type' => 'current',
-        'timestamp' => 1467207701,
-        'last_checked' => 1467207667,
+        'timestamp' => 1467209263,
+        'last_checked' => 1471271280,
         'files' => array(
           'remote' => (object) array(
             'project' => 'search_api_db',
@@ -8061,9 +8061,9 @@ function n52_feature_i18n_strongarm() {
             'type' => 'local',
             'filename' => 'search_api_db-7.x-1.5.de.po',
             'uri' => 'translations://search_api_db-7.x-1.5.de.po',
-            'timestamp' => 1467207701,
+            'timestamp' => 1467209263,
             'directory' => 'translations://',
-            'last_checked' => 1467207667,
+            'last_checked' => 1471271280,
             'language' => 'de',
           ),
         ),
@@ -8200,8 +8200,8 @@ function n52_feature_i18n_strongarm() {
         'project' => 'search_autocomplete',
         'langcode' => 'de',
         'type' => 'current',
-        'timestamp' => 1467207702,
-        'last_checked' => 1467207667,
+        'timestamp' => 1467209263,
+        'last_checked' => 1471271280,
         'files' => array(
           'remote' => (object) array(
             'project' => 'search_autocomplete',
@@ -8219,9 +8219,9 @@ function n52_feature_i18n_strongarm() {
             'type' => 'local',
             'filename' => 'search_autocomplete-7.x-4.7.de.po',
             'uri' => 'translations://search_autocomplete-7.x-4.7.de.po',
-            'timestamp' => 1467207702,
+            'timestamp' => 1467209263,
             'directory' => 'translations://',
-            'last_checked' => 1467207667,
+            'last_checked' => 1471271280,
             'language' => 'de',
           ),
         ),
@@ -8279,8 +8279,8 @@ function n52_feature_i18n_strongarm() {
         'project' => 'security_review',
         'langcode' => 'de',
         'type' => 'current',
-        'timestamp' => 1467207702,
-        'last_checked' => 1467207667,
+        'timestamp' => 1467209263,
+        'last_checked' => 1471271280,
         'files' => array(
           'remote' => (object) array(
             'project' => 'security_review',
@@ -8298,9 +8298,9 @@ function n52_feature_i18n_strongarm() {
             'type' => 'local',
             'filename' => 'security_review-7.x-1.2.de.po',
             'uri' => 'translations://security_review-7.x-1.2.de.po',
-            'timestamp' => 1467207702,
+            'timestamp' => 1467209263,
             'directory' => 'translations://',
-            'last_checked' => 1467207667,
+            'last_checked' => 1471271280,
             'language' => 'de',
           ),
         ),
@@ -8358,8 +8358,8 @@ function n52_feature_i18n_strongarm() {
         'project' => 'services',
         'langcode' => 'de',
         'type' => 'current',
-        'timestamp' => 1467207703,
-        'last_checked' => 1467207667,
+        'timestamp' => 1467209263,
+        'last_checked' => 1471271280,
         'files' => array(
           'remote' => (object) array(
             'project' => 'services',
@@ -8377,9 +8377,9 @@ function n52_feature_i18n_strongarm() {
             'type' => 'local',
             'filename' => 'services-7.x-3.12.de.po',
             'uri' => 'translations://services-7.x-3.12.de.po',
-            'timestamp' => 1467207703,
+            'timestamp' => 1467209263,
             'directory' => 'translations://',
-            'last_checked' => 1467207667,
+            'last_checked' => 1471271280,
             'language' => 'de',
           ),
         ),
@@ -8433,8 +8433,8 @@ function n52_feature_i18n_strongarm() {
         'project' => 'short_scale_formatter',
         'langcode' => 'de',
         'type' => 'current',
-        'timestamp' => 1467207705,
-        'last_checked' => 1467207667,
+        'timestamp' => 1467209263,
+        'last_checked' => 1471271280,
         'files' => array(
           'remote' => (object) array(
             'project' => 'short_scale_formatter',
@@ -8452,9 +8452,9 @@ function n52_feature_i18n_strongarm() {
             'type' => 'local',
             'filename' => 'short_scale_formatter-7.x-1.1.de.po',
             'uri' => 'translations://short_scale_formatter-7.x-1.1.de.po',
-            'timestamp' => 1467207705,
+            'timestamp' => 1467209263,
             'directory' => 'translations://',
-            'last_checked' => 1467207667,
+            'last_checked' => 1471271280,
             'language' => 'de',
           ),
         ),
@@ -8512,8 +8512,8 @@ function n52_feature_i18n_strongarm() {
         'project' => 'smart_trim',
         'langcode' => 'de',
         'type' => 'current',
-        'timestamp' => 1467207706,
-        'last_checked' => 1467207667,
+        'timestamp' => 1467209263,
+        'last_checked' => 1471271280,
         'files' => array(
           'remote' => (object) array(
             'project' => 'smart_trim',
@@ -8531,9 +8531,9 @@ function n52_feature_i18n_strongarm() {
             'type' => 'local',
             'filename' => 'smart_trim-7.x-1.5.de.po',
             'uri' => 'translations://smart_trim-7.x-1.5.de.po',
-            'timestamp' => 1467207706,
+            'timestamp' => 1467209263,
             'directory' => 'translations://',
-            'last_checked' => 1467207667,
+            'last_checked' => 1471271280,
             'language' => 'de',
           ),
         ),
@@ -8609,8 +8609,8 @@ function n52_feature_i18n_strongarm() {
             'version' => '7.x-1.2',
             'type' => 'local',
             'filename' => 'smtp-7.x-1.2.de.po',
-            'uri' => 'translations://smtp-7.x-1.2.de_0.po',
-            'timestamp' => 1467209263,
+            'uri' => 'translations://smtp-7.x-1.2.de.po',
+            'timestamp' => 1448881648,
             'directory' => 'translations://',
             'last_checked' => 1467277767,
             'language' => 'de',
