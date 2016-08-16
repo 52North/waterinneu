@@ -425,5 +425,34 @@
 	})(jQuery);
   	</script>
   <?php } ?>
+   <?php 
+  /*
+   * Add ready for submission button, if product is previewed
+   */
+  ?>
+  <?php if (user_is_logged_in() && n52_endsWith(request_path(), 'node/*', TRUE)) {?>
+  	<script type="text/javascript">
+	(function($) {
+		$(document).ready(function () {
+			// check for save button 'edit-submit'
+			if ($('#edit-submit').length) {
+				// check log message for "ready to review"
+				// add button with label "Submit for Publish"
+				var buttonDiv = '<input type="submit" id="edit-submit-for-pub" name="op" value="<?php print t('Submit for Publish');?>" class="form-submit">'
+				$(buttonDiv).insertBefore($('#edit-submit'));
+				$('#edit-submit-for-pub').click(function() {
+					var content = $('#edit-log').val();
+					if ( content.indexOf('ready to review') === -1 ){
+				  	// add if missing
+					  	$('#edit-log').val(content + "\nready to review");
+					}
+			  	// "click" on save button
+				  $('#edit-submit').click();
+				}); 
+			}
+		});
+	})(jQuery);
+  	</script>
+  <?php } ?>
 </body>
 </html>
