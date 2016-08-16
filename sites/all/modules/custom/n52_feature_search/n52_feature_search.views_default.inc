@@ -677,7 +677,6 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['filters']['field_class']['expose']['label'] = 'Class';
   $handler->display->display_options['filters']['field_class']['expose']['operator'] = 'field_class_op';
   $handler->display->display_options['filters']['field_class']['expose']['identifier'] = 'field_class';
-  $handler->display->display_options['filters']['field_class']['expose']['multiple'] = FALSE;
   $handler->display->display_options['filters']['field_class']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,

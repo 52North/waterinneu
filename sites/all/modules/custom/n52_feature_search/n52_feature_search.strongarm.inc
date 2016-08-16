@@ -284,6 +284,7 @@ function n52_feature_search_strongarm() {
     'faq' => 0,
     'panel' => 0,
     'project' => 0,
+    'n52_sucess_story' => 0,
   );
   $export['custom_search_blocks_1_node_types'] = $strongarm;
 
@@ -302,6 +303,7 @@ function n52_feature_search_strongarm() {
     'project' => 0,
     'service_offering' => 0,
     'service_request' => 0,
+    'n52_sucess_story' => 0,
   );
   $export['custom_search_blocks_1_node_types_excluded'] = $strongarm;
 
@@ -357,10 +359,6 @@ function n52_feature_search_strongarm() {
       'sort' => '3',
       'region' => 'block',
     ),
-    'taxonomy20' => array(
-      'sort' => '4',
-      'region' => 'block',
-    ),
     'taxonomy19' => array(
       'sort' => '5',
       'region' => 'block',
@@ -381,11 +379,15 @@ function n52_feature_search_strongarm() {
       'sort' => '10',
       'region' => 'block',
     ),
+    'taxonomy31' => array(
+      'sort' => '-10',
+      'region' => 'block',
+    ),
     'taxonomy30' => array(
       'sort' => '10',
       'region' => 'block',
     ),
-    'taxonomy31' => array(
+    'taxonomy32' => array(
       'sort' => '-10',
       'region' => 'block',
     ),
@@ -430,10 +432,6 @@ function n52_feature_search_strongarm() {
       'region' => 'block',
     ),
     'taxonomy18' => array(
-      'sort' => '-10',
-      'region' => 'block',
-    ),
-    'taxonomy22' => array(
       'sort' => '-10',
       'region' => 'block',
     ),
@@ -986,7 +984,7 @@ function n52_feature_search_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'custom_search_blocks_1_type_selector_label';
-  $strongarm->value = 'Search for';
+  $strongarm->value = 'Search within';
   $export['custom_search_blocks_1_type_selector_label'] = $strongarm;
 
   $strongarm = new stdClass();
