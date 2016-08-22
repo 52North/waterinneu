@@ -565,7 +565,7 @@ function n52_feature_products_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'purpose',
+          'vocabulary' => 'wfd_objective',
           'parent' => 0,
         ),
       ),

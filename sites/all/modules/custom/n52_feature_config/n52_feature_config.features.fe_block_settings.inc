@@ -192,7 +192,7 @@ thread*',
     'custom' => 0,
     'delta' => 'my_content-block',
     'i18n_block_language' => array(),
-    'i18n_mode' => 0,
+    'i18n_mode' => 1,
     'module' => 'views',
     'node_types' => array(),
     'pages' => 'users/*

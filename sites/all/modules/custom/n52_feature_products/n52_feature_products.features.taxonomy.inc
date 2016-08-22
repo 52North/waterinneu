@@ -284,31 +284,6 @@ function n52_feature_products_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'purpose' => array(
-      'name' => 'Purpose',
-      'machine_name' => 'purpose',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 10,
-      'language' => 'und',
-      'i18n_mode' => 1,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
     'sensor_data_standards' => array(
       'name' => 'Sensor Data Standards',
       'machine_name' => 'sensor_data_standards',
@@ -437,6 +412,31 @@ function n52_feature_products_taxonomy_default_vocabularies() {
     'waterbodies' => array(
       'name' => 'Relevant Waterbodies',
       'machine_name' => 'waterbodies',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 10,
+      'language' => 'und',
+      'i18n_mode' => 1,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'wfd_objective' => array(
+      'name' => 'WFD objective',
+      'machine_name' => 'wfd_objective',
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',

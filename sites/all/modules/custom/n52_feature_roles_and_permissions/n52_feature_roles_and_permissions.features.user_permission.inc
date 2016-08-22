@@ -380,15 +380,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy_access_fix',
   );
 
-  // Exported permission: 'add terms in purpose'.
-  $permissions['add terms in purpose'] = array(
-    'name' => 'add terms in purpose',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy_access_fix',
-  );
-
   // Exported permission: 'add terms in sensor_data_standards'.
   $permissions['add terms in sensor_data_standards'] = array(
     'name' => 'add terms in sensor_data_standards',
@@ -446,6 +437,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'add terms in waterbodies'.
   $permissions['add terms in waterbodies'] = array(
     'name' => 'add terms in waterbodies',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
+  // Exported permission: 'add terms in wfd_objective'.
+  $permissions['add terms in wfd_objective'] = array(
+    'name' => 'add terms in wfd_objective',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -575,15 +575,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy_autocomplete_permission',
   );
 
-  // Exported permission: 'add_terms_purpose'.
-  $permissions['add_terms_purpose'] = array(
-    'name' => 'add_terms_purpose',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy_autocomplete_permission',
-  );
-
   // Exported permission: 'add_terms_sensor_data_standards'.
   $permissions['add_terms_sensor_data_standards'] = array(
     'name' => 'add_terms_sensor_data_standards',
@@ -644,6 +635,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'taxonomy_autocomplete_permission',
+  );
+
+  // Exported permission: 'add_terms_wfd_objective'.
+  $permissions['add_terms_wfd_objective'] = array(
+    'name' => 'add_terms_wfd_objective',
+    'roles' => array(),
     'module' => 'taxonomy_autocomplete_permission',
   );
 
@@ -1305,6 +1303,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: 'bypass access in place editing'.
+  $permissions['bypass access in place editing'] = array(
+    'name' => 'bypass access in place editing',
+    'roles' => array(),
+    'module' => 'panels',
+  );
+
   // Exported permission: 'bypass node access'.
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
@@ -1741,7 +1746,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'delete terms in n52_commercial_development'.
   $permissions['delete terms in n52_commercial_development'] = array(
     'name' => 'delete terms in n52_commercial_development',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -1784,15 +1791,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'delete terms in product_categories'.
   $permissions['delete terms in product_categories'] = array(
     'name' => 'delete terms in product_categories',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'delete terms in purpose'.
-  $permissions['delete terms in purpose'] = array(
-    'name' => 'delete terms in purpose',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -1856,6 +1854,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'delete terms in waterbodies'.
   $permissions['delete terms in waterbodies'] = array(
     'name' => 'delete terms in waterbodies',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in wfd_objective'.
+  $permissions['delete terms in wfd_objective'] = array(
+    'name' => 'delete terms in wfd_objective',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -2173,7 +2180,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'edit terms in n52_commercial_development'.
   $permissions['edit terms in n52_commercial_development'] = array(
     'name' => 'edit terms in n52_commercial_development',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -2216,15 +2225,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'edit terms in product_categories'.
   $permissions['edit terms in product_categories'] = array(
     'name' => 'edit terms in product_categories',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in purpose'.
-  $permissions['edit terms in purpose'] = array(
-    'name' => 'edit terms in purpose',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -2288,6 +2288,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'edit terms in waterbodies'.
   $permissions['edit terms in waterbodies'] = array(
     'name' => 'edit terms in waterbodies',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in wfd_objective'.
+  $permissions['edit terms in wfd_objective'] = array(
+    'name' => 'edit terms in wfd_objective',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -2504,15 +2513,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'term_merge',
   );
 
-  // Exported permission: 'merge purpose terms'.
-  $permissions['merge purpose terms'] = array(
-    'name' => 'merge purpose terms',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'term_merge',
-  );
-
   // Exported permission: 'merge sensor_data_standards terms'.
   $permissions['merge sensor_data_standards terms'] = array(
     'name' => 'merge sensor_data_standards terms',
@@ -2582,6 +2582,13 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'term_merge',
+  );
+
+  // Exported permission: 'merge wfd_objective terms'.
+  $permissions['merge wfd_objective terms'] = array(
+    'name' => 'merge wfd_objective terms',
+    'roles' => array(),
     'module' => 'term_merge',
   );
 
