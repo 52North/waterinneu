@@ -159,7 +159,7 @@
    * - Add search button which links to advanced search
    */?>
   <?php if (n52_endsWith(request_path(),'forum*',TRUE)) { ?>
-  <?php $search_button = '<a href="search/advanced#posts" style="margin-left: 5px;" class="btn btn-primary"><span class="glyphicon glyphicon-search">&nbsp;</span>' . t('Search forum') . '</a>'; ?>
+  <?php $search_button = '<a href="\' + $(location).attr(\'pathname\').substring(0,$(location).attr(\'pathname\').indexOf(\'forum\')) + \'search/advanced#posts" style="margin-left: 5px;" class="btn btn-primary"><span class="glyphicon glyphicon-search">&nbsp;</span>' . t('Search forum') . '</a>'; ?>
   <script type="text/javascript">
   (function($) {
 	$(document).ready(function () {
@@ -201,7 +201,9 @@
   	(function($) {
 	    $(document).ready(function () {
         if (!$('#block-menu-menu-top-level-links-registered-').length) {
-          var link = $(location).attr('pathname').replace('forum','user') + '?destination=forum';
+          var base = $(location).attr('pathname').substring(0,$(location).attr('pathname').indexOf('forum')) + 'user/login';
+          var destination =  $(location).attr('pathname').substring($(location).attr('pathname').indexOf('forum'));
+          var link = base + '?destination=' + destination;
           var messageDiv = '<div class="view-footer alert alert-info" style="margin-top: 10px;"><?php print t('For adding adding new content, you need to ')?><a href="' + link + '"><?php print t('login')?></a>.</div>';
           if ($('div.view-content').length) {
             $(messageDiv).insertAfter('div.view-content');
