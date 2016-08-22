@@ -1125,13 +1125,6 @@ function n52_feature_i18n_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'l10n_update_last_check';
-  $strongarm->value = 1471342177;
-  $export['l10n_update_last_check'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'l10n_update_rebuild_projects';
   $strongarm->value = 1;
   $export['l10n_update_rebuild_projects'] = $strongarm;
