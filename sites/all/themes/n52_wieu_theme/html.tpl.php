@@ -174,7 +174,16 @@
   	(function($) {
 	    $(document).ready(function () {
       		var searchButton = '<?php print $search_button; ?>';
-      		$(searchButton).insertAfter('div.harmony-listing-header > a'); 
+      		if ($('div.view-header').length) {
+      			$(searchButton).insertAfter('div.harmony-listing-header > a');
+      		} else {
+          		var extendedSearchButton = '<div class="view-header>' + 
+          			'<div class="harmony-listing-header clearfix">' +
+              		searchButton +
+              	'</div>' +
+              '</div>';
+          		$(extendedSearchButton).insertBefore('#block-system-main > div.content');
+      		}
     	});
   	})(jQuery);
   	</script>
