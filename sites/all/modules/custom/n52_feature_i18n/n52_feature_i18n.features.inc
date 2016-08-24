@@ -38,7 +38,7 @@ function n52_feature_i18n_default_tmgmt_translator() {
     "description" : "Allows local users to process translation jobs.",
     "weight" : "0",
     "plugin" : "local",
-    "settings" : { "auto_accept" : false },
+    "settings" : { "auto_accept" : 0, "allow_all" : 1 },
     "rdf_mapping" : []
   }');
   return $items;

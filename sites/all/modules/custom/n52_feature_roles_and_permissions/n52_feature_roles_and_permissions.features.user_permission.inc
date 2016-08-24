@@ -17,6 +17,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'tmgmt',
   );
@@ -1245,6 +1246,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'tmgmt_local',
   );
@@ -1463,6 +1465,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'tmgmt',
   );
@@ -2670,6 +2673,8 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'provide translation services',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'tmgmt_local',
   );
@@ -3046,6 +3051,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'tmgmt',
   );
