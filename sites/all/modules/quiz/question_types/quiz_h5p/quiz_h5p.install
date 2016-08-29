@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Install logic.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function quiz_h5p_schema() {
+  $schema = array();
+  
+  $schema['quiz_h5p_user_results'] = array(
+    'fields' => array(
+      'question_nid' => array(
+        'type' => 'int',
+        'unsiged' => TRUE,
+        'not null' => TRUE,
+      ),
+      'question_vid' => array(
+        'type' => 'int',
+        'unsiged' => TRUE,
+        'not null' => TRUE,
+      ),
+      'result_id' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'percent_score' => array(
+        'type' => 'float',
+        'size' => 'big',
+      ),
+    ),
+    'primary key' => array('question_nid', 'question_vid', 'result_id'),
+  );
+  return $schema;
+}
+
+function quiz_h5p_install() {
+  db_query(
+    "INSERT INTO {quiz_question_properties}
+    (nid, vid, max_score)
+    SELECT nid, vid, 10
+    FROM {node} n
+    WHERE n.type='h5p_content'");
+}
+
+function quiz_h5p_uninstall() {
+  db_query(
+    "DELETE FROM {quiz_question_properties}
+    WHERE nid IN (
+      SELECT n.nid
+      FROM {node} n
+      WHERE n.type = 'h5p_content'
+    )"
+  );
+}

@@ -1,0 +1,80 @@
+<?php
+
+/**
+ * Tests for quiz Course objects.
+ */
+class CourseObjectQuizTestCase extends CourseTestCase {
+
+  public static function getInfo() {
+    // Note that getInfo() strings are not translated with t().
+    return array(
+      'name' => 'Course object quiz',
+      'description' => 'Ensure that quiz Course object support functions properly.',
+      'group' => 'Course',
+    );
+  }
+
+  function getModules() {
+    $modules = parent::getModules();
+    $modules[] = 'quiz';
+    $modules[] = 'quiz_question';
+    $modules[] = 'truefalse';
+    $modules[] = 'course_quiz';
+    return $modules;
+  }
+
+  function setUp() {
+    parent::setUp();
+
+    $this->quiz_admin = $this->drupalCreateUser(array('access quiz', 'create truefalse content', 'edit any truefalse content', 'create quiz content', 'edit any quiz content'));
+  }
+
+  function testQuizCourseObject() {
+    $this->drupalLogin($this->quiz_admin);
+    // Create a course with 1 quiz.
+    $courseNode = $this->createCourseNode();
+    $co1 = course_get_course_object('course_quiz', 'quiz');
+    $co1->setCourse($courseNode->nid);
+    $co1->setOption('passing_grade', 100);
+    $co1->save();
+    $this->assertTrue($co1->getInstanceId() > 0, 'Quiz node created on course object save.');
+
+    $quizNode = node_load($co1->getInstanceId());
+    $this->assertTrue($quizNode->type == 'quiz', 'Quiz node is a quiz.');
+
+    // Add a question.
+    $this->drupalGet('node/add/truefalse', array('query' => array('quiz_nid' => $quizNode->nid, 'quiz_vid' => $quizNode->vid)));
+    $this->drupalPost(NULL, array(
+      'body[und][0][value]' => 'Test question',
+      'correct_answer' => 1,
+      ), t('Save'));
+
+    // Makes tests work against 7.x-4.x and 7.x-5.x. Node ID of the question is 3.
+    $answer_element = (course_quiz_quiz_version() >= 5) ? "question[3]" : "tries";
+
+    // Enroll the user in the course
+    course_enroll($courseNode, $this->quiz_admin);
+
+    // Fail the quiz.
+    $this->drupalGet("node/{$quizNode->nid}/take");
+    $this->assertFalse($co1->getFulfillment()->isComplete(), 'Check that quiz fulfillment is not complete after fail.');
+    $this->drupalPost(NULL, array(
+      $answer_element => 0,
+      ), t('Finish'));
+
+    // Reload because something happened in the DB.
+    $co1 = course_get_course_object_by_id($co1->getId(), $this->quiz_admin);
+    $this->assertFalse($co1->getFulfillment()->isComplete(), 'Check that quiz fulfillment is not complete.');
+
+    // Pass the quiz.
+    $this->drupalGet("node/{$quizNode->nid}/take");
+    $this->drupalPost(NULL, array(
+      $answer_element => 1,
+      ), t('Finish'));
+
+    // Reload because something happened in the DB.
+    $co1 = course_get_course_object_by_id($co1->getId(), $this->quiz_admin);
+    $this->assertTrue($co1->getFulfillment()->isComplete(), 'Check that quiz fulfillment is complete.');
+  }
+
+}

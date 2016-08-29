@@ -1,0 +1,94 @@
+<?php
+
+// Fix for #824232 and testbot.
+module_load_include('inc', 'signup', 'includes/scheduler');
+
+/**
+ * Test class for dealing with adding and removing elements from the course
+ * outline.
+ */
+class CourseObjectSignupTestCase extends CourseTestCase {
+
+  public static function getInfo() {
+    // Note that getInfo() strings are not translated with t().
+    return array(
+      'name' => 'Course signup',
+      'description' => 'Ensure that the Course signup integration functions properly.',
+      'group' => 'Course',
+    );
+  }
+
+  public function getModules() {
+    $modules = parent::getModules();
+    $modules[] = 'signup';
+    $modules[] = 'course_signup';
+    return $modules;
+  }
+
+  function setUp() {
+    parent::setUp();
+    variable_set('signup_node_default_state_course_test', 'enabled_on');
+  }
+
+  /**
+   * Test that a user is enrolled from a signup.
+   */
+  function testSignupEnrollment() {
+    global $user;
+    // Create a signup node.
+    $courseNode = $this->createCourseNode(array(
+      'signup_user_reg' => 0,
+      'signup_enabled' => 1,
+      'signup_status' => 1,
+    ));
+
+    // Sign the user up
+    $form = array(
+      'nid' => $courseNode->nid,
+      'uid' => $user->uid,
+    );
+    $sid = signup_sign_up_user($form);
+
+    // Check the enrollment.
+    $enroll = course_enrollment_load($courseNode->nid, $user->uid);
+    $this->assertTrue($enroll->eid > 0, 'Found enrollment after signing up.');
+
+    // Cancel the signup and check the enrollment.
+    signup_cancel_signup($sid);
+    $enroll = course_enrollment_load($courseNode->nid, $user->uid);
+    $this->assertFalse($enroll, 'Cancelled enrollment after cancelling signup.');
+  }
+
+  /**
+   * Test the fulfillment of an attendance object.
+   */
+  function testSignupCourseObject() {
+    // Create a course with 1 signup.
+    $courseNode = $this->createCourseNode(array(
+      'signup_user_reg' => 0,
+      'signup_enabled' => 1,
+      'signup_status' => 1,
+    ));
+
+    $co1 = course_get_course_object('course_signup', 'signup_attendance');
+    $co1->setCourse($courseNode->nid);
+    $co1->save();
+    $this->assertEqual($co1->getInstanceId(), $courseNode->nid, 'Signup node is the course node.');
+
+    // Enroll the user in the course
+    course_enroll($courseNode, $this->student_user);
+    $co1 = course_get_course_object_by_id($co1->getId(), $this->student_user);
+    $this->assertFalse($co1->getFulfillment()->isComplete(), 'Object not complete.');
+    $co1->takeCourseObject();
+    $this->assertFalse($co1->getFulfillment()->isComplete(), 'Object still not complete after taking.');
+
+    // Get signup and mark it attended.
+    $signup = db_query("SELECT * FROM {signup_log} WHERE nid = :nid and uid = :uid", array(':nid' => $courseNode->nid, ':uid' => $this->student_user->uid))->fetch();
+    signup_mark_attended_action($signup);
+
+    // Reload because something happened in the DB.
+    $co1 = course_get_course_object_by_id($co1->getId(), $this->student_user);
+    $this->assertTrue($co1->getFulfillment()->isComplete(), 'Check that attendance is completed.');
+  }
+
+}

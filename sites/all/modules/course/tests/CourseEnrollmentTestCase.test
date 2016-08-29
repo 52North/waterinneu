@@ -1,0 +1,162 @@
+<?php
+
+/**
+ * Tests for Course enrollment
+ */
+class CourseEnrollmentTestCase extends CourseTestCase {
+
+  public static function getInfo() {
+    // Note that getInfo() strings are not translated with t().
+    return array(
+      'name' => 'Course enrollment',
+      'description' => 'Ensure that Course enrollment and access control functions properly.',
+      'group' => 'Course',
+    );
+  }
+
+  /**
+   * Test for enrollment access and timestamping.
+   */
+  function testCourseEnrollment() {
+    global $user;
+    $courseNode = $this->createCourseNode();
+
+    $result = course_enroll_access($courseNode);
+    $this->assertTrue($result['success'], 'Check that the user is allowed to self enroll into this course.');
+
+    $result = course_take_course_access($courseNode);
+    $this->assertFalse($result['success'], 'Check that the user cannot enroll in the course.');
+
+    course_enroll($courseNode, $user);
+    $result = course_take_course_access($courseNode, $user, TRUE);
+    $this->assertTrue($result['success'], 'Check that the user can take the course.');
+    $enroll = course_enrollment_load($courseNode, $user);
+    $this->assertTrue($enroll->eid > 0, 'Enrollment was created.');
+    $this->assertTrue($enroll->created > 0, 'Enrollment has a creation timestamp.');
+    //$this->assertFalse($enroll->timestamp > 0, 'Check that user has not started course.');
+    // Take the course
+    course_take_course($courseNode);
+    $enroll = course_enrollment_load($courseNode, $user);
+    $this->assertTrue($enroll->timestamp > 0, 'Check for start of course timestamp.');
+  }
+
+  /**
+   * Test for course duration being set properly on enrollment.
+   */
+  function testCourseDuration() {
+    global $user;
+    $courseNode = $this->createCourseNode();
+
+    $courseNode->course['duration'] = 30;
+    node_save($courseNode);
+    $enroll = course_enrollment_load($courseNode, $user);
+    $this->assertFalse($enroll, 'Check that enrollment does not exist.');
+    course_take_course($courseNode);
+    $enroll = course_enrollment_load($courseNode, $user);
+    $this->assertTrue($enroll->enroll_end > REQUEST_TIME, 'Duration end got set with course start.');
+  }
+
+  /**
+   * Test course bundles.
+   */
+  function testCourseBundles() {
+
+    $enrollment_type = entity_create('course_enrollment_type', array(
+      'type' => 'type_A',
+      'label' => t('Bundle type A'),
+    ));
+    $enrollment_type->save();
+
+    $enrollment_type = entity_create('course_enrollment_type', array(
+      'type' => 'type_B',
+      'label' => t('Bundle type B'),
+    ));
+    $enrollment_type->save();
+
+    cache_clear_all();
+
+    // Add a field to type A and make it required for registration
+    // Create field A
+    $field = array(
+      'field_name' => 'enrollment_field_a',
+      'type' => 'text',
+    );
+    $instance = array(
+      'field_name' => 'enrollment_field_a',
+      'entity_type' => 'course_enrollment',
+      'bundle' => 'type_A',
+      'label' => 'Enrollment field A',
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => 60,
+        ),
+        'type' => 'text_textfield',
+        'weight' => 1,
+      ),
+      'settings' => array(
+        'course_enrollment_user_field' => 1,
+      ),
+      'required' => 1,
+    );
+    field_create_field($field);
+    $instance_a = field_create_instance($instance);
+
+    // Add a field to type B and make it required for registration
+    // Create field B
+    $field = array(
+      'field_name' => 'enrollment_field_b',
+      'type' => 'text',
+    );
+    $instance = array(
+      'field_name' => 'enrollment_field_b',
+      'entity_type' => 'course_enrollment',
+      'bundle' => 'type_B',
+      'label' => 'Enrollment field B',
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => 60,
+        ),
+        'type' => 'text_textfield',
+        'weight' => 1,
+      ),
+      'settings' => array(
+        'course_enrollment_user_field' => 1,
+      ),
+      'required' => 1,
+    );
+    field_create_field($field);
+    $instance_b = field_create_instance($instance);
+
+    $courseNodeA = $this->createCourseNode(array('course' => array('enrollment_type' => 'type_A')));
+    $courseNodeB = $this->createCourseNode(array('course' => array('enrollment_type' => 'type_B')));
+    $this->drupalLogin($this->student_user);
+
+    // Check if field shows up and user is not yet enrolled.
+    $this->drupalGet("node/$courseNodeA->nid/takecourse");
+    $this->assertFieldById('edit-enrollment-field-a-und-0-value');
+    $this->assertNoFieldById('edit-enrollment-field-b-und-0-value');
+    $enrollment = course_enrollment_load($courseNodeA, $this->student_user);
+    $this->assertFalse($enrollment);
+    $this->drupalPost(NULL, array(), t('Save'));
+    // Check that form API is working.
+    $this->assertText('field is required');
+    $this->drupalPost(NULL, array('enrollment_field_a[und][0][value]' => 'test 123'), t('Save'));
+
+    // Check that a different field is on course B
+    $this->drupalGet("node/$courseNodeB->nid/takecourse");
+    $this->assertFieldById('edit-enrollment-field-b-und-0-value');
+    $this->assertNoFieldById('edit-enrollment-field-a-und-0-value');
+
+    // Mark field B to not show on enrollment.
+    $instance_b['settings']['course_enrollment_user_field'] = 0;
+    field_update_instance($instance_b);
+    $this->drupalGet("node/$courseNodeB->nid/takecourse");
+    $this->assertNoFieldById('edit-enrollment-field-a-und-0-value');
+    $this->assertNoFieldById('edit-enrollment-field-b-und-0-value');
+  }
+
+}
