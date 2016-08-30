@@ -69,6 +69,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['administer all signups'] = array(
     'name' => 'administer all signups',
     'roles' => array(
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -115,6 +116,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['administer signups for own content'] = array(
     'name' => 'administer signups for own content',
     'roles' => array(
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -151,6 +153,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['cancel own signups'] = array(
     'name' => 'cancel own signups',
     'roles' => array(
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -160,6 +163,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['cancel signups'] = array(
     'name' => 'cancel signups',
     'roles' => array(
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -513,6 +517,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['edit own signups'] = array(
     'name' => 'edit own signups',
     'roles' => array(
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -547,6 +552,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['email all signed up users'] = array(
     'name' => 'email all signed up users',
     'roles' => array(
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -557,6 +563,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
     'name' => 'email users signed up for own content',
     'roles' => array(
       'Student' => 'Student',
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -634,6 +641,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
     'roles' => array(
       'Student' => 'Student',
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'signup',
   );
@@ -651,6 +659,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['view all signups'] = array(
     'name' => 'view all signups',
     'roles' => array(
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
