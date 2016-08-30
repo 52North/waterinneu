@@ -120,10 +120,10 @@
 
 #lang_dropdown_form_language > div > div > select {
 	margin-top: 6px;
-  margin-bottom: 0;
-  min-height: unset;
-  padding: 5px;
-  margin-right: 0.5em;
+	margin-bottom: 0;
+	min-height: unset;
+	padding: 5px;
+	margin-right: 0.5em;
 }
 
 .stickynav-active {
