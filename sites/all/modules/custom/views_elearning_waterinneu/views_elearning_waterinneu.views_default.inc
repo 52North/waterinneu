@@ -47,10 +47,10 @@ function views_elearning_waterinneu_views_default_views() {
   $handler->display->display_options['fields']['field_course_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_course_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_course_image']['settings'] = array(
-    'image_style' => 'medium',
+    'image_style' => 'thumbnail',
     'image_link' => 'content',
   );
-  /* Field: Content: Body */
+  /* Field: Content: Question */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
