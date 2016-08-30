@@ -1,0 +1,348 @@
+<?php
+/**
+ * Implementation of hook_schema().
+ */
+function signup_schema() {
+  $schema['signup'] = array(
+    'description' => 'Signup module per-node settings.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'Primary key: node ID',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'forwarding_email' => array(
+        'description' => 'Email address to send signup notifications to.',
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'send_confirmation' => array(
+        'description' => 'Boolean indicating whether confirmation emails should be sent.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'confirmation_email' => array(
+        'description' => 'Email template to send to users when they signup.',
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => TRUE,
+      ),
+      'send_reminder' => array(
+        'description' => 'Boolean indicating whether reminder emails should be sent. This is set to 0 once the reminders are sent.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'reminder_days_before' => array(
+        'description' => 'Number of days before the start of a time-based node when the reminder emails should be sent.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'reminder_email' => array(
+        'description' => 'Email template to send to users to remind them about a signup.',
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => TRUE,
+      ),
+      'close_in_advance_time' => array(
+        'description' => 'Number of hours before the start of a time-based node when signups should automatically be closed. This column is not currently used and the behavior is controlled by a site-wide setting.  See http://drupal.org/node/290249 for more information.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'close_signup_limit' => array(
+        'description' => 'Maximum number of users who can signup before signups are closed. If set to 0, there is no limit.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'status' => array(
+        'description' => 'Boolean indicating if signups are open (1) or closed (0) for the given node',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      'user_reg_form' => array(
+        'description' => 'Boolean indicating if users can sign up for this event from the user registration form.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+
+  $schema['signup_log'] = array(
+    'description' => 'Records information for each user who signs up for a node.',
+    'fields' => array(
+      'sid' => array(
+        'description' => 'Primary key: signup ID',
+        'type' => 'serial',
+        'size' => 'normal',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'Key: the user ID of the user who signed up.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'nid' => array(
+        'description' => 'Key: the node ID of the node the user signed up for.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'anon_mail' => array(
+        'description' => 'The email address for an anonymous user who signed up, or an empty string for authenticated users.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'signup_time' => array(
+        'description' => 'Integer timestamp of when the user signed up for the node.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'form_data' => array(
+        'description' => 'Serialized string of additional signup form values.  See theme_signup_user_form() from theme/signup.theme for more information.',
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => TRUE,
+      ),
+      'attended' => array(
+        'description' => 'Did this user actually attend the node they signed up for?',
+        'type' => 'int',
+        'size' => 'tiny',
+      ),
+      'count_towards_limit' => array(
+        'description' => 'How many slots (if any) this signup should use towards the total signup limit for this node',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+    ),
+    'primary key' => array('sid'),
+    'indexes' => array(
+      'uid' => array('uid'),
+      'nid' => array('nid'),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ *
+ * This will automatically install the database tables for the Signup
+ * module for both the MySQL and PostgreSQL databases.
+ *
+ * If you are using another database, you will have to install the
+ * tables by hand, using the queries below as a reference.
+ *
+ * Note that the curly braces around table names are a drupal-specific
+ * feature to allow for automatic database table prefixing, and will
+ * need to be removed.
+ */
+function signup_install() {
+  // Create tables.
+  // TODO The drupal_(un)install_schema functions are called automatically in D7.
+  // drupal_install_schema('signup')
+  signup_insert_default_signup_info();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function signup_uninstall() {
+  // Remove tables.
+  // TODO The drupal_(un)install_schema functions are called automatically in D7.
+  // drupal_uninstall_schema('signup')
+  // TODO Please review the conversion of this statement to the D7 database API syntax.
+  $variables = db_query("SELECT name FROM {variable} WHERE name LIKE :name", array(':name' => 'signup%'))->fetchCol();
+  foreach ($variables as $variable) {
+    variable_del($variable);
+  }
+}
+
+/**
+ * Helper method to insert the default signup information into the
+ * {signup} table (stored in a row for nid 0).  These are the default
+ * settings for new signup-enabled nodes.
+ */
+function signup_insert_default_signup_info() {
+  // TODO Please review the conversion of this statement to the D7 database API syntax.
+  /* db_query("INSERT INTO {signup} (nid, forwarding_email,
+   send_confirmation, confirmation_email,
+   send_reminder, reminder_days_before, reminder_email,
+   close_in_advance_time, close_signup_limit, status, user_reg_form) VALUES (0, '',
+   1, 'Enter your default confirmation email message here',
+   1, 1, 'Enter your default reminder email message here',
+   0, 0, 1, 0)") */
+  return $id = db_insert('signup')
+  ->fields(array(
+    'nid' => 0,
+    'forwarding_email' => '',
+    'send_confirmation' => 1,
+    'confirmation_email' => 'Enter your default confirmation email message here',
+    'send_reminder' => 1,
+    'reminder_days_before' => 1,
+    'reminder_email' => 'Enter your default reminder email message here',
+    'close_in_advance_time' => 0,
+    'close_signup_limit' => 0,
+    'status' => 1,
+    'user_reg_form' => 0,
+  ))
+  ->execute();
+}
+
+/*
+ * Implements hook_update_last_removed().
+ */
+function signup_update_last_removed() {
+  return 5204;
+}
+
+/**
+ * Migrate signup user list view display type to the new variable.
+ */
+function signup_update_6000() {
+  $ret = array();
+  variable_del('signup_user_list_view_name');
+  variable_del('signup_user_list_view_type');
+  $ret[] = array(
+    'success' => TRUE,
+    'query' => t('Removed the deprecated %old_view_name and %old_view_type variables. If you were using embedding a view on signup-enabled nodes, please visit the <a href="@signup_settings_url">Signup configuration page</a> and select a new value for the %setting_name setting (which is located under the Advanced settings).', array(
+      '%old_view_name' => 'signup_user_list_view_name',
+      '%old_view_type' => 'signup_user_list_view_type',
+      // NOTE: we can't use url() here because it would use 'update.php?q=...'
+      '@signup_settings_url' => base_path() . '?q=admin/settings/signup',
+      '%setting_name' => t('View to embed for the signup user list'),
+    )),
+  );
+  // hook_update_N() no longer returns a $ret array. Instead, return
+  // nothing or a translated string indicating the update ran successfully.
+  // See http://drupal.org/node/224333#update_sql.
+  return t('TODO Add a descriptive string here to show in the UI.') /* $ret */;
+}
+
+/**
+ * Add unique id column to signup_log as the primary key.
+ *
+ * http://drupal.org/node/341382 for more infomation.
+ */
+function signup_update_6001() {
+  $ret = array();
+  $field = array(
+    'type' => 'serial',
+    'size' => 'normal',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+  );
+  db_add_field('signup_log', 'sid', $field, array('primary key' => array('sid')));
+  // hook_update_N() no longer returns a $ret array. Instead, return
+  // nothing or a translated string indicating the update ran successfully.
+  // See http://drupal.org/node/224333#update_sql.
+  return t('TODO Add a descriptive string here to show in the UI.') /* $ret */;
+}
+
+/**
+ * Add an 'attended' field to the {signup_log} table.
+ *
+ * http://drupal.org/node/55168 for more infomation.
+ */
+function signup_update_6002() {
+  $ret = array();
+  $field = array(
+    'type' => 'int',
+    'size' => 'tiny',
+  );
+  db_add_field('signup_log', 'attended', $field);
+  // hook_update_N() no longer returns a $ret array. Instead, return
+  // nothing or a translated string indicating the update ran successfully.
+  // See http://drupal.org/node/224333#update_sql.
+  return t('TODO Add a descriptive string here to show in the UI.') /* $ret */;
+}
+
+/**
+ * Add the 'count_towards_limit' field to the {signup_log} table.
+ *
+ * http://drupal.org/node/581652 for more infomation.
+ */
+function signup_update_6003() {
+  $ret = array();
+  $field = array(
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 1,
+  );
+  db_add_field('signup_log', 'count_towards_limit', $field);
+  // hook_update_N() no longer returns a $ret array. Instead, return
+  // nothing or a translated string indicating the update ran successfully.
+  // See http://drupal.org/node/224333#update_sql.
+  return t('TODO Add a descriptive string here to show in the UI.') /* $ret */;
+}
+
+/**
+ * Make views a required dependency.
+ */
+function signup_update_6004() {
+  $ret = array();
+
+  $user_list = variable_get('signup_display_signup_user_list', '');
+  if (!empty($user_list)) {
+    switch ($user_list) {
+      case 'signup':
+        variable_set('signup_display_signup_user_list', 'embed-view');
+        break;
+
+      case 'signup-tab':
+        variable_set('signup_display_signup_user_list', 'embed-view-tab');
+        break;
+    }
+  }
+
+  $admin_list = variable_get('signup_display_signup_admin_list', '');
+  if (!empty($admin_list) && $admin_list == 'signup') {
+    variable_set('signup_display_signup_admin_list', 'embed-view');
+  }
+
+  // hook_update_N() no longer returns a $ret array. Instead, return
+  // nothing or a translated string indicating the update ran successfully.
+  // See http://drupal.org/node/224333#update_sql.
+  return t('TODO Add a descriptive string here to show in the UI.') /* $ret */;
+}
+
+/**
+ * Add the 'user_reg_form' field to the {signup} table.
+ * See http://drupal.org/node/856604 for more information.
+ */
+function signup_update_6005() {
+  $ret = array();
+  $field = array(
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => 0,
+  );
+  db_add_field('signup', 'user_reg_form', $field);
+  // hook_update_N() no longer returns a $ret array. Instead, return
+  // nothing or a translated string indicating the update ran successfully.
+  // See http://drupal.org/node/224333#update_sql.
+  return t('TODO Add a descriptive string here to show in the UI.') /* $ret */;
+}

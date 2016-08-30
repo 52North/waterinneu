@@ -14,6 +14,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['access all course reports'] = array(
     'name' => 'access all course reports',
     'roles' => array(
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'course',
@@ -34,6 +35,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['access course administration area'] = array(
     'name' => 'access course administration area',
     'roles' => array(
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'course',
@@ -85,6 +87,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['administer course enrollment types'] = array(
     'name' => 'administer course enrollment types',
     'roles' => array(
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'course',

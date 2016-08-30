@@ -154,22 +154,10 @@ function waterinneu_deploy_update_7023() {
   module_enable(array('module_missing_message_fixer'));
 }
 
-/**
- * Enable modules signup, course_signup, signup_confirm_email, signup_roles.
- */
 function waterinneu_deploy_update_7024() {
-  module_enable(array('signup'));
-  module_enable(array('course_signup'));
-  module_enable(array('signup_confirm_email'));
-  module_enable(array('signup_roles'));
 }
 
-/**
- * Enable and revert feature permissions_e_learning_waterinneu.
- */
 function waterinneu_deploy_update_7025() {
-  module_enable(array('permissions_e_learning_waterinneu'));
-  features_revert_module('permissions_e_learning_waterinneu');
 }
 
 /**
@@ -184,4 +172,22 @@ function waterinneu_deploy_update_7026() {
  */
 function waterinneu_deploy_update_7027() {
   module_enable(array('content_access'));
+}
+
+/**
+ * Enable modules signup, course_signup, signup_confirm_email, signup_roles.
+ */
+function waterinneu_deploy_update_7028() {
+  module_enable(array('signup'));
+  module_enable(array('course_signup'));
+  module_enable(array('signup_confirm_email'));
+  module_enable(array('signup_roles'));
+}
+
+/**
+ * Enable and revert feature permissions_e_learning_waterinneu.
+ */
+function waterinneu_deploy_update_7029() {
+  module_enable(array('permissions_e_learning_waterinneu'));
+  features_revert_module('permissions_e_learning_waterinneu');
 }
