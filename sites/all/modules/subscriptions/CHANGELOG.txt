@@ -5,6 +5,15 @@ CHANGELOG for Subscriptions 1.x for Drupal 7
 subscriptions 7.x-1.x-dev:
 
 
+subscriptions 7.x-1.3 (2016-08-23):
+  Enhancements:
+    - Fix broken 'Append the mailkey to every notification' option.
+    - Create a dummy test to make the testbot happy.
+  Bugs fixed:
+    - Re-enable node options for subscribing to forum.
+    - Clear the internal taxonomy term cache when switching users in hook_cron().
+
+
 subscriptions 7.x-1.2 (2016-05-25):
   Enhancements:
     - #2604466 by brad.bulger: Add strict parameter to in_array() tests of content types to allow replacing the selects with checkboxes.
@@ -38,7 +47,6 @@ subscriptions 7.x-1.2 (2016-05-25):
     - #1831666: Add the missing 'base_table' meta data to a node access query.
     - #1821116: Fix the [subs:files:*] token.
 
-
 subscriptions 7.x-1.1 (2012-11-01):
   Enhancements:
     - Implement [subs:has-distinct-summary] token and improve the default template.
@@ -58,7 +66,6 @@ subscriptions 7.x-1.1 (2012-11-01):
     - #1744576: Make s/del/... work again.
     - Always expand the node UI fieldset on the node/%/subscribe pages.
     - #399628-19: Document the subscriptions_write() function (no functional change).
-
 
 subscriptions 7.x-1.0 (2012-06-22):
   - Added some information about upgrading to the README.txt file.
