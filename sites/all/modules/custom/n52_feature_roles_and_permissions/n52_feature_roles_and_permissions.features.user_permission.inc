@@ -2363,7 +2363,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'manage bg translation overview priorities'.
   $permissions['manage bg translation overview priorities'] = array(
     'name' => 'manage bg translation overview priorities',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'translation_overview',
   );
 
