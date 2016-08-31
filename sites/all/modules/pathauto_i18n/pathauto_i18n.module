@@ -1,0 +1,251 @@
+<?php
+/**
+ * @file
+ * Provides common functions and callbacks for pathauto_i18n submodules.
+ *
+ * Does not contain any hooks or provide functionality on its own.
+ */
+
+/**
+ * Insert entity to pathauto_i18n table and generate alias if necessary.
+ */
+function pathauto_i18n_process_entity_object($entity, $entity_type, $pathauto_i18n_status, $op) {
+  // Get entity properties.
+  list($entity_id, , $bundle) = entity_extract_ids($entity_type, $entity);
+  // Insert pathauto_i18n settings.
+  if (!empty($entity_id) && !empty($bundle) && !empty($entity_type)) {
+    pathauto_i18n_insert_settings($entity_id, $entity_type, $bundle, $pathauto_i18n_status);
+    // Build aliases in it necessary.
+    if ($pathauto_i18n_status) {
+      pathauto_i18n_update_alias($entity, $entity_type, $bundle, $op);
+    }
+  }
+}
+
+/**
+ * Update the URL aliases for all available languages.
+ *
+ * @see pathauto_field_attach_form()
+ */
+function pathauto_i18n_update_alias($entity, $entity_type, $bundle, $op) {
+  // Generate aliases.
+  module_load_include('inc', 'pathauto');
+  $languages = language_list();
+  $langcode = pathauto_entity_language($entity_type, $entity);
+  $uri = entity_uri($entity_type, $entity);
+  foreach ($languages as $language) {
+    // Skipping a creating alias for node language, it created automatically.
+    if (empty($entity->language) || $langcode != $language->language) {
+      pathauto_create_alias(
+        $entity_type,
+        $op,
+        $uri['path'],
+        array($entity_type => $entity),
+        $bundle,
+        $language->language
+      );
+    }
+  }
+}
+
+/**
+ * Returns the configured default value for a bundle.
+ */
+function pathauto_i18n_get_bundle_default($entity_type, $bundle, $default = 1) {
+  return variable_get('pathauto_i18n_default_' . $entity_type . '_' . $bundle, $default);
+}
+
+/**
+ * Sets a default value for a bundle.
+ */
+function pathauto_i18n_set_bundle_default($entity_type, $bundle, $value) {
+  variable_set('pathauto_i18n_default_' . $entity_type . '_' . $bundle, $value);
+}
+
+/**
+ * Attach Pathauto i18n field configuration to form.
+ *
+ * @param array $form
+ *   Form to attach.
+ *
+ * @param object $entity
+ *   Entity object.
+ *
+ * @param string $entity_type
+ *   Entity type.
+ *
+ * @see pathauto_field_attach_form()
+ */
+function pathauto_i18n_configuration_form(&$form, $entity, $entity_type, $bundle) {
+  $access = user_access('create url aliases') || user_access('administer url aliases');
+  if ($entity && $access) {
+    $default = pathauto_i18n_get_bundle_default($entity_type, $bundle);
+    $form['path']['pathauto_i18n_status'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Generate automatic URL alias for all languages'),
+      '#description' => t('Allows you to generate aliases for all available languages.', array('@entity_type' => $entity_type)),
+      '#default_value' => isset($entity->path['pathauto_i18n_status']) ? $entity->path['pathauto_i18n_status'] : $default,
+      '#weight' => -0.99,
+    );
+    $form['path']['pathauto_i18n_undefined_language_tip'] = array(
+      '#type' => 'item',
+      '#markup' => t('URL alias for "Language neutral" <strong>won\'t be created</strong>, because you use automatic alias.') . '</strong>',
+      '#weight' => -0.98,
+      '#states' => array(
+        'visible' => array(
+          'select[name="language"]' => array('value' => LANGUAGE_NONE),
+          'input[name="path[pathauto]"]' => array('checked' => TRUE),
+          'input[name="path[pathauto_i18n_status]"]' => array('checked' => TRUE),
+        ),
+      ),
+    );
+
+    $form['path']['pathauto_i18n_undefined_language_custom_tip'] = array(
+      '#type' => 'item',
+      '#markup' => t('URL alias for "Language neutral" <strong>will be created</strong>, because you use custom alias.'),
+      '#weight' => -0.98,
+      '#states' => array(
+        'visible' => array(
+          'select[name="language"]' => array('value' => LANGUAGE_NONE),
+          'input[name="path[pathauto]"]' => array('checked' => FALSE),
+          'input[name="path[pathauto_i18n_status]"]' => array('checked' => TRUE),
+        ),
+      ),
+    );
+  }
+}
+
+/**
+ * Insert settings for entity.
+ */
+function pathauto_i18n_insert_settings($entity_id, $entity_type, $bundle, $path_status) {
+  db_merge('pathauto_i18n')
+    ->key(array('entity_id' => $entity_id, 'entity_type' => $entity_type))
+    ->fields(
+      array(
+        'entity_id' => $entity_id,
+        'entity_type' => $entity_type,
+        'bundle' => $bundle,
+        'path_status' => $path_status,
+      )
+    )
+    ->execute();
+}
+
+/**
+ * Load settings for entity.
+ */
+function pathauto_i18n_load_settings($ids, $entity_type) {
+  return db_select('pathauto_i18n', 'p')
+    ->fields('p', array(
+      'entity_id',
+      'path_status',
+    ))
+    ->condition('p.entity_id', $ids, 'IN')
+    ->condition('p.entity_type', $entity_type)
+    ->execute();
+}
+
+/**
+ * Load settings for entity.
+ */
+function pathauto_i18n_load_settings_single($id, $entity_type) {
+  return db_select('pathauto_i18n', 'p')
+    ->fields('p', array(
+        'entity_id',
+        'path_status',
+      ))
+    ->condition('p.entity_id', $id)
+    ->condition('p.entity_type', $entity_type)
+    ->execute()
+    ->fetchAssoc();
+}
+
+/**
+ * Delete settings for certain entity.
+ */
+function pathauto_i18n_delete_settings($entity_id, $entity_type) {
+  db_delete('pathauto_i18n')
+    ->condition('entity_id', $entity_id)
+    ->condition('entity_type', $entity_type)
+    ->execute();
+}
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Make pathauto_ignore_words global and add fields for languages.
+ */
+function pathauto_i18n_form_pathauto_settings_form_alter(&$form, &$form_state, $form_id) {
+  module_load_include('inc', 'pathauto');
+  $languages = language_list();
+  $form['pathauto_ignore_words']['#title'] = t('Strings to Remove - @language', array('@language' => t('Global')));
+
+  foreach ($languages as $language) {
+    $key = 'pathauto_ignore_words_' . $language->language . '_language';
+    $form[$key] = array(
+      '#type' => 'textarea',
+      '#title' => t('Strings to Remove - @language', array('@language' => $language->name)),
+      '#default_value' => variable_get($key, ''),
+      '#wysiwyg' => FALSE,
+    );
+  }
+}
+
+/**
+ * Clean up a string segment for certain language.
+ */
+function pathauto_i18n_cleanstring($language, $string) {
+  $ignore_words = variable_get('pathauto_ignore_words_' . $language . '_language', '');
+  $ignore_words_regex = preg_replace(array('/^[,\s]+|[,\s]+$/', '/[,\s]+/'), array('', '\b|\b'), $ignore_words);
+  if ($ignore_words_regex) {
+    $ignore_words_regex = '\b' . $ignore_words_regex . '\b';
+    if (function_exists('mb_eregi_replace')) {
+      $ignore_words_callback = 'mb_eregi_replace';
+    }
+    else {
+      $ignore_words_callback = 'preg_replace';
+      $ignore_words_regex = '/' . $ignore_words_regex . '/i';
+    }
+
+    if (!empty($ignore_words_regex) && !empty($ignore_words_callback)) {
+      $words_removed = $ignore_words_callback($ignore_words_regex, '', $string);
+      if (drupal_strlen(trim($words_removed)) > 0) {
+        $string = $words_removed;
+      }
+    }
+  }
+
+  return $string;
+}
+
+/**
+ * Implements hook_tokens_alter().
+ */
+function pathauto_i18n_tokens_alter(&$replacements, array $context) {
+  // @todo need tests.
+  if (!empty($context['options']['pathauto'])) {
+    foreach ($context['tokens'] as $name => $original) {
+      if (!empty($replacements[$original]) && !empty($context['options']['language']->language) && $context['options']['language']->language != LANGUAGE_NONE) {
+        $replacements[$original] = pathauto_i18n_cleanstring($context['options']['language']->language, $replacements[$original]);
+      }
+    }
+  }
+}
+
+/**
+ * Init the property.
+ */
+function pathauto_i18n_init_property(&$entity, $type, $bundle) {
+  $default = pathauto_i18n_get_bundle_default($type, $bundle);
+  switch ($type) {
+    case 'user':
+      $entity->pathauto_i18n_status = isset($entity->pathauto_i18n_status) ? $entity->pathauto_i18n_status : $default;
+      break;
+
+    default:
+      $entity->path['pathauto_i18n_status'] = isset($entity->path['pathauto_i18n_status']) ? $entity->path['pathauto_i18n_status'] : $default;
+      break;
+  }
+}

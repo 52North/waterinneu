@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Pathauto i18n module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function pathauto_i18n_schema() {
+  $schema['pathauto_i18n'] = array(
+    'description' => 'Stores entity config for pathauto i18n.',
+    'fields' => array(
+      'entity_id' => array(
+        'description' => 'The entity id this data is attached to.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'entity_type' => array(
+        'description' => 'The entity type this data is attached to.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'bundle' => array(
+        'description' => 'Bundle to which this row belongs.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'path_status' => array(
+        'description' => 'Boolean indicating turned on pathauto i18n.',
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+        'size' => 'tiny',
+      ),
+    ),
+    'primary key' => array('entity_id', 'entity_type'),
+  );
+  return $schema;
+}

@@ -1,0 +1,151 @@
+<?php
+/**
+ * @file
+ * Provides tools for creating multilanguage aliases for users.
+ */
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function pathauto_i18n_user_form_pathauto_patterns_form_alter(&$form, &$form_state) {
+  $languages = language_list();
+  $default_pattern = $form['user']['pathauto_user_pattern'];
+  // Remove parents handlers.
+  unset($default_pattern['#parents']);
+  $form['user']['token_help']['#weight'] = 1;
+  foreach ($languages as $language) {
+    $pattern_name = 'pathauto_user_user_' . $language->language . '_pattern';
+    $form['user'][$pattern_name] = $default_pattern;
+    $form['user'][$pattern_name]['#title'] = t('Pattern for all @language user paths', array('@language' => $language->name));
+    $form['user'][$pattern_name]['#default_value'] = variable_get($pattern_name, '');
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function pathauto_i18n_user_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'user_register_form' || $form_id == 'user_profile_form') {
+    pathauto_i18n_configuration_form($form, empty($form_state['user']) ? new StdClass() : $form_state['user'], 'user', 'user');
+  }
+}
+
+/**
+ * Implements hook_user_insert().
+ */
+function pathauto_i18n_user_user_insert(&$edit, $account, $category) {
+  pathauto_i18n_init_property($account, 'user', 'user');
+  pathauto_i18n_process_entity_object($account, 'user', $account->pathauto_i18n_status, 'insert');
+}
+
+/**
+ * Implements hook_user_update().
+ */
+function pathauto_i18n_user_user_update(&$edit, $account, $category) {
+  pathauto_i18n_init_property($account, 'user', 'user');
+  pathauto_i18n_process_entity_object($account, 'user', $account->pathauto_i18n_status, 'update');
+}
+
+/**
+ * Implements hook_user_delete().
+ */
+function pathauto_i18n_user_user_delete($account) {
+  pathauto_i18n_delete_settings($account->uid, 'user');
+}
+
+/**
+ * Implements hook_user_load().
+ */
+function pathauto_i18n_user_user_load($users) {
+  // Attach pathauto i18n settings to user object.
+  foreach ($users as $user) {
+    $uids[] = $user->uid;
+  }
+
+  if (!empty($uids)) {
+    $result = pathauto_i18n_load_settings($uids, 'user');
+    foreach ($result as $record) {
+      $users[$record->entity_id]->path['pathauto_i18n_status'] = $record->path_status;
+    }
+  }
+}
+
+/**
+ * Implements hook_pathauto_alias_alter().
+ */
+function pathauto_i18n_user_pathauto_alias_alter(&$alias, &$context) {
+  $operations = array('insert', 'update', 'bulkupdate');
+  // Skip insert of alias for all languages.
+  if (!empty($context['module']) && $context['module'] == 'user' && in_array($context['op'], $operations)) {
+    $entity = $context['data']['user'];
+
+    // Run bulk update.
+    $settings = pathauto_i18n_load_settings_single($entity->uid, 'user');
+    if ($context['op'] == 'bulkupdate' && !empty($settings['path_status'])) {
+      $entity->pathauto_i18n_status = $settings['path_status'];
+      pathauto_i18n_process_entity_object($entity, 'user', $entity->pathauto_i18n_status, 'update');
+    }
+
+    if (isset($entity->pathauto_i18n_status) && $entity->pathauto_i18n_status && $context['language'] == LANGUAGE_NONE) {
+      $alias = '';
+    }
+  }
+}
+
+/**
+ * Implements hook_action_info().
+ */
+function pathauto_i18n_user_action_info() {
+  return array(
+    'pathauto_i18n_user_generate_alias' => array(
+      'type' => 'user',
+      'label' => t('Enable generation of aliases for all languages'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array(
+        'any',
+      ),
+    ),
+    'pathauto_i18n_user_remove_alias' => array(
+      'type' => 'user',
+      'label' => t('Disable generation of aliases for all languages'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array(
+        'any',
+      ),
+    ),
+  );
+}
+
+/**
+ * Sets the status of a pathauto_i18n_status to 1.
+ *
+ * @param object $user
+ *   A user object.
+ *
+ * @param array $context
+ *   (optional) Array of additional information about what triggered the action.
+ *   Not used for this action.
+ *
+ * @ingroup actions
+ */
+function pathauto_i18n_user_generate_alias($user, $context = array()) {
+  $user->pathauto_i18n_status = 1;
+}
+
+/**
+ * Sets the status of a pathauto_i18n_status to 0.
+ *
+ * @param object $user
+ *   A user object.
+ *
+ * @param array $context
+ *   (optional) Array of additional information about what triggered the action.
+ *   Not used for this action.
+ *
+ * @ingroup actions
+ */
+function pathauto_i18n_user_remove_alias($user, $context = array()) {
+  $user->pathauto_i18n_status = 0;
+}

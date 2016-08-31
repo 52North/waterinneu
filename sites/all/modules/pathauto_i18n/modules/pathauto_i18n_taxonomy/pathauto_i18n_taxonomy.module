@@ -1,0 +1,214 @@
+<?php
+/**
+ * @file
+ * Provides tools for creating multilanguage aliases for taxonomy terms.
+ */
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function pathauto_i18n_taxonomy_form_taxonomy_form_term_alter(&$form, &$form_state) {
+  // Exclude elements from deletion confirm form.
+  if ($form['#theme'] != 'confirm_form') {
+    pathauto_i18n_configuration_form($form, $form_state['term'], 'term', $form_state['term']->vocabulary_machine_name);
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function pathauto_i18n_taxonomy_form_pathauto_patterns_form_alter(&$form, &$form_state) {
+  $languages = language_list();
+  $default_pattern_name = 'pathauto_taxonomy_term_pattern';
+  $default_pattern = $form['taxonomy_term'][$default_pattern_name];
+  // Remove parents handlers.
+  unset($default_pattern['#parents']);
+  $form['taxonomy_term']['token_help']['#weight'] = 1;
+  foreach (element_children($form['taxonomy_term']) as $term_pattern_name) {
+    if ($term_pattern_name != $default_pattern_name && $term_pattern_name != 'token_help') {
+      foreach ($languages as $language) {
+        $vocabulary = pathauto_i18n_taxonomy_get_vocabulary_name($term_pattern_name);
+        if ($vocabulary) {
+          $pattern_name = 'pathauto_taxonomy_term_' . $vocabulary . '_' . $language->language . '_pattern';
+          $form['taxonomy_term'][$pattern_name] = $default_pattern;
+          $form['taxonomy_term'][$pattern_name]['#title'] = t('Pattern for all @language @vocabulary paths', array('@language' => $language->name, '@vocabulary' => $vocabulary));
+          $form['taxonomy_term'][$pattern_name]['#default_value'] = variable_get($pattern_name, '');
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Get vocabulary name from pattern name.
+ */
+function pathauto_i18n_taxonomy_get_vocabulary_name($pattern_name) {
+  $scope = str_replace(array('pathauto_taxonomy_term_', '_pattern'), array('', ''), $pattern_name);
+  return !empty($scope) ? $scope : FALSE;
+}
+
+/**
+ * Implements hook_taxonomy_term_insert().
+ */
+function pathauto_i18n_taxonomy_taxonomy_term_insert($term) {
+  pathauto_i18n_init_property($term, 'taxonomy', $term->vocabulary_machine_name);
+  pathauto_i18n_process_entity_object($term, 'taxonomy_term', $term->path['pathauto_i18n_status'], 'insert');
+}
+
+/**
+ * Implements hook_taxonomy_term_update().
+ */
+function pathauto_i18n_taxonomy_taxonomy_term_update($term) {
+  pathauto_i18n_init_property($term, 'taxonomy', $term->vocabulary_machine_name);
+  pathauto_i18n_process_entity_object($term, 'taxonomy_term', $term->path['pathauto_i18n_status'], 'update');
+}
+
+/**
+ * Implements hook_taxonomy_term_delete().
+ */
+function pathauto_i18n_taxonomy_taxonomy_term_delete($term) {
+  pathauto_i18n_delete_settings($term->tid, 'taxonomy_term');
+}
+
+/**
+ * Implements hook_taxonomy_term_load().
+ */
+function pathauto_i18n_taxonomy_taxonomy_term_load($terms) {
+  // Attach pathauto i18n settings to taxonomy_term object.
+  foreach ($terms as $term) {
+    $tids[] = $term->tid;
+  }
+
+  if (!empty($tids)) {
+    $result = pathauto_i18n_load_settings($tids, 'taxonomy_term');
+    $settings = array();
+    foreach ($result as $record) {
+      $settings[$record->entity_id] = $record->path_status;
+    }
+    foreach ($terms as $tid => $term) {
+      if (array_key_exists($tid, $settings)) {
+        $terms[$tid]->path['pathauto_i18n_status'] = $settings[$tid];
+      }
+      else {
+        $terms[$tid]->path['pathauto_i18n_status'] = 0;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_pathauto_alias_alter().
+ */
+function pathauto_i18n_taxonomy_pathauto_alias_alter(&$alias, &$context) {
+  $operations = array('insert', 'update', 'bulkupdate');
+  // Skip insert of alias for all languages.
+  if (!empty($context['module']) && ($context['module'] == 'term' || $context['module'] == 'taxonomy_term') && in_array($context['op'], $operations)) {
+    $entity = FALSE;
+
+    // On creating taxonomy term has term key on updating taxonomy_term.
+    if (!empty($context['data']['term'])) {
+      $entity = $context['data']['term'];
+    }
+    if (!empty($context['data']['taxonomy_term'])) {
+      $entity = $context['data']['taxonomy_term'];
+    }
+
+    // Run bulk update.
+    if ($context['op'] == 'bulkupdate') {
+      pathauto_i18n_taxonomy_taxonomy_term_update($entity);
+    }
+
+    if ($entity && isset($entity->path['pathauto_i18n_status']) && $entity->path['pathauto_i18n_status'] && $context['language'] == LANGUAGE_NONE) {
+      $alias = '';
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function pathauto_i18n_taxonomy_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'taxonomy_form_term') {
+    // Add pathauto value if pathauto_i18n_status TRUE.
+    // Remove alias value to prevent overwriting.
+    $term = FALSE;
+    if (isset($form['#term'])) {
+      $term = (object) $form['#term'];
+    }
+    if ($term && isset($term->path['pathauto_i18n_status']) && $term->path['pathauto_i18n_status']) {
+      $form['path']['pathauto']['#default_value'] = TRUE;
+      $form['path']['alias']['#default_value'] = '';
+    }
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function pathauto_i18n_taxonomy_module_implements_alter(&$implementations, $hook) {
+  // Move pathauto_i18n_taxonomy to the end of the list.
+  // By default there not available pathauto value.
+  if ($hook == 'form_alter') {
+    $group = $implementations['pathauto_i18n_taxonomy'];
+    unset($implementations['pathauto_i18n_taxonomy']);
+    $implementations['pathauto_i18n_taxonomy'] = $group;
+  }
+}
+
+/**
+ * Implements hook_action_info().
+ */
+function pathauto_i18n_taxonomy_action_info() {
+  return array(
+    'pathauto_i18n_taxonomy_generate_alias' => array(
+      'type' => 'taxonomy_term',
+      'label' => t('Enable generation of aliases for all languages'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array(
+        'any',
+      ),
+    ),
+    'pathauto_i18n_taxonomy_remove_alias' => array(
+      'type' => 'taxonomy_term',
+      'label' => t('Disable generation of aliases for all languages'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array(
+        'any',
+      ),
+    ),
+  );
+}
+
+/**
+ * Sets the status of a pathauto_i18n_status to 1.
+ *
+ * @param object $term
+ *   A taxonomy term object.
+ *
+ * @param array $context
+ *   (optional) Array of additional information about what triggered the action.
+ *   Not used for this action.
+ *
+ * @ingroup actions
+ */
+function pathauto_i18n_taxonomy_generate_alias($term, $context = array()) {
+  $term->path['pathauto_i18n_status'] = 1;
+}
+
+/**
+ * Sets the status of a pathauto_i18n_status to 0.
+ *
+ * @param object $term
+ *   A term object.
+ *
+ * @param array $context
+ *   (optional) Array of additional information about what triggered the action.
+ *   Not used for this action.
+ *
+ * @ingroup actions
+ */
+function pathauto_i18n_taxonomy_remove_alias($term, $context = array()) {
+  $term->path['pathauto_i18n_status'] = 0;
+}

@@ -1,0 +1,180 @@
+<?php
+/**
+ * @file
+ * Provides tools for creating multilanguage aliases for nodes.
+ */
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function pathauto_i18n_form_node_form_alter(&$form, &$form_state) {
+  pathauto_i18n_configuration_form($form, $form_state['node'], 'node', $form['#node']->type);
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function pathauto_i18n_node_node_insert($node) {
+  pathauto_i18n_init_property($node, 'node', $node->type);
+  pathauto_i18n_process_entity_object($node, 'node', $node->path['pathauto_i18n_status'], 'insert');
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function pathauto_i18n_node_node_update($node) {
+  pathauto_i18n_init_property($node, 'node', $node->type);
+  pathauto_i18n_process_entity_object($node, 'node', $node->path['pathauto_i18n_status'], 'update');
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function pathauto_i18n_node_node_delete($node) {
+  pathauto_i18n_delete_settings($node->nid, 'node');
+}
+
+/**
+ * Implements hook_node_load().
+ */
+function pathauto_i18n_node_node_load($nodes, $types) {
+  // Attach pathauto i18n settings to node object.
+  foreach ($nodes as $node) {
+    $nids[] = $node->nid;
+  }
+
+  if (!empty($nids)) {
+    $result = pathauto_i18n_load_settings($nids, 'node');
+    $settings = array();
+    foreach ($result as $record) {
+      $settings[$record->entity_id] = $record->path_status;
+    }
+    foreach ($nodes as $nid => $node) {
+      if (array_key_exists($nid, $settings)) {
+        $nodes[$nid]->path['pathauto_i18n_status'] = $settings[$nid];
+      }
+      else {
+        $nodes[$nid]->path['pathauto_i18n_status'] = pathauto_i18n_get_bundle_default('node', $node->type);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_pathauto_alias_alter().
+ */
+function pathauto_i18n_node_pathauto_alias_alter(&$alias, &$context) {
+  $operations = array('insert', 'update', 'bulkupdate');
+  // Skip insert of alias for all languages.
+  if (!empty($context['module']) && $context['module'] == 'node' && in_array($context['op'], $operations) && !empty($context['data']['node'])) {
+    $entity = $context['data']['node'];
+
+    // Run bulk update.
+    if ($context['op'] == 'bulkupdate') {
+      pathauto_i18n_node_node_update($entity);
+    }
+
+    if (isset($entity->path['pathauto_i18n_status']) && $entity->path['pathauto_i18n_status'] && $context['language'] == LANGUAGE_NONE) {
+      $alias = '';
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function pathauto_i18n_node_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['#node_edit_form']) && $form['#node_edit_form']) {
+    // Add pathauto value if pathauto_i18n_status TRUE.
+    // Remove alias value to prevent overwriting.
+    if (isset($form['#node']->path['pathauto_i18n_status']) && $form['#node']->path['pathauto_i18n_status']) {
+      $form['path']['pathauto']['#default_value'] = TRUE;
+      $form['path']['alias']['#default_value'] = '';
+    }
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function pathauto_i18n_node_module_implements_alter(&$implementations, $hook) {
+  // Move pathauto_i18n_node_form_alter to the end of the list.
+  // By default there not available pathauto value.
+  if ($hook == 'form_alter') {
+    $group = $implementations['pathauto_i18n_node'];
+    unset($implementations['pathauto_i18n_node']);
+    $implementations['pathauto_i18n_node'] = $group;
+  }
+}
+
+/**
+ * Implements hook_action_info().
+ */
+function pathauto_i18n_node_action_info() {
+  return array(
+    'pathauto_i18n_node_generate_alias' => array(
+      'type' => 'node',
+      'label' => t('Enable generation of aliases for all languages'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array(
+        'node_presave',
+      ),
+    ),
+    'pathauto_i18n_node_remove_alias' => array(
+      'type' => 'node',
+      'label' => t('Disable generation of aliases for all languages'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array(
+        'node_presave',
+      ),
+    ),
+  );
+}
+
+/**
+ * Sets the status of a pathauto_i18n_status to 1.
+ *
+ * @param object $node
+ *   A node object.
+ * @param array $context
+ *   (optional) Array of additional information about what triggered the action.
+ *   Not used for this action.
+ *
+ * @ingroup actions
+ */
+function pathauto_i18n_node_generate_alias($node, $context = array()) {
+  $node->path['pathauto_i18n_status'] = 1;
+}
+
+/**
+ * Sets the status of a pathauto_i18n_status to 0.
+ *
+ * @param object $node
+ *   A node object.
+ * @param array $context
+ *   (optional) Array of additional information about what triggered the action.
+ *   Not used for this action.
+ *
+ * @ingroup actions
+ */
+function pathauto_i18n_node_remove_alias($node, $context = array()) {
+  $node->path['pathauto_i18n_status'] = 0;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * This will add pathauto_i18n options to the node type form. These settings
+ * will be used as default for every node of this node type.
+ */
+function pathauto_i18n_node_form_node_type_form_alter(&$form, $form_state) {
+  // Add the pathauto i18n form.
+  $form['workflow']['pathauto_i18n_default_node'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Generate automatic URL alias for all languages by default'),
+    '#default_value' => pathauto_i18n_get_bundle_default('node', $form['#node_type']->type),
+    '#description' => t('Set the default behaviour generating aliases for all available languages.'),
+  );
+}
