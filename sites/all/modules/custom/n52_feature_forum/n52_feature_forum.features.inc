@@ -21,6 +21,8 @@ function n52_feature_forum_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function n52_feature_forum_field_default_field_instances_alter(&$data) {
   if (isset($data['harmony_post-harmony_post-field_harmony_text'])) {
+    $data['harmony_post-harmony_post-field_harmony_text']['display']['default']['settings']['field_formatter_class'] = ''; /* WAS: '' */
+    $data['harmony_post-harmony_post-field_harmony_text']['display']['full']['settings']['field_formatter_class'] = ''; /* WAS: '' */
     $data['harmony_post-harmony_post-field_harmony_text']['settings']['better_formats']['allowed_formats']['full_html_plain_no_filter_'] = 0; /* WAS: '' */
     $data['harmony_post-harmony_post-field_harmony_text']['settings']['better_formats']['allowed_formats']['full_html_tinymce'] = 0; /* WAS: '' */
     $data['harmony_post-harmony_post-field_harmony_text']['settings']['better_formats']['default_order_wrapper']['formats']['full_html_plain_no_filter_'] = array(
