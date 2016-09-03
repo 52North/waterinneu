@@ -216,4 +216,28 @@ function waterinneu_deploy_update_7032() {
   features_revert_module('views_elearning_waterinneu');
 }
 
+/**
+ * Enable and revert feature permissions_e_learning_waterinneu.
+ */
+function waterinneu_deploy_update_7033() {
+  module_enable(array('permissions_e_learning_waterinneu'));
+  features_revert_module('permissions_e_learning_waterinneu');
+}
+
+/**
+ * Enable and revert feature waterinneu_content_type_randbee.
+ */
+function waterinneu_deploy_update_7034() {
+  module_enable(array('waterinneu_content_type_randbee'));
+  features_revert_module('waterinneu_content_type_randbee');
+}
+
+/**
+ * Enable and revert feature course_object_e_learning_waterinneu.
+ */
+function waterinneu_deploy_update_7035() {
+  module_enable(array('course_object_e_learning_waterinneu'));
+  features_revert_module('course_object_e_learning_waterinneu');
+}
+
 

@@ -79,6 +79,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['administer course'] = array(
     'name' => 'administer course',
     'roles' => array(
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
     ),
     'module' => 'course',
@@ -174,6 +175,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
     'name' => 'create course content',
     'roles' => array(
       'Teacher' => 'Teacher',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -244,7 +246,10 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   // Exported permission: 'delete any course content'.
   $permissions['delete any course content'] = array(
     'name' => 'delete any course content',
-    'roles' => array(),
+    'roles' => array(
+      'Teacher' => 'Teacher',
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -311,6 +316,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
     'name' => 'delete own course content',
     'roles' => array(
       'Teacher' => 'Teacher',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -397,7 +403,10 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   // Exported permission: 'edit any course content'.
   $permissions['edit any course content'] = array(
     'name' => 'edit any course content',
-    'roles' => array(),
+    'roles' => array(
+      'Teacher' => 'Teacher',
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -455,6 +464,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
     'name' => 'edit own course content',
     'roles' => array(
       'Teacher' => 'Teacher',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -640,6 +650,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
     'name' => 'sign up for content',
     'roles' => array(
       'Student' => 'Student',
+      'Teacher' => 'Teacher',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
