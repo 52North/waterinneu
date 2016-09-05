@@ -240,4 +240,12 @@ function waterinneu_deploy_update_7035() {
   features_revert_module('course_object_e_learning_waterinneu');
 }
 
+/**
+ * Enable module certificate.
+ */
+function waterinneu_deploy_update_7036() {
+  module_enable(array('certificate'));
+}
+
+
 

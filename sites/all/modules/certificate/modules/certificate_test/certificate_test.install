@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file certificate_test.install
+ * Installation tasks for test module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function certificate_test_install() {
+  variable_set('certificate_certifiable_page', 1);
+}
