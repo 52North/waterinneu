@@ -244,8 +244,20 @@ function waterinneu_deploy_update_7035() {
  * Enable module certificate.
  */
 function waterinneu_deploy_update_7036() {
-  module_enable(array('certificate'));
 }
 
+/**
+ * Enable modules print, print_pdf, certificate.
+ */
+function waterinneu_deploy_update_7037() {
+	  module_enable(array('print'));
+	  module_enable(array('print_pdf'));
+	  module_enable(array('certificate'));
+}
 
-
+/**
+ * Enable module course_certificate.
+ */
+function waterinneu_deploy_update_7038() {
+	  module_enable(array('course_certificate'));
+}
