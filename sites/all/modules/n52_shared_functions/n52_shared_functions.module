@@ -30,16 +30,19 @@ function n52_endsWith($url, $pattern, $is_regex = FALSE) {
 	if ($is_regex) {
 		return $pattern === "" || fnmatch('*' . $pattern, $url);
 	} else {
-		return $pattern === "" || (($temp = strlen($url) - strlen($pattern)) >= 0 && strpos($url, $pattern, $temp) !== false);
+		return $pattern === "" || (($temp = strlen($url) - strlen($pattern)) >= 0 && strpos($url, $pattern, $temp) !== FALSE);
 	}
 }
 
 function n52_urlEndsWith($url, $pattern, $is_regex = FALSE) {
-	$path = drupal_lookup_path("source", $url);
+	if (n52_endsWith($url, $pattern, $is_regex)) {
+		return TRUE;
+	}
 	$object = menu_get_object();
+	$path = drupal_lookup_path("source", $url);
 	
 	if (!$path && !$object) {
-		return n52_endsWith($path, $pattern, $is_regex);
+		return FALSE;
 	}
 	if (isset($object) && isset($object->nid)){
 		$alias = drupal_get_path_alias('node/' . $object->nid, 'en');
