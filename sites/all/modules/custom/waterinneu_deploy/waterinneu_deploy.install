@@ -268,3 +268,11 @@ function waterinneu_deploy_update_7038() {
 function waterinneu_deploy_update_7039() {
 	  module_enable(array('print_pdf_dompdf'));
 }
+
+/**
+ * Enable modules Votingapi and fivestar.
+ */
+function waterinneu_deploy_update_7040() {
+	  module_enable(array('fivestar'));
+	  module_enable(array('votingapi'));
+}
