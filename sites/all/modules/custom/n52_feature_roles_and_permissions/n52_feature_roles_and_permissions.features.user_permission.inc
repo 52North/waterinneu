@@ -334,14 +334,18 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'add terms in n52_commercial_development'.
   $permissions['add terms in n52_commercial_development'] = array(
     'name' => 'add terms in n52_commercial_development',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy_access_fix',
   );
 
   // Exported permission: 'add terms in n52_event_categories'.
   $permissions['add terms in n52_event_categories'] = array(
     'name' => 'add terms in n52_event_categories',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy_access_fix',
   );
 
@@ -528,7 +532,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'add_terms_n52_commercial_development'.
   $permissions['add_terms_n52_commercial_development'] = array(
     'name' => 'add_terms_n52_commercial_development',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy_autocomplete_permission',
   );
 
@@ -642,7 +648,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'add_terms_wfd_objective'.
   $permissions['add_terms_wfd_objective'] = array(
     'name' => 'add_terms_wfd_objective',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy_autocomplete_permission',
   );
 
@@ -2365,6 +2373,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'manage bg translation overview priorities',
     'roles' => array(
       'administrator' => 'administrator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'translation_overview',
   );
@@ -2374,6 +2383,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'manage de translation overview priorities',
     'roles' => array(
       'administrator' => 'administrator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'translation_overview',
   );
@@ -2383,6 +2393,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'manage en translation overview priorities',
     'roles' => array(
       'administrator' => 'administrator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'translation_overview',
   );
@@ -2471,14 +2482,18 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'merge n52_commercial_development terms'.
   $permissions['merge n52_commercial_development terms'] = array(
     'name' => 'merge n52_commercial_development terms',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'term_merge',
   );
 
   // Exported permission: 'merge n52_event_categories terms'.
   $permissions['merge n52_event_categories terms'] = array(
     'name' => 'merge n52_event_categories terms',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'term_merge',
   );
 
@@ -2593,7 +2608,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'merge wfd_objective terms'.
   $permissions['merge wfd_objective terms'] = array(
     'name' => 'merge wfd_objective terms',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'term_merge',
   );
 
@@ -3597,6 +3614,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view translation overview assignments',
     'roles' => array(
       'administrator' => 'administrator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'translation_overview',
   );
