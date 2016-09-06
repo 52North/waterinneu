@@ -109,27 +109,12 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_application_scale']['id'] = 'field_application_scale';
-  $handler->display->display_options['filters']['field_application_scale']['table'] = 'search_api_index_product_index';
-  $handler->display->display_options['filters']['field_application_scale']['field'] = 'field_application_scale';
-  $handler->display->display_options['filters']['field_application_scale']['value'] = array();
-  $handler->display->display_options['filters']['field_application_scale']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_application_scale']['expose']['operator_id'] = 'field_application_scale_op';
-  $handler->display->display_options['filters']['field_application_scale']['expose']['label'] = 'Application Scale';
-  $handler->display->display_options['filters']['field_application_scale']['expose']['operator'] = 'field_application_scale_op';
-  $handler->display->display_options['filters']['field_application_scale']['expose']['identifier'] = 'field_application_scale';
-  $handler->display->display_options['filters']['field_application_scale']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    9 => 0,
-    3 => 0,
-  );
   /* Filter criterion: Indexed Node: Category */
   $handler->display->display_options['filters']['field_category']['id'] = 'field_category';
   $handler->display->display_options['filters']['field_category']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_category']['field'] = 'field_category';
   $handler->display->display_options['filters']['field_category']['value'] = array();
+  $handler->display->display_options['filters']['field_category']['group'] = 1;
   $handler->display->display_options['filters']['field_category']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_category']['expose']['operator_id'] = 'field_category_op';
   $handler->display->display_options['filters']['field_category']['expose']['label'] = 'Category';
@@ -147,6 +132,7 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['filters']['field_costs']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_costs']['field'] = 'field_costs';
   $handler->display->display_options['filters']['field_costs']['value'] = array();
+  $handler->display->display_options['filters']['field_costs']['group'] = 1;
   $handler->display->display_options['filters']['field_costs']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_costs']['expose']['operator_id'] = 'field_costs_op';
   $handler->display->display_options['filters']['field_costs']['expose']['label'] = 'Costs';
@@ -164,6 +150,7 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['filters']['field_issue']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_issue']['field'] = 'field_issue';
   $handler->display->display_options['filters']['field_issue']['value'] = array();
+  $handler->display->display_options['filters']['field_issue']['group'] = 1;
   $handler->display->display_options['filters']['field_issue']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_issue']['expose']['operator_id'] = 'field_issue_op';
   $handler->display->display_options['filters']['field_issue']['expose']['label'] = 'Issue';
@@ -181,6 +168,7 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['filters']['field_license']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_license']['field'] = 'field_license';
   $handler->display->display_options['filters']['field_license']['value'] = array();
+  $handler->display->display_options['filters']['field_license']['group'] = 1;
   $handler->display->display_options['filters']['field_license']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_license']['expose']['operator_id'] = 'field_license_op';
   $handler->display->display_options['filters']['field_license']['expose']['label'] = 'License / Copyright';
@@ -193,28 +181,12 @@ function n52_feature_search_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_license']['expose']['reduce'] = 0;
-  /* Filter criterion: Indexed Node: WFD objectives */
-  $handler->display->display_options['filters']['field_purpose']['id'] = 'field_purpose';
-  $handler->display->display_options['filters']['field_purpose']['table'] = 'search_api_index_product_index';
-  $handler->display->display_options['filters']['field_purpose']['field'] = 'field_purpose';
-  $handler->display->display_options['filters']['field_purpose']['value'] = array();
-  $handler->display->display_options['filters']['field_purpose']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_purpose']['expose']['operator_id'] = 'field_purpose_op';
-  $handler->display->display_options['filters']['field_purpose']['expose']['label'] = 'Purpose';
-  $handler->display->display_options['filters']['field_purpose']['expose']['operator'] = 'field_purpose_op';
-  $handler->display->display_options['filters']['field_purpose']['expose']['identifier'] = 'field_purpose';
-  $handler->display->display_options['filters']['field_purpose']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    9 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_purpose']['expose']['reduce'] = 0;
   /* Filter criterion: Indexed Node: Relevant Water Bodies */
   $handler->display->display_options['filters']['field_relevant_water_bodies']['id'] = 'field_relevant_water_bodies';
   $handler->display->display_options['filters']['field_relevant_water_bodies']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_relevant_water_bodies']['field'] = 'field_relevant_water_bodies';
   $handler->display->display_options['filters']['field_relevant_water_bodies']['value'] = array();
+  $handler->display->display_options['filters']['field_relevant_water_bodies']['group'] = 1;
   $handler->display->display_options['filters']['field_relevant_water_bodies']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_relevant_water_bodies']['expose']['operator_id'] = 'field_relevant_water_bodies_op';
   $handler->display->display_options['filters']['field_relevant_water_bodies']['expose']['label'] = 'Relevant Water Bodies';
@@ -227,11 +199,31 @@ function n52_feature_search_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_relevant_water_bodies']['expose']['reduce'] = 0;
+  /* Filter criterion: Indexed Node: Stage of Commercial Development */
+  $handler->display->display_options['filters']['field_n52_comm_dev']['id'] = 'field_n52_comm_dev';
+  $handler->display->display_options['filters']['field_n52_comm_dev']['table'] = 'search_api_index_product_index';
+  $handler->display->display_options['filters']['field_n52_comm_dev']['field'] = 'field_n52_comm_dev';
+  $handler->display->display_options['filters']['field_n52_comm_dev']['value'] = array();
+  $handler->display->display_options['filters']['field_n52_comm_dev']['group'] = 1;
+  $handler->display->display_options['filters']['field_n52_comm_dev']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_n52_comm_dev']['expose']['operator_id'] = 'field_n52_comm_dev_op';
+  $handler->display->display_options['filters']['field_n52_comm_dev']['expose']['label'] = 'Stage of Commercial Development';
+  $handler->display->display_options['filters']['field_n52_comm_dev']['expose']['operator'] = 'field_n52_comm_dev_op';
+  $handler->display->display_options['filters']['field_n52_comm_dev']['expose']['identifier'] = 'field_n52_comm_dev';
+  $handler->display->display_options['filters']['field_n52_comm_dev']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    9 => 0,
+    10 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_n52_comm_dev']['expose']['reduce'] = 0;
   /* Filter criterion: Indexed Node: Standard Category */
   $handler->display->display_options['filters']['field_standard_category']['id'] = 'field_standard_category';
   $handler->display->display_options['filters']['field_standard_category']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_standard_category']['field'] = 'field_standard_category';
   $handler->display->display_options['filters']['field_standard_category']['value'] = array();
+  $handler->display->display_options['filters']['field_standard_category']['group'] = 1;
   $handler->display->display_options['filters']['field_standard_category']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_standard_category']['expose']['operator_id'] = 'field_standard_category_op';
   $handler->display->display_options['filters']['field_standard_category']['expose']['label'] = 'Standard Category';
@@ -249,6 +241,7 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['filters']['field_target_user_group']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_target_user_group']['field'] = 'field_target_user_group';
   $handler->display->display_options['filters']['field_target_user_group']['value'] = array();
+  $handler->display->display_options['filters']['field_target_user_group']['group'] = 1;
   $handler->display->display_options['filters']['field_target_user_group']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_target_user_group']['expose']['operator_id'] = 'field_target_user_group_op';
   $handler->display->display_options['filters']['field_target_user_group']['expose']['label'] = 'Target User Group';
@@ -261,27 +254,12 @@ function n52_feature_search_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_target_user_group']['expose']['reduce'] = 0;
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_technology_readiness_level']['id'] = 'field_technology_readiness_level';
-  $handler->display->display_options['filters']['field_technology_readiness_level']['table'] = 'search_api_index_product_index';
-  $handler->display->display_options['filters']['field_technology_readiness_level']['field'] = 'field_technology_readiness_level';
-  $handler->display->display_options['filters']['field_technology_readiness_level']['value'] = array();
-  $handler->display->display_options['filters']['field_technology_readiness_level']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_technology_readiness_level']['expose']['operator_id'] = 'field_technology_readiness_level_op';
-  $handler->display->display_options['filters']['field_technology_readiness_level']['expose']['label'] = 'Technology Readiness Level';
-  $handler->display->display_options['filters']['field_technology_readiness_level']['expose']['operator'] = 'field_technology_readiness_level_op';
-  $handler->display->display_options['filters']['field_technology_readiness_level']['expose']['identifier'] = 'field_technology_readiness_level';
-  $handler->display->display_options['filters']['field_technology_readiness_level']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    9 => 0,
-    3 => 0,
-  );
   /* Filter criterion: Indexed Node: Type of Hardware */
   $handler->display->display_options['filters']['field_type_of_hardware']['id'] = 'field_type_of_hardware';
   $handler->display->display_options['filters']['field_type_of_hardware']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_type_of_hardware']['field'] = 'field_type_of_hardware';
   $handler->display->display_options['filters']['field_type_of_hardware']['value'] = array();
+  $handler->display->display_options['filters']['field_type_of_hardware']['group'] = 1;
   $handler->display->display_options['filters']['field_type_of_hardware']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_type_of_hardware']['expose']['operator_id'] = 'field_type_of_hardware_op';
   $handler->display->display_options['filters']['field_type_of_hardware']['expose']['label'] = 'Type of Hardware';
@@ -299,6 +277,7 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['filters']['field_type_of_software']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_type_of_software']['field'] = 'field_type_of_software';
   $handler->display->display_options['filters']['field_type_of_software']['value'] = array();
+  $handler->display->display_options['filters']['field_type_of_software']['group'] = 1;
   $handler->display->display_options['filters']['field_type_of_software']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_type_of_software']['expose']['operator_id'] = 'field_type_of_software_op';
   $handler->display->display_options['filters']['field_type_of_software']['expose']['label'] = 'Type of Software';
@@ -311,10 +290,30 @@ function n52_feature_search_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_type_of_software']['expose']['reduce'] = 0;
+  /* Filter criterion: Indexed Node: WFD objectives */
+  $handler->display->display_options['filters']['field_purpose']['id'] = 'field_purpose';
+  $handler->display->display_options['filters']['field_purpose']['table'] = 'search_api_index_product_index';
+  $handler->display->display_options['filters']['field_purpose']['field'] = 'field_purpose';
+  $handler->display->display_options['filters']['field_purpose']['value'] = array();
+  $handler->display->display_options['filters']['field_purpose']['group'] = 1;
+  $handler->display->display_options['filters']['field_purpose']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_purpose']['expose']['operator_id'] = 'field_purpose_op';
+  $handler->display->display_options['filters']['field_purpose']['expose']['label'] = 'WFD Objective';
+  $handler->display->display_options['filters']['field_purpose']['expose']['operator'] = 'field_purpose_op';
+  $handler->display->display_options['filters']['field_purpose']['expose']['identifier'] = 'field_purpose';
+  $handler->display->display_options['filters']['field_purpose']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    9 => 0,
+    10 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_purpose']['expose']['reduce'] = 0;
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
   $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Search';
@@ -559,7 +558,7 @@ function n52_feature_search_views_default_views() {
       'meta_field' => 0,
     ),
   );
-  /* Field: last_post_uri */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['last_post_uri']['id'] = 'last_post_uri';
   $handler->display->display_options['fields']['last_post_uri']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['last_post_uri']['field'] = 'last_post_uri';
@@ -567,52 +566,38 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['fields']['last_post_uri']['label'] = '';
   $handler->display->display_options['fields']['last_post_uri']['exclude'] = TRUE;
   $handler->display->display_options['fields']['last_post_uri']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['last_post_uri']['link_to_entity'] = 0;
-  /* Field: Posts: Title (indexed) */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['posts_title']['id'] = 'posts_title';
   $handler->display->display_options['fields']['posts_title']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['posts_title']['field'] = 'posts_title';
   $handler->display->display_options['fields']['posts_title']['label'] = 'Title';
   $handler->display->display_options['fields']['posts_title']['alter']['path'] = '[last_post_uri]';
   $handler->display->display_options['fields']['posts_title']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['posts_title']['link_to_entity'] = 1;
-  /* Field: Indexed Thread: Last user to post a reply */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['id'] = 'field_harmony_last_user_to_reply';
   $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['field'] = 'field_harmony_last_user_to_reply';
   $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['label'] = 'Author';
-  $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['link_to_entity'] = 1;
-  $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['view_mode'] = 'full';
-  $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['bypass_access'] = 0;
-  /* Field: Indexed Thread: Date created */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['date_format'] = 'short';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'search_api_facetapi_YEAR';
-  $handler->display->display_options['fields']['created']['link_to_entity'] = 0;
-  /* Field: Indexed Thread: Thread ID */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['thread_id']['id'] = 'thread_id';
   $handler->display->display_options['fields']['thread_id']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['thread_id']['field'] = 'thread_id';
   $handler->display->display_options['fields']['thread_id']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['thread_id']['link_to_entity'] = 0;
-  /* Field: Indexed Thread: Post count */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_harmony_post_count']['id'] = 'field_harmony_post_count';
   $handler->display->display_options['fields']['field_harmony_post_count']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['field_harmony_post_count']['field'] = 'field_harmony_post_count';
   $handler->display->display_options['fields']['field_harmony_post_count']['label'] = 'Replies';
-  $handler->display->display_options['fields']['field_harmony_post_count']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
-  /* Field: Indexed Thread: Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'in Thread';
-  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Filter criterion: Search: Fulltext search */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
@@ -683,7 +668,6 @@ function n52_feature_search_views_default_views() {
     9 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_class']['type'] = 'select';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_organisation_index';

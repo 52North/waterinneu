@@ -55,6 +55,8 @@ function n52_feature_search_default_page_manager_pages() {
   $display->cache = array();
   $display->title = '';
   $display->uuid = '14df7716-8e09-4a79-9374-5d297b9462d6';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_advanced_search__panel';
   $display->content = array();
   $display->panels = array();
   $display->hide_title = PANELS_TITLE_FIXED;
