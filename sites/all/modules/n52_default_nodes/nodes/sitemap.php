@@ -30,9 +30,58 @@ function _n52_default_nodes_sitemap() {
 	return array (
 		'title' => array (
 				'en' => 'Site Map',
+				'de' => 'Seitenübersicht',
 		),
 		'alias' => 'sitemap',
-		'text' => array ('en' => '
+		'text' => array ('de' => '<ul>
+	<li>
+		<a href="#top">Startseite</a><br />Die Startseite, inklusive
+		<ul>
+				<li>Produkt des Monats,</li>
+				<li>Portal Updates,</li>
+				<li>Tweets und</li>
+				<li>Allgemeine Informationen.</li>
+		</ul>
+	</li>
+	<li><a href="product" title="&Ouml;ffne Produktbestand">Produkte</a>
+		<ul>
+			<li>&Uuml;berblick &uuml;ber n&uuml;tzliche Projekte im hydrologischen Sektor,</li>
+			<li>Produktsuche mit Filterfunktion und</li>
+			<li>Produktfeatures und weitere Metadaten &uuml;berpr&uuml;fen, z. B. Lizenzinformationen.</li>
+		</ul>
+	</li>
+	<li><a href="organisation" title="&Ouml;ffne Organisationsbestand">Organisationen</a><br /> Durchsuchbarer Organisationsbestand mit Filterfunktion.</li>
+	<li>
+		<a href="matchmaking" title="&Ouml;ffne Kontaktvermittlungsbereich">Kontaktvermittlung</a><br />Sechs verschiedene M&ouml;glichkeiten zur Kontaksvermittlung werden angeboten:
+		<ul>
+			<li><a href="matchmaking#search">Suche</a></li>
+			<li><a href="matchmaking#service-requests">Service -Anfragen</a></li>
+			<li><a href="matchmaking#alerts">Benachrichtigung</a></li>
+			<li><a href="matchmaking#ask-the-expert">Frag den Experten</a></li>
+			<li><a href="forum">Diskutiere im Forum</a></li>
+			<li><a href="matchmaking#events">Ereignisse</a></li>
+		</ul>
+	</li>
+	<li><a href="e-learning">E-Learning</a><br />...TBC...</li>
+	<li><a href="success-stories">Erfolgsgeschichten</a><br />...TBC...</li>
+	<li>
+		<a href="forum" title="&Ouml;ffne das Forum">Forum</a>
+		<ul>
+			<li>
+				finden Sie <a href="forum/demand">Produkte f&uuml;r einen bestimmten Anwendungsfall</a>,
+			</li>
+			<li>
+				finden Sie <a href="forum/offering">Benutzer f&uuml;r Ihr Produkt</a> und
+			</li>
+			<li>
+				finden Sie Experten f&uuml;r <a href="forum/discussion">Diskussionen &uuml;ber Methoden und Modelle</a>.
+			</li>
+		</ul>
+	</li>
+	<li><a href="related-portals">&Auml;hnliche Portale</a><br />Eine Liste mit verwandten Portalen &uuml;ber &auml;hnliche Themen.</li>
+	<li><a href="api">API::JSON</a><br />Eine JSON-Schnittstelle f&uuml;r den Zugriff auf die Inhalte dieses Marktplatzes.</li>
+</ul>',
+				'en' => '
 <ul>
 	<li>
 		<a href="#top">Home</a><br />The landingpage including
@@ -47,7 +96,7 @@ function _n52_default_nodes_sitemap() {
 		<ul>
 			<li>Get overview about useful products in the hydrology domain,</li>
 			<li>find products by search criteria, and</li>
-			<li>review products features and other additional metadat, e.g. licensing.</li>
+			<li>review products features and other additional metadata, e.g. licensing.</li>
 		</ul>
 	</li>
 	<li><a href="organisation" title="Open organisations inventory">Organisations</a><br /> Search- and filterable inventory of organsations.</li>

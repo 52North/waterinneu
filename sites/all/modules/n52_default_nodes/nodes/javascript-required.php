@@ -30,9 +30,23 @@ function _n52_default_nodes_javascript_required() {
 	return array (
 		'title' =>  array (
 				'en' => 'Javascript Required',
+				'de' => 'Javascript Notwendig'
 		),
 		'alias' => 'javascript-required',
-		'text' => array ('en' => '
+		'text' => array (
+				'de' => '
+Diese Seite verwendet Javascript f&uuml;r interaktive Elemente. Bitte erlauben Sie daher Javaschript f&uuml;r:
+<ul>
+<li><code>diese Dom&auml;ne</code></li>
+<li><code>cdn.syndication.twimg.com</code></li>
+<li><code>fonts.googleapis.com</code></li>
+<li><code>maxcdn.bootstrapcdn.com</code></li>
+<li><code>pbs.twimg.com</code></li>
+<li><code>platform.twitter.com</code></li>
+<li><code>syndication.twitter.com</code></li>
+</ul>
+Wenn Sie irgendwelche Bedenken &uuml;ber die verwendeten Javascript-Quellen haben, f&uuml;hlen sich frei, uns zu <a href="/contact">kontaktieren</a>!',
+				'en' => '
 This page uses javascript to get interactive elements working. Hence, please 
 allow javascript for
 <ul>

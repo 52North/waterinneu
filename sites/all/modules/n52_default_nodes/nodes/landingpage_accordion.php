@@ -30,9 +30,192 @@ function _n52_default_nodes_landingpage_accordion() {
 	return array (
 		'title' =>  array (
 				'en' => 'Landing page - Content accordion',
+				'de' => 'Startseite - Inhalts-Akkordeon',
 		),
 		'alias' => NULL,
-		'text' => array ('en' => '
+		'text' => array (
+				'de' => '<!--
+
+YOU MUST NOT EDIT THIS CONTENT USING THE WEB UI! USE THE CODE!
+
+-->
+
+<div id="accordion" class="panel-group">
+<!--
+ABOUT
+-->
+<div class="panel panel-default panel-about panel-light-highlight">
+<div class="panel-heading panel-heading-light-highlight collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#about">
+<h2 class="panel-title accordion-toggle">
+  <span class="glyphicon glyphicon-info-sign">&nbsp;</span>&Uuml;ber
+</h2>
+</div>
+<div id="about" class="panel-collapse collapse">
+<div class="panel-body">
+  <p>
+    Der WaterInnEU Marktplatz ist eine marktgeleitete Innovations-Plattform,
+    die die wichtigsten Produkte und
+     Dienstleistungen f&uuml;r Flusseinzugsgebiets-Verwalter zeigt und deren
+Aufnahme durch gezielte Verbreitung und Unterst&uuml;tzungsdienste beschleunigt.
+  </p>
+  <p>
+    Die Plattform strebt danach, alle Akteure der
+     Flussgebiets-Community zusammenzubringen, einschlie&szlig;lich Forscher, KMUs, Industrie
+     und &ouml;ffentliche Einrichtungen. Dadurch soll die Nutzung und Marktreife
+    von EU-gef&ouml;rderten Werkzeugen sowie die Umsetzung der Wasserrahmenrichtlinie
+    verbessert werden.
+  </p>
+  <h3>Was leistet diese Plattform</h3>
+  <ul>
+    <li>
+      Produkte: Die Plattform liefert detaillierte Informationen &uuml;ber
+       eine ausgew&auml;hlte Anzahl von Produkten, inklusive
+       erg&auml;nzender Materialien und Fallstudien sowie relevanten
+       Kontakten f&uuml;r die weitere Kommunikation.
+    </li>
+    <li>
+      Organisationen: eine Liste von Organisationen mit Bezug zu
+       Flussgebiets-Verwaltung.
+    </li>
+    <li>
+      Kontaktvermittlung und unterst&uuml;tzende Dienstleistungen:
+      eine Reihe von Dienstleistungen ist verf&uuml;gbar, um die Kommunikation
+       zwischen Produktanbietern in der Flussgebiets-Verwaltung und potenziellen Nutzern
+       dieser Produkte sowie Dienstleistern, die bei der Umsetzung helfen, zu verbessern.
+    </li>
+    <li>
+      E-Learning: die integrierte partizipative E-Learning-Funktion ist f&uuml;r bestimmte
+      Werkzeuge erh&auml;ltlich und bietet einen schnellen Einstieg in die Produktf&auml;higkeiten.
+    </li>
+    <li>
+      Erfolgsgeschichten : Beispiele f&uuml;r den Einsatz von Produkten und gewonnene Erkenntnisse.
+    </li>
+    <li>
+      Forum: diskutieren Sie &uuml;ber spezifische Fragen rund um das Thema
+      Flussgebiets-Verwaltung.
+    </li>
+  </ul>
+  <p>
+    Navigieren Sie zu <a data-toggle="collapse" data-parent="#accordion"
+    data-target="#explore" style="cursor: pointer;">Erkunden</a>,
+    um weitere Funktionen kennen zulernen.
+  </p>
+  <h3>Hinter den Kulissen - Wer organisiert WaterInnEU</h3>
+  <ul>
+    <li><a href="http://52north.org/" target="_blank">52°North</a></li>
+    <li><a href="https://www.adelphi.de/en" target="_blank">adelphi</a></li>
+    <li><a href="http://www.anteagroup.be/en" target="_blank">Antea</a></li>
+    <li><a href="http://www.creaf.cat/en" target="_blank">CREAF</a></li>
+    <li><a
+      href="http://www.gwp.org/gwp-in-action/Central-and-Eastern-Europe/"
+      title="Global Water Partnership - Central and Eastern Europe">GWP-CEE</a></li>
+    <li><a href="http://www.orioninnovations.co.uk/"
+      target="_blank">Orion</a></li>
+    <li><a href="http://www.randbee.com/" target="_blank">Randbee</a></li>
+    <li><a href="http://www.tudelft.nl/en/" target="_blank">TU-Delft</a></li>
+  </ul>
+</div>
+</div>
+</div>
+<!--
+EXPLORE
+-->
+<div class="panel panel-default panel-explore panel-dark-hightlight">
+<div class="panel-heading panel-heading-dark-highlight collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#explore">
+<h2 class="panel-title accordion-toggle">
+  <span class="glyphicon glyphicon-search">&nbsp;</span>Erkunden
+</h2>
+</div>
+<div id="explore" class="panel-collapse collapse">
+<div class="panel-body">
+  <div id="explore-search">
+    <a href="matchmaking#search"><span class="glyphicon glyphicon-search">&nbsp;</span>Suche</a>:
+    <div>Verwenden Sie die erweiterten Suchfunktionen, um ein Produkt oder eine Organisation zu finden.</div>
+  </div>
+  <div id="explore-service-requests">
+    <a href="matchmaking#service-requests"><span class="glyphicon glyphicon-tasks">&nbsp;</span>Erstellen einer Service-Anfrage</a>:
+    <div>Finden Sie eine Organisation oder Partner, der Ihnen bei der Verwendung bzw. Implementierung eines bestimmten Produkts helfen kann.</div>
+  </div>
+  <div id="explore-ask-experts">
+    <a href="matchmaking#ask-the-expert"><span class="glyphicon glyphicon-question-sign">&nbsp;</span>Frag den Experten</a>:
+    <div>Kontaktieren Sie uns direkt, wenn Sie Probleme haben oder Hilfe ben&ouml;tigen, Ihr Produkt auf den Markt zu bringen.</div>
+  </div>
+  <div id="explore-e-learning">
+    <a href="e-learning"><span class="glyphicon glyphicon-plus-sign">&nbsp;</span>St&ouml;bern Sie in den E-learning-Angeboten</a>:
+    <div>Holen Sie sich Hilfe bei der Verwendung von spezifischen Produkten.</div>
+  </div>
+  <div id="explore-alerts">
+    <a href="matchmaking#alerts"><span class="glyphicon glyphicon-exclamation-sign">&nbsp;</span>Abonnieren Sie Benachrichtigungen</a>:
+    <div>Sie erhalten Informationen &uuml;ber neue oder aktualisierte Produkte, Organisation, Service-Anfragen, Service-Angebote oder Veranstaltungen.</div>
+  </div>
+  <div id="explore-forum">
+    <a href="matchmaking#forum"><span class="glyphicon glyphicon-comment">&nbsp;</span>Verwenden Sie das offene Forum</a>:
+    <div>Starten Sie eine Diskussion zu einem bestimmten Thema oder treten Sie existierenden bei.</div>
+  </div>
+  <div id="explore-add-content">
+    <a href="node/add"><span class="glyphicon glyphicon-plus">&nbsp;</span>Eintr&auml;ge hinzuf&uuml;gen</a>:
+    <div>Laden Sie Ihr eigenes Produkt oder eine Veranstaltung hoch (wird zun&auml;chst durch unser Inhouse-Team gepr&uuml;ft).</div>
+  </div>
+</div>
+</div>
+</div>
+<!--
+OUR SERVICES
+-->
+<div class="panel panel-default panel-light-hightlight">
+<div class="panel-heading panel-heading-light-highlight collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#our-services">
+<h2 class="panel-title accordion-toggle">
+  <span class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Kontaktvermittlung und Unterst&uuml;tzung
+</h2>
+</div>
+<div id="our-services" class="panel-collapse collapse">
+<div class="panel-body">
+  <p>
+  Das prim&auml;re Ziel des WaterInnEU-Portal ist es, alle Akteure der
+     Flussgebiets-Community zusammenzubringen, einschlie&szlig;lich Forscher, NROs, Industrie
+     und &ouml;ffentliche Einrichtungen. Dadurch soll die Nutzung und Marktreife
+von EU-gef&ouml;rderten Werkzeugen sowie die Umsetzung der Wasserrahmenrichtlinie
+verbessert werden.
+  </p>
+  <p>
+Die Plattform soll daher zur Verbesserung der Kommunikation zwischen
+     diesen Akteuren dienen, um sicherzustellen, dass die
+     Produkte und Dienstleistungen schnellstm&ouml;glich und mit hoher
+     Effektivit&auml;t umgesetzt werden k&ouml;nnen.
+  </p>
+  <p>
+    Navigieren Sie zu <a href="matchmaking">Kontaktvermittlung</a>, um automatisch eine Service-Anfrage
+    oder ein Service-Angebot zu erstellen, oder kontaktieren Sie einen unserer Experten f&uuml;r individuellen Rat.
+  </p>
+</div>
+</div>
+</div>
+<!--
+UPCOMING EVENTS
+-->
+<div class="panel panel-default panel-upcoming-events panel-dark-highlight collapsed">
+<div class="panel-heading panel-heading-dark-highlight collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#events">
+<h2 class="panel-title accordion-toggle">
+  <span class="glyphicon glyphicon-calendar">&nbsp;</span>Kommende Veranstaltungen
+</h2>
+</div>
+<div id="events" class="panel-collapse collapse">
+<div class="panel-body">
+  <p>
+    Die Plattform zeigt regelm&auml;&szlig;ige Veranstaltungen, um die
+    besten Produkte zu f&ouml;rdern, Fortbildungen anzubieten und um unterschiedliche
+     Interessengruppen zusammenzubringen, damit bew&auml;hrte Praktiken und
+     Erfahrungen ausgetauscht werden k&ouml;nnen.
+  </p>
+      <div id="upcoming-events"></div>
+      <a href="node/add/event"><button type="button" class="btn btn-primary">Erstelle neue Veranstaltung</button></a>
+  &nbsp;
+  <a href="matchmaking/events"><button type="button" class="btn btn-default">Zeige alle Veranstaltungen</button></a>
+</div>
+</div>
+</div>
+</div>',
+				'en' => '
 <div id="accordion" class="panel-group">
 	<!--
 	ABOUT
@@ -67,7 +250,7 @@ function _n52_default_nodes_landingpage_accordion() {
 						contacts for further communication.
 					</li>
 					<li>
-						Organisations: a list organisations associated with 
+						Organisations: a list of organisations associated with 
 						river basin management is available.
 					</li>
 					<li>

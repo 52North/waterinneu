@@ -30,9 +30,25 @@ function _n52_default_nodes_api_json() {
 	return array (
 		'title' =>  array (
 				'en' => 'JSON API',
+				'de' => 'JSON API',
 		),
 		'alias' => 'api',
-		'text' => array ('en' => '
+		'text' => array (
+				'de' => '<p>
+Der Marktplatz Inhalt ist zus&auml;tzlich zu der f&uuml;r Menschen lesbaren Form als JSON-API verf&uuml;gbar. Folgende Endpunkte werden zur Verf&uuml;gung gestellt:
+</p>
+<ul>
+<li><a href="api/events">/api/events</a></li>
+<li><a href="api/organisations">/api/organisations</a></li>
+<li><a href="api/products">/api/products</a></li>
+<li><a href="api/projects">/api/projects</a></li>
+<li><a href="api/service-offerings">/api/service-offerings</a></li>
+<li><a href="api/service-requests">/api/service-requests</a></li>
+</ul>
+<p>
+Die API ist noch im Entwicklungsstadium. Hinterlassen Sie daher bei Bedarf gerne einen Kommentar oder stellen eine Frage an unseren
+<a href="mailto:e.h.juerrens+wieu-json-api@52north.org">hauptverantwortlichen Entwicklungsleiter</a>.</p>',
+				'en' => '
 <p>
     The marketplace content is in addition to the human readable form available 
     via an JSON API. The following endpoints are provided:
