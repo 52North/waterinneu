@@ -38,7 +38,7 @@ function n52_dynamic_content_node_view_alter(&$build) {
 		$build['#post_render'][] = 'n52_dynamic_content_node_post_render_front_page';
 		return;
 	}
-	elseif (n52_endsWith(request_uri(), "matchmaking")) {
+	elseif (n52_urlEndsWith(request_path(), "matchmaking")) {
 		$build['#post_render'][] = 'n52_dynamic_content_node_post_render_matchmaking';
 		return;
 	}

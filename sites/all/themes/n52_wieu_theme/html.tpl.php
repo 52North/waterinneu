@@ -91,7 +91,7 @@
   /*
    * This function allows toggle of alert subscription mockup elements
    */
-  if (n52_endsWith(request_path(),'matchmaking')) { ?>
+  if (n52_urlEndsWith(request_path(),'matchmaking')) { ?>
   <script type="text/javascript">
   (function($) {
     $(document).ready(function () {
@@ -158,7 +158,7 @@
    * - Change the layout of the Create new thread button
    * - Add search button which links to advanced search
    */?>
-  <?php if (n52_endsWith(request_path(),'forum*',TRUE)) { ?>
+  <?php if (n52_urlEndsWith(request_path(),'forum*',TRUE)) { ?>
   <?php $search_button = '<a href="\' + $(location).attr(\'pathname\').substring(0,$(location).attr(\'pathname\').indexOf(\'forum\')) + \'search/advanced#posts" style="margin-left: 5px;" class="btn btn-primary"><span class="glyphicon glyphicon-search">&nbsp;</span>' . t('Search forum') . '</a>'; ?>
   <script type="text/javascript">
   (function($) {
@@ -278,7 +278,7 @@
    * This function hides the old venue field in events when adding new events
    */
   ?>
-  <?php if (n52_endsWith(request_path(),'node/add/event')) { ?>
+  <?php if (n52_urlEndsWith(request_path(),'node/add/event')) { ?>
   <script type="text/javascript">
   (function($) {
 	  $(document).ready(function () {
@@ -343,7 +343,7 @@
    * content if search text field is empty.
    */
   ?>
-  <?php if (n52_endsWith(request_path(),'search/advanced')) { ?>
+  <?php if (n52_urlEndsWith(request_path(),'search/advanced')) { ?>
   	<script type="text/javascript">
     (function($) {
 	  $(document).ready(function () {
@@ -392,7 +392,7 @@
    * neutral language setting
    */
   ?>
-  <?php if (user_is_logged_in() && n52_endsWith(request_path(), 'node/add*', TRUE)) {?>
+  <?php if (user_is_logged_in() && n52_urlEndsWith(request_path(), 'node/add*', TRUE)) {?>
   	<script type="text/javascript">
 	(function($) {
 		$(document).ready(function () {
@@ -413,7 +413,7 @@
    * Hide add project for authenticated users
    */
   ?>
-  <?php if (user_is_logged_in() && n52_endsWith(request_path(), 'node/add*', TRUE)) {?>
+  <?php if (user_is_logged_in() && n52_urlEndsWith(request_path(), 'node/add*', TRUE)) {?>
   	<script type="text/javascript">
 	(function($) {
 		$(document).ready(function () {
@@ -441,7 +441,7 @@
    * Add ready for submission button, if product is previewed
    */
   ?>
-  <?php if (user_is_logged_in() && n52_endsWith(request_path(), 'node/*', TRUE)) {?>
+  <?php if (user_is_logged_in() && n52_urlEndsWith(request_path(), 'node/*', TRUE)) {?>
   	<script type="text/javascript">
 	(function($) {
 		$(document).ready(function () {

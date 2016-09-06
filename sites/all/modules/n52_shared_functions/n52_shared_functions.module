@@ -26,12 +26,26 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
-function n52_endsWith($haystack, $needle, $is_regex = FALSE) {
+function n52_endsWith($url, $pattern, $is_regex = FALSE) {
 	if ($is_regex) {
-		return $needle === "" || fnmatch('*' . $needle, $haystack);
+		return $pattern === "" || fnmatch('*' . $pattern, $url);
 	} else {
-		return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
+		return $pattern === "" || (($temp = strlen($url) - strlen($pattern)) >= 0 && strpos($url, $pattern, $temp) !== false);
 	}
+}
+
+function n52_urlEndsWith($url, $pattern, $is_regex = FALSE) {
+	$path = drupal_lookup_path("source", $url);
+	$object = menu_get_object();
+	
+	if (!$path && !$object) {
+		return n52_endsWith($path, $pattern, $is_regex);
+	}
+	if (isset($object) && isset($object->nid)){
+		$alias = drupal_get_path_alias('node/' . $object->nid, 'en');
+		return n52_endsWith($alias, $pattern, $is_regex);
+	}
+	return n52_endsWith($path, $pattern, $is_regex);
 }
 
 function n52_taxonomy_name_vid_map() {

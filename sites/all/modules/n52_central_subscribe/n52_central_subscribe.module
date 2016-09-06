@@ -34,7 +34,7 @@
  * - matchmaking page
  */
 function n52_central_subscribe_node_view_alter(&$build) {
-	if (n52_endsWith(request_uri(), "matchmaking")) {
+	if ($build['#node']->title_field['en'][0]['value'] === "Matchmaking") {
 		$build['#post_render'][] = 'n52_central_subscribe_post_render';
 	}
 }
