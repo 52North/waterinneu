@@ -30,9 +30,18 @@ function _n52_default_nodes_imprint() {
 	return array (
 		'title' =>  array (
 				'en' => 'Imprint',
+				'de' => 'Impressum',
 		),
 		'alias' => 'imprint',
-		'text' => array ('en' => '
+		'text' => array (
+				'de' => '<p>
+<a href="http://52north.org/" target="_blank">52&deg;North GmbH</a> ist verantwortlich f&uuml;r diese Webseite.<br />
+52&deg;North Initiative for Geospatial Open Source Software GmbH<br />
+Martin-Luther-King-Weg 24<br />
+48155 M&uuml;nster, Deutschland
+</p>
+<p>&nbsp;</p>',
+				'en' => '
 <p>
     <a href="http://52north.org/" target="_blank">52&deg;North GmbH</a> is 
 	responsible for this website.<br />
