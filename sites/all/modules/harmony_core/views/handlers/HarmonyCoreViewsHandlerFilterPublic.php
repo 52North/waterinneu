@@ -31,15 +31,26 @@ class HarmonyCoreViewsHandlerFilterPublic extends views_handler_filter_boolean_o
   }
 
   /**
-   * Change default to true.
+   * Set filter defaults.
    *
    * Overrides views_handler_filter_boolean_operator::option_definition().
    */
   function option_definition() {
     $options = parent::option_definition();
     $options['value']['default'] = TRUE;
+    $options['include_nonpublic_if_permitted']['default'] = FALSE;
 
     return $options;
+  }
+
+  function options_form(&$form, &$form_state) {
+    parent::options_form($form, $form_state);
+
+    $form['include_nonpublic_if_permitted'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Include non-public posts if current user has "view unpublished harmony_posts" permission'),
+      '#default_value' => $this->options['include_nonpublic_if_permitted'],
+    );
   }
 
   /**
@@ -51,6 +62,12 @@ class HarmonyCoreViewsHandlerFilterPublic extends views_handler_filter_boolean_o
     $this->ensure_my_table();
     $status = empty($this->value) ? 0 : 1;
     $hidden = $status ? 0 : 1;
+
+    // If we are allowing nonpublic posts for users with the permission
+    // 'view unpublished harmony_posts', then we do not need to alter the query.
+    if ($this->options['include_nonpublic_if_permitted'] && user_access('view unpublished harmony_posts')) {
+      return;
+    }
 
     if (!$this->apply_hidden) {
       $this->query->add_where($this->options['group'], "$this->table_alias.$this->real_field", $status, '=');

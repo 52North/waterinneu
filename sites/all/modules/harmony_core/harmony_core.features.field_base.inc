@@ -34,8 +34,6 @@ function harmony_core_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
-      'entity_translation_sync' => FALSE,
-      'options_list_callback' => 'i18n_taxonomy_allowed_values',
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
@@ -59,7 +57,6 @@ function harmony_core_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'max_length' => 6,
     ),
     'translatable' => 0,
@@ -84,7 +81,6 @@ function harmony_core_field_default_field_bases() {
     'locked' => 1,
     'module' => 'entityreference',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -121,7 +117,6 @@ function harmony_core_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -158,7 +153,6 @@ function harmony_core_field_default_field_bases() {
     'locked' => 1,
     'module' => 'entityreference',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -195,7 +189,6 @@ function harmony_core_field_default_field_bases() {
     'locked' => 0,
     'module' => 'machine_name',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'max_length' => 128,
       'replace' => '_',
       'replace_pattern' => '[^a-z0-9_]+',
@@ -217,9 +210,7 @@ function harmony_core_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
+    'settings' => array(),
     'translatable' => 0,
     'type' => 'number_integer',
   );
@@ -242,7 +233,6 @@ function harmony_core_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -274,9 +264,7 @@ function harmony_core_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'viewfield',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
+    'settings' => array(),
     'translatable' => 0,
     'type' => 'viewfield',
   );
@@ -298,9 +286,7 @@ function harmony_core_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
+    'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
   );
@@ -323,7 +309,6 @@ function harmony_core_field_default_field_bases() {
     'locked' => 1,
     'module' => 'entityreference',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'handler' => 'harmony_thread_selection_plugin',
       'handler_settings' => array(
         'behaviors' => array(
@@ -360,7 +345,6 @@ function harmony_core_field_default_field_bases() {
     'locked' => 1,
     'module' => 'entityreference',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -392,9 +376,7 @@ function harmony_core_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
+    'settings' => array(),
     'translatable' => 0,
     'type' => 'number_integer',
   );
