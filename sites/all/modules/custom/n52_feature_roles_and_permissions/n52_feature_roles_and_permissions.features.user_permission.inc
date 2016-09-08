@@ -1941,7 +1941,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any n52_sucess_story content',
     'roles' => array(
       'administrator' => 'administrator',
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -1979,7 +1979,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any project content',
     'roles' => array(
       'administrator' => 'administrator',
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -1988,7 +1988,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit any service_offering content'] = array(
     'name' => 'edit any service_offering content',
     'roles' => array(
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -1997,7 +1997,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit any service_request content'] = array(
     'name' => 'edit any service_request content',
     'roles' => array(
-      'moderator' => 'moderator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -2043,7 +2043,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -2082,7 +2081,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
