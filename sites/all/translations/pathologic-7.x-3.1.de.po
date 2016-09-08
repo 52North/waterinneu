@@ -1,0 +1,28 @@
+# German translation of Pathologic (7.x-3.1)
+# Copyright (c) 2015 by the German translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Pathologic (7.x-3.1)\n"
+"POT-Creation-Date: 2015-11-23 16:05+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Input filters"
+msgstr "Eingabefilter"
+msgid "Pathologic"
+msgstr "Pathologic"
+msgid "Helps avoid broken links and incorrect paths in content."
+msgstr "Hilft defekte Links und falsche Pfade im Inhalt zu vermeiden."
+msgid "Correct URLs with Pathologic"
+msgstr "URLs mit Pathologic korrigieren"
+msgid ""
+"In most cases, Pathologic should be the <em>last</em> filter in the "
+"&ldquo;Filter processing order&rdquo; list."
+msgstr ""
+"In den allermeisten Fällen sollte Pathologic der <em>letzte</em> "
+"Filter in der &ldquo;Reihenfolge der Filterverarbeitung&rdquo; sein."

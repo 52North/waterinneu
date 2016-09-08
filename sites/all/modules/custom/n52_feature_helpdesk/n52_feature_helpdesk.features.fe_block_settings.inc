@@ -33,7 +33,7 @@ function n52_feature_helpdesk_default_fe_block_settings() {
         'region' => 'footer_fourth',
         'status' => 1,
         'theme' => 'n52_wieu_theme',
-        'weight' => -47,
+        'weight' => -56,
       ),
     ),
     'title' => '<none>',
