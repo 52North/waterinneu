@@ -58,7 +58,18 @@
         	print $submitted;
 		}
         if ($changed > $created) {
-        	print n52_waterinneu_theme_node_last_updated($changed, $name);
+        	$user = user_load($node->revision_uid);
+        	$name_ = theme_username(array (
+        			'account' => $user,
+        			'name' => check_plain($user->name),
+        			'link_path' => check_url('users/' . $user->name),
+        			'link_options' => array(
+        					'attributes' => array (
+        							'title' => t('View User Profile'),
+        					),
+        			),
+        	));
+        	print n52_waterinneu_theme_node_last_updated($changed, $name_);
         }
         ?>
       </div>

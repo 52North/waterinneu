@@ -48,7 +48,7 @@
         <?php 
         if ($changed <= $created) {
         	print $submitted;
-		}
+        }
         if ($changed > $created) {
         	print n52_waterinneu_theme_node_last_updated($changed, $name);
         }
