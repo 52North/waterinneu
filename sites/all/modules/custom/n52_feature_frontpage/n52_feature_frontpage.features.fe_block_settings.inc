@@ -40,6 +40,34 @@ function n52_feature_frontpage_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['block-n52_landingpage_introduction'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'i18n_block_language' => array(),
+    'i18n_mode' => 1,
+    'machine_name' => 'n52_landingpage_introduction',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'n52_wieu_theme',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['node-recent'] = array(
     'cache' => -1,
     'custom' => 0,

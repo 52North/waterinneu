@@ -261,8 +261,8 @@ ul.related-link-list li {
 div.field-name-field-image,
 div.field-name-field-image > div > div > a > img {
   max-width: 500px;
+  width: 100%;
   height: auto;
-  min-width: 475px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -366,6 +366,7 @@ div.content > article.node > div.content > div.field-name-field-image > div.fiel
   margin-left: auto;
   margin-right: auto;
   display: block;
+  width: 100%;
   max-width: 500px;
   height: auto;
 }

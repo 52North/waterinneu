@@ -120,7 +120,7 @@ Aufnahme durch gezielte Verbreitung und Unterst&uuml;tzungsdienste beschleunigt.
 <!--
 EXPLORE
 -->
-<div class="panel panel-default panel-explore panel-dark-hightlight">
+<div class="panel panel-default panel-explore panel-dark-highlight">
 <div class="panel-heading panel-heading-dark-highlight collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#explore">
 <h2 class="panel-title accordion-toggle">
   <span class="glyphicon glyphicon-search">&nbsp;</span>Erkunden
@@ -162,7 +162,7 @@ EXPLORE
 <!--
 OUR SERVICES
 -->
-<div class="panel panel-default panel-light-hightlight">
+<div class="panel panel-default panel-light-highlight">
 <div class="panel-heading panel-heading-light-highlight collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#our-services">
 <h2 class="panel-title accordion-toggle">
   <span class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Kontaktvermittlung und Unterst&uuml;tzung
@@ -301,7 +301,7 @@ UPCOMING EVENTS
     <!--
     EXPLORE
     -->
-	<div class="panel panel-default panel-explore panel-dark-hightlight">
+	<div class="panel panel-default panel-explore panel-dark-highlight">
 		<div class="panel-heading panel-heading-dark-highlight collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#explore">
 			<h2 class="panel-title accordion-toggle">
 				<span class="glyphicon glyphicon-search">&nbsp;</span>Explore
@@ -343,7 +343,7 @@ UPCOMING EVENTS
 	<!--
 	OUR SERVICES
 	-->
-	<div class="panel panel-default panel-light-hightlight">
+	<div class="panel panel-default panel-light-highlight">
 		<div class="panel-heading panel-heading-light-highlight collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#our-services">
 			<h2 class="panel-title accordion-toggle">
 				<span class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Matchmaking and Support

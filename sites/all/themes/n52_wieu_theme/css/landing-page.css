@@ -32,22 +32,22 @@
  ******************************************************************************/
 
 .panel-group > div.panel > div.panel-heading > h2.panel-title {
-    font-size: 200%;
+  font-size: 200%;
 }
 
 #landingpage-features-accordion > div.pane-content > article.node > header {
-    display: none;
+  display: none;
 }
 
 #landingpage-features-accordion > div.pane-content > article > div.content {
-    margin-top: -3.0em;
+  margin-top: -3.0em;
 }
 
 #landingpage-features-accordion > div.pane-content > article.node > div.content {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 0px;
-    padding-rigtht: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 
@@ -58,40 +58,40 @@
  ******************************************************************************/
 
 #product-of-the-month {
-    border: solid 1px #cecece;
-    padding: 1em;
-    background: #fff;
+  border: solid 1px #cecece;
+  padding: 1em;
+  background: #fff;
 }
 
 #product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content > div.field-name-field-logo {
-    float: left;
-    padding: 5px;
-    margin:  5px;
+  float: left;
+  padding: 5px;
+  margin:  5px;
 }
 
 #product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content {
-    padding: 0px 20px 0px;
+  padding: 0px 20px 0px;
 }
 
 #product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > header {
-    padding: 0px 20px 0px;
+  padding: 0px 20px 0px;
 }
 
 #product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > header > h2{
-    font-size: 24px;
-    margin: 0;
+  font-size: 24px;
+  margin: 0;
 }
 
 #product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content > div.field-name-field-description > div.field-items > div.field-item > p{
-    margin: 0 0 0;
+  margin: 0 0 0;
 }
 
 #product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content > div.field > .field-label {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 a.more-link {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 
@@ -102,15 +102,48 @@ a.more-link {
  ******************************************************************************/
 
 #landingpage-updates-block {
-    border: solid 1px #cecece;
-    padding: 1em;
-    background: #fff;
+  border: solid 1px #cecece;
+  padding: 1em;
+  background: #fff;
 }
 
 #landingpage-updates-block > div.pane-content > ul.nav-tabs > li {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 #frontpage-updates-contenttype-field {
-    font-weight: 350;
+  font-weight: 350;
+}
+
+
+/******************************************************************************
+ *                                                                            *
+ *                           Introduction text                                *
+ *                                                                            *
+ ******************************************************************************/
+
+#landingpage-introduction {
+  border: 1px solid #cecece;
+  padding: 10px;
+  background: #fff;
+}
+
+#landingpage-introduction > div.pane-content > p{
+	margin: initial;
+}
+
+
+/******************************************************************************
+ *                                                                            *
+ *                            twitter block                                   *
+ *                                                                            *
+ ******************************************************************************/
+
+.pane-twitter-block-1 {
+  text-align: center;
+  background: #fff;
+  border: 1px solid #cecece;
+  min-width: 550px;
+  min-height: 420px;
+  margin-top: -40px;
 }
