@@ -104,6 +104,9 @@ function waterinneu_content_type_randbee_strongarm() {
         'course' => array(
           'weight' => '2',
         ),
+        'certificate' => array(
+          'weight' => '0',
+        ),
       ),
       'display' => array(
         'course' => array(

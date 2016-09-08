@@ -391,6 +391,69 @@ function waterinneu_content_type_randbee_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course-field_rating'.
+  $field_instances['node-course-field_rating'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'fivestar',
+        'settings' => array(
+          'expose' => TRUE,
+          'style' => 'average',
+          'text' => 'average',
+          'widget' => array(
+            'fivestar_widget' => NULL,
+          ),
+        ),
+        'type' => 'fivestar_formatter_default',
+        'weight' => 8,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_rating',
+    'label' => 'Rating',
+    'required' => 0,
+    'settings' => array(
+      'allow_clear' => 0,
+      'allow_ownvote' => 1,
+      'allow_revote' => 0,
+      'course_enrollment' => FALSE,
+      'entity_translation_sync' => FALSE,
+      'stars' => 5,
+      'target' => 'none',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'fivestar',
+      'settings' => array(),
+      'type' => 'exposed',
+      'weight' => 38,
+    ),
+  );
+
   // Exported field_instance: 'node-course-title_field'.
   $field_instances['node-course-title_field'] = array(
     'bundle' => 'course',
@@ -459,6 +522,7 @@ function waterinneu_content_type_randbee_field_default_field_instances() {
   t('Image');
   t('Information and contacts about the Course designer should be written here.');
   t('Product Ref');
+  t('Rating');
   t('Title');
   t('Type');
 

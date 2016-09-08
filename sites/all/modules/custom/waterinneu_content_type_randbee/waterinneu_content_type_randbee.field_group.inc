@@ -364,12 +364,9 @@ function waterinneu_content_type_randbee_field_group_info() {
     'label' => 'Course',
     'weight' => '0',
     'children' => array(
-      0 => 'group_coure_note_data',
-      1 => 'group_course_contacts',
-      2 => 'group_course_links',
-      3 => 'group_course_title_description',
-      4 => 'group_course_type',
-      5 => 'group_course_video',
+      0 => 'group_course_contacts',
+      1 => 'group_course_title_description',
+      2 => 'group_course_type',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
