@@ -12,6 +12,34 @@ function n52_feature_config_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
+  $export['block-n52_funding_footer'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'i18n_block_language' => array(),
+    'i18n_mode' => 1,
+    'machine_name' => 'n52_funding_footer',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => 'footer',
+        'status' => 1,
+        'theme' => 'n52_wieu_theme',
+        'weight' => -56,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['comment-recent'] = array(
     'cache' => 1,
     'custom' => 0,
