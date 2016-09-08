@@ -1150,7 +1150,7 @@ function n52_feature_products_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_licenseinfo',
-    'label' => 'Licenseinfo',
+    'label' => 'License Info',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1283,7 +1283,7 @@ function n52_feature_products_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_links',
-    'label' => 'Project & promotional material about the product',
+    'label' => 'Project & Promotional Material About the Product',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -1791,7 +1791,7 @@ function n52_feature_products_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_n52_e_learn_and_support',
-    'label' => 'E-learning, tutorials and supporting material',
+    'label' => 'E-learning, Tutorials and Supporting Material',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -2116,7 +2116,7 @@ function n52_feature_products_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_purpose',
-    'label' => 'WFD objectives',
+    'label' => 'WFD Objectives',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2174,7 +2174,7 @@ function n52_feature_products_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_purpose_info',
-    'label' => 'WFD objectives Info',
+    'label' => 'WFD Objectives Info',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -4732,7 +4732,7 @@ function n52_feature_products_field_default_field_instances() {
 <div class="author-instructions">
     For example, licence costs, costs for implementation and development of the product.
 </div>');
-  t('E-learning, tutorials and supporting material');
+  t('E-learning, Tutorials and Supporting Material');
   t('E-learning, tutorials and/or other supporting material available for the product.
 <div class="author-instructions">
     Please use the TITLE to give a brief description of what each link provides (Limit 128 characters).
@@ -4751,7 +4751,7 @@ function n52_feature_products_field_default_field_instances() {
   t('Issue');
   t('Issue info');
   t('License / Copyright');
-  t('Licenseinfo');
+  t('License Info');
   t('Logo');
   t('Name');
   t('Organisation/Institution');
@@ -4761,7 +4761,7 @@ function n52_feature_products_field_default_field_instances() {
   t('Product Name');
   t('Product Owner');
   t('Project');
-  t('Project & promotional material about the product');
+  t('Project & Promotional Material About the Product');
   t('Relevant Water Bodies');
   t('Relevant Water Bodies Info');
   t('Stage of Commercial Development');
@@ -4795,8 +4795,8 @@ function n52_feature_products_field_default_field_instances() {
   t('Type of Software');
   t('Version');
   t('Version or publication date of the product.');
-  t('WFD objectives');
-  t('WFD objectives Info');
+  t('WFD Objectives');
+  t('WFD Objectives Info');
   t('What is the product about?
 <div class="author-instructions">
     Short description of the product and background information 

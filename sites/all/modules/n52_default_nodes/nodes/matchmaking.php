@@ -56,7 +56,7 @@ To join or search our automatic matchmaking service, go to
 <p>
 For bespoke support and advice, go to <a data-toggle="collapse" 
 	data-parent="#accordion" data-target="#ask-the-expert" 
-	style="cursor: pointer;">Ask the expert</a>.
+	style="cursor: pointer;">Ask the Expert</a>.
 </p>
 
 <div id="accordion" class="panel-group">
@@ -154,7 +154,7 @@ For bespoke support and advice, go to <a data-toggle="collapse"
 			data-target="#ask-the-expert">
         <h3 class="panel-title accordion-toggle">
             <span class="glyphicon glyphicon-question-sign">&nbsp;</span>Ask the
-			expert
+			Expert
         </h3>
     </div>
     <div id="ask-the-expert" class="panel-collapse collapse">
