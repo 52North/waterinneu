@@ -43,12 +43,12 @@
  *                                                                            *
  ******************************************************************************/
 .region-pre-header-third, .region-header-top-right {
-    display:flex;
-    align-items: flex-start;
-    flex-direction: row;
-    flex-wrap:nowrap;
-    justify-content:flex-end;
-    height: 2.0em;
+  display:flex;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap:nowrap;
+  justify-content:flex-end;
+  height: 2.0em;
 }
 
 .region-pre-header-first > div.block {
@@ -60,13 +60,12 @@
 }
 
 #custom-search-blocks-form-1 > div > div.form-item-custom-search-blocks-form-1 {
-    margin-top: 0em;
-    margin-bottom: 0em;
+  margin-top: 0em;
+  margin-bottom: 0em;
 }
 
 #block-system-user-menu > div.content > ul.menu,
-#block-menu-menu-top-links > div.content > ul.menu
-{
+#block-menu-menu-top-links > div.content > ul.menu {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -78,23 +77,21 @@
 {
 	float: left;
 	list-style-image: unset;
-    list-style-position: unset;
-    border-bottom: 0;
-    list-style-type: unset;
-    padding: 0.2em 0.5em 0 0;
+  list-style-position: unset;
+  border-bottom: 0;
+  list-style-type: unset;
+  padding: 0.2em 0.5em 0 0;
 }
 
 #block-system-user-menu > div.content > ul.menu > li.leaf > a,
-#block-menu-menu-top-links > div.content > ul.menu > li.leaf > a
-{
+#block-menu-menu-top-links > div.content > ul.menu > li.leaf > a {
 	border-bottom: 0;
 }
 
 #block-system-user-menu > div.content > ul.menu > li.leaf + li,
-#block-menu-menu-top-links > div.content > ul.menu > li.leaf + li
-{
-    border-left: solid 2px #cecece;
-    padding-left: 0.4em;
+#block-menu-menu-top-links > div.content > ul.menu > li.leaf + li {
+  border-left: solid 2px #cecece;
+  padding-left: 0.4em;
 }
 
 #header-top {
@@ -153,19 +150,19 @@ div.toggle-control > a > span {
  ******************************************************************************/
 
 .columnized-item-list > ul > li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 /* This ensure equal column width in grid views
 ----------------------------------------------------------------------------- */
 .columnized-item-list > ul > li.views-row {
-    width: 32%;
-    display: -moz-inline-stack;
-    display: inline-block;
-    vertical-align: top;
-    zoom: 1;
-    *display: inline;
-    _height: 250px;
+  width: 32%;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+  _height: 250px;
 }
 
 /******************************************************************************
@@ -175,19 +172,19 @@ div.toggle-control > a > span {
  ******************************************************************************/
  
 body {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'Titillium Web', 'Open Sans', sans-serif;
+  font-family: 'Titillium Web', 'Open Sans', sans-serif;
 }
 
 .table-label {
-    text-align: right;
+  text-align: right;
 }
 
 .popover-light {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .popover-light-in-heading {
@@ -197,11 +194,11 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .logged-in #pre-header {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
 #main-navigation ul.menu li a {
-    text-transform: unset;
+  text-transform: unset;
 }
 
 li.no-list-style {
@@ -254,7 +251,7 @@ ul.related-link-list li {
 
 .field-with-info,
 #product-of-the-month div.field-as-icon {
-    cursor: help;
+  cursor: help;
 }
 
 .node-teaser div.field-as-icon {
@@ -263,8 +260,11 @@ ul.related-link-list li {
 
 div.field-name-field-image,
 div.field-name-field-image > div > div > a > img {
-	width: 100%;
-	height: auto;
+  max-width: 500px;
+  height: auto;
+  min-width: 475px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*
@@ -283,8 +283,8 @@ div.field-group-div div.row:not(:last-child) {
 }
 
 div.field-group-div div.row:last-child{
-    margin-left: 0px;
-    margin-right: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 div.field-group-div div.row div.field-label {
@@ -296,18 +296,18 @@ div.field-group-div div.row div.field-label {
  */
 div#supported-standards-group ul.textformatter-list a {
 	display: inline;
-    font-weight: 700;
-    line-height: 1;
-    white-space: nowrap;
-    vertical-align: baseline;
-    padding-left: 4px;
-    padding-right: 4px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: baseline;
+  padding-left: 4px;
+  padding-right: 4px;
 } 
 
 div#supported-standards-group div.item-list ul li {
 	border-bottom: none;
-    margin-bottom: 0;
-    padding: 0 0;
+  margin-bottom: 0;
+  padding: 0 0;
 }
  
 /******************************************************************************
@@ -330,22 +330,22 @@ form#tool-node-form > div > div.field-type-entityreference > div > fieldset > le
  *                                                                            *
  ******************************************************************************/
 input[type="submit"], input[type="reset"], input[type="button"] {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
 	text-transform: none;
 }
 
@@ -363,11 +363,11 @@ div.content > article.node > div.content > div.field-name-field-image {
 }
 
 div.content > article.node > div.content > div.field-name-field-image > div.field-items > div.field-item > img {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 100%;
-    height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 500px;
+  height: auto;
 }
 
 /******************************************************************************
@@ -380,9 +380,9 @@ ul.pager li a, ul.pager li.pager-current {
 	padding: 14px 20px;
 	display: block;
 	margin: 5px 3px 5px 0; 
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
 }
 
 .pager-ellipsis {
@@ -409,7 +409,7 @@ ul.pager li a, ul.pager li.pager-current {
  *                                                                            *
  ******************************************************************************/
 .panel-heading {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .panel-title {
@@ -417,17 +417,21 @@ ul.pager li a, ul.pager li.pager-current {
 }
 
 .panel-heading.collapsed .accordion-toggle:after {
-    /* symbol for "collapsed" panels */
-    font-family: 'Glyphicons Halflings';
-    float: right;
-    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+  /* symbol for "collapsed" panels */
+  font-family: 'Glyphicons Halflings';
+  float: right;
+  /* adjust as needed, taken from bootstrap.css */
+  content: "\e114";    
 }
 
 .panel-heading .accordion-toggle:after {
-    /* symbol for "opening" panels */
-    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
-    content: "\e113";    /* adjust as needed, taken from bootstrap.css */
-    float: right;        /* adjust as needed */
+  /* symbol for "opening" panels */
+  /* essential for enabling glyphicon */
+  font-family: 'Glyphicons Halflings';
+  /* adjust as needed, taken from bootstrap.css */
+  content: "\e113";
+  /* adjust as needed */
+  float: right;
 }
 
 /******************************************************************************
@@ -444,27 +448,27 @@ ul.service-offerings-list > li {
 
 ul.upcoming-event-list > li:before {
 	content: "\e109";
-    font-family: 'Glyphicons Halflings';
-    margin-left: -15px;
-    float: left;
-    padding-right: 10px;
+  font-family: 'Glyphicons Halflings';
+  margin-left: -15px;
+  float: left;
+  padding-right: 10px;
 }
 
 ul.latest-questions-list > li:before {
-    content: "\e111";
-    font-family: 'Glyphicons Halflings';
-    float: left;
-    padding-right: 10px;
-    margin-left: -20px;
+  content: "\e111";
+  font-family: 'Glyphicons Halflings';
+  float: left;
+  padding-right: 10px;
+  margin-left: -20px;
 }
 
 ul.service-offerings-list > li:before,
 ul.service-requests-list > li:before {
-    content: "\e137";
-    font-family: 'Glyphicons Halflings';
-    float: left;
-    padding-right: 10px;
-    margin-left: -20px;
+  content: "\e137";
+  font-family: 'Glyphicons Halflings';
+  float: left;
+  padding-right: 10px;
+  margin-left: -20px;
 }
 
 /******************************************************************************
@@ -473,25 +477,25 @@ ul.service-requests-list > li:before {
  *                                                                            *
  ******************************************************************************/
  div#portal-list > div > div {
-    border-width: 1px;
-    border-style: solid;
-    margin-bottom: 30px;
-    margin-left: 30px;
-    min-width: 450px;
-    min-height: 220px;
-    padding: 15px;
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  min-width: 450px;
+  min-height: 220px;
+  padding: 15px;
  }
  
  img.portal-logo {
-    border: none;
-    float: left;
-    margin-right: 15px;
+  border: none;
+  float: left;
+  margin-right: 15px;
  }
  
  a.portal-link {
-    font-size: 150%;
+  font-size: 150%;
  }
  
  p.portal-description {
-    margin: 0;
+  margin: 0;
  }
