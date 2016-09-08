@@ -70,7 +70,7 @@
 }
 
 #product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content {
-  padding: 0px 20px 0px;
+  padding: 0px 20px 20px;
 }
 
 #product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > header {
@@ -92,6 +92,10 @@
 
 a.more-link {
   font-weight: 700;
+}
+
+#product-of-the-month  footer {
+	display: none;
 }
 
 
