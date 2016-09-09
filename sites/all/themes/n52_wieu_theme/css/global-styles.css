@@ -333,6 +333,12 @@ div#supported-standards-group div.item-list ul li {
   margin-bottom: 0;
   padding: 0 0;
 }
+
+#supported-standards-group  img.field-standard-label {
+	float: right;
+	margin-top: -60px;
+	cursor: help;
+}
  
 /******************************************************************************
  *                                                                            *

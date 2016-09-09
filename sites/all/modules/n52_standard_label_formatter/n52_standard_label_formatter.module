@@ -1,0 +1,105 @@
+<?php
+/*
+ * Copyright (C) 2015
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ *
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ *
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ *
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+/**
+ * Implements hook_field_formatter_info().
+ */
+function n52_standard_label_formatter_field_formatter_info() {
+	return array(
+			'n52_standard_label_formatter' => array(
+					'label' => t('52N - Standard Field Formatter Using A Label'),
+					'description' => t('This formatter can be used in view modes and displays the WIEu Standard label identifying standard compliance for OGC, INSPIRE, and WFD.'),
+					'field types' => array('number_integer'), 
+			),
+	);
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function n52_standard_label_formatter_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+	// check the three field values
+	$inspire_compliance = isset($entity->field_inspire_compliance[$langcode])?
+		$entity->field_inspire_compliance[$langcode][0]['value']:
+		(isset($entity->field_inspire_compliance['und'])?$entity->field_inspire_compliance['und'][0]['value']:-1);
+
+	$wfd_compliance = isset($entity->field_wfd_compliance[$langcode])?
+		$entity->field_wfd_compliance[$langcode][0]['value']:
+		(isset($entity->field_wfd_compliance['und'])?$entity->field_wfd_compliance['und'][0]['value']:-1);
+	
+	$ogc_standard_compliance = isset($entity->field_ogc_standard_compliance[$langcode])?
+		$entity->field_ogc_standard_compliance[$langcode][0]['value']:
+		(isset($entity->field_ogc_standard_compliance['und'])?$entity->field_ogc_standard_compliance['und'][0]['value']:-1);
+	// Identify the label
+	// Cases
+	// No selection in the PSS (all fields having value: < 0 e.g. -1) => not displayed
+	$element = array();
+	if ($wfd_compliance === -1 && $inspire_compliance === -1 && $ogc_standard_compliance === -1) {
+		return $element;
+	}
+  // if one is selected (one field has valie > 0 e.g. 1 )=> display
+	// Create HTML
+	$icon_id = _52n_standard_label_formatter_get_icon_id($inspire_compliance, $wfd_compliance, $ogc_standard_compliance);
+	$output = '<div class="field-standard-label"' .
+					'>' . theme_image(array (
+					'path' => 'sites/default/files/icons/wieu_standard_label_' . $icon_id . '.png',
+					'width' => '140',
+					'height' => '75',
+					'alt' => _n52_standard_label_formatter_get_alt_text($icon_id),
+					'title' => t('WaterInnEU Compliance Label'),
+					'attributes' => array (
+							'class' => 'field-standard-label',
+							'data-content' => '<div class=\'popover-light category-popover\'>' .
+								_52n_standard_label_formatter_get_label_block_text($langcode) .
+								'</div>',
+							'rel' => 'popover',
+							'data-toggle' => 'popover',
+							'data-placement' => 'top',
+							'data-trigger' => 'click',
+							'data-html' => 'true',
+					),
+			)) . '</div><div class="clearfix"></div>';
+	$element[0]['#markup'] = $output;
+	return $element;
+}
+
+function _n52_standard_label_formatter_get_alt_text($icon_id) {
+	return 'please implement me';
+}
+
+function _52n_standard_label_formatter_get_label_block_text($langcode) {
+	$block = module_invoke('block', 'block_view',9);
+	return $block['content'];
+}
+
+function _52n_standard_label_formatter_get_icon_id($inspire_compliance, $wfd_compliance, $ogc_standard_compliance) {
+	$a = $inspire_compliance === -1?0:$inspire_compliance;
+	$b = $wfd_compliance === -1?0:$wfd_compliance;
+	$c = $ogc_standard_compliance === -1?0:$ogc_standard_compliance;
+	return $a . $b . $c;
+}

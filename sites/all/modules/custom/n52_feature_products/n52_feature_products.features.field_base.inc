@@ -171,6 +171,23 @@ function n52_feature_products_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_inspire_compliance'.
+  $field_bases['field_inspire_compliance'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_inspire_compliance',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_issue'.
   $field_bases['field_issue'] = array(
     'active' => 1,
@@ -474,6 +491,23 @@ function n52_feature_products_field_default_field_bases() {
     ),
     'translatable' => 1,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_ogc_standard_compliance'.
+  $field_bases['field_ogc_standard_compliance'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ogc_standard_compliance',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'number_integer',
   );
 
   // Exported field_base: 'field_organisation'.
@@ -1088,6 +1122,23 @@ function n52_feature_products_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_wfd_compliance'.
+  $field_bases['field_wfd_compliance'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_wfd_compliance',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'number_integer',
   );
 
   // Exported field_base: 'name_field'.

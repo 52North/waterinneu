@@ -61,6 +61,7 @@
         	$user = user_load($node->revision_uid);
         	$name_ = theme_username(array (
         			'account' => $user,
+        			'extra' => '',
         			'name' => check_plain($user->name),
         			'link_path' => check_url('users/' . $user->name),
         			'link_options' => array(

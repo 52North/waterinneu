@@ -10535,8 +10535,8 @@ function n52_feature_i18n_strongarm() {
         'project' => 'views',
         'langcode' => 'de',
         'type' => 'current',
-        'timestamp' => 1465306271,
-        'last_checked' => 1465306329,
+        'timestamp' => 1473404888,
+        'last_checked' => 1473414509,
         'files' => array(
           'remote' => (object) array(
             'project' => 'views',
@@ -10545,7 +10545,7 @@ function n52_feature_i18n_strongarm() {
             'type' => 'remote',
             'filename' => 'views-7.x-3.13.de.po',
             'uri' => 'https://ftp.drupal.org/files/translations/7.x/views/views-7.x-3.13.de.po',
-            'timestamp' => 1459879142,
+            'timestamp' => 1473362122,
           ),
           'local' => (object) array(
             'project' => 'views',
@@ -10553,10 +10553,10 @@ function n52_feature_i18n_strongarm() {
             'version' => '7.x-3.13',
             'type' => 'local',
             'filename' => 'views-7.x-3.13.de.po',
-            'uri' => 'translations://views-7.x-3.13.de.po',
-            'timestamp' => 1465306271,
+            'uri' => 'translations://views-7.x-3.13.de_0.po',
+            'timestamp' => 1473404888,
             'directory' => 'translations://',
-            'last_checked' => 1465306329,
+            'last_checked' => 1473414509,
             'language' => 'de',
           ),
         ),
