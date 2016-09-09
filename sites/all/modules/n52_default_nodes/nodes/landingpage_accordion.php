@@ -149,7 +149,7 @@ EXPLORE
     <div>Sie erhalten Informationen &uuml;ber neue oder aktualisierte Produkte, Organisation, Service-Anfragen, Service-Angebote oder Veranstaltungen.</div>
   </div>
   <div id="explore-forum">
-    <a href="matchmaking#forum"><span class="glyphicon glyphicon-comment">&nbsp;</span>Verwenden Sie das offene Forum</a>:
+    <a href="forum"><span class="glyphicon glyphicon-comment">&nbsp;</span>Verwenden Sie das offene Forum</a>:
     <div>Starten Sie eine Diskussion zu einem bestimmten Thema oder treten Sie existierenden bei.</div>
   </div>
   <div id="explore-add-content">
@@ -330,7 +330,7 @@ UPCOMING EVENTS
 					<div>Receive information on new or updated products, organisations, services requests, service offers or events.</div>
 				</div>
 				<div id="explore-forum">
-					<a href="matchmaking#forum"><span class="glyphicon glyphicon-comment">&nbsp;</span>Use the open forum</a>:
+					<a href="forum"><span class="glyphicon glyphicon-comment">&nbsp;</span>Use the open forum</a>:
 					<div>Start or join a discussion on a topic of interest.</div>
 				</div>
 				<div id="explore-add-content">
