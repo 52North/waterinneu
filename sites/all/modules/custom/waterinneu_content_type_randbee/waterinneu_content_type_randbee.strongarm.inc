@@ -95,6 +95,9 @@ function waterinneu_content_type_randbee_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -118,6 +121,18 @@ function waterinneu_content_type_randbee_strongarm() {
         'course_messages' => array(
           'default' => array(
             'weight' => '2',
+            'visible' => TRUE,
+          ),
+        ),
+        'webform' => array(
+          'default' => array(
+            'weight' => '10',
+            'visible' => TRUE,
+          ),
+        ),
+        'signup' => array(
+          'default' => array(
+            'weight' => '10',
             'visible' => TRUE,
           ),
         ),

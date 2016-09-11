@@ -26,7 +26,7 @@ function course_object_e_learning_waterinneu_field_default_field_instances() {
           'video_style' => 'normal',
         ),
         'type' => 'video_embed_field',
-        'weight' => 1,
+        'weight' => 7,
       ),
       'question' => array(
         'label' => 'above',
@@ -82,7 +82,7 @@ function course_object_e_learning_waterinneu_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'question' => array(
         'label' => 'above',
@@ -139,7 +139,7 @@ function course_object_e_learning_waterinneu_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'question' => array(
         'label' => 'above',
@@ -214,7 +214,7 @@ function course_object_e_learning_waterinneu_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'question' => array(
         'label' => 'above',
@@ -271,7 +271,7 @@ function course_object_e_learning_waterinneu_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'question' => array(
         'label' => 'above',
@@ -358,12 +358,68 @@ function course_object_e_learning_waterinneu_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course_object-title_field'.
+  $field_instances['node-course_object-title_field'] = array(
+    'bundle' => 'course_object',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'title_field',
+    'label' => 'Title',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Course Video');
   t('Data');
   t('Link');
   t('Notes');
+  t('Title');
   t('Video Description');
 
   return $field_instances;
