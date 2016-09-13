@@ -223,6 +223,7 @@ function waterinneu_content_type_randbee_field_group_info() {
     'weight' => '16',
     'children' => array(
       0 => 'body',
+      1 => 'field_course_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

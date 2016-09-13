@@ -300,3 +300,19 @@ function waterinneu_deploy_update_7043() {
   module_enable(array('waterinneu_content_type_randbee'));
   features_revert_module('waterinneu_content_type_randbee');
 }
+
+/**
+ * Enable and revert feature waterinneu_content_type_randbee.
+ */
+function waterinneu_deploy_update_7044() {
+  module_enable(array('waterinneu_content_type_randbee'));
+  features_revert_module('waterinneu_content_type_randbee');
+}
+
+/**
+ * Enable and revert feature views_elearning_waterinneu.
+ */
+function waterinneu_deploy_update_7045() {
+  module_enable(array('views_elearning_waterinneu'));
+  features_revert_module('views_elearning_waterinneu');
+}
