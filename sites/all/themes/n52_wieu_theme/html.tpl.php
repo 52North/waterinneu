@@ -443,5 +443,28 @@
 	})(jQuery);
   	</script>
   <?php } ?>
+  <?php 
+  /*
+   * Hide atjs error message when not logged in admin
+   */
+  ?>
+  <?php if (!user_is_logged_in() && !user_access('administer site configuration')) {?>
+    	<script type="text/javascript">
+					(function($) {
+						$(document).ready(function () {
+							// check for error message
+							if ($('#messages-console').length && $('#messages-console .messages.error em.placeholder').length) {
+								$('#messages-console .messages.error em.placeholder').each(function (key, value) {
+									if ($(this).text() == "AtjsPregCallback->execute()") {
+										// than hide element
+										$(this).parent().css('display', 'none');
+										return false;
+									}
+								});
+							}
+						});
+					})(jQuery);
+  	  </script>
+  <?php }?>
 </body>
 </html>
