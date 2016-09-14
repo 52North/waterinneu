@@ -104,7 +104,7 @@ Aufnahme durch gezielte Verbreitung und Unterst&uuml;tzungsdienste beschleunigt.
   <ul>
     <li><a href="http://52north.org/" target="_blank">52°North</a></li>
     <li><a href="https://www.adelphi.de/en" target="_blank">adelphi</a></li>
-    <li><a href="http://www.anteagroup.be/en" target="_blank">Antea</a></li>
+    <li><a href="http://www.anteagroup.be/en" target="_blank">Antea Group</a></li>
     <li><a href="http://www.creaf.cat/en" target="_blank">CREAF</a></li>
     <li><a
       href="http://www.gwp.org/gwp-in-action/Central-and-Eastern-Europe/"
@@ -285,7 +285,7 @@ UPCOMING EVENTS
 				<ul>
 					<li><a href="http://52north.org/" target="_blank">52°North</a></li>
 					<li><a href="https://www.adelphi.de/en" target="_blank">adelphi</a></li>
-					<li><a href="http://www.anteagroup.be/en" target="_blank">Antea</a></li>
+					<li><a href="http://www.anteagroup.be/en" target="_blank">Antea Group</a></li>
 					<li><a href="http://www.creaf.cat/en" target="_blank">CREAF</a></li>
 					<li><a
 						href="http://www.gwp.org/gwp-in-action/Central-and-Eastern-Europe/"
