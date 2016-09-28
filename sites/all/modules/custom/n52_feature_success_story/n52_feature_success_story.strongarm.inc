@@ -152,5 +152,40 @@ function n52_feature_success_story_strongarm() {
   $strongarm->value = 1;
   $export['node_submitted_n52_sucess_story'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_n52_sucess_story_bg_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_n52_sucess_story_bg_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_n52_sucess_story_de_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_n52_sucess_story_de_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_n52_sucess_story_en_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_n52_sucess_story_en_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_n52_sucess_story_pattern';
+  $strongarm->value = 'success-story/[node:title]';
+  $export['pathauto_node_n52_sucess_story_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_n52_sucess_story_und_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_n52_sucess_story_und_pattern'] = $strongarm;
+
   return $export;
 }

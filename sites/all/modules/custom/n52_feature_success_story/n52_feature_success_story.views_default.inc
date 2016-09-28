@@ -49,15 +49,9 @@ function n52_feature_success_story_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = 'A list of success stories associated with the products promoted by this marketplace. Search or browse through the list.';
+  $handler->display->display_options['header']['area']['content'] = '<p>As soon as the Marketplace has formally been launched, we will begin to present here examples of successful matchmaking between our product owners and new commercialisation partners. This will further demonstrate and validate the market potential of these products and services to the wider River Basin Management Community.</p>
+<p>Come back and visit this page again soon. </p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html_plain_no_filter_';
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No matches found.';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -83,7 +77,7 @@ function n52_feature_success_story_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'n52_sucess_stories' => 'n52_sucess_stories',
+    'n52_sucess_story' => 'n52_sucess_story',
   );
 
   /* Display: Page */
