@@ -293,6 +293,339 @@ function n52_feature_frontpage_default_page_manager_pages() {
   $pane->uuid = '6875f6bd-9134-4a9c-8d25-883215b72abd';
   $display->content['new-6875f6bd-9134-4a9c-8d25-883215b72abd'] = $pane;
   $display->panels['right_column'][1] = 'new-6875f6bd-9134-4a9c-8d25-883215b72abd';
+  $pane = new stdClass();
+  $pane->pid = 'new-7dc1d897-f09d-406a-b86a-c7cbc82799ab';
+  $pane->panel = 'right_column';
+  $pane->type = 'block';
+  $pane->subtype = 'block-2';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Updates',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = '7dc1d897-f09d-406a-b86a-c7cbc82799ab';
+  $display->content['new-7dc1d897-f09d-406a-b86a-c7cbc82799ab'] = $pane;
+  $display->panels['right_column'][2] = 'new-7dc1d897-f09d-406a-b86a-c7cbc82799ab';
+  $display->hide_title = PANELS_TITLE_NONE;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_landing_page_panel__panel_context_e2e66931-e6be-4c91-aa9b-d51bc2527833';
+  $handler->task = 'page';
+  $handler->subtask = 'landing_page_panel';
+  $handler->handler = 'panel_context';
+  $handler->weight = 1;
+  $handler->conf = array(
+    'title' => 'One Column',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => 'landingpage-one-column',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => '',
+  );
+  $display = new panels_display();
+  $display->layout = 'flexible';
+  $display->layout_settings = array(
+    'items' => array(
+      'canvas' => array(
+        'type' => 'row',
+        'contains' => 'column',
+        'children' => array(
+          0 => 'main',
+        ),
+        'parent' => NULL,
+      ),
+      'main' => array(
+        'type' => 'column',
+        'width' => 100,
+        'width_type' => '%',
+        'children' => array(
+          0 => 4,
+          1 => 'main-row',
+          2 => 1,
+          3 => 2,
+          4 => 3,
+        ),
+        'parent' => 'canvas',
+      ),
+      'main-row' => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'center',
+        ),
+        'parent' => 'main',
+        'class' => 'landing-page-action-buttons row',
+        'hide_empty' => 0,
+      ),
+      'center' => array(
+        'type' => 'region',
+        'title' => 'Button Bar',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => 'main-row',
+        'class' => 'landing-page-button-bar',
+        'hide_empty' => 0,
+      ),
+      1 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'tweets',
+          1 => 'tweets_and_events',
+        ),
+        'parent' => 'main',
+        'class' => 'landing-page-tweets-and-events row',
+        'hide_empty' => 0,
+      ),
+      'tweets_and_events' => array(
+        'type' => 'region',
+        'title' => 'Events',
+        'width' => '50',
+        'width_type' => '%',
+        'parent' => '1',
+        'class' => 'landing-page-events',
+        'hide_empty' => 0,
+      ),
+      2 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'updates',
+        ),
+        'parent' => 'main',
+        'class' => 'landing-page-updates row',
+        'hide_empty' => 0,
+      ),
+      'updates' => array(
+        'type' => 'region',
+        'title' => 'Updates',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => '2',
+        'class' => 'landing-page-updates',
+        'hide_empty' => 0,
+      ),
+      'tweets' => array(
+        'type' => 'region',
+        'title' => 'Tweets',
+        'width' => '50',
+        'width_type' => '%',
+        'parent' => '1',
+        'class' => 'landing-page-tweets',
+        'hide_empty' => 0,
+      ),
+      3 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'about',
+        ),
+        'parent' => 'main',
+        'class' => 'landing-page-about row',
+        'hide_empty' => 0,
+      ),
+      'about' => array(
+        'type' => 'region',
+        'title' => 'About',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => '3',
+        'class' => 'landing-page-about',
+        'hide_empty' => 0,
+      ),
+      4 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'introduction_text',
+        ),
+        'parent' => 'main',
+        'class' => 'landing-page-introduction-text',
+        'hide_empty' => 0,
+      ),
+      'introduction_text' => array(
+        'type' => 'region',
+        'title' => 'Introduction Text',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => '4',
+        'class' => 'landing-page-introduction-text-region',
+        'hide_empty' => 0,
+      ),
+    ),
+  );
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'center' => NULL,
+      'tweets_and_events' => NULL,
+      'updates' => NULL,
+      'tweets' => NULL,
+      'about' => NULL,
+      'introduction_text' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = 'fb6d5e54-f87d-4349-9057-e5c79b806b76';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = '';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-296ea6c0-a555-40e2-a5fc-289bdb4b6fe0';
+  $pane->panel = 'about';
+  $pane->type = 'node';
+  $pane->subtype = 'node';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'nid' => '8830',
+    'links' => 0,
+    'leave_node_title' => 0,
+    'identifier' => '',
+    'build_mode' => 'full',
+    'link_node_title' => 0,
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'span',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '296ea6c0-a555-40e2-a5fc-289bdb4b6fe0';
+  $display->content['new-296ea6c0-a555-40e2-a5fc-289bdb4b6fe0'] = $pane;
+  $display->panels['about'][0] = 'new-296ea6c0-a555-40e2-a5fc-289bdb4b6fe0';
+  $pane = new stdClass();
+  $pane->pid = 'new-17f57c8f-e8e6-4469-b092-30286be16cec';
+  $pane->panel = 'center';
+  $pane->type = 'node';
+  $pane->subtype = 'node';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'nid' => '8833',
+    'links' => 0,
+    'leave_node_title' => 0,
+    'identifier' => '',
+    'build_mode' => 'full',
+    'link_node_title' => 0,
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'span',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'row',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '17f57c8f-e8e6-4469-b092-30286be16cec';
+  $display->content['new-17f57c8f-e8e6-4469-b092-30286be16cec'] = $pane;
+  $display->panels['center'][0] = 'new-17f57c8f-e8e6-4469-b092-30286be16cec';
+  $pane = new stdClass();
+  $pane->pid = 'new-84bd7d66-7802-401e-acfa-81fc7fcf1670';
+  $pane->panel = 'tweets';
+  $pane->type = 'block';
+  $pane->subtype = 'twitter_block-1';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'span',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '84bd7d66-7802-401e-acfa-81fc7fcf1670';
+  $display->content['new-84bd7d66-7802-401e-acfa-81fc7fcf1670'] = $pane;
+  $display->panels['tweets'][0] = 'new-84bd7d66-7802-401e-acfa-81fc7fcf1670';
+  $pane = new stdClass();
+  $pane->pid = 'new-e57b86a9-340a-4741-9514-eb4813639bfe';
+  $pane->panel = 'tweets_and_events';
+  $pane->type = 'node';
+  $pane->subtype = 'node';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'nid' => '8832',
+    'links' => 0,
+    'leave_node_title' => 0,
+    'identifier' => '',
+    'build_mode' => 'full',
+    'link_node_title' => 0,
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'span',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'e57b86a9-340a-4741-9514-eb4813639bfe';
+  $display->content['new-e57b86a9-340a-4741-9514-eb4813639bfe'] = $pane;
+  $display->panels['tweets_and_events'][0] = 'new-e57b86a9-340a-4741-9514-eb4813639bfe';
+  $pane = new stdClass();
+  $pane->pid = 'new-60a4270b-18c9-454a-bee8-1fb2cb24501e';
+  $pane->panel = 'updates';
+  $pane->type = 'block';
+  $pane->subtype = 'block-2';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Updates',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '60a4270b-18c9-454a-bee8-1fb2cb24501e';
+  $display->content['new-60a4270b-18c9-454a-bee8-1fb2cb24501e'] = $pane;
+  $display->panels['updates'][0] = 'new-60a4270b-18c9-454a-bee8-1fb2cb24501e';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

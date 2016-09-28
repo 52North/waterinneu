@@ -164,6 +164,7 @@
 </header>
 <!-- EOF: #header --> 
 
+<?php if (!$is_front) :?>
 <!-- #main-navigation --> 
 <div id="main-navigation" class="clearfix">
     <div class="container">
@@ -189,6 +190,7 @@
     </div>
 </div>
 <!-- EOF: #main-navigation -->
+<?php endif; ?>
 
 <?php if ($page['banner']) : ?>
 <!-- #banner -->

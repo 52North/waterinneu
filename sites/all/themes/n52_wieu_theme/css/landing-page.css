@@ -106,13 +106,16 @@ a.more-link {
  ******************************************************************************/
 
 #landingpage-updates-block {
-  border: solid 1px #cecece;
   padding: 1em;
-  background: #fff;
 }
 
 #landingpage-updates-block > div.pane-content > ul.nav-tabs > li {
   font-weight: 700;
+}
+
+#landingpage-updates-block > div.pane-content > ul.nav-tabs > li.active > a {
+  background: #d9edf7;
+  /*border-bottom-color: */
 }
 
 #frontpage-updates-contenttype-field {
@@ -137,17 +140,87 @@ a.more-link {
 }
 
 
+.panels-flexible-4 .panels-flexible-row {
+  padding: 0 0 0 0;
+  margin: 0;
+}
+
+
+
+
+
 /******************************************************************************
  *                                                                            *
- *                            twitter block                                   *
+ *                            action buttons                                  *
+ *                                                                            *
+ ******************************************************************************/
+ 
+#landing-page-action-buttons div.icon span {
+  font-size: 175px;
+  color: #2b4c6e;
+}
+
+#landing-page-action-buttons {
+  padding-bottom: 30px;
+}
+
+.landing-page-action-buttons,
+.landing-page-updates {
+  background: #d9edf7;
+}
+
+.landing-page-introduction-text,
+.landing-page-tweets-and-events,
+.landing-page-about {
+  background: #fff;
+}
+
+#landing-page-action-buttons a:hover {
+	text-decoration: none;
+}
+
+#landing-page-action-buttons div.caption {
+  color: #2b4c6e;
+  font-size: 175%;
+}
+
+#landing-page-action-buttons div.explanation {
+  color: #2b4c6e;
+  text-align: justify;
+  padding-top: 30px;
+}
+
+
+#landing-page-action-buttons div.landing-page-button {
+  cursor: pointer;
+  height: 330px;
+  text-align: center;
+  background-color: #d9edf7;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #bce8f1;
+  border-radius: 4px
+}
+
+
+/******************************************************************************
+ *                                                                            *
+ *                      twitter and upcoming events                           *
  *                                                                            *
  ******************************************************************************/
 
 .pane-twitter-block-1 {
   text-align: center;
   background: #fff;
-  border: 1px solid #cecece;
-  min-width: 550px;
-  min-height: 420px;
-  margin-top: -40px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
+
+.landing-page-tweets-and-events {
+ background: #fff;
+}
+
+.landing-page-tweets > div {
+	border-right: 1px solid #cecece;
+}
+
