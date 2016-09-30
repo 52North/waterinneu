@@ -37,6 +37,10 @@ function _n52_default_nodes_join_us() {
 				<img tile="Join Us! - handshake - male and femail" src="sites/default/files/pictures/join-us_shake-hands.png" />
 			</div>
 			<ul id="join-us-actions-list">
+				<li id="explore-express-interest">
+					<span class="glyphicon glyphicon-thumbs-up"></span><strong>Express interest</strong>:
+					<div>Express interest in a product and get in touch with the product owner.</div>
+				</li>
   			<li id="explore-search">
 					<span class="glyphicon glyphicon-search"></span><strong>Search</strong>:
 					<div>Use the advanced search tools to find the product or organisation you are looking for.</div>
@@ -63,7 +67,7 @@ function _n52_default_nodes_join_us() {
 				</li>
 				<li id="explore-add-content">
 					<span class="glyphicon glyphicon-plus"></span><strong>Contribute</strong>:
-					<div>Upload your own product or event (screened by our in-house team before going live).</div>
+					<div>Upload your own product or event, or add your organisation to our community (screened by our in-house team before going live).</div>
 				</li>
 			</ul>
 			<div id="join-us-sign-up-button">
