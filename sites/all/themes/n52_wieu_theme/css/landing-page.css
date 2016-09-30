@@ -27,36 +27,11 @@
  */
 /******************************************************************************
  *                                                                            *
- *                          FEATURES ACCORDION                                *
- *                                                                            *
- ******************************************************************************/
-
-#landingpage-features-accordion > div.pane-content > article.node > header {
-  display: none;
-}
-
-#landingpage-features-accordion > div.pane-content > article > div.content {
-  margin-top: -3.0em;
-}
-
-#landingpage-features-accordion > div.pane-content > article.node > div.content {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-#landingpage-features-accordion .panel-group .panel+.panel {
-  margin-top: 2px;
-}
-
-
-/******************************************************************************
- *                                                                            *
  *                           PRODUCT OF THE MONTH                             *
  *                                                                            *
  ******************************************************************************/
 
+/*
 #product-of-the-month {
   border: solid 1px #cecece;
   padding: 1em;
@@ -97,37 +72,17 @@ a.more-link {
 #product-of-the-month  footer {
 	display: none;
 }
-
-
-/******************************************************************************
- *                                                                            *
- *                          Landing page updates                              *
- *                                                                            *
- ******************************************************************************/
-
-#landingpage-updates-block {
-  padding: 1em;
-}
-
-#landingpage-updates-block > div.pane-content > ul.nav-tabs > li {
-  font-weight: 700;
-}
-
-#landingpage-updates-block > div.pane-content > ul.nav-tabs > li.active > a {
-  background: #d9edf7;
-  /*border-bottom-color: */
-}
-
-#frontpage-updates-contenttype-field {
-  font-weight: 350;
-}
-
+*/
 
 /******************************************************************************
  *                                                                            *
  *                           Introduction text                                *
  *                                                                            *
  ******************************************************************************/
+ 
+.landing-page-introduction-text-region > div > div > div.pane-content > article > header {
+	display: none;
+}
 
 #landingpage-introduction {
   border: 1px solid #cecece;
@@ -145,7 +100,19 @@ a.more-link {
   margin: 0;
 }
 
+#intro {
+  min-width: 500px;
+  max-width: 500px;
+  padding: 20px;
+  margin: auto;
+  text-align: justify;
+  border: 1px solid #bce8f1;
+  color: #2b4c6e;
+}
 
+#intro a:hover {
+  text-decoration: none;
+}
 
 
 
@@ -224,3 +191,49 @@ a.more-link {
 	border-right: 1px solid #cecece;
 }
 
+.landing-page-events > div > div > div.pane-content > article > header {
+  display: none;
+}
+
+
+/******************************************************************************
+ *                                                                            *
+ *                          Landing page updates                              *
+ *                                                                            *
+ ******************************************************************************/
+
+#landingpage-updates-block {
+  padding: 40px;
+}
+
+#landingpage-updates-block > div.pane-content > ul.nav-tabs > li {
+  font-weight: 700;
+}
+
+#landingpage-updates-block > div.pane-content > ul.nav-tabs > li.active > a {
+  background: #d9edf7;
+}
+
+#frontpage-updates-contenttype-field {
+  font-weight: 350;
+}
+
+
+/******************************************************************************
+ *                                                                            *
+ *                                 about                                      *
+ *                                                                            *
+ ******************************************************************************/
+
+.landing-page-about > div > div > div.pane-content > article > header {
+  display: none;
+}
+ 
+table#meta-partner {
+  border: none;
+}
+
+table#meta-partner img {
+  margin: auto;
+  padding: 5%;
+}

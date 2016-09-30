@@ -26,22 +26,22 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
-function _n52_default_nodes_landing_page_upcoming_events() {
+function _n52_default_nodes_landing_page_intro() {
 	return array (
 		'title' =>  array (
-				'en' => 'Upcoming Events',
+				'en' => 'Introduction',
 		),
 		'alias' => NULL,
 		'text' => array ('en' => '
-			<h2 id="events">Upcoming Events</h2>
-			<p>
-				The platform hosts regular events designed to promote the 
-				best products, offer enhanced training and bring different 
-				stakeholders together to share best practice and 
-				experiences.
-			</p>
-      <div id="upcoming-events"></div>
-			<a href="matchmaking/events"><button type="button" class="btn btn-default">Show all Events</button></a>',)
+			<div id="intro">
+				<a href="#about">
+				The WaterInnEU Marketplace is a market led innovation platform
+				that screens the most relevant products and services for River 
+				Basin Managers and accelerates their uptake through targeted 
+				dissemination and support services.
+				</a>
+			</div>
+				',)
 			,
 	);
 }

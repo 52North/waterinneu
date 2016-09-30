@@ -552,6 +552,35 @@ function n52_feature_frontpage_default_page_manager_pages() {
   $display->content['new-17f57c8f-e8e6-4469-b092-30286be16cec'] = $pane;
   $display->panels['center'][0] = 'new-17f57c8f-e8e6-4469-b092-30286be16cec';
   $pane = new stdClass();
+  $pane->pid = 'new-f3ead738-60fd-469c-83a2-bd423562d07d';
+  $pane->panel = 'introduction_text';
+  $pane->type = 'node';
+  $pane->subtype = 'node';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'nid' => '8834',
+    'links' => 0,
+    'leave_node_title' => 0,
+    'identifier' => '',
+    'build_mode' => 'full',
+    'link_node_title' => 0,
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'span',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'f3ead738-60fd-469c-83a2-bd423562d07d';
+  $display->content['new-f3ead738-60fd-469c-83a2-bd423562d07d'] = $pane;
+  $display->panels['introduction_text'][0] = 'new-f3ead738-60fd-469c-83a2-bd423562d07d';
+  $pane = new stdClass();
   $pane->pid = 'new-84bd7d66-7802-401e-acfa-81fc7fcf1670';
   $pane->panel = 'tweets';
   $pane->type = 'block';

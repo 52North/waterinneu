@@ -33,16 +33,18 @@ function _n52_default_nodes_landing_page_about() {
 		),
 		'alias' => NULL,
 		'text' => array ('en' => '
-			<h2 id="about"><span class="glyphicon glyphicon-info-sign">&nbsp;</span>About</h2>
+			<h2 id="about">About</h2>
 				<p>
-					The WaterInnEU Marketplace is a market led innovation 
+					The <a href="http://waterinneu.org/" target="_blank">WaterInnEU</a>
+					Marketplace is a market led innovation 
 					platform that screens the most relevant products and 
 					services for River Basin Managers and accelerates their 
 					uptake through targeted dissemination and support services.
 				</p>
 				<p>
 					The platform seeks to bring together all elements of the 
-					river basin community including researchers, SMEs, industry 
+					river basin community including researchers, <abbr 
+				  title="Small or Medium Enterprise">SME</abbr>s, industry 
 					and public bodies in order to achieve better exploitation 
 					and market translation of EU funded tools and improve 
 					implementation of the Water Framework Directive.
@@ -50,57 +52,61 @@ function _n52_default_nodes_landing_page_about() {
 				<h3>How to use the platform</h3>
 				<ul>
 					<li>
-						Products: the platform provides detailed information on 
+						<strong>Products & Services</strong>:<br />
+						The platform provides detailed information on 
 						a select number of screened products, together with 
 						supporting material and case studies, and relevant 
-						contacts for further communication.
+						contacts for further communication.<br />
+						In addition, a range of services are available that seek 
+						to enhance communication between organizations offering 
+						products which are relevant to river basin management, 
+						the potential users of these products, and service providers
+						which can support implementation.
 					</li>
 					<li>
-						Organisations: a list of organisations associated with 
-						river basin management is available.
+						<strong>Search</strong>:<br/>
+						The platform provides search facilities for finding the right
+						solution for your problem.
 					</li>
 					<li>
-						Matchmaking and support services: a range of services 
-						are available that seek to enhance communication 
-						between organizations offering products which are 
-						relevant to river basin management, the potential users 
-						of these products, and service providers which can 
-						support implementation.
-					</li>
-					<li>
-						E-learning: the integrated participative e-learning 
-						function is available for specific tools to enhance 
+						<strong>Take a course</strong>:<br />
+						The integrated participative e-learning 
+						function is available for specific products to enhance 
 						rapid uptake and delivery.
 					</li>
 					<li>
-						Success stories: examples of implementation of 
-						products, and lessons learned.
+						<strong>Join us</strong>:<br/>
+						Become part of the WaterInnEU network to:
+						<ul>
+							<li>Add your own products to the platform.</li>
+							<li>Join discussions about the products and certain related topics.</li>
+							<li>Request or offer support for implementing products and the Water Framework Directive (WFD).</li>
+							<li>Receive alerts when new products, events, support requests become available.</li>
+							<li>Take course for a better understanding of the products.</li>
+						</ul>
 					</li>
 					<li>
-						Forum: start or join a discussion around specific 
-						issues of interest. We want to hear your questions and 
-						views on all issues relating to river basin management.
+						<strong>Success stories</strong>:<br />
+						Provide examples of successful matchmaking between our product
+						owners and new commercialisation partners for demonstrating and
+						validating the market potential of these products and services 
+						to the wider River Basin Management Community.
 					</li>
 				</ul>
-				<p>
-					Go to <a data-toggle="collapse" data-parent="#accordion" 
-					data-target="#explore" style="cursor: pointer;">Explore</a> 
-					to see what other actions you can take.
-				</p>
 				<h3>Backstage - Who is driving WaterInnEU</h3>
 				<table id="meta-partner">
     				<tbody>
     					<tr>
-    						<td><img class="print-log-eu" id="52n-logo" typeof="foaf:Image" src="sites/default/files/logos/52n-logo-and-name-color_75x161.png" alt="52North"></td>
-    						<td><img class="print-log-eu" id="adelphi-logo" typeof="foaf:Image" src="sites/default/files/logos/adelphi_logo.png" alt="adelphi"></td>
-    						<td><img class="print-log-eu" id="creaf-logo" typeof="foaf:Image" src="sites/default/files/logos/CREAF_logo.png" alt="CREAF"></td>
-    						<td><img class="print-log-eu" id="orion-logo" typeof="foaf:Image" src="sites/default/files/logos/orionlogo_small.png" alt="Orion"></td>
+    						<td><a href="http://52north.org/" target="_blank"><img class="print-log-eu" id="52n-logo" typeof="foaf:Image" src="sites/default/files/logos/52n-logo-and-name-color_75x161.png" alt="52North"></a></td>
+    						<td><a href="http://www.adelphi.de/en/start/aktuell/43496.php" target="_blank"><img class="print-log-eu" id="adelphi-logo" typeof="foaf:Image" src="sites/default/files/logos/adelphi_logo.png" alt="adelphi"></a></td>
+    						<td><a href="http://www.anteagroup.be/en" target="_blank"><img class="print-log-eu" id="antea-group" typeof="foaf:Image" src="sites/default/files/logos/antea-group_logo_75.png" alt="antea group"></a></td>
+    						<td><a href="http://www.creaf.es/" target="_blank"><img class="print-log-eu" id="creaf-logo" typeof="foaf:Image" src="sites/default/files/logos/CREAF_logo.png" alt="CREAF"></a></td>
     					</tr>
     					<tr>
-    						<td><img class="print-log-eu" id="tud-logo" typeof="foaf:Image" src="sites/default/files/logos/tud_log_75.png" alt="TUDelft"></td>
-    						<td><img class="print-log-eu" id="gwpcee-logo" typeof="foaf:Image" src="sites/default/files/logos/GWPCEE_logo_75px.png" alt="GWPCEE"></td>
-    						<td><img class="print-log-eu" id="antea-group" typeof="foaf:Image" src="sites/default/files/logos/antea-group_logo_75.png" alt="antea group"></td>
-    						<td><img class="print-log-eu" id="randbee-logo" typeof="foaf:Image" src="sites/default/files/logos/randbee_logo_75px.png" alt="randbee"></td>
+    						<td><a href="http://www.gwp.org/en/GWP-CEE/" target="_blank"><img class="print-log-eu" id="gwpcee-logo" typeof="foaf:Image" src="sites/default/files/logos/GWPCEE_logo_75px.png" alt="GWPCEE"></a></td>
+    						<td><a href="http://www.orioninnovations.co.uk/" target="_blank"><img class="print-log-eu" id="orion-logo" typeof="foaf:Image" src="sites/default/files/logos/orionlogo_small.png" alt="Orion"></a></td>
+    						<td><a href="http://randbe.es/" target="_blank"><img class="print-log-eu" id="randbee-logo" typeof="foaf:Image" src="sites/default/files/logos/randbee_logo_75px.png" alt="randbee"></a></td>
+    						<td><a href="http://www.tudelft.nl/en/" target="_blank"><img class="print-log-eu" id="tud-logo" typeof="foaf:Image" src="sites/default/files/logos/tud_log_75.png" alt="TUDelft"></a></td>
     					</tr>
     				</tbody>
     			</table>

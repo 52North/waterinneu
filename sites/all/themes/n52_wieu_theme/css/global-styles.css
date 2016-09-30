@@ -477,7 +477,10 @@ ul.pager li a, ul.pager li.pager-current {
 ul.upcoming-event-list > li,
 ul.latest-questions-list > li,
 ul.service-requests-list > li,
-ul.service-offerings-list > li {
+ul.service-offerings-list > li,
+.view-frontpage-latest-posts > div > div > ul > li,
+.view-id-comments_recent > div > div > ul > li,
+.view-frontpage-latest-content > div > div > ul > li {
 	list-style-type: none;
 }
 
@@ -489,8 +492,18 @@ ul.upcoming-event-list > li:before {
   padding-right: 10px;
 }
 
-ul.latest-questions-list > li:before {
+ul.latest-questions-list > li:before,
+.view-frontpage-latest-posts > div > div > ul > li:before,
+.view-id-comments_recent > div > div > ul > li:before {
   content: "\e111";
+  font-family: 'Glyphicons Halflings';
+  float: left;
+  padding-right: 10px;
+  margin-left: -20px;
+}
+
+.view-frontpage-latest-content > div > div > ul > li:before {
+  content: "\2b";
   font-family: 'Glyphicons Halflings';
   float: left;
   padding-right: 10px;
