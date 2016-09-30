@@ -466,5 +466,35 @@
 					})(jQuery);
   	  </script>
   <?php }?>
+  <?php 
+  /*
+   * Hide atjs error message when not logged in admin
+   */
+  ?>
+  <?php if ($is_front) {?>
+    	<script type="text/javascript">
+					(function($) {
+						$(document).ready(function () {   
+							$("#landing-page-button-join-us")
+								.popover({ trigger: "manual" , html: true, animation:false})
+    							.on("mouseenter", function () {
+        						var _this = this;
+        						$(this).popover("show");
+        						$(".popover").on("mouseleave", function () {
+            					$(_this).popover('hide');
+       							});
+    							})
+    							.on("mouseleave", function () {
+        						var _this = this;
+        						setTimeout(function () {
+            					if (!$(".popover:hover").length) {
+                				$(_this).popover("hide");
+            					}
+        						}, 300);
+									});
+						});
+					})(jQuery);
+			</script>
+	<?php } ?>
 </body>
 </html>

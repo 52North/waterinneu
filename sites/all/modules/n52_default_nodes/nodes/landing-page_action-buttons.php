@@ -56,13 +56,22 @@ function _n52_default_nodes_landing_page_action_buttons() {
 						</div>
 					</a>
 					<a class="col-lg-3 col-sm-6 col-xs-12" href="join-us">
-						<div id="landing-page-button-join-us" class="landing-page-button alert alert-info">
+						<div id="landing-page-button-join-us" class="landing-page-button alert alert-info"
+				data-content="<div class=&quot;popover-light&quot;>Already member? <a href=&quot;user/login&quot;>Login <span class=&quot;glyphicon glyphicon-log-in&quot;></span></a></div>" 
+				data-container="body"
+				data-toggle="popover"
+				data-placement="bottom"
+				data-original-title=""
+				data-html="true"
+				title=""
+				>
 							<div class="icon"><span class="glyphicon glyphicon-log-in"></span></div>
 							<div class="caption">join&nbsp;us</div>
 							<div class="explanation">Become part of the community and add your own products or service requests.</div>
 						</div>
 					</a>
-				</div>',)
+				</div>
+				',)
 			,
 	);
 }

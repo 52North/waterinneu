@@ -31,7 +31,6 @@ include_once 'nodes/api_json.php';
 include_once 'nodes/cookies.php';
 include_once 'nodes/imprint.php';
 include_once 'nodes/javascript-required.php';
-include_once 'nodes/landingpage_accordion.php';
 include_once 'nodes/matchmaking.php';
 include_once 'nodes/related-portals.php';
 include_once 'nodes/sitemap.php';
@@ -39,6 +38,7 @@ include_once 'nodes/landing-page_about.php';
 include_once 'nodes/landing-page_upcoming-events.php';
 include_once 'nodes/landing-page_action-buttons.php';
 include_once 'nodes/landing-page_intro.php';
+include_once 'nodes/join-us.php';
 
 function n52_default_nodes_enable() {
 	global $user;
@@ -56,7 +56,6 @@ function n52_default_nodes_enable() {
 		_n52_default_nodes_cookies(),
 		_n52_default_nodes_imprint(),
 		_n52_default_nodes_javascript_required(),
-		_n52_default_nodes_landingpage_accordion(),
 		_n52_default_nodes_matchmaking(),
 		_n52_default_nodes_related_portals(),
 		_n52_default_nodes_sitemap(),
@@ -64,6 +63,7 @@ function n52_default_nodes_enable() {
 		_n52_default_nodes_landing_page_upcoming_events(),
 		_n52_default_nodes_landing_page_action_buttons(),
 	  _n52_default_nodes_landing_page_intro(),
+		_n52_default_nodes_join_us(),
 	);
 	
 	foreach ($nodes as $node_content) {

@@ -105,9 +105,10 @@ a.more-link {
   max-width: 500px;
   padding: 20px;
   margin: auto;
+  font-size: 115%;
   text-align: justify;
-  border: 1px solid #bce8f1;
   color: #2b4c6e;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #intro a:hover {
@@ -165,8 +166,7 @@ a.more-link {
   background-color: #d9edf7;
   padding: 15px;
   margin-bottom: 20px;
-  border: 1px solid #bce8f1;
-  border-radius: 4px
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
