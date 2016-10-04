@@ -469,7 +469,7 @@
   <?php }?>
   <?php 
   /*
-   * Hide atjs error message when not logged in admin
+   * Enable login popover on front page
    */
   ?>
   <?php if ($is_front) {?>
@@ -496,6 +496,31 @@
 						});
 					})(jQuery);
 			</script>
+	<?php } ?>
+	<?php 
+  /*
+   * Disable login popover on front page if logged in
+   */
+  ?>
+  <?php if ($is_front && user_is_logged_in()) {?>
+    	<script type="text/javascript">
+					(function($) {
+						$(document).ready(function () {   
+							$("#landing-page-button-join-us").popover('hide');
+							$("#landing-page-button-join-us").popover('disable');
+						});
+					})(jQuery);
+			</script>
+	<?php } ?>
+	<?php 
+  /*
+   * show prototype banner when not beeing admin
+   */
+  ?>
+	<?php if (!user_is_logged_in() && !user_access('administer site configuration')) {?>
+		<span id="prototype-banner">
+			<a href="http://waterinneu.org" target="_blank">Prototype</a>
+		</span>
 	<?php } ?>
 </body>
 </html>
