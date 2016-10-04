@@ -102,13 +102,13 @@ a.more-link {
 
 #intro {
   min-width: 500px;
-  max-width: 500px;
+  max-width: 75%;
   padding: 20px;
   margin: auto;
-  font-size: 115%;
+  font-size: 150%;
+  line-height: 150%;
   text-align: justify;
   color: #2b4c6e;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #intro a:hover {
