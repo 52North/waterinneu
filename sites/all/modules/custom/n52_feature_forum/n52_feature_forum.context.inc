@@ -27,7 +27,7 @@ function n52_feature_forum_context_default_contexts() {
   );
   $context->reactions = array(
     'menu' => array(
-      0 => 'main-menu:forum',
+      0 => 'main-menu:node/8824',
     ),
   );
   $context->condition_mode = 0;

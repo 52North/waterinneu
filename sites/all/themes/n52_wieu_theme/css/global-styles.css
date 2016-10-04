@@ -203,6 +203,17 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 #main-navigation ul.menu li a {
   text-transform: unset;
+  font-size: 175%;
+  font-weight: normal;
+  line-height: 150%;
+  padding: 10px 20px;
+  color: #2b4c6e;
+}
+
+#main-navigation ul.menu li a:hover {
+	color: #fff;
+	background: #2b4c6e;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 li.no-list-style {
@@ -221,6 +232,10 @@ li.no-list-style {
 #site-name a {
 	font-size: 480%;
 	padding-top: 20px;
+}
+
+.breadcrumb {
+	margin-bottom: initial;
 }
 
 
@@ -670,4 +685,59 @@ div#join-us-sign-up-button button a:hover {
   -moz-transform:rotate(-45deg);
   -o-transform:rotate(-45deg);
   box-shadow:4px 4px 10px rgba(0,0,0,0.8);
+}
+
+/******************************************************************************
+ *                                                                            *
+ *                           PRODUCT OF THE MONTH                             *
+ *                                                                            *
+ ******************************************************************************/
+
+
+#product-of-the-month {
+  border: solid 1px #cecece;
+  padding: 1em;
+  background: #fff;
+}
+
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content > div.field-name-field-logo {
+  float: left;
+  padding: 5px;
+  margin:  5px;
+}
+
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content {
+  padding: 0px 20px 20px;
+}
+
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > header {
+  padding: 0px 20px 0px;
+}
+
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > header > h2{
+  font-size: 24px;
+  margin: 0;
+}
+
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content > div.field-name-field-description > div.field-items > div.field-item > p{
+  margin: 0 0 0;
+}
+
+#product-of-the-month > div.pane-content > div.view-id-tool_of_the_month > div.view-content > div.views-row-1 > article.node-tool > div.content > div.field > .field-label {
+  font-weight: 700;
+}
+
+a.more-link {
+  font-weight: 700;
+}
+
+#product-of-the-month  footer {
+  display: none;
+}
+
+.you-can-also-block-container {
+  background: #fff;
+  padding: 10px;
+  border: solid 1px #cecece;
+  margin-top: 120px;
 }

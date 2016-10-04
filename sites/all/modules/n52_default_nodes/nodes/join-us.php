@@ -29,7 +29,7 @@
 function _n52_default_nodes_join_us() {
 	return array (
 		'title' =>  array (
-				'en' => 'Join Us / My Actions',
+				'en' => 'Join Us',
 		),
 		'alias' => 'join-us',
 		'text' => array ('en' => '
@@ -59,7 +59,7 @@ function _n52_default_nodes_join_us() {
 				</li>
   			<li id="join-us-matchmaking-services">
 					<a href="matchmaking">
-						<span class="glyphicon glyphicon-tasks"></span>
+						<span class="glyphicon glyphicon-link"></span>
 						<strong>Use our matchmaking service</strong>
 					</a>:
 					<div>

@@ -49,11 +49,11 @@ function _n52_fix_pre_header(&$vars) {
 	 * insert variables into page template.
 	 */
 	if($vars['page']['sidebar_first'] && $vars['page']['sidebar_second']) {
-		$vars['sidebar_grid_class'] = 'col-md-3';
-		$vars['main_grid_class'] = 'col-md-6';
+		$vars['sidebar_grid_class'] = 'col-md-2';
+		$vars['main_grid_class'] = 'col-md-7';
 	} elseif ($vars['page']['sidebar_first'] || $vars['page']['sidebar_second']) {
-		$vars['sidebar_grid_class'] = 'col-md-4';
-		$vars['main_grid_class'] = 'col-md-8';
+		$vars['sidebar_grid_class'] = 'col-md-3';
+		$vars['main_grid_class'] = 'col-md-9';
 	} else {
 		$vars['main_grid_class'] = 'col-md-12';
 	}

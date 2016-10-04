@@ -40,6 +40,96 @@ function n52_feature_config_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['block-n52_wieu_you_can_also_e_learning'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'i18n_block_language' => array(),
+    'i18n_mode' => 1,
+    'machine_name' => 'n52_wieu_you_can_also_e_learning',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => 'e-learning
+e-learning/*',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'n52_wieu_theme',
+        'weight' => -56,
+      ),
+    ),
+    'title' => 'You can also:',
+    'visibility' => 1,
+  );
+
+  $export['block-n52_wieu_you_can_also_join_us'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'i18n_block_language' => array(),
+    'i18n_mode' => 1,
+    'machine_name' => 'n52_wieu_you_can_also_join_us',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => 'join-us',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'n52_wieu_theme',
+        'weight' => -57,
+      ),
+    ),
+    'title' => 'You can also:',
+    'visibility' => 1,
+  );
+
+  $export['block-n52_wieu_you_can_also_products'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'i18n_block_language' => array(),
+    'i18n_mode' => 1,
+    'machine_name' => 'n52_wieu_you_can_also_products',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => 'product
+product/*
+products-and-services
+organisation
+organisation/*
+matchmaking*',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'n52_wieu_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'n52_wieu_theme',
+        'weight' => -58,
+      ),
+    ),
+    'title' => 'You can also:',
+    'visibility' => 1,
+  );
+
   $export['comment-recent'] = array(
     'cache' => 1,
     'custom' => 0,
@@ -208,7 +298,7 @@ thread*',
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'n52_wieu_theme',
-        'weight' => -43,
+        'weight' => -55,
       ),
     ),
     'title' => '<none>',
@@ -241,7 +331,7 @@ user',
         'region' => 'content',
         'status' => 1,
         'theme' => 'n52_wieu_theme',
-        'weight' => 17,
+        'weight' => -53,
       ),
     ),
     'title' => 'My Content',

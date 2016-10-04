@@ -506,15 +506,16 @@
     	<script type="text/javascript">
 					(function($) {
 						$(document).ready(function () {   
-							$("#landing-page-button-join-us").popover('hide');
-							$("#landing-page-button-join-us").popover('disable');
+							$("#landing-page-button-join-us").popover("hide");
+							$("#landing-page-button-join-us").popover("disable");
 						});
 					})(jQuery);
 			</script>
 	<?php } ?>
 	<?php
 	/*
-   * Disable login buttont on join us page when logged in
+   * Disable login buttont on join us page when logged in and replace 
+   * title with "My Actions"
    */
   ?>
   <?php if (user_is_logged_in() && n52_urlEndsWith(request_path(), 'join-us')) {?>
@@ -522,6 +523,7 @@
 					(function($) {
 						$(document).ready(function () {   
 							$("#join-us-sign-up-button").remove();
+							$("h1.page-title").text(<?php print t("My Actions"); ?>;
 						});
 					})(jQuery);
 			</script>

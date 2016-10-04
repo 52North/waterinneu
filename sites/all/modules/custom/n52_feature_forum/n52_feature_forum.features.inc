@@ -37,6 +37,7 @@ function n52_feature_forum_field_default_field_instances_alter(&$data) {
       'profile' => '',
     ); /* WAS: '' */
     $data['harmony_post-harmony_post-field_harmony_text']['settings']['text_processing'] = 0; /* WAS: 1 */
+    $data['harmony_post-harmony_post-field_harmony_text']['widget']['settings']['show_token_tree'] = FALSE; /* WAS: '' */
   }
 }
 

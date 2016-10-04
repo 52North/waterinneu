@@ -28,6 +28,7 @@ function n52_feature_forum_features_override_default_overrides() {
     'profile' => '',
   );
   $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.settings|text_processing"] = 0;
+  $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.widget|settings|show_token_tree"] = FALSE;
 
  return $overrides;
 }

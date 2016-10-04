@@ -10,58 +10,6 @@
 function n52_feature_menus_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_e-learning:node/8788.
-  $menu_links['main-menu_e-learning:node/8788'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/8788',
-    'router_path' => 'node/%',
-    'link_title' => 'E-Learning',
-    'options' => array(
-      'alter' => TRUE,
-      'identifier' => 'main-menu_e-learning:node/8788',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -46,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: main-menu_forum:forum.
-  $menu_links['main-menu_forum:forum'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'forum',
-    'router_path' => 'forum',
-    'link_title' => 'Forum',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'ignore_access_roles' => array(
-        1 => 0,
-        2 => 0,
-        8 => 0,
-        10 => 0,
-        9 => 0,
-        11 => 0,
-        3 => 0,
-      ),
-      'alter' => TRUE,
-      'identifier' => 'main-menu_forum:forum',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -44,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
   // Exported menu link: main-menu_home:<front>.
   $menu_links['main-menu_home:<front>'] = array(
     'menu_name' => 'main-menu',
@@ -150,29 +98,6 @@ function n52_feature_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -49,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: main-menu_related-portals:node/8825.
-  $menu_links['main-menu_related-portals:node/8825'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/8825',
-    'router_path' => 'node/%',
-    'link_title' => 'Related Portals',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'alter' => TRUE,
-      'identifier' => 'main-menu_related-portals:node/8825',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1360,11 +1285,9 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Contact/Helpdesk');
   t('Content summary');
   t('Create thread');
-  t('E-Learning');
   t('Event');
   t('FAQ');
   t('Feed aggregator');
-  t('Forum');
   t('Glossary');
   t('Home');
   t('Imprint');
@@ -1384,7 +1307,6 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Project');
   t('Recent posts');
   t('Register');
-  t('Related Portals');
   t('Scheduled publications');
   t('Search');
   t('Search Wizard');
