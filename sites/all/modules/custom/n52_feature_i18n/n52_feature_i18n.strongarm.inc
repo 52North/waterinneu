@@ -8258,8 +8258,8 @@ function n52_feature_i18n_strongarm() {
         'project' => 'search_api_solr',
         'langcode' => 'de',
         'type' => 'current',
-        'timestamp' => 1456135410,
-        'last_checked' => 1456135409,
+        'timestamp' => 1475596069,
+        'last_checked' => 1475596008,
         'files' => array(
           'remote' => (object) array(
             'project' => 'search_api_solr',
@@ -8268,7 +8268,7 @@ function n52_feature_i18n_strongarm() {
             'type' => 'remote',
             'filename' => 'search_api_solr-7.x-1.9.de.po',
             'uri' => 'https://ftp.drupal.org/files/translations/7.x/search_api_solr/search_api_solr-7.x-1.9.de.po',
-            'timestamp' => 1441177043,
+            'timestamp' => 1474577696,
           ),
           'local' => (object) array(
             'project' => 'search_api_solr',
@@ -8276,10 +8276,10 @@ function n52_feature_i18n_strongarm() {
             'version' => '7.x-1.9',
             'type' => 'local',
             'filename' => 'search_api_solr-7.x-1.9.de.po',
-            'uri' => 'translations://search_api_solr-7.x-1.9.de.po',
-            'timestamp' => 1456135410,
+            'uri' => 'translations://search_api_solr-7.x-1.9.de_0.po',
+            'timestamp' => 1475596069,
             'directory' => 'translations://',
-            'last_checked' => 1456135409,
+            'last_checked' => 1475596008,
             'language' => 'de',
           ),
         ),

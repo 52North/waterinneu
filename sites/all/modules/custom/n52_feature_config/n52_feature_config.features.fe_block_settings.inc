@@ -49,7 +49,9 @@ function n52_feature_config_default_fe_block_settings() {
     'module' => 'block',
     'node_types' => array(),
     'pages' => 'e-learning
-e-learning/*',
+e-learning/*
+success-story
+success-story/*',
     'roles' => array(),
     'themes' => array(
       'adminimal' => array(

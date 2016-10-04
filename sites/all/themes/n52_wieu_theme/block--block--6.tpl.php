@@ -33,6 +33,8 @@
  */
 ?>
 <div id="advanced-search-block" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+	<h2><?php print t("Search"); ?></h2>
+	<div id="search-form-duplicate"></div>
 	<h2 class="pane-title"><?php print $block->subject; ?></h2>
 	<div id="advanced-search-instructions">
 	 	<?php print $content ?>

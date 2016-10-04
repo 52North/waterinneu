@@ -351,8 +351,30 @@
 		  $('#edit-submit-advanced-event-search').trigger('click');
 		  $('#edit-submit-view-advanced-search-organsations').trigger('click');
 	  });
-  	})(jQuery); 
+  	})(jQuery);
   	</script>
+  	<?php 
+	  /*
+	   * This function clones the search form on the match making page and puts it 
+	   * to the regarding accordion section.
+	   * In addition the original search form is disabled.
+	   */
+	  ?>
+	  <script type="text/javascript">
+	  (function($) {
+	    $(document).ready(function () {
+	  	   $('#custom-search-blocks-form-1').clone(true,true).appendTo('#search-form-duplicate');
+	  	   var elem = $('div.content > form > div > div > input#edit-custom-search-blocks-form-1--2');
+		   elem.prop('disabled','true');
+		   elem.attr('placeholder','<?php print t('disabled here'); ?>');
+		   elem.attr('title','<?php print t('please use the search form down below!'); ?>');
+		   var elem2 = $('div#search-form-duplicate > form > div > div > #edit-custom-search-blocks-form-1--2'); 
+	  	   elem2.css('width','100%');
+	  	   elem2.attr('size','60');
+	  	   $('div#search-form-duplicate > form').css('float','initial');
+	    });
+	  })(jQuery);
+	  </script>
   <?php } ?>
   <?php 
   /*
@@ -523,7 +545,7 @@
 					(function($) {
 						$(document).ready(function () {   
 							$("#join-us-sign-up-button").remove();
-							$("h1.page-title").text(<?php print t("My Actions"); ?>;
+							$("h1.page-title").text('<?php print t("My Actions"); ?>');
 						});
 					})(jQuery);
 			</script>
