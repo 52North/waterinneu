@@ -1,0 +1,793 @@
+<?php
+
+/**
+ * Certificate module.
+ * @file
+ */
+
+/**
+ * Implements hook_node_info().
+ */
+function certificate_node_info() {
+  $items = array(
+    'certificate' => array(
+      'name' => t('Certificate'),
+      'base' => 'certificate',
+      'description' => t('A tokenized certificate template that will be converted to a PDF and displayed to users who complete accredited activities.'),
+      'has_title' => TRUE,
+      'title_label' => t('Title'),
+      'has_body' => TRUE,
+      'body_label' => t('Certificate Body'),
+      'min_word_count' => '0',
+      'help' => '',
+      'locked' => TRUE,
+    ),
+  );
+  return $items;
+}
+
+/**
+ * Certificate node form.
+ */
+function certificate_form(&$node, $form_state) {
+  $form = node_content_form($node, $form_state);
+
+  $form['certificate']['#tree'] = TRUE;
+  $form['certificate']['orientation'] = array(
+    '#type' => 'radios',
+    '#title' => t('Orientation'),
+    '#default_value' => isset($node->certificate['orientation']) ? $node->certificate['orientation'] : '',
+    '#options' => array(
+      'portrait' => t('Portrait'),
+      'landscape' => t('Landscape'),
+    ),
+    '#required' => TRUE,
+    '#description' => t('The orientation of the generated certificate.'),
+  );
+
+  $form['options']['status']['#default_value'] = 0;
+  $form['options']['promote']['#default_value'] = 0;
+
+  return $form;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function certificate_menu() {
+  $items = array();
+
+  $items['admin/structure/certificates'] = array(
+    'title' => 'Certificates',
+    'description' => 'Manage certificates and mappings.',
+    'access arguments' => array('administer certificates'),
+    'file' => 'certificate.admin.inc',
+    'page callback' => 'certificate_templates_list',
+  );
+
+  $items['admin/structure/certificates/templates'] = array(
+    'title' => 'List',
+    'access arguments' => array('administer certificates'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'file' => 'certificate.admin.inc',
+    'page callback' => 'certificate_templates_list',
+    'weight' => -5,
+  );
+
+  $items['admin/structure/certificates/mapping'] = array(
+    'title' => 'Mapping',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('certificate_settings_form'),
+    'access arguments' => array('administer certificates'),
+    'file' => 'certificate.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -4,
+  );
+
+  $items['admin/structure/certificates/mapping/list'] = array(
+    'title' => 'Global',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -5,
+  );
+
+  $items['admin/structure/certificates/mapping/groups'] = array(
+    'title' => 'Field groups',
+    'description' => 'Set up certificate field groups',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('certificate_field_grouping_form'),
+    'access arguments' => array('administer certificates'),
+    'file' => 'certificate.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  $items['admin/structure/certificates/mapping/groups/add'] = array(
+    'title' => 'Add field group',
+    'description' => 'Add a field group',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('certificate_field_grouping_add_form'),
+    'access arguments' => array('administer certificates'),
+    'file' => 'certificate.admin.inc',
+    'type' => MENU_LOCAL_ACTION,
+  );
+
+  /*
+    $items['admin/structure/certificates/mapping/groups/delete/%'] = array(
+    'title' => 'Delete field group',
+    'description' => 'Delete a field group',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('certificate_field_grouping_delete_form'),
+    'page arguments' => array(6),
+    'access arguments' => array('administer certificates'),
+    'file' => 'certificate.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    );
+   */
+
+  $items['admin/structure/certificates/settings'] = array(
+    'title' => 'Settings',
+    'description' => 'Certificate settings.',
+    'access arguments' => array('administer certificates'),
+    'file' => 'certificate.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('certificate_admin_settings_form'),
+  );
+
+  $items['admin/structure/certificates/clear'] = array(
+    'title' => 'Clear',
+    'access arguments' => array('administer certificates'),
+    'file' => 'certificate.admin.inc',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('certificate_admin_clear_form'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 99,
+  );
+
+  $items['admin/structure/certificates/templates/preview/%'] = array(
+    'title' => 'Certificate Preview',
+    'description' => 'Display earned certificate for this node',
+    'page callback' => 'certificate_preview',
+    'page arguments' => array(5),
+    'access arguments' => array('administer certificates'),
+    'file' => 'certificate.pages.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  // Certificate tab on nodes.
+  $items['node/%node/certificate'] = array(
+    'title' => 'Certificate',
+    'description' => 'Display earned certificate for this node',
+    'page callback' => 'certificate_node_certificate',
+    'page arguments' => array(1),
+    'access callback' => 'certificate_can_access_certificate',
+    'access arguments' => array(1),
+    'file' => 'certificate.pages.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  $items['admin/structure/certificates/add'] = array(
+    'title' => 'Create new certificate',
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('node/add/certificate', array('query' => array('destination' => 'admin/structure/certificates'))),
+    'access callback' => 'node_access',
+    'access arguments' => array('create', 'certificate'),
+    'type' => MENU_LOCAL_ACTION,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function certificate_permission() {
+  return array(
+    'administer certificates' => array(
+      'title' => t('administer certificates'),
+      'description' => t('Configure global certificate settings and mappings.'),
+    ),
+    'assign certificates' => array(
+      'title' => t('assign certificates'),
+      'description' => t('Add or remove certificate mappings on certifiable objects.'),
+    ),
+    'view all user certificates' => array(
+      'title' => t('view all user certificates'),
+      'description' => t('View any certificate earned by another user.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme().
+ *
+ * Returns information about every themable function defined by the module.
+ */
+function certificate_theme() {
+  $items = array();
+
+  $items['certificate_certificate'] = array(
+    'variables' => array(
+      'node' => NULL,
+      'account' => NULL,
+      'template' => NULL,
+    ),
+    'file' => 'certificate.pages.inc',
+  );
+
+  $items['certificate_admin_clear_form'] = array(
+    'render element' => 'form',
+    'file' => 'certificate.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Public loader function for the full collection of certificates.
+ *
+ * @todo cache?
+ *
+ * @return
+ *   An array of all certificates, keyed by node (certificate) ID.
+ */
+function certificate_certificate_load_all() {
+  $result = db_query("SELECT *, nid AS cid FROM {node} n WHERE type = :type ORDER BY title", array(':type' => 'certificate'));
+
+  $certificates = array();
+  while ($certificate = $result->fetch(PDO::FETCH_ASSOC)) {
+    $certificates[$certificate['cid']] = $certificate;
+  }
+
+  drupal_alter('certificate_template_options', $certificates);
+
+  return $certificates;
+}
+
+/**
+ * Quick get per-node template settings.
+ */
+function certificate_course_node_template_settings($nid) {
+  $result = db_query("SELECT * FROM {certificate_node} WHERE nid = :nid", array(':nid' => $nid));
+
+  $node_template_settings = array();
+  while ($node_template_setting = $result->fetch(PDO::FETCH_ASSOC)) {
+    $node_template_settings[$node_template_setting['mapper']][$node_template_setting['type']] = $node_template_setting['template'];
+  }
+
+  return $node_template_settings;
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Add certifiable checkbox to a content type.
+ */
+function certificate_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'node_type_form') {
+    $form['certificate'] = array(
+      '#type' => 'fieldset',
+      '#title' => 'Certificate settings',
+      '#collapsed' => TRUE,
+      '#collapsible' => TRUE,
+      '#group' => 'additional_settings',
+    );
+
+    $form['certificate']['certificate_certifiable'] = array(
+      '#type' => 'checkbox',
+      '#title' => 'Award certificate',
+      '#description' => t('Make this content type certificate-enabled. Certificate mapping selections will show on the node form.'),
+      '#default_value' => variable_get("certificate_certifiable_{$form['#node_type']->type}", 0),
+    );
+
+    if ($form['#node_type']->type == 'certificate') {
+      $form['#after_build'][] = 'certificate_warn_course_content';
+    }
+  }
+}
+
+/**
+ * Modify the node type form to add a warning about using a Certificate node as
+ * a course content object.
+ */
+function certificate_warn_course_content(&$form, &$form_state) {
+  if (module_exists('course_content')) {
+    $form['course']['course_content_use']['#description'] = '<span class="error">This is probably not what you want! Do not use a Certificate as a course content object.<br/>Use the "Course certificate" module which provides a "Certificate" course object.</span>';
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_field_attach_form().
+ */
+function certificate_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  if ($entity_type == 'node' && certificate_node_is_certifiable($entity)) {
+    // Add per-node certificate settings.
+    module_load_include('inc', 'certificate', 'certificate.admin');
+    certificate_alter_node_form($form, $form_state);
+  }
+
+  if ($entity_type == 'node' && $entity->type == 'certificate') {
+    if (module_exists('token')) {
+      // Embed token help.
+      $form['certificate_tokens'] = array(
+        '#title' => 'Certificate tokens',
+        '#markup' => theme('token_tree', array('token_types' => array('global', 'node', 'user', 'certificate'))),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function certificate_form_certificate_node_form_alter(&$form, &$form_state) {
+  // No preview - we want users to see it in PDF for accuracy.
+  $form['buttons']['preview'] = NULL;
+}
+
+/**
+ * Submit handler to update mappings.
+ */
+function certificate_update_node_mappings($nid, array $node_settings = NULL) {
+  if (is_array($node_settings)) {
+    db_delete('certificate_node')
+      ->condition('nid', $nid)
+      ->execute();
+    foreach ($node_settings as $mapper => $values) {
+      foreach (array_filter($values) as $match => $cert_nid) {
+        $record = array(
+          'nid' => $nid,
+          'mapper' => $mapper,
+          'type' => $match,
+          'template' => $cert_nid,
+        );
+        drupal_write_record('certificate_node', $record);
+      }
+    }
+  }
+}
+
+/**
+ * Implementation of hook_node_insert().
+ */
+function certificate_node_insert($node) {
+  certificate_node_update($node);
+}
+
+/**
+ * Implementation of hook_node_update().
+ */
+function certificate_node_update($node) {
+  if (certificate_node_is_certifiable($node)) {
+    //** @kludge two update points here */
+    // Update node mappings from a certifiable activity.
+    if (!empty($node->certificate['map'])) {
+      // Update from a node form.
+      certificate_update_node_mappings($node->nid, $node->certificate['map']);
+    }
+    else if (!empty($node->certificate['node_settings'])) {
+      // Update programmatically.
+      certificate_update_node_mappings($node->nid, $node->certificate['node_settings']);
+    }
+  }
+
+  if ($node->type == 'certificate') {
+    // Save the certificate settings.
+    if (isset($node->certificate)) {
+      $record = $node->certificate;
+      $record['nid'] = $node->nid;
+      $keys = db_query("SELECT 1 FROM {certificate_node_settings} WHERE nid = :nid", array(':nid' => $node->nid))->fetchField() ? array('nid') : array();
+      drupal_write_record('certificate_node_settings', $record, $keys);
+    }
+  }
+}
+
+/**
+ * Implements hook_nodeapi().
+ */
+function certificate_node_delete($node) {
+  db_delete('certificate_node')
+    ->condition('nid', $node->nid)
+    ->execute();
+  db_delete('certificate_snapshots')
+    ->condition('nid', $node->nid)
+    ->execute();
+}
+
+/**
+ * Implements hook_node_load().
+ */
+function certificate_node_load($nodes, $types) {
+  foreach ($nodes as $nid => $node) {
+    if (certificate_node_is_certifiable($node)) {
+      $nodes[$nid]->certificate = array('node_settings' => certificate_course_node_template_settings($node->nid));
+    }
+    if ($node->type == 'certificate') {
+      $nodes[$nid]->certificate = db_query("select * from {certificate_node_settings} where nid = :nid", array(':nid' => $node->nid))->fetch(PDO::FETCH_ASSOC);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function certificate_node_view($node, $view_mode, $langcode) {
+  if (certificate_can_access_certificate($node)) {
+    // Add a download certificate link to the node content.
+    $node->content['certificate']['#markup'] = '<span class="certificate-link">' . l(t('Download certificate'), "node/{$node->nid}/certificate") . '</span>';
+  }
+}
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function certificate_field_extra_fields() {
+  $extra = array();
+  foreach (entity_get_info() as $entity_type => $entity_info) {
+    if ($entity_type == 'node') {
+      foreach (array_keys($entity_info['bundles']) as $bundle) {
+        if (variable_get('certificate_certifiable_' . $bundle)) {
+          $extra[$entity_type][$bundle]['form']['certificate'] = array(
+            'label' => t('Certificate'),
+            'description' => t('Certificate module elements'),
+            'weight' => 0,
+          );
+        }
+      }
+    }
+  }
+
+  $extra['node']['certificate']['form']['certificate'] = array(
+    'label' => t('Certificate tokens'),
+    'description' => t('Tokens to insert into the certificate'),
+    'weight' => 0,
+  );
+
+  return $extra;
+}
+
+/**
+ * Check if node is certifiable.
+ *
+ * @return bool
+ */
+function certificate_node_is_certifiable($node) {
+  if (isset($node->type)) {
+    return variable_get("certificate_certifiable_{$node->type}", 0);
+  }
+  return FALSE;
+}
+
+/**
+ * Quick certificates snapshot check.
+ *
+ * @param $account
+ *   The account.
+ * @param $node
+ *   The node.
+ * @param $cid
+ *   The certificate ID to check.
+ *
+ * @return
+ *   A single certificate snapshot in array format, or FALSE if none matched the incoming ID.
+ */
+function certificate_snapshot_load($account, $node, $cid) {
+  // Pull the certificate snapshot.
+  // Note that a pre-7002 snapshot, since we do not know which certificate was snapshotted, will return the existing snapshot.
+  $result = db_query("SELECT * FROM {certificate_snapshots} WHERE uid = :uid AND nid = :nid AND (cid = 0 OR cid = :cid)", array(':uid' => $account->uid, ':nid' => $node->nid, ':cid' => $cid));
+  return $result->fetch(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Inserts a new snapshot, or updates an existing one.
+ *
+ * @param $certificate
+ *   A certificate to be saved. If $certificate['cid'] is set, the certificate will be updated.
+ *   Otherwise, a new certificate will be inserted into the database.
+ * @return
+ *   The saved certificate, with its ID set.
+ *
+ * @see certificate_single()
+ */
+function certificate_snapshot_save($snapshot) {
+  if (isset($snapshot['csid'])) {
+    drupal_write_record('certificate_snapshots', $snapshot, 'csid');
+  }
+  else {
+    drupal_write_record('certificate_snapshots', $snapshot);
+  }
+  return $snapshot;
+}
+
+/**
+ * Remove snapshot.
+ *
+ * @param stdClass $account
+ * @param stdClass $node
+ *
+ * @return bool
+ */
+function certificate_snapshot_delete($account, $node) {
+  $sql = "DELETE FROM {certificate_snapshots} WHERE uid = %d AND nid = %d";
+  // TODO Please review the conversion of this statement to the D7 database API syntax.
+  /* db_query($sql, $account->uid, $node->nid) */
+  db_delete('certificate_snapshots')
+    ->condition('uid', $account->uid)
+    ->condition('nid', $node->nid)
+    ->execute();
+  return TRUE;
+}
+
+/**
+ * Delete all snapshots on a node.
+ *
+ * @param stdClass $node
+ *
+ * @return bool
+ */
+function certificate_snapshot_delete_by_node($node) {
+  $sql = "DELETE FROM {certificate_snapshots} WHERE nid = %d";
+  // TODO Please review the conversion of this statement to the D7 database API syntax.
+  /* db_query($sql, $node->nid) */
+  db_delete('certificate_snapshots')
+    ->condition('nid', $node->nid)
+    ->execute();
+  return TRUE;
+}
+
+/**
+ * Implements hook_action_info().
+ */
+function certificate_action_info() {
+  $info = array();
+
+  $info['certificate_reset_certificates_action'] = array(
+    'type' => 'node',
+    'label' => t('Reset certificate snapshots for this node.'),
+    'configurable' => FALSE,
+    'triggers' => array(
+      'nodeapi_insert',
+      'nodeapi_update',
+    ),
+  );
+
+  return $info;
+}
+
+/**
+ * Expose certificate awarding as an action.
+ */
+function certificate_rules_action_info() {
+  $info = array();
+
+  $info['certificate_rules_award_certificate'] = array(
+    'label' => t('Award certificate'),
+    'configurable' => FALSE,
+    'module' => 'certificate',
+  );
+
+  return $info;
+}
+
+/**
+ * Set the awarded certificate.
+ *
+ * @todo in Drupal 7 and Rules 2, we can use return values. Rules 1 does not
+ * have return values.
+ */
+function certificate_rules_award_certificate($node, $user) {
+  global $_certificate_award;
+  $_certificate_award = TRUE;
+}
+
+/**
+ * Action to delete certificate snapshots on a node.
+ */
+function certificate_reset_certificates_action($object, $context) {
+  $node = $object;
+
+  if ($node->nid && is_numeric($node->nid)) {
+    certificate_snapshot_delete_by_node($node);
+    watchdog('action', 'Reset certificate snapshots for: %node.', array('%node' => $node->title));
+  }
+  else {
+    //print_r("No Node");
+  }
+}
+
+/**
+ * Check if a user can access a certificate for this node.
+ *
+ * This function:
+ *  @return TRUE if certificate tab should show and be accessible.
+ *  @return string (eval to true for Drupal's menu) if certificate tab should
+ *    show but be denied with a message.
+ *  @return FALSE if certificate tab should be hidden.
+ */
+function certificate_can_access_certificate($node, $account = NULL, $flush = FALSE) {
+  static $cert_access = array();
+  $found_true = NULL;
+  $found_false = NULL;
+
+  $admin = user_access('administer certificates');
+  $view_all = user_access('view all user certificates');
+
+  // Use account of a different user if allowed.
+  if (($admin || $view_all) && arg(3) > 0) {
+    $account = user_load(arg(3));
+  }
+
+  if (!$account) {
+    global $user;
+    $account = $user;
+  }
+
+  if (!$account->uid) {
+    return FALSE;
+  }
+
+  if (!certificate_node_is_certifiable($node)) {
+    return FALSE;
+  }
+
+  if ($flush || !isset($cert_access[$node->nid])) {
+    $access = module_invoke_all('access_certificate', $node, $account);
+    $cert_access[$node->nid] = $access;
+  }
+  else {
+    $access = $cert_access[$node->nid];
+  }
+
+  foreach ($access as $item) {
+    if ($item === TRUE) {
+      // Something said the leaner should access the certificate.
+      $found_true = TRUE;
+    }
+    if (is_string($item)) {
+      // Something returned a string, return it (will show the menu, but error)
+      return $item;
+    }
+    if ($item === FALSE) {
+      $found_false = TRUE;
+    }
+  }
+
+  if ($found_true) {
+    if ($found_false) {
+      // Found TRUE and FALSEs.
+      return FALSE;
+    }
+    // Only found TRUE.
+    return TRUE;
+  }
+
+  // All were false.
+  return FALSE;
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function certificate_user_cancel($edit, $account, $method) {
+  $sql = "DELETE FROM {certificate_snapshots} WHERE uid = :uid";
+  db_query($sql, array(':uid' => $account->uid));
+}
+
+/**
+ * Return an array of certificate templates suitable for use in an options
+ * form element.
+ */
+function certificate_get_template_options() {
+  // Get existing templates.
+  $templates = certificate_certificate_load_all();
+
+  foreach ($templates as $key => $template) {
+    $template_options[$key] = $template['title'];
+  }
+
+  return $template_options;
+}
+
+/**
+ * Implements hook_certificate_map_options().
+ *
+ * Provide a list of options to the user that can be mapped to certificate
+ * templates.
+ *
+ * @return Array of mapping sets.
+ */
+function certificate_certificate_map_options() {
+  $options = array();
+
+  if (module_exists('rules')) {
+    $rules = array();
+    foreach (rules_get_components() as $key => $ruleset) {
+      if (array_search('certificate', $ruleset->tags) !== FALSE) {
+        $rules[$key] = $ruleset->label;
+      }
+    }
+    $options['rules'] = array(
+      'title' => t('Rules'),
+      'options' => $rules,
+      'description' => t('When a rule or ruleset ends with "Award certificate", the selected certificate will be awarded.'),
+    );
+  }
+
+  $fieldgroups = variable_get('certificate_field_groups', array());
+  if (!empty($fieldgroups)) {
+
+    $options['profile'] = array(
+      'title' => t('Profiles'),
+      'options' => $fieldgroups,
+      'description' => t("If the user's profile matches a value in a field group, the selected certificate will be awarded."),
+    );
+  }
+
+  $options['manual'] = array(
+    'title' => t('Manual'),
+    'description' => t('Select a single certificate to award to the user.'),
+    'options' => array('manual' => 'Manual'),
+  );
+
+  return $options;
+}
+
+/**
+ * Implements hook_certificate_map().
+ *
+ * Return the key of the mapping to use.
+ *
+ * @return string
+ *   Key of matched mapping.
+ */
+function certificate_certificate_map($node, $user, $map_type, $options) {
+  if ($map_type == 'rules') {
+    foreach ($options as $key) {
+      global $_certificate_award;
+      $_certificate_award = FALSE;
+      rules_invoke_component($key, $node, $user);
+      if ($_certificate_award) {
+        $valid[] = $key;
+      }
+    }
+    return $valid;
+  }
+
+  if ($map_type == 'profile') {
+    $profiles = module_exists('profile2') ? profile2_load_by_user($user) : array();
+    $profiles['user'] = entity_load_single('user', $user->uid);
+    $groupings = variable_get('certificate_field_grouping', array());
+    foreach ($options as $key) {
+      if (!empty($groupings[$key])) {
+        foreach ($groupings[$key] as $field_name => $accepted_values) {
+          foreach ($profiles as $profile) {
+            if (!empty($profile->{$field_name}[LANGUAGE_NONE])) {
+              foreach ($profile->{$field_name}[LANGUAGE_NONE] as $item) {
+                if (in_array($item['value'], $accepted_values)) {
+                  $valid[] = $key;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return $valid;
+  }
+
+  if ($map_type == 'manual') {
+    if (isset($options[0]) && $options[0] == 'manual') {
+      return 'manual';
+    }
+  }
+}
+
+/**
+ * Implements hook_coder_ignore().
+ */
+function certificate_coder_ignore() {
+  return array(
+    'path' => drupal_get_path('module', 'certificate'),
+    'line prefix' => drupal_get_path('module', 'certificate'),
+  );
+}

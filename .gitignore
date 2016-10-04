@@ -1,6 +1,10 @@
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings*.php
 
+# Ignore paths that contain user-generated content.
+sites/*/files
+sites/*/private
+
 # Ignore apache specific files
 **/.htaccess
 
@@ -10,6 +14,7 @@ config-backup/*
 # waterinneu inventory import exclusions
 sites/all/modules/n52_migrate_waterinneu/csv_files/
 sites/all/modules/n52_migrate_waterinneu/csv_files/tmp
+sites/all/modules/translation
 
 # ignore generated files
 sites/default/files/*

@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * Implements hook_course_handlers().
+ */
+function course_quiz_course_handlers() {
+  return array(
+    'object' => array(
+      'quiz' => array(
+        'name' => t('Quiz'),
+        'class' => 'CourseObjectQuiz',
+        'description' => t('A Quiz course object.'),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_quiz_finished().
+ *
+ * Update the fulfillment record when a user finishes a quiz.
+ */
+function course_quiz_quiz_finished($quiz, $score, $session_data) {
+  $uid = db_query('SELECT uid FROM {quiz_node_results} WHERE result_id = :result_id', array(':result_id' => $session_data['result_id']))->fetchField();
+
+  if ($uid) {
+    $account = user_load($uid);
+
+    if ($courseObject = course_get_course_object('course_quiz', 'quiz', $quiz->nid, $account)) {
+      $courseObject->grade($account, $session_data['result_id']);
+    }
+  }
+}
+
+/**
+ * Implements hook_quiz_scored().
+ *
+ * Update the fulfillment record when scored manually.
+ */
+function course_quiz_quiz_scored($quiz, $score, $rid) {
+  if ($score['is_evaluated']) {
+    $session_data = array(
+      'result_id' => $rid,
+    );
+    course_quiz_quiz_finished($quiz, $score, $session_data);
+  }
+}
+
+/**
+ * What major version of Quiz are we running?
+ *
+ * @return int
+ *  4 or 5.
+ */
+function course_quiz_quiz_version() {
+   $schema_version = db_query("SELECT schema_version FROM {system} WHERE name = 'quiz'")->fetchField();
+   return ($schema_version >= 7500) ? 5 : 4;
+}

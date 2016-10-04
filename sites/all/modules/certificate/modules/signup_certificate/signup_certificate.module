@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_access_certificate().
+ */
+function signup_certificate_access_certificate($node, $user) {
+  if (in_array($node->type, signup_content_types())) {
+    $sql = "SELECT 1 FROM {signup_log} WHERE nid = :nid AND uid = :uid AND attended = 1";
+    $attended = db_query($sql, array(':nid' => $node->nid, ':uid' => $user->uid))->fetchField();
+    return (bool) $attended;
+  }
+}

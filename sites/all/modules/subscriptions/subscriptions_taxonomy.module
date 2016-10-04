@@ -108,13 +108,15 @@ function _subscriptions_taxonomy_node_options($account, $node) {
             $term = $item['taxonomy_term'];
           }
           elseif (!empty($item['tid'])) {
-            // The field is hidden for this content type.
             $term = taxonomy_term_load($item['tid']);
-            if ($user->uid == 1) {
-              $unavailable = ' ' . SUBSCRIPTIONS_UNAVAILABLE;
-            }
-            else {
-              $hidden = array('#access' => FALSE);
+            if ($term->vid != variable_get('forum_nav_vocabulary', 0)) {
+              // The field is hidden for this content type.
+              if ($user->uid == 1) {
+                $unavailable = ' ' . SUBSCRIPTIONS_UNAVAILABLE;
+              }
+              else {
+                $hidden = array('#access' => FALSE);
+              }
             }
           }
           if ($term) {

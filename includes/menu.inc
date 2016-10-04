@@ -783,17 +783,15 @@ function _menu_translate(&$router_item, $map, $to_arg = FALSE) {
     $tab_parent_map = explode('/', $router_item['tab_parent']);
   }
   for ($i = 0; $i < $router_item['number_parts']; $i++) {
-  	if (isset($path_map[$i])) {
-      if ($link_map[$i] == '%') {
-        $link_map[$i] = $path_map[$i];
-      }
-      if (isset($tab_root_map[$i]) && $tab_root_map[$i] == '%') {
-        $tab_root_map[$i] = $path_map[$i];
-      }
-      if (isset($tab_parent_map[$i]) && $tab_parent_map[$i] == '%') {
-        $tab_parent_map[$i] = $path_map[$i];
-      }
-  	}
+    if ($link_map[$i] == '%') {
+      $link_map[$i] = $path_map[$i];
+    }
+    if (isset($tab_root_map[$i]) && $tab_root_map[$i] == '%') {
+      $tab_root_map[$i] = $path_map[$i];
+    }
+    if (isset($tab_parent_map[$i]) && $tab_parent_map[$i] == '%') {
+      $tab_parent_map[$i] = $path_map[$i];
+    }
   }
   $router_item['href'] = implode('/', $link_map);
   $router_item['tab_root_href'] = implode('/', $tab_root_map);
@@ -2421,7 +2419,7 @@ function menu_set_active_trail($new_trail = NULL) {
           // argument placeholders (%). Such links are not contained in regular
           // menu trees, and have only been loaded for the additional
           // translation that happens here, so as to be able to display them in
-          // the breadcumb for the current page.
+          // the breadcrumb for the current page.
           // @see _menu_tree_check_access()
           // @see _menu_link_translate()
           if (strpos($link['href'], '%') !== FALSE) {

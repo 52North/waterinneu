@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * Implements hook_course_handlers().
+ */
+function course_webform_course_handlers() {
+  return array(
+    'object' => array(
+      'webform' => array(
+        'name' => t('Webform'),
+        'class' => 'CourseObjectWebform',
+        'description' => t('A webform to be used in a course workflow.'),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_webform_submission_insert().
+ */
+function course_webform_webform_submission_insert($node, $submission) {
+  global $user;
+
+  if (!$submission->is_draft) {
+    // Find the course object associated with this webform.
+    if ($courseObject = course_get_course_object('course_webform', 'webform', arg(1), $user)) {
+      $fulfillment = $courseObject->getFulfillment();
+      $sids = (array) $fulfillment->getOption('sids');
+      $sids[] = $submission->sid;
+      $fulfillment->setOption('sids', $sids)->setComplete()->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_webform_submission_update().
+ */
+function course_webform_webform_submission_update($node, $submission) {
+  course_webform_webform_submission_insert($node, $submission);
+}
+
+/**
+ * Settings form callback.
+ */
+function course_webform_settings() {
+  $form = array();
+
+  return system_settings_form($form);
+}

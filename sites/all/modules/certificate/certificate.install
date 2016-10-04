@@ -1,0 +1,228 @@
+<?php
+
+/**
+ * Install the Certificate module.
+ * @file
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function certificate_schema() {
+  $schema['certificate_node_settings'] = array(
+    'description' => 'Stores per-node template settings.',
+    'fields' => array(
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'orientation' => array(
+        'type' => 'varchar',
+        'length' => 255,
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+
+  $schema['certificate_node'] = array(
+    'description' => 'Stores per-node certificate settings.',
+    'fields' => array(
+      'cnid' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'description' => 'Unique identifier for the per-node / per-type template setting.',
+      ),
+      'nid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'default' => 0,
+        'description' => 'Course node ID.',
+      ),
+      'mapper' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'The mapper to use.',
+      ),
+      'type' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'The value to match on.',
+      ),
+      'template' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => FALSE,
+        'default' => 0,
+        'description' => 'The certificate node ID to deliver on a match.',
+      ),
+    ),
+    'primary key' => array('cnid'),
+  );
+
+  $schema['certificate_snapshots'] = array(
+    'description' => 'Stores snapshots of users certificate for a particular course.',
+    'fields' => array(
+      'csid' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'description' => 'Unique identifier for the per-user / per-course certificate snapshot.',
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'default' => 0,
+        'description' => '{user}.uid of the u.',
+      ),
+      'nid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'default' => 0,
+        'description' => '{node}.nid of the node.',
+      ),
+      'cid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'default' => 0,
+        'description' => 'Template ID used for generation.',
+      ),
+      'date' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'unsigned' => TRUE,
+        'description' => 'Date the certificate was generated.',
+      ),
+      'snapshot' => array(
+        'description' => 'The generated content of the {certificate_snapshots}.',
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('csid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ *
+ * This hook is called the first time the module is installed. Unless it is
+ * explicitly uninstalled, disabling and re-enabling will not trigger this hook
+ * a second time.
+ */
+function certificate_install() {
+  // Set certificate variables.
+  variable_set('node_options_certificate', array(0 => 'revision'));
+  variable_set('comment_certificate', 0);
+
+  node_types_rebuild();
+  $types = node_type_get_types();
+  node_add_body_field($types['certificate'], 'Body');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function certificate_uninstall() {
+  cache_clear_all('certificate:*', 'cache', TRUE);
+
+  db_delete('variable')
+    ->condition('name', "certificate_%", "LIKE")
+    ->execute();
+
+  variable_del('node_options_certificate');
+  variable_del('comment_certificate');
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function certificate_requirements($phase) {
+  $requirements = array();
+
+  if ($phase == 'runtime') {
+    if (variable_get('print_pdf_pdf_tool', '') == '') {
+      $requirements['certificate_pdf_tool'] = array(
+        'title' => t('Certificate PDF generation tool must be selected'),
+        'description' => t('Certificates will not display before selecting a PDF generation tool in !link.', array('!link' => l('Printer, e-mail and PDF versions', 'admin/config/user-interface/print/pdf'))),
+        'severity' => REQUIREMENT_ERROR,
+      );
+    }
+  }
+
+  return $requirements;
+}
+
+/**
+ * Add mapper column for more than one mapping per node.
+ */
+function certificate_update_6101() {
+  $ret = array();
+
+  db_add_field('certificate_node', 'mapper', array(
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'description' => 'The mapper to use.',
+    'default' => '',
+  ));
+
+  db_query("UPDATE {certificate_node} SET mapper = 'content_profile'");
+
+  // hook_update_N() no longer returns a $ret array. Instead, return
+  // nothing or a translated string indicating the update ran successfully.
+  // See http://drupal.org/node/224333#update_sql.
+  return t('TODO Add a descriptive string here to show in the UI.') /* $ret */;
+}
+
+/**
+ * Convert field groups.
+ */
+function certificate_update_6102() {
+  $fieldgroups = variable_get('certificate_field_groups', array());
+  $new_fieldgroups = array();
+  foreach (array_keys($fieldgroups) as $title) {
+    $new_fieldgroups[str_replace(' ', '_', $title)] = $title;
+  }
+
+  variable_set('certificate_field_groups', $new_fieldgroups);
+}
+
+/**
+ * Change template field to allow signed integers, to allow for global and no
+ * certificate map values.
+ */
+function certificate_update_7001() {
+  db_change_field('certificate_node', 'template', 'template', array(
+    'type' => 'int',
+    'not null' => TRUE,
+    'unsigned' => FALSE,
+    'default' => 0,
+    'description' => 'The certificate node ID to deliver on a match.',
+  ));
+  return t('Changed template field to allow signed integers.');
+}
+
+/**
+ * Add a cid column to the snapshots table.
+ */
+function certificate_update_7002() {
+  db_add_field('certificate_snapshots', 'cid', array(
+    'type' => 'int',
+    'not null' => TRUE,
+    'unsigned' => TRUE,
+    'default' => 0,
+    'description' => 'Template ID used for generation.',
+  ));
+}

@@ -2,13 +2,10 @@ name = Harmony - Default Permissions
 description = Provides a common set of permissions for use as an example for your own sites permissions for Harmony Core.
 core = 7.x
 package = Harmony
-version = 7.x-1.0-alpha9
-project = harmony_core
 dependencies[] = features
 dependencies[] = filter
 dependencies[] = flag
 dependencies[] = harmony_core
-datestamp = 1455300241
 features[features_api][] = api:2
 features[user_permission][] = access harmony_post show replies
 features[user_permission][] = administer harmony forum content
@@ -44,3 +41,10 @@ features[user_permission][] = view own unpublished harmony_posts
 features[user_permission][] = view own unpublished harmony_threads
 features[user_permission][] = view unpublished harmony_posts
 features[user_permission][] = view unpublished harmony_threads
+
+; Information added by Drupal.org packaging script on 2016-09-06
+version = "7.x-1.0-alpha10"
+core = "7.x"
+project = "harmony_core"
+datestamp = "1473156244"
+
