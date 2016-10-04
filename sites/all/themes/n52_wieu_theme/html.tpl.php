@@ -359,12 +359,13 @@
    * Add destination to login link.
    */
   ?>
-  <?php if (!user_is_logged_in() && !$is_front) {?>
+  <?php if (!user_is_logged_in()) {?>
   	<script type="text/javascript">
     (function($) {
 	  $(document).ready(function () {
 		  var elem = $('#block-menu-menu-top-links > div > ul > li.first > a');
-		  var href = elem.attr('href') + '?destination=<?php print n52_get_destination_alias() ?>';
+		  //var href = elem.attr('href') + '?destination=<?php print n52_get_destination_alias() ?>';
+		  var href = elem.attr('href') + '?destination=join-us';
 		  elem.attr('href', href);
 	  });
   	})(jQuery);

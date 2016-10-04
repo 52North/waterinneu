@@ -57,7 +57,7 @@ function _n52_default_nodes_landing_page_action_buttons() {
 					</a>
 					<a class="col-lg-3 col-sm-6 col-xs-12" href="join-us">
 						<div id="landing-page-button-join-us" class="landing-page-button alert alert-info"
-				data-content="<div class=&quot;popover-light&quot;>Already member? <a href=&quot;user/login&quot;>Login <span class=&quot;glyphicon glyphicon-log-in&quot;></span></a></div>" 
+				data-content="<div class=&quot;popover-light&quot;>Already member? <a href=&quot;en/user/login?destination=join-us&quot;>Login <span class=&quot;glyphicon glyphicon-log-in&quot;></span></a></div>" 
 				data-container="body"
 				data-toggle="popover"
 				data-placement="bottom"
