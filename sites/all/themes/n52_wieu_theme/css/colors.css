@@ -232,4 +232,12 @@ div.field-group-div div.row:not(:last-child) {
 #block-menu-menu-top-links > div.content > ul.menu > li.leaf + li {
   border-color: #cecece;
 }
- 
+
+#site-slogan {
+  color: rgb(41, 100, 140);
+  background: rgba(255,255,255,0.25);
+}
+
+#site-name a {
+	color: #2b4c6e;
+}

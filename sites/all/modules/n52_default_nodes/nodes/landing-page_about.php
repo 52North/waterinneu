@@ -50,49 +50,59 @@ function _n52_default_nodes_landing_page_about() {
 					implementation of the Water Framework Directive.
 				</p>
 				<h3>How to use the platform</h3>
+				<h4>Products & Services</h4>
 				<ul>
 					<li>
-						<strong>Products & Services</strong>:<br />
-						The platform provides detailed information on 
-						a select number of screened products, together with 
-						supporting material and case studies, and relevant 
-						contacts for further communication.<br />
-						In addition, a range of services are available that seek 
-						to enhance communication between organizations offering 
-						products which are relevant to river basin management, 
-						the potential users of these products, and service providers
+						The platform provides detailed information on a selected 
+						number of screened products, together with supporting 
+						material and case studies, and relevant contacts for 
+						further communication. 
+					</li>
+					<li>
+						<strong>Matchmaking</strong>: a range of services are available
+						that seek to enhance communication between organizations 
+						offering products which are relevant to river basin management, 
+						the potential users of these products, and service providers 
 						which can support implementation.
 					</li>
 					<li>
-						<strong>Search</strong>:<br/>
-						The platform provides search facilities for finding the right
-						solution for your problem.
+						<strong>Organisations</strong>: the river basin management supply
+						chain, including product developers, consultancies and end users.
 					</li>
 					<li>
-						<strong>Take a course</strong>:<br />
-						The integrated participative e-learning 
-						function is available for specific products to enhance 
-						rapid uptake and delivery.
-					</li>
-					<li>
-						<strong>Join us</strong>:<br/>
-						Become part of the WaterInnEU network to:
-						<ul>
-							<li>Add your own products to the platform.</li>
-							<li>Join discussions about the products and certain related topics.</li>
-							<li>Request or offer support for implementing products and the Water Framework Directive (WFD).</li>
-							<li>Receive alerts when new products, events, support requests become available.</li>
-							<li>Take course for a better understanding of the products.</li>
-						</ul>
-					</li>
-					<li>
-						<strong>Success stories</strong>:<br />
-						Provide examples of successful matchmaking between our product
-						owners and new commercialisation partners for demonstrating and
-						validating the market potential of these products and services 
-						to the wider River Basin Management Community.
+						<strong>Success stories</strong>: examples of how the platform 
+						and its matchmaking services has been used to successfully find 
+						and implement products for more effective river basin management.
 					</li>
 				</ul>
+				<h4>Take a course</h4>
+				Integrated participative e-learning is available for specific tools
+				to enhance rapid uptake and delivery.
+				<h4>Join us</h4>
+				There are a wide range of activities open to the WaterInnEU community. 
+				<ul>
+					<li>
+						You can express interest in a product or add your own experiences;
+					</li>
+					<li>
+						add a new product or organisation;
+					</li>
+					<li>
+						make a request for implementation support or respond to a request;
+					</li>
+					<li>
+						contact an expert;
+					</li>
+					<li>
+						start or join a discussion and sign up to alerts.
+					</li>
+				<ul>
+				<p>
+					<strong>
+					<a href="join-us">Join us now</a>! You can make the difference in 
+					the uptake of better tools for more effective river basin management.
+					</strong>
+				</p>
 				<h3>Backstage - Who is driving WaterInnEU</h3>
 				<table id="meta-partner">
     				<tbody>

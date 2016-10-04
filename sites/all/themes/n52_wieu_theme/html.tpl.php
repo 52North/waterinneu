@@ -512,6 +512,20 @@
 					})(jQuery);
 			</script>
 	<?php } ?>
+	<?php
+	/*
+   * Disable login buttont on join us page when logged in
+   */
+  ?>
+  <?php if (user_is_logged_in() && n52_urlEndsWith(request_path(), 'join-us')) {?>
+    	<script type="text/javascript">
+					(function($) {
+						$(document).ready(function () {   
+							$("#join-us-sign-up-button").remove();
+						});
+					})(jQuery);
+			</script>
+	<?php } ?>
 	<?php 
   /*
    * show prototype banner when not beeing admin

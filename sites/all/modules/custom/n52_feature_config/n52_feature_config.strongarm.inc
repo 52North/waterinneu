@@ -525,21 +525,21 @@ We should be back shortly. Thank you for your patience. In the meantime, you can
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_mail';
-  $strongarm->value = 'e.h.juerrens@52north.org';
+  $strongarm->value = 'wieu-admins@52north.org';
   $export['site_mail'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_name';
-  $strongarm->value = 'Marketplace Prototype';
+  $strongarm->value = 'Marketplace';
   $export['site_name'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_slogan';
-  $strongarm->value = 'Water Innovation in Europe';
+  $strongarm->value = 'Access to EU innovation for river basin management';
   $export['site_slogan'] = $strongarm;
 
   $strongarm = new stdClass();

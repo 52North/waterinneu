@@ -38,21 +38,21 @@ function _n52_default_nodes_landing_page_action_buttons() {
 						<div id="landing-page-button-products-and-services" class="landing-page-button alert alert-info">
 							<div class="icon"><span class="glyphicon glyphicon-tasks"></span></div>
 							<div class="caption">products&nbsp;&amp;&nbsp;services</div>
-							<div class="explanation">Detailed information on a select number of screened products and offered services for matchmaking.</div>
+							<div class="explanation">Pre-screened tools for river basin management and matchmaking services between users and the supply chain</div>
 						</div>
 					</a>
 					<a class="col-lg-3 col-sm-6 col-xs-12" href="search/advanced">
 						<div id="landing-page-button-search" class="landing-page-button alert alert-info">
 							<div class="icon"><span class="glyphicon glyphicon-search"></span></div>
 							<div class="caption">search</div>
-							<div class="explanation">Use the advanced search tools to find the product or organisation you are looking for.</div>
+							<div class="explanation">Find products, supply chain organisations, events, offers and requests for support</div>
 						</div>
 					</a>
 					<a class="col-lg-3 col-sm-6 col-xs-12" href="e-learning">
 						<div id="landing-page-button-take-course" class="landing-page-button alert alert-info">
 							<div class="icon"><span class="glyphicon glyphicon-plus-sign"></span></div>
-							<div class="caption">take&nbsp;course</div>
-							<div class="explanation">Get help in implementing specific products.</div>
+							<div class="caption">take&nbsp;a&nbsp;course</div>
+							<div class="explanation">E-learning to help you implement specific products</div>
 						</div>
 					</a>
 					<a class="col-lg-3 col-sm-6 col-xs-12" href="join-us">
@@ -67,7 +67,7 @@ function _n52_default_nodes_landing_page_action_buttons() {
 				>
 							<div class="icon"><span class="glyphicon glyphicon-log-in"></span></div>
 							<div class="caption">join&nbsp;us</div>
-							<div class="explanation">Become part of the community and add your own products or service requests.</div>
+							<div class="explanation">To communicate with other users: add your product or organisation, get support for commercialisation or implementation, and join the discussions!</div>
 						</div>
 					</a>
 				</div>

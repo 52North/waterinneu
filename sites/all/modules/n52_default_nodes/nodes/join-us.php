@@ -29,7 +29,7 @@
 function _n52_default_nodes_join_us() {
 	return array (
 		'title' =>  array (
-				'en' => 'Join Us',
+				'en' => 'Join Us / My Actions',
 		),
 		'alias' => 'join-us',
 		'text' => array ('en' => '
@@ -37,37 +37,54 @@ function _n52_default_nodes_join_us() {
 				<img tile="Join Us! - handshake - male and femail" src="sites/default/files/pictures/join-us_shake-hands.png" />
 			</div>
 			<ul id="join-us-actions-list">
-				<li id="explore-express-interest">
-					<span class="glyphicon glyphicon-thumbs-up"></span><strong>Express interest</strong>:
-					<div>Express interest in a product and get in touch with the product owner.</div>
+				<!--
+				<li id="join-us-express-interest">
+					<span class="glyphicon glyphicon-thumbs-up"></span>
+					<strong>Express interest</strong>:
+					<div>
+						Express interest in a product and get 
+						in touch with the product owner.
+					</div>
 				</li>
-  			<li id="explore-search">
-					<span class="glyphicon glyphicon-search"></span><strong>Search</strong>:
-					<div>Use the advanced search tools to find the product or organisation you are looking for.</div>
+				-->
+				<li id="join-us-add-content">
+					<a href="node/add">
+						<span class="glyphicon glyphicon-plus"></span>
+						<strong>Contribute</strong>
+					</a>:
+					<div>
+						Upload your own product or event, or add your organisation to 
+						our community (screened by our in-house team before going live).
+					</div>
 				</li>
-				<li id="explore-service-requests">
-					<span class="glyphicon glyphicon-tasks"></span><strong>Put in a service request</strong>:
-					<div>Find an organisation or partner that can help you implement a product.</div>
+  			<li id="join-us-matchmaking-services">
+					<a href="matchmaking">
+						<span class="glyphicon glyphicon-tasks"></span>
+						<strong>Use our matchmaking service</strong>
+					</a>:
+					<div>
+						Find an organisation or partner that can help you implement 
+						a product, or communicate your own service offering.
+					</div>
 				</li>
-				<li id="explore-ask-experts">
-					<span class="glyphicon glyphicon-question-sign"></span><strong>Ask the expert</strong>:
-					<div>Contact us directly if you cannot find what you need or for help in bringing your product to market.</div>
+				<li id="join-us-alerts">
+					<a href="matchmaking#alerts">
+						<span class="glyphicon glyphicon-exclamation-sign"></span>
+						<strong>Sign up for alerts</strong>
+					</a>:
+					<div>
+						Receive information on new or updated products, 
+						organisations, services requests, service offers or events.
+					</div>
 				</li>
-				<li id="explore-e-learning">
-					<span class="glyphicon glyphicon-plus-sign"></span><strong>Take an E-learning module</strong>:
-					<div>Get help in implementing specific products.</div>
-				</li>
-				<li id="explore-alerts">
-					<span class="glyphicon glyphicon-exclamation-sign"></span><strong>Sign up for alerts</strong>:
-					<div>Receive information on new or updated products, organisations, services requests, service offers or events.</div>
-				</li>
-				<li id="explore-forum">
-					<span class="glyphicon glyphicon-comment"></span><strong>Use the open forum</strong>:
-					<div>Start or join a discussion on a topic of interest.</div>
-				</li>
-				<li id="explore-add-content">
-					<span class="glyphicon glyphicon-plus"></span><strong>Contribute</strong>:
-					<div>Upload your own product or event, or add your organisation to our community (screened by our in-house team before going live).</div>
+				<li id="join-us-forum">
+					<a href="forum">
+						<span class="glyphicon glyphicon-comment"></span>
+						<strong>Use the open forum</strong>
+					</a>:
+					<div>
+						Start or join a discussion on a topic of interest.
+					</div>
 				</li>
 			</ul>
 			<div id="join-us-sign-up-button">
