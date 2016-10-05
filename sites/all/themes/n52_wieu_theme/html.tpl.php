@@ -357,7 +357,8 @@
 	  /*
 	   * This function clones the search form on the match making page and puts it 
 	   * to the regarding accordion section.
-	   * In addition the original search form is disabled.
+	   * In addition the original search form is disabled and
+	   * the cursor is moved to the simple search field "edit-custom-search-blocks-form-1--2"
 	   */
 	  ?>
 	  <script type="text/javascript">
@@ -372,6 +373,7 @@
 	  	   elem2.css('width','100%');
 	  	   elem2.attr('size','60');
 	  	   $('div#search-form-duplicate > form').css('float','initial');
+	  	   $('#search-form-duplicate > form > div > div > input').focus();
 	    });
 	  })(jQuery);
 	  </script>
