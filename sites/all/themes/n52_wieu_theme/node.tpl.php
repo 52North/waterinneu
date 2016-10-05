@@ -69,7 +69,7 @@
     ?>
   </div>
     
-    <?php if (($tags = render($content['field_tags'])) || ($links = render($content['links']))): ?>
+    <?php if (($tags = render($content['field_tags'])) || (($links = render($content['links'])) && strpos($links, '<ul class="links inline"><li class="comment-add first last"></li>\n</ul>') == -1  ) ): ?>
     <footer>
     <?php print render($content['field_tags']); ?>
     <?php print render($content['links']); ?>

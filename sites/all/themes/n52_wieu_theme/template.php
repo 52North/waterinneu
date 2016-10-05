@@ -38,54 +38,6 @@ function n52_wieu_theme_preprocess_page(&$vars) {
 	_n52_remove_search_form_from_content($vars);
 }
 
-function _n52_remove_search_form_from_content(&$vars) {
-	if (isset($vars['page']['content']['system_main']['search_form'])) {
-		unset($vars['page']['content']['system_main']['search_form']);
-	}
-}
-
-function _n52_fix_pre_header(&$vars) {
-	/**
-	 * insert variables into page template.
-	 */
-	if($vars['page']['sidebar_first'] && $vars['page']['sidebar_second']) {
-		$vars['sidebar_grid_class'] = 'col-md-2';
-		$vars['main_grid_class'] = 'col-md-7';
-	} elseif ($vars['page']['sidebar_first'] || $vars['page']['sidebar_second']) {
-		$vars['sidebar_grid_class'] = 'col-md-3';
-		$vars['main_grid_class'] = 'col-md-9';
-	} else {
-		$vars['main_grid_class'] = 'col-md-12';
-	}
-	
-	if($vars['page']['header_top_left'] && $vars['page']['header_top_right']) {
-		$vars['header_top_left_grid_class'] = 'col-md-8';
-		$vars['header_top_right_grid_class'] = 'col-md-4';
-	} elseif ($vars['page']['header_top_right'] || $vars['page']['header_top_left']) {
-		$vars['header_top_left_grid_class'] = 'col-md-12';
-		$vars['header_top_right_grid_class'] = 'col-md-12';
-	}
-	
-	/**
-	 * Add Javascript
-	 */
-	if($vars['page']['pre_header_first'] || $vars['page']['pre_header_second'] || $vars['page']['pre_header_third']) {
-		drupal_add_js('
-	function hidePreHeader(){
-	jQuery(".toggle-control").html("<a href=\"javascript:showPreHeader()\"><span class=\"glyphicon glyphicon-chevron-down\"></span></a>");
-	jQuery("#pre-header-inside").slideUp("fast");
-	}
-	
-	function showPreHeader() {
-	jQuery(".toggle-control").html("<a href=\"javascript:hidePreHeader()\"><span class=\"glyphicon glyphicon-chevron-up\"></span></a>");
-	jQuery("#pre-header-inside").slideDown("fast");
-	}
-	',
-				array('type' => 'inline', 'scope' => 'footer', 'weight' => 3));
-	}
-	//EOF:Javascript
-}
-
 /**
  * Implements hook_form_element($variables)
  * 
@@ -223,22 +175,96 @@ function n52_wieu_theme_field($variables) {
 	return $output;
 }
 
-/**
- * Renders HTML element for the last updated value using the given parameters. 
- * The used timestamp format is 'c'.
+/*
+ * The next two functions re-direct the user after registration to a welcome
+ * page with more details what will happen next.
+ */
+function n52_wieu_theme_form_alter(&$form, &$form_state, $form_id) {
+	$function = "_n52_wieu_theme_{$form_id}_submit";
+	if (function_exists($function)) {
+		switch($form_id) {
+			case 'user_register_form' :
+				$form['#submit'][] = $function;
+				break;
+		}
+	}
+}
+
+function _n52_wieu_theme_user_register_form_submit($form, &$form_state) {
+	$form_state['redirect'] = 'thank-you-registering';
+}
+
+
+/* ****************************************************************************
  * 
+ *                   Helper functions
+ * 
+ ******************************************************************************/
+
+function _n52_remove_search_form_from_content(&$vars) {
+	if (isset($vars['page']['content']['system_main']['search_form'])) {
+		unset($vars['page']['content']['system_main']['search_form']);
+	}
+}
+
+function _n52_fix_pre_header(&$vars) {
+	/**
+	 * insert variables into page template.
+	 */
+	if($vars['page']['sidebar_first'] && $vars['page']['sidebar_second']) {
+		$vars['sidebar_grid_class'] = 'col-md-2';
+		$vars['main_grid_class'] = 'col-md-7';
+	} elseif ($vars['page']['sidebar_first'] || $vars['page']['sidebar_second']) {
+		$vars['sidebar_grid_class'] = 'col-md-3';
+		$vars['main_grid_class'] = 'col-md-9';
+	} else {
+		$vars['main_grid_class'] = 'col-md-12';
+	}
+
+	if($vars['page']['header_top_left'] && $vars['page']['header_top_right']) {
+		$vars['header_top_left_grid_class'] = 'col-md-8';
+		$vars['header_top_right_grid_class'] = 'col-md-4';
+	} elseif ($vars['page']['header_top_right'] || $vars['page']['header_top_left']) {
+		$vars['header_top_left_grid_class'] = 'col-md-12';
+		$vars['header_top_right_grid_class'] = 'col-md-12';
+	}
+
+	/**
+	 * Add Javascript
+	 */
+	if($vars['page']['pre_header_first'] || $vars['page']['pre_header_second'] || $vars['page']['pre_header_third']) {
+		drupal_add_js('
+	function hidePreHeader(){
+	jQuery(".toggle-control").html("<a href=\"javascript:showPreHeader()\"><span class=\"glyphicon glyphicon-chevron-down\"></span></a>");
+	jQuery("#pre-header-inside").slideUp("fast");
+	}
+
+	function showPreHeader() {
+	jQuery(".toggle-control").html("<a href=\"javascript:hidePreHeader()\"><span class=\"glyphicon glyphicon-chevron-up\"></span></a>");
+	jQuery("#pre-header-inside").slideDown("fast");
+	}
+	',
+				array('type' => 'inline', 'scope' => 'footer', 'weight' => 3));
+	}
+	//EOF:Javascript
+} 
+
+/**
+ * Renders HTML element for the last updated value using the given parameters.
+ * The used timestamp format is 'c'.
+ *
  * @param unknown $changed the information when the node was last changed
  * @param unknown $user_name the name of the user that did the last change
  */
 function n52_waterinneu_theme_node_last_updated($changed, $user_name) {
 	$output = '<span property="dc:date" content="' .
-		format_date($changed,'custom','c') .
-		'" datatype="xsd:dateTime">' .
-		t('Last updated by ') .
-		$user_name .
-		t(' on ') .
-		format_date($changed) .
-		'</span>';
+			format_date($changed,'custom','c') .
+			'" datatype="xsd:dateTime">' .
+			t('Last updated by ') .
+			$user_name .
+			t(' on ') .
+			format_date($changed) .
+			'</span>';
 	return $output;
 }
 

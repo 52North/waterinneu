@@ -39,6 +39,7 @@ include_once 'nodes/landing-page_upcoming-events.php';
 include_once 'nodes/landing-page_action-buttons.php';
 include_once 'nodes/landing-page_intro.php';
 include_once 'nodes/join-us.php';
+include_once 'nodes/thank-you-for-registering.php';
 
 function n52_default_nodes_enable() {
 	global $user;
@@ -64,6 +65,7 @@ function n52_default_nodes_enable() {
 		_n52_default_nodes_landing_page_action_buttons(),
 	  _n52_default_nodes_landing_page_intro(),
 		_n52_default_nodes_join_us(),
+		_n52_default_nodes_thank_you_for_registering(),
 	);
 	
 	foreach ($nodes as $node_content) {

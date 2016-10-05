@@ -510,7 +510,9 @@ ul.service-offerings-list > li,
 .view-frontpage-latest-posts > div > div > ul > li,
 .view-id-comments_recent > div > div > ul > li,
 .view-frontpage-latest-content > div > div > ul > li,
-ul#join-us-actions-list >li {
+ul#join-us-actions-list > li,
+ul#thank-you-actions-list > li,
+ul#thank-you-first-actions-list > li {
 	list-style-type: none;
 }
 
@@ -740,4 +742,19 @@ a.more-link {
   padding: 10px;
   border: solid 1px #cecece;
   margin-top: 120px;
+}
+
+
+#thank-you-image > img {
+	max-width: 256px;
+	min-width: 256px;
+	width: 256px;
+	float: right;
+	box-shadow:4px 4px 10px rgba(0,0,0,0.8);
+}
+
+ul#thank-you-actions-list > li > span,
+ul#thank-you-first-actions-list > li > span {
+	padding-right: 10px;
+  margin-left: -30px;
 }
