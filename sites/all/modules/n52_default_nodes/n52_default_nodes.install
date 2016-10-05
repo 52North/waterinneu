@@ -103,7 +103,11 @@ function _n52_default_nodes_update_node($nid, $node_content, $edit_warning) {
 	foreach ($node_content['text'] as $lang_code => $value) {
 		// 1. body is different
 		// 2. TODO body is absent
-		if ( isset($node->body[$lang_code]) && strcmp($node->body[$lang_code][0]['value'],_n52_default_nodes_apply_replacement_tags($value)) != 0) {
+		if ( isset($node->body[$lang_code]) && 
+				strcmp(
+						$node->body[$lang_code][0]['value'],
+						_n52_default_nodes_apply_replacement_tags($value)
+				) != 0) {
 			$changed = TRUE;
 			$node->body[$lang_code][0]['value'] = $edit_warning . 
 				_n52_default_nodes_apply_replacement_tags($value);
@@ -135,9 +139,6 @@ function _n52_default_nodes_update_node($nid, $node_content, $edit_warning) {
 		$node->revision_moderation = FALSE;
 		$node->subscriptions_notify = FALSE;
 		node_save($node);
-	}
-	if (isset($node_content['menu'])) {
-		_n52_default_nodes_ensure_menu_item_existence($nid, $node_content);
 	}
 }
 
@@ -188,9 +189,6 @@ function _n52_default_nodes_add_node($node_content, $edit_warning) {
 		$node->title_field[$lang_code][0]['value'] = $value;
 	}
 	node_save($node);
-	if (isset($node_content['menu'])) {
-		_n52_default_nodes_ensure_menu_item_existence($nid, $node_content);
-	}
 }
 
 
@@ -202,29 +200,4 @@ function _n52_default_nodes_apply_replacement_tags($text_to_filter) {
 	$filtered_text = str_replace("%BASE_URL%", $base_url, $text_to_filter);
 	
 	return $filtered_text;
-}
-
-/*
- * Method checks for an menu item with the given title in the given menu
- */
-function _n52_default_nodes_ensure_menu_item_existence($nid, $node_content){
-	$changed = false;
-	
-	$menu = menu_load_links($node_content['menu']['name']);
-	
-	// TODO
-	
-// 	i18n_string
-	
-	// check for menu item with title $node_content['title']['en']
-	// if not found
-		// add new menu item
-		// with label for different languages
-	// else
-		// update menu item
-		// check for each language the label
-	
-	if ($changed) {
-		menu_cache_clear($node_content['menu']['name']);
-	}
 }

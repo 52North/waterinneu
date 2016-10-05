@@ -32,10 +32,6 @@ function _n52_default_nodes_related_portals() {
 				'en' => 'Related Portals',
 				'de' => 'Ähnliche Portale',
 		),
-		'menu' => array (
-				'name' => 'main-menu',
-				'left' => 'Forum',
-		),
 		'alias' => 'related-portals',
 		'text' => array (
 				'de' => '
@@ -53,7 +49,7 @@ function _n52_default_nodes_related_portals() {
 <div id="portal-list" class="container-fluid">
 <div class="row">
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://www.aquaknow.net/" target="_blank"
 		title="aquaknow.net">Aquaknow</a>
@@ -65,7 +61,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://his.cuahsi.org/index.html" 
 			target="_blank">CUAHSI-HIS</a>
@@ -77,7 +73,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://datahub.io/">Datahub</a>
 		<p class="portal-description">
@@ -88,7 +84,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://www.eea.europa.eu/themes/water/dc">EEA
 			Water Centre</a>
@@ -100,7 +96,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://www.eionet.europa.eu/">EIONET</a>
 		<p class="portal-description">
@@ -111,7 +107,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://www.eip-water.eu/">EIP Water</a>
 		<p class="portal-description">
@@ -122,7 +118,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="https://open-data.europa.eu/en/data"
 		target="_blank">EU Open Data Portal</a>
@@ -134,7 +130,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://floods.jrc.ec.europa.eu/" target="_blank">European
 			Floods Portal</a>
@@ -146,7 +142,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://ec.europa.eu/eurostat" target="_blank">EUROSTAT
 			Open Data Portal</a>
@@ -158,7 +154,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://europeanwatercommunity.eu/"
 		target="_blank">European Water Community (EWC)</a>
@@ -170,7 +166,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" 
 			href="http://ec.europa.eu/research/environment/index_en.cfm?section=geo&amp;pg=geoss"
@@ -183,7 +179,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://inspire-geoportal.ec.europa.eu/"
 		target="_blank">INSPIRE Geoportal</a>
@@ -195,7 +191,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://www.water-switch-on.eu/" 
 			target="_blank">SWITCH-ON</a>
@@ -207,7 +203,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://waterwindow.org/" 
 			target="_blank">WaterWindow</a>
@@ -219,7 +215,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://water.europa.eu/" 
 			target="_blank">WISE</a>
@@ -231,7 +227,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" <a href="http://www.wise-rtd.info/en" 
 			target="_blank">WISE-RTD</a>
@@ -259,7 +255,7 @@ function _n52_default_nodes_related_portals() {
 <div id="portal-list" class="container-fluid">
 <div class="row">
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/aquaknow_logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/aquaknow_logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://www.aquaknow.net/" target="_blank"
 		title="aquaknow.net">Aquaknow</a>
@@ -276,7 +272,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/cuahsihis-100.png" 
+		<img class="portal-logo" src="sites/default/files/logos/cuahsihis-100.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://his.cuahsi.org/index.html" 
 			target="_blank">CUAHSI-HIS</a>
@@ -292,7 +288,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/datahub-100.png" 
+		<img class="portal-logo" src="sites/default/files/logos/datahub-100.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://datahub.io/">Datahub</a>
 		<p class="portal-description">
@@ -308,7 +304,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/datacentereea-100.png" 
+		<img class="portal-logo" src="sites/default/files/logos/datacentereea-100.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://www.eea.europa.eu/themes/water/dc">EEA
 			Water Centre</a>
@@ -325,7 +321,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/eionet-100.png" 
+		<img class="portal-logo" src="sites/default/files/logos/eionet-100.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://www.eionet.europa.eu/">EIONET</a>
 		<p class="portal-description">
@@ -342,7 +338,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/the-european-innovation-partnership-on-water-online-marketplace-22-638.png" 
+		<img class="portal-logo" src="sites/default/files/logos/the-european-innovation-partnership-on-water-online-marketplace-22-638.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://www.eip-water.eu/">EIP Water</a>
 		<p class="portal-description">
@@ -360,7 +356,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/euopendataportal-100.png" 
+		<img class="portal-logo" src="sites/default/files/logos/euopendataportal-100.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="https://open-data.europa.eu/en/data"
 		target="_blank">EU Open Data Portal</a>
@@ -379,7 +375,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/jrcsciencehub-100.png" 
+		<img class="portal-logo" src="sites/default/files/logos/jrcsciencehub-100.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://floods.jrc.ec.europa.eu/" target="_blank">European
 			Floods Portal</a>
@@ -398,7 +394,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%//sites/default/files/logos/eurostat_logo-100.png" 
+		<img class="portal-logo" src="/sites/default/files/logos/eurostat_logo-100.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://ec.europa.eu/eurostat" target="_blank">EUROSTAT
 			Open Data Portal</a>
@@ -415,7 +411,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/iwrmnet.png" 
+		<img class="portal-logo" src="sites/default/files/logos/iwrmnet.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://europeanwatercommunity.eu/"
 		target="_blank">European Water Community (EWC)</a>
@@ -431,7 +427,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" 
 			href="http://ec.europa.eu/research/environment/index_en.cfm?section=geo&amp;pg=geoss"
@@ -444,7 +440,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/inspire_logo.png" 
+		<img class="portal-logo" src="sites/default/files/logos/inspire_logo.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://inspire-geoportal.ec.europa.eu/"
 		target="_blank">INSPIRE Geoportal</a>
@@ -462,7 +458,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/switch-on-100.png" 
+		<img class="portal-logo" src="sites/default/files/logos/switch-on-100.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://www.water-switch-on.eu/" 
 			target="_blank">SWITCH-ON</a>
@@ -482,7 +478,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/waterwindow-100.png" 
+		<img class="portal-logo" src="sites/default/files/logos/waterwindow-100.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://waterwindow.org/" 
 			target="_blank">WaterWindow</a>
@@ -498,7 +494,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/wise-logo-100.png" 
+		<img class="portal-logo" src="sites/default/files/logos/wise-logo-100.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" href="http://water.europa.eu/" 
 			target="_blank">WISE</a>
@@ -515,7 +511,7 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
-		<img class="portal-logo" src="%BASE_URL%/sites/default/files/logos/wise-rtd-100.png" 
+		<img class="portal-logo" src="sites/default/files/logos/wise-rtd-100.png" 
 			alt="Logo Example" width="100" height="100" />
 		<a class="portal-link" <a href="http://www.wise-rtd.info/en" 
 			target="_blank">WISE-RTD</a>

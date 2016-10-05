@@ -98,7 +98,7 @@ of all third party Internet web sites. The declaration is valid for all links
 given on our web site and the material of all sites reached via banners and 
 links on the WaterInnEU web site.</p>
 <h2>Cookies</h2>
-<p>Please take a look at the dedicated page about <a href="cookies">cookie 
+<p>Please take a look at the dedicated page about <a href="/cookies">cookie 
 used by the WaterInnEU Marketplace Prototype</a>.</p>',),
 	);
 }

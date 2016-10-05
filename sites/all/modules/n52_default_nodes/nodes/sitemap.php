@@ -33,7 +33,8 @@ function _n52_default_nodes_sitemap() {
 				'de' => 'Seitenübersicht',
 		),
 		'alias' => 'sitemap',
-		'text' => array ('de' => '<ul>
+		'text' => array ('de' => '
+<ul>
 	<li>
 		<a href="#top">Startseite</a><br />Die Startseite, inklusive
 		<ul>
