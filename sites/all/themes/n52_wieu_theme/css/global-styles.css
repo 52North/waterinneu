@@ -324,6 +324,7 @@ div.field-name-field-image > div > div > a > img {
   height: auto;
   margin-left: auto;
   margin-right: auto;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.8);
 }
 
 /*
@@ -566,6 +567,7 @@ div#portal-list > div > div {
   min-width: 450px;
   min-height: 220px;
   padding: 15px;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.8);
 }
  
 img.portal-logo {
