@@ -213,7 +213,7 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 #main-navigation ul.menu li a:hover {
 	color: #fff;
 	background: #2b4c6e;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow:2px 2px 5px rgba(0,0,0,0.4);
 }
 
 li.no-list-style {
@@ -324,7 +324,7 @@ div.field-name-field-image > div > div > a > img {
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  box-shadow:4px 4px 10px rgba(0,0,0,0.8);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /*
@@ -567,11 +567,11 @@ div#portal-list > div > div {
   min-width: 450px;
   min-height: 330px;
   padding: 15px;
-  box-shadow:4px 4px 10px rgba(0,0,0,0.8);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 div#portal-list > div > div > img {
-	box-shadow:2px 2px 5px rgba(0,0,0,0.4);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
  
 img.portal-logo {
@@ -624,7 +624,7 @@ div#join-us-sign-up-button {
 }
 
 div#join-us-sign-up-button button {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:4px 4px 10px rgba(0,0,0,0.8);
 }
 
 div#join-us-sign-up-button button a:hover {
@@ -750,6 +750,13 @@ a.more-link {
   padding: 10px;
   border: solid 1px #cecece;
   margin-top: 70px;
+}
+
+.you-can-also-block-container img {
+	height: 95px;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 

@@ -64,6 +64,7 @@ function n52_feature_config_default_fe_block_boxes() {
     <li><a href="forum">Go to the forum</a> to see the latest debates on river basin management</li>
     <li><a href="matchmaking#alerts">Subscribe for alerts</a> to get informed about the latest changes depending on your requirements</li>
   </ul>
+  <img title="You can also! Two boats on a flooded river" src="sites/default/files/pictures/you-can-also_products.png">
 </div>';
 
   $export['n52_wieu_you_can_also_products'] = $fe_block_boxes;
