@@ -60,32 +60,38 @@
 	$latest_threads_block = module_invoke('views', 'block_view', 'frontpage_latest_questions-block');
 	unset($latest_threads_block['subject']);
 ?>
-<div id="landingpage-updates-block" class="panel-pane pane-block pane-block-2">
-	<h2 class="pane-title"><?php print t('Updates'); ?></h2>
-	<div class="pane-content">
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-			<li class="active"><a href="#tab-1" role="tab" data-toggle="tab"><?php print t('Content'); ?></a></li>
-			<li><a href="#tab-2" role="tab" data-toggle="tab"><?php print t('Comments'); ?></a></li>
-			<li><a href="#tab-3" role="tab" data-toggle="tab"><?php print t('Threads'); ?></a></li>
-			<li><a href="#tab-4" role="tab" data-toggle="tab"><?php print t('Posts'); ?></a></li>
-
-		</ul>
-
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<div class="tab-pane active" id="tab-1">
-				<?php print render($latest_content_block); ?>
-			</div>
-			<div class="tab-pane" id="tab-2">
-				<?php print render($latest_comments_block); ?>
-			</div>
-			<div class="tab-pane" id="tab-3">
-				<?php print render($latest_threads_block); ?>
-			</div>
-			<div class="tab-pane" id="tab-4">
-				<?php print render($latest_posts_block); ?>
+<div class="left-column">
+	<div id="landingpage-updates-block" class="panel-pane pane-block pane-block-2">
+		<h2 class="pane-title" id="updates"><?php print t('Updates'); ?></h2>
+		<div class="pane-content">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="active"><a href="#tab-1" role="tab" data-toggle="tab"><?php print t('Content'); ?></a></li>
+				<li><a href="#tab-2" role="tab" data-toggle="tab"><?php print t('Comments'); ?></a></li>
+				<li><a href="#tab-3" role="tab" data-toggle="tab"><?php print t('Threads'); ?></a></li>
+				<li><a href="#tab-4" role="tab" data-toggle="tab"><?php print t('Posts'); ?></a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab-1">
+					<?php print render($latest_content_block); ?>
+				</div>
+				<div class="tab-pane" id="tab-2">
+					<?php print render($latest_comments_block); ?>
+				</div>
+				<div class="tab-pane" id="tab-3">
+					<?php print render($latest_threads_block); ?>
+				</div>
+				<div class="tab-pane" id="tab-4">
+					<?php print render($latest_posts_block); ?>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<div class="right-column">
+	<div id="landingpage-updates-image">
+		<img title="Updates! Water based image" src="sites/default/files/pictures/landingpage_updates.png">
+	</div>
+</div>
+<div style="clear: both;"></div>

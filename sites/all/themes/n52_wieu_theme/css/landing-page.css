@@ -187,6 +187,24 @@ body.front > div#page > div#main-content {
   font-weight: 350;
 }
 
+body.front div.left-column {
+	float: left;
+	width: 60%;
+}
+
+body.front div.right-column {
+	float:right;
+	width:40%;
+}
+
+#landingpage-updates-image {
+  padding: 60px 70px 0px 0px;
+}
+
+#landingpage-updates-image > img {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 /******************************************************************************
  *                                                                            *
