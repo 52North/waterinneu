@@ -52,18 +52,20 @@
 }
 
 #intro {
-  min-width: 500px;
-  max-width: 75%;
   padding: 20px;
   margin: auto;
   font-size: 150%;
-  line-height: 150%;
+  line-height: 155%;
   text-align: justify;
   color: #2b4c6e;
 }
 
 #intro a:hover {
   text-decoration: none;
+}
+
+.landing-page-introduction-text-region > div > div > div.pane-content > article > div.content {
+	padding: 0px;
 }
 
 
@@ -105,7 +107,7 @@
 
 #landing-page-action-buttons div.explanation {
   color: #2b4c6e;
-  text-align: justify;
+  text-align: left;
   padding-top: 30px;
 }
 
