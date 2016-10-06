@@ -127,7 +127,6 @@ function n52_feature_organisations_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'organisation';
   $handler->display->display_options['menu']['title'] = 'Organisations';
   $handler->display->display_options['menu']['weight'] = '0';

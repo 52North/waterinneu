@@ -601,7 +601,6 @@ function n52_feature_service_requests_and_offerings_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'matchmaking/service-offerings';
   $export['service_offerings'] = $view;
 
@@ -690,7 +689,6 @@ function n52_feature_service_requests_and_offerings_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'matchmaking/service-requests';
   $export['service_requests'] = $view;
 

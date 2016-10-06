@@ -294,7 +294,6 @@ The live comments box associated with each product enables active and ongoing di
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'product';
   $export['tools'] = $view;
 
