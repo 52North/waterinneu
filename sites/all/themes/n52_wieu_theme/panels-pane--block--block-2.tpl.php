@@ -91,7 +91,7 @@
 </div>
 <div class="right-column">
 	<div id="landingpage-updates-image">
-		<img title="Updates! Water based image" src="sites/default/files/pictures/landingpage_updates.png">
+		<img title="Updates! Water based image" src="sites/default/files/pictures/landingpage_updates.png" />
 	</div>
 </div>
 <div style="clear: both;"></div>

@@ -49,7 +49,8 @@ function n52_feature_success_story_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<p>Based on the expressions of interest received, we will present here examples of successful matchmaking between our product owners and new commercialisation partners. This will further demonstrate and validate the market potential of these products and services to the wider River Basin Management Community.</p>
+  $handler->display->display_options['header']['area']['content'] = '<img id="success-stories-image" title="Success Story! Bridge over an river" src="sites/default/files/pictures/success-stories.png" />
+<p>Based on the expressions of interest received, we will present here examples of successful matchmaking between our product owners and new commercialisation partners. This will further demonstrate and validate the market potential of these products and services to the wider River Basin Management Community.</p>
 <p>Come back and visit this page again soon. </p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html_plain_no_filter_';
   /* Field: Content: Title */
