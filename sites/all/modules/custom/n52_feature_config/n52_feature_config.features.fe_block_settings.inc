@@ -40,34 +40,6 @@ function n52_feature_config_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['block-n52_wie_e_learning_image'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'machine_name' => 'n52_wie_e_learning_image',
-    'module' => 'block',
-    'node_types' => array(),
-    'pages' => 'e-learning',
-    'roles' => array(),
-    'themes' => array(
-      'adminimal' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'adminimal',
-        'weight' => 0,
-      ),
-      'n52_wieu_theme' => array(
-        'region' => 'content',
-        'status' => 1,
-        'theme' => 'n52_wieu_theme',
-        'weight' => -56,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 1,
-  );
-
   $export['block-n52_wieu_you_can_also_e_learning'] = array(
     'cache' => -1,
     'custom' => 0,
@@ -361,7 +333,7 @@ user',
         'region' => 'content',
         'status' => 1,
         'theme' => 'n52_wieu_theme',
-        'weight' => -52,
+        'weight' => -51,
       ),
     ),
     'title' => 'My Content',

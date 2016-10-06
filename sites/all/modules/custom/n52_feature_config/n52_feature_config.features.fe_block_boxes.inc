@@ -24,14 +24,6 @@ function n52_feature_config_default_fe_block_boxes() {
   $export['n52_funding_footer'] = $fe_block_boxes;
 
   $fe_block_boxes = new stdClass();
-  $fe_block_boxes->info = 'e-learning image';
-  $fe_block_boxes->format = 'full_html_plain_no_filter_';
-  $fe_block_boxes->machine_name = 'n52_wie_e_learning_image';
-  $fe_block_boxes->body = '<img id="e-learning-image" title="e-learning! a beach" src="sites/default/files/pictures/e-learning.png" />';
-
-  $export['n52_wie_e_learning_image'] = $fe_block_boxes;
-
-  $fe_block_boxes = new stdClass();
   $fe_block_boxes->info = '"You can also" for e-learning context';
   $fe_block_boxes->format = 'full_html_plain_no_filter_';
   $fe_block_boxes->machine_name = 'n52_wieu_you_can_also_e_learning';

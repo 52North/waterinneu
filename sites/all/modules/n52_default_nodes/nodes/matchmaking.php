@@ -34,6 +34,7 @@ function _n52_default_nodes_matchmaking() {
 		),
 		'alias' => 'matchmaking',
 		'text' => array ('en' => '
+<img id="matchmaking-image" title="Matchmaking! Two board on a river" src="sites/default/files/pictures/matchmaking.png" />
 <p>
 The primary goal of the WaterInnEU Portal is to facilitate matchmaking between 
 organizations offering products which are relevant to river basin management, 

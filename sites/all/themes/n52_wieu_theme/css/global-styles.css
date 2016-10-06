@@ -781,9 +781,15 @@ img#success-stories-image {
 }
 
 img#e-learning-image {
-	float: right;
   width: 33%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-right: 30px;
-  margin-top: 60px;
+  float: right;
+  margin-left: 10px;
+}
+
+img#matchmaking-image {
+  width: 33%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  float: right;
+  margin-left: 10px;
 }
