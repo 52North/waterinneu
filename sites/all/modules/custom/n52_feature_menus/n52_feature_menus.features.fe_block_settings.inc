@@ -96,40 +96,6 @@ function n52_feature_menus_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['menu-menu-moderator'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'menu-moderator',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'menu',
-    'node_types' => array(),
-    'pages' => '<front>
-e-learning*
-forum*
-thread*',
-    'roles' => array(
-      'administrator' => 3,
-      'moderator' => 9,
-    ),
-    'themes' => array(
-      'adminimal' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'adminimal',
-        'weight' => 0,
-      ),
-      'n52_wieu_theme' => array(
-        'region' => 'sidebar_second',
-        'status' => 1,
-        'theme' => 'n52_wieu_theme',
-        'weight' => -52,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
   $export['menu-menu-n52-footer-first-links'] = array(
     'cache' => -1,
     'custom' => 0,

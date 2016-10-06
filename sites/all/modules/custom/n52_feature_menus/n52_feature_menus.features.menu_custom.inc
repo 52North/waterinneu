@@ -34,14 +34,6 @@ function n52_feature_menus_menu_default_menu_custom() {
     'language' => 'und',
     'i18n_mode' => 5,
   );
-  // Exported menu: menu-moderator.
-  $menus['menu-moderator'] = array(
-    'menu_name' => 'menu-moderator',
-    'title' => 'Moderator\'s Tasks',
-    'description' => 'Everything regarding moderation tasks',
-    'language' => 'und',
-    'i18n_mode' => 5,
-  );
   // Exported menu: menu-n52-footer-first-links.
   $menus['menu-n52-footer-first-links'] = array(
     'menu_name' => 'menu-n52-footer-first-links',
@@ -86,13 +78,11 @@ function n52_feature_menus_menu_default_menu_custom() {
   // Included for use with string extractors like potx.
   t('Author');
   t('Contains everything regarding author tasks like adding new content');
-  t('Everything regarding moderation tasks');
   t('Footer 1st Links');
   t('Footer 2nd Links');
   t('Footer 3rd Links');
   t('Footer 4th Links');
   t('Holds all links that are in the top div.');
-  t('Moderator\'s Tasks');
   t('Navigation');
   t('THIS MENU IS NOT USED ATM.');
   t('The <em>User</em> menu contains links related to the user\'s account, as well as the \'Log out\' link.');
