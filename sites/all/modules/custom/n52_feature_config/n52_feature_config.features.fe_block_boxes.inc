@@ -32,6 +32,7 @@ function n52_feature_config_default_fe_block_boxes() {
     <li>Browse our <a href="product">products</a> and <a href="matchmaking#service-requests">services</a> to find and implement new products</li>
     <li><a href="join-us">Join our community</a> to add your own product or organisation, find support or join a discussion</li>
     <li><a href="forum">Go to the forum</a> to see the latest debates on river basin management</li>
+    <li><a href="matchmaking#alerts">Subscribe for alerts</a> to get informed about the latest changes depending on your requirements</li>
   </ul>
 </div>';
 
@@ -46,6 +47,7 @@ function n52_feature_config_default_fe_block_boxes() {
     <li>Browse our <a href="product">products</a> and <a href="matchmaking#service-requests">services</a> to find and implement new products</li>
     <li><a href="e-learning">Take a course</a> to help you implement a specific product</li>
     <li><a href="forum">Go to the forum</a> to see the latest debates on river basin management</li>
+    <li><a href="matchmaking#alerts">Subscribe for alerts</a> to get informed about the latest changes depending on your requirements</li>
   </ul>
 </div>';
 
@@ -60,6 +62,7 @@ function n52_feature_config_default_fe_block_boxes() {
     <li><a href="e-learning">Take a course</a> to help you implement a specific product</li>
     <li><a href="join-us">Join our community</a> to add your own product or organisation, find support or join a discussion</li>
     <li><a href="forum">Go to the forum</a> to see the latest debates on river basin management</li>
+    <li><a href="matchmaking#alerts">Subscribe for alerts</a> to get informed about the latest changes depending on your requirements</li>
   </ul>
 </div>';
 
