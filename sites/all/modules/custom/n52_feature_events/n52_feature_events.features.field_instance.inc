@@ -165,7 +165,7 @@ function n52_feature_events_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_address',
     'label' => 'Venue',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -175,7 +175,7 @@ function n52_feature_events_field_default_field_instances() {
       'module' => 'addressfield',
       'settings' => array(
         'available_countries' => array(),
-        'default_country' => 'site_default',
+        'default_country' => '',
         'format_handlers' => array(
           'address' => 'address',
           'organisation' => 'organisation',
@@ -320,8 +320,8 @@ function n52_feature_events_field_default_field_instances() {
         'allowed_formats' => array(
           'filtered_html' => 0,
           'full_html' => 0,
-          'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 0,
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
           'harmony_filtered' => 0,
           'plain_text' => 'plain_text',
         ),
@@ -356,7 +356,7 @@ function n52_feature_events_field_default_field_instances() {
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -399,7 +399,7 @@ function n52_feature_events_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
           'image_link' => 'content',
-          'image_style' => 'thumbnail',
+          'image_style' => 'n52_image_style_teaser_photo',
         ),
         'type' => 'image',
         'weight' => 0,
