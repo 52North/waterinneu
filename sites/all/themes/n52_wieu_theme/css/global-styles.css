@@ -317,7 +317,7 @@ ul.related-link-list li {
 	cursor: pointer;
 }
 
-div.field-name-field-image,
+div.field-name-field-image > div > div > img,
 div.field-name-field-image > div > div > a > img {
   max-width: 500px;
   width: 100%;
