@@ -11,7 +11,7 @@ function n52_feature_products_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_how|node|tool|default';
   $field_group->group_name = 'group_how';
@@ -38,7 +38,7 @@ function n52_feature_products_field_group_info() {
   $field_groups['group_how|node|tool|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_how|node|tool|form';
   $field_group->group_name = 'group_how';
@@ -67,7 +67,7 @@ function n52_feature_products_field_group_info() {
   $field_groups['group_how|node|tool|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_interop|node|tool|default';
   $field_group->group_name = 'group_interop';
@@ -96,7 +96,7 @@ function n52_feature_products_field_group_info() {
   $field_groups['group_interop|node|tool|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_interop|node|tool|form';
   $field_group->group_name = 'group_interop';
@@ -126,7 +126,7 @@ function n52_feature_products_field_group_info() {
   $field_groups['group_interop|node|tool|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_metadata|node|tool|default';
   $field_group->group_name = 'group_metadata';
@@ -155,7 +155,7 @@ function n52_feature_products_field_group_info() {
   $field_groups['group_metadata|node|tool|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_metadata|node|tool|form';
   $field_group->group_name = 'group_metadata';
@@ -626,7 +626,7 @@ function n52_feature_products_field_group_info() {
   $field_groups['group_supported_standards|node|tool|print'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_what|node|tool|default';
   $field_group->group_name = 'group_what';
@@ -655,7 +655,7 @@ function n52_feature_products_field_group_info() {
   $field_groups['group_what|node|tool|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_what|node|tool|form';
   $field_group->group_name = 'group_what';
