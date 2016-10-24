@@ -11,7 +11,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_aggregation_level|node|project|default';
   $field_group->group_name = 'group_aggregation_level';
@@ -38,7 +38,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_aggregation_level|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_aggretation_level|node|project|form';
   $field_group->group_name = 'group_aggretation_level';
@@ -66,7 +66,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_aggretation_level|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_background|node|project|default';
   $field_group->group_name = 'group_background';
@@ -95,7 +95,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_background|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_background|node|project|form';
   $field_group->group_name = 'group_background';
@@ -126,7 +126,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_background|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_data_collection|node|project|default';
   $field_group->group_name = 'group_data_collection';
@@ -153,7 +153,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_data_collection|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_data_collection|node|project|form';
   $field_group->group_name = 'group_data_collection';
@@ -181,7 +181,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_data_collection|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_geo|node|project|default';
   $field_group->group_name = 'group_geo';
@@ -212,7 +212,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_geo|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_geo|node|project|form';
   $field_group->group_name = 'group_geo';
@@ -245,7 +245,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_geo|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_metadata|node|project|default';
   $field_group->group_name = 'group_metadata';
@@ -272,7 +272,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_metadata|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_metadata|node|project|form';
   $field_group->group_name = 'group_metadata';
@@ -305,7 +305,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_metadata|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_results|node|project|default';
   $field_group->group_name = 'group_results';
@@ -340,7 +340,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_results|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_results|node|project|form';
   $field_group->group_name = 'group_results';
@@ -377,7 +377,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_results|node|project|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_temporal|node|project|default';
   $field_group->group_name = 'group_temporal';
@@ -403,7 +403,7 @@ function n52_feature_projects_field_group_info() {
   $field_groups['group_temporal|node|project|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_temporal|node|project|form';
   $field_group->group_name = 'group_temporal';
