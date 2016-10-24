@@ -11,7 +11,7 @@ function n52_feature_menus_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'about';
   $context->description = '';
@@ -130,7 +130,7 @@ function n52_feature_menus_context_default_contexts() {
   $export['moderator'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'other';
   $context->description = '';
@@ -184,7 +184,7 @@ function n52_feature_menus_context_default_contexts() {
   $export['products'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'user_guide';
   $context->description = '';
