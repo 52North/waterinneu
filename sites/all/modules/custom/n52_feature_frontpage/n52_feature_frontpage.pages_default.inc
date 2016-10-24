@@ -24,7 +24,7 @@ function n52_feature_frontpage_default_page_manager_pages() {
   );
   $page->default_handlers = array();
   $handler = new stdClass();
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->disabled = TRUE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
   $handler->name = 'page_landing_page_panel__panel';
   $handler->task = 'page';
@@ -487,7 +487,7 @@ function n52_feature_frontpage_default_page_manager_pages() {
   $display->title = '';
   $display->uuid = 'fb6d5e54-f87d-4349-9057-e5c79b806b76';
   $display->storage_type = 'page_manager';
-  $display->storage_id = '';
+  $display->storage_id = 'page_landing_page_panel__panel_context_e2e66931-e6be-4c91-aa9b-d51bc2527833';
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
