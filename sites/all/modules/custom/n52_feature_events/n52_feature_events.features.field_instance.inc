@@ -397,7 +397,7 @@ function n52_feature_events_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
-          'field_formatter_class' => '',
+          'field_formatter_class' => 'event-teaser-image',
           'image_link' => 'content',
           'image_style' => 'n52_image_style_teaser_photo',
         ),
