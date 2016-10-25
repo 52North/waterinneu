@@ -290,7 +290,7 @@ function n52_feature_search_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_type_of_software']['expose']['reduce'] = 0;
-  /* Filter criterion: Indexed Node: WFD objectives */
+  /* Filter criterion: Indexed Node: WFD Objectives */
   $handler->display->display_options['filters']['field_purpose']['id'] = 'field_purpose';
   $handler->display->display_options['filters']['field_purpose']['table'] = 'search_api_index_product_index';
   $handler->display->display_options['filters']['field_purpose']['field'] = 'field_purpose';
@@ -558,7 +558,7 @@ function n52_feature_search_views_default_views() {
       'meta_field' => 0,
     ),
   );
-  /* Field: Broken/missing handler */
+  /* Field: last_post_uri */
   $handler->display->display_options['fields']['last_post_uri']['id'] = 'last_post_uri';
   $handler->display->display_options['fields']['last_post_uri']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['last_post_uri']['field'] = 'last_post_uri';
@@ -566,38 +566,38 @@ function n52_feature_search_views_default_views() {
   $handler->display->display_options['fields']['last_post_uri']['label'] = '';
   $handler->display->display_options['fields']['last_post_uri']['exclude'] = TRUE;
   $handler->display->display_options['fields']['last_post_uri']['element_label_colon'] = FALSE;
-  /* Field: Broken/missing handler */
+  /* Field: Posts: Title (indexed) */
   $handler->display->display_options['fields']['posts_title']['id'] = 'posts_title';
   $handler->display->display_options['fields']['posts_title']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['posts_title']['field'] = 'posts_title';
   $handler->display->display_options['fields']['posts_title']['label'] = 'Title';
   $handler->display->display_options['fields']['posts_title']['alter']['path'] = '[last_post_uri]';
   $handler->display->display_options['fields']['posts_title']['hide_empty'] = TRUE;
-  /* Field: Broken/missing handler */
+  /* Field: Indexed Thread: Last user to post a reply */
   $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['id'] = 'field_harmony_last_user_to_reply';
   $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['field'] = 'field_harmony_last_user_to_reply';
   $handler->display->display_options['fields']['field_harmony_last_user_to_reply']['label'] = 'Author';
-  /* Field: Broken/missing handler */
+  /* Field: Indexed Thread: Date created */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['created']['field'] = 'created';
-  /* Field: Broken/missing handler */
+  /* Field: Indexed Thread: Thread ID */
   $handler->display->display_options['fields']['thread_id']['id'] = 'thread_id';
   $handler->display->display_options['fields']['thread_id']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['thread_id']['field'] = 'thread_id';
   $handler->display->display_options['fields']['thread_id']['exclude'] = TRUE;
-  /* Field: Broken/missing handler */
+  /* Field: Indexed Thread: Post count */
   $handler->display->display_options['fields']['field_harmony_post_count']['id'] = 'field_harmony_post_count';
   $handler->display->display_options['fields']['field_harmony_post_count']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['field_harmony_post_count']['field'] = 'field_harmony_post_count';
   $handler->display->display_options['fields']['field_harmony_post_count']['label'] = 'Replies';
-  /* Field: Broken/missing handler */
+  /* Field: Indexed Thread: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'in Thread';
-  /* Filter criterion: Broken/missing handler */
+  /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_n52_search_api_index_thread';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
