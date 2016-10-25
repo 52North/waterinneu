@@ -132,7 +132,7 @@ function n52_feature_projects_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_description',
     'label' => 'Description',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -226,7 +226,7 @@ function n52_feature_projects_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_end_date',
     'label' => 'End Date',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'default_value' => 'blank',
       'default_value2' => 'same',
@@ -338,7 +338,7 @@ function n52_feature_projects_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_website',
     'label' => 'Website',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'absolute_url' => 1,
       'attributes' => array(
@@ -354,6 +354,11 @@ function n52_feature_projects_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'rel_remove' => 'default',
       'title' => 'optional',
       'title_label_use_field_label' => 0,
