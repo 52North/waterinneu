@@ -168,6 +168,7 @@ function n52_feature_menus_context_default_contexts() {
       'values' => array(
         'product*' => 'product*',
         'product/*' => 'product/*',
+        '~products-and-services' => '~products-and-services',
       ),
     ),
   );
