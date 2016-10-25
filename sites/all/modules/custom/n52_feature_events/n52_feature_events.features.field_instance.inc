@@ -558,7 +558,7 @@ function n52_feature_events_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_n52_event_categorie',
-    'label' => 'Categorie',
+    'label' => 'Category',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -669,7 +669,7 @@ function n52_feature_events_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Categorie');
+  t('Category');
   t('Comment');
   t('Date');
   t('Description');
