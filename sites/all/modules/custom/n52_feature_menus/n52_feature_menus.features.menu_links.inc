@@ -438,29 +438,6 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: menu-top-links_register:user/register.
-  $menu_links['menu-top-links_register:user/register'] = array(
-    'menu_name' => 'menu-top-links',
-    'link_path' => 'user/register',
-    'router_path' => 'user/register',
-    'link_title' => 'Register',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Click here for requesting a new account.',
-      ),
-      'alter' => TRUE,
-      'identifier' => 'menu-top-links_register:user/register',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
   // Exported menu link: navigation_add-content:node/add.
   $menu_links['navigation_add-content:node/add'] = array(
     'menu_name' => 'navigation',
@@ -1165,7 +1142,6 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Products');
   t('Project');
   t('Recent posts');
-  t('Register');
   t('Scheduled publications');
   t('Search');
   t('Search Wizard');
