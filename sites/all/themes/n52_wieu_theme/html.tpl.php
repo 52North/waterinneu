@@ -449,7 +449,7 @@
 	(function($) {
 		$(document).ready(function () {
 			// check for save button 'edit-submit'
-			if ($('#tool-node-form').length) {
+			if ($('form.node-form').length) {
 				// check log message for "ready to review"
 				// add button with label "Submit for Publish"
 				var buttonDiv = '<input type="submit" id="edit-submit-for-pub" name="op" value="<?php print t('Submit for Publish');?>" class="form-submit">'
