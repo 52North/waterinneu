@@ -142,7 +142,7 @@ function n52_feature_success_story_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_n52_sucess_story';
-  $strongarm->value = '1';
+  $strongarm->value = '2';
   $export['node_preview_n52_sucess_story'] = $strongarm;
 
   $strongarm = new stdClass();
