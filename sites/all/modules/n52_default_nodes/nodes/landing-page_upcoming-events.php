@@ -40,7 +40,7 @@ function _n52_default_nodes_landing_page_upcoming_events() {
 				stakeholders together to share best practice and 
 				experiences.
 			</p>
-      <div id="upcoming-events"></div>
+			<div id="upcoming-events"></div>
 			<a href="matchmaking/events"><button type="button" class="btn btn-default">Show all Events</button></a>',)
 			,
 	);
