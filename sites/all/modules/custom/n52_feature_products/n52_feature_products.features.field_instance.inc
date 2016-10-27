@@ -852,63 +852,6 @@ function n52_feature_products_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tool-field_inspire_compliance'.
-  $field_instances['node-tool-field_inspire_compliance'] = array(
-    'bundle' => 'tool',
-    'default_value' => array(
-      0 => array(
-        'value' => -1,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'print' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'tool_of_the_month' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_inspire_compliance',
-    'label' => 'inspire compliance',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max' => 1,
-      'min' => -1,
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 47,
-    ),
-  );
-
   // Exported field_instance: 'node-tool-field_issue'.
   $field_instances['node-tool-field_issue'] = array(
     'bundle' => 'tool',
@@ -1982,63 +1925,6 @@ function n52_feature_products_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'node-tool-field_ogc_standard_compliance'.
-  $field_instances['node-tool-field_ogc_standard_compliance'] = array(
-    'bundle' => 'tool',
-    'default_value' => array(
-      0 => array(
-        'value' => -1,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'print' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'tool_of_the_month' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_ogc_standard_compliance',
-    'label' => 'ogc standard compliance',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max' => 1,
-      'min' => -1,
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 46,
     ),
   );
 
@@ -3963,66 +3849,6 @@ function n52_feature_products_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tool-field_wfd_compliance'.
-  $field_instances['node-tool-field_wfd_compliance'] = array(
-    'bundle' => 'tool',
-    'default_value' => array(
-      0 => array(
-        'value' => -1,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'n52_standard_label_formatter',
-        'settings' => array(
-          'field_formatter_class' => '',
-        ),
-        'type' => 'n52_standard_label_formatter',
-        'weight' => 10,
-      ),
-      'print' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'tool_of_the_month' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_wfd_compliance',
-    'label' => 'wfd compliance',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max' => 1,
-      'min' => -1,
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 45,
-    ),
-  );
-
   // Exported field_instance: 'node-tool-title_field'.
   $field_instances['node-tool-title_field'] = array(
     'bundle' => 'tool',
@@ -4981,9 +4807,6 @@ function n52_feature_products_field_default_field_instances() {
   t('What type of product is this?');
   t('What’s the title or name of the product?');
   t('Who is the first or best one to contact?');
-  t('inspire compliance');
-  t('ogc standard compliance');
-  t('wfd compliance');
 
   return $field_instances;
 }
