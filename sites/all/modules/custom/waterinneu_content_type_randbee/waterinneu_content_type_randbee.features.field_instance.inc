@@ -338,6 +338,105 @@ function waterinneu_content_type_randbee_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course-field_course_structure'.
+  $field_instances['node-course-field_course_structure'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_course_structure',
+    'label' => 'Course Structure',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
+          'full_html_tinymce' => 'full_html_tinymce',
+          'harmony_filtered' => 'harmony_filtered',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -8,
+            ),
+            'full_html_plain_no_filter_' => array(
+              'weight' => 0,
+            ),
+            'full_html_tinymce' => array(
+              'weight' => -7,
+            ),
+            'harmony_filtered' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'course_enrollment' => FALSE,
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'atjs_fieldset' => array(
+          'atjs' => 0,
+          'atjs_listeners' => array(
+            'harmony_users' => 0,
+          ),
+        ),
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 39,
+    ),
+  );
+
   // Exported field_instance: 'node-course-field_course_type'.
   $field_instances['node-course-field_course_type'] = array(
     'bundle' => 'course',
@@ -518,6 +617,7 @@ function waterinneu_content_type_randbee_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('A short description of this Course must be written.');
   t('Contacts');
+  t('Course Structure');
   t('Description');
   t('Image');
   t('Information and contacts about the Course designer should be written here.');

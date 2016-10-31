@@ -92,6 +92,27 @@ function waterinneu_content_type_randbee_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_course_structure'.
+  $field_bases['field_course_structure'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_course_structure',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_course_type'.
   $field_bases['field_course_type'] = array(
     'active' => 1,

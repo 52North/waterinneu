@@ -11,7 +11,7 @@ function waterinneu_content_type_randbee_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_coure_note_data|node|course|form';
   $field_group->group_name = 'group_coure_note_data';
@@ -50,7 +50,7 @@ function waterinneu_content_type_randbee_field_group_info() {
   $field_group->parent_name = 'group_course';
   $field_group->data = array(
     'label' => 'Contacts',
-    'weight' => '20',
+    'weight' => '17',
     'children' => array(
       0 => 'field_course_contacts',
     ),
@@ -95,7 +95,7 @@ function waterinneu_content_type_randbee_field_group_info() {
   $field_groups['group_course_contacts|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_course_links|node|course|default';
   $field_group->group_name = 'group_course_links';
@@ -122,7 +122,7 @@ function waterinneu_content_type_randbee_field_group_info() {
   $field_groups['group_course_links|node|course|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_course_links|node|course|form';
   $field_group->group_name = 'group_course_links';
@@ -150,7 +150,7 @@ function waterinneu_content_type_randbee_field_group_info() {
   $field_groups['group_course_links|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_course_notes|node|course|default';
   $field_group->group_name = 'group_course_notes';
@@ -177,6 +177,59 @@ function waterinneu_content_type_randbee_field_group_info() {
     ),
   );
   $field_groups['group_course_notes|node|course|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_course_structure|node|course|default';
+  $field_group->group_name = 'group_course_structure';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_course';
+  $field_group->data = array(
+    'label' => 'Course Structure',
+    'weight' => '18',
+    'children' => array(
+      0 => 'field_course_structure',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-course-structure field-group-tab',
+      ),
+    ),
+  );
+  $field_groups['group_course_structure|node|course|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_course_structure|node|course|form';
+  $field_group->group_name = 'group_course_structure';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_course';
+  $field_group->data = array(
+    'label' => 'Course Structure',
+    'weight' => '41',
+    'children' => array(
+      0 => 'field_course_structure',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-course-structure field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_course_structure|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -266,7 +319,7 @@ function waterinneu_content_type_randbee_field_group_info() {
   $field_groups['group_course_type|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_course_video|node|course|default';
   $field_group->group_name = 'group_course_video';
@@ -294,7 +347,7 @@ function waterinneu_content_type_randbee_field_group_info() {
   $field_groups['group_course_video|node|course|default'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_course_video|node|course|form';
   $field_group->group_name = 'group_course_video';
@@ -335,8 +388,9 @@ function waterinneu_content_type_randbee_field_group_info() {
     'label' => 'Course',
     'weight' => '2',
     'children' => array(
-      0 => 'group_course_contacts',
-      1 => 'group_course_title',
+      0 => 'group_course_structure',
+      1 => 'group_course_contacts',
+      2 => 'group_course_title',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -362,9 +416,10 @@ function waterinneu_content_type_randbee_field_group_info() {
     'label' => 'Course',
     'weight' => '0',
     'children' => array(
-      0 => 'group_course_contacts',
-      1 => 'group_course_title_description',
-      2 => 'group_course_type',
+      0 => 'group_course_structure',
+      1 => 'group_course_contacts',
+      2 => 'group_course_title_description',
+      3 => 'group_course_type',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -381,6 +436,7 @@ function waterinneu_content_type_randbee_field_group_info() {
   // Included for use with string extractors like potx.
   t('Contacts');
   t('Course');
+  t('Course Structure');
   t('Course material');
   t('Description');
   t('Links');
