@@ -120,7 +120,12 @@ class CourseObjectAccessConditional extends CourseObjectAccess {
     );
 
     $conditional_dependent = array(
-      '#dependency' => array('edit-plugins-access-conditional-conditional-type' => array('completed', 'started')),
+      '#states' => array(
+        'visible' => array(
+          array('#edit-plugins-access-conditional-conditional-type' => array('value' => 'started')),
+          array('#edit-plugins-access-conditional-conditional-type' => array('value' => 'completed')),
+        ),
+      ),
     );
 
     foreach (element_children($form) as $key) {

@@ -34,6 +34,8 @@
  *     - description: A string to display more information to administrators.
  *     - class: (optional) A class name which will override the default
  *       CourseObject class.
+ *     - fulfillment class: (optional) A class name which will override the
+ *       default CourseObjectFulfillment class.
  *   - outline: An asociative array of outline handlers, keyed by type:
  *     - name: A string to reference this type on administrative forms.
  *     - description: A string to display more information to administrators.

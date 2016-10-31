@@ -52,8 +52,10 @@ class CourseObjectUbercart extends CourseObjectNode {
    * Either the course node ID, or another ubercart node ID.
    */
   public function optionsSubmit(&$form, &$form_state) {
-    if (!$form_state['values']['instance']) {
-      $form_state['values']['instance'] = $this->getCourseNid();
+    if (isset($form_state['values']['instance'])) {
+      if (!$form_state['values']['instance']) {
+        $form_state['values']['instance'] = $this->getCourseNid();
+      }
     }
     parent::optionsSubmit($form, $form_state);
   }

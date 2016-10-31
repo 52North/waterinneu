@@ -62,6 +62,11 @@ class CourseContextTestCase extends CourseTestCase {
     $co1->takeCourseObject();
     $foundCourseNode1 = course_determine_context('course_test', 'course_test_object', 1234);
     $this->assertEqual($courseNode1->nid, $foundCourseNode1->nid, 'Found the right course context, pass 3.');
+
+    // Simulate a cold context check.
+    unset($_SESSION['course']);
+    $foundCourseNode1 = course_determine_context('course_test', 'course_test_object', 1234);
+    $this->assertEqual($courseNode1->nid, $foundCourseNode1->nid, 'Found the right course context, pass 4.');
   }
 
 }

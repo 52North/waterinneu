@@ -33,6 +33,6 @@ function course_poll_fulfill(&$form, &$form_state) {
 
   // Find the course object associated with this poll.
   if ($courseObject = course_get_course_object('course_poll', 'poll', $nid, $user)) {
-    $courseObject->getFulfillment($user)->setOption('chid', $chid)->setComplete()->save();
+    $courseObject->getFulfillment($user)->setOption('instance', $chid)->setComplete()->save();
   }
 }

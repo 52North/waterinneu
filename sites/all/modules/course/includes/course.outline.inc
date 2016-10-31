@@ -22,7 +22,6 @@ function course_outline_overview_form($form, &$form_state) {
   // Load the modal library and add the modal javascript.
   ctools_include('ajax');
   ctools_include('modal');
-  ctools_include('dependent');
   ctools_include('object-cache');
   ctools_modal_add_js();
 
@@ -267,11 +266,6 @@ function _course_outline_object_form($courseObject = NULL) {
     '#attributes' => array(
       'class' => array('course-object-weight'),
     ),
-  );
-
-  $rform['dummy'] = array(
-    '#type' => 'checkbox',
-    '#dependency' => array('dummy' => 1),
   );
 
   return $rform;

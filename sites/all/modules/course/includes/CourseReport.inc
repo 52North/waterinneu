@@ -67,10 +67,10 @@ class CourseReport extends CourseHandler {
   /**
    * Course report entity label callback.
    */
-  function label() {
+  function defaultLabel() {
     $node = node_load($this->nid);
     $account = user_load($this->uid);
-    return t("@username's course report for @title", array('@username' => format_username($account->name), '@title' => $node->title));
+    return t("@username's course report for @title", array('@username' => format_username($account), '@title' => $node->title));
   }
 
 }

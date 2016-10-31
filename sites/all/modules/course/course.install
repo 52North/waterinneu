@@ -350,11 +350,10 @@ function course_schema() {
         'description' => "The item info",
       ),
       'instance' => array(
-        'type' => 'int',
-        'not null' => TRUE,
-        'unsigned' => TRUE,
-        'default' => 0,
-        'description' => 'The item instance',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'The object instance',
       ),
       'required' => array(
         'type' => 'int',
@@ -468,6 +467,12 @@ function course_schema() {
         'not null' => TRUE,
         'default' => '',
         'description' => 'The Universally Unique Identifier.',
+      ),
+      'instance' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'The fulfillment instance',
       ),
     ),
     'primary key' => array('cofid'),
@@ -809,6 +814,7 @@ function course_update_6132() {
     'type' => 'varchar',
     'length' => 255,
     'not null' => TRUE,
+    'default' => '',
   ));
 
   // hook_update_N() no longer returns a $ret array. Instead, return
@@ -1211,4 +1217,25 @@ function course_update_7138() {
     db_add_index('course_outline', 'instance', array('instance'));
   }
   return t('Added index on "instance" column.');
+}
+
+/**
+ * Add a new instance to fulfillments. Change existing instance column.
+ */
+function course_update_7139() {
+  db_add_field('course_outline_fulfillment', 'instance', array(
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+    'description' => 'The object instance',
+  ));
+
+  db_change_field('course_outline', 'instance', 'instance', array(
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+    'description' => 'The fulfillment instance',
+  ));
+
+  return t('Added index on "instance" column. Changed existing instance field to a varchar for 3rd party systems.');
 }

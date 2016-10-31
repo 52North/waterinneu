@@ -9,6 +9,7 @@ function course_quiz_course_handlers() {
       'quiz' => array(
         'name' => t('Quiz'),
         'class' => 'CourseObjectQuiz',
+        'fulfillment class' => 'CourseObjectQuizFulfillment',
         'description' => t('A Quiz course object.'),
       ),
     ),
@@ -27,6 +28,7 @@ function course_quiz_quiz_finished($quiz, $score, $session_data) {
     $account = user_load($uid);
 
     if ($courseObject = course_get_course_object('course_quiz', 'quiz', $quiz->nid, $account)) {
+      /* @var $courseObject CourseObjectQuiz */
       $courseObject->grade($account, $session_data['result_id']);
     }
   }

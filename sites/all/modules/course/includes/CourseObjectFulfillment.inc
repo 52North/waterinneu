@@ -73,16 +73,26 @@ class CourseObjectFulfillment extends CourseHandler {
   }
 
   /**
-   * @kludge
-   *
    * Allow arbitrary data to be stored on the fulfillment, without explicitly
-   * defining optionsDefinition().
+   * defining optionsDefinition() in a custom class.
+   *
+   * It is suggested that modules provide their own fulfillment classes and
+   * specify the valid extra options through their own optionsDefinition(). See
+   * CourseObjectWebformFulfillment for an example of this.
    */
   function optionsDefinition() {
     $options = get_object_vars($this);
     unset($options['entityInfo']);
     return $options;
+  }
 
+  /**
+   * Get the instance ID. This could be the external component ID, a Node ID...
+   *
+   * @return string
+   */
+  function getInstanceId() {
+    return $this->getOption('instance');
   }
 
 }

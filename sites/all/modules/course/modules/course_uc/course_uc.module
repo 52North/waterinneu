@@ -291,15 +291,7 @@ function course_uc_check_cart($nid, $uid, $data = array()) {
   $uid = isset($data['uid']) ? $data['uid'] : $uid;
   foreach ($contents as $item) {
     // Check if user already has course in their cart, if the user already is
-    // purchasing this course for somebody else, or the requested user is
-    // already enrolled.
-
-    if ($enrollment = course_enrollment_load($nid, $uid)) {
-      if ($enrollment->status) {
-        return TRUE;
-      }
-    }
-
+    // purchasing this course for somebody else.
     if ($item->nid == $nid && (!isset($item->data['uid']) || $item->data['uid'] == $uid)) {
       return TRUE;
     }
@@ -414,6 +406,7 @@ function course_uc_tokens($type, $tokens, array $data = array(), array $options 
 
   if ($type == 'uc_order') {
     $object = $data['uc_order'];
+    $show_header = FALSE;
 
     foreach ($object->products as $product) {
       $node = node_load($product->nid);
@@ -424,7 +417,7 @@ function course_uc_tokens($type, $tokens, array $data = array(), array $options 
           $line .= ' or ' . l('Take course now', "node/{$node->nid}/takecourse");
         }
         $courses[] = $line;
-        $show_header = 1;
+        $show_header = TRUE;
       }
       $items[] = l($node->title, "node/{$node->nid}");
     }

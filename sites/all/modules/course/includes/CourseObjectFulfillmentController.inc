@@ -36,4 +36,46 @@ class CourseObjectFulfillmentController extends EntityAPIController {
     return $entities;
   }
 
+  /**
+   * Overrides EntityAPIController::query().
+   */
+  public function query($ids, $conditions, $revision_id = FALSE) {
+    $query = $this->buildQuery($ids, $conditions, $revision_id);
+    $query->join('course_outline', 'co', 'base.coid = co.coid');
+    $query->fields('co', array('module', 'object_type'));
+    $result = $query->execute();
+    $result->setFetchMode(PDO::FETCH_ASSOC);
+
+    // Build the resulting objects ourselves, since the standard PDO ways of
+    // doing that are completely useless.
+    $objects = array();
+    foreach ($result as $row) {
+      $row['is_new'] = FALSE;
+      $objects[] = $this->create($row);
+    }
+    return $objects;
+  }
+
+  /**
+   * Overrides EntityAPIController::create().
+   */
+  public function create(array $values = array()) {
+
+    // Add is_new property if it is not set.
+    $values += array('is_new' => TRUE);
+
+    $available = course_get_handlers('object');
+    $ret = $available[$values['module']][$values['object_type']];
+    if (isset($ret['fulfillment class'])) {
+      $class = $ret['fulfillment class'];
+    }
+    else {
+      // Base class which minimally handles fulfillments.
+      $class = 'CourseObjectFulfillment';
+    }
+
+
+    return new $class($values, $this->entityType);
+  }
+
 }

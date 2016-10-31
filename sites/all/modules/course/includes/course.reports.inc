@@ -53,6 +53,9 @@ function course_object_reports_page($node) {
     }
   }
 
+  if (is_array($content)) {
+    $content = drupal_render($content);
+  }
   $rows['nav'] = array(
     'data' => $nav,
     'width' => 200,

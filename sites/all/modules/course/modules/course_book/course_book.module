@@ -55,7 +55,7 @@ function course_book_course_handlers() {
  * Implements hook_node_view().
  */
 function course_book_node_view($node, $view_mode = 'full') {
-  if ($view_mode == 'full') {
+  if (node_is_page($node)) {
     global $user;
     $search = !empty($node->book['bid']) ? $node->book['bid'] : $node->nid;
     if ($courseObject = course_get_course_object('course_book', 'book', $search, $user)) {

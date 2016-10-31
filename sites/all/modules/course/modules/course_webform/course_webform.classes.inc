@@ -57,7 +57,7 @@ class CourseObjectWebform extends CourseObjectNode {
   }
 
   function getNodeTypes() {
-    return array('webform');
+    return webform_node_types();
   }
 
   function getCloneAbility() {
@@ -86,6 +86,20 @@ class CourseObjectWebform extends CourseObjectNode {
         webform_submission_delete($node, $submission);
       }
     }
+  }
+
+}
+
+/**
+ * Course fulfillment class for webforms.
+ */
+class CourseObjectWebformFulfillment extends CourseObjectFulfillment {
+
+  /**
+   * Define storage for submission IDs.
+   */
+  function optionsDefinition() {
+    return array('sids' => array());
   }
 
 }

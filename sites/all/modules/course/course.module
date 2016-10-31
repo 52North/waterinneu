@@ -523,37 +523,6 @@ function course_object_options_form_after_build($form, &$form_state) {
 }
 
 /**
- * Form validation handler for course_object_options_form().
- *
- * @see course_object_options_form_submit()
- */
-function course_object_options_form_validate(&$form, &$form_state) {
-  if ($form_state['values']['uniqid']) {
-    // Get course object from session/database.
-    $courseObject = course_object_load($form_state['values']['uniqid']);
-    $courseObject->setId($form_state['values']['uniqid']);
-    $courseObject->optionsValidate($form, $form_state);
-  }
-}
-
-/**
- * Form submission handler for course_object_options_form().
- *
- * @see course_object_options_form_validate()
- */
-function course_object_options_form_submit(&$form, &$form_state) {
-  if ($form_state['values']['uniqid']) {
-    // Get course object from session/database.
-    $courseObject = course_object_load($form_state['values']['uniqid']);
-    $course = $courseObject->getCourse();
-    // Start editing session.
-    course_editing_start($course);
-    $courseObject->setId($form_state['values']['uniqid']);
-    $courseObject->optionsSubmit($form, $form_state);
-  }
-}
-
-/**
  * Menu loader for course objects, in the context of a course.
  */
 function course_object_load($coid) {
@@ -683,6 +652,10 @@ function course_permission() {
       'title' => t('Administer course enrollment types'),
       'description' => t('Manage course enrollment types, fields, and display settings.'),
     ),
+    'administer course enrollments' => array(
+      'title' => t('Administer course enrollments'),
+      'description' => t('Allows editing or deleting all course enrollments.'),
+    ),
   );
 }
 
@@ -727,32 +700,25 @@ function course_settings_access($node) {
 /**
  * Implements hook_node_view().
  */
-function course_node_view($node, $view_mode = 'full') {
+function course_node_view($node, $view_mode, $langcode) {
   if (course_node_is_course($node)) {
-    // Render take course button.
-    $show = variable_get('course_take_course_button_show', array('full' => 'full'));
-    if (($view_mode == 'teaser' && !empty($show['teaser'])) || ($view_mode == 'full' && !empty($show['full']))) {
-      global $user;
-      $enrollment = course_enrollment_load($node->nid, $user->uid);
-      if ((!empty($enrollment) && $enrollment->status)) {
-        // User is already in course. Check take access.
-        $access = course_take_course_access($node, $user);
-      }
-      else {
-        // User not in course. Check enroll access.
-        $access = course_enroll_access($node, $user);
-      }
+    global $user;
+    $enrollment = course_enrollment_load($node->nid, $user->uid);
+    if ((!empty($enrollment) && $enrollment->status)) {
+      // User is already in course. Check take access.
+      $access = course_take_course_access($node, $user);
+    }
+    else {
+      // User not in course. Check enroll access.
+      $access = course_enroll_access($node, $user);
+    }
 
-      if (!$access['success']) {
-        $node->content['course_messages']['#markup'] = '<div class="course-restriction">' . "<h4>" . $access['header'] . "</h4>" . '<div class="course-restriction-message">' . $access['message'] . '</div></div>';
-      }
-      else {
-        // Render take course button.
-        $show = variable_get('course_take_course_button_show', array('full' => 'full'));
-        if (($view_mode == 'teaser' && !empty($show['teaser'])) || ($view_mode == 'full' && !empty($show['full']))) {
-          $node->content['course']['#markup'] = theme('course_take_course_button', array('node' => $node));
-        }
-      }
+    if (!$access['success']) {
+      $node->content['course_messages']['#markup'] = '<div class="course-restriction">' . "<h4>" . $access['header'] . "</h4>" . '<div class="course-restriction-message">' . $access['message'] . '</div></div>';
+    }
+    else {
+      // Render take course button.
+      $node->content['course']['#markup'] = theme('course_take_course_button', array('node' => $node));
     }
   }
 }
@@ -2052,7 +2018,7 @@ function course_edit_enrollment_action_form($a1, $context) {
       1 => t('Complete'),
       0 => t('Incomplete'),
     ),
-    '#description' => t("This will change a user's course completion. Set to incomplete this to re-evaluate all requirements. Course will never be automatically un-completed once they have been marked completed."),
+    '#description' => t("This will change a user's course completion. Set this to incomplete to re-evaluate all requirements. Courses will never be automatically un-completed once they have been marked completed."),
     '#default_value' => !empty($course_report->complete) ? $course_report->complete : NULL,
   );
 
@@ -2442,16 +2408,6 @@ function course_report_save($entry) {
  * Clean up course reports and fulfillments for a deleted user.
  */
 function course_user_delete($account) {
-  // Delete any fulfillments.
-  db_delete('course_outline_fulfillment')
-    ->condition('uid', $account->uid)
-    ->execute();
-
-  // Delete any course report records.
-  db_delete('course_report')
-    ->condition('uid', $account->uid)
-    ->execute();
-
   $result = db_query("SELECT * FROM {course_enrollment} WHERE uid = :uid", array(':uid' => $account->uid));
   while ($enrollment = $result->fetch()) {
     $node = node_load($enrollment->nid);
@@ -2588,48 +2544,43 @@ function course_set_context($node = NULL, $clear = FALSE) {
  * @return mixed
  *   A course node or NULL if course context not found.
  */
-function course_determine_context($module = NULL, $object_type = NULL, $instance = NULL, $no_set = FALSE, $flush = FALSE) {
-  $cache = &drupal_static(__FUNCTION__);
+function course_determine_context($module = NULL, $object_type = NULL, $instance = NULL, $no_set = FALSE) {
   $context = NULL;
 
-  if (!$context || $flush || $no_set) {
-    // Determine the course node based on passed query parameters.
-    $result = db_query("SELECT nid FROM {course_outline} WHERE instance = :instance AND module = :module AND object_type = :object_type", array(':instance' => $instance, ':module' => $module, ':object_type' => $object_type));
-    $nids = array();
-    while ($course_outline = $result->fetch()) {
-      $nids[] = $course_outline->nid;
-    }
-
-    if (count($nids) > 1) {
-      if (in_array($_SESSION['course']['active'], $nids)) {
-        // The active course in the session is one of the courses this object
-        // belongs to.
-        $context = node_load($_SESSION['course']['active']);
-      }
-      else {
-        // No active course, or no match. We have to guess since we're accessing
-        // this course material outside of the course.
-        $context = node_load($nids[0]);
-      }
-    }
-    elseif ($nids) {
-      // We don't have an active session (or, the course in the active session
-      // didn't contain this course object). So we just guess the first one.
-      $context = node_load($nids[0]);
-    }
-
-    if ($no_set) {
-      // Callee just wants context.
-      return $context;
-    }
-    elseif ($context) {
-      // Set the active course and static cache it.
-      $_SESSION['course']['active'] = $context->nid;
-      $cache = $context;
-    }
+  // Determine the course node based on passed query parameters.
+  $result = db_query("SELECT nid FROM {course_outline} WHERE instance = :instance AND module = :module AND object_type = :object_type", array(':instance' => $instance, ':module' => $module, ':object_type' => $object_type));
+  $nids = array();
+  while ($course_outline = $result->fetch()) {
+    $nids[] = $course_outline->nid;
   }
 
-  return $cache;
+  if (count($nids) > 1) {
+    if (!empty($_SESSION['course']['active']) && in_array($_SESSION['course']['active'], $nids)) {
+      // The active course in the session is one of the courses this object
+      // belongs to.
+      $context = node_load($_SESSION['course']['active']);
+    }
+    else {
+      // No active course, or no match. We have to guess since we're accessing
+      // this course material outside of the course.
+      $context = node_load($nids[0]);
+    }
+  }
+  elseif ($nids) {
+    // We don't have an active session (or, the course in the active session
+    // didn't contain this course object). So we just guess the first one.
+    $context = node_load($nids[0]);
+  }
+
+  if ($no_set) {
+    // Callee just wants context.
+    return $context;
+  }
+  elseif ($context) {
+    // Set the active course and static cache it.
+    $_SESSION['course']['active'] = $context->nid;
+    return $context;
+  }
 }
 
 /**
@@ -2733,7 +2684,7 @@ function course_entity_info() {
       'bundle keys' => array(
         'bundle' => 'type',
       ),
-      'access callback' => 'course_access',
+      'access callback' => 'course_enrollment_access',
     ),
     'course_enrollment_type' => array(
       'label' => t('Enrollment type'),
@@ -3133,4 +3084,11 @@ function course_enrollment_type_access($op, $entity = NULL, $account = NULL, $en
  */
 function course_admin_access() {
   return user_access('administer course') || user_access('access course administration area');
+}
+
+/**
+ * Access callback for the entity API.
+ */
+function course_enrollment_access($op, $entity, $account = NULL, $entity_type) {
+  return user_access('administer course') || user_access('administer course enrollments');
 }

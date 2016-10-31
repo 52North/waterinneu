@@ -57,4 +57,14 @@ class CourseOutlineUiTestCase extends CourseTestCase {
     $this->assertFalse((bool) $elements, 'User was not able to add more than maxOccurances of course objects.');
   }
 
+  /**
+   * Test that an object can be marked for deletion from the course outline
+   * without validation.
+   */
+  function testObjectDeletion() {
+    $this->testCourseOutlineCrud();
+    $this->drupalPost(NULL, array(), t('Delete'));
+    $this->assertText('Object will be removed from outline');
+  }
+
 }

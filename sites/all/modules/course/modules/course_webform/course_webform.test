@@ -71,8 +71,8 @@ class CourseObjectWebformTestCase extends CourseTestCase {
 
     // Reload because something happened in the DB.
     $co1 = course_get_course_object_by_id($co1->getId(), $this->student_user);
-    $sids = $co1->getFulfillment()->getOption('sids');
-    $this->assertTrue(empty($sids), 'Check that webform submission was not recorded.');
+    $sid = $co1->getFulfillment()->getInstanceId();
+    $this->assertTrue(empty($sid), 'Check that webform submission was not recorded.');
     $this->assertFalse($co1->getFulfillment()->isComplete(), 'Check that webform is not complete.');
 
     // Finish the webform.
@@ -82,16 +82,15 @@ class CourseObjectWebformTestCase extends CourseTestCase {
 
     // Reload because something happened in the DB.
     $co1 = course_get_course_object_by_id($co1->getId(), $this->student_user);
-    $sids = $co1->getFulfillment()->getOption('sids');
-    $this->assertTrue($sids[0] > 0, 'Check that webform submission was recorded.');
+    $sid = $co1->getFulfillment()->getInstanceId();
+    $this->assertTrue($sid, 'Check that webform submission was recorded.');
     $this->assertTrue($co1->getFulfillment()->isComplete(), 'Check that webform is completed.');
 
     // Test that on unenroll, the user's webform submission is deleted.
     $co1->unEnroll();
     drupal_static('webform_get_submission', array(), TRUE);
-    $submission = webform_get_submission($co1->getNode()->nid, $sids[0]);
-    // Disable this test temporarily. See #2400705
-    //$this->assertFalse($submission, 'Check that webform submission was deleted.');
+    $submission = webform_get_submission($co1->getNode()->nid, $sid);
+    $this->assertFalse($submission, 'Check that webform submission was deleted.');
   }
 
 }

@@ -35,6 +35,7 @@ class CourseObjectQuiz extends CourseObjectNode {
 
     $result_ids = (array) $fulfillment->getOption('quiz_result_ids');
     $result_ids[] = $rid;
+    $fulfillment->setOption('instance', $rid);
     $fulfillment->setOption('quiz_result_ids', $result_ids);
 
     $results = quiz_get_score_data(array($nid), $user->uid);
@@ -227,6 +228,20 @@ class CourseObjectQuiz extends CourseObjectNode {
     }
 
     return $quizzes;
+  }
+
+}
+
+/**
+ * Course fulfillment class for quizzes.
+ */
+class CourseObjectQuizFulfillment extends CourseObjectFulfillment {
+
+  /**
+   * Define storage for quiz result IDs.
+   */
+  function optionsDefinition() {
+    return array('quiz_result_ids' => array());
   }
 
 }

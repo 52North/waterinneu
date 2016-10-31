@@ -38,11 +38,14 @@ class CourseObjectFulfillmentTestCase extends CourseTestCase {
     course_enroll($courseNode, $this->learner);
 
     // Satisfy the object inside of the course.
-    $co1_1->getFulfillment()->setComplete(TRUE)->save();
+    $co1_1->getFulfillment()->setOption('test_value', 'findMe123')->setComplete(TRUE)->save();
+    $co1_1->getFulfillment()->setOption('test_value_undef', 'findMe123')->setComplete(TRUE)->save();
 
     // Reload because something happened in the DB.
-    $co1_2 = course_get_course_object_by_id($co1_1->getId(), $this->learner);
-    $this->assertTrue($co1_2->getFulfillment()->isComplete(), 'Check that the object is fulfilled.');
+    $co1_1 = course_get_course_object_by_id($co1_1->getId(), $this->learner);
+    $this->assertEqual($co1_1->getFulfillment()->getOption('test_value'), 'findMe123', 'Check that defined fulfillment data was saved.');
+    $this->assertNotEqual($co1_1->getFulfillment()->getOption('test_value_undef'), 'findMe123', 'Check that undefined fulfillment data was not saved.');
+    $this->assertTrue($co1_1->getFulfillment()->isComplete(), 'Check that the object is fulfilled.');
   }
 
 }

@@ -31,3 +31,17 @@ class CourseObjectGradedTest extends CourseObjectTest {
   }
 
 }
+
+/**
+ * Course fulfillment class for test.
+ */
+class CourseObjectTestFulfillment extends CourseObjectFulfillment {
+
+  /**
+   * Define storage for quiz result IDs.
+   */
+  function optionsDefinition() {
+    return array('test_value' => NULL);
+  }
+
+}

@@ -78,7 +78,7 @@ class CourseObjectPoll extends CourseObjectNode {
       ->execute();
     db_update('poll_choice')
       ->expression('chvotes', 'chvotes - 1')
-      ->condition('chid', $this->getFulfillment($account)->getOption('chid'))
+      ->condition('chid', $this->getFulfillment($account)->getOption('instance'))
       ->execute();
   }
 
