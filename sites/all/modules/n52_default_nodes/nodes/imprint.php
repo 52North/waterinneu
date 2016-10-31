@@ -65,7 +65,20 @@ given on our web site and the material of all sites reached via banners and
 links on the WaterInnEU web site.</p>
 <h2>Cookies</h2>
 <p>Bitte konsultieren Sie die Seite <a href="cookies">&uuml;ber die Verwendung 
-von Cookies durch den WaterInnEU-Marktplatz-Prototypen</a>.</p>',
+von Cookies durch den WaterInnEU-Marktplatz-Prototypen</a>.</p>
+<h2>Datenschutz</h2>
+<p><a target="_blank" href="https://piwik.org/">Piwik</a> wird zur Verfolgung 
+der Besucher des Marktplatzes verwendet. Zwei Optionen zur Vermeidung stehen
+zur Verfügung:</p>
+<ul>
+<li>Nutzung des <a target="_blank" href="https://www.w3.org/TR/tracking-dnt/">
+<abbr title="Do Not Track">DNT</abbr></a> <a target="_blank" 
+href="https://de.wikipedia.org/wiki/Do_Not_Track">headers</a> oder</li>
+<li>Verwendung eines Cookies, der <a 
+href="https://wiki.52north.org/piwik/index.php?module=CoreAdminHome&action=optOut&language=en"
+target="_blank">Piwik mitteilt, dass die Besuche nicht verfolgt werden sollen
+</a>.</li>
+</ul>',
 				'en' => '
 <p>
     52&deg;North Initiative for Geospatial Open Source Software GmbH<br />
@@ -99,6 +112,17 @@ given on our web site and the material of all sites reached via banners and
 links on the WaterInnEU web site.</p>
 <h2>Cookies</h2>
 <p>Please take a look at the dedicated page about <a href="/cookies">cookie 
-used by the WaterInnEU Marketplace Prototype</a>.</p>',),
+used by the WaterInnEU Marketplace Prototype</a>.</p>
+<h2>Privacy</h2>
+<p><a target="_blank" href="https://piwik.org/">Piwik</a> is used for tracking
+visitors to this marketplace. Two options are available to opt-out:</p>
+<ul>
+<li>Use the <a target="_blank" href="https://www.w3.org/TR/tracking-dnt/">
+<abbr title="Do Not Track">DNT</abbr></a> <a target="_blank" 
+href="https://en.wikipedia.org/wiki/Do_Not_Track">header</a> or</li>
+<li>Use a cookie, that <a 
+href="https://wiki.52north.org/piwik/index.php?module=CoreAdminHome&action=optOut&language=en" 
+target="_blank">tells piwik not to track your visits</a>.</li>
+</ul>',),
 	);
 }
