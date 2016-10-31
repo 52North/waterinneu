@@ -8,9 +8,9 @@ dependencies[] = harmony_core
 dependencies[] = markdown
 dependencies[] = codefilter
 
-; Information added by Drupal.org packaging script on 2016-09-06
-version = "7.x-1.0-alpha10"
+; Information added by Drupal.org packaging script on 2016-02-12
+version = "7.x-1.0-alpha9"
 core = "7.x"
 project = "harmony_core"
-datestamp = "1473156244"
+datestamp = "1455300241"
 

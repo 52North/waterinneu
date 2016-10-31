@@ -37,10 +37,10 @@ function theme_harmony_post_revision_display_log($variables) {
   $output = NULL;
 
   if (trim($post->log) != '' && $post->log_show) {
-    $_user = user_load($post->revision_uid);
+    $user = user_load($post->revision_uid);
     $text = t('Edited on @date by !editor, @reason', array(
       '@date' => format_date($post->updated, variable_get('harmony_core_date_type', 'medium'), variable_get('harmony_core_date_format', '')),
-      '!editor' => theme('username', array('account' => $_user)),
+      '!editor' => theme('username', array('account' => $user)),
       '@reason' => $post->log,
     ));
     $output = '<div class="post-revision-log text-small">' . $text . '</div>';
