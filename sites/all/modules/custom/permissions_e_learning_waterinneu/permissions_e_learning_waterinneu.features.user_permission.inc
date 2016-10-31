@@ -14,7 +14,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['access all course reports'] = array(
     'name' => 'access all course reports',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'course',
@@ -24,7 +24,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['access course'] = array(
     'name' => 'access course',
     'roles' => array(
-      'Student' => 'Student',
+      'Course partecipant' => 'Course partecipant',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
@@ -35,7 +35,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['access course administration area'] = array(
     'name' => 'access course administration area',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'course',
@@ -69,7 +69,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['administer all signups'] = array(
     'name' => 'administer all signups',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -79,7 +79,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['administer course'] = array(
     'name' => 'administer course',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'course',
@@ -89,7 +89,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['administer course enrollment types'] = array(
     'name' => 'administer course enrollment types',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'course',
@@ -117,7 +117,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['administer signups for own content'] = array(
     'name' => 'administer signups for own content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -154,7 +154,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['cancel own signups'] = array(
     'name' => 'cancel own signups',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -164,7 +164,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['cancel signups'] = array(
     'name' => 'cancel signups',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -174,7 +174,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['create course content'] = array(
     'name' => 'create course content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
@@ -184,7 +184,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['create long_answer content'] = array(
     'name' => 'create long_answer content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -193,7 +193,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['create matching content'] = array(
     'name' => 'create matching content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -202,7 +202,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['create multichoice content'] = array(
     'name' => 'create multichoice content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -211,7 +211,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['create quiz content'] = array(
     'name' => 'create quiz content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -220,7 +220,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['create quiz_ddlines content'] = array(
     'name' => 'create quiz_ddlines content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -229,7 +229,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['create short_answer content'] = array(
     'name' => 'create short_answer content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -238,7 +238,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['create truefalse content'] = array(
     'name' => 'create truefalse content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -247,7 +247,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['delete any course content'] = array(
     'name' => 'delete any course content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
@@ -315,7 +315,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['delete own course content'] = array(
     'name' => 'delete own course content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
@@ -325,7 +325,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['delete own long_answer content'] = array(
     'name' => 'delete own long_answer content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -334,7 +334,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['delete own matching content'] = array(
     'name' => 'delete own matching content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -343,7 +343,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['delete own multichoice content'] = array(
     'name' => 'delete own multichoice content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -352,7 +352,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['delete own quiz content'] = array(
     'name' => 'delete own quiz content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -361,7 +361,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['delete own quiz_ddlines content'] = array(
     'name' => 'delete own quiz_ddlines content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -370,7 +370,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['delete own short_answer content'] = array(
     'name' => 'delete own short_answer content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -379,7 +379,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['delete own truefalse content'] = array(
     'name' => 'delete own truefalse content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -404,7 +404,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['edit any course content'] = array(
     'name' => 'edit any course content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
@@ -463,7 +463,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['edit own course content'] = array(
     'name' => 'edit own course content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
@@ -473,7 +473,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['edit own long_answer content'] = array(
     'name' => 'edit own long_answer content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -482,7 +482,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['edit own matching content'] = array(
     'name' => 'edit own matching content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -491,7 +491,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['edit own multichoice content'] = array(
     'name' => 'edit own multichoice content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -500,7 +500,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['edit own quiz content'] = array(
     'name' => 'edit own quiz content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -509,7 +509,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['edit own quiz_ddlines content'] = array(
     'name' => 'edit own quiz_ddlines content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -518,7 +518,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['edit own short_answer content'] = array(
     'name' => 'edit own short_answer content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -527,7 +527,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['edit own signups'] = array(
     'name' => 'edit own signups',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -537,7 +537,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['edit own truefalse content'] = array(
     'name' => 'edit own truefalse content',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
     ),
     'module' => 'node',
   );
@@ -562,7 +562,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['email all signed up users'] = array(
     'name' => 'email all signed up users',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -572,8 +572,8 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['email users signed up for own content'] = array(
     'name' => 'email users signed up for own content',
     'roles' => array(
-      'Student' => 'Student',
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
+      'Course partecipant' => 'Course partecipant',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -618,7 +618,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['score taken quiz answer'] = array(
     'name' => 'score taken quiz answer',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'quiz',
@@ -649,8 +649,8 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['sign up for content'] = array(
     'name' => 'sign up for content',
     'roles' => array(
-      'Student' => 'Student',
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
+      'Course partecipant' => 'Course partecipant',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
@@ -670,7 +670,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['view all signups'] = array(
     'name' => 'view all signups',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'signup',
@@ -680,7 +680,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['view any quiz question correct response'] = array(
     'name' => 'view any quiz question correct response',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'quiz',
@@ -699,7 +699,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['view own quiz results'] = array(
     'name' => 'view own quiz results',
     'roles' => array(
-      'Student' => 'Student',
+      'Course partecipant' => 'Course partecipant',
       'administrator' => 'administrator',
     ),
     'module' => 'quiz',
@@ -709,7 +709,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['view quiz question outside of a quiz'] = array(
     'name' => 'view quiz question outside of a quiz',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'quiz',
@@ -719,7 +719,7 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
   $permissions['view results for own quiz'] = array(
     'name' => 'view results for own quiz',
     'roles' => array(
-      'Teacher' => 'Teacher',
+      'Course Administrator' => 'Course Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'quiz',
