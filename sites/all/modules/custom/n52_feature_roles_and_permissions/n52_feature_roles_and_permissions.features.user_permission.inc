@@ -852,24 +852,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'facetapi',
   );
 
-  // Exported permission: 'administer faq'.
-  $permissions['administer faq'] = array(
-    'name' => 'administer faq',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'faq',
-  );
-
-  // Exported permission: 'administer faq order'.
-  $permissions['administer faq order'] = array(
-    'name' => 'administer faq order',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'faq',
-  );
-
   // Exported permission: 'administer features'.
   $permissions['administer features'] = array(
     'name' => 'administer features',
@@ -1383,13 +1365,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'create faq content'.
-  $permissions['create faq content'] = array(
-    'name' => 'create faq content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: 'create mini panels'.
   $permissions['create mini panels'] = array(
     'name' => 'create mini panels',
@@ -1514,13 +1489,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete any faq content'.
-  $permissions['delete any faq content'] = array(
-    'name' => 'delete any faq content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete any n52_sucess_story content'.
   $permissions['delete any n52_sucess_story content'] = array(
     'name' => 'delete any n52_sucess_story content',
@@ -1604,13 +1572,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own faq content'.
-  $permissions['delete own faq content'] = array(
-    'name' => 'delete own faq content',
-    'roles' => array(),
     'module' => 'node',
   );
 
@@ -1929,13 +1890,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'edit any faq content'.
-  $permissions['edit any faq content'] = array(
-    'name' => 'edit any faq content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit any n52_sucess_story content'.
   $permissions['edit any n52_sucess_story content'] = array(
     'name' => 'edit any n52_sucess_story content',
@@ -2027,13 +1981,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'authenticated user' => 'authenticated user',
     ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own faq content'.
-  $permissions['edit own faq content'] = array(
-    'name' => 'edit own faq content',
-    'roles' => array(),
     'module' => 'node',
   );
 
@@ -2722,13 +2669,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
-  // Exported permission: 'publish revisions of any faq content'.
-  $permissions['publish revisions of any faq content'] = array(
-    'name' => 'publish revisions of any faq content',
-    'roles' => array(),
-    'module' => 'revisioning',
-  );
-
   // Exported permission: 'publish revisions of any n52_sucess_story content'.
   $permissions['publish revisions of any n52_sucess_story content'] = array(
     'name' => 'publish revisions of any n52_sucess_story content',
@@ -2796,13 +2736,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'moderator' => 'moderator',
     ),
-    'module' => 'revisioning',
-  );
-
-  // Exported permission: 'publish revisions of own faq content'.
-  $permissions['publish revisions of own faq content'] = array(
-    'name' => 'publish revisions of own faq content',
-    'roles' => array(),
     'module' => 'revisioning',
   );
 
@@ -3394,16 +3327,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'devel_node_access',
   );
 
-  // Exported permission: 'view faq page'.
-  $permissions['view faq page'] = array(
-    'name' => 'view faq page',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
-    ),
-    'module' => 'faq',
-  );
-
   // Exported permission: 'view own unpublished content'.
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
@@ -3456,13 +3379,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'authenticated user' => 'authenticated user',
     ),
-    'module' => 'revisioning',
-  );
-
-  // Exported permission: 'view revisions of any faq content'.
-  $permissions['view revisions of any faq content'] = array(
-    'name' => 'view revisions of any faq content',
-    'roles' => array(),
     'module' => 'revisioning',
   );
 
@@ -3533,13 +3449,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'authenticated user' => 'authenticated user',
     ),
-    'module' => 'revisioning',
-  );
-
-  // Exported permission: 'view revisions of own faq content'.
-  $permissions['view revisions of own faq content'] = array(
-    'name' => 'view revisions of own faq content',
-    'roles' => array(),
     'module' => 'revisioning',
   );
 

@@ -616,7 +616,7 @@ function n52_feature_menus_menu_default_menu_links() {
   $menu_links['navigation_faq:node/add/faq'] = array(
     'menu_name' => 'navigation',
     'link_path' => 'node/add/faq',
-    'router_path' => 'node/add/faq',
+    'router_path' => 'node/add',
     'link_title' => 'FAQ',
     'options' => array(
       'attributes' => array(

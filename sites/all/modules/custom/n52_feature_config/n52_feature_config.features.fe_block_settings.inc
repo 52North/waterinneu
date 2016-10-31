@@ -160,34 +160,6 @@ matchmaking*',
     'visibility' => 0,
   );
 
-  $export['faq-faq_categories'] = array(
-    'cache' => 1,
-    'custom' => 0,
-    'delta' => 'faq_categories',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'faq',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'adminimal' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'adminimal',
-        'weight' => 0,
-      ),
-      'n52_wieu_theme' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'n52_wieu_theme',
-        'weight' => -41,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
   $export['lang_dropdown-language_content'] = array(
     'cache' => -1,
     'custom' => 0,
