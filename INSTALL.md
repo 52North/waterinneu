@@ -45,6 +45,7 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
     $conf['404_fast_paths_exclude'] = '/\/(?:styles)\//';
     $conf['404_fast_paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
     $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
+    $base_url = "http://localhost/your-contenxt-path";
     ```
 1. Ensure that the file is protected, e.g.
 
@@ -56,9 +57,9 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
 
 1. Access the site ```http://localhost/en/user``` and login with the example credentials:
 
-  **Username**: ```waterinneu```
+  **Username**: ```admin```
 
-  **Password**: ```waterinneu```
+  **Password**: ```admin```
 
 1. Update the administrator account to match your set-up. Change the password and e-mail address at the following page:
 
@@ -78,7 +79,7 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
 
 1. Adjust the imprint: Go to the following page and adjust the imprint to your needs:
 
-  ``` http://localhost/en/node/8782/edit ```
+  ``` http://localhost/en/imprint ```
 
 1. Update the _widget ID_ and _username_ of the twitter block to your needs:
 
@@ -89,6 +90,19 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
    ``` http://localhost/en/admin/config/system/actions/configure/111 ```
 
 1. Clear cache: Select ```Flush all caches``` from the black admin menu on top. Mouse over the house icon.
+
+1. Update mail address in
+
+   1. ...subscription from under **Mail settings**:
+
+     ``` http://localhost/en/admin/config/system/subscriptions ```
+   1. ...in the **maintenance mode** message:
+
+     ``` http://localhost/en/admin/config/development/maintenance ```
+
+   1. ...in the **site information** form:
+   
+     ``` http://localhost/en/admin/config/system/site-information ```
 
 1. Test contact form: Open the following link and try to send a mail via the global contact form:
 
