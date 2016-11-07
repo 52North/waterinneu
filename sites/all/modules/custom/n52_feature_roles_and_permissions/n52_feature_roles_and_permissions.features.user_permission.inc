@@ -172,24 +172,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'aggregator',
   );
 
-  // Exported permission: 'access own authorizations'.
-  $permissions['access own authorizations'] = array(
-    'name' => 'access own authorizations',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'oauth_common',
-  );
-
-  // Exported permission: 'access own consumers'.
-  $permissions['access own consumers'] = array(
-    'name' => 'access own consumers',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'oauth_common',
-  );
-
   // Exported permission: 'access print'.
   $permissions['access print'] = array(
     'name' => 'access print',
@@ -744,15 +726,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: 'administer consumers'.
-  $permissions['administer consumers'] = array(
-    'name' => 'administer consumers',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'oauth_common',
-  );
-
   // Exported permission: 'administer contact forms'.
   $permissions['administer contact forms'] = array(
     'name' => 'administer contact forms',
@@ -1014,15 +987,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'administer oauth'.
-  $permissions['administer oauth'] = array(
-    'name' => 'administer oauth',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'oauth_common',
-  );
-
   // Exported permission: 'administer page manager'.
   $permissions['administer page manager'] = array(
     'name' => 'administer page manager',
@@ -1129,15 +1093,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'search_api',
-  );
-
-  // Exported permission: 'administer services'.
-  $permissions['administer services'] = array(
-    'name' => 'administer services',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'services',
   );
 
   // Exported permission: 'administer shortcuts'.
@@ -2286,33 +2241,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'features',
   );
 
-  // Exported permission: 'get a system variable'.
-  $permissions['get a system variable'] = array(
-    'name' => 'get a system variable',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'services',
-  );
-
-  // Exported permission: 'get any binary files'.
-  $permissions['get any binary files'] = array(
-    'name' => 'get any binary files',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'services',
-  );
-
-  // Exported permission: 'get own binary files'.
-  $permissions['get own binary files'] = array(
-    'name' => 'get own binary files',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'services',
-  );
-
   // Exported permission: 'manage bg translation overview priorities'.
   $permissions['manage bg translation overview priorities'] = array(
     'name' => 'manage bg translation overview priorities',
@@ -2586,24 +2514,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'pathauto',
   );
 
-  // Exported permission: 'oauth authorize any consumers'.
-  $permissions['oauth authorize any consumers'] = array(
-    'name' => 'oauth authorize any consumers',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'oauth_common',
-  );
-
-  // Exported permission: 'oauth register any consumers'.
-  $permissions['oauth register any consumers'] = array(
-    'name' => 'oauth register any consumers',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'oauth_common',
-  );
-
   // Exported permission: 'perform backup'.
   $permissions['perform backup'] = array(
     'name' => 'perform backup',
@@ -2611,15 +2521,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'backup_migrate',
-  );
-
-  // Exported permission: 'perform unlimited index queries'.
-  $permissions['perform unlimited index queries'] = array(
-    'name' => 'perform unlimited index queries',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'services',
   );
 
   // Exported permission: 'post comments'.
@@ -2838,15 +2739,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'security_review',
   );
 
-  // Exported permission: 'save file information'.
-  $permissions['save file information'] = array(
-    'name' => 'save file information',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'services',
-  );
-
   // Exported permission: 'search content'.
   $permissions['search content'] = array(
     'name' => 'search content',
@@ -2865,15 +2757,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
-  );
-
-  // Exported permission: 'set a system variable'.
-  $permissions['set a system variable'] = array(
-    'name' => 'set a system variable',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'services',
   );
 
   // Exported permission: 'show format selection for comment'.
