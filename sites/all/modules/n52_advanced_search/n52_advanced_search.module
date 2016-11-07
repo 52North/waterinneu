@@ -27,7 +27,7 @@
  * Public License for more details.
  */
 /**
- * Implements hook_from_FORM-ID_alter()
+ * Implements hook_form_FORM-ID_alter()
  *
  * Add advanced search link to search form pop-up
  */
