@@ -705,6 +705,26 @@ user/*/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'security_review_base_url_method';
+  $strongarm->value = 'token';
+  $export['security_review_base_url_method'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'security_review_untrusted_roles';
+  $strongarm->value = array(
+    1 => '1',
+    2 => 0,
+    9 => 0,
+    10 => 0,
+    3 => 0,
+  );
+  $export['security_review_untrusted_roles'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'site_403';
   $strongarm->value = 'r4032login';
   $export['site_403'] = $strongarm;
