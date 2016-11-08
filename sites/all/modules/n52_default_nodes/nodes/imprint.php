@@ -1,3 +1,4 @@
+
 <?php
 /*
  * Copyright (C) 2016
@@ -49,7 +50,7 @@ Gesch&auml;ftsf&uuml;hrer: Dr. Albert Remke, Dr. Andreas Wytzisk<br />
 USt.-ID-Nr. DE253303206<br />
 <br />
 Handelsregister: Amtsgericht M&uuml;nster HRB 10849</p>
-<h2>Inhalt</h2>
+<h2 id="content">Inhalt</h2>
 <p>Das Projektteam von enviroCar versucht mit bestem Wissen und Gewissen die 
 Inhalte dieser Website aktuell, vollständig und korrekt zu halten. Trotzdem 
 sind Fehler nicht auszuschließen. Das enviroCar Projekt übernimmt keinerlei 
@@ -63,10 +64,10 @@ Internet web sites and therefore expressly distances itself from the material
 of all third party Internet web sites. The declaration is valid for all links 
 given on our web site and the material of all sites reached via banners and 
 links on the WaterInnEU web site.</p>
-<h2>Cookies</h2>
+<h2 id="cookies">Cookies</h2>
 <p>Bitte konsultieren Sie die Seite <a href="cookies">&uuml;ber die Verwendung 
 von Cookies durch den WaterInnEU-Marktplatz-Prototypen</a>.</p>
-<h2>Datenschutz</h2>
+<h2 id="privacy">Datenschutz</h2>
 <p><a target="_blank" href="https://piwik.org/">Piwik</a> wird zur Verfolgung 
 der Besucher des Marktplatzes verwendet. Zwei Optionen zur Vermeidung stehen
 zur Verfügung:</p>
@@ -95,7 +96,7 @@ Managing Directors: Dr. Albert Remke, Dr. Andreas Wytzisk<br />
 USt.-ID-Nr. DE253303206<br />
 <br />
 Commercial Registry: Amtsgericht M&uuml;nster HRB 10849</p>
-<h2>Content</h2>
+<h2 id="content">Content</h2>
 <p>The WaterInnEU project team makes every effort to ensure that the material 
 contained in its web site is current, complete and correct. Despite this, 
 errors cannot be completely ruled out. WaterInnEU does not accept liability 
@@ -110,10 +111,10 @@ Internet web sites and therefore expressly distances itself from the material
 of all third party Internet web sites. The declaration is valid for all links 
 given on our web site and the material of all sites reached via banners and 
 links on the WaterInnEU web site.</p>
-<h2>Cookies</h2>
+<h2 id="cookies">Cookies</h2>
 <p>Please take a look at the dedicated page about <a href="/cookies">cookie 
 used by the WaterInnEU Marketplace Prototype</a>.</p>
-<h2>Privacy</h2>
+<h2 id="privacy">Privacy</h2>
 <p><a target="_blank" href="https://piwik.org/">Piwik</a> is used for tracking
 visitors to this marketplace. Two options are available to opt-out:</p>
 <ul>
