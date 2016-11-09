@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+    db:
+        image: mysql:5.5.53
+        volumes:
+         - "../../wieu-mysqldb/:/var/lib/mysql"
+        restart: always
+        environment:
+            MYSQL_DATABASE: drupal
+            MYSQL_ROOT_PASSWORD: mysql
+        ports:
+            - 3306:3306
+    
+    drupal:
+        depends_on:
+            - db
+        build: .
+        image: drupal:7.51-apache
+        volumes:
+            - "../:/var/www/html"
+        links:
+            - db
+        ports:
+            - 80:80
+        restart: always
