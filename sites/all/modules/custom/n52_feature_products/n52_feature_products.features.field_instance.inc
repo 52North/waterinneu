@@ -1436,7 +1436,7 @@ function n52_feature_products_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_n52_case_studies',
     'label' => 'Case Studies',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
       'attributes' => array(

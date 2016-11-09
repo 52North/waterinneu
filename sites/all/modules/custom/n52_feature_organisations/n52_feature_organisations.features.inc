@@ -31,7 +31,7 @@ function n52_feature_organisations_node_info() {
     'organisation' => array(
       'name' => t('Organisation'),
       'base' => 'node_content',
-      'description' => t('Organisation Description missing. If you have any, please send a mail to e.h.juerrens@52north.org.'),
+      'description' => '',
       'has_title' => '1',
       'title_label' => t('Name'),
       'help' => t('Organisation deletion is only possible by admins. If you want to have an organisation deleted, please use the <a href="/contact">contact form</a>.

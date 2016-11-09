@@ -141,7 +141,7 @@ function n52_feature_events_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_event';
-  $strongarm->value = 'main-menu:2977';
+  $strongarm->value = 'main-menu:0';
   $export['menu_parent_event'] = $strongarm;
 
   $strongarm = new stdClass();
