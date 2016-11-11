@@ -46,6 +46,9 @@
 	      print $content['field_category'][0]['#markup'];
 	      $content['field_category'] = NULL;
 	    }
+	    if (isset($content['field_express_interest_button'])) {
+	    	$content['field_express_interest_button'] = NULL;
+	    }
 	    ?></h2>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
@@ -56,7 +59,7 @@
         <?php 
         if ($changed <= $created) {
         	print $submitted;
-		}
+				}
         if ($changed > $created) {
         	$user = user_load($node->revision_uid);
         	$name_ = theme_username(array (
@@ -77,7 +80,10 @@
     <?php endif; ?>
   </header>
   <?php endif; ?>
-
+	<?php if (isset($content['field_n52_num_of_expr_interest'])) {
+		$content['field_n52_num_of_expr_interest'] = NULL;
+	}
+	?>
   <div class="content"<?php print $content_attributes; ?>>
     <?php
       // We hide the comments and links now so that we can render them later.

@@ -299,14 +299,18 @@
 	                            <h1 class="page-title"><?php print $title;
 	                            if (isset($node) && $node->type === 'tool') {
 	                            	if (isset($page['content']['system_main']['nodes'][$node->nid]['field_n52_comm_dev'])) {
-			      						print $page['content']['system_main']['nodes'][$node->nid]['field_n52_comm_dev'][0]['#markup'];
-			      						$page['content']['system_main']['nodes'][$node->nid]['field_n52_comm_dev'] = NULL;
-			    					}
-			    					if (isset($page['content']['system_main']['nodes'][$node->nid]['field_category'])) {
-			      						print $page['content']['system_main']['nodes'][$node->nid]['field_category'][0]['#markup'];
-			      						$page['content']['system_main']['nodes'][$node->nid]['field_category'] = NULL;
-			    					}
-								}?></h1>
+			      											print $page['content']['system_main']['nodes'][$node->nid]['field_n52_comm_dev'][0]['#markup'];
+			      											$page['content']['system_main']['nodes'][$node->nid]['field_n52_comm_dev'] = NULL;
+			    											}
+			    											if (isset($page['content']['system_main']['nodes'][$node->nid]['field_category'])) {
+			      											print $page['content']['system_main']['nodes'][$node->nid]['field_category'][0]['#markup'];
+			      											$page['content']['system_main']['nodes'][$node->nid]['field_category'] = NULL;
+			    											}
+			    											if (isset($page['content']['system_main']['nodes'][$node->nid]['field_express_interest_button'])) {
+			    												print $page['content']['system_main']['nodes'][$node->nid]['field_express_interest_button']['#markup'];
+			    												$page['content']['system_main']['nodes'][$node->nid]['field_express_interest_button'] = NULL;
+			    											}
+															}?></h1>
                             <?php endif; ?>
                             <?php print render($title_suffix); ?>
 

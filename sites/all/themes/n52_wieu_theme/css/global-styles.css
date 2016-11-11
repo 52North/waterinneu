@@ -383,6 +383,21 @@ div#supported-standards-group div.item-list ul li {
 	margin-top: -60px;
 	cursor: help;
 }
+
+#express_interest_button_pop_over > #send-button {
+  text-align: center;
+  margin: 10px;
+}
+
+h3.popover-title {
+	font-weight: bold;
+}
+
+#express_interest_button {
+  float: right;
+  color: #419fbe;
+  cursor: pointer;
+}
  
 /******************************************************************************
  *                                                                            *
@@ -397,6 +412,7 @@ div.maintenance-alert {
 form#tool-node-form > div > div.field-type-entityreference > div > fieldset > legend > span {
 	font-weight: bold;
 }
+
 
 /******************************************************************************
  *                                                                            *

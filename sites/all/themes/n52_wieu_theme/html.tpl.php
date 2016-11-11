@@ -538,7 +538,7 @@
 	<?php } ?>
 	<?php
 	/*
-   * Disable login buttont on join us page when logged in and replace 
+   * Disable login button on join us page when logged in and replace 
    * title with "My Actions"
    */
   ?>

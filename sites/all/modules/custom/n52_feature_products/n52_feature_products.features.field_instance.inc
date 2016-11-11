@@ -1831,6 +1831,70 @@ function n52_feature_products_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tool-field_n52_num_of_expr_interest'.
+  $field_instances['node-tool-field_n52_num_of_expr_interest'] = array(
+    'bundle' => 'tool',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Holds the number of times the express interest button was clicked and mails are send.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'field_formatter_class' => '',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 55,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_n52_num_of_expr_interest',
+    'label' => 'Expressed Interest',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 45,
+    ),
+  );
+
   // Exported field_instance: 'node-tool-field_n52_product_owner'.
   $field_instances['node-tool-field_n52_product_owner'] = array(
     'bundle' => 'tool',
@@ -4738,11 +4802,13 @@ function n52_feature_products_field_default_field_instances() {
     Please use the TITLE to give a brief description of what each link provides (Limit 128 characters).
 </div>');
   t('Existing (data-) systems the product can be used with.');
+  t('Expressed Interest');
   t('For which tasks in water resources management can the product be used?');
   t('For which tasks in water resources management can the product be used?
 <div class="author-instructions">
    Please give details on the tasks this product can be used for in the free text box.
 </div>');
+  t('Holds the number of times the express interest button was clicked and mails are send.');
   t('How can I get in contact with product and / or service provider, river basin managers and consultants related to the products?
 <div class="author-instructions">
     E-mail, telephone, country etc.
