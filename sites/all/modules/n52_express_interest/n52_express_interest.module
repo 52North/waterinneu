@@ -40,8 +40,8 @@ function n52_express_interest_entity_view($entity, $type, $view_mode, $langcode)
 	) {
 		$title = 'Do you want to get in touch with the product owner?';
 		$body = '<div id=\'express_interest_button_pop_over\' class=&quot;popover-light&quot;> ' .
-					' By clicking on the button you accept, that the platform sends a ' .
-				  ' mail in your name to the product owner and reveals your name and mail in this message. <br />' .
+					' By clicking on this button you accept that the platform will send an ' .
+				  ' introductory message to the product owner with your name and email address. <br />' .
 				  ' <div class=\'checkbox\'><label><input type=\'checkbox\' id=\'send-copy\'> Send me a copy</label></div>' .
 					'<div id=\'send-button\'><button class=\'btn btn-primary\'><span id=\'send-span\' class=\'glyphicon glyphicon-send\'></span></button></div>' .
 					'<div id=\'mail-response\'></div>' .
@@ -139,7 +139,7 @@ function n52_express_interest_ajax() {
 	}
 	if ($result['result'] === TRUE) {
 		$output = '<div class=\'alert alert-success\'>' . 
-			t('Mail send successfully') . 
+			t('Mail sent successfully') .
 			'.</div>';
 		// store information in user account and product only the first time
 		if (!_n52_express_interest_user_already_expressed($node_id)) {
