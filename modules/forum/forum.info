@@ -8,3 +8,9 @@ core = 7.x
 files[] = forum.test
 configure = admin/structure/forum
 stylesheets[all][] = forum.css
+
+; Information added by Drupal.org packaging script on 2016-10-05
+version = "7.51"
+project = "drupal"
+datestamp = "1475694174"
+

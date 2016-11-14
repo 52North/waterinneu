@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_access_certificate().
+ */
+function quiz_certificate_access_certificate($node, $user) {
+  if ($node->type == 'quiz') {
+    $results = quiz_get_score_data(array(intval($node->nid)), $user->uid);
+    foreach ($results as $result) {
+      if ($result->percent_score >= $result->percent_pass) {
+        return TRUE;
+      }
+    }
+  }
+}

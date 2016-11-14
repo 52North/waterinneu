@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the waterinneu_taxonomy_randbee feature.
+ */
+
+include_once 'waterinneu_taxonomy_randbee.features.inc';

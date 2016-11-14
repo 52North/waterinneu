@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * Master class for Course tests.
+ */
+class CourseTestCase extends DrupalWebTestCase {
+
+  public function setUp() {
+    $deps = $this->getModules();
+    parent::setUp($deps);
+    $this->admin_user = $this->drupalCreateUser(array('bypass node access'));
+    $this->student_user = $this->drupalCreateUser(array('access content'));
+    $this->drupalLogin($this->admin_user);
+  }
+
+  /**
+   * Create a course node using the test content type.
+   *
+   * @return stdClass
+   */
+  function createCourseNode(array $extra = array()) {
+    $defaults = array(
+      'type' => 'course_test',
+      'course' => array(
+        'outline' => 'course',
+      ),
+    );
+    $node = $this->drupalCreateNode(array_merge_recursive($defaults, $extra));
+    return $node;
+  }
+
+  function getModules() {
+    return array('ctools', 'uuid', 'course', 'course_test');
+  }
+
+  /**
+   * Create a new persistent course object on a Course.
+   *
+   * @param stdClass $courseNode
+   * @return Course
+   */
+  function createCourseObject($courseNode, $graded = FALSE) {
+    static $weight = 0;
+    if ($graded) {
+      $courseObject = course_get_course_object('course_test', 'course_test_graded_object');
+    }
+    else {
+      $courseObject = course_get_course_object('course_test', 'course_test_object');
+    }
+    $courseObject->setCourse($courseNode->nid);
+    $courseObject->setOption('weight', $weight++);
+    $courseObject->save();
+    return $courseObject;
+  }
+
+}

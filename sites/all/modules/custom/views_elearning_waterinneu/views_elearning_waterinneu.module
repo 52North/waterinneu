@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Views E-learning WaterinnEU feature.
+ */
+
+include_once 'views_elearning_waterinneu.features.inc';

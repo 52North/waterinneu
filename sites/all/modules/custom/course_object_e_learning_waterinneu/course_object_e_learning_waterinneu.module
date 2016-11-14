@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Course object E-learning WaterinnEU feature.
+ */
+
+include_once 'course_object_e_learning_waterinneu.features.inc';

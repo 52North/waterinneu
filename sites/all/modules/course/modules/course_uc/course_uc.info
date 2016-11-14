@@ -1,0 +1,18 @@
+name = Course ubercart
+description = Supports Course as an Ubercart product and restricts enrollment to paid courses.
+package = Course
+core = 7.x
+dependencies[] = course
+dependencies[] = rules
+dependencies[] = uc_cart
+dependencies[] = uc_order
+dependencies[] = uc_product
+files[] = course_uc.classes.inc
+files[] = course_uc.test
+
+; Information added by Drupal.org packaging script on 2016-10-12
+version = "7.x-1.10"
+core = "7.x"
+project = "course"
+datestamp = "1476305916"
+

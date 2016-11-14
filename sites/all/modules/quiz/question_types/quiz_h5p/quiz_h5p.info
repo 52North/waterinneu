@@ -1,0 +1,17 @@
+name = Quiz H5P Integration
+package = Quiz Question
+description = <a href="http://h5p.org/fill-in-the-blanks">Fill in the Blanks</a>, <a href="http://h5p.org/drag-the-words">Drag the words</a>, <a href="http://h5p.org/mark-the-words">Mark the Words</a>, <a href="http://h5p.org/interactive-video">Adaptive Interactive Video</a> and 17 other interactive content types may be created using this module. NOTE: It is possible for computer savvy users to cheat and submit a full score for a test without actually doing the test.
+core = 7.x
+dependencies[] = quiz
+dependencies[] = quiz_question
+dependencies[] = h5p
+dependencies[] = h5peditor
+
+files[] = QuizQuestionH5P.class.inc
+files[] = QuizQuestionH5PResponse.class.inc
+; Information added by Drupal.org packaging script on 2016-01-21
+version = "7.x-4.0-rc2"
+core = "7.x"
+project = "quiz"
+datestamp = "1453399821"
+

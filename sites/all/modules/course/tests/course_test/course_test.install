@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file course_test.install
+ * Install, update and uninstall functions for the course_test module.
+ *
+ */
+
+/**
+ * Implements hook_install().
+ */
+function course_test_install() {
+  variable_set('course_use_course_test', 1);
+  variable_set('course_content_use_course_test_content', 1);
+
+  $default_theme = variable_get('theme_default', 'bartik');
+  $blocks = array(
+    array(
+      'module' => 'course',
+      'delta' => 'outline',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 10,
+      'region' => 'sidebar_first',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'course',
+      'delta' => 'navigation',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 10,
+      'region' => 'sidebar_second',
+      'pages' => '',
+      'cache' => -1,
+    ),
+  );
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  foreach ($blocks as $block) {
+    $query->values($block);
+  }
+  $query->execute();
+}
