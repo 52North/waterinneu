@@ -1,7 +1,7 @@
 name = Permissions E-learning WaterinnEU
 description = Permissions
 core = 7.x
-package = Features
+package = WaterInnEU eLearning
 version = 7.x-1.5
 dependencies[] = better_formats
 dependencies[] = course
