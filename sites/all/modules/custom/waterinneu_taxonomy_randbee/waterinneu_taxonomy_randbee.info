@@ -1,8 +1,8 @@
 name = waterinneu_taxonomy_randbee
 description = Randbee Custom Taxonomy
 core = 7.x
-package = Features
-version = 7.x-1.0
+package = WaterInnEU eLearning
+version = 7.x-1.1
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = n52_feature_products
