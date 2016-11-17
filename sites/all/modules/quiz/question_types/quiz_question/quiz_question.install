@@ -104,7 +104,7 @@ function quiz_question_update_7401() {
  * Rebuild the node_access table.
  */
 function quiz_question_update_7402() {
-  node_access_rebuild();
+  node_access_rebuild(TRUE);
 }
 
 /**

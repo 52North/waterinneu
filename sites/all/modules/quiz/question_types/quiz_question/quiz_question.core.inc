@@ -198,7 +198,8 @@ abstract class QuizQuestion {
         $latest_nids[] = $res_o->quiz_nid;
       }
 
-      if (count($latest) < QUIZ_QUESTION_NUM_LATEST) {
+      $limit = QUIZ_QUESTION_NUM_LATEST - count($latest);
+      if ($limit > 0) {
         // Suplementing with other available quizzes...
         $found = implode(', ', array_merge($already_nids, $latest_nids));
         $sql = "SELECT n.nid, n.vid, title, changed FROM {node} n
@@ -207,7 +208,7 @@ abstract class QuizQuestion {
         if (drupal_strlen($found) > 0) {
           $sql .= " AND n.nid NOT IN ($found)";
         }
-        //$sql .= " ORDER BY changed LIMIT %d";
+        $sql .= " ORDER BY changed LIMIT {$limit}";
         // TODO Please convert this statement to the D7 database API syntax.
         //$res = db_query(db_rewrite_sql($sql), QUIZ_QUESTION_NUM_LATEST - count($latest));
         $res = db_query($sql);

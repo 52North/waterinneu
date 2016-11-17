@@ -2207,8 +2207,8 @@ function quiz_take_quiz($quiz) {
       'allow_jumping' => $quiz->allow_jumping,
       'time_limit' => $quiz->time_limit));
     $content['progress']['#weight'] = -50;
-    if (count($_SESSION['quiz_' . $quiz->nid]['quiz_questions']) + count($_SESSION['quiz_' . $quiz->nid]['previous_quiz_questions']) > $number_of_questions) {
-      drupal_set_message(t('At least one question have been deleted from the quiz after you started taking it. You will have to start over.'), 'warning', FALSE);
+    if (count($_SESSION['quiz_' . $quiz->nid]['quiz_questions']) + count($_SESSION['quiz_' . $quiz->nid]['previous_quiz_questions']) != $number_of_questions) {
+      drupal_set_message(t('The number of questions for this quiz have changed. You will have to start over.'), 'warning', FALSE);
       unset($_SESSION['quiz_' . $quiz->nid]);
       drupal_goto('node/' . $quiz->nid . '/take');
     }
@@ -2774,16 +2774,6 @@ function quiz_update_max_score_properties($quizzes_to_update) {
       FROM {quiz_terms} qt
       WHERE qt.nid = {quiz_node_properties}.nid AND qt.vid = {quiz_node_properties}.vid)')
     ->condition('randomization', 3)
-    ->condition('vid', $quizzes_to_update, 'IN')
-    ->execute();
-
-  db_update('node_revision')
-    ->fields(array('timestamp' => REQUEST_TIME))
-    ->condition('vid', $quizzes_to_update, 'IN')
-    ->execute();
-
-  db_update('node')
-    ->fields(array('changed' => REQUEST_TIME))
     ->condition('vid', $quizzes_to_update, 'IN')
     ->execute();
 

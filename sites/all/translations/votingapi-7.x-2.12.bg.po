@@ -1,0 +1,28 @@
+# Bulgarian translation of Voting API (7.x-2.12)
+# Copyright (c) 2014 by the Bulgarian translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Voting API (7.x-2.12)\n"
+"POT-Creation-Date: 2014-08-16 08:22+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Bulgarian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Value"
+msgstr "Стойност"
+msgid "Timestamp"
+msgstr "Време"
+msgid "User"
+msgstr "Потребител"
+msgid "Points"
+msgstr "Точки"
+msgid "Never"
+msgstr "Никога"
+msgid "Appearance"
+msgstr "Теми"
+msgid "Votes"
+msgstr "Гласа"
