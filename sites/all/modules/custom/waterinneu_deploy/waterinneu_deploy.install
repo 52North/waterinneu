@@ -1,6 +1,19 @@
 <?php
 
 /**
+ * Run all update hooks.
+ */
+
+function waterinneu_deploy_install() {
+  for ($i = 7000; $i < 7200; $i++) {
+    $candidate = 'waterinneu_deploy_update_' . $i;
+    if (function_exists($candidate)) {
+      $candidate();
+    }
+  }
+}
+
+/**
  * Enable module video_embed_field.
  */
 function waterinneu_deploy_update_7003() {
@@ -95,8 +108,6 @@ function waterinneu_deploy_update_7015() {
  * Enable and revert feature main_menu_elearning_waterinneu.
  */
 function waterinneu_deploy_update_7016() {
-  module_enable(array('main_menu_elearning_waterinneu'));
-  features_revert_module('main_menu_elearning_waterinneu');
 }
 
 /**
@@ -114,7 +125,7 @@ function waterinneu_deploy_update_7018() {
 }
 
 /**
- * Revert features main_menu_elearning_waterinneu, views_elearning_waterinneu.
+ * Revert features waterinneu_content_type_randbee, views_elearning_waterinneu.
  */
 function waterinneu_deploy_update_7019() {
   features_revert_module('waterinneu_content_type_randbee');
@@ -196,8 +207,6 @@ function waterinneu_deploy_update_7029() {
  * Enable and revert feature main_menu_elearning_waterinneu.
  */
 function waterinneu_deploy_update_7030() {
-  module_enable(array('main_menu_elearning_waterinneu'));
-  features_revert_module('main_menu_elearning_waterinneu');
 }
 
 /**
