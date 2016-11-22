@@ -36,7 +36,9 @@ function n52_express_interest_entity_view($entity, $type, $view_mode, $langcode)
 			$entity->type == 'tool' &&
 			$view_mode == 'full' &&
 			user_is_logged_in() &&
-			$mail = _n52_express_interest_contains_email($entity->field_n52_product_owner[$langcode][0]['value'])
+			$mail = _n52_express_interest_contains_email(
+					$entity->field_n52_product_owner[$langcode][0]['value'] . 
+					$entity->field_contact_details[$langcode][0]['value'])
 	) {
 		$title = 'Do you want to get in touch with the product owner?';
 		$body = '<div id=\'express_interest_button_pop_over\' class=&quot;popover-light&quot;> ' .
@@ -106,7 +108,10 @@ function n52_express_interest_ajax() {
 	
 	if (isset ($node)) {
 		$language_code = $language->language;
-		$mail = _n52_express_interest_contains_email($node-> field_n52_product_owner[$language_code][0]['value']);
+		$mail = _n52_express_interest_contains_email(
+				$node -> field_n52_product_owner[$language_code][0]['value'] .
+				$node -> field_contact_details[$language_code][0]['value']
+				);
 		$user_name = $user->name;
 		$user_mail = $user->mail;
 		$key = date('YmdHis') . $node_id;
