@@ -41,6 +41,16 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
     'module' => 'course',
   );
 
+  // Exported permission: 'access print'.
+  $permissions['access print'] = array(
+    'name' => 'access print',
+    'roles' => array(
+      'Course partecipant' => 'Course partecipant',
+      'administrator' => 'administrator',
+    ),
+    'module' => 'print',
+  );
+
   // Exported permission: 'access quiz'.
   $permissions['access quiz'] = array(
     'name' => 'access quiz',
@@ -102,6 +112,15 @@ function permissions_e_learning_waterinneu_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'fitvids',
+  );
+
+  // Exported permission: 'administer print'.
+  $permissions['administer print'] = array(
+    'name' => 'administer print',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'print',
   );
 
   // Exported permission: 'administer quiz configuration'.
