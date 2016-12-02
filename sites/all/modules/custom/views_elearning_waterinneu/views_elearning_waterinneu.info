@@ -1,7 +1,7 @@
 name = Views E-learning WaterinnEU
 core = 7.x
 package = WaterInnEU eLearning
-version = 7.x-1.4
+version = 7.x-1.6
 dependencies[] = ctools
 dependencies[] = views
 features[ctools][] = views:views_default:3.0
