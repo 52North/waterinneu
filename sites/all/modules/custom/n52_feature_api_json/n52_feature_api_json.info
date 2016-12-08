@@ -1,7 +1,7 @@
-name = 52N - Feature - API::JSON
+name = Feature - API::JSON
 description = Contains view that provide a simple JSON API for our content types
 core = 7.x
-package = 52N - WaterInnEU
+package = WaterInnEU - Core
 version = 7.x-1.4
 dependencies[] = views
 dependencies[] = views_json

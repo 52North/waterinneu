@@ -1,7 +1,7 @@
-name = 52N - Feature - Success Story
+name = Feature - Success Story
 description = Success Story
 core = 7.x
-package = 52N - WaterInnEU
+package = WaterInnEU - Core
 version = 7.x-1.5
 dependencies[] = ctools
 dependencies[] = features

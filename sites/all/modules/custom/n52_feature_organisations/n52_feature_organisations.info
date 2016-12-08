@@ -1,7 +1,7 @@
-name = 52N - Feature - Organisations
+name = Feature - Organisations
 description = Contains everything regarding organisations
 core = 7.x
-package = 52N - WaterInnEU
+package = WaterInnEU - Core
 version = 7.x-1.23
 dependencies[] = n52_feature_products
 dependencies[] = term_merge

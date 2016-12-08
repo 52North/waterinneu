@@ -26,9 +26,9 @@
 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 ;  Public License for more details.
 ;
-name = "52N - Product of the Month"
+name = "Product of the Month"
 description = "Add information how to use the product of the month block."
-package = "52N - WaterInnEU"
+package = "WaterInnEU - Core"
 core = "7.x"
 version = "7.x-1.0"
 

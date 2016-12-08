@@ -26,9 +26,9 @@
 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 ;  Public License for more details.
 ;
-name = "52N - Term Formatter using Icons"
+name = "Term Formatter using Icons"
 description = "This formatter can be used in view modes and displays terms as icons with a fixed lookup table: term -> icon."
-package = "52N - WaterInnEU"
+package = "WaterInnEU - Core"
 core = "7.x"
 version = "7.x-1.0"
 

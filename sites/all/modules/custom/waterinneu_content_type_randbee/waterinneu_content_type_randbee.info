@@ -1,7 +1,7 @@
 name = Waterinneu content type randbee
 description = Randbee Custom Content Type
 core = 7.x
-package = WaterInnEU eLearning
+package = WaterInnEU - e-learning
 version = 7.x-1.10
 dependencies[] = ctools
 dependencies[] = entityreference

@@ -1,7 +1,7 @@
-name = 52N - Feature - Roles and Permissions
+name = Feature - Roles and Permissions
 description = Everything regarding roles and permissions.
 core = 7.x
-package = 52N - WaterInnEU
+package = WaterInnEU - Core
 version = 7.x-1.37
 dependencies[] = admin_menu
 dependencies[] = aggregator
@@ -100,7 +100,6 @@ features[user_permission][] = access devel information
 features[user_permission][] = access harmony admin pages
 features[user_permission][] = access harmony rebuild actions
 features[user_permission][] = access news feeds
-features[user_permission][] = access print
 features[user_permission][] = access security review list
 features[user_permission][] = access site in maintenance mode
 features[user_permission][] = access site reports

@@ -26,8 +26,8 @@
 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 ;  Public License for more details.
 ;
-name = "52N - Shared PHP Functions"
+name = "Shared PHP Functions"
 description = "Provides access to shared php functions."
-package = "52N - WaterInnEU"
+package = "WaterInnEU - Core"
 core = "7.x"
 version = "7.x-1.1"

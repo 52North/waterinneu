@@ -1,6 +1,6 @@
 name = Views E-learning WaterinnEU
 core = 7.x
-package = WaterInnEU eLearning
+package = WaterInnEU - e-learning
 version = 7.x-1.7
 dependencies[] = entity
 dependencies[] = views
