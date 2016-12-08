@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Print Settings E-Learning WaterinnEU feature.
+ */
+
+include_once 'print_settings_e_learning_waterinneu.features.inc';

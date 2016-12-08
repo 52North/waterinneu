@@ -325,3 +325,18 @@ function waterinneu_deploy_update_7045() {
   module_enable(array('views_elearning_waterinneu'));
   features_revert_module('views_elearning_waterinneu');
 }
+
+/**
+ * Enable and revert feature print_settings_e_learning_waterinneu.
+ */
+function waterinneu_deploy_update_7046() {
+  module_enable(array('print_settings_e_learning_waterinneu'));
+  features_revert_module('print_settings_e_learning_waterinneu');
+}
+
+/**
+ * Revert feature permissions_e_learning_waterinneu.
+ */
+function waterinneu_deploy_update_7047() {
+  features_revert_module('permissions_e_learning_waterinneu');
+}
