@@ -1867,6 +1867,7 @@ user/*/*';
     'default_favicon' => 1,
     'favicon_path' => '',
     'favicon_upload' => '',
+    'toggle_node_info_quiz' => 0,
   );
   $export['theme_settings'] = $strongarm;
 

@@ -117,6 +117,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 1,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'n52_term_formatter_icons',
@@ -183,6 +189,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 32,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -290,6 +302,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 29,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -395,6 +413,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 20,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -502,6 +526,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 19,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -561,6 +591,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 5,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -693,6 +729,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 7,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -801,6 +843,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'image',
         'weight' => 6,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'image',
@@ -905,6 +953,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 24,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -962,6 +1016,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 25,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1068,6 +1128,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 17,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'i18n_taxonomy',
@@ -1134,6 +1200,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 18,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1268,6 +1340,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 27,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1351,6 +1429,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'image',
         'weight' => 4,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -1419,6 +1503,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'link_default',
         'weight' => 19,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1502,6 +1592,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 2,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'n52_term_formatter_icons',
@@ -1566,6 +1662,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 3,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1669,6 +1771,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 8,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1776,6 +1884,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 20,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1861,6 +1975,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1879,9 +1999,10 @@ function n52_feature_products_field_default_field_instances() {
     'label' => 'Expressed Interest',
     'required' => 0,
     'settings' => array(
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'max' => '',
-      'min' => '',
+      'min' => 0,
       'prefix' => '',
       'suffix' => '',
       'user_register_form' => FALSE,
@@ -1918,6 +2039,12 @@ function n52_feature_products_field_default_field_instances() {
           'field_formatter_class' => 'row',
         ),
         'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -2019,6 +2146,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 28,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2093,6 +2226,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 26,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2165,6 +2304,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 22,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2222,6 +2367,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 23,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2354,6 +2505,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 26,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2410,6 +2567,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 27,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2542,6 +2705,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 16,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2624,6 +2793,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'textformatter_list',
         'weight' => 9,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2715,6 +2890,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 10,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2804,6 +2985,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'textformatter_list',
         'weight' => 11,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2895,6 +3082,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 12,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2956,6 +3149,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 33,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3088,6 +3287,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 15,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3177,6 +3382,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'textformatter_list',
         'weight' => 13,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3268,6 +3479,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 14,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3358,6 +3575,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 28,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3414,6 +3637,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 29,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3518,6 +3747,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 22,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3574,6 +3809,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 30,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3681,6 +3922,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 31,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3784,6 +4031,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 21,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3840,6 +4093,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_plain',
         'weight' => 25,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3924,13 +4183,19 @@ function n52_feature_products_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 12,
       ),
       'print' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 42,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
