@@ -1,0 +1,84 @@
+<?php
+/*
+ * Copyright (C) 2016
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ *
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ *
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ *
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+
+/**
+ * Run all update hooks.
+ */
+
+function n52_waterinneu_install_install() {
+  for ($i = 7000; $i < 7200; $i++) {
+    $candidate = 'n52_waterinneu_install_update_' . $i;
+    if (function_exists($candidate)) {
+      $candidate();
+    }
+  }
+}
+
+/**
+ * Revert all feature modules required after update in production environment
+ */
+function n52_waterinneu_install_update_7010() {
+	_n52_waterinneu_install_revert_feature('n52_feature_search');
+	_n52_waterinneu_install_revert_feature('n52_feature_projects');
+	_n52_waterinneu_install_revert_feature('n52_feature_products');
+	_n52_waterinneu_install_revert_feature('n52_feature_menus');
+	_n52_waterinneu_install_revert_feature('n52_feature_forum');
+	_n52_waterinneu_install_revert_feature('n52_feature_events');
+	_n52_waterinneu_install_revert_feature('n52_feature_config');
+}
+
+/**
+ * Enable e-learning module installation/activation
+ */
+function n52_waterinneu_install_update_7020() {
+	_n52_waterinneu_install_enable_module('randbee_e_learning_install');
+}
+
+/*
+ * ----------------------------------------------------------------------------
+ * 
+ * 	HELPER FUNCTIONS
+ */
+function _n52_waterinneu_install_enable_module($feature_module) {
+	if (!module_exists($feature_module)) {
+		module_enable($feature_module, TRUE);
+	}
+}
+
+function _n52_waterinneu_install_revert_feature($feature_module) {
+	_n52_waterinneu_install_enable_module($feature_module);
+	features_revert_module($feature_module);
+}
+
+/*
+function n52_waterinneu_install_update_7004() {
+  module_enable(array('randbee_feature_e_learning_taxonomy'));
+  features_revert_module('randbee_feature_e_learning_taxonomy');
+}
+*/
