@@ -14,21 +14,23 @@ function n52_feature_forum_features_override_default_overrides() {
   // Exported overrides for: field_instance
   $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.display|default|settings|field_formatter_class"] = '';
   $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.display|full|settings|field_formatter_class"] = '';
+  $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.settings|better_formats|allowed_formats|filtered_html"] = 'filtered_html';
   $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.settings|better_formats|allowed_formats|full_html_plain_no_filter_"] = 0;
   $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.settings|better_formats|allowed_formats|full_html_tinymce"] = 0;
+  $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.settings|better_formats|allowed_formats|plain_text"] = 'plain_text';
   $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.settings|better_formats|default_order_wrapper|formats|full_html_plain_no_filter_"] = array(
     'weight' => 0,
   );
   $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.settings|better_formats|default_order_wrapper|formats|full_html_tinymce"] = array(
     'weight' => -7,
   );
+  $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.settings|course_enrollment"] = FALSE;
+  $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.settings|entity_translation_sync"] = FALSE;
   $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.settings|linkit"] = array(
     'button_text' => 'Search',
     'enable' => 0,
     'profile' => '',
   );
-  $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.settings|text_processing"] = 0;
-  $overrides["field_instance.harmony_post-harmony_post-field_harmony_text.widget|settings|show_token_tree"] = FALSE;
 
  return $overrides;
 }
