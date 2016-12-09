@@ -28,7 +28,7 @@
 ;
 name = "Term Formatter using Icons"
 description = "This formatter can be used in view modes and displays terms as icons with a fixed lookup table: term -> icon."
-package = "WaterInnEU - Core"
+package = WaterInnEU
 core = "7.x"
 version = "7.x-1.0"
 

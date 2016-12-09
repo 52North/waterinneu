@@ -4,4 +4,4 @@
  * Code for the Print Settings E-Learning WaterinnEU feature.
  */
 
-include_once 'print_settings_e_learning_waterinneu.features.inc';
+include_once 'randbee_feature_e_learning_print_settings.features.inc';

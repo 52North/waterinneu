@@ -1,7 +1,7 @@
-name = Feature - Roles and Permissions
+name = Feature - Core - Roles and Permissions
 description = Everything regarding roles and permissions.
 core = 7.x
-package = WaterInnEU - Core
+package = WaterInnEU
 version = 7.x-1.37
 dependencies[] = admin_menu
 dependencies[] = aggregator
@@ -196,7 +196,6 @@ features[user_permission][] = administer panels layouts
 features[user_permission][] = administer panels styles
 features[user_permission][] = administer pathauto
 features[user_permission][] = administer permissions
-features[user_permission][] = administer print
 features[user_permission][] = administer profiler builder
 features[user_permission][] = administer recaptcha
 features[user_permission][] = administer search

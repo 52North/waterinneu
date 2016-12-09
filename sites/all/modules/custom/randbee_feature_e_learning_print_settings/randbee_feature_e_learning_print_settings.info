@@ -1,7 +1,7 @@
-name = Print Settings E-Learning WaterinnEU
-description = Print Settings E-Learning WaterinnEU.
+name = Feature - e-learning - Print Settings
+description = Print Settings for e-learning feature.
 core = 7.x
-package = WaterInnEU - e-learning
+package = WaterInnEU
 version = 7.x-1.1
 dependencies[] = ctools
 dependencies[] = strongarm

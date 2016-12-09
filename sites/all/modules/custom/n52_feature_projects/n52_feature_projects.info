@@ -1,7 +1,7 @@
-name = Feature - Projects
+name = Feature - Core - Projects
 description = Contains everything regarding projects
 core = 7.x
-package = WaterInnEU - Core
+package = WaterInnEU
 version = 7.x-1.14
 dependencies[] = boolean_formatter
 dependencies[] = ctools

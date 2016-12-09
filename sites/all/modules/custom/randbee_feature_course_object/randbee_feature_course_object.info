@@ -1,7 +1,7 @@
-name = Course object E-learning WaterinnEU
+name = Feature - e-learning - Course Object
 description = Course object content type.
 core = 7.x
-package = WaterInnEU - e-learning
+package = WaterInnEU
 version = 7.x-1.1
 dependencies[] = ctools
 dependencies[] = features

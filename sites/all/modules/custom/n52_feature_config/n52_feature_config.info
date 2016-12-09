@@ -1,7 +1,7 @@
-name = Feature - Configuration
+name = Feature - Core - Configuration
 description = Contains everything that does not fit in one of the other modules
 core = 7.x
-package = WaterInnEU - Core
+package = WaterInnEU
 version = 7.x-1.59
 dependencies[] = admin_devel
 dependencies[] = admin_views

@@ -28,7 +28,7 @@
 ;
 name = "Standard Label formatter"
 description = "This formatter can be used in view modes and displays the WIEu Standard label identifying standard compliance for OGC, INSPIRE, and WFD."
-package = "WaterInnEU - Core"
+package = WaterInnEU
 core = "7.x"
 version = "7.x-1.0"
 

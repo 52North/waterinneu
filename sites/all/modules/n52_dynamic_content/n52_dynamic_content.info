@@ -28,7 +28,7 @@
 ;
 name = "Dynamic Content"
 description = "Provide dynamic content to be replaced in rendered nodes."
-package = "WaterInnEU - Core"
+package = WaterInnEU
 core = "7.x"
 version = "7.x-1.2"
 

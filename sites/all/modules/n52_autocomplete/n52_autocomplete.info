@@ -28,7 +28,7 @@
 ;
 name = "Autocomplete"
 description = "This module provides autocompletion features"
-package = "WaterInnEU - Core"
+package = WaterInnEU
 core = "7.x"
 version = 7.x-1.1
 

@@ -272,10 +272,10 @@ function randbee_e_learning_install_update_7038() {
 }
 
 /**
- * Enable module print_pdf_dompdf.
+ * Was: Enable module print_pdf_dompdf.
  */
 function randbee_e_learning_install_update_7039() {
-	  module_enable(array('print_pdf_dompdf'));
+//	  module_enable(array('print_pdf_dompdf'));
 }
 
 /**
@@ -330,8 +330,8 @@ function randbee_e_learning_install_update_7045() {
  * Enable and revert feature print_settings_e_learning_waterinneu.
  */
 function randbee_e_learning_install_update_7046() {
-  module_enable(array('print_settings_e_learning_waterinneu'));
-  features_revert_module('print_settings_e_learning_waterinneu');
+  module_enable(array('randbee_feature_e_learning_print_settings'));
+  features_revert_module('randbee_feature_e_learning_print_settings');
 }
 
 /**

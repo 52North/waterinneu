@@ -1,7 +1,7 @@
-name = randbee_feature_e_learning_taxonomy
-description = Randbee Custom Taxonomy
+name = Feature - e-learning - Taxonomy
+description = Taxonomy for e-learning feature
 core = 7.x
-package = WaterInnEU - e-learning
+package = WaterInnEU
 version = 7.x-1.1
 dependencies[] = ctools
 dependencies[] = features

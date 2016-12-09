@@ -1,7 +1,7 @@
-name = Feature - Search
+name = Feature - Core - Search
 description = Contains everything regarding search configuration
 core = 7.x
-package = WaterInnEU - Core
+package = WaterInnEU
 version = 7.x-1.20
 dependencies[] = ctools
 dependencies[] = current_search

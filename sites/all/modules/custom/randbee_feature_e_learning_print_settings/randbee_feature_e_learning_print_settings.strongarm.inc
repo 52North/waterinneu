@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * print_settings_e_learning_waterinneu.strongarm.inc
+ * randbee_feature_e_learning_print_settings.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function print_settings_e_learning_waterinneu_strongarm() {
+function randbee_feature_e_learning_print_settings_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

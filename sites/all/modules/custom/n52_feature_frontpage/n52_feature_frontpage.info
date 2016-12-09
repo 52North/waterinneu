@@ -1,7 +1,7 @@
-name = Feature - Frontpage
+name = Feature - Core - Frontpage
 description = Everything regarding the frontpage
 core = 7.x
-package = WaterInnEU - Core
+package = WaterInnEU
 version = 7.x-1.19
 dependencies[] = comment
 dependencies[] = fe_block

@@ -1,6 +1,6 @@
-name = Roles E-learning WaterinnEU
+name = Feature - e-learning - Roles
 core = 7.x
-package = WaterInnEU - e-learning
+package = WaterInnEU
 version = 7.x-1.1
 dependencies[] = features
 features[features_api][] = api:2

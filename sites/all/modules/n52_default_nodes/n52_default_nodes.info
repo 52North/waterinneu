@@ -28,7 +28,7 @@
 ;
 name = "Default Nodes"
 description = "Creates default nodes like: landingpage- accordion, imprint,..."
-package = "WaterInnEU - Core"
+package = WaterInnEU
 core = "7.x"
 version = "7.x-1.1"
 

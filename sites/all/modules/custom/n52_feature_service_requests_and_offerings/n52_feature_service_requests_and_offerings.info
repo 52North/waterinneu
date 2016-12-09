@@ -1,7 +1,7 @@
-name = Feature - Service Requests and Offerings
+name = Feature - Core - Service Requests and Offerings
 description = Contains the configuration regarding service requests and offerings
 core = 7.x
-package = WaterInnEU - Core
+package = WaterInnEU
 version = 7.x-1.18
 dependencies[] = entity
 dependencies[] = entityreference_view_widget

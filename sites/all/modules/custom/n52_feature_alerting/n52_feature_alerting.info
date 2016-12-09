@@ -1,7 +1,7 @@
-name = Feature - Alerting
+name = Feature - Core - Alerting
 description = Contains everything regarding alerting and subscriptions
 core = 7.x
-package = WaterInnEU - Core
+package = WaterInnEU
 version = 7.x-1.7
 dependencies[] = chosen
 dependencies[] = ctools

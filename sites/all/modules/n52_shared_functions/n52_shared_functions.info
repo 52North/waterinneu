@@ -28,6 +28,6 @@
 ;
 name = "Shared PHP Functions"
 description = "Provides access to shared php functions."
-package = "WaterInnEU - Core"
+package = WaterInnEU
 core = "7.x"
 version = "7.x-1.1"

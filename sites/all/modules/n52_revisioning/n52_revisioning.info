@@ -28,7 +28,7 @@
 ;
 name = "Revisioning"
 description = "Adjustments to the revisioning module."
-package = "WaterInnEU - Core"
+package = WaterInnEU
 core = "7.x"
 version = "7.x-1.0"
 

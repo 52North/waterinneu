@@ -1040,15 +1040,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: 'administer print'.
-  $permissions['administer print'] = array(
-    'name' => 'administer print',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'print',
-  );
-
   // Exported permission: 'administer profiler builder'.
   $permissions['administer profiler builder'] = array(
     'name' => 'administer profiler builder',

@@ -28,7 +28,7 @@
 ;
 name = "Central Subscribe"
 description = "Provide a central subscribe form for the matchmaking page."
-package = "WaterInnEU - Core"
+package = WaterInnEU
 core = "7.x"
 version = "7.x-1.1"
 

@@ -28,7 +28,7 @@
 ;
 name = "Advanced Search Link"
 description = "Add advanced search link to search form pop-up of custom search."
-package = "WaterInnEU - Core"
+package = WaterInnEU
 core = "7.x"
 version = "7.x-1.2"
 dependencies[] = custom_search

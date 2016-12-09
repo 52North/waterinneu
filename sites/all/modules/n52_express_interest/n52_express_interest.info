@@ -28,7 +28,7 @@
 ;
 name = "Express Interest Button"
 description = "Add 'Express Interest Button' to product/tool fullview."
-package = "WaterInnEU - Core"
+package = WaterInnEU
 core = "7.x"
 version = "7.x-1.0"
 dependencies[] = n52_feature_products
