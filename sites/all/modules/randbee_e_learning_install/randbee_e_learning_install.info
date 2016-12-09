@@ -1,6 +1,5 @@
 name = Install e-learning modules
 description = "Install WaterInnEU e-learning feature, used to automated changes to this site"
 package = WaterInnEU
-core = 7.x
 version = "7.x-1.0"
 core = "7.x"
