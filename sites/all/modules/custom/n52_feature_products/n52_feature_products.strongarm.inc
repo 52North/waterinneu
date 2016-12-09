@@ -95,6 +95,9 @@ function n52_feature_products_strongarm() {
       'print' => array(
         'custom_settings' => TRUE,
       ),
+      'question' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -121,6 +124,12 @@ function n52_feature_products_strongarm() {
           'print' => array(
             'weight' => 4,
             'visible' => FALSE,
+          ),
+        ),
+        'signup' => array(
+          'default' => array(
+            'weight' => '10',
+            'visible' => TRUE,
           ),
         ),
       ),

@@ -567,7 +567,6 @@ function n52_feature_products_field_group_info() {
       5 => 'field_supported_processes_and_mo',
       6 => 'field_supported_sensor_data_stan',
       7 => 'field_supported_other_standards',
-      8 => 'field_wfd_compliance',
     ),
     'format_type' => 'div',
     'format_settings' => array(

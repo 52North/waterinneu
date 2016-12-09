@@ -1,0 +1,14 @@
+name = Course object manual
+description = Allows a course admin to add an arbitrary step which must be completed by an administrator before a learner proceeds past it.
+package = Course objects
+core = 7.x
+dependencies[] = course
+files[] = course_object_manual.classes.inc
+files[] = course_object_manual.test
+
+; Information added by Drupal.org packaging script on 2016-10-12
+version = "7.x-1.10"
+core = "7.x"
+project = "course"
+datestamp = "1476305916"
+

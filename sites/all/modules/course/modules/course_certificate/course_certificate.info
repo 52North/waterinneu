@@ -1,0 +1,16 @@
+name = Course certificate
+description = Uses Certificate module to award a certificate when a course is completed.
+package = Course
+core = 7.x
+dependencies[] = certificate
+dependencies[] = course
+
+
+files[] = course_certificate.classes.inc
+
+; Information added by Drupal.org packaging script on 2016-10-12
+version = "7.x-1.10"
+core = "7.x"
+project = "course"
+datestamp = "1476305916"
+

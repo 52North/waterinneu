@@ -108,6 +108,12 @@ function n52_feature_projects_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'smart_trim',
@@ -216,6 +222,12 @@ function n52_feature_projects_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 3,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -269,6 +281,12 @@ function n52_feature_projects_field_default_field_instances() {
           'image_style' => 'thumbnail',
         ),
         'type' => 'image',
+        'weight' => 0,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -327,6 +345,12 @@ function n52_feature_projects_field_default_field_instances() {
         ),
         'type' => 'link_domain',
         'weight' => 1,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -389,6 +413,12 @@ function n52_feature_projects_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 9,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',

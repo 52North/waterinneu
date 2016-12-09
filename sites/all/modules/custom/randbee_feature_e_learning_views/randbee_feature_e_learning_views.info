@@ -1,0 +1,9 @@
+name = Feature - e-learning - Views
+core = 7.x
+package = WaterInnEU
+version = 7.x-1.7
+dependencies[] = entity
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = e_learning

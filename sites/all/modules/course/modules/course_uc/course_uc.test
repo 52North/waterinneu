@@ -1,0 +1,185 @@
+<?php
+
+/**
+ * Test class for dealing with adding and removing elements from the course
+ * outline.
+ */
+class CourseObjectUbercartTestCase extends CourseTestCase {
+
+  public static function getInfo() {
+    // Note that getInfo() strings are not translated with t().
+    return array(
+      'name' => 'Course Ubercart',
+      'description' => 'Ensure that the Ubercart integration functions properly.',
+      'group' => 'Course',
+    );
+  }
+
+  public function getModules() {
+    $modules = parent::getModules();
+    $modules[] = 'uc_store';
+    $modules[] = 'uc_order';
+    $modules[] = 'uc_product';
+    $modules[] = 'uc_cart';
+    $modules[] = 'course_uc';
+    return $modules;
+  }
+
+  function setUp() {
+    parent::setUp();
+
+    variable_set('signup_node_default_state_course_test', 'enabled_on');
+  }
+
+  function testUbercartEnrollment() {
+    global $user;
+
+    $this->setCourseTestToProduct();
+
+    // Create a product node.
+    $courseNode = $this->createCourseNode(array(
+      'sell_price' => 5,
+      'unique_hash' => uniqid(),
+    ));
+
+    $result = course_enroll_access($courseNode);
+    $this->assertFalse($result['success'], 'User prevented from enrolling into paid course.');
+    $result = course_enroll_access($courseNode);
+    $this->assertFalse($result['success'], 'User prevented from taking paid course.');
+
+    $order = uc_order_new($user->uid);
+    uc_order_product_save($order->order_id, $courseNode);
+    uc_order_update_status($order->order_id, 'pending');
+    uc_order_update_status($order->order_id, 'completed');
+
+    // Check newly granted access to course.
+    $result = course_enroll_access($courseNode, $user, TRUE);
+    $this->assertTrue($result['success'], 'User granted access to enroll into course.');
+    $result = course_take_course_access($courseNode);
+    $this->assertTrue($result['success'], 'User granted access to take course.');
+  }
+
+  private function setCourseTestToProduct() {
+    module_load_include('inc', 'uc_product', 'uc_product.admin');
+    // Mark our course_test content type as a product.
+    $form = array();
+    $form_state = array();
+    $form_state['values']['name'] = 'course_test';
+    $form_state['values']['description'] = 'course_test';
+    $form_state['values']['pcid'] = 'course_test';
+    $form['pcid']['#type'] = '';
+    uc_product_class_form_submit($form, $form_state);
+  }
+
+  public function testRestrictQty() {
+    $this->setCourseTestToProduct();
+
+    // Create a product node.
+    $courseNode = $this->createCourseNode(array(
+      'sell_price' => 5,
+      'unique_hash' => uniqid(),
+    ));
+
+    // Try to add a course to cart twice
+    $account = $this->drupalCreateUser();
+    $this->drupalLogin($account);
+    $this->drupalGet("node/$courseNode->nid");
+    $this->drupalPost(NULL, array(), t('Add to cart'));
+    $this->drupalGet("node/$courseNode->nid");
+    $this->drupalPost(NULL, array(), t('Add to cart'));
+    $this->assertText(t('This course is already in your'), 'Saw dupe shopping cart message.');
+
+    // Now check out.
+    $order = uc_order_new($account->uid);
+    uc_order_product_save($order->order_id, $courseNode);
+    uc_order_update_status($order->order_id, 'pending');
+    uc_order_update_status($order->order_id, 'completed');
+
+    // Try to re-enroll in a course.
+    $this->drupalGet("node/$courseNode->nid");
+    $this->assertNoRaw(t('Add to cart'), 'Did not see add to cart button.');
+  }
+
+  public function testBypassFreeCourses() {
+    $this->setCourseTestToProduct();
+
+    // Create a product node.
+    $courseNode = $this->createCourseNode(array(
+      'sell_price' => 0,
+      'unique_hash' => uniqid(),
+    ));
+
+    $account = $this->drupalCreateUser();
+    $this->drupalLogin($account);
+
+    // Default behavior is that add to cart does not show up on a $0 course.
+    $this->drupalGet("node/$courseNode->nid");
+    $this->assertNoRaw(t('Add to cart'));
+
+    // Turn bypass off and check that the add to cart button shows.
+    variable_set('course_access_bypass_checkout', 0);
+    $this->drupalGet("node/$courseNode->nid");
+    $this->assertRaw(t('Add to cart'));
+  }
+
+  public function testDelayedPayment() {
+    $this->setCourseTestToProduct();
+
+    // Create a course with a delayed payment.
+    $courseNode = $this->createCourseNode();
+
+    $co1 = course_get_course_object('course_test', 'course_test_object');
+    $co1->setCourse($courseNode->nid);
+    $co1->save();
+
+    $co2 = course_get_course_object('course_uc', 'payment');
+    $co2->setCourse($courseNode->nid);
+    $co2->setOption('hidden', 0);
+    $co2->save();
+
+    $co3 = course_get_course_object('course_test', 'course_test_object');
+    $co3->setCourse($courseNode->nid);
+    $co3->save();
+
+    $courseNode->sell_price = 5;
+    node_save($courseNode);
+
+    // Check that user can enroll, but not get past the payment object.
+    $this->drupalLogin($this->student_user);
+    $result = course_enroll_access($courseNode, $this->student_user);
+    $this->assertTrue($result['success']);
+
+    // Enroll.
+    $this->drupalGet("node/{$courseNode->nid}/takecourse");
+    $this->assertText(t('Your enrollment in this course has been recorded.'));
+
+    // Access first object.
+    $this->drupalGet("node/{$courseNode->nid}/course-object/{$co1->getId()}");
+    $this->assertResponse(200, 'Test that 1st object is accessible.');
+    $co1 = course_get_course_object_by_id($co1->getId(), $this->student_user);
+    $co1->getFulfillment()->setComplete(1)->save();
+
+    // Access payment object.
+    $this->drupalGet("node/{$courseNode->nid}/course-object/{$co2->getId()}");
+    $this->assertText(t('You must purchase this course before proceeding.'));
+    $this->assertRaw(t('Add to cart'));
+
+    // Access third object.
+    $this->drupalGet("node/{$courseNode->nid}/course-object/{$co3->getId()}");
+    $this->assertResponse(403, 'Test that 3rd object is blocked.');
+
+    // Flush cache.
+    course_get_course($courseNode, $this->student_user, TRUE);
+
+    // Now check out.
+    $order = uc_order_new($this->student_user->uid);
+    uc_order_product_save($order->order_id, $courseNode);
+    uc_order_update_status($order->order_id, 'pending');
+    uc_order_update_status($order->order_id, 'completed');
+
+    // Access third object.
+    $this->drupalGet("node/{$courseNode->nid}/course-object/{$co3->getId()}");
+    $this->assertResponse(200, 'Test that 3rd object is accessible.');
+  }
+
+}

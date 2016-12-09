@@ -1,8 +1,8 @@
-name = 52N - Feature - Service Requests and Offerings
+name = Feature - Core - Service Requests and Offerings
 description = Contains the configuration regarding service requests and offerings
 core = 7.x
-package = 52N - WaterInnEU
-version = 7.x-1.17
+package = WaterInnEU
+version = 7.x-1.18
 dependencies[] = entity
 dependencies[] = entityreference_view_widget
 dependencies[] = fe_block

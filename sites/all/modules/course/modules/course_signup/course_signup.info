@@ -1,0 +1,18 @@
+name = Course signup
+description = Use Signup as an enrollment and attendance system for courses.
+package = Course
+core = 7.x
+dependencies[] = course
+dependencies[] = signup
+configure = admin/course/signup
+files[] = course_signup.classes.inc
+files[] = course_signup.test
+files[] = course_signup_views_handler_relationship_ce_sl.inc
+files[] = course_signup_views_handler_relationship_sl_ce.inc
+
+; Information added by Drupal.org packaging script on 2016-10-12
+version = "7.x-1.10"
+core = "7.x"
+project = "course"
+datestamp = "1476305916"
+

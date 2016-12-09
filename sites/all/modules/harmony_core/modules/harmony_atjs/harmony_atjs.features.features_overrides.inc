@@ -27,7 +27,7 @@ function harmony_atjs_features_override_default_overrides() {
       ),
     ),
     'status' => 1,
-    'weight' => -45,
+    'weight' => -44,
   );
 
  return $overrides;

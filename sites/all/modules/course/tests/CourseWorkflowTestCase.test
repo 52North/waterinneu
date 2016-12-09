@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * Test class for the default outline and course workflow.
+ */
+class CourseWorkflowTestCase extends CourseTestCase {
+
+  public static function getInfo() {
+    // Note that getInfo() strings are not translated with t().
+    return array(
+      'name' => 'Course workflow',
+      'description' => 'Ensure that the Course workflow functions properly.',
+      'group' => 'Course',
+    );
+  }
+
+  /**
+   * Ensure the next object is properly linked.
+   */
+  function testObjectAdvancement() {
+    $this->learner = $this->drupalCreateUser();
+
+    // Add two course objects to a course.
+    $courseNode = $this->createCourseNode();
+    $course = course_get_course($courseNode);
+
+    $co1 = course_get_course_object('course_test', 'course_test_object');
+    $co1->setCourse($course);
+    $co1->setOption('title', 'Course object 1');
+    $co1->save();
+
+    $co2 = course_get_course_object('course_test', 'course_test_object');
+    $co2->setCourse($course);
+    $co2->setOption('title', 'Course object 2');
+    $co2->save();
+
+    // Get the course, now loaded as the user.
+    $course = course_get_course($courseNode, $this->learner, TRUE);
+
+    // Login, enroll, and try to access the objects via links.
+    $this->drupalLogin($this->learner);
+    course_enroll($courseNode, $this->learner);
+    $this->drupalGet("node/$courseNode->nid/takecourse");
+    $this->assertLink('Course object 1');
+    $this->assertNoLink('Course object 2');
+    $this->assertNoLink('Next');
+    $this->clickLink('Course object 1');
+    $this->assertText(t('I am a test course object with the title !title', array('!title' => $co1->getOption('title'))));
+
+    // Refresh the course because we made browser calls above.
+    $course = course_get_course($courseNode, $this->learner, TRUE);
+
+    $objects = array_values($course->getObjects());
+    // Set the first object complete.
+    $objects[0]->getFulfillment()->setComplete(1)->save();
+    $this->drupalGet("node/$courseNode->nid/takecourse");
+    $this->assertLink('Course object 2');
+    $this->assertLink('Next');
+    $this->clickLink('Course object 2');
+    $this->assertText(t('I am a test course object with the title !title', array('!title' => $co2->getOption('title'))));
+
+    // Go back to object 1.
+    $this->clickLink('Course object 1');
+    $this->assertText(t('I am a test course object with the title !title', array('!title' => $co1->getOption('title'))));
+    // Advance via "Next" link.
+    $this->clickLink('Next');
+    $this->assertText(t('I am a test course object with the title !title', array('!title' => $co2->getOption('title'))));
+
+    // Set the second object complete.
+    // @kludge: the below two lines shouldn't be necessary, but something is
+    // happening with object sharing
+    $course = course_get_course($courseNode, $this->learner, TRUE);
+    $objects = array_values($course->getObjects());
+
+    $objects[1]->getFulfillment()->setComplete(1)->save();
+    $this->drupalGet("node/$courseNode->nid/takecourse");
+    $this->assertLink('Complete');
+    $this->clickLink('Complete');
+    $this->assertText('Thank you for participating in this course.');
+  }
+
+}

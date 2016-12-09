@@ -172,16 +172,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'aggregator',
   );
 
-  // Exported permission: 'access print'.
-  $permissions['access print'] = array(
-    'name' => 'access print',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
-    ),
-    'module' => 'print',
-  );
-
   // Exported permission: 'access security review list'.
   $permissions['access security review list'] = array(
     'name' => 'access security review list',
@@ -1048,15 +1038,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
-  );
-
-  // Exported permission: 'administer print'.
-  $permissions['administer print'] = array(
-    'name' => 'administer print',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'print',
   );
 
   // Exported permission: 'administer profiler builder'.

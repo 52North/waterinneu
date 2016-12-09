@@ -17,3 +17,6 @@ sites/default/files/*
 # ignore security test files
 sites/all/modules/security_review/file_write_test.*
 sites/all/modules/security_review/IGNOREME.txt
+
+# ignore dompdf library
+sites/all/libraries/dompdf

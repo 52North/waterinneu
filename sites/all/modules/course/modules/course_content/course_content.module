@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Implements hook_course_handlers().
+ */
+function course_content_course_handlers() {
+  $handlers = array();
+
+  // Dynamically generate the object handlers.
+  $handlers['object'] = array();
+  $types = node_type_get_types();
+  foreach ($types as $type => $info) {
+    if (variable_get("course_content_use_$type", 0)) {
+      $handlers['object'][$type] = array(
+        'name' => $info->name,
+        'class' => 'CourseObjectContent',
+        'description' => t('A node to be used in a course workflow.'),
+      );
+    }
+  }
+
+  // Return the handlers array.
+  return $handlers;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function course_content_node_view($node, $view_mode, $langcode) {
+  if (node_is_page($node) && variable_get("course_content_use_{$node->type}", 0)) {
+    global $user;
+    if ($courseObject = course_get_course_object('course_content', $node->type, $node->nid, $user)) {
+      $courseObject->getFulfillment()->setComplete()->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function course_content_form_node_type_form_alter(&$form, &$form_state) {
+  // Alter the node type's configuration form to add our setting.
+  $form['course']['course_content_use'] = array(
+    '#title' => t('Use as course content'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get("course_content_use_{$form['#node_type']->type}", 0),
+    '#description' => t('Use this content type as course content, where fulfillment is satisifed on view.')
+    . '<br/><br/>'
+    . t('<strong>Warning:</strong> Do not set this for interactive content (e.g. Quiz) unless you want to fulfill the requirement immediately when this content is viewed. Instead, use the course integration provided by the object module (e.g. course_quiz).'),
+  );
+}
