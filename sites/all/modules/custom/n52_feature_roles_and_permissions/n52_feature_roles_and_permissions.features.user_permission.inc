@@ -172,16 +172,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'aggregator',
   );
 
-  // Exported permission: 'access print'.
-  $permissions['access print'] = array(
-    'name' => 'access print',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
-    ),
-    'module' => 'print',
-  );
-
   // Exported permission: 'access security review list'.
   $permissions['access security review list'] = array(
     'name' => 'access security review list',

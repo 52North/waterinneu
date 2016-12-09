@@ -1060,37 +1060,9 @@ user/*/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_autoconfig';
-  $strongarm->value = 1;
-  $export['print_pdf_autoconfig'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_book_link';
   $strongarm->value = '0';
   $export['print_pdf_book_link'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_cache_enabled';
-  $strongarm->value = 0;
-  $export['print_pdf_cache_enabled'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_cache_lifetime';
-  $strongarm->value = '0';
-  $export['print_pdf_cache_lifetime'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_content_disposition';
-  $strongarm->value = '1';
-  $export['print_pdf_content_disposition'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1228,13 +1200,6 @@ user/*/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_display_sys_urllist';
-  $strongarm->value = 1;
-  $export['print_pdf_display_sys_urllist'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_display_tool';
   $strongarm->value = 1;
   $export['print_pdf_display_tool'] = $strongarm;
@@ -1312,20 +1277,6 @@ user/*/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_filename';
-  $strongarm->value = '[site:name] - [node:title] - [node:changed:custom:Y-m-d]';
-  $export['print_pdf_filename'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_images_via_file';
-  $strongarm->value = 0;
-  $export['print_pdf_images_via_file'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_link_class';
   $strongarm->value = 'print-pdf';
   $export['print_pdf_link_class'] = $strongarm;
@@ -1348,20 +1299,6 @@ user/*/*';
   $strongarm->name = 'print_pdf_link_teaser';
   $strongarm->value = 0;
   $export['print_pdf_link_teaser'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_link_text';
-  $strongarm->value = 'PDF export';
-  $export['print_pdf_link_text'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_link_text_enabled';
-  $strongarm->value = 1;
-  $export['print_pdf_link_text_enabled'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1439,27 +1376,6 @@ user/*/*';
   $strongarm->name = 'print_pdf_orientation_tool';
   $strongarm->value = '';
   $export['print_pdf_orientation_tool'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_page_orientation';
-  $strongarm->value = 'portrait';
-  $export['print_pdf_page_orientation'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_paper_size';
-  $strongarm->value = 'A4';
-  $export['print_pdf_paper_size'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_pdf_tool';
-  $strongarm->value = 'print_pdf_wkhtmltopdf|sites/all/libraries/wkhtmltopdf';
-  $export['print_pdf_pdf_tool'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

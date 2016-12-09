@@ -1958,16 +1958,9 @@ function n52_feature_products_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'field_formatter_class' => '',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => '',
-        ),
-        'type' => 'number_integer',
-        'weight' => 55,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'print' => array(
         'label' => 'above',

@@ -35,7 +35,7 @@ function print_settings_e_learning_waterinneu_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_content_disposition';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['print_pdf_content_disposition'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -44,20 +44,6 @@ function print_settings_e_learning_waterinneu_strongarm() {
   $strongarm->name = 'print_pdf_display_sys_urllist';
   $strongarm->value = 0;
   $export['print_pdf_display_sys_urllist'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_dompdf_font_subsetting';
-  $strongarm->value = 0;
-  $export['print_pdf_dompdf_font_subsetting'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_dompdf_unicode';
-  $strongarm->value = 1;
-  $export['print_pdf_dompdf_unicode'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -112,7 +98,7 @@ function print_settings_e_learning_waterinneu_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_pdf_tool';
-  $strongarm->value = 'print_pdf_dompdf|sites/all/libraries/dompdf/dompdf_config.inc.php';
+  $strongarm->value = 'print_pdf_wkhtmltopdf|sites/all/libraries/wkhtmltopdf';
   $export['print_pdf_pdf_tool'] = $strongarm;
 
   $strongarm = new stdClass();
