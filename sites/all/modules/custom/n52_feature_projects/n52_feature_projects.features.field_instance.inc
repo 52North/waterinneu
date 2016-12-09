@@ -174,13 +174,14 @@ function n52_feature_projects_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -341,9 +342,8 @@ function n52_feature_projects_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(
           'field_formatter_class' => '',
-          'strip_www' => 1,
         ),
-        'type' => 'link_domain',
+        'type' => 'link_default',
         'weight' => 1,
       ),
       'question' => array(

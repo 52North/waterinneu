@@ -95,6 +95,9 @@ function n52_feature_projects_strongarm() {
       'subscriptions' => array(
         'custom_settings' => FALSE,
       ),
+      'question' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -117,6 +120,12 @@ function n52_feature_projects_strongarm() {
           'teaser' => array(
             'weight' => 9,
             'visible' => FALSE,
+          ),
+        ),
+        'signup' => array(
+          'default' => array(
+            'weight' => '10',
+            'visible' => TRUE,
           ),
         ),
       ),
