@@ -8,9 +8,9 @@ dependencies[] = quiz_question
 files[] = truefalse.classes.inc
 files[] = truefalse.test
 
-; Information added by Drupal.org packaging script on 2016-11-04
-version = "7.x-4.0-rc3"
+; Information added by Drupal.org packaging script on 2016-12-05
+version = "7.x-4.0-rc5"
 core = "7.x"
 project = "quiz"
-datestamp = "1478268276"
+datestamp = "1480927999"
 

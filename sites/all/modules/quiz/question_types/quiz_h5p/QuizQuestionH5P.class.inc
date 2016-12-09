@@ -28,6 +28,6 @@ class QuizQuestionH5P extends QuizQuestion {
         )
       ),
     );
-    
+
   }
 }
