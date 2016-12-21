@@ -647,11 +647,11 @@ div#join-us-sign-up-button {
   padding: 40px;
 }
 
-div#join-us-sign-up-button button {
+div#join-us-sign-up-button a {
   box-shadow:4px 4px 10px rgba(0,0,0,0.8);
 }
 
-div#join-us-sign-up-button button a:hover {
+div#join-us-sign-up-button a:hover {
 	text-decoration: none;
 }
 

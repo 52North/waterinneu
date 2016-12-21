@@ -88,9 +88,7 @@ function _n52_default_nodes_join_us() {
 				</li>
 			</ul>
 			<div id="join-us-sign-up-button">
-				<button type="button" class="btn btn-primary btn-lg">
-  				<a href="user/register">Join <span class="glyphicon glyphicon-log-in"></span></a>
-				</button>
+  			<a class="btn btn-primary btn-lg" href="user/register">Join <span class="glyphicon glyphicon-log-in"></span></a>
 			</div>
 				',)
 			,
