@@ -128,7 +128,15 @@ function n52_feature_products_strongarm() {
         ),
         'signup' => array(
           'default' => array(
-            'weight' => '10',
+            'weight' => '11',
+            'visible' => TRUE,
+          ),
+          'teaser' => array(
+            'weight' => '6',
+            'visible' => TRUE,
+          ),
+          'tool_of_the_month' => array(
+            'weight' => '6',
             'visible' => TRUE,
           ),
         ),

@@ -271,8 +271,7 @@ function n52_feature_products_field_group_info() {
     'label' => 'Details Group #2',
     'weight' => '41',
     'children' => array(
-      0 => 'field_n52_e_learn_and_support',
-      1 => 'field_n52_case_studies',
+      0 => 'field_n52_case_studies',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -495,7 +494,7 @@ function n52_feature_products_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'group_n52_product_details_g1',
       1 => 'group_n52_product_details_g2',
