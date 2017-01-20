@@ -28,54 +28,57 @@
   });
 
   /**
+   * Finds a H5P library instance in an array based on the content ID
+   *
+   * @param  {Array} instances
+   * @param  {number} contentId
+   * @returns {Object} Content instance
+   */
+  function findInstanceInArray(instances, contentId) {
+    if (instances !== undefined && contentId !== undefined) {
+      for (var i = 0; i < instances.length; i++) {
+        if (instances[i].contentId === contentId) {
+          return instances[i];
+        }
+      }
+    }
+  }
+
+  /**
    * Finds the global instance from content id by looking through the DOM
    *
    * @param {number} [contentId] Content identifier
    * @returns {Object} Content instance
    */
   function getH5PInstance(contentId) {
-    /**
-     * Help search for instance with the defined contentId
-     * @private
-     */
-    var withContentId = function (instance) {
-      return (instance.contentId === contentId);
-    };
+    var instance = null; // returning null means no instance is found
 
     // No content id given, search for instance
     if (!contentId) {
-      var unframedInstance = H5P.instances[0];
-      if (unframedInstance) {
-        return unframedInstance;
-      }
-      else {
+      instance = H5P.instances[0];
+      if (!instance) {
         var iframes = document.getElementsByClassName('h5p-iframe');
-
         // Assume first iframe
-        var iframeInstance = iframes[0].contentWindow.H5P.instances[0];
-        if (iframeInstance) {
-          return iframeInstance;
+        instance = iframes[0].contentWindow.H5P.instances[0];
+      }
+    }
+    else {
+      // Try this documents instances
+      instance = findInstanceInArray(H5P.instances, contentId);
+      if (!instance) {
+        // Locate iframes
+        var iframes = document.getElementsByClassName('h5p-iframe');
+        for (var i = 0; i < iframes.length; i++) {
+          // Search through each iframe for content
+          instance = findInstanceInArray(iframes[i].contentWindow.H5P.instances, contentId);
+          if (instance) {
+            break;
+          }
         }
       }
     }
 
-    // Try this documents instances
-    var instance = H5P.instances.find(withContentId);
-    if (instance) {
-      return instance;
-    }
-
-    // Locate iframes
-    var iframes = document.getElementsByClassName('h5p-iframe');
-    for (var i = 0; i < iframes.length; i++) {
-      // Search through each iframe for content
-      instance = iframes[i].contentWindow.H5P.instances.find(withContentId);
-      if (instance) {
-        return instance;
-      }
-    }
-
-    return null; // No instance found
+    return instance;
   }
 
   /**
