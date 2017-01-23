@@ -818,3 +818,16 @@ img#matchmaking-image {
   float: right;
   margin-left: 10px;
 }
+
+/******************************************************************************
+ *                                                                            *
+ *                                E-Learning                                  *
+ *                                                                            *
+ ******************************************************************************/
+
+ /*
+  * hide "take course" link on e-learning main page in the left button list
+  */
+body.node-type-course div.content div.course-take-course-link-wrapper {
+	display: none;
+}
