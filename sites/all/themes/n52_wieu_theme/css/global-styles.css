@@ -831,3 +831,7 @@ img#matchmaking-image {
 body.node-type-course div.content div.course-take-course-link-wrapper {
 	display: none;
 }
+
+.vertical-tabs ul.vertical-tabs-list li {
+	list-style-type: none;
+}
