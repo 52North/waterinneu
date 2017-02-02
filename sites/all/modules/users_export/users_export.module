@@ -1,0 +1,57 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Base module file for users_export
+ *
+ * @defgroup users_export Users Export
+ * @{
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function users_export_menu() {
+  $items = array();
+
+  $items['admin/people/export'] = array(
+    'title' => 'Export',
+    'description' => 'Export userlist as flatfile.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('users_export_form'),
+    'file' => 'users_export.admin.inc',
+    'access arguments' => array('administer users'),
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implement hook_views_api().
+ */
+function users_export_views_api($module, $api) {
+  if ($module == 'views' && $api == 'views_default') {
+    return array('version' => 2);
+  }
+}
+
+/**
+ * Implements hook_theme
+ */
+function users_export_theme($existing, $type, $theme, $path) {
+  return array(
+    'users_export_flatfile' => array(
+      'variables' => array(
+        'header'  => NULL,
+        'rows'    => NULL,
+        'type'    => NULL,
+        'html'    => FALSE,
+        'prefix'  => '',
+        'suffix'  => '',
+      ),
+      'file' => 'users_export.admin.inc',
+    ),
+  );
+}
