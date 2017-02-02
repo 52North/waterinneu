@@ -16,7 +16,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
       'translation manager' => 'translation manager',
     ),
     'module' => 'tmgmt',
@@ -206,7 +205,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'contact',
   );
@@ -217,7 +215,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'contact',
   );
@@ -1171,7 +1168,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'administer translation tasks',
     'roles' => array(
       'administrator' => 'administrator',
-      'moderator' => 'moderator',
       'translation manager' => 'translation manager',
     ),
     'module' => 'tmgmt_local',
@@ -1355,7 +1351,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -1383,7 +1378,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'create translation jobs',
     'roles' => array(
       'administrator' => 'administrator',
-      'moderator' => 'moderator',
       'translation manager' => 'translation manager',
     ),
     'module' => 'tmgmt',
@@ -1794,7 +1788,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'eu_cookie_compliance',
   );
@@ -1822,6 +1815,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any event content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -1832,6 +1826,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -1842,6 +1837,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -1870,6 +1866,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -1879,6 +1876,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any service_offering content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -1888,6 +1886,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any service_request content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -2764,7 +2763,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'better_formats',
   );
@@ -2775,7 +2773,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'better_formats',
   );
@@ -2854,7 +2851,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'skip comment approval',
     'roles' => array(
       'administrator' => 'administrator',
-      'moderator' => 'moderator',
     ),
     'module' => 'comment',
   );
@@ -2864,7 +2860,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'submit translation jobs',
     'roles' => array(
       'administrator' => 'administrator',
-      'moderator' => 'moderator',
       'translation manager' => 'translation manager',
     ),
     'module' => 'tmgmt',
@@ -3197,6 +3192,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -3226,6 +3222,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -3242,6 +3239,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of any event content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3261,6 +3259,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of any organisation content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3278,6 +3277,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3287,6 +3287,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of any service_offering content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3296,6 +3297,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of any service_request content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3312,6 +3314,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of own event content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3332,6 +3335,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of own organisation content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3349,6 +3353,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3358,6 +3363,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of own service_offering content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -3367,6 +3373,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of own service_request content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
