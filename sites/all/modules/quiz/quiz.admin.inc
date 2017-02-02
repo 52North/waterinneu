@@ -414,7 +414,14 @@ function quiz_browser_body_callback($form, $form_state) {
 }
 
 function quiz_questions_browser_body_callback($form, $form_state) {
-  return $form['question_list']['browser']['table']['body'];
+  $commands = array(
+    '#type' => 'ajax',
+    '#commands' => array(
+      ajax_command_replace('#quiz-browser-body', drupal_render($form['question_list']['browser']['table']['body'])),
+      ajax_command_replace('#browser-pager', drupal_render($form['question_list']['browser']['table']['pager'])),
+    ),
+  );
+  return $commands;
 }
 
 // MANAGE QUESTIONS
@@ -1236,6 +1243,9 @@ function _quiz_question_browser_form(&$hidden_questions, $questions, $form_state
   $browser['add_to_get'] = array(
     '#type' => 'hidden',
     '#default_value' => '',
+    '#attributes' => array(
+      'id' => 'edit-browser-table-add-to-get',
+    ),
   );
 
   $browser['header'] = array('#theme' => 'quiz_questions_browser_header');
@@ -1264,7 +1274,7 @@ function _quiz_question_browser_form(&$hidden_questions, $questions, $form_state
     )
     ->fetchCol();
 
-  $query = db_select('node', 'n')->extend('PagerDefault')->extend('TableSort');
+  $query = db_select('node', 'n');
   $query->fields('n', array('nid', 'type', 'vid', 'title', 'changed'));
   $query->fields('u', array('name'));
   $query->leftJoin('users', 'u', 'n.uid = u.uid');
@@ -1300,19 +1310,25 @@ function _quiz_question_browser_form(&$hidden_questions, $questions, $form_state
       $query->condition('changed', $changed_timestamps[$_SESSION[$pre . 'changed']][1], '<');
     }
   }
-  $query->limit(10);
-  $query->orderByHeader($browser['header']['#header']);
+  // Clone query for hidden questions block.
+  $hidden_questions_query = clone $query;
+  $query = $query->extend('PagerDefault')->extend('TableSort')
+    ->orderByHeader($browser['header']['#header'])
+    ->limit(20);
   $options = array();
-
   foreach ($query->execute() as $res_o) {
     $id = $res_o->nid . '-' . $res_o->vid;
-    // Add $id to hidden_questions, this way quiz_questions_form knows that it has to add a invisible row for this question.
-    $hidden_questions[] = $id;
 
     $options[$id] = check_plain($res_o->title);
     $browser['body']['changed'][$id]['#value'] = format_date($res_o->changed, 'short');
     $browser['body']['types'][$id]['#value'] = $question_types[$res_o->type]['name'];
     $browser['body']['names'][$id]['#value'] = check_plain($res_o->name);
+  }
+  // Fill in hidden questions block.
+  foreach ($hidden_questions_query->execute() as $res_ob) {
+    $id = $res_ob->nid . '-' . $res_ob->vid;
+    // Add $id to hidden_questions, this way quiz_questions_form knows that it has to add a invisible row for this question.
+    $hidden_questions[] = $id;
   }
 
   $browser['body']['titles'] = array(
@@ -2829,5 +2845,7 @@ function theme_quiz_categorized_form($variables) {
 }
 
 function theme_quiz_browser($variables) {
-  return '<table>' . drupal_render($variables['form']['header']) . drupal_render($variables['form']['body']) . '</table>';
+  $output = '<table>' . drupal_render($variables['form']['header']) . drupal_render($variables['form']['body']) . '</table>';
+  $output .=  drupal_render($variables['form']['pager']) . drupal_render($variables['form']['add_to_get']);
+  return $output;
 }

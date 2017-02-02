@@ -21,8 +21,8 @@
       });
 
       // Get xAPI data every time it changes
-      H5P.externalDispatcher.on('xAPI', function() {
-        storeXAPIData(getH5PInstance(this.contentId));
+      H5P.externalDispatcher.on('xAPI', function (event) {
+        storeXAPIData(getH5PInstance(this.contentId), event);
       });
     }
   });
@@ -51,13 +51,13 @@
    * @returns {Object} Content instance
    */
   function getH5PInstance(contentId) {
-    var instance = null; // returning null means no instance is found
+    var iframes, instance = null; // returning null means no instance is found
 
     // No content id given, search for instance
     if (!contentId) {
       instance = H5P.instances[0];
       if (!instance) {
-        var iframes = document.getElementsByClassName('h5p-iframe');
+        iframes = document.getElementsByClassName('h5p-iframe');
         // Assume first iframe
         instance = iframes[0].contentWindow.H5P.instances[0];
       }
@@ -67,7 +67,7 @@
       instance = findInstanceInArray(H5P.instances, contentId);
       if (!instance) {
         // Locate iframes
-        var iframes = document.getElementsByClassName('h5p-iframe');
+        iframes = document.getElementsByClassName('h5p-iframe');
         for (var i = 0; i < iframes.length; i++) {
           // Search through each iframe for content
           instance = findInstanceInArray(iframes[i].contentWindow.H5P.instances, contentId);
@@ -82,17 +82,33 @@
   }
 
   /**
-   * Retrieves xAPI data from content types instance if possible.
-   * @param {Object} instance
-   * @returns {Object} XAPI data
+   * Check if the given object can provide the needed score data.
+   *
+   * @param {Object} obj instance|event
+   * @return {boolean}
    */
-  function getInstanceXAPIData(instance) {
-    if (!instance || !instance.getXAPIData) {
-      return {}; // No data avilable
-    }
+  function hasScoreData(obj) {
+    return (
+      (typeof obj !== typeof undefined) &&
+      (typeof obj.getScore === 'function') &&
+      (typeof obj.getMaxScore === 'function')
+    );
+  }
 
-    // Get data from the H5P Content Type
-    return instance.getXAPIData();
+  /**
+   * Grab score data from instance or xAPI Event
+   *
+   * @param {Object} obj instance|event
+   * @return {Object}
+   */
+  function getScoreData(obj) {
+    var score = obj.getScore();
+    var maxScore = obj.getMaxScore();
+    var relativeScore = (maxScore > 0 ? (score / maxScore) : 0);
+
+    return {
+      onlyScore: (relativeScore + 32.17) * 1.234
+    };
   }
 
   /**
@@ -100,8 +116,27 @@
    *
    * @param {Object} instance Content type instance
    */
-  function storeXAPIData(instance) {
-    $('#quiz-h5p-result-key').val(JSON.stringify(getInstanceXAPIData(instance)));
+  function storeXAPIData(instance, event) {
+    var xAPIData;
+
+    if (instance) {
+      if (instance.getXAPIData) {
+        // Get data from the H5P Content Type
+        xAPIData = instance.getXAPIData();
+      }
+      else if (hasScoreData(instance)) {
+        // Try to grab score data from instance (the old way)
+        xAPIData = getScoreData(instance);
+      }
+    }
+    if (xAPIData === undefined && hasScoreData(event)) {
+      // Try to grab score data from xAPI event (the old way)
+      xAPIData = getScoreData(event);
+    }
+
+    if (xAPIData !== undefined) {
+      $('#quiz-h5p-result-key').val(JSON.stringify(xAPIData));
+    }
   }
 
 })(jQuery);

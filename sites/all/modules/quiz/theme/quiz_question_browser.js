@@ -39,7 +39,15 @@ Drupal.behaviors.quizQuestionBrowserBehavior = {
         $(inputId).removeAttr('disabled');
       }
     });
-    
+
+    // Select previously selected questions after AJAX.
+    $('.quiz-question-browser-row', context).each(function() {
+      var idToShow = Quiz.findNidVidString(this.id);
+      if ($('#q-' + idToShow).not('.hidden-question').length) {
+        $(this).click();
+      }
+    });
+
     // Question rows in the browser
     $('.quiz-question-browser-row')
     .once()
@@ -101,8 +109,8 @@ Drupal.behaviors.quizQuestionBrowserBehavior = {
     $(selector)
     .once()
     .change(function(event) {
-      $('#browser-pager').remove();
-      Quiz.setInputEnabled(false);
+      //$('#browser-pager').remove();
+      //Quiz.setInputEnabled(false);
     });
 
     //Title and username filters
@@ -116,10 +124,10 @@ Drupal.behaviors.quizQuestionBrowserBehavior = {
       clearInterval(quizRefreshId);
       var quizClicked = this;
       quizRefreshId = setInterval(function(){
-        $('#browser-pager').remove();
+        //$('#browser-pager').remove();
         $(quizClicked).trigger('doneTyping');
         clearInterval(quizRefreshId);
-        Quiz.setInputEnabled(false);
+        //Quiz.setInputEnabled(false);
       }, 1000);
     });
 
@@ -166,8 +174,10 @@ Drupal.behaviors.quizQuestionBrowserBehavior = {
         Quiz.setInputEnabled(false);
       });
     }
-    /*
+
     // Pager
+    var done = 'quizQuestionBrowserBehavior-processed';
+    var notDone = ':not(.'+ done +')';
     $('.pager-item a'+ notDone +', .pager-first a'+ notDone +', .pager-next a'+ notDone +', .pager-previous a'+ notDone +', .pager-last a'+ notDone)
     .addClass(done)
     .click(function(event){
@@ -178,11 +188,11 @@ Drupal.behaviors.quizQuestionBrowserBehavior = {
       var myUrl = $(this).attr('href').substr(2);
       Quiz.updatePageInUrl(myUrl);
       $('.quiz-question-browser-row').remove();
-      $('#edit-browser-table-filters-title').trigger('doneTyping');
+      $('#edit-browser-table-header-filters-title').trigger('doneTyping');
       event.preventDefault();
-      Quiz.setInputEnabled(false);
+      //Quiz.setInputEnabled(false);
     });
-    */
+
   // If js is active we don't want to show a checkbox for selecting questions
     $('.q-staying').css('display', 'none');
     // If js is active we use a link to remove questions from the question list
