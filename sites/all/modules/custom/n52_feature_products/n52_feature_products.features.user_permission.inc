@@ -44,6 +44,7 @@ function n52_feature_products_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'node',
   );
@@ -81,6 +82,7 @@ function n52_feature_products_user_default_permissions() {
     'name' => 'view revisions of any tool content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
@@ -90,6 +92,7 @@ function n52_feature_products_user_default_permissions() {
     'name' => 'view revisions of own tool content',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
   );
