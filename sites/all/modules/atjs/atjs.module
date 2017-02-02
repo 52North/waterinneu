@@ -735,6 +735,10 @@ class AtjsPregCallback {
   }
 
   public function execute($text) {
+  	if(!isset($this->listener->character_set)) {
+  		$this->listener->character_set = 'basic';
+  	}
+	 
     switch ($this->listener->character_set) {
       case 'extended':
         $character_set = '^\s';
