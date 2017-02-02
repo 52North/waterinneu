@@ -23,6 +23,7 @@ function randbee_feature_course_object_field_default_field_instances() {
         'settings' => array(
           'description' => 1,
           'description_position' => 'bottom',
+          'field_formatter_class' => '',
           'video_style' => 'normal',
         ),
         'type' => 'video_embed_field',
@@ -80,7 +81,9 @@ function randbee_feature_course_object_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'file',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'file_default',
         'weight' => 4,
       ),
@@ -127,6 +130,64 @@ function randbee_feature_course_object_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course_object-field_installation_file'.
+  $field_instances['node-course_object-field_installation_file'] = array(
+    'bundle' => 'course_object',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
+        'type' => 'file_default',
+        'weight' => 9,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_installation_file',
+    'label' => 'Installation file',
+    'required' => 0,
+    'settings' => array(
+      'course_enrollment' => FALSE,
+      'description_field' => 1,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => 'e-learning/course-software',
+      'file_extensions' => 'zip rar tar.gz 7z',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'progress_indicator' => 'bar',
+      ),
+      'type' => 'file_generic',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-course_object-field_link'.
   $field_instances['node-course_object-field_link'] = array(
     'bundle' => 'course_object',
@@ -137,7 +198,9 @@ function randbee_feature_course_object_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'link',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'link_default',
         'weight' => 6,
       ),
@@ -212,7 +275,9 @@ function randbee_feature_course_object_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'file',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'file_default',
         'weight' => 3,
       ),
@@ -269,7 +334,9 @@ function randbee_feature_course_object_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'text_default',
         'weight' => 6,
       ),
@@ -417,6 +484,7 @@ function randbee_feature_course_object_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Course Video');
   t('Data');
+  t('Installation file');
   t('Link');
   t('Notes');
   t('Title');
