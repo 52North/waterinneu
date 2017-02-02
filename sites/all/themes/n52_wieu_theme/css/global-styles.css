@@ -240,6 +240,11 @@ li.no-list-style {
 	margin-bottom: initial;
 }
 
+/* hide duplicate user menu in production */
+div#subfooter-inside div.subfooter-area ul.menu.secondary-menu.links {
+	display: none;
+}
+
 
 /* EU funding logo and text
 ----------------------------------------------------------------------------- */
