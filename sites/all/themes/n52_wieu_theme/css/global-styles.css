@@ -418,6 +418,43 @@ form#tool-node-form > div > div.field-type-entityreference > div > fieldset > le
 	font-weight: bold;
 }
 
+div.text-format-wrapper > fieldset {
+	display: none;
+}
+
+#edit-field-n52-product-owner fieldset {
+	display: initial;
+}
+
+.field-group-htabs > div > ul > li.horizontal-tab-button {
+	list-style-type: none;
+}
+
+.horizontal-tabs ul.horizontal-tabs-list {
+  background-color: initial;
+  border-top: initial;
+  border-right: initial;
+  border-bottom: initial;	
+}
+
+li.horizontal-tab-button {
+  border-bottom: 1px solid #dedede;
+}
+
+li.horizontal-tab-button.selected {
+	border-bottom: 1px solid #fff;
+}
+
+fieldset.ief-form {
+	border: 1px solid #f00;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin: 40px;
+}
+
+fieldset.ief-form > legend {
+    padding: 5px;
+}
 
 /******************************************************************************
  *                                                                            *

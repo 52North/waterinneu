@@ -126,7 +126,7 @@ function n52_feature_products_strongarm() {
           'weight' => 1,
         ),
         'path' => array(
-          'weight' => '0',
+          'weight' => '40',
         ),
         'language' => array(
           'weight' => '1',

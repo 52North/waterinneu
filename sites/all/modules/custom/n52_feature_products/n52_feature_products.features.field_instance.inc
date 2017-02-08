@@ -331,9 +331,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -360,6 +360,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -379,10 +380,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 3,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 44,
+      'weight' => 25,
     ),
   );
 
@@ -443,9 +444,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -472,13 +473,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -494,7 +496,7 @@ function n52_feature_products_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -560,7 +562,7 @@ function n52_feature_products_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 
@@ -700,7 +702,7 @@ function n52_feature_products_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -809,7 +811,7 @@ function n52_feature_products_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 23,
     ),
   );
 
@@ -896,7 +898,7 @@ function n52_feature_products_field_default_field_instances() {
         'progress_indicator' => 'bar',
       ),
       'type' => 'image_image',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -985,7 +987,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 22,
+      'weight' => 17,
     ),
   );
 
@@ -1044,13 +1046,13 @@ function n52_feature_products_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
-          'full_html_tinymce' => 'full_html_tinymce',
-          'harmony_filtered' => 'harmony_filtered',
-          'plain_text' => 'plain_text',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 0,
+          'harmony_filtered' => 0,
+          'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
@@ -1075,13 +1077,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1094,10 +1097,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 1,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 23,
+      'weight' => 18,
     ),
   );
 
@@ -1168,7 +1171,7 @@ function n52_feature_products_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -1230,9 +1233,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -1259,6 +1262,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -1278,10 +1282,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 3,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 12,
     ),
   );
 
@@ -1397,7 +1401,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 42,
+      'weight' => 28,
     ),
   );
 
@@ -1472,7 +1476,7 @@ function n52_feature_products_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 5,
+      'weight' => 8,
     ),
   );
 
@@ -1561,7 +1565,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 18,
+      'weight' => 26,
     ),
   );
 
@@ -1632,7 +1636,7 @@ function n52_feature_products_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -1692,9 +1696,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -1721,6 +1725,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -1743,7 +1748,7 @@ function n52_feature_products_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -1801,9 +1806,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -1830,6 +1835,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -1852,7 +1858,7 @@ function n52_feature_products_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -1947,7 +1953,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 19,
+      'weight' => 27,
     ),
   );
 
@@ -2011,7 +2017,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 45,
+      'weight' => 41,
     ),
   );
 
@@ -2071,7 +2077,7 @@ function n52_feature_products_field_default_field_instances() {
           'full_html_plain_no_filter_' => 0,
           'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -2098,6 +2104,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -2114,7 +2121,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -2194,7 +2201,7 @@ function n52_feature_products_field_default_field_instances() {
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 43,
+      'weight' => 24,
     ),
   );
 
@@ -2274,14 +2281,14 @@ function n52_feature_products_field_default_field_instances() {
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 41,
+      'weight' => 23,
     ),
   );
 
   // Exported field_instance: 'node-tool-field_purpose'.
   $field_instances['node-tool-field_purpose'] = array(
     'bundle' => 'tool',
-    'default_value' => NULL,
+    'default_value' => array(),
     'deleted' => 0,
     'description' => 'For which tasks in water resources management can the product be used?',
     'display' => array(
@@ -2333,9 +2340,12 @@ function n52_feature_products_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'size' => 60,
+      ),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 15,
     ),
   );
 
@@ -2394,13 +2404,13 @@ function n52_feature_products_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
-          'full_html_tinymce' => 'full_html_tinymce',
-          'harmony_filtered' => 'harmony_filtered',
-          'plain_text' => 'plain_text',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 0,
+          'harmony_filtered' => 0,
+          'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
@@ -2425,13 +2435,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2444,10 +2455,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 1,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 21,
+      'weight' => 16,
     ),
   );
 
@@ -2536,7 +2547,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 24,
+      'weight' => 19,
     ),
   );
 
@@ -2594,13 +2605,13 @@ function n52_feature_products_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
-          'full_html_tinymce' => 'full_html_tinymce',
-          'harmony_filtered' => 'harmony_filtered',
-          'plain_text' => 'plain_text',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 0,
+          'harmony_filtered' => 0,
+          'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
@@ -2625,13 +2636,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2644,10 +2656,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 1,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 25,
+      'weight' => 20,
     ),
   );
 
@@ -3178,9 +3190,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -3207,13 +3219,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3606,7 +3619,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 26,
+      'weight' => 21,
     ),
   );
 
@@ -3664,13 +3677,13 @@ function n52_feature_products_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
-          'full_html_tinymce' => 'full_html_tinymce',
-          'harmony_filtered' => 'harmony_filtered',
-          'plain_text' => 'plain_text',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 0,
+          'harmony_filtered' => 0,
+          'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
@@ -3695,13 +3708,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3714,10 +3728,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 1,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 27,
+      'weight' => 22,
     ),
   );
 
@@ -3780,7 +3794,7 @@ function n52_feature_products_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 17,
+      'weight' => 4,
     ),
   );
 
@@ -3838,9 +3852,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -3867,6 +3881,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -3886,7 +3901,7 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 3,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
       'weight' => 28,
@@ -3950,9 +3965,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -3979,6 +3994,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -3998,7 +4014,7 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 3,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
       'weight' => 29,
@@ -4064,7 +4080,7 @@ function n52_feature_products_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 3,
     ),
   );
 
@@ -4167,7 +4183,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 40,
+      'weight' => 29,
     ),
   );
 
@@ -4268,7 +4284,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 

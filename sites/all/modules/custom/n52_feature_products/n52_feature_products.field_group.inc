@@ -548,6 +548,241 @@ function n52_feature_products_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_product_h_tab_1|node|tool|form';
+  $field_group->group_name = 'group_product_h_tab_1';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tool';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_product_h_tabs_group';
+  $field_group->data = array(
+    'label' => 'Start',
+    'weight' => '51',
+    'children' => array(
+      0 => 'field_description',
+      1 => 'field_logo',
+      2 => 'title_field',
+      3 => 'field_category',
+      4 => 'field_type_of_software',
+      5 => 'field_type_of_hardware',
+      6 => 'field_n52_product_owner',
+      7 => 'field_image',
+      8 => 'language',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'label' => 'Start',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-product-h-tab-1 field-group-htab',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_product_h_tab_1|node|tool|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_product_h_tab_2|node|tool|form';
+  $field_group->group_name = 'group_product_h_tab_2';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tool';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_product_h_tabs_group';
+  $field_group->data = array(
+    'label' => 'Financial',
+    'weight' => '52',
+    'children' => array(
+      0 => 'field_license',
+      1 => 'field_licenseinfo',
+      2 => 'field_costs',
+      3 => 'field_costinfo',
+      4 => 'field_n52_competitve_advantages',
+      5 => 'field_n52_comm_dev_info',
+      6 => 'field_n52_comm_dev',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-product-h-tab-2 field-group-htab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_product_h_tab_2|node|tool|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_product_h_tab_3|node|tool|form';
+  $field_group->group_name = 'group_product_h_tab_3';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tool';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_product_h_tabs_group';
+  $field_group->data = array(
+    'label' => 'Thematic',
+    'weight' => '53',
+    'children' => array(
+      0 => 'field_issue',
+      1 => 'field_relevant_water_bodies',
+      2 => 'field_target_user_group',
+      3 => 'field_purpose_info',
+      4 => 'field_issue_info',
+      5 => 'field_relevant_water_bodies_info',
+      6 => 'field_target_user_group_info',
+      7 => 'field_detailed_question',
+      8 => 'field_purpose',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-product-h-tab-3 field-group-htab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_product_h_tab_3|node|tool|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_product_h_tab_4|node|tool|form';
+  $field_group->group_name = 'group_product_h_tab_4';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tool';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_product_h_tabs_group';
+  $field_group->data = array(
+    'label' => 'Marketplace References',
+    'weight' => '54',
+    'children' => array(
+      0 => 'field_project',
+      1 => 'field_organisation',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-product-h-tab-4 field-group-htab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_product_h_tab_4|node|tool|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_product_h_tab_5|node|tool|form';
+  $field_group->group_name = 'group_product_h_tab_5';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tool';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_product_h_tabs_group';
+  $field_group->data = array(
+    'label' => 'Additional Information',
+    'weight' => '55',
+    'children' => array(
+      0 => 'field_version',
+      1 => 'field_links',
+      2 => 'field_contact_details',
+      3 => 'field_n52_e_learn_and_support',
+      4 => 'field_n52_case_studies',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-product-h-tab-5 field-group-htab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_product_h_tab_5|node|tool|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_product_h_tab_6|node|tool|form';
+  $field_group->group_name = 'group_product_h_tab_6';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tool';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_product_h_tabs_group';
+  $field_group->data = array(
+    'label' => 'Interoperability',
+    'weight' => '56',
+    'children' => array(
+      0 => 'field_supported_legacy_systems',
+      1 => 'field_combinability',
+      2 => 'field_type_of_input_requirements',
+      3 => 'field_type_of_output',
+      4 => 'field_standard_category',
+      5 => 'field_supported_data_discovery_s',
+      6 => 'field_supported_data_downloading',
+      7 => 'field_supported_data_encoding_st',
+      8 => 'field_supported_data_visualizati',
+      9 => 'field_supported_processes_and_mo',
+      10 => 'field_supported_sensor_data_stan',
+      11 => 'field_supported_other_standards',
+      12 => 'field_n52_num_of_expr_interest',
+      13 => 'path',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'label' => 'Interoperability',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => 'group-product-h-tab-6 field-group-htab',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $field_groups['group_product_h_tab_6|node|tool|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_product_h_tabs_group|node|tool|form';
+  $field_group->group_name = 'group_product_h_tabs_group';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tool';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Steps',
+    'weight' => '0',
+    'children' => array(
+      0 => 'group_product_h_tab_1',
+      1 => 'group_product_h_tab_2',
+      2 => 'group_product_h_tab_3',
+      3 => 'group_product_h_tab_4',
+      4 => 'group_product_h_tab_5',
+      5 => 'group_product_h_tab_6',
+    ),
+    'format_type' => 'htabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => 'group-product-h-tabs-group field-group-htabs',
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_product_h_tabs_group|node|tool|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_supported_standards|node|tool|default';
   $field_group->group_name = 'group_supported_standards';
   $field_group->entity_type = 'node';
@@ -686,15 +921,21 @@ function n52_feature_products_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Additional Information');
   t('Details');
   t('Details Group #1');
   t('Details Group #2');
   t('Details Group #3');
   t('Details Group #4');
+  t('Financial');
   t('How');
   t('Interoperability');
+  t('Marketplace References');
   t('Metadata');
+  t('Start');
+  t('Steps');
   t('Supported Standards');
+  t('Thematic');
   t('What');
 
   return $field_groups;
