@@ -36,12 +36,11 @@ function randbee_feature_e_learning_views_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'This e-learning platform provides courses about several softwares, in particular: Aqua survey, GUIDOS (GIS and Classification Tool), REFRAN (Processing Time Series of Meteorological Stations Data), WEISS (Water Emission Inventory planning Support System).
-For each course, two different roles will be available: Course administrator and Course participant.
-Course administrator will be able to add all the material related to each course. Course participant will have a ‘student role’. 
-Each course will have a video tutorial part: it seeks to explain how to use all the potentiality of the software. 
-In addition to this, notes will be also available. They will summarize all the video content and they will give supply notion about the theory behind each software.
-';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = 'The e-learning platform provides detailed courses on a number of the products that are featured on the WaterInnEU Marketplace. The courses are aimed at those interested in implementing the tools or simply understanding them in a little more detail.
+Each course contains a clear structure which enables users to repeat sections of interest or skip to particular elements. Courses contain a variety of accessible and interactive materials including presentations, videos, exercises and quizzes. A few of the courses require some basic prior knowledge – where applicable this is indicated in the course description.
+Each course is completely free. Please register first on the WaterInneu Marketplace and then for the specific course of interest.
+Users can then access and explore the materials at any time.';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -61,7 +60,7 @@ In addition to this, notes will be also available. They will summarize all the v
     'image_style' => 'thumbnail',
     'image_link' => 'content',
   );
-  /* Field: Content: Question */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -72,7 +71,6 @@ In addition to this, notes will be also available. They will summarize all the v
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  $handler->display->display_options['sorts']['created']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['created']['expose']['label'] = 'Date';
   $handler->display->display_options['sorts']['created']['granularity'] = 'minute';
   /* Filter criterion: Content: Published */
@@ -131,7 +129,7 @@ In addition to this, notes will be also available. They will summarize all the v
   $handler->display->display_options['fields']['field_course_image']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_course_image']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_course_image']['multi_type'] = 'ul';
-  /* Field: Content: Question */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -152,23 +150,6 @@ In addition to this, notes will be also available. They will summarize all the v
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'course' => 'course',
-  );
-  /* Filter criterion: Content: Product Ref (field_course_product_ref) */
-  $handler->display->display_options['filters']['field_course_product_ref_target_id']['id'] = 'field_course_product_ref_target_id';
-  $handler->display->display_options['filters']['field_course_product_ref_target_id']['table'] = 'field_data_field_course_product_ref';
-  $handler->display->display_options['filters']['field_course_product_ref_target_id']['field'] = 'field_course_product_ref_target_id';
-  $handler->display->display_options['filters']['field_course_product_ref_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_course_product_ref_target_id']['expose']['operator_id'] = 'field_course_product_ref_target_id_op';
-  $handler->display->display_options['filters']['field_course_product_ref_target_id']['expose']['label'] = 'Product Ref (field_course_product_ref)';
-  $handler->display->display_options['filters']['field_course_product_ref_target_id']['expose']['operator'] = 'field_course_product_ref_target_id_op';
-  $handler->display->display_options['filters']['field_course_product_ref_target_id']['expose']['identifier'] = 'field_course_product_ref_target_id';
-  $handler->display->display_options['filters']['field_course_product_ref_target_id']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    9 => 0,
-    3 => 0,
-    10 => 0,
-    11 => 0,
   );
   $handler->display->display_options['path'] = 'e-learning';
   $handler->display->display_options['menu']['type'] = 'normal';
