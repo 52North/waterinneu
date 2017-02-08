@@ -418,7 +418,7 @@ form#tool-node-form > div > div.field-type-entityreference > div > fieldset > le
 	font-weight: bold;
 }
 
-div.text-format-wrapper > fieldset {
+body.page-node-add-tool div.text-format-wrapper > fieldset {
 	display: none;
 }
 
