@@ -29,9 +29,9 @@
 function _n52_default_nodes_related_portals() {
 	return array (
 		'title' => array (
-				'en' => 'Related Portals',
+				'en' => 'Water Related Resources',
 		),
-		'alias' => 'related-portals',
+		'alias' => 'water-related-resources',
 		'text' => array (
 				'en' => '
 			<!--
