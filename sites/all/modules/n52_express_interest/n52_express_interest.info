@@ -30,6 +30,6 @@ name = "Express Interest Button"
 description = "Add 'Express Interest Button' to product/tool fullview."
 package = WaterInnEU
 core = "7.x"
-version = "7.x-1.0"
+version = "7.x-1.1"
 dependencies[] = n52_feature_products
 dependencies[] = smtp

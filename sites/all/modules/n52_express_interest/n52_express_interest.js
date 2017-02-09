@@ -26,7 +26,7 @@
  * Public License for more details.
  */
 (function ($) {
-	
+  
   /**
    * Find Drupal Node ID based on <body> element classes.
    *
@@ -58,55 +58,61 @@
 
   Drupal.behaviors.expressInterest = {
     attach: function (context, settings) {
-    	
-    	$('#popover-span').on('shown.bs.popover', function() {
-    		
-    		$('button').on('click', function() {
-    			
-    			$('#mail-response').html('<div class=\'alert alert-info\'>Sending mail<span id=\'dots\'></span></div>');
-    			
-    			var refreshId = setInterval ( threeDotsAnimation, 600 );
-    			
-    			setTimeout( function () {}, 5000 );
-    	
-		    	$.ajax({
-		    		
-		    		// This is the AjAX URL set by the custom Module
-		    		url: Drupal.settings.n52_express_interest.ajaxUrl, 
-		    		method: "GET",
-		    		// Set the number of Li items requested
-		    		data: {
-		    			id : getCurrentNodeId(),
-		    			copy : $('input#send-copy').is(':checked')
-	    			},
-		    		// Type of the content we're expecting in the response
-		    		dataType: "html", 
-		    		
-		    		success: function(data) {
-		    			// Place AJAX content inside the ajax wrapper div
-		    			$('#mail-response').html(data); 
-		    		}
-		    		
-		    	});
-		    	
-		    	$('#send-button > button').addClass('disabled');
-		    	
-    		});
-    	
-    	});
-    	
-//    	$('#popover-span').on('', function() {
-//    		
-//    		// TODO how to get the info about the successfully send mail???
-//    		
-//    		$('#popover-span').popover('disable');
-//    	
-//    		$('#popover-span').css('color', 'lightgrey');
-//    		
-//    	});
+      
+      $('#popover-span').on('shown.bs.popover', function() {
+        
+        $('button').on('click', function() {
+          
+          $('#mail-response').html('<div class=\'alert alert-info\'>Sending mail<span id=\'dots\'></span></div>');
+          
+          var refreshId = setInterval ( threeDotsAnimation, 600 );
+          
+          setTimeout( function () {}, 5000 );
+      
+          $.ajax({
+            
+            // This is the AjAX URL set by the custom Module
+            url: Drupal.settings.n52_express_interest.ajaxUrl, 
+            method: "GET",
+            // Set the number of Li items requested
+            data: {
+              id : getCurrentNodeId(),
+              copy : $('input#send-copy').is(':checked')
+            },
+            // Type of the content we're expecting in the response
+            dataType: "html", 
+            
+            success: function(data) {
+              // Place AJAX content inside the ajax wrapper div
+              $('#mail-response').html(data); 
+            }
+            
+          });
+          
+          $('#send-button > button').addClass('disabled');
+          
+        });
+      
+      });
+      
+      $(".pop").popover({ trigger: "manual" , html: true, animation:false})
+      .on("mouseenter", function () {
+          var _this = this;
+          $(this).popover("show");
+          $(".popover").on("mouseleave", function () {
+              $(_this).popover('hide');
+          });
+      }).on("mouseleave", function () {
+          var _this = this;
+          setTimeout(function () {
+              if (!$(".popover:hover").length) {
+                  $(_this).popover("hide");
+              }
+          }, 300);
+  });
 
-	}
+  }
 
   };
-    	  
+
 }(jQuery));
