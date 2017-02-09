@@ -1,0 +1,65 @@
+<?php
+/*
+ * Copyright (C) 2015
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ *
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ *
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ *
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+/**
+ * Implements hook_entity_view()
+ *
+ * Add html content to product/toll full view
+ */
+function n52_e_learning_icon_entity_view($entity, $type, $view_mode, $langcode) {
+  if ($type == 'node' &&
+      $entity->type == 'tool' &&
+      _n52_e_learning_icon_e_learning_available($entity, $langcode)
+  ) {
+    $title = t('E-learning material for this product is available!');
+    
+    $entity->content['field_e_learning_icon'] = array (
+        '#markup' => '<div id="e-learning-icon">' .
+          '<span id=\'icon-span\' ' .
+          'class="glyphicon glyphicon-plus-sign" ' .
+          'data-content="' . $title . '" ' .
+          'data-container="body"' .
+          'data-toggle="popover" ' .
+          'data-placement="top" ' .
+          'data-original-title=""'.
+          'data-html="true" ' .
+          'data-trigger="hover" ' . '></span>' .
+          '</div>',
+    );
+  }
+  return;
+}
+
+function _n52_e_learning_icon_e_learning_available($entity, $langcode) {
+  if (isset($entity->field_product_ref_e_learning) &&
+      isset($entity->field_product_ref_e_learning[$langcode]) &&
+      count($entity->field_product_ref_e_learning[$langcode]) > 0){
+  	return TRUE;
+  }
+  return FALSE;
+}

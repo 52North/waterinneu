@@ -429,6 +429,7 @@ function n52_feature_products_field_group_info() {
       2 => 'field_project',
       3 => 'field_organisation',
       4 => 'field_contact_details',
+      5 => 'field_n52_e_learn_and_support',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -664,6 +665,7 @@ function n52_feature_products_field_group_info() {
     'children' => array(
       0 => 'field_project',
       1 => 'field_organisation',
+      2 => 'field_product_ref_e_learning',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
