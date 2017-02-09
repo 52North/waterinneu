@@ -408,6 +408,12 @@ h3.popover-title {
   color: #419fbe;
   cursor: pointer;
 }
+
+#e-learning-icon {
+  float: right;
+  color: #ffd800;
+  padding: 0px 0px 0px 10px;
+}
  
 /******************************************************************************
  *                                                                            *
