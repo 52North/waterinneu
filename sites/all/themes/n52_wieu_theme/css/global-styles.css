@@ -689,7 +689,7 @@ div#join-us-sign-up-button {
   padding: 40px;
 }
 
-div#join-us-sign-up-button a {
+div#join-us-sign-up-button button {
   box-shadow:4px 4px 10px rgba(0,0,0,0.8);
 }
 
