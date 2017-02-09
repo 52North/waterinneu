@@ -32,7 +32,7 @@
  * Middle color   : #419fbe
  * Grey color     : #a8aca7
  */
-body, .comment {
+.comment {
   background-color: #f5f5f5;
 }
 
@@ -220,7 +220,6 @@ div.field-group-div div.row:not(:last-child) {
 
 div#portal-list > div > div {
   border-color: #cecece;
-  background: #f5f5f5;
 }
  
 div#supported-standards-group ul.textformatter-list a {

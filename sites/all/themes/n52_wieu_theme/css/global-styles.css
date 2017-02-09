@@ -179,6 +179,12 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: 'Titillium Web', 'Open Sans', sans-serif;
 }
 
+.page-node- #content-wrapper,
+.page-contact #content-wrapper {
+  background-color: initial;
+  border: none;
+}
+
 #main-content {
   padding: 5px 0 30px 0;
 }
@@ -743,7 +749,7 @@ div#join-us-sign-up-button a:hover {
   left: 0;
   width: 70px;
   overflow: hidden;
-  height: 250px;
+  height: 35px;
   z-index: 9999;
 }
 
