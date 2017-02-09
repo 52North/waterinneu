@@ -711,9 +711,7 @@ div#join-us-sign-up-button a:hover {
   font-family: 'Titillium Web', 'Open Sans', sans-serif;;
   text-align:center;
   font-weight:normal;
-  padding:10px 40px 10px 20px;
-  font-size:115%;
-  line-height:150%;
+  padding: 5px;
   position:relative;
   transition:0.5s;
 }
@@ -724,43 +722,33 @@ div#join-us-sign-up-button a:hover {
 }
 
 #prototype-banner a::before,#prototype-banner a::after{
-  content:"";
-  width:100%;
-  display:block;
-  position:absolute;
-  top:1px;
-  left:0;
-  height:1px;
-  background:#fff;
+  content: "";
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 0;
+  height: 1px;
 }
 
 #prototype-banner a::after{
-  bottom:1px;
-  top:auto;
+  bottom: 1px;
+  top: auto;
 }
 
 #prototype-banner{
-  position:fixed;
-  display:block;
-  top:0;
-  left:0;
-  width:250px;
-  overflow:hidden;
-  height:250px;
-  z-index:9999;
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 70px;
+  overflow: hidden;
+  height: 250px;
+  z-index: 9999;
 }
 
 #prototype-banner a{
-  width:250px;
-  position:absolute;
-  top:50px;
-  left:-55px;
-  transform:rotate(-45deg);
-  -webkit-transform:rotate(-45deg);
-  -ms-transform:rotate(-45deg);
-  -moz-transform:rotate(-45deg);
-  -o-transform:rotate(-45deg);
-  box-shadow:4px 4px 10px rgba(0,0,0,0.8);
+  position: absolute;
 }
 
 /******************************************************************************
