@@ -246,7 +246,13 @@ li.no-list-style {
   margin-bottom: initial;
 }
 
-/* hide duplicate user menu in production */
+ul.menu > li.collapsed > a,
+ul.menu > li.expanded > a {
+  padding-left: 17px;
+}
+
+/* hide duplicate user menu in production
+----------------------------------------------------------------------------- */
 div#subfooter-inside div.subfooter-area ul.menu.secondary-menu.links {
   display: none;
 }
