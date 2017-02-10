@@ -36,6 +36,8 @@ function n52_express_interest_entity_view($entity, $type, $view_mode, $langcode)
       $entity->type == 'tool' &&
       $view_mode == 'full' &&
       user_is_logged_in() &&
+      isset($entity->field_n52_product_owner[$langcode]) &&
+      isset($entity->field_contact_details[$langcode]) &&
       $mail = _n52_express_interest_contains_email(
           $entity->field_n52_product_owner[$langcode][0]['value'] . ' ' .
           $entity->field_contact_details[$langcode][0]['value'])
