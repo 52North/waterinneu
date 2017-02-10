@@ -1,8 +1,8 @@
-name = 52N - Feature - Events
+name = Feature - Core - Events
 description = Contains Everything regarding events
 core = 7.x
-package = 52N - WaterInnEU
-version = 7.x-1.23
+package = WaterInnEU
+version = 7.x-1.26
 dependencies[] = addressfield
 dependencies[] = autocomplete_deluxe
 dependencies[] = ctools

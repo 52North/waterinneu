@@ -47,7 +47,6 @@ function harmony_core_field_default_field_instances() {
           'status' => 1,
         ),
       ),
-      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -116,7 +115,6 @@ function harmony_core_field_default_field_instances() {
           ),
         ),
       ),
-      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -124,13 +122,8 @@ function harmony_core_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'atjs_fieldset' => array(
-          'atjs' => 1,
-          'atjs_listeners' => array(
-            'harmony_users' => 'harmony_users',
-          ),
-        ),
         'rows' => 3,
+        'show_token_tree' => FALSE,
       ),
       'type' => 'text_textarea',
       'weight' => 0,
@@ -173,7 +166,6 @@ function harmony_core_field_default_field_instances() {
           'status' => 1,
         ),
       ),
-      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -210,7 +202,6 @@ function harmony_core_field_default_field_instances() {
     'label' => 'Category',
     'required' => 0,
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -247,7 +238,6 @@ function harmony_core_field_default_field_instances() {
           'status' => 0,
         ),
       ),
-      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -288,7 +278,6 @@ function harmony_core_field_default_field_instances() {
           'status' => 0,
         ),
       ),
-      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -324,7 +313,6 @@ function harmony_core_field_default_field_instances() {
     'label' => 'Last user to post a reply',
     'required' => 0,
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -364,7 +352,6 @@ function harmony_core_field_default_field_instances() {
     'label' => 'Post count',
     'required' => 0,
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => 0,
       'prefix' => '',
@@ -417,7 +404,6 @@ function harmony_core_field_default_field_instances() {
         'harmony_thread_listing' => 0,
         'harmony_thread_posts_listing' => 'harmony_thread_posts_listing',
       ),
-      'entity_translation_sync' => FALSE,
       'force_default' => 1,
       'user_register_form' => FALSE,
     ),
@@ -466,7 +452,6 @@ function harmony_core_field_default_field_instances() {
           'status' => 1,
         ),
       ),
-      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -507,19 +492,12 @@ function harmony_core_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 1,
       ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
     ),
     'entity_type' => 'taxonomy_term',
     'field_name' => 'field_harmony_colour',
     'label' => 'Colour',
     'required' => 0,
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -527,6 +505,7 @@ function harmony_core_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'show_token_tree' => FALSE,
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -555,19 +534,12 @@ function harmony_core_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
     ),
     'entity_type' => 'taxonomy_term',
     'field_name' => 'field_harmony_machine_name',
     'label' => 'Machine name',
     'required' => 0,
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -611,19 +583,12 @@ function harmony_core_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
     ),
     'entity_type' => 'taxonomy_term',
     'field_name' => 'field_harmony_post_count',
     'label' => 'Post count',
     'required' => 0,
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => '',
       'prefix' => '',
@@ -669,19 +634,12 @@ function harmony_core_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 2,
       ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
     ),
     'entity_type' => 'taxonomy_term',
     'field_name' => 'field_harmony_thread_count',
     'label' => 'Thread count',
     'required' => 0,
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => 0,
       'prefix' => '',
@@ -732,7 +690,6 @@ function harmony_core_field_default_field_instances() {
     'label' => 'Post count',
     'required' => 0,
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => 0,
       'prefix' => '',
@@ -783,7 +740,6 @@ function harmony_core_field_default_field_instances() {
     'label' => 'Thread count',
     'required' => 0,
     'settings' => array(
-      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => 0,
       'prefix' => '',

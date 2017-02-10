@@ -29,219 +29,17 @@
 function _n52_default_nodes_related_portals() {
 	return array (
 		'title' => array (
-				'en' => 'Related Portals',
-				'de' => 'Ähnliche Portale',
+				'en' => 'Water Related Resources',
 		),
-		'alias' => 'related-portals',
+		'alias' => 'water-related-resources',
 		'text' => array (
-				'de' => '
-<p>
-	Im Bereich der Wasserwirtschaft präsentieren zahlreiche 
-	Informationsplattformen und Portale innovative Produkte verschiedenster 
-	thematischer Schwerpunkte, wobei sich das Angebot der begleitenden 
-	Dienstleistungen unterscheidet. Der virtuelle Marktplatz wurde als 
-	ergänzende Plattform für Flussgebietsmanager unter Berücksichtigung der 
-	aktuellen Marktangebote konzipiert.
-</p>
-<p>
-	Werfen Sie einen Blick auf das Angebot, ob eines Ihre Anforderungen ergänzt.  
-</p>
-<div id="portal-list" class="container-fluid">
-<div class="row">
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://www.aquaknow.net/" target="_blank"
-		title="aquaknow.net">Aquaknow</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://his.cuahsi.org/index.html" 
-			target="_blank">CUAHSI-HIS</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://datahub.io/">Datahub</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://www.eea.europa.eu/themes/water/dc">EEA
-			Water Centre</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://www.eionet.europa.eu/">EIONET</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://www.eip-water.eu/">EIP Water</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="https://open-data.europa.eu/en/data"
-		target="_blank">EU Open Data Portal</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://floods.jrc.ec.europa.eu/" target="_blank">European
-			Floods Portal</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://ec.europa.eu/eurostat" target="_blank">EUROSTAT
-			Open Data Portal</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://europeanwatercommunity.eu/"
-		target="_blank">European Water Community (EWC)</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" 
-			href="http://ec.europa.eu/research/environment/index_en.cfm?section=geo&amp;pg=geoss"
-			target="_blank">GEOSS</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://inspire-geoportal.ec.europa.eu/"
-		target="_blank">INSPIRE Geoportal</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://www.water-switch-on.eu/" 
-			target="_blank">SWITCH-ON</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://waterwindow.org/" 
-			target="_blank">WaterWindow</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://water.europa.eu/" 
-			target="_blank">WISE</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" <a href="http://www.wise-rtd.info/en" 
-			target="_blank">WISE-RTD</a>
-		<p class="portal-description">
-			<strong>Expertise(s):</strong><br />
-			Nulla porttitor accumsan tincidunt. Vivamus magna justo, lacinia 
-			eget consectetur sed, convallis at tellus. Vestibulum ac diam sit 
-			amet quam vehicula elementum sed sit amet dui.
-		</p>
-	</div>
-</div>
-</div>
-				',
 				'en' => '
+			<!--
+			
+			YOU MUST NOT EDIT THIS CONTENT USING THE WEB UI! USE THE CODE!
+			
+			-->
+			
 <p>
 	In the field of water management, numerous information platforms and 
 	portals are presenting innovative products focussing on different thematic 
@@ -256,7 +54,7 @@ function _n52_default_nodes_related_portals() {
 <div class="row">
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/aquaknow_logo.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo Aquaknow" width="100" height="100" />
 		<a class="portal-link" href="http://www.aquaknow.net/" target="_blank"
 		title="aquaknow.net">Aquaknow</a>
 		<p class="portal-description">
@@ -273,7 +71,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/cuahsihis-100.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo CUAHSI-HIS" width="100" height="100" />
 		<a class="portal-link" href="http://his.cuahsi.org/index.html" 
 			target="_blank">CUAHSI-HIS</a>
 		<p class="portal-description">
@@ -289,7 +87,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/datahub-100.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo Datahub.io" width="100" height="100" />
 		<a class="portal-link" href="http://datahub.io/">Datahub</a>
 		<p class="portal-description">
 				<strong>Expertise(s):</strong>
@@ -305,7 +103,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/datacentereea-100.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo EEA Water Centre" width="100" height="100" />
 		<a class="portal-link" href="http://www.eea.europa.eu/themes/water/dc">EEA
 			Water Centre</a>
 		<p class="portal-description">
@@ -322,7 +120,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/eionet-100.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo EIONET" width="100" height="100" />
 		<a class="portal-link" href="http://www.eionet.europa.eu/">EIONET</a>
 		<p class="portal-description">
 				<strong>Expertise(s):</strong>
@@ -357,7 +155,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/euopendataportal-100.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo EU Open Data Portal" width="100" height="100" />
 		<a class="portal-link" href="https://open-data.europa.eu/en/data"
 		target="_blank">EU Open Data Portal</a>
 		<p class="portal-description">
@@ -376,7 +174,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/jrcsciencehub-100.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo European Floods Portal" width="100" height="100" />
 		<a class="portal-link" href="http://floods.jrc.ec.europa.eu/" target="_blank">European
 			Floods Portal</a>
 		<p class="portal-description">
@@ -395,7 +193,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="/sites/default/files/logos/eurostat_logo-100.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo EUROSTAT Open Data Portal" width="100" height="100" />
 		<a class="portal-link" href="http://ec.europa.eu/eurostat" target="_blank">EUROSTAT
 			Open Data Portal</a>
 		<p class="portal-description">
@@ -412,7 +210,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/iwrmnet.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo European Water Community (EWC)" width="100" height="100" />
 		<a class="portal-link" href="http://europeanwatercommunity.eu/"
 		target="_blank">European Water Community (EWC)</a>
 		<p class="portal-description">
@@ -428,7 +226,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/logo.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo GEOSS" width="100" height="100" />
 		<a class="portal-link" 
 			href="http://ec.europa.eu/research/environment/index_en.cfm?section=geo&amp;pg=geoss"
 			target="_blank">GEOSS</a>
@@ -441,7 +239,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/inspire_logo.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo INSPIRE Geoportal" width="100" height="100" />
 		<a class="portal-link" href="http://inspire-geoportal.ec.europa.eu/"
 		target="_blank">INSPIRE Geoportal</a>
 		<p class="portal-description">
@@ -458,8 +256,29 @@ function _n52_default_nodes_related_portals() {
 		</p>
 	</div>
 	<div class="col-md-1">
+		<img class="portal-logo" src="sites/default/files/logos/kindra_logo.png" 
+			alt="Logo KINDRA Project" width="100" height="100" />
+		<a class="portal-link" href="http://kindraproject.eu/"
+		target="_blank">KINDRA Project</a>
+		<p class="portal-description">
+				<strong>Expertise(s):</strong>
+				<br />
+				The KINDRA (Knowledge Inventory for hydrological research) 
+				European Inventory on Groundwater Research (EIGR) is 
+				a tool for inventorying information sources regarding 
+				Hydrogeological Research Knowledge and Information. It follows 
+				the principles defined by the KINDRA project Harmonised 
+				Terminology and Methodology for classification and reporting 
+				hydrogeology related research in Europe (HRC-SYS). During 2016, 
+				National Experts identified by the European Federation of 
+				Geologists have been working on populating the EIGR with 
+				resources related and relevant to KINDRA. The inventory is 
+				expected to be open as from the end of  January 2017.
+		</p>
+	</div>
+	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/switch-on-100.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo SWITCH-ON" width="100" height="100" />
 		<a class="portal-link" href="http://www.water-switch-on.eu/" 
 			target="_blank">SWITCH-ON</a>
 		<p class="portal-description">
@@ -479,7 +298,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/waterwindow-100.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo WaterWindow" width="100" height="100" />
 		<a class="portal-link" href="http://waterwindow.org/" 
 			target="_blank">WaterWindow</a>
 		<p class="portal-description">
@@ -495,7 +314,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/wise-logo-100.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo WISE" width="100" height="100" />
 		<a class="portal-link" href="http://water.europa.eu/" 
 			target="_blank">WISE</a>
 		<p class="portal-description">
@@ -512,7 +331,7 @@ function _n52_default_nodes_related_portals() {
 	</div>
 	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/wise-rtd-100.png" 
-			alt="Logo Example" width="100" height="100" />
+			alt="Logo WISE-RTD" width="100" height="100" />
 		<a class="portal-link" <a href="http://www.wise-rtd.info/en" 
 			target="_blank">WISE-RTD</a>
 		<p class="portal-description">

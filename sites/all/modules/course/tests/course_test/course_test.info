@@ -1,0 +1,12 @@
+name = Course test module
+core = 7.x
+dependencies[] = course
+files[] = course_test.classes.inc
+hidden = TRUE
+
+; Information added by Drupal.org packaging script on 2016-10-12
+version = "7.x-1.10"
+core = "7.x"
+project = "course"
+datestamp = "1476305916"
+

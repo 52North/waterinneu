@@ -28,7 +28,7 @@ function n52_feature_events_node_info() {
     'event' => array(
       'name' => t('Event'),
       'base' => 'node_content',
-      'description' => t('Event Description is missing. Please provide one and send to e.h.juerrens@52north.org.'),
+      'description' => '',
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => t('Event deletion is only possible by admins. If you want to have an event deleted, please use the <a href="/contact">contact form</a>.

@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * Tests for conditional event-based access to course objects.
+ */
+class CourseObjectWebformTestCase extends CourseTestCase {
+
+  public static function getInfo() {
+    // Note that getInfo() strings are not translated with t().
+    return array(
+      'name' => 'Course object webform',
+      'description' => 'Ensure that webform Course object support functions properly.',
+      'group' => 'Course',
+    );
+  }
+
+  function getModules() {
+    $modules = parent::getModules();
+    $modules[] = 'webform';
+    $modules[] = 'course_webform';
+    return $modules;
+  }
+
+  function setUp() {
+    parent::setUp();
+    $webform_version = drupal_get_installed_schema_version('webform');
+    $perms = array('create webform content', 'edit any webform content');
+    if ($webform_version >= 7420) {
+      $perms[] = 'edit webform components';
+    }
+    $this->webform_admin = $this->drupalCreateUser($perms);
+  }
+
+  function testWebformCourseObject() {
+    $this->drupalLogin($this->webform_admin);
+    // Create a course with 1 webform.
+    $courseNode = $this->createCourseNode();
+    $co1 = course_get_course_object('course_webform', 'webform');
+    $co1->setCourse($courseNode->nid);
+    $co1->save();
+    $this->assertTrue($co1->getInstanceId() > 0, 'Webform node created on course object save.');
+
+    $webformNode = node_load($co1->getInstanceId());
+    $this->assertTrue($webformNode->type == 'webform', 'Webform node is a webform.');
+
+    // Allow drafts
+    $webformNode->webform['allow_draft'] = 1;
+    node_save($webformNode);
+
+    // Add a question.
+    $this->drupalGet("node/$webformNode->nid/webform");
+    $this->drupalPost(NULL, array(
+      'add[name]' => 'test',
+      'add[type]' => 'textfield',
+      ), 'Add');
+    $this->drupalPost(NULL, array(), 'Save component');
+
+    $this->drupalLogin($this->student_user);
+
+    // Enroll the user in the course
+    course_enroll($courseNode, $this->student_user);
+
+    // Take the webform.
+    $this->drupalGet("node/{$webformNode->nid}");
+    $this->assertFalse($co1->getFulfillment()->isComplete(), 'Check that webform is not completed yet.');
+
+    // Draft the webform.
+    $this->drupalPost(NULL, array(
+      'submitted[test]' => 1,
+      ), t('Save Draft'));
+
+    // Reload because something happened in the DB.
+    $co1 = course_get_course_object_by_id($co1->getId(), $this->student_user);
+    $sid = $co1->getFulfillment()->getInstanceId();
+    $this->assertTrue(empty($sid), 'Check that webform submission was not recorded.');
+    $this->assertFalse($co1->getFulfillment()->isComplete(), 'Check that webform is not complete.');
+
+    // Finish the webform.
+    $this->drupalPost(NULL, array(
+      'submitted[test]' => 1,
+      ), t('Submit'));
+
+    // Reload because something happened in the DB.
+    $co1 = course_get_course_object_by_id($co1->getId(), $this->student_user);
+    $sid = $co1->getFulfillment()->getInstanceId();
+    $this->assertTrue($sid, 'Check that webform submission was recorded.');
+    $this->assertTrue($co1->getFulfillment()->isComplete(), 'Check that webform is completed.');
+
+    // Test that on unenroll, the user's webform submission is deleted.
+    $co1->unEnroll();
+    drupal_static('webform_get_submission', array(), TRUE);
+    $submission = webform_get_submission($co1->getNode()->nid, $sid);
+    $this->assertFalse($submission, 'Check that webform submission was deleted.');
+  }
+
+}

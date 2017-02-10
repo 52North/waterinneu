@@ -34,7 +34,7 @@ function n52_feature_products_node_info() {
     'tool' => array(
       'name' => t('Product'),
       'base' => 'node_content',
-      'description' => t('Product description missing. If you have any, send it to e.h.juerrens@52north.org'),
+      'description' => '',
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => t('The submission of product specification sheets underlies a moderation workflow. Hence, adding new content might cost some time. Get in touch with the administrator for speeding things up using the <a href="/contact">helpdesk form</a>. <br/>

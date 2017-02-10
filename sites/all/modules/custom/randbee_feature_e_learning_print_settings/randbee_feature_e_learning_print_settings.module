@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Print Settings E-Learning WaterinnEU feature.
+ */
+
+include_once 'randbee_feature_e_learning_print_settings.features.inc';

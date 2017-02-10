@@ -18,15 +18,6 @@ function n52_feature_config_filter_default_formats() {
     'status' => 1,
     'weight' => -9,
     'filters' => array(
-      'atjs' => array(
-        'weight' => 0,
-        'status' => 1,
-        'settings' => array(
-          'atjs_listeners' => array(
-            'harmony_users' => 'harmony_users',
-          ),
-        ),
-      ),
       'filter_url' => array(
         'weight' => 0,
         'status' => 1,
@@ -104,15 +95,6 @@ function n52_feature_config_filter_default_formats() {
         'status' => 1,
         'settings' => array(),
       ),
-      'atjs' => array(
-        'weight' => 0,
-        'status' => 1,
-        'settings' => array(
-          'atjs_listeners' => array(
-            'harmony_users' => 'harmony_users',
-          ),
-        ),
-      ),
       'pathologic' => array(
         'weight' => 50,
         'status' => 1,
@@ -142,15 +124,6 @@ function n52_feature_config_filter_default_formats() {
         'status' => 1,
         'settings' => array(),
       ),
-      'atjs' => array(
-        'weight' => 0,
-        'status' => 1,
-        'settings' => array(
-          'atjs_listeners' => array(
-            'harmony_users' => 'harmony_users',
-          ),
-        ),
-      ),
       'pathologic' => array(
         'weight' => 50,
         'status' => 1,
@@ -175,15 +148,6 @@ function n52_feature_config_filter_default_formats() {
     'status' => 1,
     'weight' => -7,
     'filters' => array(
-      'atjs' => array(
-        'weight' => 0,
-        'status' => 1,
-        'settings' => array(
-          'atjs_listeners' => array(
-            'harmony_users' => 'harmony_users',
-          ),
-        ),
-      ),
       'codefilter' => array(
         'weight' => 0,
         'status' => 1,
@@ -199,15 +163,25 @@ function n52_feature_config_filter_default_formats() {
           'quotable_types' => array(
             'node:article' => 0,
             'node:page' => 0,
+            'node:certificate' => 0,
+            'node:course' => 0,
+            'node:course_object' => 0,
+            'node:quiz_ddlines' => 0,
             'node:event' => 0,
-            'node:faq' => 0,
+            'node:long_answer' => 0,
+            'node:matching' => 0,
+            'node:multichoice' => 0,
             'node:organisation' => 0,
             'node:panel' => 0,
             'node:tool' => 0,
             'node:project' => 0,
+            'node:quiz' => 0,
             'node:service_offering' => 0,
             'node:service_request' => 0,
+            'node:short_answer' => 0,
             'node:n52_sucess_story' => 0,
+            'node:truefalse' => 0,
+            'node:webform' => 0,
             'taxonomy_term:license' => 0,
             'taxonomy_term:harmony_category' => 0,
             'taxonomy_term:organisation_classification' => 0,
@@ -230,17 +204,34 @@ function n52_feature_config_filter_default_formats() {
             'taxonomy_term:n52_event_categories' => 0,
             'taxonomy_term:n52_commercial_development' => 0,
             'taxonomy_term:wfd_objective' => 0,
+            'taxonomy_term:course_type' => 0,
             'comment:comment_node_article' => 0,
             'comment:comment_node_page' => 0,
+            'comment:comment_node_certificate' => 0,
+            'comment:comment_node_course' => 0,
+            'comment:comment_node_course_object' => 0,
+            'comment:comment_node_quiz_ddlines' => 0,
             'comment:comment_node_event' => 0,
-            'comment:comment_node_faq' => 0,
+            'comment:comment_node_long_answer' => 0,
+            'comment:comment_node_matching' => 0,
+            'comment:comment_node_multichoice' => 0,
             'comment:comment_node_organisation' => 0,
             'comment:comment_node_panel' => 0,
             'comment:comment_node_tool' => 0,
             'comment:comment_node_project' => 0,
+            'comment:comment_node_quiz' => 0,
             'comment:comment_node_service_offering' => 0,
             'comment:comment_node_service_request' => 0,
+            'comment:comment_node_short_answer' => 0,
             'comment:comment_node_n52_sucess_story' => 0,
+            'comment:comment_node_truefalse' => 0,
+            'comment:comment_node_webform' => 0,
+            'course_enrollment:course_enrollment' => 0,
+            'course_enrollment_type:' => 0,
+            'course_report:' => 0,
+            'course_object:' => 0,
+            'course_object_fulfillment:' => 0,
+            'course:' => 0,
             'flagging:harmony_likes' => 0,
             'harmony_thread:harmony_thread' => 0,
             'harmony_thread_type:' => 0,
@@ -311,15 +302,6 @@ function n52_feature_config_filter_default_formats() {
     'status' => 1,
     'weight' => -10,
     'filters' => array(
-      'atjs' => array(
-        'weight' => 0,
-        'status' => 1,
-        'settings' => array(
-          'atjs_listeners' => array(
-            'harmony_users' => 'harmony_users',
-          ),
-        ),
-      ),
       'filter_html_escape' => array(
         'weight' => 0,
         'status' => 1,

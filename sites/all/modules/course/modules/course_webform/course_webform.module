@@ -1,0 +1,91 @@
+<?php
+
+/**
+ * Implements hook_course_handlers().
+ */
+function course_webform_course_handlers() {
+  return array(
+    'object' => array(
+      'webform' => array(
+        'name' => t('Webform'),
+        'class' => 'CourseObjectWebform',
+        'fulfillment class' => 'CourseObjectWebformFulfillment',
+        'description' => t('A webform to be used in a course workflow.'),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_webform_submission_insert().
+ */
+function course_webform_webform_submission_insert($node, $submission) {
+  global $user;
+
+  if (!$submission->is_draft) {
+    // Find the course object associated with this webform.
+    if ($courseObject = course_get_course_object('course_webform', 'webform', arg(1), $user)) {
+      /* @var $courseObject CourseObjectWebform */
+      $fulfillment = $courseObject->getFulfillment();
+      $sids = (array) $fulfillment->getOption('sids');
+      $sids[] = $submission->sid;
+      $fulfillment->setOption('instance', $submission->sid)->setOption('sids', $sids)->setComplete()->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_webform_submission_update().
+ */
+function course_webform_webform_submission_update($node, $submission) {
+  course_webform_webform_submission_insert($node, $submission);
+}
+
+/**
+ * Settings form callback.
+ */
+function course_webform_settings() {
+  $form = array();
+
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_webform_results_download_submission_information_info().
+ *
+ * Add the course to webform submission data.
+ */
+function course_webform_webform_results_download_submission_information_info() {
+  $out = array();
+
+  // Add course title.
+  $out['course_id'] = 'Course ID';
+  $out['course_title'] = 'Course title';
+
+  return $out;
+}
+
+/**
+ * Implements hook_webform_results_download_submission_information().
+ *
+ * Add the course to webform submission data.
+ */
+function course_webform_webform_results_download_submission_information_data($token, $submission, array $options, $serial_start, $row_count) {
+  if (in_array($token, array('course_id', 'course_title'))) {
+    $query = db_select('course_outline_fulfillment', 'cof')
+      ->fields('n', array('nid', 'title'))
+      ->condition('cof.instance', $submission->sid);
+
+    $query->join('course_outline', 'co', 'co.coid = cof.coid');
+    $query->join('node', 'n', 'co.nid = n.nid');
+
+    if ($row = $query->execute()->fetch()) {
+      if ($token == 'course_id') {
+        return $row->nid;
+      }
+      if ($token == 'course_title') {
+        return $row->title;
+      }
+    }
+  }
+}

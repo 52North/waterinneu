@@ -149,6 +149,12 @@ function n52_feature_events_field_default_field_instances() {
         'type' => 'addressfield_default',
         'weight' => 3,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -213,6 +219,12 @@ function n52_feature_events_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 2,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -283,6 +295,12 @@ function n52_feature_events_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 1,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -393,6 +411,12 @@ function n52_feature_events_field_default_field_instances() {
         'type' => 'image',
         'weight' => 0,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'image',
@@ -467,6 +491,12 @@ function n52_feature_events_field_default_field_instances() {
         ),
         'type' => 'textformatter_list',
         'weight' => 4,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -543,6 +573,12 @@ function n52_feature_events_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 6,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -587,6 +623,12 @@ function n52_feature_events_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 5,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',

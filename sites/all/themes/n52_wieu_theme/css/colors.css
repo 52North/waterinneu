@@ -32,31 +32,31 @@
  * Middle color   : #419fbe
  * Grey color     : #a8aca7
  */
-body, .comment {
-	background-color: #f5f5f5;
+.comment {
+  background-color: #f5f5f5;
 }
 
 .btn-primary {
-	background-color: #419fbe;
-	border-color: #2b4c6e;
+  background-color: #419fbe;
+  border-color: #2b4c6e;
 }
 
 .node footer {
-	border-top: 2px solid #f5f5f5;
+  border-top: 2px solid #f5f5f5;
 }
 
 #bottom-content,
 .toggle-control a,
 .toggle-control a:hover {
-	background-color: #2b4c6e;
+  background-color: #2b4c6e;
 }
 
 #header-top, .toggle-control {
-	border-top: 5px solid #2b4c6e;
+  border-top: 5px solid #2b4c6e;
 }
 
 #pre-header {
-	background-color: #2b4c6e;
+  background-color: #2b4c6e;
 }
 
 a,
@@ -66,7 +66,7 @@ ul.menu li a.active,
 ul.menu li a:hover,
 #forum thead a:hover,
 #block-node-recent .node-title a:hover {
-	color: #2b4c6e;
+  color: #2b4c6e;
 }
 
 input[type="submit"]:hover,
@@ -77,20 +77,20 @@ input[type="button"]:hover,
 .highlighted-block .btn:focus,
 .call-to-action .btn,
 .tag a:hover {
-	background-color: #2b4c6e;
+  background-color: #2b4c6e;
 }
 
 ::-moz-selection {
-	background-color: #2b4c6e;
+  background-color: #2b4c6e;
 }
 
 ::selection {
-	background-color: #2b4c6e;
+  background-color: #2b4c6e;
 }
 
 input.form-text:focus,
 textarea.form-textarea:focus {
-	border-color: #2b4c6e;
+  border-color: #2b4c6e;
 }
 
 .stickynav-active {
@@ -98,11 +98,11 @@ textarea.form-textarea:focus {
 }
 
 #toTop {
-	background-color: #2b4c6e;
+  background-color: #2b4c6e;
 }
 
 .glyphicon-light {
-	color: #cecece;
+  color: #cecece;
 }
 
 div.submitted {
@@ -119,8 +119,8 @@ div.submitted {
 #main-navigation ul.menu li a.active:active,
 #main-navigation ul.menu li a.active-trail:hover,
 #main-navigation ul.menu li a.active:active-trail{
-	background: unset;
-	color: #2b4c6e;
+  background: unset;
+  color: #2b4c6e;
 }
 
 .panel-default > .panel-heading-dark-highlight {
@@ -193,11 +193,11 @@ span.background {
 }
 
 .popover {
-	color: #000;
+  color: #000;
 }
 
 fieldset.group-n52-product-details {
-	background: #fafafa;
+  background: #fafafa;
 }
 
 div.field-group-div {
@@ -218,26 +218,20 @@ div.field-group-div div.row:not(:last-child) {
   color: #cecece;
 }
 
- div#portal-list > div > div {
-  border-color: #cecece;
-  background: #f5f5f5;
- }
- 
- div#supported-standards-group ul.textformatter-list a {
-  background-color: #2b4c6e;
-  color: #fff;
- }
- 
-#block-system-user-menu > div.content > ul.menu > li.leaf + li,
-#block-menu-menu-top-links > div.content > ul.menu > li.leaf + li {
+div#portal-list > div > div {
   border-color: #cecece;
 }
-
+ 
+div#supported-standards-group ul.textformatter-list a {
+  background-color: #2b4c6e;
+  color: #fff;
+}
+ 
 #site-slogan {
   color: rgb(41, 100, 140);
   background: rgba(255,255,255,0.25);
 }
 
 #site-name a {
-	color: #2b4c6e;
+  color: #2b4c6e;
 }

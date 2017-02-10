@@ -1,0 +1,542 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Hide the add to cart button when the user satisfied the requirement.
+ */
+function course_uc_form_alter(&$form, &$form_state, $form_id) {
+  if (strpos($form_id, 'uc_product_add_to_cart') !== FALSE) {
+    global $user;
+    $node = node_load($form['nid']['#value']);
+
+    if (course_node_is_course($node)) {
+      $course = course_get_course($node, $user);
+      // Viewing a course product.
+      if ($node->sell_price > 0 && !course_uc_check_purchased($user->uid, $node->uid) && !course_uc_payment_is_first($course)) {
+        // Has a price, not purchased, not the first object.
+        if (arg(2) != 'course-object') {
+          $form['#access'] = FALSE;
+        }
+      }
+      else if (course_enrollment_check($node->nid, $user->uid) || (!($node->sell_price > 0) && variable_get('course_access_bypass_checkout', 1))) {
+        // User already enrolled, or course is free and bypass is enabled.
+        $form['#access'] = FALSE;
+      }
+    }
+    else {
+      // Viewing a product that is part of another course.
+      $courseObject = course_get_course_object('course_uc', 'payment', $node->nid);
+      $course = course_get_course($courseObject->getNode(), $user);
+
+      if ($course) {
+        foreach ($course->getObjects() as $courseObject) {
+          if ($courseObject->getComponent() == 'payment' && $courseObject->getInstanceId() == $node->nid) {
+            if ($courseObject->getFulfillment()->isComplete()) {
+              // User already purchased.
+              $form['#access'] = FALSE;
+            }
+          }
+        }
+      }
+    }
+
+
+    // If there are any other blockers (like date based access) then do not
+    // display the add to cart button as it would be a method to enroll,
+    // bypassing the restrictions.
+    if (course_node_is_course($node)) {
+      $blockers = course_enroll_access($node, $user, FALSE, TRUE);
+      foreach ($blockers as $key => $blocker) {
+        if (!$blocker['success'] && $key != 'course_must_purchase') {
+          $form['#access'] = FALSE;
+        }
+      }
+
+      if (!isset($form['#access']) || !empty($form['#access'])) {
+        $instances = field_info_instances('course_enrollment', $node->course['enrollment_type']);
+        foreach ($instances as $field_name => $instance) {
+          $field = field_info_field($field_name);
+          if ($instance['settings']['course_enrollment_user_field']) {
+            // At least one field must be shown when enrolling. Display the user
+            // enrollment form.
+            $enrollment = entity_create('course_enrollment', array(
+              'nid' => $node->nid,
+              'uid' => $user->uid,
+              'type' => $node->course['enrollment_type'],
+            ));
+            $form['course_enrollment'] = array();
+            $form['course_enrollment']['#tree'] = TRUE;
+            $form['course_enrollment']['#parents'] = array('course_enrollment');
+            field_attach_form('course_enrollment', $enrollment, $form['course_enrollment'], $form_state);
+            $form['#submit'] = array(
+              'uc_product_add_to_cart_form_submit',
+              'course_uc_add_to_cart_form_submit',
+            );
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  if ($form_id == 'uc_cart_view_form') {
+    if (variable_get('course_uc_restrict_qty', 1)) {
+      foreach ($form['items'] as $key => &$item) {
+        if (is_numeric($key) && isset($item['nid'])) {
+          $node = node_load($item['nid']['#value']);
+          if (course_node_is_course($node)) {
+            $item['qty']['#disabled'] = TRUE;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Save the temporary course enrollment entity into the order product.
+ */
+function course_uc_add_to_cart_form_submit($form, $form_state) {
+  $cart = uc_cart_get_contents();
+  foreach ($cart as $cart_item) {
+    if ($cart_item->nid == $form_state['values']['node']->nid) {
+      $cart_item->data['course_enrollment'] = $form_state['values']['course_enrollment'];
+      entity_save('uc_cart_item', $cart_item);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function course_uc_node_insert($node) {
+  if (course_node_is_course($node) && isset($node->sell_price) && $node->sell_price > 0) {
+    // Course has a sell price.
+    $course = course_get_course($node);
+    foreach ($course->getObjects() as $courseObject) {
+      if ($courseObject->getComponent() == 'payment') {
+        return;
+      }
+    }
+
+    // If we are here, the course did not have a payment object.
+    $newObject = course_get_course_object('course_uc', 'payment');
+    $newObject->setCourse($course);
+    $newObject->setCourse($node->nid);
+    $newObject->setModule('course_uc');
+    $newObject->setComponent('payment');
+    $newObject->setInstanceId($node->nid);
+    $newObject->setOption('title', 'Payment required');
+    $newObject->setOption('required', TRUE);
+    $newObject->setOption('enabled', TRUE);
+    $newObject->setOption('hidden', TRUE);
+    $newObject->setOption('weight', -9999);
+    $newObject->save();
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function course_uc_node_update($node) {
+  course_uc_node_insert($node);
+}
+
+/**
+ * Ubercart course settings form.
+ */
+function course_uc_settings_form() {
+  $form = array();
+
+  $form['course_access_bypass_checkout'] = array(
+    '#title' => 'Bypass checkout for free course products.',
+    '#description' > 'Users will not have to go through checkout for course products that are free.',
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('course_access_bypass_checkout', 1),
+  );
+
+  $form['course_uc_restrict_qty'] = array(
+    '#title' => 'Restrict course products to 1 per customer.', '#description' > 'Course will restrict users from adding the product to cart if they have already purchased the course or already have the course in their cart.',
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('course_uc_restrict_qty', 1),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_init().
+ */
+function course_uc_init() {
+  if (arg(1) == 'checkout') {
+    global $conf;
+    // Turn off content profile on registration for ubercart account creations.
+    $conf['content_profile_profile']['registration_use'] = 0;
+  }
+
+  global $user;
+  $cart = uc_cart_get_contents();
+  foreach ($cart as $node) {
+    if (course_node_is_course($node)) {
+      $results = course_enroll_access($node, $user, FALSE, TRUE);
+      if (count($results) > 1) {
+        // There's always going to be one blocker, the purchase blocker.
+        unset($results['course_must_purchase']);
+        $result = reset($results);
+        db_query("DELETE FROM {uc_cart_products} WHERE nid = :nid and cart_id = :uid", array(':nid' => $node->nid, ':uid' => $user->uid));
+        uc_cart_get_contents(NULL, 'rebuild');
+        drupal_set_message(t('The activity "!title" was removed from your cart. !message', array(
+          '!title' => l($node->title, "node/$node->nid"),
+          '!message' => $result['message'],
+          )), 'warning');
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_course_enroll().
+ *
+ * Satisfy payment requirement when manually enrolled.
+ */
+function course_uc_course_enrollment_insert($enrollment) {
+  $node = node_load($enrollment->nid);
+  $user = user_load($enrollment->uid);
+  $course = course_get_course($node, $user);
+  if (course_uc_payment_is_first($course)) {
+    foreach ($course->getObjects() as $courseObject) {
+      $courseObject->getFulfillment()->setComplete(TRUE)->save();
+      break;
+    }
+  }
+}
+
+/**
+ * Check if the payment object in a course is the first object.
+ *
+ * @return bool
+ */
+function course_uc_payment_is_first($course) {
+  $courseObjects = $course->getObjects();
+  $first = reset($courseObjects);
+  foreach ($courseObjects as $courseObject) {
+    if (($first->identifier() == $courseObject->identifier()) && $courseObject->getComponent() == 'payment') {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_add_to_cart().
+ */
+function course_uc_uc_add_to_cart($nid, $qty, $data) {
+  if (variable_get('course_uc_restrict_qty', 1)) {
+    global $user;
+    $node = node_load($nid);
+    if (course_node_is_course($node)) {
+      if (course_uc_check_purchased($user->uid, $nid, $data)) {
+        return array(
+          array(
+            'success' => FALSE,
+            'message' => t('You have already purchased this course.'),
+            'silent' => FALSE,
+          ),
+        );
+      }
+      if (course_uc_check_cart($nid, $user->uid, $data)) {
+        return array(
+          array(
+            'success' => FALSE,
+            'message' => t('This course is already in your !cart.', array('!cart' => l('shopping cart', 'cart'))),
+            'silent' => FALSE,
+          ),
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Check if a user purchased a course previously.
+ *
+ * Alias of course_enrollment_load().
+ */
+function course_uc_check_purchased($uid, $nid, $data = array()) {
+  $uid = isset($data['uid']) ? $data['uid'] : $uid;
+  $orders = entity_load('uc_order', FALSE, array('uid' => $uid));
+  foreach ($orders as $order) {
+    if ($order->order_status == 'complete') {
+      foreach ($order->products as $product) {
+        if ($product->nid == $nid) {
+          return TRUE;
+        }
+      }
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Check if a course is already in a user's cart.
+ *
+ * Note that we have to check if the user is purchasing the course for someone
+ * else.
+ */
+function course_uc_check_cart($nid, $uid, $data = array()) {
+  $cid = uc_cart_get_id();
+  $contents = uc_cart_get_contents($cid);
+  $uid = isset($data['uid']) ? $data['uid'] : $uid;
+  foreach ($contents as $item) {
+    // Check if user already has course in their cart, if the user already is
+    // purchasing this course for somebody else.
+    if ($item->nid == $nid && (!isset($item->data['uid']) || $item->data['uid'] == $uid)) {
+      return TRUE;
+    }
+  }
+}
+
+/**
+ * Implements hook_rules_action_info().
+ */
+function course_uc_rules_action_info() {
+  $actions = array();
+
+  $order_arg = array(
+    'type' => 'uc_order',
+    'label' => t('Order'),
+  );
+
+  $actions['course_uc_enroll_user_in_ordered_courses'] = array(
+    'label' => t('Enroll user in ordered courses'),
+    'group' => t('Order'),
+    'parameter' => array(
+      'order' => $order_arg,
+    ),
+  );
+
+  return $actions;
+}
+
+/**
+ * Loops through items in an Ubercart order and enrolls the user in courses purchased.
+ */
+function course_uc_enroll_user_in_ordered_courses($order) {
+  foreach ($order->products as $product) {
+    if (!is_array($product->data)) {
+      $product->data = unserialize($product->data);
+    }
+    $node = node_load($product->nid);
+    if (empty($product->data['uid'])) {
+      $account = user_load($order->uid);
+    }
+    else {
+      $account = user_load($product->data['uid']);
+    }
+
+
+    if (course_node_is_course($node)) {
+      // This product is an actual course. They have to be enrolled.
+      // This will also satisfy the first payment requirement.
+      // @see course_uc_course_enroll()
+      if (!$course_enrollment = course_enrollment_load($node->nid, $account->uid)) {
+        // Maybe they were already enrolled.
+        $course_enrollment = entity_create('course_enrollment', array());
+      }
+
+      if (!empty($product->data['course_enrollment'])) {
+        // Attach enrollment bundle fields.
+        foreach ($product->data['course_enrollment'] as $field => $value) {
+          $course_enrollment->$field = $value;
+        }
+      }
+
+      // Set enrollment data.
+      $course_enrollment->type = $node->course['enrollment_type'];
+      $course_enrollment->nid = $node->nid;
+      $course_enrollment->uid = $account->uid;
+      $course_enrollment->enrollmenttype = 'ubercart';
+      // Activate this enrollment.
+      $course_enrollment->status = 1;
+
+      course_enrollment_save($course_enrollment);
+    }
+
+    if ($courseNode = course_determine_context('course_uc', 'payment', $node->nid)) {
+      // This product is also a course object, other than the first one.
+      // Satisfy it!
+      $course = course_get_course($courseNode, $account);
+      $courseObjects = $course->getObjects();
+      $first = reset($courseObjects);
+      foreach ($course->getObjects() as $courseObject) {
+        if (($first->identifier() != $courseObject->identifier()) && $courseObject->getComponent() == 'payment' && $courseObject->getInstanceId() == $node->nid) {
+          // Found the course object that matched the instance (product).
+          $courseObject->getFulfillment()->setComplete(TRUE)->save();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function course_uc_token_info() {
+  $tokens = array();
+
+  $tokens['course-products-header'] = array(
+    'name' => t('Course products header'),
+    'description' => t('Text to show if there are course products in the cart.'),
+  );
+
+  $tokens['course-products'] = array(
+    'name' => t('Course products links'),
+    'description' => t('A link to the course products.'),
+  );
+
+  return array('tokens' => array('uc_order' => $tokens));
+}
+
+/**
+ * Implements hook_token_values().
+ */
+function course_uc_tokens($type, $tokens, array $data = array(), array $options = array()) {
+
+  if ($type == 'uc_order') {
+    $object = $data['uc_order'];
+    $show_header = FALSE;
+
+    foreach ($object->products as $product) {
+      $node = node_load($product->nid);
+      if (course_node_is_course($node)) {
+        $line = $node->title . ' - ' . l('View course page', "node/{$node->nid}");
+        $result = course_take_course_access($node, NULL, TRUE);
+        if (course_node_is_course($node) && $result['success']) {
+          $line .= ' or ' . l('Take course now', "node/{$node->nid}/takecourse");
+        }
+        $courses[] = $line;
+        $show_header = TRUE;
+      }
+      $items[] = l($node->title, "node/{$node->nid}");
+    }
+    if ($show_header) {
+      $values['course-products-header'] = t("Here are the courses you have purchased:");
+      $values['course-products'] = theme('item_list', array('title' => '', 'items' => $courses));
+    }
+
+    $replacements = array();
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'course-products-header':
+          $replacements[$original] = $values['course-products-header'];
+          break;
+        case 'course-products':
+          $replacements[$original] = $values['course-products'];
+          break;
+      }
+    }
+
+    return $replacements;
+  }
+}
+
+/**
+ * Implements hook_course_handlers().
+ */
+function course_uc_course_handlers() {
+  return array(
+    'object' => array(
+      'payment' => array(
+        'name' => 'Payment',
+        'class' => 'CourseObjectUbercart',
+      ),
+    ),
+    'settings' => array(
+      'ubercart' => array(
+        'name' => t('Ubercart'),
+        'description' => t('Ubercart course settings.'),
+        'callback' => 'course_uc_settings_form',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_course_access().
+ *
+ * Block the user from enrolling in a paid course.
+ */
+function course_uc_course_access($op, $node, $user) {
+  if ($op == 'enroll') {
+    $course = course_get_course($node, $user);
+
+    // Now we have to check that even if the course has a price, that the
+    // payment object is first (to block enrollments). If the course is $0 and
+    // there are no payment objects, we assume the enrollment is blocked.
+    $courseObjects = $course->getObjects();
+    $first = reset($courseObjects);
+    foreach ($courseObjects as $courseObject) {
+      $first_object = ($courseObject->identifier() == $first->identifier());
+      $is_payment = ($courseObject->getComponent() == 'payment');
+      if ($is_payment && $first_object) {
+        $product = node_load($courseObject->getInstanceId());
+        $complete = $courseObject->getFulfillment()->isComplete();
+        if ((!variable_get('course_access_bypass_checkout', 1) || $product->sell_price > 0) && !$complete) {
+          // Force purchase.
+          if (!course_enrollment_check($node->nid, $user->uid)) {
+            return array('course_must_purchase' => array(
+                'success' => FALSE,
+                'header' => t('Payment required'),
+                'message' => t('You must purchase this course.'),
+                'weight' => 1000,
+              ),
+            );
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_default_rules_configuration().
+ *
+ * Define the rule that enrolls users into purchased courses.
+ */
+function course_uc_default_rules_configuration() {
+  $configs = array();
+  $rule = '{ "rules_enroll_user_in_ordered_courses_when_order_marked_as_comple" : {
+    "LABEL" : "Enroll user in ordered courses when order marked as complete",
+    "PLUGIN" : "reaction rule",
+    "REQUIRES" : [ "rules", "course_uc", "uc_order" ],
+    "ON" : [ "uc_order_status_update" ],
+    "IF" : [
+      { "data_is" : { "data" : [ "updated-order:order-status" ], "value" : "completed" } }
+    ],
+    "DO" : [
+      { "course_uc_enroll_user_in_ordered_courses" : { "order" : [ "order" ] } }
+    ]
+  }
+}';
+  $configs['rules_enroll_user_in_ordered_courses_when_complete'] = rules_import($rule);
+  return $configs;
+}
+
+/**
+ * Implements hook_course_access_alter().
+ *
+ * If
+ *  - Ubercart is enabled
+ *  - This is a course product
+ *  - Anonymous checkout is enabled
+ *
+ * Then we can unset the requirement that users must be logged in (because we
+ * can assume that the account will be created).
+ */
+function course_uc_course_access_alter(&$hooks, $op, $node, $account) {
+  if ($op == 'enroll' && !empty($node->sell_price) && $node->sell_price > 0 && variable_get('uc_checkout_anonymous', 1)) {
+    unset($hooks['course_noanon']);
+  }
+}

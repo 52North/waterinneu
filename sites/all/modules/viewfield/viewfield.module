@@ -276,6 +276,7 @@ function viewfield_field_widget_form(&$form, &$form_state, $field, $instance, $l
         '#theme' => 'token_tree',
         '#token_types' => array($element['#entity_type']),
         '#global_types' => TRUE,
+        '#dialog' => TRUE,
       );
     }
   }

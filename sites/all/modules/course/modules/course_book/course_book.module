@@ -1,0 +1,259 @@
+<?php
+
+/**
+ * Course book admin form.
+ */
+function course_book_admin($form, &$form_state) {
+  $form = array();
+
+  $form['book_intro']['#markup'] = t("Course books allow you to use Drupal Books as course objects.");
+
+  $form['course_book_default_node_type'] = array(
+    '#title' => t('Default node type.'),
+    '#type' => 'select',
+    '#options' => node_type_get_names(),
+    '#default_value' => variable_get('course_book_default_node_type', 'book'),
+    '#description' => t("Sets the default node type for book objects. This can be overridden whilst assigning a book to a course outline."),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_menu().
+ */
+function course_book_menu() {
+  $items = array();
+
+  $items['admin/course/book'] = array(
+    'access arguments' => array('administer courses'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('course_book_admin'),
+    'type' => MENU_LOCAL_TASK,
+    'title' => 'Book',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_course_handlers().
+ */
+function course_book_course_handlers() {
+  return array(
+    'object' => array(
+      'book' => array(
+        'name' => t('Book'),
+        'description' => t('A book course object.'),
+        'class' => 'CourseObjectBook',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function course_book_node_view($node, $view_mode = 'full') {
+  if (node_is_page($node)) {
+    global $user;
+    $search = !empty($node->book['bid']) ? $node->book['bid'] : $node->nid;
+    if ($courseObject = course_get_course_object('course_book', 'book', $search, $user)) {
+      $options = array();
+      // Mark this node as fulfillment in course_book's fulfillment tracking.
+      if (!empty($node->book['mlid'])) {
+        $options['book_fulfillment'][$node->book['mlid']] = TRUE;
+        $courseObject->getFulfillment()->addOptions($options)->save();
+      }
+      $courseObject->grade();
+    }
+  }
+}
+
+/**
+ * Overrides a course outline list item.
+ *
+ * @param array $item
+ *   A course outline list item. The structure mirrors an array element from
+ *   the $items param from theme_item_list().
+ * @param CourseObject $courseObject
+ *   The instantiated course object that has an outline item to be overridden.
+ * @param string $type
+ *   The type of override to perform. Can be:
+ *   - all_pages: Displays a nested item list of book pages, with all items
+ *     fully expanded.
+ *   - active_tree: Displays the active menu tree, mirroring the core book
+ *     outline on book pages. Additionally, the number of pages are appended to
+ *     the course outline item title, to indicate there are pages when not a
+ *     page within the active tree.
+ *   - count: Displays the book title, with the number of pages in the book.
+ */
+function course_book_override_outline_list_item(&$item, CourseObject $courseObject, $type) {
+  if ($courseObject->getModule() == 'course_book' && $courseObject->getComponent() == 'book') {
+    if ($bid = $courseObject->getInstanceId()) {
+      // Alter the book outline item differently, depending on configured type.
+      switch ($type) {
+        case 'all_pages':
+          // If users do not have access to take the book course object, display
+          // only titles instaed of links.
+          $links = $courseObject->access('take');
+
+          // Get the top level item in the tree (the book item).
+          $book_items = course_book_items($bid, $links);
+          $book_tree = reset($book_items);
+          if ($book_tree['children']) {
+            // Add a fully expanded list of children below the existing course
+            // book outline item.
+            $item['children'] = $book_tree['children'];
+          }
+          break;
+
+        case 'active_tree':
+          // @see book_block().
+          $book_node = node_load($bid);
+          if (!empty($book_node->book)) {
+            $tree = menu_tree_page_data($book_node->book['menu_name'], $book_node->book);
+            // There should only be one element at the top level.
+            $data = array_shift($tree);
+
+            if ($data['below']) {
+              //$item['children'] = menu_tree_output($data['below']);
+              $output = menu_tree_output($data['below']);
+              // Append to the existing book outline item's data output, since we
+              // don't have an array but already rendered active menu tree output.
+              $item['data'] .= drupal_render($output);
+            }
+          }
+          // Note we do not break here purposefully, to additionally append the
+          // number of pages to the course outline item title. We do this
+          // because when not a page within the active tree, no children items
+          // display, so without this there is no indicator they are there. // Ignore this. Fixes my NetBeans.
+
+        case 'count':
+          $count = course_book_count($bid);
+          // @kludge replace outline object title with an appended version.
+          $subject = $item['data'];
+          $pattern = check_plain($courseObject->getTitle());
+          if ($count > 1) {
+            $replacement = t('!title (@count pages)', array('!title' => $pattern, '@count' => $count));
+            // Replace only the first instance of the title (in case the same
+            // string also exists elsewhere in the data output.
+            //$replaced = str_replace($pattern, $replacement, $subject);
+            $replaced = preg_replace('/' . $pattern . '/', $replacement, $subject, 1);
+            $item['data'] = $replaced;
+          }
+          break;
+      }
+    }
+  }
+}
+
+/**
+ * Counts the number of book pages that are accessible to the current user.
+ *
+ * @param int $bid
+ *   A book ID.
+ * @param array $exclude
+ *   (Optional) An array of menu link IDs. Any link whose mlid is in this array
+ *   will be excluded (along with its children).
+ *
+ * @return int
+ *   The number of accessible pages in a book.
+ */
+function course_book_count($bid, $exclude = array()) {
+  $tree = menu_tree_all_data(book_menu_name($bid));
+  $count = course_book_count_recurse($tree, $exclude);
+
+  return $count;
+}
+
+/**
+ * A recursive helper function for course_book_count().
+ */
+function course_book_count_recurse($tree, $exclude, $count = 0) {
+  foreach ($tree as $data) {
+    if (!in_array($data['link']['mlid'], $exclude)) {
+      $count++;
+      if ($data['below']) {
+        $count = course_book_count_recurse($data['below'], $exclude, $count);
+      }
+    }
+  }
+
+  return $count;
+}
+
+/**
+ * Gets a nested list of book items.
+ *
+ * @param int $bid
+ *   A book ID.
+ * @param bool $links
+ *   Whether or not to render item links.
+ * @param array $exclude
+ *   (Optional) An array of menu link IDs. Any link whose mlid is in this array
+ *   will be excluded (along with its children).
+ * @param int $depth_limit
+ *   Any link deeper than this value will be excluded (along with its children).
+ *
+ * @return array
+ *   A nested array of book items, suitable for theme_item_list().
+ */
+function course_book_items($bid, $links = TRUE, $exclude = array(), $depth_limit = MENU_MAX_DEPTH) {
+  $tree = menu_tree_all_data(book_menu_name($bid));
+  $items = course_book_items_recurse($tree, $links, $exclude, $depth_limit);
+
+  return $items;
+}
+
+/**
+ * A recursive helper function for course_book_items().
+ */
+function course_book_items_recurse($tree, $links, $exclude, $depth_limit) {
+  $items = array();
+  foreach ($tree as $data) {
+    if ($data['link']['depth'] > $depth_limit) {
+      // Don't iterate through any links on this level.
+      break;
+    }
+    if (!in_array($data['link']['mlid'], $exclude)) {
+      $link = array();
+
+      // Build the current nested item - either a link or text.
+      $text = truncate_utf8($data['link']['title'], 30, TRUE, TRUE);
+      if ($links) {
+        $path = $data['link']['href'];
+        $link['data'] = l($text, $path);
+      }
+      else {
+        $link['data'] = $text;
+      }
+
+
+      // Get children, if any.
+      if ($data['below']) {
+        $link['children'] = course_book_items_recurse($data['below'], $links, $exclude, $depth_limit);
+      }
+
+      $items[] = $link;
+    }
+  }
+
+  return array_values($items);
+}
+
+/**
+ * Implements hook_node_insert().
+ *
+ * Resave the book course object associated with this book page.
+ *
+ * We need to do this so that proper hooks get run to set content access.
+ */
+function course_book_node_insert($node) {
+  global $user;
+  if (!empty($node->book['bid'])) {
+    if ($courseObject = course_get_course_object('course_book', 'book', $node->book['bid'], $user)) {
+      $courseObject->save();
+    }
+  }
+}

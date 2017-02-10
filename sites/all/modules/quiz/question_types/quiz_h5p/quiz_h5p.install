@@ -1,0 +1,213 @@
+<?php
+
+/**
+ * @file
+ * Install logic.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function quiz_h5p_schema() {
+  $schema = array();
+
+  $schema['quiz_h5p_user_results'] = array(
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary Key: The identifier of the user result per H5P',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'parent_id' => array(
+        'type' => 'int',
+        'unsiged' => TRUE,
+        'not null' => FALSE
+      ),
+      'question_nid' => array(
+        'type' => 'int',
+        'unsiged' => TRUE,
+        'not null' => TRUE,
+      ),
+      'question_vid' => array(
+        'type' => 'int',
+        'unsiged' => TRUE,
+        'not null' => TRUE,
+      ),
+      'result_id' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'score_scaled' => array(
+        'type' => 'float',
+        'size' => 'medium'
+      ),
+      'score_raw' => array(
+        'type' => 'float',
+        'size' => 'medium'
+      ),
+      'score_min' => array(
+        'type' => 'float',
+        'size' => 'medium'
+      ),
+      'score_max' => array(
+        'type' => 'float',
+        'size' => 'medium'
+      ),
+      'interaction_type' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => ''
+      ),
+      'description' => array(
+        'type' => 'text',
+        'size' => 'medium'
+      ),
+      'correct_responses_pattern' => array(
+        'type' => 'text',
+        'size' => 'medium'
+      ),
+      'response' => array(
+        'type' => 'text',
+        'size' => 'medium'
+      ),
+      'additionals' => array(
+        'type' => 'text',
+        'size' => 'medium'
+      )
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(
+      'question_result' => array('result_id', 'question_nid', 'question_vid')
+    )
+  );
+
+  return $schema;
+}
+
+/**
+ * Store user responses in addition to scores.
+ */
+function quiz_h5p_update_7400(&$sandbox) {
+  // Remove existing primary key
+  db_drop_primary_key('quiz_h5p_user_results');
+
+  // Add required incremental identifier as primary key
+  db_add_field('quiz_h5p_user_results', 'id', array(
+    'type' => 'int',
+    'unsigned' => TRUE
+  ));
+  db_change_field('quiz_h5p_user_results', 'id', 'id', array(
+    'type' => 'serial',
+    'unsigned' => TRUE,
+    'not null' => TRUE
+  ), array(
+    'primary key' => array('id')
+  ));
+  db_add_index('quiz_h5p_user_results', 'question_result', array('result_id', 'question_nid', 'question_vid'));
+
+  // Add optional parent field
+  db_add_field('quiz_h5p_user_results', 'parent_id', array(
+    'type' => 'int',
+    'unsiged' => TRUE,
+    'not null' => FALSE
+  ));
+
+  // Rename percent_score -> score_scaled (for consistency with xAPI)
+  db_change_field('quiz_h5p_user_results', 'percent_score', 'score_scaled', array(
+    'type' => 'float',
+    'size' => 'medium'
+  ));
+
+  // Add optional field for raw score
+  db_add_field('quiz_h5p_user_results', 'score_raw', array(
+    'type' => 'float',
+    'size' => 'medium'
+  ));
+
+  // Add optional field for min score
+  db_add_field('quiz_h5p_user_results', 'score_min', array(
+    'type' => 'float',
+    'size' => 'medium'
+  ));
+
+  // Add optional field for max score
+  db_add_field('quiz_h5p_user_results', 'score_max', array(
+    'type' => 'float',
+    'size' => 'medium'
+  ));
+
+  // Add required field for interaction type
+  db_add_field('quiz_h5p_user_results', 'interaction_type', array(
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => ''
+  ));
+
+  // Add optional field for description
+  db_add_field('quiz_h5p_user_results', 'description', array(
+    'type' => 'text',
+    'size' => 'medium'
+  ));
+
+  // Add optional field for correct responses pattern
+  db_add_field('quiz_h5p_user_results', 'correct_responses_pattern', array(
+    'type' => 'text',
+    'size' => 'medium'
+  ));
+
+  // Add optional field for correct responses pattern
+  db_add_field('quiz_h5p_user_results', 'response', array(
+    'type' => 'text',
+    'size' => 'medium'
+  ));
+
+  // Add optional field for additional fields, e.g. choices for type='choice'
+  db_add_field('quiz_h5p_user_results', 'additionals', array(
+    'type' => 'text',
+    'size' => 'medium'
+  ));
+
+
+  return t('Store user responses in addition to scores.');
+}
+
+/**
+ * Changes long-choice interaction types to choice
+ */
+function quiz_h5p_update_7401(&$sandbox) {
+  // Update all long-choice fields to be choice to adhere to xAPI spec
+  db_update('quiz_h5p_user_results')
+    ->fields(array('interaction_type' => 'choice'))
+    ->condition('interaction_type', 'long-choice')
+    ->execute();
+}
+
+/**
+ * Implements hook_install().
+ */
+function quiz_h5p_install() {
+  db_query(
+    "INSERT INTO {quiz_question_properties}
+    (nid, vid, max_score)
+    SELECT nid, vid, 10
+    FROM {node} n
+    WHERE n.type='h5p_content'");
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function quiz_h5p_uninstall() {
+  db_query(
+    "DELETE FROM {quiz_question_properties}
+    WHERE nid IN (
+      SELECT n.nid
+      FROM {node} n
+      WHERE n.type = 'h5p_content'
+    )"
+  );
+}

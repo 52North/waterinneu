@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Waterinneu content type randbee feature.
+ */
+
+include_once 'randbee_feature_e_learning_content_type.features.inc';

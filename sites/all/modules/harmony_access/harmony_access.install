@@ -109,9 +109,6 @@ function harmony_access_schema() {
     ),
   );
 
-  $schema['cache_harmony_access_grants'] = drupal_get_schema_unprocessed('system', 'cache');
-  $schema['cache_harmony_access_grants']['description'] = 'Cache table to store the processed grants for a user.';
-
   return $schema;
 }
 
@@ -120,4 +117,15 @@ function harmony_access_schema() {
  */
 function harmony_access_uninstall() {
   variable_del('harmony_access_needs_rebuild');
+}
+
+/**
+ * Update hooks!
+ */
+
+/**
+ * Remove the old cache table.
+ */
+function harmony_access_update_7100() {
+  db_drop_table('cache_harmony_access_grants');
 }

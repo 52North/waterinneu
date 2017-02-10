@@ -29,11 +29,11 @@
 function _n52_default_nodes_landing_page_upcoming_events() {
 	return array (
 		'title' =>  array (
-				'en' => 'Upcoming Events',
+				'en' => 'Events',
 		),
 		'alias' => NULL,
 		'text' => array ('en' => '
-			<h2 id="events">Upcoming Events</h2>
+			<h2 id="events">Events</h2>
 			<p>
 				The platform hosts regular events designed to promote the 
 				best products, offer enhanced training and bring different 

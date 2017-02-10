@@ -10,6 +10,26 @@
 function n52_feature_menus_menu_default_menu_links() {
   $menu_links = array();
 
+  // Exported menu link: main-menu_e-learning:e-learning.
+  $menu_links['main-menu_e-learning:e-learning'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'e-learning',
+    'router_path' => 'e-learning',
+    'link_title' => 'E-learning',
+    'options' => array(
+      'alter' => TRUE,
+      'identifier' => 'main-menu_e-learning:e-learning',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -46,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: main-menu_home:<front>.
   $menu_links['main-menu_home:<front>'] = array(
     'menu_name' => 'main-menu',
@@ -33,6 +53,27 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: main-menu_matchmaking--support:node/8824.
+  $menu_links['main-menu_matchmaking--support:node/8824'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/8824',
+    'router_path' => 'node/%',
+    'link_title' => 'Matchmaking & Support',
+    'options' => array(
+      'attributes' => array(),
+      'alter' => TRUE,
+      'identifier' => 'main-menu_matchmaking--support:node/8824',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: main-menu_organisations:organisation.
   $menu_links['main-menu_organisations:organisation'] = array(
     'menu_name' => 'main-menu',
@@ -52,6 +93,26 @@ function n52_feature_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -48,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: main-menu_products--services:products-and-services.
+  $menu_links['main-menu_products--services:products-and-services'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'products-and-services',
+    'router_path' => 'products-and-services',
+    'link_title' => 'Products & Services',
+    'options' => array(
+      'alter' => TRUE,
+      'identifier' => 'main-menu_products--services:products-and-services',
+    ),
+    'module' => 'system',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -44,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -93,7 +154,7 @@ function n52_feature_menus_menu_default_menu_links() {
       ),
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
@@ -386,6 +447,52 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: menu-footer-3rd-links_imprint:node/8879.
+  $menu_links['menu-footer-3rd-links_imprint:node/8879'] = array(
+    'menu_name' => 'menu-footer-3rd-links',
+    'link_path' => 'node/8879',
+    'router_path' => 'node/%',
+    'link_title' => 'Imprint',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-footer-3rd-links_imprint:node/8879',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-footer-3rd-links_user-guide:http://localhost/sites/default/files/documents/WaterInnEU_Marketplace_User-Guide.pdf.
+  $menu_links['menu-footer-3rd-links_user-guide:http://localhost/sites/default/files/documents/WaterInnEU_Marketplace_User-Guide.pdf'] = array(
+    'menu_name' => 'menu-footer-3rd-links',
+    'link_path' => 'http://localhost/sites/default/files/documents/WaterInnEU_Marketplace_User-Guide.pdf',
+    'router_path' => '',
+    'link_title' => 'User Guide',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-footer-3rd-links_user-guide:http://localhost/sites/default/files/documents/WaterInnEU_Marketplace_User-Guide.pdf',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: menu-footer-right-links_contacthelpdesk:contact.
   $menu_links['menu-footer-right-links_contacthelpdesk:contact'] = array(
     'menu_name' => 'menu-footer-right-links',
@@ -404,6 +511,99 @@ function n52_feature_menus_menu_default_menu_links() {
         3 => 0,
       ),
       'identifier' => 'menu-footer-right-links_contacthelpdesk:contact',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-n52-footer-first-links_apijson:node/8877.
+  $menu_links['menu-n52-footer-first-links_apijson:node/8877'] = array(
+    'menu_name' => 'menu-n52-footer-first-links',
+    'link_path' => 'node/8877',
+    'router_path' => 'node/%',
+    'link_title' => 'API::JSON',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-n52-footer-first-links_apijson:node/8877',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-n52-footer-first-links_water-related-resources:node/8882.
+  $menu_links['menu-n52-footer-first-links_water-related-resources:node/8882'] = array(
+    'menu_name' => 'menu-n52-footer-first-links',
+    'link_path' => 'node/8882',
+    'router_path' => 'node/%',
+    'link_title' => 'Water Related Resources',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-n52-footer-first-links_water-related-resources:node/8882',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-n52-footer-second-links_about:<front>.
+  $menu_links['menu-n52-footer-second-links_about:<front>'] = array(
+    'menu_name' => 'menu-n52-footer-second-links',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'About',
+    'options' => array(
+      'fragment' => 'about',
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-n52-footer-second-links_about:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-n52-footer-second-links_site-map:node/8883.
+  $menu_links['menu-n52-footer-second-links_site-map:node/8883'] = array(
+    'menu_name' => 'menu-n52-footer-second-links',
+    'link_path' => 'node/8883',
+    'router_path' => 'node/%',
+    'link_title' => 'Site Map',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-n52-footer-second-links_site-map:node/8883',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -434,6 +634,29 @@ function n52_feature_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -50,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-top-links_register:node/8888.
+  $menu_links['menu-top-links_register:node/8888'] = array(
+    'menu_name' => 'menu-top-links',
+    'link_path' => 'node/8888',
+    'router_path' => 'node/%',
+    'link_title' => 'Register',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Click here for requesting a new account.',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-top-links_register:node/8888',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1113,6 +1336,8 @@ function n52_feature_menus_menu_default_menu_links() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('API::JSON');
+  t('About');
   t('Account');
   t('Add Content');
   t('Add content');
@@ -1123,15 +1348,18 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Contact/Helpdesk');
   t('Content summary');
   t('Create thread');
+  t('E-learning');
   t('Event');
   t('FAQ');
   t('Feed aggregator');
   t('Glossary');
   t('Home');
+  t('Imprint');
   t('Log out');
   t('Login');
   t('Manage translation tasks');
   t('Marketplace');
+  t('Matchmaking & Support');
   t('Migrate example - dates');
   t('My Content');
   t('Organisation');
@@ -1140,18 +1368,23 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Portal');
   t('Product');
   t('Products');
+  t('Products & Services');
   t('Project');
   t('Recent posts');
+  t('Register');
   t('Scheduled publications');
   t('Search');
   t('Search Wizard');
   t('Service Offering');
   t('Service Request');
+  t('Site Map');
   t('Sources');
   t('Success Stories');
   t('Success Story');
   t('Translate');
   t('Translate strings');
+  t('User Guide');
+  t('Water Related Resources');
   t('Webform');
 
   return $menu_links;

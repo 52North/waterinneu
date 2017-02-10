@@ -62,6 +62,27 @@ function n52_feature_products_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'diff_enable_revisions_page_node_tool';
+  $strongarm->value = 1;
+  $export['diff_enable_revisions_page_node_tool'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_show_preview_changes_node_tool';
+  $strongarm->value = 1;
+  $export['diff_show_preview_changes_node_tool'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_view_mode_preview_node_tool';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_tool'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__tool';
   $strongarm->value = array(
     'view_modes' => array(
@@ -95,6 +116,9 @@ function n52_feature_products_strongarm() {
       'print' => array(
         'custom_settings' => TRUE,
       ),
+      'question' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -102,7 +126,7 @@ function n52_feature_products_strongarm() {
           'weight' => 1,
         ),
         'path' => array(
-          'weight' => '0',
+          'weight' => '40',
         ),
         'language' => array(
           'weight' => '1',
@@ -121,6 +145,20 @@ function n52_feature_products_strongarm() {
           'print' => array(
             'weight' => 4,
             'visible' => FALSE,
+          ),
+        ),
+        'signup' => array(
+          'default' => array(
+            'weight' => '11',
+            'visible' => TRUE,
+          ),
+          'teaser' => array(
+            'weight' => '6',
+            'visible' => TRUE,
+          ),
+          'tool_of_the_month' => array(
+            'weight' => '6',
+            'visible' => TRUE,
           ),
         ),
       ),

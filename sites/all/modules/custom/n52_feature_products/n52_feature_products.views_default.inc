@@ -145,6 +145,7 @@ function n52_feature_products_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'A → Z';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Z → A';
   $handler->display->display_options['pager']['type'] = 'full';
@@ -219,16 +220,12 @@ The live comments box associated with each product enables active and ongoing di
     ),
     'trim_preserve_tags' => '',
   );
-  /* Sort criterion: Content: Category (field_category) */
-  $handler->display->display_options['sorts']['field_category_tid']['id'] = 'field_category_tid';
-  $handler->display->display_options['sorts']['field_category_tid']['table'] = 'field_data_field_category';
-  $handler->display->display_options['sorts']['field_category_tid']['field'] = 'field_category_tid';
   /* Sort criterion: Content: Title (title_field) */
   $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
   $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['title_field_value']['expose']['label'] = 'Sort by Title';
+  $handler->display->display_options['sorts']['title_field_value']['expose']['label'] = 'Title';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';

@@ -5,6 +5,7 @@ core = 7.x
 dependencies[] = ctools
 dependencies[] = jquery_update (>=7.x-2.3)
 dependencies[] = libraries
+dependencies[] = entity
 
 package = Other
 
@@ -13,9 +14,9 @@ files[] = views/AtjsViewsHandlerRelationship.php
 
 configure = admin/structure/atjs
 
-; Information added by Drupal.org packaging script on 2016-06-16
-version = "7.x-1.0-alpha1+24-dev"
+; Information added by Drupal.org packaging script on 2017-01-31
+version = "7.x-1.0"
 core = "7.x"
 project = "atjs"
-datestamp = "1466091774"
+datestamp = "1485891485"
 

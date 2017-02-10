@@ -783,17 +783,15 @@ function _menu_translate(&$router_item, $map, $to_arg = FALSE) {
     $tab_parent_map = explode('/', $router_item['tab_parent']);
   }
   for ($i = 0; $i < $router_item['number_parts']; $i++) {
-  	if (isset($path_map[$i])) {
-      if ($link_map[$i] == '%') {
-        $link_map[$i] = $path_map[$i];
-      }
-      if (isset($tab_root_map[$i]) && $tab_root_map[$i] == '%') {
-        $tab_root_map[$i] = $path_map[$i];
-      }
-      if (isset($tab_parent_map[$i]) && $tab_parent_map[$i] == '%') {
-        $tab_parent_map[$i] = $path_map[$i];
-      }
-  	}
+    if ($link_map[$i] == '%') {
+      $link_map[$i] = $path_map[$i];
+    }
+    if (isset($tab_root_map[$i]) && $tab_root_map[$i] == '%') {
+      $tab_root_map[$i] = $path_map[$i];
+    }
+    if (isset($tab_parent_map[$i]) && $tab_parent_map[$i] == '%') {
+      $tab_parent_map[$i] = $path_map[$i];
+    }
   }
   $router_item['href'] = implode('/', $link_map);
   $router_item['tab_root_href'] = implode('/', $tab_root_map);
@@ -1608,6 +1606,7 @@ function _menu_tree_data(&$links, $parents, $depth) {
  * Implements template_preprocess_HOOK() for theme_menu_tree().
  */
 function template_preprocess_menu_tree(&$variables) {
+  $variables['#tree'] = $variables['tree'];
   $variables['tree'] = $variables['tree']['#children'];
 }
 
@@ -2684,7 +2683,7 @@ function menu_link_load($mlid) {
 }
 
 /**
- * Clears the cached cached data for a single named menu.
+ * Clears the cached data for a single named menu.
  */
 function menu_cache_clear($menu_name = 'navigation') {
   $cache_cleared = &drupal_static(__FUNCTION__, array());

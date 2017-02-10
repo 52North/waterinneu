@@ -374,10 +374,11 @@ function n52_feature_frontpage_views_default_views() {
     'show_remaining_days' => 1,
     'show_repeat_rule' => 'show',
   );
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  /* Sort criterion: Content: Date -  start date (field_date_year_month_day) */
+  $handler->display->display_options['sorts']['field_date_year_month_day_value']['id'] = 'field_date_year_month_day_value';
+  $handler->display->display_options['sorts']['field_date_year_month_day_value']['table'] = 'field_data_field_date_year_month_day';
+  $handler->display->display_options['sorts']['field_date_year_month_day_value']['field'] = 'field_date_year_month_day_value';
+  $handler->display->display_options['sorts']['field_date_year_month_day_value']['order'] = 'DESC';
   /* Filter criterion: only published contents */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -394,13 +395,6 @@ function n52_feature_frontpage_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'event' => 'event',
   );
-  /* Filter criterion: start date after today */
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['id'] = 'field_date_year_month_day_value';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['table'] = 'field_data_field_date_year_month_day';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['field'] = 'field_date_year_month_day_value';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['ui_name'] = 'start date after today';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['default_date'] = 'now';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');

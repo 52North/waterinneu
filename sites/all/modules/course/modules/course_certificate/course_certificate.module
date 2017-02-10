@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * Implements hook_course_outline_completion_links_alter().
+ *
+ * Add a download certificate link.
+ */
+function course_certificate_course_outline_completion_links_alter(&$links, $node, $account) {
+  $course = course_get_course($node);
+  if (course_certificate_course_has_certificate($course)) {
+    $links['certificate'] = array(
+      t('Download certificate'),
+      "node/$node->nid/certificate",
+      t('Download a PDF of your certificate.'),
+    );
+  }
+}
+
+/**
+ * Check if there is a Certificate on this Course.
+ */
+function course_certificate_course_has_certificate($course) {
+  foreach ($course->getObjects() as $courseObject) {
+    if ($courseObject->getComponent() == 'certificate') {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_access_certificate().
+ *
+ * If something entered a complete record into the reports table, return TRUE.
+ */
+function course_certificate_access_certificate($node, $user) {
+  if (course_node_is_course($node)) {
+    $course = course_get_course($node);
+    $has_certificate = course_certificate_course_has_certificate($course);
+    return $has_certificate && (bool) db_query("SELECT 1 FROM {course_report} WHERE nid = :nid AND uid = :uid AND complete = :complete", array(':nid' => $node->nid, ':uid' => $user->uid, ':complete' => 1))->fetchField();
+  }
+}
+
+/**
+ * Implements hook_course_handlers().
+ */
+function course_certificate_course_handlers() {
+  // Expose certificate as a course object.
+  return array(
+    'object' => array(
+      'certificate' => array(
+        'name' => t('Certificate'),
+        'description' => t('A certificate course object.'),
+        'class' => 'CourseObjectCertificate',
+      ),
+    ),
+  );
+}

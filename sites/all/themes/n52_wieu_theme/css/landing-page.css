@@ -38,6 +38,7 @@ body.front > header#header {
  
 body.front > div#page > div#main-content {
   padding-top: 0px;
+  margin-top: -3px;
 }
 
 
@@ -130,12 +131,20 @@ body.front > div#page > div#main-content {
 
 #landing-page-action-buttons div.landing-page-button {
   cursor: pointer;
-  height: 400px;
+  height: 350px;
   text-align: center;
   background-color: #d9edf7;
   padding: 15px;
   margin-bottom: 20px;
   box-shadow:4px 4px 10px rgba(0,0,0,0.8);
+}
+
+#landing-page-action-buttons div.landing-page-button#intro { 
+  text-align: justify;
+	padding: 20px;
+	background: #e7eff3;
+	box-shadow: none;
+  border: none;
 }
 
 

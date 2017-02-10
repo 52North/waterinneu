@@ -1,0 +1,9 @@
+<?php
+
+function quiz_certificate_install() {
+  variable_set('certificate_certifiable_quiz', 1);
+}
+
+function quiz_certificate_uninstall() {
+  variable_set('certificate_certifiable_quiz', 0);
+}

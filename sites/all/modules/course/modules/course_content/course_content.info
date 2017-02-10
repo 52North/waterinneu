@@ -1,0 +1,14 @@
+name = Course content
+description = Expose selected content types as course content objects with configurable completion tracking.
+package = Course objects
+core = 7.x
+dependencies[] = course
+files[] = course_content.classes.inc
+files[] = course_content.test
+
+; Information added by Drupal.org packaging script on 2016-10-12
+version = "7.x-1.10"
+core = "7.x"
+project = "course"
+datestamp = "1476305916"
+

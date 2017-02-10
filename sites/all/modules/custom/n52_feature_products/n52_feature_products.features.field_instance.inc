@@ -117,6 +117,12 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 1,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'n52_term_formatter_icons',
@@ -184,17 +190,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 32,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 45,
       ),
       'tool_of_the_month' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 45,
       ),
     ),
     'entity_type' => 'node',
@@ -279,7 +291,7 @@ function n52_feature_products_field_default_field_instances() {
           'field_formatter_class' => 'row',
         ),
         'type' => 'text_default',
-        'weight' => 49,
+        'weight' => 50,
       ),
       'print' => array(
         'label' => 'inline',
@@ -290,17 +302,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 29,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 26,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 26,
       ),
     ),
     'entity_type' => 'node',
@@ -313,9 +331,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -342,6 +360,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -361,10 +380,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 3,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 44,
+      'weight' => 25,
     ),
   );
 
@@ -396,17 +415,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 20,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 42,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 40,
       ),
     ),
     'entity_type' => 'node',
@@ -419,9 +444,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -448,13 +473,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -470,7 +496,7 @@ function n52_feature_products_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -502,17 +528,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 19,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 41,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 43,
       ),
     ),
     'entity_type' => 'node',
@@ -530,7 +562,7 @@ function n52_feature_products_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 
@@ -561,6 +593,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 5,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -664,7 +702,7 @@ function n52_feature_products_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -693,17 +731,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 7,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 25,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'node',
@@ -767,7 +811,7 @@ function n52_feature_products_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 23,
     ),
   );
 
@@ -800,6 +844,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'image',
         'weight' => 6,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -848,7 +898,7 @@ function n52_feature_products_field_default_field_instances() {
         'progress_indicator' => 'bar',
       ),
       'type' => 'image_image',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -905,17 +955,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 24,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 30,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 34,
       ),
     ),
     'entity_type' => 'node',
@@ -931,7 +987,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 22,
+      'weight' => 17,
     ),
   );
 
@@ -963,17 +1019,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 25,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 13,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'node',
@@ -984,13 +1046,13 @@ function n52_feature_products_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
-          'full_html_tinymce' => 'full_html_tinymce',
-          'harmony_filtered' => 'harmony_filtered',
-          'plain_text' => 'plain_text',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 0,
+          'harmony_filtered' => 0,
+          'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
@@ -1015,13 +1077,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1034,10 +1097,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 1,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 23,
+      'weight' => 18,
     ),
   );
 
@@ -1067,6 +1130,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 17,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -1102,7 +1171,7 @@ function n52_feature_products_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -1135,17 +1204,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 18,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 40,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 42,
       ),
     ),
     'entity_type' => 'node',
@@ -1158,9 +1233,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -1187,6 +1262,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -1206,10 +1282,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 3,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 12,
     ),
   );
 
@@ -1268,17 +1344,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 27,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 33,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 31,
       ),
     ),
     'entity_type' => 'node',
@@ -1319,7 +1401,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 42,
+      'weight' => 28,
     ),
   );
 
@@ -1351,17 +1433,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'image',
         'weight' => 4,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 9,
       ),
       'tool_of_the_month' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'node',
@@ -1388,7 +1476,7 @@ function n52_feature_products_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 5,
+      'weight' => 8,
     ),
   );
 
@@ -1420,23 +1508,29 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 19,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 21,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 21,
       ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_n52_case_studies',
     'label' => 'Case Studies',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
       'attributes' => array(
@@ -1471,7 +1565,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 18,
+      'weight' => 26,
     ),
   );
 
@@ -1501,6 +1595,12 @@ function n52_feature_products_field_default_field_instances() {
         ),
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 2,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -1536,7 +1636,7 @@ function n52_feature_products_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -1567,17 +1667,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 22,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 22,
       ),
     ),
     'entity_type' => 'node',
@@ -1590,9 +1696,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -1619,6 +1725,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -1641,7 +1748,7 @@ function n52_feature_products_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -1670,17 +1777,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 8,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 23,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 23,
       ),
     ),
     'entity_type' => 'node',
@@ -1693,9 +1806,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -1722,6 +1835,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -1744,7 +1858,7 @@ function n52_feature_products_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -1753,19 +1867,19 @@ function n52_feature_products_field_default_field_instances() {
     'bundle' => 'tool',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'E-learning, tutorials and/or other supporting material available for the product.
+    'description' => 'Tutorials and/or other supporting material available for the product.
 <div class="author-instructions">
     Please use the TITLE to give a brief description of what each link provides (Limit 128 characters).
 </div>',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'link',
         'settings' => array(
-          'field_formatter_class' => 'row',
+          'field_formatter_class' => '',
         ),
         'type' => 'link_default',
-        'weight' => 43,
+        'weight' => 48,
       ),
       'print' => array(
         'label' => 'above',
@@ -1776,22 +1890,28 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 20,
       ),
-      'teaser' => array(
+      'question' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'tool_of_the_month' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_n52_e_learn_and_support',
-    'label' => 'E-learning, Tutorials and Supporting Material',
+    'label' => 'Tutorials and Supporting Material',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -1803,6 +1923,7 @@ function n52_feature_products_field_default_field_instances() {
         'target' => 'default',
         'title' => '',
       ),
+      'course_enrollment' => FALSE,
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -1827,7 +1948,71 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 19,
+      'weight' => 27,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_n52_num_of_expr_interest'.
+  $field_instances['node-tool-field_n52_num_of_expr_interest'] = array(
+    'bundle' => 'tool',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Holds the number of times the express interest button was clicked and mails are send.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_n52_num_of_expr_interest',
+    'label' => 'Expressed Interest',
+    'required' => 0,
+    'settings' => array(
+      'course_enrollment' => FALSE,
+      'entity_translation_sync' => FALSE,
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 41,
     ),
   );
 
@@ -1856,17 +2041,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 24,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 24,
       ),
     ),
     'entity_type' => 'node',
@@ -1881,7 +2072,7 @@ function n52_feature_products_field_default_field_instances() {
           'full_html_plain_no_filter_' => 0,
           'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -1908,6 +2099,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -1924,7 +2116,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -1943,7 +2135,7 @@ function n52_feature_products_field_default_field_instances() {
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 48,
+        'weight' => 49,
       ),
       'print' => array(
         'label' => 'inline',
@@ -1955,17 +2147,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 28,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 27,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 27,
       ),
     ),
     'entity_type' => 'node',
@@ -1998,7 +2196,139 @@ function n52_feature_products_field_default_field_instances() {
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 43,
+      'weight' => 47,
+    ),
+  );
+
+  // Exported field_instance: 'node-tool-field_product_ref_e_learning'.
+  $field_instances['node-tool-field_product_ref_e_learning'] = array(
+    'bundle' => 'tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'E-learning material available for the product on the marketplace.
+<div class="author-instructions">
+    Please enter the link to the course, e.g. <code>/course/your-course-title</code> in the <strong>URL</strong> and add the course title in the <strong>Title</strong> field. You can add as many courses as available. Select them from the course inventory available via the "E-Learning" menu item.
+</div>',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'span',
+          'textformatter_contrib' => array(
+            'link_field_display_type' => 'link_default',
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 9,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'span',
+          'textformatter_contrib' => array(
+            'link_field_display_type' => 'link_title_plain',
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 5,
+      ),
+      'tool_of_the_month' => array(
+        'label' => 'inline',
+        'module' => 'textformatter',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'textformatter_class' => 'textformatter-list',
+          'textformatter_comma_and' => 1,
+          'textformatter_comma_full_stop' => 1,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'span',
+          'textformatter_contrib' => array(
+            'link_field_display_type' => 'link_title_plain',
+          ),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 0,
+          'textformatter_type' => 'comma',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_product_ref_e_learning',
+    'label' => 'E-Learning',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'course_enrollment' => FALSE,
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 45,
     ),
   );
 
@@ -2029,17 +2359,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 26,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 37,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 38,
       ),
     ),
     'entity_type' => 'node',
@@ -2072,14 +2408,14 @@ function n52_feature_products_field_default_field_instances() {
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 41,
+      'weight' => 46,
     ),
   );
 
   // Exported field_instance: 'node-tool-field_purpose'.
   $field_instances['node-tool-field_purpose'] = array(
     'bundle' => 'tool',
-    'default_value' => NULL,
+    'default_value' => array(),
     'deleted' => 0,
     'description' => 'For which tasks in water resources management can the product be used?',
     'display' => array(
@@ -2101,17 +2437,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 22,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 29,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 30,
       ),
     ),
     'entity_type' => 'node',
@@ -2125,9 +2467,12 @@ function n52_feature_products_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'size' => 60,
+      ),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 15,
     ),
   );
 
@@ -2159,17 +2504,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 23,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 12,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'node',
@@ -2180,13 +2531,13 @@ function n52_feature_products_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
-          'full_html_tinymce' => 'full_html_tinymce',
-          'harmony_filtered' => 'harmony_filtered',
-          'plain_text' => 'plain_text',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 0,
+          'harmony_filtered' => 0,
+          'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
@@ -2211,13 +2562,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2230,10 +2582,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 1,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 21,
+      'weight' => 16,
     ),
   );
 
@@ -2290,17 +2642,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 26,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 35,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 35,
       ),
     ),
     'entity_type' => 'node',
@@ -2316,7 +2674,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 24,
+      'weight' => 19,
     ),
   );
 
@@ -2347,17 +2705,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 27,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 19,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 19,
       ),
     ),
     'entity_type' => 'node',
@@ -2368,13 +2732,13 @@ function n52_feature_products_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
-          'full_html_tinymce' => 'full_html_tinymce',
-          'harmony_filtered' => 'harmony_filtered',
-          'plain_text' => 'plain_text',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 0,
+          'harmony_filtered' => 0,
+          'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
@@ -2399,13 +2763,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2418,10 +2783,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 1,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 25,
+      'weight' => 20,
     ),
   );
 
@@ -2478,17 +2843,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 16,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 36,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 37,
       ),
     ),
     'entity_type' => 'node',
@@ -2561,17 +2932,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 9,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 16,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'node',
@@ -2651,17 +3028,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 10,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 17,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 17,
       ),
     ),
     'entity_type' => 'node',
@@ -2741,17 +3124,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 11,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 18,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 18,
       ),
     ),
     'entity_type' => 'node',
@@ -2831,17 +3220,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 12,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 15,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'node',
@@ -2893,17 +3288,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 33,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 44,
       ),
       'tool_of_the_month' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 44,
       ),
     ),
     'entity_type' => 'node',
@@ -2916,9 +3317,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -2945,13 +3346,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3024,17 +3426,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 15,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 11,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'node',
@@ -3114,17 +3522,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 13,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 14,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 14,
       ),
     ),
     'entity_type' => 'node',
@@ -3204,17 +3618,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 14,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 10,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'node',
@@ -3294,17 +3714,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'textformatter_list',
         'weight' => 28,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 34,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 41,
       ),
     ),
     'entity_type' => 'node',
@@ -3320,7 +3746,7 @@ function n52_feature_products_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 26,
+      'weight' => 21,
     ),
   );
 
@@ -3351,17 +3777,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 29,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 20,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 20,
       ),
     ),
     'entity_type' => 'node',
@@ -3372,13 +3804,13 @@ function n52_feature_products_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'full_html_plain_no_filter_' => 'full_html_plain_no_filter_',
-          'full_html_tinymce' => 'full_html_tinymce',
-          'harmony_filtered' => 'harmony_filtered',
-          'plain_text' => 'plain_text',
+          'full_html' => 0,
+          'full_html_plain_no_filter_' => 0,
+          'full_html_tinymce' => 0,
+          'harmony_filtered' => 0,
+          'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
@@ -3403,13 +3835,14 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3422,10 +3855,10 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 1,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 27,
+      'weight' => 22,
     ),
   );
 
@@ -3454,17 +3887,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 22,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 28,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 29,
       ),
     ),
     'entity_type' => 'node',
@@ -3482,7 +3921,7 @@ function n52_feature_products_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 17,
+      'weight' => 4,
     ),
   );
 
@@ -3511,17 +3950,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 30,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 39,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 39,
       ),
     ),
     'entity_type' => 'node',
@@ -3534,9 +3979,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -3563,6 +4008,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -3582,7 +4028,7 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 3,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
       'weight' => 28,
@@ -3617,17 +4063,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 31,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 38,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 36,
       ),
     ),
     'entity_type' => 'node',
@@ -3640,9 +4092,9 @@ function n52_feature_products_field_default_field_instances() {
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
           'full_html_plain_no_filter_' => 0,
-          'full_html_tinymce' => 'full_html_tinymce',
+          'full_html_tinymce' => 0,
           'harmony_filtered' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -3669,6 +4121,7 @@ function n52_feature_products_field_default_field_instances() {
           ),
         ),
       ),
+      'course_enrollment' => FALSE,
       'entity_translation_sync' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -3688,7 +4141,7 @@ function n52_feature_products_field_default_field_instances() {
             'harmony_users' => 0,
           ),
         ),
-        'rows' => 3,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
       'weight' => 29,
@@ -3720,17 +4173,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 21,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 31,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 28,
       ),
     ),
     'entity_type' => 'node',
@@ -3748,7 +4207,7 @@ function n52_feature_products_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 3,
     ),
   );
 
@@ -3777,17 +4236,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'text_plain',
         'weight' => 25,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 32,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 33,
       ),
     ),
     'entity_type' => 'node',
@@ -3845,7 +4310,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 40,
+      'weight' => 29,
     ),
   );
 
@@ -3868,17 +4333,23 @@ function n52_feature_products_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 42,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 43,
       ),
       'tool_of_the_month' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 32,
       ),
     ),
     'entity_type' => 'node',
@@ -3940,7 +4411,7 @@ function n52_feature_products_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 
@@ -4732,17 +5203,19 @@ function n52_feature_products_field_default_field_instances() {
 <div class="author-instructions">
     For example, licence costs, costs for implementation and development of the product.
 </div>');
-  t('E-learning, Tutorials and Supporting Material');
-  t('E-learning, tutorials and/or other supporting material available for the product.
+  t('E-Learning');
+  t('E-learning material available for the product on the marketplace.
 <div class="author-instructions">
-    Please use the TITLE to give a brief description of what each link provides (Limit 128 characters).
+    Please enter the link to the course, e.g. <code>/course/your-course-title</code> in the <strong>URL</strong> and add the course title in the <strong>Title</strong> field. You can add as many courses as available. Select them from the course inventory available via the "E-Learning" menu item.
 </div>');
   t('Existing (data-) systems the product can be used with.');
+  t('Expressed Interest');
   t('For which tasks in water resources management can the product be used?');
   t('For which tasks in water resources management can the product be used?
 <div class="author-instructions">
    Please give details on the tasks this product can be used for in the free text box.
 </div>');
+  t('Holds the number of times the express interest button was clicked and mails are send.');
   t('How can I get in contact with product and / or service provider, river basin managers and consultants related to the products?
 <div class="author-instructions">
     E-mail, telephone, country etc.
@@ -4788,6 +5261,11 @@ function n52_feature_products_field_default_field_instances() {
   t('The water management subject addressed by the product.
 <div class="author-instructions">
    Please give details on the subject addressed by this product in the free text box.
+</div>');
+  t('Tutorials and Supporting Material');
+  t('Tutorials and/or other supporting material available for the product.
+<div class="author-instructions">
+    Please use the TITLE to give a brief description of what each link provides (Limit 128 characters).
 </div>');
   t('Type of Hardware');
   t('Type of Input requirements');

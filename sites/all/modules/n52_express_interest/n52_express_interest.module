@@ -1,0 +1,214 @@
+<?php
+/*
+ * Copyright (C) 2015
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
+ *
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
+ *
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ *
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ */
+/**
+ * Implements hook_entity_view()
+ *
+ * Add html content to product/toll full view
+ */
+function n52_express_interest_entity_view($entity, $type, $view_mode, $langcode) {
+  if ($type == 'node' &&
+      $entity->type == 'tool' &&
+      $view_mode == 'full' &&
+      user_is_logged_in() &&
+      isset($entity->field_n52_product_owner[$langcode]) &&
+      isset($entity->field_contact_details[$langcode]) &&
+      $mail = _n52_express_interest_contains_email(
+          $entity->field_n52_product_owner[$langcode][0]['value'] . ' ' .
+          $entity->field_contact_details[$langcode][0]['value'])
+  ) {
+    $title = 'Do you want to get in touch with the product owner?';
+    $body = '<div id=\'express_interest_button_pop_over\' class=&quot;popover-light&quot;> ' .
+          ' By clicking on this button you accept that the platform will send an ' .
+          ' introductory message to the product owner with your name and email address. <br />' .
+          ' <div class=\'checkbox\'><label><input type=\'checkbox\' id=\'send-copy\'> Send me a copy</label></div>' .
+          '<div id=\'send-button\'><button class=\'btn btn-primary\'><span id=\'send-span\' class=\'glyphicon glyphicon-send\'></span></button></div>' .
+          '<div id=\'mail-response\'></div>' .
+          '</div>';
+    
+    $interest_already_expressed = _n52_express_interest_user_already_expressed((isset($entity->nid)?$entity->nid:'not-set'));
+    if ($interest_already_expressed) {
+      $pos = strpos($body, ">");
+      if ($pos !== false) {
+        global $user;
+        $expressions = explode("\n", user_load($user->uid)->field_n52_expressed_interest['und'][0]['value']);
+        foreach ($expressions as &$expression) {
+          $index = strpos($expression, $entity->nid);
+          if ($index === 0 ||  $index > 0) {
+            $timestamp = explode(",", $expression)[2];
+            $body = substr_replace($body, '><div class=\'alert alert-info\'>You already expressed your interest for this product on ' . date('j.m.Y',strtotime($timestamp)) . ' around ' . date('H:i:sP',strtotime($timestamp)) . '.<br />Please click the button only to resend the mail.</div>', $pos, strlen('>'));
+            break;
+          }
+        }
+      }
+    }
+    
+    $entity->content['field_express_interest_button'] = array (
+        '#markup' => '<div id="express_interest_button">' .
+          '<span id=\'popover-span\' ' . 
+          ($interest_already_expressed?'style=\'color:lightgrey;\' ':'') .
+          'class="glyphicon glyphicon-thumbs-up pop" ' .
+          'data-content="' . $body . '" ' . 
+          'data-container="body"' .
+          'data-toggle="popover" ' . 
+          'data-placement="left" ' . 
+          'data-original-title="' . $title . '"'.
+          'data-html="true" ' . 
+          'data-trigger="hover" ' .
+          'title="' . $title . '"></span>' .
+          '</div>',
+    );
+  }
+  return;
+}
+
+function n52_express_interest_init() {
+  drupal_add_js(array('n52_express_interest' => array('ajaxUrl' => url('n52_express_interest/ajax'))), 'setting');
+  drupal_add_js(drupal_get_path('module', 'n52_express_interest') . '/n52_express_interest.js');
+}
+
+function n52_express_interest_menu() {
+  $items['n52_express_interest/ajax'] = array(
+      'type' => MENU_CALLBACK,
+      'page callback' => 'n52_express_interest_ajax',
+      'access arguments' => array('access content'),
+  );
+  
+  return $items;
+}
+
+function n52_express_interest_ajax() {
+  global $user;
+  global $language;
+  $node_id = $_REQUEST['id'];
+  $send_copy = $_REQUEST['copy']; 
+  $node = node_load($node_id);
+  
+  if (isset ($node)) {
+    $language_code = $language->language;
+    $mail = _n52_express_interest_contains_email(
+        $node -> field_n52_product_owner[$language_code][0]['value'] .
+        $node -> field_contact_details[$language_code][0]['value']
+        );
+    $user_name = $user->name;
+    $user_mail = $user->mail;
+    $key = date('YmdHis') . $node_id;
+    $node_title = $node->title_field[$language_code][0]['value'];
+    $parameters = array (
+                'subject' => '[WaterInnEU Marketplace] Interest on your product "' . $node_title . '" expressed',
+                'body' => array (
+                    0 => 'Dear Sir or Madam,',
+                    1 => 'user "' . $user_name . '" expressed interest on your product "' . 
+                     $node_title .
+                    '" [0]. To get in touch, just reply to this mail or send one to',
+                    2 => '    ' . $user_mail,
+                    3 => 'Your',
+                    4 => 'WaterInnEU Marketplace Team',
+                    5 => 'Links',
+                    6 => '[0] ' . url('node/' . $node_id , array ('absolute' => TRUE)),
+                ),
+                'reply-to' => $user_mail,
+            );
+    If ($send_copy) {
+      $parameters['bcc'] = $user_mail;
+    }
+    $result = drupal_mail('n52_express_interest',
+        $key,
+        $mail,
+        $language_code,
+        $parameters,
+        NULL,
+        TRUE);
+  }
+  if ($result['result'] === TRUE) {
+    $output = '<div class=\'alert alert-success\'>' . 
+      t('Mail sent successfully') .
+      '.</div>';
+    // store information in user account and product only the first time
+    if (!_n52_express_interest_user_already_expressed($node_id)) {
+      $user_data = user_load ( $user->uid );
+      $expressions = explode ( "\n", $user_data->field_n52_expressed_interest ['und'] [0] ['value'] );
+      $expressions [] = $node_id . ', "' . $node_title . ' ",' . date ( 'c' );
+      $expressions = implode ( "\n", $expressions );
+      $user_object = entity_metadata_wrapper ( 'user', $user );
+      $user_object->field_n52_expressed_interest = $expressions;
+      $user_object->save ();
+      $node_object = entity_metadata_wrapper ( 'node', $node );
+      $count = $node_object->field_n52_num_of_expr_interest->value () + 1;
+      $node_object->field_n52_num_of_expr_interest->set ( $count );
+      $node_object->save();
+    }
+  }
+  else {
+    $output = '<div class=\'alert alert-danger\'>' . 
+        t('Sending Mail failed. ' . 
+          'Please try again later') .
+        '.</div>';
+  }
+  
+  print $output;
+  exit;
+}
+
+function n52_express_interest_mail($key, &$message, $params) {
+  $message['headers']['Reply-To'] = $params['reply-to'];
+  $message['subject'] = $params['subject'];
+  $message['body'] = $params['body'];
+  if (isset($params['bcc'])) {
+    $message['headers']['Bcc'] = $params['bcc'];
+  }
+}
+
+function n52_express_interest_form_tool_node_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id === 'tool_node_form') {
+    $form['field_n52_num_of_expr_interest']['#disabled'] = TRUE;
+  }
+}
+
+// PRIVATE METHODS
+
+function _n52_express_interest_user_already_expressed($node_id){
+  global $user;
+  $user_data = user_load($user->uid);
+  if (!empty($user_data->field_n52_expressed_interest) &&
+      (strpos($user_data->field_n52_expressed_interest['und'][0]['value'], $node_id) === 0 ||
+      strpos($user_data->field_n52_expressed_interest['und'][0]['value'], $node_id) > 0)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+function _n52_express_interest_contains_email($string_to_check) {
+  $tokens = preg_split('/[\s\'\"\(\)\[\]\{\}:]+/',$string_to_check);
+  foreach ($tokens as $token) {
+    if (filter_var($token, FILTER_VALIDATE_EMAIL)) {
+      return $token;
+    }
+  }
+  return FALSE;
+}

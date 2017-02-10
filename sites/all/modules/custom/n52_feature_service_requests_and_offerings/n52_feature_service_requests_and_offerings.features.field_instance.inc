@@ -268,6 +268,12 @@ function n52_feature_service_requests_and_offerings_field_default_field_instance
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'smart_trim',
@@ -377,6 +383,12 @@ function n52_feature_service_requests_and_offerings_field_default_field_instance
         'type' => 'entityreference_label',
         'weight' => 3,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'entityreference',
@@ -441,6 +453,12 @@ function n52_feature_service_requests_and_offerings_field_default_field_instance
         'type' => 'entityreference_label',
         'weight' => 2,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'entityreference',
@@ -504,6 +522,12 @@ function n52_feature_service_requests_and_offerings_field_default_field_instance
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 1,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'taxonomy',
@@ -551,6 +575,12 @@ function n52_feature_service_requests_and_offerings_field_default_field_instance
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 4,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -602,6 +632,12 @@ function n52_feature_service_requests_and_offerings_field_default_field_instance
           'field_formatter_class' => '',
         ),
         'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -726,6 +762,12 @@ function n52_feature_service_requests_and_offerings_field_default_field_instance
         'type' => 'textformatter_list',
         'weight' => 2,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'textformatter',
@@ -801,6 +843,12 @@ function n52_feature_service_requests_and_offerings_field_default_field_instance
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 1,
       ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'taxonomy',
@@ -848,6 +896,12 @@ function n52_feature_service_requests_and_offerings_field_default_field_instance
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 3,
+      ),
+      'question' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',

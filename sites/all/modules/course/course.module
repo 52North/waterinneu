@@ -1,0 +1,3094 @@
+<?php
+
+/**
+ * @file course.module
+ * Core functionality for Courses.
+ */
+// Course outline functions
+require_once 'includes/course.outline.inc';
+// Course exporting functions
+require_once 'includes/course.exporting.inc';
+// Rules support
+require_once 'includes/course.rules.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function course_menu() {
+  $items = array();
+
+  // Base configuration.
+  $items['admin/course'] = array(
+    'title' => 'Course',
+    'description' => 'Configure courses.',
+    'page callback' => 'course_settings_overview',
+    'access callback' => 'course_admin_access',
+    'file' => 'includes/course.settings.inc',
+  );
+
+  // Default tab for settings.
+  $items['admin/course/overview'] = array(
+    'title' => 'Overview',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  $items['course/autocomplete/node/%'] = array(
+    'page callback' => 'course_object_autocomplete_node',
+    'access arguments' => array('access content'),
+    'page arguments' => array(3, 4),
+  );
+
+  // Course settings handler forms. This gives organization and consistency to
+  // form placement for each module that defines settings handlers through
+  // hook_course_handlers().
+  $modules = course_get_handlers('settings');
+  $default_set = array();
+  $handlers = array();
+  $packages = array();
+  // Flatten each module's settings handlers into one array, so we can get info
+  // about any other handler-package while looping over each handler below.
+  foreach ($modules as $module_key => $settings) {
+    if (is_array($settings)) {
+      // Define
+      foreach ($settings as $handler_key => $handler_info) {
+        // Manually set the implementing module key. It would be unnecessary to
+        // force implementing modules to set this, since we can get it here.
+        $handler_info['module'] = $module_key;
+
+        // Manually set which package the handler belongs in. If one is not
+        // defined, assume the handler is it's own package.
+        $handler_info['package'] = isset($handler_info['package']) ? $handler_info['package'] : $handler_key;
+
+        // Build the array of handlers. Add this handler with a combined key,
+        // so module defined settings handlers can avoid namespace conflicts.
+        $module_handler_key = "{$module_key}_{$handler_key}";
+        $handlers[$module_handler_key] = $handler_info;
+
+        // Build a reverse array of handler keys - keyed by package - so we can
+        // get package info below when we need it. If there are duplicate
+        // handler/package keys, use the first one for grouping the others.
+        $package_key = $handler_info['package'] ? $handler_info['package'] : $handler_key;
+        if (!isset($packages[$package_key])) {
+          $packages[$package_key] = $module_handler_key;
+        }
+      }
+    }
+  }
+  // Loop over each handler, and set tabs accordingly.
+  foreach ($handlers as $module_handler_key => $handler_info) {
+    // Get package info for this handler.
+    $package_key = $handler_info['package'];
+    $package_info = $handlers[$packages[$package_key]];
+
+    // Define a path for the handler's specified package.
+    $package_router = "admin/course/{$package_key}";
+
+    // Define a path for the handler.
+    $handler_router = "admin/course/{$package_key}/{$module_handler_key}";
+
+    // Add the handler item, either as the default page content
+    // (MENU_NORMAL_ITEM will work with the MENU_DEFAULT_LOCAL_TASK below)
+    // or as one of the other MENU_LOCAL_TASK tabs). If this is the deafult
+    // page content, the router path and title will be taken from the
+    // handler which defined the package.
+    $item_router = !isset($default_set[$package_key]) ? $package_router : $handler_router;
+    $item_title = !isset($default_set[$package_key]) ? $package_info['name'] : $handler_info['name'];
+    $item_type = MENU_NORMAL_ITEM;
+    $items[$item_router] = array(
+      'title' => $item_title,
+      'description' => $handler_info['description'],
+      'access arguments' => array('administer course'),
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array($handler_info['callback']),
+      'type' => MENU_NORMAL_ITEM,
+    );
+    // Append file info to $items, if specified.
+    $file_info = array();
+    if (isset($handler_info['file'])) {
+      // Define the item 'file' key.
+      $items[$item_router]['file'] = $handler_info['file'];
+      // Define the item 'file path' key.
+      if (isset($handler_info['file path'])) {
+        // Use the path if provided. If not provided, we need to specify the
+        // handler provider module path, otherwise hook_menu() assumes
+        // 'file path' is the path to it's implementing module (Course).
+        $items[$item_router]['file path'] = $handler_info['file path'] ? $handler_info['file path'] : drupal_get_path('module', $handler_info['module']);
+      }
+    }
+
+    // Check if a default tab has already been set for this module.
+    if (!isset($default_set[$package_key])) {
+      // Add the default tab with the handler router item and name. We do
+      // this here so the first handler settings form always displays as the
+      // default page content at the module router item path.
+      $items[$handler_router] = array(
+        'title' => t('Settings'),
+        'type' => MENU_NORMAL_ITEM,
+      );
+      // Flag MENU_DEFAULT_LOCAL_TASK as set for this module.
+      $default_set[$package_key] = TRUE;
+    }
+  }
+
+  // Landing page for course completion.
+  $items['node/%course/course-outline'] = array(
+    'title' => 'Course outline',
+    'access callback' => 'node_access',
+    'access arguments' => array('update', 1),
+    'page arguments' => array('course_outline_overview_form'),
+    'page callback' => 'drupal_get_form',
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'includes/course.outline.inc',
+  );
+
+  // Landing page for course completion.
+  $items['node/%course/course-complete'] = array(
+    'title' => 'Course complete',
+    'access callback' => TRUE,
+    'page arguments' => array(1),
+    'page callback' => 'course_completion_page',
+    'file' => 'includes/course.outline.inc',
+  );
+
+  // Display the 'Take course' menu item as a tab or link, depending.
+  $items['node/%course/takecourse'] = array(
+    'title' => 'Take course',
+    'title callback' => 'course_takecourse_title',
+    'title arguments' => array(1),
+    'description' => 'Take course.',
+    'page callback' => 'course_take_course',
+    'page arguments' => array(1),
+    'access callback' => 'course_take_course_menu_access',
+    'access arguments' => array(1),
+    'type' => variable_get('course_takecourse_tab_display', 1) ? MENU_LOCAL_TASK : MENU_CALLBACK,
+  );
+
+  // Reports page listing each course object.
+  $items['node/%course/course-reports/objects'] = array(
+    'title' => 'Course objects',
+    'type' => MENU_LOCAL_TASK,
+    'page callback' => 'course_object_reports_page',
+    'page arguments' => array(1),
+    'access callback' => '_course_reports_access',
+    'access arguments' => array(1),
+    'file' => 'includes/course.reports.inc',
+  );
+
+  // Global report area
+  $items['admin/reports/course'] = array(
+    'title' => 'Course reports',
+    'description' => 'View and download course information.',
+    'access arguments' => array('access all course reports'),
+    'page callback' => 'system_admin_menu_block_page',
+    'file path' => drupal_get_path('module', 'system'),
+    'file' => 'system.admin.inc',
+  );
+
+  // Course object
+  $items['node/%course/course-object/%course_object'] = array(
+    'title' => 'Course object router',
+    'page callback' => 'course_object_take',
+    'page arguments' => array(3),
+    'access callback' => 'course_access_object',
+    'access arguments' => array(1, 3),
+    'weight' => 2,
+  );
+
+  // Course object edit
+  $items['node/%course/course-object/%ctools_js/%course_object/options'] = array(
+    'title' => 'Course object settings',
+    'page callback' => 'course_object_options',
+    'page arguments' => array(1, 3, 4),
+    'access callback' => 'node_access',
+    'access arguments' => array('update', 1),
+  );
+
+  // Course object edit
+  $items['node/%course/course-object/%ctools_js/%course_object/restore'] = array(
+    'page callback' => 'course_object_restore',
+    'page arguments' => array(1, 3, 4),
+    'access callback' => 'node_access',
+    'access arguments' => array('update', 1),
+    'type' => MENU_CALLBACK,
+  );
+
+  // AHAH handler.
+  $items['node/%course/course-outline/%ctools_js/more/%'] = array(
+    'page callback' => 'course_outline_overview_js_more',
+    'access callback' => 'node_access',
+    'access arguments' => array('update', 1),
+    'type' => MENU_CALLBACK,
+    'page arguments' => array(1, 3, 5),
+  );
+
+  $items['node/%course/course-object/%course_object/%ctools_js/nav'] = array(
+    'page callback' => 'course_ajaj_fulfullment_check',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'page arguments' => array(1, 3, 5),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_course_handlers().
+ *
+ * @see course_menu()
+ * @see course_settings_overview()
+ */
+function course_course_handlers() {
+  $outline = 'includes/course.outline.inc';
+  $settings = 'includes/course.settings.inc';
+  return array(
+    'outline' => array(
+      'course' => array(
+        'name' => t('Course'),
+        'description' => t('Stock outline display.'),
+        'callback' => 'course_outline_list',
+        'file' => $outline,
+      ),
+      'none' => array(
+        'name' => t('None'),
+        'description' => t('No outline provided (placeholder course).'),
+      ),
+    ),
+    'context' => array(
+      'node' => array(
+        'callback' => 'course_context',
+      ),
+    ),
+    'settings' => array(
+      'appearance' => array(
+        'name' => t('Appearance'),
+        'description' => t('Configure the course appearance, including outline style, disabling regions, and <em>enroll</em> and <em>take course</em> links.'),
+        'callback' => 'course_settings_appearance_form',
+        'file' => $settings,
+      ),
+      'enrollment' => array(
+        'name' => t('Enrollments'),
+        'description' => t('Configure enrollments.'),
+        'callback' => 'course_enrollment_settings_form',
+        'file' => $settings,
+      ),
+      'report' => array(
+        'name' => t('Reports'),
+        'description' => t('Configure course reporting.'),
+        'callback' => 'course_report_settings_form',
+        'file' => $settings,
+      ),
+      'object' => array(
+        'name' => t('Objects'),
+        'description' => t('Configure course objects.'),
+        'callback' => 'course_object_settings_form',
+        'file' => $settings,
+      ),
+    ),
+  );
+}
+
+/**
+ * Get course handlers.
+ *
+ * @param string $type
+ *   (optional) The course handler type to return.
+ *   If no type is specified, all types are returned.
+ *
+ * @return array
+ *   A merged, structured array of course handlers, optionally limited by type.
+ *
+ * @return array
+ *   An array of hook implementations keyed by module name, containing:
+ *   - A single handler type definition, if the $type parameter is passed.
+ *   - Or an associative array of all course handler definitions keyed by type.
+ */
+function course_get_handlers($type = NULL, $flush = FALSE) {
+  $all = &drupal_static(__FUNCTION__, array());
+  if (!$all || $flush) {
+    // Allow modules to define handlers that extend Course functionality.
+    // Do not use module_invoke_all() here because we need to know which module
+    // is providing the 'object' handler type. This is to avoid namespace
+    // conflicts between multiple modules providing a 'quiz' object for example.
+    $hook = 'course_handlers';
+    foreach (module_implements($hook) as $module) {
+      $function = $module . '_' . $hook;
+      $handlers = $function();
+
+      // Allow modules to alter each other's list of handlers.
+      drupal_alter($hook, $handlers, $module);
+
+      if (isset($handlers) && is_array($handlers)) {
+        $all[$module] = $handlers;
+      }
+    }
+  }
+
+  if (isset($type)) {
+    // Loop through each module's result again, and rebuild the array including
+    // only the specified handler type. We do this again so we can static cache
+    // the hook invocation and function calls above.
+    $filtered = array();
+    foreach ($all as $module => $handlers) {
+      if (isset($handlers[$type])) {
+        $filtered[$module] = $handlers[$type];
+      }
+    }
+    // Return the keyed array of implementations, each filtered to include only
+    // the specified handler type definition.
+    return $filtered;
+  }
+  else {
+    // Return the keyed array of all implementations.
+    return $all;
+  }
+}
+
+/**
+ * Menu access for course object router.
+ */
+function course_access_object($node, $courseObject) {
+  global $user;
+  $course = course_get_course($node, $user);
+  $courseObject->setCourse($course);
+  $course->setActive($courseObject->getId());
+  return $courseObject->access('take');
+}
+
+/**
+ * Fulfillment check callback.
+ *
+ * This function is polled from nav.js to check remote fulfillments for external
+ * learning objects.
+ */
+function course_ajaj_fulfullment_check($node, $courseObject, $js = FALSE) {
+  $courseObject->poll();
+  if (course_node_is_course($node)) {
+    course_set_context($node);
+  }
+  module_load_include('inc', 'course', 'includes/course.block');
+  // Bust cache.
+  /** @deprecated do not use getUser() */
+  course_get_course($node, $courseObject->getCourse()->getUser(), TRUE);
+  $block = block_load('course', 'navigation');
+  $block_rend = _block_render_blocks(array($block));
+  drupal_json_output(array(
+    'content' => $block_rend['course_navigation']->content['#markup'],
+    'complete' => $courseObject->getFulfillment()->isComplete(),
+  ));
+}
+
+/**
+ * Start an editing session for this course. Populate the session from
+ * persistent storage.
+ *
+ * @param Course $course
+ *   A Course.
+ */
+function course_editing_start($course) {
+  if (empty($_SESSION['course'][$course->getNode()->nid]['editing'])) {
+    // Start editing cache from what we have in DB.
+    foreach ($course->getObjects() as $courseObject) {
+      $_SESSION['course'][$course->getNode()->nid]['editing'][$courseObject->getId()] = $courseObject->getOptions();
+    }
+  }
+}
+
+/**
+ * Callback to restore a course object temporarily removed from outline overview
+ * form.
+ */
+function course_object_restore($node, $js, CourseObject $courseObject) {
+  $course = course_get_course($node);
+  $courseObject->setCourse($course);
+  $uniqid = $courseObject->getId();
+  $nid = $node->nid;
+
+  // Set the session value.
+  $_SESSION['course'][$nid]['editing'][$uniqid]['delete'] = 0;
+  $_SESSION['course'][$nid]['editing'][$uniqid]['delete_instance'] = 0;
+
+  if ($js) {
+    ctools_include('ajax');
+
+    // Perform ajax operations on the overview form, after restore.
+    $commands = array();
+
+    // Reset summary.
+    // @todo reload just this row. How?
+    //$commands[] = ajax_command_replace("#row-{$uniqid}", $html);
+    $commands[] = ctools_ajax_command_reload();
+
+    print ajax_render($commands);
+    exit;
+  }
+  else {
+    drupal_goto("node/$nid/course-outline");
+  }
+}
+
+/**
+ * Page callback: Handles object options form for both ctools modal and nojs.
+ *
+ * @param stdClass $node
+ *   A course node object loaded from course_load().
+ * @param boolean $js
+ *   Detects if ajax is enabled, loaded from ctools_js_load().
+ * @param courseObject $courseObject
+ *   A courseObject object, loaded from course_object_load().
+ *
+ */
+function course_object_options($node, $js, $courseObject) {
+  $course = course_get_course($node);
+  $courseObject->setCourse($course);
+  if ($js) {
+    ctools_include('ajax');
+    ctools_include('modal');
+    $form_state = array(
+      'ajax' => TRUE,
+      'title' => t("Settings for %t", array('%t' => $courseObject->getTitle())),
+    );
+
+    $form_state['build_info']['args'][] = $courseObject;
+
+    $output = ctools_modal_form_wrapper('course_object_options_form', $form_state);
+    if (empty($output)) {
+      $output[] = ctools_modal_command_loading();
+      $output[] = ctools_modal_command_dismiss();
+    }
+    print ajax_render($output);
+    exit;
+  }
+  else {
+    return drupal_get_form('course_object_options_form', $courseObject);
+  }
+}
+
+/**
+ * Form API builder for course object options.
+ *
+ * @param array $form_state
+ *   Form state.
+ * @param courseObject $courseObject
+ *   An initialized courseObject object.
+ *
+ * @see course_object_options_form_validate()
+ * @see course_object_options_form_submit()
+ * @see course_object_options()
+ * @ingroup forms
+ *
+ * @return array
+ *   The FAPI array.
+ */
+function course_object_options_form($form, &$form_state, $courseObject) {
+  $form = array();
+  $courseObject->optionsForm($form, $form_state);
+  field_attach_form('course_object', (object) $courseObject->getOptions(), $form, $form_state);
+  foreach (element_children($form) as $key) {
+    $element = $form[$key];
+    if (!empty($element['#type']) && $element['#type'] == 'container') {
+      $form['title'][$key] = $element;
+      unset($form[$key]);
+    }
+  }
+
+  $form[$courseObject->getComponent()] = array(
+    '#title' => $courseObject->getComponentName(),
+    '#type' => 'fieldset',
+    '#group' => 'course_tabs',
+    '#description' => t('Configuration for !name course objects.', array('!name' => $courseObject->getComponentName())),
+  );
+
+  $form['#after_build'][] = 'course_object_options_form_after_build';
+  return $form;
+}
+
+function course_object_options_form_after_build($form, &$form_state) {
+  $courseObject = $form_state['build_info']['args'][0];
+  $fieldset_key = $courseObject->getComponent();
+
+  foreach (element_children($form) as $key) {
+    $element = $form[$key];
+    // @todo I want to catch all object-provided fields and group them into a
+    // fieldset. I should probably do this with an OO design change so that we
+    // know where the fields are coming from. Consider adding a
+    // CourseObject::objectOptionsForm which will separate object-specific
+    // behavior from Course-specific behavior.
+    if (!empty($element['#type']) && !in_array($element['#type'], array('', 'hidden', 'submit', 'button')) && !empty($element['#input'])) {
+      $form[$fieldset_key][$key] = $element;
+      unset($form[$key]);
+    }
+  }
+  return $form;
+}
+
+/**
+ * Menu loader for course objects, in the context of a course.
+ */
+function course_object_load($coid) {
+  return course_get_course_object_by_id($coid);
+}
+
+/**
+ * Page handler for a course object.
+ *
+ * @return string
+ *   Themed output.
+ */
+function course_object_take($courseObject) {
+  drupal_set_title($courseObject->getTitle());
+
+  // Preserve course tabs
+  $course = $courseObject->getCourse();
+  $item = menu_get_item($course->getUrl());
+  menu_set_item(NULL, $item);
+
+  if ($out = $courseObject->takeCourseObject()) {
+    return $out;
+  }
+  else {
+    drupal_access_denied();
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function course_block_info() {
+  $info = array(
+    'outline' => array(
+      'info' => t('Course: Outline'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+    'navigation' => array(
+      'info' => t('Course: Navigation'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function course_block_configure($delta) {
+  module_load_include('inc', 'course', 'includes/course.block');
+  $function = "_course_block_{$delta}_configure";
+  if (function_exists($function)) {
+    return $function($delta);
+  }
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function course_block_view($delta) {
+  module_load_include('inc', 'course', 'includes/course.block');
+  $function = "_course_block_{$delta}_view";
+  if (function_exists($function)) {
+    return $function($delta);
+  }
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function course_block_save($delta, $edit) {
+  module_load_include('inc', 'course', 'includes/course.block');
+  $function = "_course_block_{$delta}_save";
+  if (function_exists($function)) {
+    return $function($delta);
+  }
+}
+
+/**
+ * Menu title handler for the Take course tab.
+ *
+ * @return string
+ *   "Review course" or "Take course", depending on the current user's
+ *   completion status.
+ */
+function course_takecourse_title($node) {
+  global $user;
+  $report = course_report_load($node, $user);
+  return ($user->uid > 1 && isset($report->complete) && $report->complete) ? t('Review course') : t('Take course');
+}
+
+/**
+ * Menu loader: check if node is a Course.
+ */
+function course_load($nid = NULL, $vid = NULL, $reset = FALSE) {
+  $nids = (isset($nid) ? array($nid) : array());
+  $conditions = (isset($vid) ? array('vid' => $vid) : array());
+  $node = node_load_multiple($nids, $conditions, $reset);
+  return $node ? (course_node_is_course(reset($node)) ? reset($node) : FALSE) : FALSE;
+}
+
+/**
+ * Implements hook_permission().
+ *
+ * Define permissions to take courses and edit course settings.
+ */
+function course_permission() {
+  return array(
+    'administer course' => array(
+      'title' => t('Administer global course configuration'),
+      'description' => t('Allows changing all course configurations.'),
+      'restrict access' => TRUE,
+    ),
+    'access course' => array(
+      'title' => t('Access course'),
+      'description' => t('Grants access to take courses.'),
+    ),
+    'access all course reports' => array(
+      'title' => t('Access all course reports'),
+      'description' => t('Grants access to all course reports across all courses.'),
+    ),
+    'access course administration area' => array(
+      'title' => t('Access course administration area'),
+      'description' => t('Grants access to the course administration area, with no other permission.'),
+    ),
+    'administer course enrollment types' => array(
+      'title' => t('Administer course enrollment types'),
+      'description' => t('Manage course enrollment types, fields, and display settings.'),
+    ),
+    'administer course enrollments' => array(
+      'title' => t('Administer course enrollments'),
+      'description' => t('Allows editing or deleting all course enrollments.'),
+    ),
+  );
+}
+
+/**
+ * Menu access callback to determins if the take course button should display
+ * on the course node.
+ *
+ * This differs from course_take_course_access() as it only returns a boolean.
+ *
+ * @param object $node
+ *   The course node.
+ *
+ * @see course_uc_token_values()
+ */
+function course_take_course_menu_access($node) {
+  global $user;
+  $courses = &drupal_static(__FUNCTION__, array());
+
+  if (!isset($courses[$node->nid])) {
+    // Allow modules to restrict menu access to the take course tab.
+    $hooks = module_invoke_all('course_has_takecourse', $node, $user);
+    $courses[$node->nid] = !in_array(FALSE, $hooks);
+  }
+
+  return $courses[$node->nid];
+}
+
+/**
+ * @deprecated
+ */
+function course_take_course_access($node, $account = NULL, $flush = FALSE, $all = FALSE) {
+  return course_access_course('take', $node, $account, $flush, $all);
+}
+
+/**
+ * Callback for checking course settings permission.
+ */
+function course_settings_access($node) {
+  return node_access('update', $node);
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function course_node_view($node, $view_mode, $langcode) {
+  if (course_node_is_course($node)) {
+    global $user;
+    $enrollment = course_enrollment_load($node->nid, $user->uid);
+    if ((!empty($enrollment) && $enrollment->status)) {
+      // User is already in course. Check take access.
+      $access = course_take_course_access($node, $user);
+    }
+    else {
+      // User not in course. Check enroll access.
+      $access = course_enroll_access($node, $user);
+    }
+
+    if (!$access['success']) {
+      $node->content['course_messages']['#markup'] = '<div class="course-restriction">' . "<h4>" . $access['header'] . "</h4>" . '<div class="course-restriction-message">' . $access['message'] . '</div></div>';
+    }
+    else {
+      // Render take course button.
+      $node->content['course']['#markup'] = theme('course_take_course_button', array('node' => $node));
+    }
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function course_node_insert($node) {
+  if (course_node_is_course($node)) {
+    if (!isset($node->course)) {
+      $node->course = array();
+    }
+    course_node_update($node);
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function course_node_update($node) {
+  if (course_node_is_course($node)) {
+    $record = $node->course;
+    $record['nid'] = $node->nid;
+
+    // Add configurable dates to the node object for easy retrieval.
+    // Support configurable date fields.
+    $cck_dates = array(
+      'open' => 'course_start_date_' . $node->type,
+      'close' => 'course_expiration_date_' . $node->type,
+      'live_from_date' => 'course_live_from_date_' . $node->type,
+      'live_to_date' => 'course_live_to_date_' . $node->type,
+    );
+    // Check whether each variable is set and the field exists on the
+    // content type. If so, load that field's value to the course object,
+    // overriding the coresponding column from the database.
+    foreach ($cck_dates as $key => $variable) {
+      $settings = @unserialize(variable_get($variable, array()));
+      $field_exists = isset($settings['field']);
+      if ($field_exists) {
+        $items = field_get_items('node', $node, $settings['field'], $node->language);
+        if (count($items)) {
+          $value = $items[0][$settings['value']];
+          if (!empty($value)) {
+            $date = new DateTime("$value UTC");
+            $value = $date->format('U');
+          }
+          $record[$key] = $value;
+        }
+      }
+    }
+
+    // 'Credits' is a numeric field so we need to ensure that it is a number.
+    $record['credits'] = isset($record['credits']) ? floatval($record['credits']) : 0;
+
+    // Default the enrollment type if necessary.
+    if (empty($record['enrollment_type'])) {
+      $record['enrollment_type'] = variable_get('course_default_enrollment_type');
+    }
+
+    $existing = db_query('SELECT 1 FROM {course_node} WHERE nid = :nid', array(':nid' => $node->nid))->fetchField();
+    $update = $existing ? array('nid') : array();
+    drupal_write_record('course_node', $record, $update);
+    $node->course = $record;
+
+    // Support cloning.
+    course_handle_clone($node);
+
+    // Save the course objects - necessary for programmatic course creation.
+    if (isset($node->course['objects'])) {
+      $course = course_get_course($node);
+      course_save_objects($node->course['objects'], $course);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_load().
+ */
+function course_node_load($nodes, $types) {
+  $result = db_query('SELECT * FROM {course_node} WHERE nid IN (:nids)', array(':nids' => array_keys($nodes)));
+  while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    $nodes[$row['nid']]->course = $row;
+  }
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function course_node_delete($node) {
+  if (course_node_is_course($node)) {
+    // Clean up course specific settings and enrollments when a course is
+    // deleted.
+    db_delete('course_node')
+      ->condition('nid', $node->nid)
+      ->execute();
+    db_delete('course_enrollment')
+      ->condition('nid', $node->nid)
+      ->execute();
+    db_delete('course_report')
+      ->condition('nid', $node->nid)
+      ->execute();
+    $query = db_select('course_outline', 'co');
+    $query->join('course_outline_fulfillment', 'cof', 'co.coid = cof.coid');
+    $result = $query
+      ->fields('co')
+      ->condition('co.nid', $node->nid)
+      ->execute();
+    while ($row = $result->fetch()) {
+      db_delete('course_outline_fulfillment')
+        ->condition('coid', $row->coid)
+        ->execute();
+    }
+    db_delete('course_outline')
+      ->condition('nid', $node->nid)
+      ->execute();
+  }
+}
+
+/**
+ * Saves course objects.
+ *
+ * @param CourseObject[] $objects
+ *   An array of course object definitions.
+ * @param Course $course
+ *   (optional) An instantiated Course, from course_get_course().
+ */
+function course_save_objects(array $objects, Course $course = NULL) {
+  foreach ($objects as $object) {
+    // Check if this course object already exists in the database.
+    if (isset($object->coid)) {
+      // Check if this object does not belong to the current node.
+      if ($object->nid != $course->getNode()->nid) {
+        // We are importing or cloning. Ensure the necessary keys are empty,
+        // in order to prepare a new object using this object's definitions.
+        $unset = array('coid', 'nid', 'uuid', 'uniqid');
+        foreach ($unset as $key) {
+          if (isset($object->{$key})) {
+            unset($object->{$key});
+          }
+        }
+
+        // Replace the nid key, to properly associate the current course node
+        // with this course object.
+        $object->nid = $course->getNode()->nid;
+      }
+    }
+
+    $object->save();
+  }
+}
+
+/**
+ * Enrolls a user in a course.
+ *
+ * @param object $node
+ *   By reference. The course node.
+ * @param object $user
+ *   By reference. The enrolling user.
+ * @param string $from
+ *   The type of enrollment, if applicable. {course_enrollment}.enrollmenttype.
+ * @param string $code
+ *   The access code used to enroll. {course_enrollment}.code.
+ * @param integer $status
+ *   The enrollment status. {course_enrollment}.status.
+ */
+function course_enroll($node, $account, $from = NULL, $code = NULL, $status = 1) {
+  if (!$account) {
+    global $user;
+    $account = $user;
+  }
+
+  if (course_node_is_course($node)) {
+    $enrollment = array(
+      'nid' => $node->nid,
+      'uid' => $account->uid,
+      'enrollmenttype' => $from,
+      'status' => $status,
+      'code' => $code,
+      'type' => $node->course['enrollment_type'],
+    );
+
+    $enrollment = (object) $enrollment;
+
+    $watchdog_variables = array(
+      '!uid' => $account->uid,
+      '!nid' => $node->nid,
+    );
+    if (!course_enrollment_check($node->nid, $account->uid)) {
+      // User is not enrolled yet.
+      watchdog('course_enroll', 'Enrolling user !uid into !nid.', $watchdog_variables);
+      course_enrollment_save($enrollment);
+      module_invoke_all('course_enroll', $node, $account, $from, $code, $status);
+    }
+
+    // Flush caches.
+    course_access_course('take', $node, $account, TRUE);
+
+    return $enrollment;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Un-enroll the user.
+ *
+ * Deletes course report entries, course enrollments, and object fulfillment
+ * records.
+ *
+ * @param object $node
+ *   A course node.
+ * @param object $user
+ *   A user.
+ * @return bool
+ *   TRUE if user is un-enrolled, FALSE if node is not a course.
+ */
+function course_unenroll($node, $user) {
+  if (course_node_is_course($node)) {
+    $enrollment = course_enrollment_load($node->nid, $user->uid);
+    $report = course_report_load($node->nid, $user->uid);
+
+    $course = course_get_course($node, $user);
+    $course->unenroll();
+
+    entity_delete('course_enrollment', $enrollment->eid);
+    entity_delete('course_report', $report->crid);
+
+    // Find all course objects in this course and delete the fulfillment.
+    $coids = array();
+    $result = db_query("SELECT coid FROM {course_outline} WHERE nid = :nid", array(':nid' => $node->nid));
+    while ($row = $result->fetch()) {
+      $coids[] = $row->coid;
+    }
+
+    if (count($coids)) {
+      $sql = "SELECT cofid FROM {course_outline_fulfillment} WHERE coid IN (:coids) AND uid = :uid";
+      $cofid = db_query($sql, array(':coids' => $coids, ':uid' => $user->uid))->fetchAllKeyed(0, 0);
+      entity_delete_multiple('course_object_fulfillment', $cofid);
+    }
+
+    // Notify other modules after course unenrollment.
+    // @todo is this deprecated by hook_course_enrollment_delete()?
+    module_invoke_all('course_unenroll', $node, $user);
+    $watchdog_variables = array(
+      '!uid' => $user->uid,
+      '!nid' => $node->nid,
+    );
+    watchdog('course_enroll', 'Removed user !uid from !nid', $watchdog_variables);
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Check if the user has enrolled in a course.
+ *
+ * @param mixed $nid
+ *   A course node ID.
+ * @param mixed $uid
+ *   A user ID.
+ *
+ * @return bool
+ *   TRUE if the user is enrolled, FALSE otherwise.
+ */
+function course_enrollment_check($nid, $uid) {
+  $query = db_query("SELECT 1 FROM {course_enrollment} WHERE nid = :nid AND uid = :uid AND status = :status", array(':nid' => $nid, ':uid' => $uid, ':status' => 1));
+  return $query->fetchField() > 0;
+}
+
+/**
+ * Load an enrollment from a node ID and user ID.
+ *
+ * @param int $nid
+ *   Enrollment ID, or node ID.
+ * @param int $uid
+ *   User ID.
+ *
+ * @return mixed
+ *   Enrollment object or FALSE
+ */
+function course_enrollment_load($nid, $uid = NULL) {
+  if (is_object($nid)) {
+    $nid = $nid->nid;
+  }
+
+  if (is_null($uid)) {
+    $eid = $nid;
+    return entity_load_single('course_enrollment', $eid);
+  }
+
+  if (is_object($uid)) {
+    $uid = $uid->uid;
+  }
+
+  if ($enrollment = db_query("SELECT * FROM {course_enrollment} WHERE nid = :nid AND uid = :uid", array(':nid' => $nid, ':uid' => $uid))->fetch()) {
+    return entity_load_single('course_enrollment', $enrollment->eid);
+  }
+
+  return FALSE;
+}
+
+/**
+ * Load multiple enrollments from enrollment IDs.
+ */
+function course_enrollment_load_multiple(array $eids) {
+  return entity_load('course_enrollment', $eids);
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Course node settings form.
+ *
+ * @todo move this course node settings form to a secondary local task, under
+ * the course settings tab.
+ */
+function course_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  if ($entity_type == 'node' && course_node_is_course($entity)) {
+
+    $form['course']['#tree'] = TRUE;
+    $form['course']['#type'] = 'fieldset';
+    $form['course']['#title'] = t('Course settings');
+    // Course outline display handler.
+    $outlines = array();
+    $handlers = course_get_handlers('outline');
+    foreach ($handlers as $outline_handlers) {
+      if ($outline_handlers) {
+        foreach ($outline_handlers as $key => $outline_handler) {
+          $outlines[$key] = $outline_handler['name'];
+        }
+      }
+    }
+
+    $form['course']['outline'] = array(
+      '#title' => t('Outline display'),
+      '#type' => 'select',
+      '#options' => $outlines,
+      '#default_value' => variable_get('default_lms_' . $entity->type, NULL),
+      '#description' => t('This controls the presentation of the course objects.'),
+    );
+
+    $enrollment_types = course_enrollment_types();
+    foreach ($enrollment_types as $enrollment_type => $type_info) {
+      $enrollment_type_options[$enrollment_type] = $type_info->label;
+    }
+    $form['course']['enrollment_type'] = array(
+      '#title' => t('Enrollment type'),
+      '#type' => 'select',
+      '#options' => $enrollment_type_options,
+      '#default_value' => isset($entity->course['enrollment_type']) ? $entity->course['enrollment_type'] : NULL,
+      '#description' => t("The enrollment type's fields, if required for enrollment, will be presented to the user before starting the course."),
+    );
+
+    // This is a simple credit hours field. If course_credit is enabled it used
+    // for storing the maximum credit of any credit instance.
+    if (!module_exists('course_credit')) {
+      $form['course']['credits'] = array(
+        '#title' => t('Credits'),
+        '#type' => 'textfield',
+        '#size' => 4,
+        '#description' => t('For more advanced crediting, use the !link module.', array('!link' => l('Course credit', 'http://drupal.org/project/course_credit'))),
+      );
+    }
+
+    $form['course']['duration'] = array(
+      '#title' => t('Duration'),
+      '#type' => 'textfield',
+      '#description' => t('Length of time in seconds that a user can remain in the course. Leave blank for unlimited.<br/>For a better experience, install the !link module.', array('!link' => l('Time period', 'http://drupal.org/project/timeperiod'))),
+    );
+
+    if (module_exists('timeperiod')) {
+      $form['course']['duration']['#type'] = 'timeperiod_select';
+      $form['course']['duration']['#units'] = array(
+        '86400' => array('max' => 30, 'step size' => 1),
+        '3600' => array('max' => 24, 'step size' => 1),
+        '60' => array('max' => 60, 'step size' => 1),
+      );
+      $form['course']['duration']['#description'] = t('Length of time that a user can remain in the course.');
+    }
+
+    $form['course']['cid'] = array(
+      '#title' => t('External learning application course ID'),
+      '#description' => t('If using an external learning application, the ID of the external course.'),
+      '#type' => 'textfield',
+      '#size' => 4,
+      '#access' => FALSE,
+    );
+
+    $form['course']['external_id'] = array(
+      '#title' => t('External course ID'),
+      '#description' => t('Course ID used to relate to an outside system.'),
+      '#type' => 'textfield',
+      '#size' => 16,
+    );
+
+    foreach (element_children($form['course']) as $key) {
+      if (isset($entity->course[$key])) {
+        $form['course'][$key]['#default_value'] = $entity->course[$key];
+      }
+    }
+
+    if (arg(2) == 'clone') {
+      $form['course']['clone_type'] = array(
+        '#title' => t('Course object cloning'),
+        '#description' => t('"New" will create new instances of all course objects.<br/>"Reference" will link supported content in the old course to the new course.<br/>"Clone" will copy supported course objects, otherwise create new ones.'),
+        '#type' => 'radios',
+        '#options' => array(
+          'clone' => 'Clone',
+          'reference' => 'Reference',
+          'new' => 'New',
+        ),
+        '#default_value' => 'clone',
+      );
+    }
+
+    // After creating a new course, redirect the user to the course outline
+    // overview form.
+    if (empty($entity->nid)) {
+      $form['actions']['submit']['#submit'][] = 'course_form_submit';
+    }
+  }
+}
+
+/**
+ * Submit handler for the course node form.
+ *
+ * Redirect the user to the outline overview form on new node inserts. Note that
+ * this fires after the hook_submit() function above.
+ */
+function course_form_submit($form, &$form_state) {
+  drupal_set_message(t('Add new items to your course outline using the form below.'));
+  $form_state['redirect'] = 'node/' . $form_state['nid'] . '/course-outline';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function course_form_node_type_form_alter(&$form, &$form_state) {
+  // Alter the node type's configuration form to add our setting.
+  $form['course'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Course settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#access' => user_access('administer course'),
+    '#group' => 'additional_settings',
+    '#description' => '<b>' . t('Course settings') . '</b>',
+  );
+  $form['course']['course_use'] = array(
+    '#title' => t('Use as course type'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get("course_use_{$form['#node_type']->type}", 0),
+    '#description' => t('This content type will have %course functionality.', array('%course' => 'Course')),
+  );
+
+  // Configurable date fields.
+  if (module_exists('date')) {
+    $options = array();
+    $options[0] = t('<Not specified>');
+    $fields = field_info_fields();
+    foreach ($fields as $field) {
+      if ($field['module'] == 'date') {
+        foreach ($field['columns'] as $column => $value) {
+          if (!empty($field['bundles']['node']) && in_array($form['#node_type']->type, $field['bundles']['node']) && in_array($column, array('value', 'value2'))) {
+            $position = $column == 'value' ? 'From' : 'To';
+            // Use the same label pattern as date_api_fields() for consistency
+            // with Views, and in case we support other date options than
+            // content date fields.
+            $info = field_info_instance('node', $field['field_name'], $form['#node_type']->type);
+            $label = t('Content: !label (!name) - @position date', array('!label' => $info['label'], '!name' => $field['field_name'], '@position' => $position));
+            #$key = "{$field['field_name']}[0]['{$column}']";
+            $key = serialize(array('field' => $field['field_name'], 'value' => $column));
+            $options[$key] = $label;
+          }
+        }
+      }
+    }
+    $date_settings_fs = array(
+      '#type' => 'fieldset',
+      '#title' => t('Date Settings Fieldset'),
+      '#title_display' => 'invisible',
+      '#collapsible' => FALSE,
+      '#collapsed' => FALSE,
+      '#states' => array(
+        'visible' => array(
+          ':input[name="course_use"]' => array('checked' => TRUE),
+        ),
+      ),
+    );
+    $date_settings_fs['course_start_date'] = array(
+      '#title' => t('Field to use for enduring-course start date'),
+      '#description' => t('Select the field to use for enduring-course start date.'),
+      '#type' => 'select',
+      '#options' => $options,
+      '#default_value' => variable_get("course_start_date_{$form['#node_type']->type}", 0),
+      '#prefix' => '<h3>' . t('Enduring course dates') . '</h3>',
+    );
+    $date_settings_fs['course_expiration_date'] = array(
+      '#title' => t('Field to use for enduring-course expiration date'),
+      '#description' => t('Select the field to use for enduring-course expiration date.'),
+      '#type' => 'select',
+      '#options' => $options,
+      '#default_value' => variable_get("course_expiration_date_{$form['#node_type']->type}", 0),
+    );
+    // Live course dates.
+    $date_settings_fs['course_live_from_date'] = array(
+      '#title' => t('Field to use for live-course start date'),
+      '#description' => t('Select the field to use for live-course start date.'),
+      '#type' => 'select',
+      '#options' => $options,
+      '#default_value' => variable_get("course_live_from_date_{$form['#node_type']->type}", 0),
+      '#prefix' => '<h3>' . t('Live course dates') . '</h3>',
+    );
+    $date_settings_fs['course_live_to_date'] = array(
+      '#title' => t('Field to use for live-course end date'),
+      '#description' => t('Select the field to use for live-course end date.'),
+      '#type' => 'select',
+      '#options' => $options,
+      '#default_value' => variable_get("course_live_to_date_{$form['#node_type']->type}", 0),
+    );
+    $form['course']['date_settings_fs'] = $date_settings_fs;
+  }
+}
+
+/**
+ * Generic Course IFrame function.
+ *
+ * @param string $url
+ *   An iframe HTML element src attribute.
+ * @param string $height
+ *   A string representing an iframe height.
+ * @param string $class
+ *   A HTML class attribute for the iframe.
+ */
+function course_iframe($url = NULL, $height = '600px', $class = NULL) {
+  $style = 'border:none; margin:0; width:100%; height:' . $height . ';';
+  $iframe = '<iframe id="course-viewer" src="' . $url . '" style="' . $style . '" class="' . $class . '" scrolling="no" frameborder="0" onload="resizeFrame(this);"></iframe>';
+
+  // Add JS to resize parent frame. This assumes additional JS on the targeted iframe content.
+  drupal_add_js(drupal_get_path('module', 'course') . '/js/resizeframe.js');
+
+  return $iframe;
+}
+
+/**
+ * Take a course.
+ *
+ * - Enroll the user, if allowed.
+ * - Block the user if not allowed.
+ * - Fire the outline handler.
+ */
+function course_take_course($node) {
+  global $user;
+  drupal_set_title($node->title);
+
+  $enroll_access = course_enroll_access($node);
+  $enrollment = course_enrollment_load($node, $user);
+
+  if ($enroll_access['success'] === TRUE && empty($enrollment->timestamp)) {
+    // User can enroll in this course and user is not enrolled. Check for
+    // enrollment fields or enroll the user.
+    $instances = field_info_instances('course_enrollment', $node->course['enrollment_type']);
+    foreach ($instances as $field_name => $instance) {
+      $field = field_info_field($field_name);
+      if ($instance['settings']['course_enrollment_user_field']) {
+        // At least one field must be shown when enrolling. Display the user
+        // enrollment form.
+        if (empty($enrollment->type)) {
+          $enrollment = entity_create('course_enrollment', array(
+            'nid' => $node->nid,
+            'uid' => $user->uid,
+            'type' => $node->course['enrollment_type'],
+          ));
+        }
+        $form = entity_ui_get_form('course_enrollment', $enrollment, 'edit');
+        return $form;
+      }
+    }
+
+    $enrollment = course_enroll($node, $user);
+  }
+
+  $take_access = course_take_course_access($node);
+  if ($take_access['success']) {
+    // User has access to take this course.
+    if (empty($enrollment->timestamp)) {
+
+      // If user hasn't started course, mark start of enrollment.
+      $enrollment->timestamp = REQUEST_TIME;
+      course_enrollment_save($enrollment);
+      drupal_set_message(t('Your enrollment in this course has been recorded.'));
+    }
+
+    // Display the configured outline handler output.
+    $key = isset($node->course['outline']) ? $node->course['outline'] : 'course';
+    $handlers = course_get_handlers('outline');
+    foreach ($handlers as $module => $outline_handlers) {
+      if ($outline_handlers) {
+        foreach ($outline_handlers as $key2 => $outline_handler) {
+          if ($key == $key2 && !empty($outline_handler['callback'])) {
+            $callback = $outline_handler['callback'];
+          }
+        }
+      }
+    }
+
+    if (!empty($callback) && function_exists($callback)) {
+      $outline = $callback($node, $user);
+    }
+    else {
+      $outline = t('Outline not provided.');
+    }
+
+    if (!$outline) {
+      $outline = t('No learning objects are available this time.');
+    }
+
+    return $outline;
+  }
+  else {
+    drupal_add_http_header('Status', '403 Forbidden');
+    drupal_set_title(t('Access denied'));
+    if (empty($take_access['message'])) {
+      return t('Sorry, you do not have access to take this course. (No message provided by module).');
+    }
+    return "<h2>" . $take_access['header'] . "</h2>" . $take_access['message'];
+  }
+}
+
+/**
+ * Implements hook_course_enrollment_presave().
+ */
+function course_course_enrollment_presave($enrollment) {
+  $node = node_load($enrollment->nid);
+
+  if (!isset($enrollment->status)) {
+    $enrollment->status = 1;
+  }
+
+  if (!isset($enrollment->enroll_end) && !empty($node->course['duration'])) {
+    // Set enrollment end to now + the duration of the course.
+    $enrollment->enroll_end = REQUEST_TIME + $node->course['duration'];
+  }
+
+  if (empty($enrollment->created)) {
+    $enrollment->created = REQUEST_TIME;
+  }
+
+  if (empty($enrollment->type)) {
+    $enrollment->type = $node->course['enrollment_type'];
+  }
+}
+
+/**
+ * Create or update an enrollment.
+ */
+function course_enrollment_save($enrollment) {
+  if ($enrollment->nid && $enrollment->uid) {
+    if ($eid = db_query('SELECT eid FROM {course_enrollment} WHERE nid = :nid AND uid = :uid', array(':nid' => $enrollment->nid, ':uid' => $enrollment->uid))->fetchField()) {
+      $enrollment->eid = $eid;
+      unset($enrollment->is_new);
+    }
+    if (!isset($enrollment->type)) {
+      $node = node_load($enrollment->nid);
+      $enrollment->type = $node->course['enrollment_type'];
+    }
+    entity_save('course_enrollment', $enrollment);
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Implements hook_course_enrollment_insert().
+ */
+function course_course_enrollment_insert($enrollment) {
+  course_course_enrollment_update($enrollment);
+}
+
+/**
+ * Implements hook_course_enrollment_update().
+ */
+function course_course_enrollment_update($enrollment) {
+  $node = node_load($enrollment->nid);
+  $account = user_load($enrollment->uid);
+  course_get_course($node, $account)->getTracker()->track();
+}
+
+/**
+ * Get a course object by its unique identifier (sessioned course object).
+ *
+ * @param string $uniqid
+ *   Unique identifier.
+ * @param stdClass $account
+ *   Account to instantiate this course object.
+ * @param Course $course
+ *   Course to instantiate this course object.
+ *
+ * @return CourseObject|FALSE
+ */
+function _course_get_course_object_by_uniqid($uniqid, $account = NULL, $course = NULL) {
+  if (!empty($_SESSION['course'])) {
+    foreach ($_SESSION['course'] as $nid => $session) {
+      if (isset($session['editing']) && is_array($session['editing'])) {
+        foreach ($session['editing'] as $coid => $object) {
+          if ($coid == $uniqid) {
+            $courseObject = course_get_course_object($object, NULL, NULL, $account, $course);
+            if (!$course) {
+              $course = course_get_course(node_load($nid));
+              $courseObject->setCourse($course);
+              return $courseObject;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Get a course object by its identifier.
+ *
+ * @param int $coid
+ *   The numeric ID of the course object.
+ * @param stdClass $account
+ *   If specified the CourseObject will be loaded with this user (for access and
+ *   fulfillment tracking).
+ *
+ * @return CourseObject|FALSE
+ *   A loaded CourseObject or FALSE if no object found.
+ */
+function course_get_course_object_by_id($coid, $account = NULL, $course = NULL) {
+  if (!is_numeric($coid)) {
+    return _course_get_course_object_by_uniqid($coid, $account, $course);
+  }
+  if ($courseObject = entity_load_single('course_object', $coid)) {
+    $courseObject->setUser($account);
+    return $courseObject;
+  }
+}
+
+/**
+ * CourseObject factory. Get a loaded course object from database or build one
+ * from arguments.
+ *
+ * @param mixed $module
+ *   The module name of this course object, or an array resembling a row in the
+ *   {course_outline} table.
+ * @param string $object_type
+ *   The object type belonging to the module.
+ * @param string $instance
+ *   The course object instance ID, FROM {course_outline}.instance.
+ * @param stdClass $account
+ *   The user object. This will instantiate a fulfillment record on the returned
+ *   CourseObject.
+ * @param Course $course
+ *   The Course to pass to the CourseObject instantiation.
+ *
+ * @return CourseObject|FALSE
+ */
+function course_get_course_object($module, $object_type = NULL, $instance = NULL, stdClass $account = NULL, Course $course = NULL) {
+  $available = course_get_handlers('object');
+
+  $fulfillment = FALSE;
+  if ($account) {
+    // Account was passed. We are preparing for fulfillment.
+    $fulfillment = TRUE;
+  }
+
+  if (!$account) {
+    global $user;
+    $account = $user;
+  }
+
+  if (is_array($module)) {
+    // Cast array passed to an object.
+    $module = (object) $module;
+  }
+
+  if (is_object($module) && !empty($module->coid)) {
+    // Passed options with the course object ID set.
+    $coid = $module->coid;
+    if (strpos($coid, 'course_object_') === FALSE) {
+      return course_get_course_object_by_id($coid, $account, $course);
+    }
+  }
+
+  if (is_numeric($module)) {
+    $coid = $module;
+  }
+  elseif (is_object($module)) {
+    // This is an already loaded (but not saved) course object.
+    $outline_entry = $module;
+  }
+  elseif (!is_null($instance)) {
+    // Get the course context.
+    if (!$course) {
+      if ($courseNode = course_determine_context($module, $object_type, $instance, TRUE, FALSE)) {
+        $course = entity_load_single('course', $courseNode->nid);
+      }
+    }
+
+    // Search for context.
+    $outline_entries = array();
+    $result = db_query("SELECT * FROM {course_outline} WHERE module = :module AND object_type = :object_type AND instance = :instance", array(':module' => $module, ':object_type' => $object_type, ':instance' => $instance));
+    while ($row = $result->fetch()) {
+      $outline_entries[$row->nid] = $row;
+    }
+
+    if ($outline_entries) {
+      // Found some course objects.
+      //
+      // Either the active course is in the courses this instance is in, or, the
+      // active course wasn't a parent of any course object found, so use the
+      // first object found.
+      $coid = ($courseNode && $outline_entries[$courseNode->nid]) ? $outline_entries[$courseNode->nid]->coid : reset($outline_entries)->coid;
+      return course_get_course_object_by_id($coid, $account);
+    }
+  }
+
+  if (!isset($outline_entry)) {
+    if ($fulfillment) {
+      // Doing fulfillment, we need a persistent CourseObject.
+      return FALSE;
+    }
+    else {
+      // Couldn't find context, and not checking for fulfillment. We can safely
+      // construct a new CourseObject.
+      $outline_entry = new stdClass;
+      $outline_entry->module = $module;
+      $outline_entry->object_type = $object_type;
+      $outline_entry->instance = $instance;
+    }
+  }
+
+  $ret = $available[$outline_entry->module][$outline_entry->object_type];
+
+  if ($ret['class']) {
+    $class = $ret['class'];
+  }
+  else {
+    $class = 'CourseObjectBroken';
+  }
+
+  $courseObject = entity_create('course_object', (array) $outline_entry);
+  if ($courseObject) {
+    return $courseObject;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Get a loaded Course.
+ *
+ * @param stdClass $node
+ *   The course node object.
+ * @param stdClass $account
+ *   The user with which to instantiate course objects and fulfillment.
+ *
+ * @return Course
+ */
+function course_get_course($node, $account = NULL, $flush = FALSE) {
+  /** @deprecated */
+  if (!$account) {
+    global $user;
+    $account = $user;
+  }
+
+  if ($entities = entity_load('course', array($node->nid), FALSE, $flush)) {
+    $course = $entities[$node->nid];
+    /** @deprecated */
+    $course->setUser($account);
+    return $course;
+  }
+}
+
+/**
+ * Check if node is a Course.
+ *
+ * @param stdClass $node
+ *   A node object or string that indicates the node type to check.
+ *
+ * @return bool
+ */
+function course_node_is_course($node) {
+  if (is_object($node)) {
+    if (!isset($node->type)) {
+      return FALSE;
+    }
+    else {
+      $node = $node->type;
+    }
+  }
+
+  return variable_get("course_use_{$node}", 0);
+}
+
+/**
+ * Implements hook_views_plugins().
+ */
+function course_views_plugins() {
+  return array(
+    'argument validator' => array(
+      'course' => array(
+        'title' => t('Course'),
+        'handler' => 'views_plugin_argument_validate_course',
+        'path' => drupal_get_path('module', 'course') . '/views/plugins',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function course_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'course') . '/views',
+  );
+}
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function course_field_extra_fields() {
+  $extra = array();
+  foreach (entity_get_info() as $entity_type => $entity_info) {
+    if ($entity_type == 'node') {
+      foreach (array_keys($entity_info['bundles']) as $bundle) {
+        if (in_array($bundle, course_get_types())) {
+          $extra[$entity_type][$bundle]['form']['course'] = array(
+            'label' => t('Course'),
+            'description' => t('Course form elements.'),
+            'weight' => 0,
+          );
+          $extra[$entity_type][$bundle]['display']['course'] = array(
+            'label' => t('Take course link'),
+            'weight' => 0,
+          );
+          $extra[$entity_type][$bundle]['display']['course_messages'] = array(
+            'label' => t('Course messages'),
+            'weight' => 0,
+          );
+        }
+      }
+    }
+  }
+
+  $extra['course_object']['course_object']['display']['course_outline_image'] = array(
+    'label' => t('Status image'),
+    'weight' => 0,
+  );
+  $extra['course_object']['course_object']['display']['course_outline_link'] = array(
+    'label' => t('Link to the course object'),
+    'weight' => 1,
+  );
+  $extra['course_object']['course_object']['display']['course_outline_status'] = array(
+    'label' => t('Status text'),
+    'weight' => 2,
+  );
+
+  return $extra;
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function course_preprocess_page(&$variables) {
+  if (arg(2) == 'takecourse') {
+    $regions = variable_get('course_disable_regions', array());
+    foreach ($regions as $key => $region) {
+      if ($region) {
+        unset($variables[$region]);
+      }
+    }
+  }
+
+  if ($course = course_get_context()) {
+    // Back/next buttons?
+    //$variables['content'] .= 'sdfsdfsd';
+  }
+}
+
+/**
+ * Get a list of course types.
+ *
+ * @return array
+ */
+function course_get_types() {
+  $types = & drupal_static(__FUNCTION__, array());
+
+  if (!$types) {
+    foreach (node_type_get_types() as $type => $info) {
+      if (variable_get("course_use_$type", 0)) {
+        $types[] = $type;
+      }
+    }
+  }
+
+  return $types;
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function course_token_info() {
+  $info = array();
+
+  module_load_install('course');
+  $schema = course_schema();
+
+  // Typess
+  $info['types']['course'] = array(
+    'name' => t('Course'),
+    'description' => t('Course'),
+    'needs-data' => 'node',
+  );
+
+  $info['types']['course-report'] = array(
+    'name' => t('Course report'),
+    'description' => t('Course report entry'),
+  );
+
+  // Tokens
+  foreach ($schema['course_node']['fields'] as $key => $value) {
+    $info['tokens']['course'][$key] = array(
+      'name' => $value['description'],
+      'description' => $value['description'],
+    );
+  }
+
+  $info['tokens']['node']['course'] = array(
+    'name' => t('Course'),
+    'description' => t('The course of the node.'),
+    'type' => 'course',
+  );
+
+  foreach ($schema['course_report']['fields'] as $key => $value) {
+    $info['tokens']['course-report'][$key] = array(
+      'name' => $value['description'],
+      'description' => $value['description'],
+    );
+  }
+
+  $info['tokens']['course-report']['date_completed']['type'] = 'date';
+  $info['tokens']['course-report']['updated']['type'] = 'date';
+  $info['tokens']['course-report']['data']['type'] = 'array';
+
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function course_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+
+
+  if ($type == 'node' && !empty($data['node']) && course_node_is_course($data['node'])) {
+    $course_tokens = token_find_with_prefix($tokens, 'course');
+    $node = $data['node'];
+
+    foreach ($course_tokens as $name => $original) {
+      $replacements[$course_tokens[$name]] = $node->course[$name];
+    }
+  }
+
+  if ($type == 'course-report' && !empty($data['node']) && course_node_is_course($data['node']) && !empty($data['user'])) {
+    // Node and user context, we can lookup the user's records.
+    if ($report = course_report_load($data['node'], $data['user'])) {
+      $report->data = empty($report->data) ? NULL : unserialize($report->data);
+      foreach ($tokens as $name => $original) {
+        // Handle date formats
+        if ((strpos($name, 'date_completed') === 0 || strpos($name, 'updated') === 0) && strpos($name, ':') !== FALSE) {
+          $name_parsed = explode(':', $name, 3);
+          $replacements[$tokens[$name]] = format_date($report->$name_parsed[0], $name_parsed[1], $name_parsed[1] == 'custom' && count($name_parsed) == 3 ? $name_parsed[2] : '');
+        }
+        else {
+          if (isset($report->$name)) {
+            $replacements[$tokens[$name]] = $report->$name;
+          }
+        }
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * Implements hook_action_info().
+ */
+function course_action_info() {
+  $actions = array();
+
+  $actions['course_add_enrollment_action'] = array(
+    'type' => 'user',
+    'label' => t('Enroll user'),
+    'configurable' => FALSE,
+    'vbo_configurable' => FALSE,
+  );
+
+  $actions['course_edit_enrollment_action'] = array(
+    'type' => 'course_enrollment',
+    'label' => t('Edit enrollment'),
+    'configurable' => FALSE,
+    'vbo_configurable' => TRUE,
+  );
+
+  $actions['course_remove_enrollment_action'] = array(
+    'type' => 'course_enrollment',
+    'label' => t('Remove enrollment'),
+    'configurable' => FALSE,
+    'vbo_configurable' => FALSE,
+  );
+
+  return $actions;
+}
+
+/**
+ * Action to enroll a user in current course.
+ */
+function course_add_enrollment_action($user, $context) {
+  if ($node = node_load($_SESSION['vbo_course'])) {
+    course_enroll($node, $user);
+    drupal_set_message(t("Enrolled %name in %title.", array('%name' => $user->name, '%title' => $node->title)));
+  }
+}
+
+/**
+ * Action to unenroll a user.
+ */
+function course_remove_enrollment_action(&$enrollment, $context) {
+  $node = node_load($enrollment->nid);
+  $user = user_load($enrollment->uid);
+  course_unenroll($node, $user);
+}
+
+/**
+ * Edit enrollment action
+ *
+ * @param object $object
+ *   An object containing nid and uid properties.
+ * @param array $context
+ *   Values from user input.
+ */
+function course_edit_enrollment_action($object, $context) {
+  $enrollment = course_enrollment_load($object->nid, $object->uid);
+  $node = node_load($enrollment->nid);
+  $account = user_load($enrollment->uid);
+  if (!$course_report = course_report_load($node, $account)) {
+    $course_report->nid = $node->nid;
+    $course_report->uid = $account->uid;
+  }
+
+  // Update enrollment status.
+  if ($context['status'] != '') {
+    $enrollment->status = $context['status'];
+  }
+
+  // Update enrollment duration.
+  if ($context['enroll_end']) {
+    // Parse date from popup/plain text.
+    if ($unixtime = strtotime($context['enroll_end'])) {
+      $enrollment->enroll_end = $unixtime;
+    }
+  }
+
+  // Update completion.
+  if ($context['complete'] != '') {
+    $course_report->complete = $context['complete'];
+  }
+
+  // Update date completed.
+  if ($context['date_completed'] != '') {
+    if ($unixtime = strtotime($context['date_completed'])) {
+      $course_report->date_completed = $unixtime;
+    }
+  }
+
+  // Update start date
+  if ($context['timestamp']) {
+    if ($unixtime = strtotime($context['timestamp'])) {
+      $enrollment->timestamp = $unixtime;
+    }
+  }
+
+  $course = course_get_course($node, $account);
+  foreach ($course->getObjects() as $key => $courseObject) {
+    $coid = $courseObject->getId();
+    $fulfillment = $courseObject->getFulfillment();
+    if ($context['course_objects'][$coid] !== '') {
+      // There was a change
+
+      if ($context['course_objects'][$coid] == 1) {
+        // Completed
+        $fulfillment->setOption('message', "Fulfillment completed via bulk action.");
+        $fulfillment->setComplete($context['course_objects'][$coid]);
+      }
+
+      if ($context['course_objects'][$coid] == -1) {
+        // Delete attempt
+        $fulfillment->delete();
+      }
+
+      if ($context['course_objects'][$coid] == 0) {
+        // Fail user
+        $fulfillment->setOption('message', "Fulfillment failed via bulk action.");
+        $fulfillment->setComplete(FALSE);
+        $fulfillment->setGrade(0);
+      }
+
+      $fulfillment->save();
+    }
+  }
+
+  course_enrollment_save($enrollment);
+  course_report_save($course_report);
+
+  drupal_set_message(t('Updated enrollment for %user', array('%user' => $account->name)));
+}
+
+/**
+ * Edit enrollment action form.
+ */
+function course_edit_enrollment_action_form($a1, $context) {
+  $form = array();
+
+  $nids = array();
+  $enrollments = entity_load('course_enrollment', $context['selection']);
+  foreach ($enrollments as $enrollment) {
+    $nids[] = $enrollment->nid;
+    $uids[] = $enrollment->uid;
+  }
+
+  if (count(array_unique($nids)) == 1) {
+    $node = node_load(reset($nids));
+  }
+
+  if (count(array_unique($nids)) == 1) {
+    $user = user_load(reset($uids));
+  }
+
+  $form['header'] = array(
+    '#value' => format_plural(count(array_unique($nids)), 'Use this form to edit course enrollment and completion data for 1 user', 'Use this form to edit course enrollment and completion data for @count users'),
+  );
+
+  // Check if this action is being performed on a single user, and set the
+  // account accordingly.
+  $account = NULL;
+  $enroll = NULL;
+  $course_report = NULL;
+  if (count(array_unique($nids)) == 1) {
+    // Only one user, so let's prefill values.
+    $selection = reset($context['selection']);
+
+    $enroll = course_enrollment_load($selection);
+    $account = user_load($enroll->uid);
+    $course_report = course_report_load($node, $account);
+  }
+
+  $form['status'] = array(
+    '#title' => t('Set enrollment status to'),
+    '#type' => 'select',
+    '#options' => array(
+      '' => '',
+      1 => 'Active',
+      0 => 'Inactive',
+    ),
+    '#default_value' => !empty($enroll->status) ? $enroll->status : NULL,
+    '#description' => t('Setting an enrollment to "inactive" will prevent a user from accessing the course.'),
+  );
+
+  $form['enroll_end'] = array(
+    '#title' => t('Extend course enrollment until'),
+    '#type' => module_exists('date_popup') ? 'date_popup' : 'date_text',
+    '#date_format' => 'Y-m-d H:i',
+    '#description' => t('The date when the user will not be able to access the course.'),
+    '#default_value' => !empty($enroll->enroll_end) ? format_date($enroll->enroll_end, 'custom', 'Y-m-d H:i') : NULL,
+  );
+
+
+  $form['complete'] = array(
+    '#title' => t('Set completion status to'),
+    '#type' => 'select',
+    '#options' => array(
+      '' => '',
+      1 => t('Complete'),
+      0 => t('Incomplete'),
+    ),
+    '#description' => t("This will change a user's course completion. Set this to incomplete to re-evaluate all requirements. Courses will never be automatically un-completed once they have been marked completed."),
+    '#default_value' => !empty($course_report->complete) ? $course_report->complete : NULL,
+  );
+
+  $form['date_completed'] = array(
+    '#title' => t('Set completion date to'),
+    '#type' => module_exists('date_popup') ? 'date_popup' : 'date_text',
+    '#date_format' => 'Y-m-d H:i',
+    '#description' => t('The date of completion.'),
+    '#default_value' => !empty($course_report->date_completed) ? format_date($course_report->date_completed, 'custom', 'Y-m-d H:i') : NULL,
+  );
+
+  $form['timestamp'] = array(
+    '#title' => t('Set started date to'),
+    '#type' => module_exists('date_popup') ? 'date_popup' : 'date_text',
+    '#date_format' => 'Y-m-d H:i',
+    '#description' => t('The date the user started the course.'),
+    '#default_value' => !empty($enroll->timestamp) ? format_date($enroll->timestamp, 'custom', 'Y-m-d H:i') : NULL,
+  );
+
+  if (isset($node)) {
+    // Get course objects, with or without a single user account information.
+    $course = course_get_course($node, $account);
+    $objects = $course->getObjects();
+
+    // Build a list of a single user's fulfillments.
+    $fulfillments = NULL;
+    if ($account) {
+      $fulfillments = array();
+      foreach ($objects as $courseObject) {
+        $fulfillments[$courseObject->getId()] = $courseObject->getFulfillment();
+      }
+    }
+
+    $form['course_objects'] = array(
+      '#title' => t('Set completion status'),
+      '#description' => t('Set the status of a course object to be applied to selected users.'),
+      '#type' => 'fieldset',
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+      '#tree' => TRUE,
+      '#prefix' => '<span id="course-objects-wrapper">',
+      '#suffix' => '</span>',
+    );
+
+    foreach ($objects as $courseObject) {
+      $form['course_objects'][$courseObject->getId()] = array(
+        '#type' => 'select',
+        '#title' => check_plain($courseObject->getTitle()),
+        '#options' => array(
+          '' => '- no change - ',
+          1 => t('Complete'),
+          -1 => t('Incomplete'),
+          0 => t('Failed'),
+        ),
+        '#default_value' => $fulfillments ? $fulfillments[$courseObject->getId()]->isComplete() : NULL,
+      );
+    }
+  }
+
+  return $form;
+}
+
+/**
+ * Submit handler for course_edit_enrollment_action_form().
+ */
+function course_edit_enrollment_action_submit($form, $form_state) {
+  return array(
+    'enroll_end' => $form_state['values']['enroll_end'],
+    'status' => $form_state['values']['status'],
+    'complete' => $form_state['values']['complete'],
+    'timestamp' => $form_state['values']['timestamp'],
+    'date_completed' => $form_state['values']['date_completed'],
+    'course_objects' => $form_state['values']['course_objects'],
+  );
+}
+
+/**
+ * Validates the edit enrollment action.
+ */
+function course_edit_enrollment_action_validate($form, $form_state) {
+
+}
+
+/**
+ * Implements hook_init().
+ *
+ * Detect and set course context. Adds javascript for course objects that
+ * require polling. Hack for #1902104.
+ */
+function course_init() {
+  course_context();
+
+  if (!$courseNode = course_get_context()) {
+    // Set course context for all modules that define course context handlers.
+    // @see hook_course_handlers().
+    $modules = course_get_handlers('object');
+    foreach ($modules as $module => $handlers) {
+      if (is_array($handlers)) {
+        foreach ($handlers as $handler) {
+          // We expect query parameters suitable for course_determine_context().
+          if ($params = call_user_func(array($handler['class'], 'context'))) {
+            if (is_array($params) && isset($params['object_type']) && isset($params['instance'])) {
+              if ($courseNode = course_determine_context($module, $params['object_type'], $params['instance'])) {
+                course_set_context($courseNode);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  if (class_exists('Course') && $courseNode) {
+    // Check that Course exists for a special use case where Autoload hasn't yet
+    // cached the Course class.
+
+    $course = course_get_course($courseNode);
+    if ($course && $active = $course->getActive()) {
+      if ($active->hasPolling()) {
+        drupal_add_js(
+          array(
+          'courseAjaxNavPath' => url('node/' . $courseNode->nid . '/course-object/' . $course->getActive()->getId() . '/ajax/nav'),
+          ), array('type' => 'setting'
+          , 'scope' => JS_DEFAULT));
+      }
+    }
+  }
+
+  if (arg(0) == 'node' && arg(2) == 'course-enrollments') {
+    // Hack until #1902104 is fixed.
+    $_SESSION['vbo_course'] = arg(1);
+  }
+}
+
+/**
+ * Course content handler callback.
+ */
+function course_context() {
+  if (arg(0) == 'node') {
+    // If we are on the course node, set the context immediately.
+    $node = node_load(arg(1));
+    if (course_node_is_course($node)) {
+      course_set_context($node);
+    }
+  }
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function course_ctools_plugin_directory($owner, $plugin_type) {
+  return "plugins/$plugin_type";
+}
+
+/**
+ * Check whether or not a user can self-enroll in a course.
+ *
+ * This function should be called by any module providing means
+ * of self-enrollment (e.g., course_uc, course_signup) then act accordingly by
+ * blocking that ability.
+ *
+ * @param object $node
+ *   A node.
+ * @param object $user
+ *   A user.
+ * @param bool $flush
+ *   Flag to flush the internal cache.
+ * @param bool $all
+ *   Return all values from implementations.
+ *
+ * @return array
+ *   An array with values 'success', to indicate whether or not the user
+ *   has permission to self-enroll in this course, and 'message', a
+ *   module-provided message that should be displayed to the user.
+ */
+function course_access_course($op, $node, $account = NULL, $flush = FALSE, $all = FALSE) {
+  $courses = &drupal_static(__FUNCTION__, array());
+
+  if (!$account) {
+    global $user;
+    $account = $user;
+  }
+
+  if (!isset($courses[$node->nid][$op]) || $flush) {
+    // Allow modules to set self-enrollment access for a user.
+    $hooks = module_invoke_all('course_access', $op, $node, $account);
+    drupal_alter('course_access', $hooks, $op, $node, $account);
+    uasort($hooks, 'drupal_sort_weight');
+    $courses[$node->nid][$op] = $hooks;
+  }
+
+  if ($all) {
+    return $courses[$node->nid][$op];
+  }
+  else {
+    foreach ($courses[$node->nid][$op] as $key => $hook) {
+      if (is_array($hook) && !$hook['success']) {
+        return $hook;
+      }
+    }
+
+    // Add a default success hook in case no others are returned.
+    return array(
+      'success' => TRUE,
+    );
+  }
+}
+
+/**
+ * @deprecated
+ */
+function course_enroll_access($node, $account = NULL, $flush = FALSE, $all = FALSE) {
+  return course_access_course('enroll', $node, $account, $flush, $all);
+}
+
+/**
+ * Implements hook_course_access().
+ *
+ * Block enrollments when a course has either not yet started or is expired.
+ */
+function course_course_access($op, $node, $user) {
+  $enrollment = course_enrollment_load($node->nid, $user->uid);
+
+  if ($op == 'enroll') {
+    if (!node_access('view', $node)) {
+      return array('course_denied' => array(
+          'success' => FALSE,
+          'header' => t('Access denied'),
+          'message' => t('You do not have permission to enroll into this course'),
+      ));
+    }
+
+    if (!empty($node->course['live_from_date']) && REQUEST_TIME > $node->course['live_from_date']) {
+      return array('course_live_started' => array(
+          'success' => FALSE,
+          'message' => t('This live activity started on %date and is no longer available for enrollments.', array(
+            '%date' => format_date($node->course['live_from_date'], 'long'),
+          )),
+      ));
+    }
+
+    if ($user->uid == 0) {
+      $options = array('query' => drupal_get_destination());
+      return array('course_noanon' => array(
+          'success' => FALSE,
+          'header' => '',
+          'message' => t('Please !login or !register to take this course.', array(
+            '!login' => l(t('login'), 'user/login', $options),
+            '!register' => l(t('register'), 'user/register', $options),
+          )),
+          'weight' => 300,
+      ));
+    }
+
+    if (!user_access('access course', $user)) {
+      return array(
+        'course_noperm' => array(
+          'success' => FALSE,
+          'header' => '',
+          'message' => t('You are not allowed to take courses.'),
+          'weight' => 300,
+      ));
+    }
+  }
+
+  if ($op == 'take') {
+    if (!node_access('view', $node)) {
+      return array('course_node_access' => array(
+          'success' => FALSE,
+          'header' => t('Access denied'),
+          'message' => t('You do not have permission to take this course.'),
+          'weight' => 300,
+      ));
+    }
+
+
+    if ($enrollment) {
+
+      // Check if there are any required, unfilled fields on the enrollment.
+      $instances = field_info_instances('course_enrollment', $node->course['enrollment_type']);
+      foreach ($instances as $field_name => $instance) {
+        if ($instance['required'] && !field_get_items('course_enrollment', $enrollment, $field_name)) {
+          return array(
+            'course_enrollment' => array(
+              'success' => FALSE,
+              'header' => t(''),
+              'message' => theme('course_take_course_button', array('node' => $node)),
+            ),
+          );
+        }
+      }
+
+      if ($enrollment->enroll_end > 0 && REQUEST_TIME > $enrollment->enroll_end) {
+        return array('course_enrollment_expired' => array(
+            'success' => FALSE,
+            'header' => t('Enrollment expired'),
+            'message' => t('Sorry, your enrollment has expired for this course.'),
+        ));
+      }
+    }
+    else {
+      return array('course_not_enrolled' => array(
+          'success' => FALSE,
+          'header' => t('Not enrolled.'),
+          'message' => t('Sorry, you must first enroll in this course.'),
+          'weight' => 200,
+      ));
+    }
+  }
+
+  // Both enroll and take course blockers.
+  if (!empty($node->course['open']) && REQUEST_TIME < $node->course['open']) {
+    return array('course_notopen' => array(
+        'success' => FALSE,
+        'header' => t('Course not open'),
+        'message' => t('This course opens on %date.', array(
+          '%date' => format_date($node->course['open'], 'long'),
+        )),
+    ));
+  }
+
+  if (!empty($node->course['close']) && REQUEST_TIME > $node->course['close']) {
+    return array('course_closed' => array(
+        'success' => FALSE,
+        'header' => t('Course closed'),
+        'message' => t('This course closed on %date.', array(
+          '%date' => format_date($node->course['close'], 'long'),
+        )),
+    ));
+  }
+}
+
+/**
+ * Inserts or updates a course report record.
+ *
+ * @param object $entry
+ *   The report entry to be saved into {course_report}, containing:
+ *   - nid: Required. the node id.
+ *   - uid: Required. the user id.
+ *   - data: An array containing:
+ *     - user: The serialized user object at the time of entry.
+ *     - profile: The serialized user profile at the time of entry.
+ *   - updated: Timestamp. The entry time.
+ *
+ * @todo Check for missing fields.
+ */
+function course_report_save($entry) {
+  // No shenanigans.
+  if (!$entry->nid > 0 || !$entry->uid > 0) {
+    $message = t('Report not entered because entry must have nid and uid.');
+    watchdog('course_report', $message, WATCHDOG_ERROR);
+    drupal_set_message(check_plain($message), 'error');
+    return FALSE;
+  }
+
+  // Load user so we can serialize it.
+  $account = user_load($entry->uid);
+
+  $result = db_query("SELECT * FROM {course_report} WHERE nid = :nid AND uid = :uid", array(':nid' => $entry->nid, ':uid' => $entry->uid));
+  $old = $result->fetch();
+
+  $entry->updated = REQUEST_TIME;
+
+  if ($entry->complete && empty($entry->date_completed)) {
+    $entry->date_completed = REQUEST_TIME;
+  }
+
+  if ($old && $old->complete && !$entry->complete) {
+    // Do not un-complete existing completed records.
+    $entry->complete = 1;
+  }
+
+  // Allow modules to alter course reports before it goes in.
+  drupal_alter('course_report', $entry, $account, $old);
+
+  // Hello CE credit!
+  if ($old) {
+    $entry->crid = $old->crid;
+  }
+
+  entity_save('course_report', $entry);
+}
+
+/**
+ * Implements hook_user_delete().
+ *
+ * Clean up course reports and fulfillments for a deleted user.
+ */
+function course_user_delete($account) {
+  $result = db_query("SELECT * FROM {course_enrollment} WHERE uid = :uid", array(':uid' => $account->uid));
+  while ($enrollment = $result->fetch()) {
+    $node = node_load($enrollment->nid);
+    course_unenroll($node, $account);
+  }
+}
+
+/**
+ * Load a course report entry, by report entry ID or node/user object.
+ *
+ * @return CourseReport
+ *   An entity representation of a course report.
+ */
+function course_report_load($mixed, $user = NULL) {
+  if (is_object($mixed)) {
+    $entities = entity_load('course_report', FALSE, array('nid' => $mixed->nid, 'uid' => $user->uid));
+    if ($entities) {
+      return reset($entities);
+    }
+  }
+  elseif (is_numeric($user)) {
+    $entities = entity_load('course_report', FALSE, array('nid' => $mixed, 'uid' => $user));
+    if ($entities) {
+      return reset($entities);
+    }
+  }
+  else {
+    return entity_load_single('course_report', $mixed);
+  }
+}
+
+/**
+ * Load multiple course reports by ID.
+ */
+function course_report_load_multiple(array $crids) {
+  return entity_load('course_report', $crids);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function course_theme() {
+  return array(
+    'course_outline_overview_form' => array(
+      'render element' => 'form',
+    ),
+    'course_report' => array(
+      'file' => 'includes/course.reports.inc',
+      'variables' => array(
+        'nav' => NULL,
+        'header' => NULL,
+        'body' => NULL,
+      ),
+    ),
+    'course_outline' => array(
+      'file' => 'includes/course.theme.inc',
+      'variables' => array(
+        'node' => NULL,
+        'items' => NULL,
+      ),
+    ),
+    'course_object' => array(
+      'render element' => 'elements',
+    ),
+    'course_take_course_button' => array(
+      'file' => 'includes/course.theme.inc',
+      'variables' => array(
+        'node' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Delete a course object.
+ *
+ * @param array $mixed
+ *   An array representing a stored course object (containing 'coid').
+ */
+function course_outline_delete_object($mixed) {
+  if (is_object($mixed)) {
+    $mixed = (array) $mixed;
+  }
+
+  // Delete the object.
+  entity_delete('course_object', $mixed['coid']);
+
+  // Delete the object's fulfillments.
+  db_delete('course_outline_fulfillment')
+    ->condition('coid', $mixed['coid'])
+    ->execute();
+}
+
+/**
+ * Gets the course context.
+ */
+function course_get_context() {
+  return course_set_context();
+}
+
+/**
+ * Sets a course context.
+ */
+function course_set_context($node = NULL, $clear = FALSE) {
+  $stored_course_node = &drupal_static(__FUNCTION__);
+
+  if ($clear) {
+    $stored_course_node = NULL;
+  }
+
+  if (!empty($node)) {
+    $stored_course_node = $node;
+  }
+
+  return (!empty($stored_course_node)) ? $stored_course_node : NULL;
+}
+
+/**
+ * Get the course node automatically, or from optional query parameters.
+ *
+ * @param string $module
+ *   The implementing course object provider module name.
+ * @param string $object_type
+ *   The course object key as defined by hook_course_handlers().
+ * @param string $instance
+ *   A key used internally by the implementing course object provider module,
+ *   to identify an instance of *something* used by this course object type.
+ * @param bool $no_set
+ *   Do not set the context (active course), just return it.
+ * @param bool $flush
+ *   Flush the static cache. By default, course_determine_context will stop
+ *   processing once a course is found, and continue to return it.
+ *
+ * @return mixed
+ *   A course node or NULL if course context not found.
+ */
+function course_determine_context($module = NULL, $object_type = NULL, $instance = NULL, $no_set = FALSE) {
+  $context = NULL;
+
+  // Determine the course node based on passed query parameters.
+  $result = db_query("SELECT nid FROM {course_outline} WHERE instance = :instance AND module = :module AND object_type = :object_type", array(':instance' => $instance, ':module' => $module, ':object_type' => $object_type));
+  $nids = array();
+  while ($course_outline = $result->fetch()) {
+    $nids[] = $course_outline->nid;
+  }
+
+  if (count($nids) > 1) {
+    if (!empty($_SESSION['course']['active']) && in_array($_SESSION['course']['active'], $nids)) {
+      // The active course in the session is one of the courses this object
+      // belongs to.
+      $context = node_load($_SESSION['course']['active']);
+    }
+    else {
+      // No active course, or no match. We have to guess since we're accessing
+      // this course material outside of the course.
+      $context = node_load($nids[0]);
+    }
+  }
+  elseif ($nids) {
+    // We don't have an active session (or, the course in the active session
+    // didn't contain this course object). So we just guess the first one.
+    $context = node_load($nids[0]);
+  }
+
+  if ($no_set) {
+    // Callee just wants context.
+    return $context;
+  }
+  elseif ($context) {
+    // Set the active course and static cache it.
+    $_SESSION['course']['active'] = $context->nid;
+    return $context;
+  }
+}
+
+/**
+ * Helper function for autocompletion of node titles.
+ */
+function course_object_autocomplete_node($types, $string) {
+  $matches = array();
+  $values = explode(',', $types);
+  $query = db_select('node', 'n');
+  $query->condition('n.type', $values, 'in')
+    ->condition('n.title', "%$string%", 'like')
+    ->fields('n', array('nid', 'title'))
+    ->range(0, 10);
+  $result = $query->execute();
+  while ($node = $result->fetch()) {
+    $matches[$node->title . " [nid: $node->nid]"] = '<span class="autocomplete_title">' . check_plain($node->title) . '</span>';
+  }
+
+  drupal_json_output($matches);
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * Revoke access to inaccessible objects.
+ */
+function course_cron() {
+  $handlers = course_get_handlers('object');
+  $modules = array();
+
+  foreach ($handlers as $module => $object) {
+    foreach ($object as $key => $info) {
+      if (is_subclass_of($info['class'], 'CourseObjectNode')) {
+        // This module provides an object of type CourseObjectNode.
+        $modules[] = $module;
+      }
+    }
+  }
+
+  if ($modules) {
+    // Get a list of fulfillments for CourseObjectNodes.
+    $sql = "SELECT * FROM {course_outline}
+    INNER JOIN {course_outline_fulfillment} USING (coid)
+    WHERE module IN (:modules)";
+    $result = db_query($sql, array(':modules' => $modules));
+    while ($row = $result->fetch()) {
+      $extra = unserialize($row->data);
+      if (!empty($extra['private'])) {
+        // This fulfillment used private content.
+        $user = user_load($row->uid);
+        $courseObject = course_get_course_object_by_id($row->coid, $user);
+        if (!$courseObject->access('take', $user)) {
+          // User has no access to take this course object. Revoke access.
+          $courseObject->revoke();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_course_admin_paths().
+ *
+ * Expose the course object configuration as an administrative path.
+ */
+function course_admin_paths() {
+  return array(
+    'node/*/course-object/nojs/*/options' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_ctools_plugin_type().
+ *
+ * Expose the course object access plugins to ctools.
+ */
+function course_ctools_plugin_type() {
+  return array(
+    'course_object_access' => array(),
+  );
+}
+
+/**
+ * Implements hook_entity_info().
+ */
+function course_entity_info() {
+  $entity_info = array(
+    'course_enrollment' => array(
+      'label' => t('Course enrollment'),
+      'entity class' => 'CourseEnrollment',
+      'controller class' => 'EntityAPIController',
+      'base table' => 'course_enrollment',
+      'fieldable' => TRUE,
+      'entity keys' => array(
+        'id' => 'eid',
+        'bundle' => 'type',
+      ),
+      'label callback' => 'entity_class_label',
+      'views controller class' => 'EntityDefaultViewsController',
+      'bundles' => array(),
+      'bundle keys' => array(
+        'bundle' => 'type',
+      ),
+      'access callback' => 'course_enrollment_access',
+    ),
+    'course_enrollment_type' => array(
+      'label' => t('Enrollment type'),
+      'entity class' => 'Entity',
+      'plural label' => t('Enrollment types'),
+      'description' => t('Course enrollment types.'),
+      'controller class' => 'EntityAPIControllerExportable',
+      'base table' => 'course_enrollment_type',
+      'fieldable' => FALSE,
+      'entity class' => 'Entity',
+      'bundle of' => 'course_enrollment',
+      'exportable' => TRUE,
+      'entity keys' => array(
+        'id' => 'id',
+        'name' => 'type',
+        'label' => 'label',
+      ),
+      'access callback' => 'course_enrollment_type_access',
+      'module' => 'course',
+      // Enable the entity API's admin UI.
+      'admin ui' => array(
+        'path' => 'admin/course/enrollment-types',
+        'controller class' => 'EntityDefaultUIController',
+      ),
+    ),
+    'course_report' => array(
+      'label' => t('Course report'),
+      'entity class' => 'CourseReport',
+      'controller class' => 'EntityAPIController',
+      'base table' => 'course_report',
+      'fieldable' => TRUE,
+      'entity keys' => array(
+        'id' => 'crid',
+      ),
+      'label callback' => 'entity_class_label',
+      'views controller class' => 'EntityDefaultViewsController',
+      'bundles' => array(
+        'course_report' => array(
+          'label' => 'Course report',
+          'admin' => array(
+            'path' => 'admin/course/report',
+            'access arguments' => array('administer course'),
+          ),
+        ),
+      ),
+      'access callback' => 'course_access',
+    ),
+    'course_object' => array(
+      'label' => t('Course object'),
+      'entity class' => 'CourseObject',
+      'controller class' => 'CourseObjectController',
+      'base table' => 'course_outline',
+      'fieldable' => TRUE,
+      'entity keys' => array(
+        'id' => 'coid',
+        'uuid' => 'uuid',
+      ),
+      'label callback' => 'course_object_label',
+      'views controller class' => 'EntityDefaultViewsController',
+      'bundles' => array(
+        'course_object' => array(
+          'label' => 'Course objects',
+          'admin' => array(
+            'path' => 'admin/course/object',
+            'access arguments' => array('administer course'),
+          ),
+        ),
+      ),
+      'access callback' => 'course_access',
+      'uuid' => TRUE,
+    ),
+    'course_object_fulfillment' => array(
+      'label' => t('Course object fulfillment'),
+      'entity class' => 'CourseObjectFulfillment',
+      'controller class' => 'CourseObjectFulfillmentController',
+      'base table' => 'course_outline_fulfillment',
+      'fieldable' => FALSE,
+      'entity keys' => array(
+        'id' => 'cofid',
+        'uuid' => 'uuid',
+      ),
+      'label callback' => 'course_object_fulfillment_label',
+      'views controller class' => 'EntityDefaultViewsController',
+      'access callback' => 'course_access',
+      'uuid' => TRUE,
+    ),
+    'course' => array(
+      'label' => t('Course'),
+      'entity class' => 'Course',
+      'controller class' => 'CourseController',
+      'base table' => 'course_node',
+      'fieldable' => FALSE,
+      'entity keys' => array(
+        'id' => 'nid',
+      ),
+      'label callback' => 'course_label',
+      'views controller class' => 'EntityDefaultViewsController',
+      'access callback' => 'course_access',
+    ),
+  );
+
+  if (db_table_exists('course_enrollment_type')) {
+    // Populate our bundles.
+    $types = db_select('course_enrollment_type', 'cet')
+      ->fields('cet')
+      ->execute()
+      ->fetchAllAssoc('type');
+
+    foreach ($types as $type => $info) {
+      $entity_info['course_enrollment']['bundles'][$type] = array(
+        'label' => $info->label,
+        'admin' => array(
+          'path' => 'admin/course/enrollment-types/manage/%course_enrollment_type',
+          'real path' => 'admin/course/enrollment-types/manage/' . $type,
+          'bundle argument' => 4,
+          'access arguments' => array('administer course enrollment types'),
+        ),
+      );
+    }
+  }
+
+  return $entity_info;
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ *
+ * Define our special schema fields and relationships.
+ */
+function course_entity_property_info_alter(&$info) {
+  $info['node']['properties']['course']['label'] = 'Course';
+  $info['node']['properties']['course']['description'] = 'The course associated with this node.';
+  $info['node']['properties']['course']['type'] = 'course';
+  $info['node']['properties']['course']['schema field'] = 'nid';
+
+  $info['course']['properties']['close']['type'] = 'date';
+  $info['course']['properties']['nid']['type'] = 'node';
+  $info['course']['properties']['nid']['required'] = TRUE;
+  $info['course']['properties']['open']['type'] = 'date';
+  $info['course']['properties']['duration']['type'] = 'duration';
+
+  $info['course_enrollment']['properties']['created']['type'] = 'date';
+  $info['course_enrollment']['properties']['enroll_end']['type'] = 'date';
+  $info['course_enrollment']['properties']['nid']['type'] = 'node';
+  $info['course_enrollment']['properties']['nid']['required'] = TRUE;
+  $info['course_enrollment']['properties']['timestamp']['type'] = 'date';
+  $info['course_enrollment']['properties']['uid']['type'] = 'user';
+  $info['course_enrollment']['properties']['uid']['required'] = TRUE;
+  $info['course_enrollment']['properties']['type']['type'] = 'course_enrollment_type';
+
+  $info['course_object']['properties']['duration']['type'] = 'duration';
+  $info['course_object']['properties']['enabled']['type'] = 'boolean';
+  $info['course_object']['properties']['hidden']['type'] = 'boolean';
+  $info['course_object']['properties']['nid']['type'] = 'node';
+  $info['course_object']['properties']['nid']['required'] = TRUE;
+  $info['course_object']['properties']['module']['required'] = TRUE;
+  $info['course_object']['properties']['object_type']['required'] = TRUE;
+  $info['course_object']['properties']['required']['type'] = 'boolean';
+
+  $info['course_object_fulfillment']['properties']['coid']['type'] = 'course_object';
+  $info['course_object_fulfillment']['properties']['complete']['type'] = 'boolean';
+  $info['course_object_fulfillment']['properties']['date_completed']['type'] = 'date';
+  $info['course_object_fulfillment']['properties']['date_started']['type'] = 'date';
+  $info['course_object_fulfillment']['properties']['uid']['type'] = 'user';
+  $info['course_object_fulfillment']['properties']['uid']['required'] = TRUE;
+
+  $info['course_report']['properties']['date_completed']['type'] = 'date';
+  $info['course_report']['properties']['nid']['type'] = 'node';
+  $info['course_report']['properties']['uid']['type'] = 'user';
+  $info['course_report']['properties']['nid']['required'] = TRUE;
+  $info['course_report']['properties']['uid']['required'] = TRUE;
+  $info['course_report']['properties']['coid']['type'] = 'course_object';
+  $info['course_report']['properties']['complete']['type'] = 'boolean';
+}
+
+/**
+ * Implementation of hook_course_enroll().
+ *
+ * Set the user's status in the course to enrolled if this is the start.
+ *
+ */
+function course_course_enroll($node, $user, $from) {
+  if (!course_report_load($node, $user)) {
+    // If we don't have a course report record already, save a new one.
+    $entry = (object) array(
+        'nid' => $node->nid,
+        'uid' => $user->uid,
+        'section_name' => 'Enrolled',
+        'complete' => 0,
+    );
+    course_report_save($entry);
+  }
+}
+
+/**
+ * Implements hook_form_FORMID_alter().
+ *
+ * Adds a checkbox for controlling field view access to fields added to
+ * profiles.
+ */
+function course_form_field_ui_field_edit_form_alter(&$form, &$form_state) {
+  if ($form['instance']['entity_type']['#value'] == 'course_enrollment') {
+    $form['instance']['settings']['course_enrollment_user_field'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Show this field on enrollment.'),
+      '#default_value' => !empty($form['#instance']['settings']['course_enrollment_user_field']),
+      '#description' => t('If checked, this field will be presented when starting a course.'),
+    );
+  }
+  else {
+    // Add the value to the form so it isn't lost.
+    $form['instance']['settings']['course_enrollment'] = array(
+      '#type' => 'value',
+      '#value' => !empty($form['#instance']['settings']['course_enrollment']),
+    );
+  }
+}
+
+/**
+ * Course enrollment edit form.
+ */
+function course_enrollment_form($form, &$form_state, $course_enrollment) {
+  field_attach_form('course_enrollment', $course_enrollment, $form, $form_state);
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+    '#weight' => 999,
+  );
+
+  $form['#submit'][] = 'course_enrollment_form_submit';
+  return $form;
+}
+
+/**
+ * Course enrollment submit handler.
+ */
+function course_enrollment_form_submit($form, &$form_state) {
+  $enrollment = $form_state['course_enrollment'];
+  field_attach_submit('course_enrollment', $enrollment, $form, $form_state);
+  $enrollment->timestamp = REQUEST_TIME;
+  entity_save('course_enrollment', $enrollment);
+
+  // Legacy invocation of hook_course_enroll().
+  // @deprecated
+  $node = node_load($enrollment->nid);
+  $account = user_load($enrollment->uid);
+  module_invoke_all('course_enroll', $node, $account, 'self', NULL, 1);
+}
+
+/**
+ * Implements hook_field_access().
+ *
+ * Don't show the user fields that weren't marked as enrollment fields.
+ */
+function course_field_access($op, $field, $entity_type, $entity, $account) {
+  if ($entity && $entity_type == 'course_enrollment' && $op == 'edit') {
+    $instance = field_info_instance($entity_type, $field['field_name'], $entity->type);
+    if (empty($instance['settings']['course_enrollment_user_field'])) {
+      return FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_course_credit_map_options().
+ */
+function course_course_credit_map_options() {
+  $ret = array();
+  $instances = field_info_instances('course_enrollment', 'course_enrollment');
+  foreach ($instances as $field_name => $instance_info) {
+    $field_info = field_info_field($field_name);
+    if ($options = list_allowed_values($field_info)) {
+      $ret['course_enrollment']['mappers'][$field_name]['title'] = $instance_info['label'];
+      $ret['course_enrollment']['mappers'][$field_name]['options'] = $options;
+    }
+  }
+  return $ret;
+}
+
+/**
+ * Implements hook_course_credit_map().
+ *
+ * Figure out if the user's enrollment fields make them eligible for credit.
+ */
+function course_course_credit_map($node, $account, $mappings) {
+  if ($enrollment = course_enrollment_load($node, $account)) {
+    $entity = entity_load_single('course_enrollment', $enrollment->eid);
+    if (!empty($mappings['course_enrollment'])) {
+      foreach ((array) $mappings['course_enrollment'] as $field => $values) {
+        if (!empty($entity->{$field})) {
+          foreach ($entity->{$field}[LANGUAGE_NONE] as $item) {
+            if (in_array($item['value'], $values)) {
+              return TRUE;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Entity API access callback.
+ */
+function course_access($op, $entity, $account = NULL, $entity_type) {
+  return user_access('administer course');
+}
+
+/**
+ * Access callback for course objects menu tab.
+ */
+function _course_reports_access($node) {
+  return node_access('update', $node) || user_access('access all course reports');
+}
+
+function course_enrollment_type_form($form, &$form_state, $enrollment_type, $op = 'edit') {
+  if ($op == 'clone') {
+    $enrollment_type->label .= ' (cloned)';
+    $enrollment_type->type = '';
+  }
+
+  $form['label'] = array(
+    '#title' => t('Label'),
+    '#type' => 'textfield',
+    '#default_value' => isset($enrollment_type->label) ? $enrollment_type->label : '',
+    '#description' => t('The human-readable name of this enrollment type.'),
+    '#required' => TRUE,
+    '#size' => 30,
+  );
+  // Machine-readable type name.
+  $form['type'] = array(
+    '#type' => 'machine_name',
+    '#default_value' => isset($enrollment_type->type) ? $enrollment_type->type : '',
+    '#maxlength' => 32,
+    '#disabled' => !isset($enrollment_type->is_new) && $op != 'clone',
+    '#machine_name' => array(
+      'exists' => 'course_enrollment_types',
+      'source' => array('label'),
+    ),
+    '#description' => t('A unique machine-readable name for this enrollment type. It must only contain lowercase letters, numbers, and underscores.'),
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save enrollment type'),
+    '#weight' => 40,
+  );
+
+  return $form;
+}
+
+/**
+ * Form API submit callback for the type form.
+ */
+function course_enrollment_type_form_submit(&$form, &$form_state) {
+  $enrollment_type = entity_ui_form_submit_build_entity($form, $form_state);
+  // Save and go back.
+  $enrollment_type->save();
+  $form_state['redirect'] = 'admin/course/enrollment-types';
+}
+
+function course_enrollment_type_load($type) {
+  return course_enrollment_types($type);
+}
+
+function course_enrollment_types($type_name = NULL) {
+  $types = entity_load_multiple_by_name('course_enrollment_type', isset($type_name) ? array($type_name) : FALSE);
+  return isset($type_name) ? reset($types) : $types;
+}
+
+/**
+ * Implements hook_forms().
+ */
+function course_forms($form_id, $args) {
+  $info = entity_get_info('course_enrollment');
+  $forms = array();
+  // Translate bundle form ids to the base form id 'course_enrollment_form'.
+  foreach ($info['bundles'] as $bundle => $bundle_info) {
+    $forms['course_enrollment_edit_' . $bundle . '_form']['callback'] = 'course_enrollment_form';
+    $forms['course_enrollment_edit_' . $bundle . '_form']['wrapper callback'] = 'entity_ui_form_defaults';
+  }
+  return $forms;
+}
+
+/**
+ * Access callback for the entity API.
+ */
+function course_enrollment_type_access($op, $entity = NULL, $account = NULL, $entity_type = NULL) {
+  return user_access('administer course enrollment types', $account);
+}
+
+/**
+ * Can the user access the course administration pages?
+ */
+function course_admin_access() {
+  return user_access('administer course') || user_access('access course administration area');
+}
+
+/**
+ * Access callback for the entity API.
+ */
+function course_enrollment_access($op, $entity, $account = NULL, $entity_type) {
+  return user_access('administer course') || user_access('administer course enrollments');
+}

@@ -38,15 +38,22 @@
     <?php print render($title_prefix); ?>
     <?php if (!$page): ?>
       <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a><?php 
-	    if (isset($content['field_n52_comm_dev']) && $view_mode != 'print') {
-	      print $content['field_n52_comm_dev'][0]['#markup'];
-	      $content['field_n52_comm_dev'] = NULL;
-	    }
-	    if (isset($content['field_category']) && $view_mode != 'print') {
-	      print $content['field_category'][0]['#markup'];
-	      $content['field_category'] = NULL;
-	    }
-	    ?></h2>
+      if (isset($content['field_n52_comm_dev']) && $view_mode != 'print') {
+        print $content['field_n52_comm_dev'][0]['#markup'];
+        $content['field_n52_comm_dev'] = NULL;
+      }
+      if (isset($content['field_category']) && $view_mode != 'print') {
+        print $content['field_category'][0]['#markup'];
+        $content['field_category'] = NULL;
+      }
+      if (isset($content['field_e_learning_icon']) && $view_mode != 'print') {
+      	print $content['field_e_learning_icon']['#markup'];
+      	$content['field_e_learning_icon'] = NULL;
+      }
+      if (isset($content['field_express_interest_button'])) {
+        $content['field_express_interest_button'] = NULL;
+      }
+      ?></h2>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
     <?php if ($display_submitted && $view_mode === 'full'): ?>
@@ -55,29 +62,32 @@
         <span class="glyphicon glyphicon-calendar"></span> 
         <?php 
         if ($changed <= $created) {
-        	print $submitted;
-		}
+          print $submitted;
+        }
         if ($changed > $created) {
-        	$user = user_load($node->revision_uid);
-        	$name_ = theme_username(array (
-        			'account' => $user,
-        			'extra' => '',
-        			'name' => check_plain($user->name),
-        			'link_path' => check_url('users/' . $user->name),
-        			'link_options' => array(
-        					'attributes' => array (
-        							'title' => t('View User Profile'),
-        					),
-        			),
-        	));
-        	print n52_waterinneu_theme_node_last_updated($changed, $name_);
+          $user = user_load($node->revision_uid);
+          $name_ = theme_username(array (
+              'account' => $user,
+              'extra' => '',
+              'name' => check_plain($user->name),
+              'link_path' => check_url('users/' . $user->name),
+              'link_options' => array(
+                  'attributes' => array (
+                      'title' => t('View User Profile'),
+                  ),
+              ),
+          ));
+          print n52_waterinneu_theme_node_last_updated($changed, $name_);
         }
         ?>
       </div>
     <?php endif; ?>
   </header>
   <?php endif; ?>
-
+  <?php if (isset($content['field_n52_num_of_expr_interest'])) {
+    $content['field_n52_num_of_expr_interest'] = NULL;
+  }
+  ?>
   <div class="content"<?php print $content_attributes; ?>>
     <?php
       // We hide the comments and links now so that we can render them later.

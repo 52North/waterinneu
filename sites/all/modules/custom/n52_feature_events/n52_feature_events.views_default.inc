@@ -30,10 +30,9 @@ function n52_feature_events_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Filter by';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'A → Z';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Z → A';
-  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = FALSE;
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'ascending';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'descending';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -53,7 +52,9 @@ function n52_feature_events_views_default_views() {
   $handler->display->display_options['sorts']['field_date_year_month_day_value']['id'] = 'field_date_year_month_day_value';
   $handler->display->display_options['sorts']['field_date_year_month_day_value']['table'] = 'field_data_field_date_year_month_day';
   $handler->display->display_options['sorts']['field_date_year_month_day_value']['field'] = 'field_date_year_month_day_value';
-  $handler->display->display_options['sorts']['field_date_year_month_day_value']['expose']['label'] = 'Date (field_date_year_month_day)';
+  $handler->display->display_options['sorts']['field_date_year_month_day_value']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['field_date_year_month_day_value']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_date_year_month_day_value']['expose']['label'] = 'Start Date';
   /* Sort criterion: Content: Title (title_field) */
   $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
@@ -74,24 +75,6 @@ function n52_feature_events_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'event' => 'event',
   );
-  /* Filter criterion: Content: Date -  start date (field_date_year_month_day) */
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['id'] = 'field_date_year_month_day_value';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['table'] = 'field_data_field_date_year_month_day';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['field'] = 'field_date_year_month_day_value';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['expose']['operator_id'] = 'field_date_year_month_day_value_op';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['expose']['label'] = 'Event happens after?';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['expose']['operator'] = 'field_date_year_month_day_value_op';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['expose']['identifier'] = 'field_date_year_month_day_value';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    9 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['default_date'] = 'now -7 day';
-  $handler->display->display_options['filters']['field_date_year_month_day_value']['year_range'] = '-0:+5';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

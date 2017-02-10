@@ -1,10 +1,10 @@
 # German translation of Date (7.x-2.9)
-# Copyright (c) 2015 by the German translation team
+# Copyright (c) 2016 by the German translation team
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Date (7.x-2.9)\n"
-"POT-Creation-Date: 2015-09-11 07:03+0000\n"
+"POT-Creation-Date: 2016-11-17 07:14+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1186,3 +1186,5 @@ msgid ""
 msgstr ""
 "Der erste Tag der Woche wurde auf <a "
 "href=\"@regional_settings\">@day</a> eingestellt."
+msgid "@field_name"
+msgstr "@field_name"

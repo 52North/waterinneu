@@ -357,11 +357,10 @@ function n52_feature_frontpage_default_page_manager_pages() {
         'width' => 100,
         'width_type' => '%',
         'children' => array(
-          0 => 4,
-          1 => 'main-row',
-          2 => 1,
-          3 => 2,
-          4 => 3,
+          0 => 'main-row',
+          1 => 1,
+          2 => 2,
+          3 => 3,
         ),
         'parent' => 'canvas',
       ),
@@ -451,25 +450,6 @@ function n52_feature_frontpage_default_page_manager_pages() {
         'class' => 'landing-page-about',
         'hide_empty' => 0,
       ),
-      4 => array(
-        'type' => 'row',
-        'contains' => 'region',
-        'children' => array(
-          0 => 'introduction_text',
-        ),
-        'parent' => 'main',
-        'class' => 'landing-page-introduction-text',
-        'hide_empty' => 0,
-      ),
-      'introduction_text' => array(
-        'type' => 'region',
-        'title' => 'Introduction Text',
-        'width' => 100,
-        'width_type' => '%',
-        'parent' => '4',
-        'class' => 'landing-page-introduction-text-region',
-        'hide_empty' => 0,
-      ),
     ),
   );
   $display->panel_settings = array(
@@ -548,35 +528,6 @@ function n52_feature_frontpage_default_page_manager_pages() {
   $pane->uuid = 'feee463e-4160-4f3d-a21b-2f74faa13470';
   $display->content['new-feee463e-4160-4f3d-a21b-2f74faa13470'] = $pane;
   $display->panels['center'][0] = 'new-feee463e-4160-4f3d-a21b-2f74faa13470';
-  $pane = new stdClass();
-  $pane->pid = 'new-8ead351e-9236-417b-83b7-7ee5824030d7';
-  $pane->panel = 'introduction_text';
-  $pane->type = 'node';
-  $pane->subtype = 'node';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'nid' => '8887',
-    'links' => 0,
-    'leave_node_title' => 0,
-    'identifier' => '',
-    'build_mode' => 'full',
-    'link_node_title' => 0,
-    'override_title' => 1,
-    'override_title_text' => '',
-    'override_title_heading' => 'span',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 0;
-  $pane->locks = array();
-  $pane->uuid = '8ead351e-9236-417b-83b7-7ee5824030d7';
-  $display->content['new-8ead351e-9236-417b-83b7-7ee5824030d7'] = $pane;
-  $display->panels['introduction_text'][0] = 'new-8ead351e-9236-417b-83b7-7ee5824030d7';
   $pane = new stdClass();
   $pane->pid = 'new-84bd7d66-7802-401e-acfa-81fc7fcf1670';
   $pane->panel = 'tweets';

@@ -26,9 +26,9 @@
 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 ;  Public License for more details.
 ;
-name = "52N - Standard Label formatter"
+name = "Standard Label formatter"
 description = "This formatter can be used in view modes and displays the WIEu Standard label identifying standard compliance for OGC, INSPIRE, and WFD."
-package = "52N - WaterInnEU"
+package = WaterInnEU
 core = "7.x"
 version = "7.x-1.0"
 

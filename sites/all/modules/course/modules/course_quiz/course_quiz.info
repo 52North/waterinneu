@@ -1,0 +1,17 @@
+name = Course quiz
+description = Exposes Drupal Quiz as a course object.
+package = Course objects
+core = 7.x
+dependencies[] = course
+dependencies[] = quiz
+
+
+files[] = course_quiz.classes.inc
+files[] = course_quiz.test
+
+; Information added by Drupal.org packaging script on 2016-10-12
+version = "7.x-1.10"
+core = "7.x"
+project = "course"
+datestamp = "1476305916"
+
