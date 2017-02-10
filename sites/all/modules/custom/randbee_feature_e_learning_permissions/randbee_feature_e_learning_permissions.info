@@ -1,8 +1,8 @@
-name = Feature - e-learning - Permissions 
+name = Feature - e-learning - Permissions
 description = Permissions for WaterInnEU e-learning feature
 core = 7.x
 package = WaterInnEU
-version = 7.x-1.6
+version = 7.x-1.7
 dependencies[] = better_formats
 dependencies[] = course
 dependencies[] = features
