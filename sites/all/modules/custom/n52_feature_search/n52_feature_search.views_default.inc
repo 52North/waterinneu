@@ -444,7 +444,7 @@ function n52_feature_search_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_service_category']['expose']['reduce'] = 0;
-  /* Filter criterion: Indexed Node: Product */
+  /* Filter criterion: Indexed Node: Products */
   $handler->display->display_options['filters']['field_product']['id'] = 'field_product';
   $handler->display->display_options['filters']['field_product']['table'] = 'search_api_index_service_requests_index';
   $handler->display->display_options['filters']['field_product']['field'] = 'field_product';
