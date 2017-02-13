@@ -14,8 +14,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['access all course reports'] = array(
     'name' => 'access all course reports',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'course',
   );
@@ -24,9 +24,12 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['access course'] = array(
     'name' => 'access course',
     'roles' => array(
-      'course participant' => 'course participant',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'course',
   );
@@ -35,8 +38,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['access course administration area'] = array(
     'name' => 'access course administration area',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'course',
   );
@@ -45,9 +48,13 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['access print'] = array(
     'name' => 'access print',
     'roles' => array(
-      'course participant' => 'course participant',
       'administrator' => 'administrator',
-    	'anonymous user' => 'anonymous user',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'print',
   );
@@ -58,6 +65,10 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'quiz',
   );
@@ -65,14 +76,18 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   // Exported permission: 'add terms in course_type'.
   $permissions['add terms in course_type'] = array(
     'name' => 'add terms in course_type',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy_access_fix',
   );
 
   // Exported permission: 'add_terms_course_type'.
   $permissions['add_terms_course_type'] = array(
     'name' => 'add_terms_course_type',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy_autocomplete_permission',
   );
 
@@ -80,8 +95,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['administer all signups'] = array(
     'name' => 'administer all signups',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'signup',
   );
@@ -90,8 +105,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['administer course'] = array(
     'name' => 'administer course',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'course',
   );
@@ -100,8 +115,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['administer course enrollment types'] = array(
     'name' => 'administer course enrollment types',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'course',
   );
@@ -137,8 +152,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['administer signups for own content'] = array(
     'name' => 'administer signups for own content',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'signup',
   );
@@ -174,8 +189,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['cancel own signups'] = array(
     'name' => 'cancel own signups',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'signup',
   );
@@ -184,8 +199,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['cancel signups'] = array(
     'name' => 'cancel signups',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'signup',
   );
@@ -194,8 +209,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['create course content'] = array(
     'name' => 'create course content',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'node',
   );
@@ -204,6 +219,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['create long_answer content'] = array(
     'name' => 'create long_answer content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -213,6 +229,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['create matching content'] = array(
     'name' => 'create matching content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -222,6 +239,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['create multichoice content'] = array(
     'name' => 'create multichoice content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -231,6 +249,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['create quiz content'] = array(
     'name' => 'create quiz content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -240,6 +259,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['create quiz_ddlines content'] = array(
     'name' => 'create quiz_ddlines content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -249,6 +269,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['create short_answer content'] = array(
     'name' => 'create short_answer content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -258,6 +279,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['create truefalse content'] = array(
     'name' => 'create truefalse content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -267,7 +289,6 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['delete any course content'] = array(
     'name' => 'delete any course content',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
@@ -276,28 +297,36 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   // Exported permission: 'delete any long_answer content'.
   $permissions['delete any long_answer content'] = array(
     'name' => 'delete any long_answer content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any matching content'.
   $permissions['delete any matching content'] = array(
     'name' => 'delete any matching content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any multichoice content'.
   $permissions['delete any multichoice content'] = array(
     'name' => 'delete any multichoice content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any quiz content'.
   $permissions['delete any quiz content'] = array(
     'name' => 'delete any quiz content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -313,21 +342,27 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   // Exported permission: 'delete any quiz_ddlines content'.
   $permissions['delete any quiz_ddlines content'] = array(
     'name' => 'delete any quiz_ddlines content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any short_answer content'.
   $permissions['delete any short_answer content'] = array(
     'name' => 'delete any short_answer content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any truefalse content'.
   $permissions['delete any truefalse content'] = array(
     'name' => 'delete any truefalse content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -335,8 +370,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['delete own course content'] = array(
     'name' => 'delete own course content',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'node',
   );
@@ -345,6 +380,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['delete own long_answer content'] = array(
     'name' => 'delete own long_answer content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -354,6 +390,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['delete own matching content'] = array(
     'name' => 'delete own matching content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -363,6 +400,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['delete own multichoice content'] = array(
     'name' => 'delete own multichoice content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -372,6 +410,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['delete own quiz content'] = array(
     'name' => 'delete own quiz content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -381,6 +420,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['delete own quiz_ddlines content'] = array(
     'name' => 'delete own quiz_ddlines content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -390,6 +430,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['delete own short_answer content'] = array(
     'name' => 'delete own short_answer content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -399,6 +440,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['delete own truefalse content'] = array(
     'name' => 'delete own truefalse content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -416,7 +458,9 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   // Exported permission: 'delete terms in course_type'.
   $permissions['delete terms in course_type'] = array(
     'name' => 'delete terms in course_type',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -424,8 +468,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['edit any course content'] = array(
     'name' => 'edit any course content',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'node',
   );
@@ -433,49 +477,63 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   // Exported permission: 'edit any long_answer content'.
   $permissions['edit any long_answer content'] = array(
     'name' => 'edit any long_answer content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit any matching content'.
   $permissions['edit any matching content'] = array(
     'name' => 'edit any matching content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit any multichoice content'.
   $permissions['edit any multichoice content'] = array(
     'name' => 'edit any multichoice content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit any quiz content'.
   $permissions['edit any quiz content'] = array(
     'name' => 'edit any quiz content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit any quiz_ddlines content'.
   $permissions['edit any quiz_ddlines content'] = array(
     'name' => 'edit any quiz_ddlines content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit any short_answer content'.
   $permissions['edit any short_answer content'] = array(
     'name' => 'edit any short_answer content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit any truefalse content'.
   $permissions['edit any truefalse content'] = array(
     'name' => 'edit any truefalse content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -483,8 +541,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['edit own course content'] = array(
     'name' => 'edit own course content',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'node',
   );
@@ -493,6 +551,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['edit own long_answer content'] = array(
     'name' => 'edit own long_answer content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -502,6 +561,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['edit own matching content'] = array(
     'name' => 'edit own matching content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -511,6 +571,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['edit own multichoice content'] = array(
     'name' => 'edit own multichoice content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -520,6 +581,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['edit own quiz content'] = array(
     'name' => 'edit own quiz content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -529,6 +591,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['edit own quiz_ddlines content'] = array(
     'name' => 'edit own quiz_ddlines content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -538,6 +601,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['edit own short_answer content'] = array(
     'name' => 'edit own short_answer content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -547,8 +611,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['edit own signups'] = array(
     'name' => 'edit own signups',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'signup',
   );
@@ -557,6 +621,7 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['edit own truefalse content'] = array(
     'name' => 'edit own truefalse content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
     ),
     'module' => 'node',
@@ -574,7 +639,9 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   // Exported permission: 'edit terms in course_type'.
   $permissions['edit terms in course_type'] = array(
     'name' => 'edit terms in course_type',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -582,8 +649,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['email all signed up users'] = array(
     'name' => 'email all signed up users',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'signup',
   );
@@ -592,9 +659,9 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['email users signed up for own content'] = array(
     'name' => 'email users signed up for own content',
     'roles' => array(
+      'administrator' => 'administrator',
       'course administrator' => 'course administrator',
       'course participant' => 'course participant',
-      'administrator' => 'administrator',
     ),
     'module' => 'signup',
   );
@@ -611,7 +678,9 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   // Exported permission: 'merge course_type terms'.
   $permissions['merge course_type terms'] = array(
     'name' => 'merge course_type terms',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'term_merge',
   );
 
@@ -630,6 +699,10 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'quiz',
   );
@@ -638,8 +711,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['score taken quiz answer'] = array(
     'name' => 'score taken quiz answer',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'quiz',
   );
@@ -669,10 +742,12 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['sign up for content'] = array(
     'name' => 'sign up for content',
     'roles' => array(
-      'course administrator' => 'course administrator',
-      'course participant' => 'course participant',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'signup',
   );
@@ -690,8 +765,12 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['view all signups'] = array(
     'name' => 'view all signups',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'signup',
   );
@@ -700,8 +779,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['view any quiz question correct response'] = array(
     'name' => 'view any quiz question correct response',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'quiz',
   );
@@ -719,8 +798,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['view own quiz results'] = array(
     'name' => 'view own quiz results',
     'roles' => array(
-      'course participant' => 'course participant',
       'administrator' => 'administrator',
+      'course participant' => 'course participant',
     ),
     'module' => 'quiz',
   );
@@ -729,8 +808,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['view quiz question outside of a quiz'] = array(
     'name' => 'view quiz question outside of a quiz',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'quiz',
   );
@@ -739,8 +818,8 @@ function randbee_feature_e_learning_permissions_user_default_permissions() {
   $permissions['view results for own quiz'] = array(
     'name' => 'view results for own quiz',
     'roles' => array(
-      'course administrator' => 'course administrator',
       'administrator' => 'administrator',
+      'course administrator' => 'course administrator',
     ),
     'module' => 'quiz',
   );

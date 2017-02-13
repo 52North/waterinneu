@@ -16,6 +16,10 @@ function n52_feature_products_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -44,7 +48,10 @@ function n52_feature_products_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -55,6 +62,10 @@ function n52_feature_products_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -63,6 +74,7 @@ function n52_feature_products_user_default_permissions() {
   $permissions['publish revisions of any tool content'] = array(
     'name' => 'publish revisions of any tool content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -72,6 +84,7 @@ function n52_feature_products_user_default_permissions() {
   $permissions['publish revisions of own tool content'] = array(
     'name' => 'publish revisions of own tool content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -81,8 +94,12 @@ function n52_feature_products_user_default_permissions() {
   $permissions['view revisions of any tool content'] = array(
     'name' => 'view revisions of any tool content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -91,8 +108,12 @@ function n52_feature_products_user_default_permissions() {
   $permissions['view revisions of own tool content'] = array(
     'name' => 'view revisions of own tool content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );

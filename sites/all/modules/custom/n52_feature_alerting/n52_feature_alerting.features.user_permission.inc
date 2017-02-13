@@ -52,6 +52,10 @@ function n52_feature_alerting_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'subscriptions',
   );
@@ -62,6 +66,10 @@ function n52_feature_alerting_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'subscriptions',
   );
@@ -72,6 +80,10 @@ function n52_feature_alerting_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'subscriptions',
   );
@@ -82,6 +94,10 @@ function n52_feature_alerting_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'subscriptions',
   );
