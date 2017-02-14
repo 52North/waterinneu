@@ -629,7 +629,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -50,
+    'weight' => -49,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -652,7 +652,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -48,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1264,7 +1264,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -50,
+    'weight' => -49,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1284,7 +1284,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -48,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1304,7 +1304,30 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -47,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: user-menu_newsletter:http://waterinneu.org/subscribe.html.
+  $menu_links['user-menu_newsletter:http://waterinneu.org/subscribe.html'] = array(
+    'menu_name' => 'user-menu',
+    'link_path' => 'http://waterinneu.org/subscribe.html',
+    'router_path' => '',
+    'link_title' => 'Newsletter',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Subscribe to WaterInnEU newsletter.',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'user-menu_newsletter:http://waterinneu.org/subscribe.html',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1324,7 +1347,7 @@ function n52_feature_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => -46,
     'customized' => 1,
     'language' => 'und',
     'menu_links_customized' => 1,
@@ -1358,6 +1381,7 @@ function n52_feature_menus_menu_default_menu_links() {
   t('Matchmaking & Support');
   t('Migrate example - dates');
   t('My Content');
+  t('Newsletter');
   t('Organisation');
   t('Organisations');
   t('Panel');
