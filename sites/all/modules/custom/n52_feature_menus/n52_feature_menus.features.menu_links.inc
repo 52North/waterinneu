@@ -163,6 +163,29 @@ function n52_feature_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: main-menu_water-related-resources:node/8882.
+  $menu_links['main-menu_water-related-resources:node/8882'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/8882',
+    'router_path' => 'node/%',
+    'link_title' => 'Water Related Resources',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'main-menu_water-related-resources:node/8882',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
   // Exported menu link: menu-author_add-content:node/add.
   $menu_links['menu-author_add-content:node/add'] = array(
     'menu_name' => 'menu-author',
