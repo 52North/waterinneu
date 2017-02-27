@@ -16,8 +16,8 @@ function n52_feature_config_default_fe_block_boxes() {
   $fe_block_boxes->machine_name = 'n52_funding_footer';
   $fe_block_boxes->body = '<div id="eu-funding-footer">
     <div id="eu-funding-footer-centralizer">
-        <div id="eu-funding-footer-text">This project has received funding from the European Union\'s Horizon 2020 research and innovation programm under grant agreement No G41821.</div>
         <div id="eu-funding-footer-logo"><img class="print-log-eu" id="eu-logo" typeof="foaf:Image" src="/sites/default/files/logos/eu_flag_yellow_low_75x112.png" alt="EU Flag"></div>
+        <div id="eu-funding-footer-text">This project has received funding from the European Union\'s Horizon 2020 research and innovation programm under grant agreement No 641821.</div>
     </div>
 </div>';
 
