@@ -50,7 +50,7 @@ class CourseObjectQuizTestCase extends CourseTestCase {
       ), t('Save'));
 
     // Makes tests work against 7.x-4.x and 7.x-5.x. Node ID of the question is 3.
-    $answer_element = (course_quiz_quiz_version() >= 5) ? "question[3]" : "tries";
+    $answer_element = (course_quiz_quiz_version() >= 5) ? "question[3][answer]" : "tries";
 
     // Enroll the user in the course
     course_enroll($courseNode, $this->quiz_admin);

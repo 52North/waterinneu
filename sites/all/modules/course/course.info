@@ -12,7 +12,7 @@ test_dependencies[] = entity
 test_dependencies[] = entity_token
 test_dependencies[] = node_access_book
 test_dependencies[] = rules
-php = 5
+php = 5.4.0
 package = Course
 configure = admin/course
 files[] = includes/CourseController.inc
@@ -49,9 +49,9 @@ files[] = views/handlers/views_handler_filter_course.inc
 files[] = views/handlers/views_join_course.inc
 files[] = views/plugins/views_plugin_argument_validate_course.inc
 
-; Information added by Drupal.org packaging script on 2016-10-12
-version = "7.x-1.10"
+; Information added by Drupal.org packaging script on 2017-02-17
+version = "7.x-1.11"
 core = "7.x"
 project = "course"
-datestamp = "1476305916"
+datestamp = "1487351587"
 

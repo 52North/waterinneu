@@ -483,6 +483,7 @@ function course_schema() {
     'indexes' => array(
       'coid' => array('coid'),
       'date_completed' => array('date_completed'),
+      'instance' => array('instance'),
     ),
   );
 
@@ -1238,4 +1239,14 @@ function course_update_7139() {
   ));
 
   return t('Added index on "instance" column. Changed existing instance field to a varchar for 3rd party systems.');
+}
+
+/**
+ * Add an index on fulfillment "instance".
+ */
+function course_update_7140() {
+  if (!db_index_exists('course_outline_fulfillment', 'instance')) {
+    db_add_index('course_outline_fulfillment', 'instance', array('instance'));
+  }
+  return t('Added index on fulfillment "instance" column.');
 }

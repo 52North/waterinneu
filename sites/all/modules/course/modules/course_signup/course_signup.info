@@ -10,9 +10,9 @@ files[] = course_signup.test
 files[] = course_signup_views_handler_relationship_ce_sl.inc
 files[] = course_signup_views_handler_relationship_sl_ce.inc
 
-; Information added by Drupal.org packaging script on 2016-10-12
-version = "7.x-1.10"
+; Information added by Drupal.org packaging script on 2017-02-17
+version = "7.x-1.11"
 core = "7.x"
 project = "course"
-datestamp = "1476305916"
+datestamp = "1487351587"
 
