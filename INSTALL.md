@@ -3,16 +3,25 @@
 Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/www/``` with the folder that match your environment.
 
 1. Fullfill Drupal requirements first: https://www.drupal.org/requirements
+
     * PHP environment
     * Running database server with own database for drupal (credentials are required during installation of drupal).
 
+
 1. Checkout this repo in the dedicated webserver directory with php support:
 
-    ```user@host:/var/www$ git clone <git-url-of-this-repo> waterinneu```
+    ```
+    user@host:/var/www$ git clone <git-url-of-this-repo> waterinneu
+    ```
 
-1. Set-Up database: Install the MySQL script  ```/var/www/waterinneu/config-backup/WaterInnEUMarketplacePrototype_installation.mysql.zip``` (Extract beforehand).
+1. Set-Up database: Install the MySQL script  ```/var/www/waterinneu/config-backup/WaterInnEUMarketplacePrototype_installation.mysql.zip``` (Extract beforehand) into the database, e.g. by using phpMyAdmin. Adjust the database name in the file using your favorite text editor:
 
-    into the database, e.g. by using phpMyAdmin.
+   ```sql
+   CREATE DATABASE IF NOT EXISTS `YOUR_DB_NAME` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+   USE `YOUR_DB_NAME`;
+   ```
+
+   Replace ```YOUR_DB_NAME``` with the name you want to have.
 
 1. Configure the database for drupal: Create the file ```/var/www/waterinneu/sites/default/settings.php``` with the following content:
 
@@ -49,7 +58,9 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
     ```
 1. Ensure that the file is protected, e.g.
 
-  ```user@host:/var/www$ chmod 440 /var/www/waterinneu/sites/default/settings.php```
+  ```
+  user@host:/var/www$ chmod 440 /var/www/waterinneu/sites/default/settings.php
+  ```
 
   More detailed instructions regarding secure file permission set-up for Drupal can be found at
 
@@ -63,31 +74,42 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
 
 1. Update the administrator account to match your set-up. Change the password and e-mail address at the following page:
 
-    ``` http://localhost/en/user/1/edit ```
+    ```
+    http://localhost/en/user/1/edit
+    ```
 
 1. Configure SMTP module for sending and receiving system mails. Change the STMP configuration at the following page:
 
-    ``` http://localhost/en/admin/config/system/smtp ```
+    ```
+    http://localhost/en/admin/config/system/smtp
+    ```
 
 1. Set-Up drupal cron: For testing the so called poor man's cron is enough. Go to
 
-     ``` http://localhost/en/admin/config/system/cron ```
+     ```
+     http://localhost/en/admin/config/system/cron
+     ```
 
   and select ```1 hour```. This will result in the execution of cron tasks every hour at the end of any request. For production set-up, follow these instructions:
-
   http://drupal.org/cron
 
 1. Adjust the imprint: Go to the following page and adjust the imprint to your needs:
 
-  ``` http://localhost/en/imprint ```
+  ```
+  http://localhost/en/imprint
+  ```
 
 1. Update the _widget ID_ and _username_ of the twitter block to your needs:
 
-   ``` http://localhost/en/admin/structure/block/manage/twitter_block/1/configure ```
+   ```
+   http://localhost/en/admin/structure/block/manage/twitter_block/1/configure
+   ```
 
 1. Adjust the e-mail that receives comment handling requests at the following page:
 
-   ``` http://localhost/en/admin/config/system/actions/configure/111 ```
+   ```
+   http://localhost/en/admin/config/system/actions/configure/111
+   ```
 
 1. Clear cache: Select ```Flush all caches``` from the black admin menu on top. Mouse over the house icon.
 
@@ -95,23 +117,40 @@ Replace ```http://localhost/``` with the hostname, port and scheme and ```/var/w
 
    1. ...subscription from under **Mail settings**:
 
-     ``` http://localhost/en/admin/config/system/subscriptions ```
+     ```
+     http://localhost/en/admin/config/system/subscriptions
+     ```
+
    1. ...in the **maintenance mode** message:
 
-     ``` http://localhost/en/admin/config/development/maintenance ```
+     ```
+     http://localhost/en/admin/config/development/maintenance
+     ```
 
    1. ...in the **site information** form:
-   
-     ``` http://localhost/en/admin/config/system/site-information ```
 
-1. Test contact form: Open the following link and try to send a mail via the global contact form:
+     ```
+     http://localhost/en/admin/config/system/site-information
+     ```
 
-    ``` http://localhost/en/contact ```
+   1. ...for all **contact form categories**:
+
+     ```
+     http://localhost/en/admin/structure/contact
+     ```
+
+1. Test the contact form: Open the following link and try to send a mail via the global contact form:
+
+    ```
+    http://localhost/en/contact
+    ```
 
   If the mails doesn't reach your inbox, you should review the configuration of the STMP module (see according section above).
 
 1. Update all dependencies: Open the following URL
 
-    ``` http://localhost/drupal/en/admin/reports/updates/update ```
+    ```
+    http://localhost/drupal/en/admin/reports/updates/update
+    ```
 
-  If the latest check is not 0 seconds ago, click on the link "check manuall".
+  If the latest check is not 0 seconds ago, click on the link "check manually".
