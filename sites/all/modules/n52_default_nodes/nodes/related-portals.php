@@ -53,6 +53,26 @@ function _n52_default_nodes_related_portals() {
 <div id="portal-list" class="container-fluid">
 <div class="row">
 	<div class="col-md-1">
+		<img class="portal-logo" src="sites/default/files/logos/the-european-innovation-partnership-on-water-online-marketplace-22-638.png" 
+			alt="Logo Example" width="100" height="100" />
+		<a class="portal-link" href="http://www.eip-water.eu/">EIP Water</a>
+		<p class="portal-description">
+				<strong>Expertise(s):</strong>
+				<br />
+				The EIP Water Market Place is a resource from the European Innovation 
+				Partnership (EIP) aimed at creating a grown community of practice, 
+				providing a single point of acces for information, being a matchmaking 
+				tool for sharing ideas and needs and providing a virtual meeting point 
+				for joint development in water innovation ideas. Users can freely 
+				register and edit a profile and join or consult an action group. It 
+				offers a water innovation map collecting news, organisations, projects 
+				and services. It is a good resource in creating community although not 
+				so efficient in finding really usable resources.
+		</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-1">
 		<img class="portal-logo" src="sites/default/files/logos/aquaknow_logo.png" 
 			alt="Logo Aquaknow" width="100" height="100" />
 		<a class="portal-link" href="http://www.aquaknow.net/" target="_blank"
@@ -133,24 +153,6 @@ function _n52_default_nodes_related_portals() {
 				countries. It provides a forum and access to data and tools, serving 
 				as a repository of the data uploaded by its members. It covers several 
 				environmental fields.
-		</p>
-	</div>
-	<div class="col-md-1">
-		<img class="portal-logo" src="sites/default/files/logos/the-european-innovation-partnership-on-water-online-marketplace-22-638.png" 
-			alt="Logo Example" width="100" height="100" />
-		<a class="portal-link" href="http://www.eip-water.eu/">EIP Water</a>
-		<p class="portal-description">
-				<strong>Expertise(s):</strong>
-				<br />
-				The EIP Water Market Place is a resource from the European Innovation 
-				Partnership (EIP) aimed at creating a grown community of practice, 
-				providing a single point of acces for information, being a matchmaking 
-				tool for sharing ideas and needs and providing a virtual meeting point 
-				for joint development in water innovation ideas. Users can freely 
-				register and edit a profile and join or consult an action group. It 
-				offers a water innovation map collecting news, organisations, projects 
-				and services. It is a good resource in creating community although not 
-				so efficient in finding really usable resources.
 		</p>
 	</div>
 	<div class="col-md-1">

@@ -34,45 +34,45 @@
  * - matchmaking page
  */
 function n52_central_subscribe_node_view_alter(&$build) {
-	if (n52_urlEndsWith(request_path(),"matchmaking")) {
-		$build['#post_render'][] = 'n52_central_subscribe_post_render';
-	}
+  if (n52_urlEndsWith(request_path(),"matchmaking")) {
+    $build['#post_render'][] = 'n52_central_subscribe_post_render';
+  }
 }
 
 function n52_central_subscribe_post_render(&$content, &$element) {
-	global $user;
-	if (user_is_logged_in() && user_access('subscribe to content', $user)) {
-		// render subscribe form
-		$form = drupal_get_form('n52_central_subscribe_form');
-		$form_content = drupal_render($form);
-		$block_content = $form_content;
-	}
-	// else
-	else {
-		// create info message to login for subscriptions
-		$block_content = 
-			'<div class="alert alert-info">' .
-			t('<a href="@login">Log in</a> or <a href="@register">register</a> to subscribe.',
-				array (
-					'@login' => url(
-						'user/login',
-						array ('query' => array( 'destination' => current_path() . '#alerts'))
-					),
-					'@register' => url(
-						'user/register',
-						array ('query' => array ('destination' => current_path() . '#alerts'))
-					),
-				)
-			) . 
-			'</div>';
-	}
-	// replace subscribe form
-	$div_id = 'subscribe-form';
-	$content = str_replace(
-			'<div id="' . $div_id . '"></div>',
-			'<div id="' . $div_id . '">' . $block_content . '</div>',
-			$content);
-	return $content;
+  global $user;
+  if (user_is_logged_in() && user_access('subscribe to content', $user)) {
+    // render subscribe form
+    $form = drupal_get_form('n52_central_subscribe_form');
+    $form_content = drupal_render($form);
+    $block_content = $form_content;
+  }
+  // else
+  else {
+    // create info message to login for subscriptions
+    $block_content =
+      '<div class="alert alert-info">' .
+      t('<a href="@login">Log in</a> or <a href="@register">register</a> to subscribe.',
+        array (
+          '@login' => url(
+            'user/login',
+            array ('query' => array( 'destination' => current_path() . '#alerts'))
+          ),
+          '@register' => url(
+            'user/register',
+            array ('query' => array ('destination' => current_path() . '#alerts'))
+          ),
+        )
+      ) .
+      '</div>';
+  }
+  // replace subscribe form
+  $div_id = 'subscribe-form';
+  $content = str_replace(
+      '<div id="' . $div_id . '"></div>',
+      '<div id="' . $div_id . '">' . $block_content . '</div>',
+      $content);
+  return $content;
 }
 /**
  * Implements hook_form_FORM_ID_alter()
@@ -80,71 +80,71 @@ function n52_central_subscribe_post_render(&$content, &$element) {
  *  Adds dynamic content to the form
  */
 function n52_central_subscribe_form_n52_central_subscribe_form_alter(&$form, &$form_state, $form_id){
-	// get list of all subscribable content types
-	$blocked_types = variable_get('subscriptions_blocked_content_types', array());
-	$available_types = node_type_get_names();
-	$allowed_types = array_diff_key($available_types, $blocked_types);
-	asort($allowed_types);
-	// get list of all subscribable taxonomy terms relevant for subscription
-	$blocked_vocabs = variable_get('subscriptions_restricted_taxa', array());
-	$blocked_vocabs = array_merge($blocked_vocabs, variable_get('subscriptions_omitted_taxa', array()));
-	$available_vocabs = n52_taxonomy_name_vid_map();
-	$allowed_vocabs = array_diff($available_vocabs, $blocked_vocabs);
-	ksort($allowed_vocabs);
-	// create subscribe form
-	// for each content type add a checkbox
-	$form['content_type'] = array(
-			'#type' => 'select',
-			'#multiple' => FALSE,
-			'#title' => t('Entry Type'),
-			'#description' => t('Please select the type of entries:'),
-			'#required' => TRUE,
-			'#options' => $allowed_types,
-			'#size' => 1,
-			'#empty_option' => '',
-			'#weight' => -2,
-			'#chosen' => TRUE,
-			'#description' => t('Different groups of terms will be available ' .
-					'depending on your selection.'),
-	);
-	// for each vocabulary get the terms and add a multi-select for each vocab
-	$vid_to_type_map = n52_taxonomy_get_vid_content_type_map();
-	foreach ($allowed_vocabs as $allowed_vocab) {
-		$allowed_terms = array();
-		$terms = taxonomy_get_tree($allowed_vocab);
-		if (count($terms) < 1) {
-			continue;
-		}
-		foreach ($terms as $term) {
-			$allowed_terms[$term->tid] = $term->name;
-		}
-		$state_type_trigger = array();
-		foreach ($vid_to_type_map[$allowed_vocab] as $type) {
-			$state_type_trigger[] = array ('value' => $type);
-		}
-		$form['vocabulary_' . n52_taxonomy_get_machine_name_by_vid($allowed_vocab)] = array(
-				'#type' => 'select',
-				'#multiple' => TRUE,
-				'#title' => n52_taxonomy_get_name_by_vid($allowed_vocab) . ':',
-				'#required' => FALSE,
-				'#options' => $allowed_terms,
-				'#size' => 1,
-				'#weight' => -1,
-				'#chosen' => TRUE,
-				'#description' => t('Please select the type of "'
-						. n52_taxonomy_get_name_by_vid($allowed_vocab)
-						. '". Click in the field to see potential items'
-						. ' for selection.<br />'
-						. 'Click on the <b>x</b>  of an selected'
-						. ' item to remove it.'),
-				'#states' => array (
-						'visible' => array (
-								':input[name="content_type"]' => $state_type_trigger,
-						),
-				),
-		);
-	}
-	return $form;
+  // get list of all subscribable content types
+  $blocked_types = variable_get('subscriptions_blocked_content_types', array());
+  $available_types = node_type_get_names();
+  $allowed_types = array_diff_key($available_types, $blocked_types);
+  asort($allowed_types);
+  // get list of all subscribable taxonomy terms relevant for subscription
+  $blocked_vocabs = variable_get('subscriptions_restricted_taxa', array());
+  $blocked_vocabs = array_merge($blocked_vocabs, variable_get('subscriptions_omitted_taxa', array()));
+  $available_vocabs = n52_taxonomy_name_vid_map();
+  $allowed_vocabs = array_diff($available_vocabs, $blocked_vocabs);
+  ksort($allowed_vocabs);
+  // create subscribe form
+  // for each content type add a checkbox
+  $form['content_type'] = array(
+      '#type' => 'select',
+      '#multiple' => FALSE,
+      '#title' => t('Entry Type'),
+      '#description' => t('Please select the type of entries:'),
+      '#required' => TRUE,
+      '#options' => $allowed_types,
+      '#size' => 1,
+      '#empty_option' => '',
+      '#weight' => -2,
+      '#chosen' => TRUE,
+      '#description' => t('Different groups of terms will be available ' .
+          'depending on your selection.'),
+  );
+  // for each vocabulary get the terms and add a multi-select for each vocab
+  $vid_to_type_map = n52_taxonomy_get_vid_content_type_map();
+  foreach ($allowed_vocabs as $allowed_vocab) {
+    $allowed_terms = array();
+    $terms = taxonomy_get_tree($allowed_vocab);
+    if (count($terms) < 1) {
+      continue;
+    }
+    foreach ($terms as $term) {
+      $allowed_terms[$term->tid] = $term->name;
+    }
+    $state_type_trigger = array();
+    foreach ($vid_to_type_map[$allowed_vocab] as $type) {
+      $state_type_trigger[] = array ('value' => $type);
+    }
+    $form['vocabulary_' . n52_taxonomy_get_machine_name_by_vid($allowed_vocab)] = array(
+        '#type' => 'select',
+        '#multiple' => TRUE,
+        '#title' => n52_taxonomy_get_name_by_vid($allowed_vocab) . ':',
+        '#required' => FALSE,
+        '#options' => $allowed_terms,
+        '#size' => 1,
+        '#weight' => -1,
+        '#chosen' => TRUE,
+        '#description' => t('Please select the type of "'
+            . n52_taxonomy_get_name_by_vid($allowed_vocab)
+            . '". Click in the field to see potential items'
+            . ' for selection.<br />'
+            . 'Click on the <b>x</b>  of an selected'
+            . ' item to remove it.'),
+        '#states' => array (
+            'visible' => array (
+                ':input[name="content_type"]' => $state_type_trigger,
+            ),
+        ),
+    );
+  }
+  return $form;
 }
 
 /**
@@ -154,40 +154,40 @@ function n52_central_subscribe_form_n52_central_subscribe_form_alter(&$form, &$f
  * and for each select term. 
  */
 function n52_central_subscribe_form_submit($form, &$form_state) {
-	global $user;
-	// get content type for subscription
-	$type = $form_state['values']['content_type'];
-	if (empty($type)){
-		drupal_set_message(t('Entry type not selected'),'error',FALSE);
-		return;
-	}
-	drupal_set_message(t('The form has been submitted.'));
-	// get term ids for subscription
-	$selected_term_ids = array();
-	foreach ($form_state['values'] as $key => $term_ids) {
-	    if (strpos($key, 'vocabulary_') === 0 && !empty($term_ids)) {
-	    	foreach ($term_ids as $tid) {
-	        	$selected_term_ids[] = $tid;
-	    	}
-	    }
-	}
-	$send_interval = _subscriptions_get_setting('send_interval', $user);
-	$send_updates = $form_state['values']['send_updates'];
-	$send_comments = $form_state['values']['send_comments'];
-	// subscribe to content type
-	subscriptions_write_subscription('node', 'type', $type, -1, $user->uid, 
-			$send_interval, $send_updates, $send_comments);
-	if (!empty($selected_term_ids)){
-		// for each term id
-		foreach($selected_term_ids as $tid) {
-			// subscribe to term_id
-			subscriptions_write_subscription('node', 'tid', $tid, -1, $user->uid,
-					$send_interval, $send_updates, $send_comments);	
-		}
-	}
-	$form_state['redirect'] = array (
-			'user/' . $user->uid . '/subscriptions',
-	);
+  global $user;
+  // get content type for subscription
+  $type = $form_state['values']['content_type'];
+  if (empty($type)){
+    drupal_set_message(t('Entry type not selected'),'error',FALSE);
+    return;
+  }
+  drupal_set_message(t('The form has been submitted.'));
+  // get term ids for subscription
+  $selected_term_ids = array();
+  foreach ($form_state['values'] as $key => $term_ids) {
+      if (strpos($key, 'vocabulary_') === 0 && !empty($term_ids)) {
+        foreach ($term_ids as $tid) {
+            $selected_term_ids[] = $tid;
+        }
+      }
+  }
+  $send_interval = _subscriptions_get_setting('send_interval', $user);
+  $send_updates = $form_state['values']['send_updates'];
+  $send_comments = $form_state['values']['send_comments'];
+  // subscribe to content type
+  subscriptions_write_subscription('node', 'type', $type, -1, $user->uid, 
+      $send_interval, $send_updates, $send_comments);
+  if (!empty($selected_term_ids)){
+    // for each term id
+    foreach($selected_term_ids as $tid) {
+      // subscribe to term_id
+      subscriptions_write_subscription('node', 'tid', $tid, -1, $user->uid,
+          $send_interval, $send_updates, $send_comments);  
+    }
+  }
+  $form_state['redirect'] = array (
+      'user/' . $user->uid . '/subscriptions',
+  );
 }
 
 /**
@@ -196,31 +196,31 @@ function n52_central_subscribe_form_submit($form, &$form_state) {
  * Creates the basic form with non dynamic content
  */
 function n52_central_subscribe_form($form_state) {
-	$form['form_separator_1']['#markup'] =	'<hr />';
-	$form['mail_info'] = array (
-			'#type' => 'checkbox',
-			'#title' => t('I am aware of the fact that I might receive serveral'
-				. ' mails because of this subscription.'),
-			'#required' => TRUE,
-	);
-	$form['send_updates'] = array (
-			'#type' => 'checkbox',
-			'#title' => t('Do you want to receive notification on entry updates?'),
-			'#default_value' => 1,
-	);
-	$form['send_comments'] = array (
-			'#type' => 'checkbox',
-			'#title' => t('Do you want to receive notifications if a comment is added to an entry?'),
-			'#default_value' => 0,
-	);
-	$form['form_info']['#markup'] = 
-		'<hr />'
-			. t('Fields marked with <span class="form-required" title="This field is '
-			. 'required.">*</span> are mandatory.') 
-			. '<br />';
-	$form['subscribe'] = array(
-			'#type' => 'submit',
-			'#value' => t('Subscribe'),
-	);
-	return $form;
+  $form['form_separator_1']['#markup'] =  '<hr />';
+  $form['mail_info'] = array (
+      '#type' => 'checkbox',
+      '#title' => t('I am aware of the fact that I might receive serveral'
+        . ' mails because of this subscription.'),
+      '#required' => TRUE,
+  );
+  $form['send_updates'] = array (
+      '#type' => 'checkbox',
+      '#title' => t('Do you want to receive notification on entry updates?'),
+      '#default_value' => 1,
+  );
+  $form['send_comments'] = array (
+      '#type' => 'checkbox',
+      '#title' => t('Do you want to receive notifications if a comment is added to an entry?'),
+      '#default_value' => 0,
+  );
+  $form['form_info']['#markup'] = 
+    '<hr />'
+      . t('Fields marked with <span class="form-required" title="This field is '
+      . 'required.">*</span> are mandatory.') 
+      . '<br />';
+  $form['subscribe'] = array(
+      '#type' => 'submit',
+      '#value' => t('Subscribe'),
+  );
+  return $form;
 }

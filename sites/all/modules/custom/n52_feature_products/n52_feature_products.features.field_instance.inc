@@ -2207,7 +2207,7 @@ function n52_feature_products_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'E-learning material available for the product on the marketplace.
 <div class="author-instructions">
-    Please enter the link to the course, e.g. <code>/course/your-course-title</code> in the <strong>URL</strong> and add the course title in the <strong>Title</strong> field. You can add as many courses as available. Select them from the course inventory available via the "E-Learning" menu item.
+    Please enter the link to the course, e.g. <code>scheme://host/context/course/your-course-title</code> in the <strong>URL</strong> and add the course title in the <strong>Title</strong> field. You can add as many courses as available. Select them from the course inventory available via the <strong>E-Learning</strong> menu item.
 </div>',
     'display' => array(
       'default' => array(
@@ -5206,7 +5206,7 @@ function n52_feature_products_field_default_field_instances() {
   t('E-Learning');
   t('E-learning material available for the product on the marketplace.
 <div class="author-instructions">
-    Please enter the link to the course, e.g. <code>/course/your-course-title</code> in the <strong>URL</strong> and add the course title in the <strong>Title</strong> field. You can add as many courses as available. Select them from the course inventory available via the "E-Learning" menu item.
+    Please enter the link to the course, e.g. <code>scheme://host/context/course/your-course-title</code> in the <strong>URL</strong> and add the course title in the <strong>Title</strong> field. You can add as many courses as available. Select them from the course inventory available via the <strong>E-Learning</strong> menu item.
 </div>');
   t('Existing (data-) systems the product can be used with.');
   t('Expressed Interest');

@@ -1301,7 +1301,15 @@ function course_take_course($node) {
       }
     }
 
-    $enrollment = course_enroll($node, $user);
+    // No fields to show. Check for enrollment. If it does not exist, create it.
+    if (empty($enrollment)) {
+      $enrollment = entity_create('course_enrollment', array(
+        'nid' => $node->nid,
+        'uid' => $user->uid,
+        'type' => $node->course['enrollment_type'],
+      ));
+      $enrollment->save();
+    }
   }
 
   $take_access = course_take_course_access($node);
@@ -1852,7 +1860,7 @@ function course_action_info() {
  */
 function course_add_enrollment_action($user, $context) {
   if ($node = node_load($_SESSION['vbo_course'])) {
-    course_enroll($node, $user);
+    course_enroll($node, $user, 'course_add_enrollment_action');
     drupal_set_message(t("Enrolled %name in %title.", array('%name' => $user->name, '%title' => $node->title)));
   }
 }
@@ -2591,7 +2599,11 @@ function course_object_autocomplete_node($types, $string) {
   $values = explode(',', $types);
   $query = db_select('node', 'n');
   $query->condition('n.type', $values, 'in')
-    ->condition('n.title', "%$string%", 'like')
+    ->condition(
+     db_or()
+      ->condition('n.title', "%$string%", 'like')
+      ->condition('n.nid', $string)
+    )
     ->fields('n', array('nid', 'title'))
     ->range(0, 10);
   $result = $query->execute();

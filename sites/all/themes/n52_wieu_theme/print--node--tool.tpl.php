@@ -156,7 +156,7 @@
       <table id="meta-text-table">
     		<tbody>
     			<tr>
-    				<td class="meta-text-table-cell"><p><?php print t('This project has received funding from the European Union\'s  Horizon 2020 research and innovation programm under grant agreement No G41821.'); ?></p></td>
+    				<td class="meta-text-table-cell"><p><?php print t('This project has received funding from the European Union\'s  Horizon 2020 research and innovation programm under grant agreement No 641821.'); ?></p></td>
     				<td class="table-cell-centered"><a href="http://www.waterinneu.org/" target="_blank">www.waterinneu.org</a></td>
     			</tr>
     			<?php if ($sourceurl_enabled): ?>

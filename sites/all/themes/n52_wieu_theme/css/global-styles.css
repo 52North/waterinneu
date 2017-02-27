@@ -209,7 +209,7 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 #main-navigation ul.menu li a {
   text-transform: unset;
-  font-size: 175%;
+  font-size: 150%;
   font-weight: normal;
   line-height: 150%;
   padding: 10px 20px;
@@ -265,18 +265,18 @@ div#eu-funding-footer {
 }
 
 div#eu-funding-footer-centralizer {
-  margin-left: auto;
   margin-right: auto;
 }
 
 div#eu-funding-footer-text {
-  margin-top: 25px;
-  float: left;
+  margin-top: 15px;
+  font-size: 90%;
 }
 
 div#eu-funding-footer-logo {
-  float: right;
-  padding-left: 10px;
+  float: left;
+  padding-right: 10px;
+  padding-left: 2px;
 }
 
 

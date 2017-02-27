@@ -104,8 +104,12 @@ abstract class CourseObject extends CourseHandler {
           $access = TRUE;
         }
 
-        if ($course->getPrev() && (!$course->getPrev()->isRequired() || ($course->getPrev()->isRequired() && $course->getPrev()->isSkippable()))) {
-          // Previous step was not required.
+        if (!$course->getPrev()) {
+          // There wasn't a previous object.
+          $access = TRUE;
+        }
+        elseif (!$course->getPrev()->isRequired() || $course->getPrev()->isSkippable()) {
+          // Previous step was not required, or was skippable.
           $access = TRUE;
 
           // But we need to see if at least one required step was completed (or the start of the course).
@@ -141,8 +145,7 @@ abstract class CourseObject extends CourseHandler {
             }
           }
         }
-
-        if ($course->getPrev() && $course->getPrev()->getFulfillment()->isComplete()) {
+        elseif ($course->getPrev()->getFulfillment()->isComplete()) {
           // If last object was complete, and we are on the current object,
           // grant access.
           $access = TRUE;
@@ -1089,7 +1092,7 @@ abstract class CourseObject extends CourseHandler {
 
       $step['class'][] = drupal_html_class($this->getComponent() . '_' . $this->getModule());
 
-      $img = !empty($step['image']) ? theme('image', array('path' => $step['image'])) : '';
+      $img = !empty($step['image']) ? theme('image', array('path' => $step['image'], 'alt' => strip_tags($step['status']))) : '';
 
 
       $content['course_outline_image'] = array(

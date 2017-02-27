@@ -41,6 +41,34 @@ class CourseEnrollmentTestCase extends CourseTestCase {
   }
 
   /**
+   * Test a manual course enrollment. Ensure that created and started timestamping
+   * works as expected.
+   */
+  function testCourseEnrollmentTimestamps() {
+    $courseNode = $this->createCourseNode();
+
+    $course_enrollment = entity_create('course_enrollment', array(
+      'nid' => $courseNode->nid,
+      'uid' => $this->student_user->uid,
+      'type' => $courseNode->course['enrollment_type'],
+    ));
+    $course_enrollment->save();
+
+    $initial_created = $course_enrollment->created;
+    $this->assertTrue($initial_created > 0, t('Enrollment creation date was set.'));
+    $this->assertEqual($course_enrollment->timestamp, 0, t('Enrollment timestamp not set.'));
+    sleep(1);
+
+    $this->drupalLogin($this->student_user);
+    $this->drupalGet("node/$courseNode->nid/takecourse");
+
+    $new_enrollment = course_enrollment_load($course_enrollment->eid);
+
+    $this->assertEqual($initial_created, $new_enrollment->created, t('Enrollment creation date retained.'));
+    $this->assertTrue($new_enrollment->timestamp > 0, t('Enrollment timestamp set.'));
+  }
+
+  /**
    * Test for course duration being set properly on enrollment.
    */
   function testCourseDuration() {

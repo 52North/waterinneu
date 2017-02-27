@@ -16,6 +16,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
       'translation manager' => 'translation manager',
     ),
     'module' => 'tmgmt',
@@ -27,6 +30,11 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'print_pdf',
   );
@@ -52,10 +60,17 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'access all views'.
   $permissions['access all views'] = array(
     'name' => 'access all views',
+    'roles' => array(),
+    'module' => 'views',
+  );
+
+  // Exported permission: 'access all webform results'.
+  $permissions['access all webform results'] = array(
+    'name' => 'access all webform results',
     'roles' => array(
       'administrator' => 'administrator',
     ),
-    'module' => 'views',
+    'module' => 'webform',
   );
 
   // Exported permission: 'access atjs'.
@@ -64,6 +79,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'atjs',
   );
@@ -93,6 +112,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'comment',
   );
@@ -104,6 +127,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -140,6 +167,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'access devel information',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'devel',
   );
@@ -169,6 +202,24 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'aggregator',
+  );
+
+  // Exported permission: 'access own webform results'.
+  $permissions['access own webform results'] = array(
+    'name' => 'access own webform results',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'webform',
+  );
+
+  // Exported permission: 'access own webform submissions'.
+  $permissions['access own webform submissions'] = array(
+    'name' => 'access own webform submissions',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'webform',
   );
 
   // Exported permission: 'access security review list'.
@@ -205,6 +256,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'contact',
   );
@@ -215,6 +270,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'contact',
   );
@@ -226,6 +285,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'add JS snippets for piwik'.
+  $permissions['add JS snippets for piwik'] = array(
+    'name' => 'add JS snippets for piwik',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'piwik',
   );
 
   // Exported permission: 'add terms in costs'.
@@ -241,7 +309,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add terms in data_discovery_standards'] = array(
     'name' => 'add terms in data_discovery_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_access_fix',
   );
@@ -250,7 +323,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add terms in data_downloading_standards'] = array(
     'name' => 'add terms in data_downloading_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_access_fix',
   );
@@ -259,7 +337,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add terms in data_encoding_standards'] = array(
     'name' => 'add terms in data_encoding_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_access_fix',
   );
@@ -268,7 +351,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add terms in data_visualization_standards'] = array(
     'name' => 'add terms in data_visualization_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_access_fix',
   );
@@ -331,7 +419,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add terms in other_standards'] = array(
     'name' => 'add terms in other_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_access_fix',
   );
@@ -340,7 +433,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add terms in processes_and_models_standards'] = array(
     'name' => 'add terms in processes_and_models_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_access_fix',
   );
@@ -358,7 +456,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add terms in sensor_data_standards'] = array(
     'name' => 'add terms in sensor_data_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_access_fix',
   );
@@ -439,7 +542,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add_terms_data_discovery_standards'] = array(
     'name' => 'add_terms_data_discovery_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_autocomplete_permission',
   );
@@ -448,7 +556,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add_terms_data_downloading_standards'] = array(
     'name' => 'add_terms_data_downloading_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_autocomplete_permission',
   );
@@ -457,7 +570,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add_terms_data_encoding_standards'] = array(
     'name' => 'add_terms_data_encoding_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_autocomplete_permission',
   );
@@ -466,7 +584,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add_terms_data_visualization_standards'] = array(
     'name' => 'add_terms_data_visualization_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_autocomplete_permission',
   );
@@ -510,7 +633,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'add_terms_n52_event_categories'.
   $permissions['add_terms_n52_event_categories'] = array(
     'name' => 'add_terms_n52_event_categories',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy_autocomplete_permission',
   );
 
@@ -527,7 +652,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add_terms_other_standards'] = array(
     'name' => 'add_terms_other_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_autocomplete_permission',
   );
@@ -538,6 +668,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_autocomplete_permission',
   );
@@ -555,7 +689,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['add_terms_sensor_data_standards'] = array(
     'name' => 'add_terms_sensor_data_standards',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'taxonomy_autocomplete_permission',
   );
@@ -947,6 +1086,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'module_filter',
   );
 
+  // Exported permission: 'administer module missing message fixer'.
+  $permissions['administer module missing message fixer'] = array(
+    'name' => 'administer module missing message fixer',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'module_missing_message_fixer',
+  );
+
   // Exported permission: 'administer modules'.
   $permissions['administer modules'] = array(
     'name' => 'administer modules',
@@ -1001,9 +1149,36 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'panels_node',
   );
 
+  // Exported permission: 'administer panels display styles'.
+  $permissions['administer panels display styles'] = array(
+    'name' => 'administer panels display styles',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
   // Exported permission: 'administer panels layouts'.
   $permissions['administer panels layouts'] = array(
     'name' => 'administer panels layouts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'administer panels pane styles'.
+  $permissions['administer panels pane styles'] = array(
+    'name' => 'administer panels pane styles',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'administer panels region styles'.
+  $permissions['administer panels region styles'] = array(
+    'name' => 'administer panels region styles',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -1035,6 +1210,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'administer piwik'.
+  $permissions['administer piwik'] = array(
+    'name' => 'administer piwik',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'piwik',
   );
 
   // Exported permission: 'administer profiler builder'.
@@ -1230,16 +1414,16 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'bypass access in place editing'.
   $permissions['bypass access in place editing'] = array(
     'name' => 'bypass access in place editing',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'panels',
   );
 
   // Exported permission: 'bypass node access'.
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -1292,7 +1476,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['create event content'] = array(
     'name' => 'create event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1312,7 +1501,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1323,6 +1515,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1351,6 +1547,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1359,7 +1559,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['create service_offering content'] = array(
     'name' => 'create service_offering content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1368,7 +1573,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['create service_request content'] = array(
     'name' => 'create service_request content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1392,6 +1602,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'path',
   );
 
+  // Exported permission: 'create webform content'.
+  $permissions['create webform content'] = array(
+    'name' => 'create webform content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'customize shortcut links'.
   $permissions['customize shortcut links'] = array(
     'name' => 'customize shortcut links',
@@ -1399,6 +1618,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'shortcut',
+  );
+
+  // Exported permission: 'delete all webform submissions'.
+  $permissions['delete all webform submissions'] = array(
+    'name' => 'delete all webform submissions',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'webform',
   );
 
   // Exported permission: 'delete any article content'.
@@ -1467,14 +1695,27 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'delete any service_offering content'.
   $permissions['delete any service_offering content'] = array(
     'name' => 'delete any service_offering content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any service_request content'.
   $permissions['delete any service_request content'] = array(
     'name' => 'delete any service_request content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any webform content'.
+  $permissions['delete any webform content'] = array(
+    'name' => 'delete any webform content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -1553,15 +1794,37 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'delete own service_offering content'.
   $permissions['delete own service_offering content'] = array(
     'name' => 'delete own service_offering content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete own service_request content'.
   $permissions['delete own service_request content'] = array(
     'name' => 'delete own service_request content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'delete own webform content'.
+  $permissions['delete own webform content'] = array(
+    'name' => 'delete own webform content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own webform submissions'.
+  $permissions['delete own webform submissions'] = array(
+    'name' => 'delete own webform submissions',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'webform',
   );
 
   // Exported permission: 'delete revisions'.
@@ -1771,6 +2034,20 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'diff view changes'.
+  $permissions['diff view changes'] = array(
+    'name' => 'diff view changes',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
+    ),
+    'module' => 'diff',
+  );
+
   // Exported permission: 'disable new harmony content'.
   $permissions['disable new harmony content'] = array(
     'name' => 'disable new harmony content',
@@ -1788,6 +2065,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'eu_cookie_compliance',
   );
@@ -1799,6 +2080,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'admin_menu',
+  );
+
+  // Exported permission: 'edit all webform submissions'.
+  $permissions['edit all webform submissions'] = array(
+    'name' => 'edit all webform submissions',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'webform',
   );
 
   // Exported permission: 'edit any article content'.
@@ -1814,8 +2104,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit any event content'] = array(
     'name' => 'edit any event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1826,7 +2120,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1837,7 +2134,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1866,7 +2166,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1875,8 +2178,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit any service_offering content'] = array(
     'name' => 'edit any service_offering content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1885,8 +2192,21 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit any service_request content'] = array(
     'name' => 'edit any service_request content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any webform content'.
+  $permissions['edit any webform content'] = array(
+    'name' => 'edit any webform content',
+    'roles' => array(
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1906,6 +2226,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'comment',
   );
@@ -1914,7 +2238,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit own event content'] = array(
     'name' => 'edit own event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1925,6 +2254,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1935,6 +2268,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1963,6 +2300,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1971,7 +2312,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit own service_offering content'] = array(
     'name' => 'edit own service_offering content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -1980,9 +2326,32 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['edit own service_request content'] = array(
     'name' => 'edit own service_request content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'edit own webform content'.
+  $permissions['edit own webform content'] = array(
+    'name' => 'edit own webform content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own webform submissions'.
+  $permissions['edit own webform submissions'] = array(
+    'name' => 'edit own webform submissions',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'webform',
   );
 
   // Exported permission: 'edit revisions'.
@@ -1991,7 +2360,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -2194,6 +2566,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'edit webform components'.
+  $permissions['edit webform components'] = array(
+    'name' => 'edit webform components',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'webform',
+  );
+
   // Exported permission: 'execute php code'.
   $permissions['execute php code'] = array(
     'name' => 'execute php code',
@@ -2219,6 +2600,24 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'features',
+  );
+
+  // Exported permission: 'grant content access'.
+  $permissions['grant content access'] = array(
+    'name' => 'grant content access',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'content_access',
+  );
+
+  // Exported permission: 'grant own content access'.
+  $permissions['grant own content access'] = array(
+    'name' => 'grant own content access',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'content_access',
   );
 
   // Exported permission: 'manage bg translation overview priorities'.
@@ -2490,8 +2889,22 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'notify of path changes',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'pathauto',
+  );
+
+  // Exported permission: 'opt-in or out of tracking'.
+  $permissions['opt-in or out of tracking'] = array(
+    'name' => 'opt-in or out of tracking',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'piwik',
   );
 
   // Exported permission: 'perform backup'.
@@ -2509,6 +2922,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'comment',
   );
@@ -2519,6 +2936,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
       'translation manager' => 'translation manager',
     ),
     'module' => 'tmgmt_local',
@@ -2537,7 +2957,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'publish revisions of any article content'.
   $permissions['publish revisions of any article content'] = array(
     'name' => 'publish revisions of any article content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -2545,6 +2967,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of any event content'] = array(
     'name' => 'publish revisions of any event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2564,6 +2987,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of any organisation content'] = array(
     'name' => 'publish revisions of any organisation content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2572,7 +2996,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'publish revisions of any page content'.
   $permissions['publish revisions of any page content'] = array(
     'name' => 'publish revisions of any page content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -2590,6 +3016,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of any service_offering content'] = array(
     'name' => 'publish revisions of any service_offering content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2599,6 +3026,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of any service_request content'] = array(
     'name' => 'publish revisions of any service_request content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2607,7 +3035,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'publish revisions of own article content'.
   $permissions['publish revisions of own article content'] = array(
     'name' => 'publish revisions of own article content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -2615,6 +3045,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of own event content'] = array(
     'name' => 'publish revisions of own event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2634,6 +3065,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of own organisation content'] = array(
     'name' => 'publish revisions of own organisation content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2642,7 +3074,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'publish revisions of own page content'.
   $permissions['publish revisions of own page content'] = array(
     'name' => 'publish revisions of own page content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -2660,6 +3094,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of own service_offering content'] = array(
     'name' => 'publish revisions of own service_offering content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2669,6 +3104,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['publish revisions of own service_request content'] = array(
     'name' => 'publish revisions of own service_request content',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'revisioning',
@@ -2705,6 +3141,7 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
     'roles' => array(
+      'administrator' => 'administrator',
       'moderator' => 'moderator',
     ),
     'module' => 'node',
@@ -2726,6 +3163,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'search',
   );
@@ -2752,7 +3193,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['show format selection for flagging'] = array(
     'name' => 'show format selection for flagging',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'better_formats',
   );
@@ -2763,6 +3209,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'better_formats',
   );
@@ -2773,6 +3223,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'better_formats',
   );
@@ -2783,6 +3237,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'better_formats',
   );
@@ -2793,6 +3251,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'better_formats',
   );
@@ -2803,6 +3265,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'better_formats',
   );
@@ -2813,6 +3279,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'better_formats',
   );
@@ -2823,6 +3293,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'better_formats',
   );
@@ -2833,6 +3307,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'better_formats',
   );
@@ -2981,6 +3459,15 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'module' => 'revisioning',
   );
 
+  // Exported permission: 'use PHP for tracking visibility'.
+  $permissions['use PHP for tracking visibility'] = array(
+    'name' => 'use PHP for tracking visibility',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'piwik',
+  );
+
   // Exported permission: 'use Search Autocomplete'.
   $permissions['use Search Autocomplete'] = array(
     'name' => 'use Search Autocomplete',
@@ -2988,7 +3475,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'search_autocomplete',
   );
@@ -3000,6 +3490,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'search',
   );
@@ -3029,6 +3523,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'custom_search',
   );
@@ -3040,6 +3538,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'custom_search_blocks',
   );
@@ -3123,7 +3625,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'filter',
   );
@@ -3133,8 +3638,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'use text format full_html',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'filter',
   );
@@ -3153,8 +3656,6 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'use text format full_html_tinymce',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
-      'moderator' => 'moderator',
     ),
     'module' => 'filter',
   );
@@ -3182,6 +3683,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view devel_node_access information',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
+      'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'devel_node_access',
   );
@@ -3192,7 +3699,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -3212,7 +3722,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3221,8 +3734,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'node',
   );
@@ -3230,7 +3747,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'view revisions of any article content'.
   $permissions['view revisions of any article content'] = array(
     'name' => 'view revisions of any article content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -3238,8 +3757,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of any event content'] = array(
     'name' => 'view revisions of any event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3249,7 +3772,11 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'name' => 'view revisions of any n52_sucess_story content',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3258,8 +3785,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of any organisation content'] = array(
     'name' => 'view revisions of any organisation content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3267,7 +3798,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'view revisions of any page content'.
   $permissions['view revisions of any page content'] = array(
     'name' => 'view revisions of any page content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -3277,7 +3810,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3286,8 +3822,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of any service_offering content'] = array(
     'name' => 'view revisions of any service_offering content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3296,8 +3836,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of any service_request content'] = array(
     'name' => 'view revisions of any service_request content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3305,7 +3849,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'view revisions of own article content'.
   $permissions['view revisions of own article content'] = array(
     'name' => 'view revisions of own article content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -3313,8 +3859,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of own event content'] = array(
     'name' => 'view revisions of own event content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3325,7 +3875,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3334,8 +3887,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of own organisation content'] = array(
     'name' => 'view revisions of own organisation content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3343,7 +3900,9 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   // Exported permission: 'view revisions of own page content'.
   $permissions['view revisions of own page content'] = array(
     'name' => 'view revisions of own page content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'revisioning',
   );
 
@@ -3353,7 +3912,10 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3362,8 +3924,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of own service_offering content'] = array(
     'name' => 'view revisions of own service_offering content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );
@@ -3372,8 +3938,12 @@ function n52_feature_roles_and_permissions_user_default_permissions() {
   $permissions['view revisions of own service_request content'] = array(
     'name' => 'view revisions of own service_request content',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'course administrator' => 'course administrator',
+      'course participant' => 'course participant',
       'moderator' => 'moderator',
+      'translation manager' => 'translation manager',
     ),
     'module' => 'revisioning',
   );

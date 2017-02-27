@@ -22,11 +22,21 @@ function n52_feature_alerting_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'subscriptions_blocked_content_types';
   $strongarm->value = array(
-    'faq' => 'faq',
+    'certificate' => 'certificate',
     'article' => 'article',
     'page' => 'page',
     'project' => 'project',
+    'quiz' => 'quiz',
+    'long_answer' => 'long_answer',
+    'matching' => 'matching',
+    'multichoice' => 'multichoice',
+    'quiz_ddlines' => 'quiz_ddlines',
+    'short_answer' => 'short_answer',
+    'truefalse' => 'truefalse',
+    'course_object' => 'course_object',
+    'course' => 'course',
     'panel' => 'panel',
+    'webform' => 'webform',
   );
   $export['subscriptions_blocked_content_types'] = $strongarm;
 
@@ -113,7 +123,7 @@ function n52_feature_alerting_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'subscriptions_site_mail';
-  $strongarm->value = 'e.h.juerrens+drupal+subscribtions-module@52north.org';
+  $strongarm->value = '';
   $export['subscriptions_site_mail'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -128,7 +138,6 @@ function n52_feature_alerting_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'subscriptions_static_content_types';
   $strongarm->value = array(
-    'faq' => 'faq',
     'article' => 'article',
     'page' => 'page',
     'panel' => 'panel',

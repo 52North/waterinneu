@@ -227,6 +227,19 @@ class CourseObjectAccessTestCase extends CourseTestCase {
     // object.
     $report = course_report_load($courseNode, $user);
     $this->assertTrue($report->complete);
+
+    // Set the disabled object to be at the beginning of the course.
+    $o1->setOption('weight', -100)->save();
+    // Try with a new user.
+    $this->student_user = $this->drupalCreateUser(array('access content'));
+    $this->drupalLogin($this->student_user);
+    $this->drupalGet("node/$courseNode->nid/takecourse");
+
+    $this->drupalGet("node/$courseNode->nid/course-object/{$o1->coid}");
+    $this->assertResponse(403, t('Disabled first object is not accessible.'));
+
+    $this->drupalGet("node/$courseNode->nid/course-object/{$o_optional->coid}");
+    $this->assertResponse(200, t('Second object is accessible.'));
   }
 
 }

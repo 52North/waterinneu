@@ -25,6 +25,8 @@ class CourseObjectAccessConditional extends CourseObjectAccess {
     $offset = $this->getOption('conditional_time');
     $time = REQUEST_TIME;
     $access = TRUE;
+    $title = $this->getCourseObject()->getTitle();
+    $msg = t('%title is not yet available', array('%title' => $title));
     if ($type) {
       foreach ($this->getCourseObject()->getCourse()->getObjects() as $courseObject) {
         if ($courseObject->getId() == $this->getOption('conditional_object')) {
@@ -35,7 +37,12 @@ class CourseObjectAccessConditional extends CourseObjectAccess {
                 $access = FALSE;
               }
               else {
-                $access = $time >= ($completed + $offset);
+                $date = $completed + $offset;
+                $access = $time >= $date;
+                $msg = t('%title will be available on %date', array(
+                  '%title' => $title,
+                  '%date' => format_date($date, 'short'),
+                ));
               }
               break;
             case 'started':
@@ -44,12 +51,20 @@ class CourseObjectAccessConditional extends CourseObjectAccess {
                 $access = FALSE;
               }
               else {
-                $access = $time >= ($started + $offset);
+                $date = $started + $offset;
+                $access = $time >= $date;
+                $msg = t('%title will be available on %date', array(
+                  '%title' => $title,
+                  '%date' => format_date($date, 'short'),
+                ));
               }
               break;
           }
         }
       }
+    }
+    if (!$access) {
+      $this->getCourseObject()->setAccessMessage('conditional', $msg);
     }
 
     return $access;

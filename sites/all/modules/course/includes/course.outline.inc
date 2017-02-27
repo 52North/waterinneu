@@ -468,7 +468,7 @@ function course_outline_list($node) {
   }
 
   if ($course->getTracker()->getOption('complete')) {
-    $img = theme('image', array('path' => 'misc/watchdog-ok.png'));
+    $img = theme('image', array('path' => 'misc/watchdog-ok.png', 'alt' => t('Complete')));
     $workflow[] = array(
       'data' => $img . l(t('Complete'), "node/$node->nid/course-complete", array('html' => TRUE)),
       'id' => 'complete',
@@ -530,7 +530,7 @@ function course_completion_page($course_node) {
       $status_css = $req->isComplete() ? 'complete' : 'incomplete';
       $status_img = $req->isComplete() ? 'ok' : ($req->getCourseObject()->isRequired() ? 'error' : 'warning');
       $status_class = 'course-complete-item-' . $status_img;
-      $status_optional = ($status_img == 'warning') ? ' (optional)' : ' (required)';
+      $status_optional = ' ' . (!$req->getCourseObject()->isRequired() ? '(optional)' : '(required)');
       if ($courseObject->access('take')) {
         $link = l($req->getCourseObject()->getTitle(), $courseObject->getUrl());
       }

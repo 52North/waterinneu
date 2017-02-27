@@ -58,7 +58,7 @@ $handler->display->display_options['empty']['text']['id'] = 'area';
 $handler->display->display_options['empty']['text']['table'] = 'views';
 $handler->display->display_options['empty']['text']['field'] = 'area';
 $handler->display->display_options['empty']['text']['content'] = 'You don\'t have any completed activities.';
-$handler->display->display_options['empty']['text']['format'] = '2';
+$handler->display->display_options['empty']['text']['format'] = 'plain_text';
 /* Relationship: Course report: Nid */
 $handler->display->display_options['relationships']['nid']['id'] = 'nid';
 $handler->display->display_options['relationships']['nid']['table'] = 'course_report';
