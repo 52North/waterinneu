@@ -1,0 +1,26 @@
+# German translation of Features Extra (7.x-1.0)
+# Copyright (c) 2017 by the German translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Features Extra (7.x-1.0)\n"
+"POT-Creation-Date: 2017-01-12 05:18+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Block settings"
+msgstr "Blockeinstellungen"
+msgid "Machine name"
+msgstr "Systemname"
+msgid "Profile fields"
+msgstr "Profil-Felder"
+msgid ""
+"The machine-readable name must contain only lowercase letters, "
+"numbers, and underscores."
+msgstr ""
+"Der maschinenlesbare Name darf nur aus Kleinbuchstaben, Zahlen und "
+"Unterstrichen bestehen."
