@@ -62,21 +62,21 @@ These instructions contains 19 steps until your own WaterInnEU marketplace insta
 1. Update to the latest drupal version of the 7.x branch:
 
     ```
-user@host:/var/www$ git fetch --all
-[...]
-user@host:/var/www$ git tag -l "7.*" | sort -n | tail
-7.40
-7.41
-7.42
-7.43
-7.44
-7.50
-7.51
-7.52
-7.53
-7.54
-user@host:/var/www$ git merge --no-ff -m "Update to drupal 7.54" 7.54
-```
+    user@host:/var/www$ git fetch --all
+    [...]
+    user@host:/var/www$ git tag -l "7.*" | sort -n | tail
+    7.40
+    7.41
+    7.42
+    7.43
+    7.44
+    7.50
+    7.51
+    7.52
+    7.53
+    7.54
+    user@host:/var/www$ git merge --no-ff -m "Update to drupal 7.54" 7.54
+    ```
 
 1. Set-Up database: Install the MySQL script  ```/var/www/waterinneu/config-backup/WaterInnEUMarketplacePrototype_installation.mysql.zip``` (Extract beforehand) into the database, e.g. by using phpMyAdmin. Adjust the database name in the file using your favorite text editor:
 
@@ -90,56 +90,56 @@ user@host:/var/www$ git merge --no-ff -m "Update to drupal 7.54" 7.54
 1. Configure the database for drupal: Create the file ```/var/www/waterinneu/sites/default/settings.php``` with the following content:
 
     ```php
-<?php
+    <?php
 
-    $databases['default']['default'] = array (
-      'database' => 'YOUR_DATABASE_NAME_HERE',
-      'username' => 'YOUR_DATABASE_USER_HERE',
-      'password' => 'YOUR_DATABASE_USER_PASSWORD_HERE',
-      'host' => 'localhost',
-      'driver' => 'mysql',
-      'prefix' => '',
-    );
+        $databases['default']['default'] = array (
+          'database' => 'YOUR_DATABASE_NAME_HERE',
+          'username' => 'YOUR_DATABASE_USER_HERE',
+          'password' => 'YOUR_DATABASE_USER_PASSWORD_HERE',
+          'host' => 'localhost',
+          'driver' => 'mysql',
+          'prefix' => '',
+        );
+    
+        $update_free_access = FALSE;
+    
+        /*
+         * Use something like
+         *     http://www.lorem-ipsum.co.uk/hasher.php
+         * for creation of the hash value. Enter any ramdom value in the form.
+         */
+        $drupal_hash_salt = 'ENTER_RANDOM_TOKEN_HERE';
 
-    $update_free_access = FALSE;
-
-    /*
-     * Use something like
-     *     http://www.lorem-ipsum.co.uk/hasher.php
-     * for creation of the hash value. Enter any ramdom value in the form.
-     */
-    $drupal_hash_salt = 'ENTER_RANDOM_TOKEN_HERE';
-
-    ini_set('session.gc_probability', 1);
-    ini_set('session.gc_divisor', 100);
-    ini_set('session.gc_maxlifetime', 200000);
-    ini_set('session.cookie_lifetime', 2000000);
-
-    $conf['404_fast_paths_exclude'] = '/\/(?:styles)\//';
-    $conf['404_fast_paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
-    $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
-    $base_url = "http://localhost/your-contenxt-path";
+        ini_set('session.gc_probability', 1);
+        ini_set('session.gc_divisor', 100);
+        ini_set('session.gc_maxlifetime', 200000);
+        ini_set('session.cookie_lifetime', 2000000);
+    
+        $conf['404_fast_paths_exclude'] = '/\/(?:styles)\//';
+        $conf['404_fast_paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
+        $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
+        $base_url = "http://localhost/your-contenxt-path";
     ```
 
 1. Ensure that the file is protected, e.g.
 
-  ```
-  user@host:/var/www$ chmod 440 /var/www/waterinneu/sites/default/settings.php
-  ```
+    ```
+    user@host:/var/www$ chmod 440 /var/www/waterinneu/sites/default/settings.php
+    ```
 
-  More detailed instructions regarding secure file permission set-up for drupal can be found at https://www.drupal.org/node/244924.
+    More detailed instructions regarding secure file permission set-up for drupal can be found at https://www.drupal.org/node/244924.
 
 1. Access the site
 
-  ```
-  http://localhost/en/user
-  ```
+    ```
+    http://localhost/en/user
+    ```
 
-  and login with the example credentials:
+    and login with the example credentials:
 
-  **Username**: ```admin```
+    **Username**: ```admin```
 
-  **Password**: ```admin```
+    **Password**: ```admin```
 
 1. Update the administrator account to match your set-up. Change the password and e-mail address at the following page:
 
@@ -159,14 +159,14 @@ user@host:/var/www$ git merge --no-ff -m "Update to drupal 7.54" 7.54
      http://localhost/en/admin/config/system/cron
      ```
 
-  and select ```1 hour```. This will result in the execution of cron tasks every hour at the end of any request. For production set-up, follow these instructions:
-  http://drupal.org/cron
+    and select ```1 hour```. This will result in the execution of cron tasks every hour at the end of any request. For production set-up, follow these instructions:
+    http://drupal.org/cron
 
 1. Adjust the imprint: Go to the following page and adjust the imprint to your needs:
 
-  ```
-  http://localhost/en/imprint
-  ```
+    ```
+    http://localhost/en/imprint
+    ```
 
 1. Update the _widget ID_ and _username_ of the twitter block to your needs:
 
@@ -214,7 +214,7 @@ user@host:/var/www$ git merge --no-ff -m "Update to drupal 7.54" 7.54
     http://localhost/en/contact
     ```
 
-  If the mails doesn't reach your inbox, you should review the configuration of the SMTP module (see according section above).
+    If the mails doesn't reach your inbox, you should review the configuration of the SMTP module (see according section above).
 
 1. Update all dependencies: Open the following URL
 
@@ -222,7 +222,7 @@ user@host:/var/www$ git merge --no-ff -m "Update to drupal 7.54" 7.54
     http://localhost/drupal/en/admin/reports/updates/update
     ```
 
-  If the latest check is not 0 seconds ago, click on the link "check manually".
+    If the latest check is not 0 seconds ago, click on the link "check manually".
 
 1. Configure solr server in search API:
 
