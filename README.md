@@ -164,9 +164,9 @@ These instructions contains 19 steps until your own WaterInnEU marketplace insta
 
 1. Adjust the imprint: Go to the following page and adjust the imprint to your needs:
 
-  ```
-  http://localhost/en/imprint
-  ```
+    ```
+    http://localhost/en/imprint
+    ```
 
 1. Update the _widget ID_ and _username_ of the twitter block to your needs:
 
