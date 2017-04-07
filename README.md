@@ -127,7 +127,7 @@ These instructions contains 19 steps until your own WaterInnEU marketplace insta
     user@host:/var/www$ chmod 440 /var/www/waterinneu/sites/default/settings.php
     ```
 
-  More detailed instructions regarding secure file permission set-up for drupal can be found at https://www.drupal.org/node/244924.
+    More detailed instructions regarding secure file permission set-up for drupal can be found at https://www.drupal.org/node/244924.
 
 1. Access the site
 
