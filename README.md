@@ -135,11 +135,11 @@ These instructions contains 19 steps until your own WaterInnEU marketplace insta
     http://localhost/en/user
     ```
 
-  and login with the example credentials:
+    and login with the example credentials:
 
-  **Username**: ```admin```
+    **Username**: ```admin```
 
-  **Password**: ```admin```
+    **Password**: ```admin```
 
 1. Update the administrator account to match your set-up. Change the password and e-mail address at the following page:
 
@@ -159,8 +159,8 @@ These instructions contains 19 steps until your own WaterInnEU marketplace insta
      http://localhost/en/admin/config/system/cron
      ```
 
-  and select ```1 hour```. This will result in the execution of cron tasks every hour at the end of any request. For production set-up, follow these instructions:
-  http://drupal.org/cron
+    and select ```1 hour```. This will result in the execution of cron tasks every hour at the end of any request. For production set-up, follow these instructions:
+    http://drupal.org/cron
 
 1. Adjust the imprint: Go to the following page and adjust the imprint to your needs:
 
@@ -214,7 +214,7 @@ These instructions contains 19 steps until your own WaterInnEU marketplace insta
     http://localhost/en/contact
     ```
 
-  If the mails doesn't reach your inbox, you should review the configuration of the SMTP module (see according section above).
+    If the mails doesn't reach your inbox, you should review the configuration of the SMTP module (see according section above).
 
 1. Update all dependencies: Open the following URL
 
@@ -222,7 +222,7 @@ These instructions contains 19 steps until your own WaterInnEU marketplace insta
     http://localhost/drupal/en/admin/reports/updates/update
     ```
 
-  If the latest check is not 0 seconds ago, click on the link "check manually".
+    If the latest check is not 0 seconds ago, click on the link "check manually".
 
 1. Configure solr server in search API:
 
